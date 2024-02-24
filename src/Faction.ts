@@ -1,5 +1,3 @@
-import { forceDataLoadKeyLabel } from '../utils';
-
 enum Reputation {
     hated = 'hated',
     hostile = 'hostile',
@@ -104,13 +102,10 @@ class Faction {
         });
     }
 
-    static #loaded: Factions | null = null;
+    // static #loaded: Factions | null = null;
 
     static load(): Factions {
-        return (this.#loaded ||= forceDataLoadKeyLabel<Faction>(
-            window.Main.asset('Factions'),
-            this.build,
-        ));
+        throw new Error('Reimplementation in modular strucutre required!');
     }
 }
 
