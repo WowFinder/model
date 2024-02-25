@@ -15,10 +15,10 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-            - name: Yarn cache clear
+            - name: Yarn cache clean
               uses: Borales/actions-yarn@v5.0.0
               with:
-                  cmd: cache clear
+                  cmd: cache clean
             - name: Yarn install
               uses: Borales/actions-yarn@v5.0.0
               with:
