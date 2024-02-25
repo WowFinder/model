@@ -1,7 +1,7 @@
-import { validateEnumValue } from '@model/Assets';
+import { validateEnumValue } from 'Assets';
 import Size from '../../Character/Size';
 import { Length, LengthUnit } from '../../Units';
-import { ValidatorContainer } from '@model/Validable';
+import { ValidatorContainer } from 'Validable';
 
 enum StandardRange {
     self = 'self',

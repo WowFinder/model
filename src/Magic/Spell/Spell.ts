@@ -1,10 +1,10 @@
-import { TFunction } from 'i18next';
-import { forceDataLoadKeyS } from '../../../utils';
+// import { TFunction } from 'i18next';
+// import { forceDataLoadKeyS } from 'ts-utils';
 import { fullParseSchool, School, SubSchool } from '../School';
 import { SpellBaseBuilder, SpellBase } from './base';
 import { SpellRank, SpellRankBuilder } from './Rank';
 import { RankedSpell, RankedSpellBuilder } from './RankedSpell';
-import { Asset } from '@model/Assets';
+import { Asset } from 'Assets';
 import { validateSpell } from './validation';
 
 interface SpellBuilder extends SpellBaseBuilder {
@@ -66,11 +66,11 @@ class Spell extends SpellBase implements SpellBuilder, Asset {
         return this.#key;
     }
 
-    getFullName(t: TFunction<'translation'>): string {
+    getFullName(t: any /* TFunction<'translation'> */): string {
         return t(`spells.${this.key}.name`);
     }
 
-    getDescription(t: TFunction<'translation'>): string {
+    getDescription(t: any /*  TFunction<'translation'> */): string {
         return t(`spells.${this.key}.description`);
     }
 
@@ -125,14 +125,15 @@ class Spell extends SpellBase implements SpellBuilder, Asset {
         return new Spell(raw);
     }
 
-    static #loaded: Spells | null = null;
+    // static #loaded: Spells | null = null;
 
-    static load(reThrowErrors = false): Spells {
-        return (this.#loaded ||= forceDataLoadKeyS<Spell>(
+    static load(/* reThrowErrors = false */): Spells {
+        throw new Error('Not implemented');
+        /* return (this.#loaded ||= forceDataLoadKeyS<Spell>(
             window.Main.asset('Spells'),
             this.build,
             reThrowErrors,
-        ));
+        )); */
     }
 
     static byKey(key: string): Spell;

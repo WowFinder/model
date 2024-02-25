@@ -1,10 +1,10 @@
-import { builder, ByKeyRecursive, ByKeyRecursiveEntry } from '../../utils';
+// import { builder, ByKeyRecursive, ByKeyRecursiveEntry } from 'ts-utils';
 import { Item } from './base';
 import { consumableBuilderByTypeKey } from './Consumable';
 import { gearBuilderByTypeKey } from './Gear';
 import { goodBuilderByTypeKey } from './Good';
 
-const builderByTypeKey: { [key: string]: builder<Item> } = {
+const builderByTypeKey: { [key: string]: any /* builder<Item> */ } = {
     ...gearBuilderByTypeKey,
     ...goodBuilderByTypeKey,
     ...consumableBuilderByTypeKey,
@@ -20,10 +20,11 @@ const errors = {
 
 function retrievePreloaded(fqkey: string): Item {
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    let data: ByKeyRecursiveEntry<Item> = Item.load(buildItem);
+    let data: any /* ByKeyRecursiveEntry<Item> = Item.load(buildItem) */ =
+        Item.load();
     for (const chunk of fqkey.split('.')) {
         if (Object.keys(data).includes(chunk)) {
-            data = (data as ByKeyRecursive<Item>)[chunk];
+            data = (data as any) /* ByKeyRecursive<Item> */[chunk];
         } else {
             throw errors.badKey(fqkey);
         }

@@ -2,7 +2,7 @@ import StatsBonus from './Stats';
 import SkillsBonus from './Skills';
 import { VitalNeeds } from './VitalNeeds';
 import Senses from './Senses';
-import { sum } from '../../../utils';
+import { sum } from 'ts-utils';
 import SavesBonus from './Saves';
 import ResistBonus from './ResistBonus';
 import SpellPowerBonus from './SpellPowerBonus';
@@ -233,7 +233,7 @@ class MultiBonus {
     #bonuses: PartialBonuses;
 
     constructor(bonuses: PartialBonuses) {
-        this.#bonuses = Object.assign({}, bonuses);
+        this.#bonuses = { ...bonuses };
     }
 
     static get zero(): FullBonuses {

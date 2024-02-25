@@ -1,8 +1,12 @@
 import { ActionLength } from './ActionLength';
 import { Time } from '../Units';
-import { Stringifier } from '@utils/strings';
-import { validateEnumValue } from '@model/Assets';
-import { CompoundValidationError, ValidatorContainer } from '@model/Validable';
+import { validateEnumValue } from 'Assets';
+import { CompoundValidationError, ValidatorContainer } from 'Validable';
+
+type Stringifier<T> = (
+    value: T,
+    t: (key: string, ...params: any[]) => string,
+) => string;
 
 type ActionTime = ActionLength | Time | 'special';
 

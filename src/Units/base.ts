@@ -1,7 +1,7 @@
-import { TFunction } from 'i18next';
-import { sum, TryParser } from '@utils';
-import { Validable } from '@model/Assets';
-import { ValidationError } from '@model/Validable';
+// import { TFunction } from 'i18next';
+import { sum, TryParser } from 'ts-utils';
+import { Validable } from 'Assets';
+import { ValidationError } from 'Validable';
 
 class Scalar<T> implements Validable {
     private _value: number;
@@ -21,9 +21,9 @@ class Scalar<T> implements Validable {
 
     toString(): string;
 
-    toString(t: TFunction<'translation'>): string;
+    toString(t: any /* TFunction<'translation'> */): string;
 
-    toString(t?: TFunction<'translation'>): string {
+    toString(t?: any /* TFunction<'translation'> */): string {
         const unit = t ? t(`units.${this._unit}`) : this._unit;
         return `${this._value} ${unit}`;
     }

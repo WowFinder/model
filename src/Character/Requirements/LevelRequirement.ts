@@ -1,6 +1,6 @@
 import { Requirement } from '.';
 import { Character } from '..';
-import { sum } from '../../../utils';
+import { sum } from 'ts-utils';
 
 abstract class LevelRequirementBase implements Requirement<Character> {
     #level: number;

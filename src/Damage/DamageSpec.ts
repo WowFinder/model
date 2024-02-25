@@ -1,4 +1,4 @@
-import { Validable, validateArray } from '@model/Validable';
+import { Validable, validateArray } from 'Validable';
 import {
     DamageComponentSpec,
     DamageComponentSpecBuilder,

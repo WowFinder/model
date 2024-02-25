@@ -1,4 +1,4 @@
-import { JsonValue } from '../../utils';
+import { JsonValue } from 'ts-utils';
 import {
     convertLength,
     convertMass,

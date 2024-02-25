@@ -1,4 +1,4 @@
-import { Exportable, forceDataLoadKeyS, JsonValue, sum } from '../../utils';
+import { Exportable, JsonValue, sum } from 'ts-utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
 import {
@@ -71,7 +71,7 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
             this.#classes.push({ cls: checkClass(cls), level });
         }
         const auras = this.auraBonuses;
-        this.#skillRanks = Object.assign({}, skillRanks);
+        this.#skillRanks = { ...skillRanks };
         this.#armor = ArmorValues.zero;
         this.#resistances = Resistances.fromCategorized({
             misc: auras.resistances.values,
@@ -123,7 +123,7 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     }
 
     get skillRanks(): SkillRanks {
-        return Object.assign({}, this.#skillRanks);
+        return { ...this.#skillRanks };
     }
 
     get armor(): FullArmorValues {
@@ -306,13 +306,14 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         return new Character(raw);
     }
 
-    static #loaded: Characters | null = null;
+    // static #loaded: Characters | null = null;
 
     static load(): Characters {
-        return (this.#loaded ||= forceDataLoadKeyS<Character>(
+        throw new Error('Not implemented');
+        /* return (this.#loaded ||= forceDataLoadKeyS<Character>(
             window.Main.asset('Characters'),
             this.build,
-        ));
+        )); */
     }
 }
 

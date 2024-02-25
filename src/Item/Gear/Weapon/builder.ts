@@ -1,5 +1,5 @@
-import { StatKey } from '@model/Character/Stats';
-import { DamageSpec, DamageType, makeFullDamageTypes } from '@model/Damage';
+import { StatKey } from 'Character/Stats';
+import { DamageSpec, DamageType, makeFullDamageTypes } from 'Damage';
 import { Gear, GearBuilder } from '../base';
 import WeaponFlags from './Flags';
 import WeaponGroup from './Group';

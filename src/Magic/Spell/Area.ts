@@ -1,7 +1,7 @@
-import { TFunction } from 'i18next';
+// import { TFunction } from 'i18next';
 import { Length } from '../../Units';
-import { unreachable } from '@utils/debug';
-import { ValidationError } from '@model/Validable';
+// import { unreachable } from 'ts-utils/debug';
+import { ValidationError } from 'Validable';
 
 type SpellSelf = {
     spellAreaType: 'self';
@@ -40,7 +40,10 @@ type SpellArea =
     | SpellLine
     | SpellSphere;
 
-function stringify(value: SpellArea, t: TFunction<'translation'>): string {
+function stringify(
+    value: SpellArea,
+    t: any /* TFunction<'translation'> */,
+): string {
     switch (value.spellAreaType) {
         case 'self':
             return t('magic.area.self');
@@ -59,7 +62,8 @@ function stringify(value: SpellArea, t: TFunction<'translation'>): string {
             });
         }
         default: {
-            return unreachable(value);
+            throw new Error('Unreachable code');
+            // return unreachable(value);
         }
     }
 }

@@ -1,4 +1,4 @@
-import type { JsonValue } from '../../../utils';
+import type { JsonValue } from 'ts-utils';
 import type { DamageType } from '../../Damage';
 import type { ResistanceBreakdown } from './ResistanceBreakdown';
 

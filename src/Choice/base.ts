@@ -1,4 +1,4 @@
-import { Validator } from '../../utils';
+import { Validator } from 'ts-utils';
 
 interface BaseChoiceBuilder {
     label: string;

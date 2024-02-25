@@ -1,4 +1,4 @@
-import { validateEnumValue } from '@model/Assets';
+import { validateEnumValue } from 'Assets';
 import { converter, makeConverter, Scalar } from './base';
 
 enum TimeUnit {

@@ -1,4 +1,4 @@
-import { Quantified } from '../../../utils';
+import { Quantified } from 'ts-utils';
 import { Item } from '../base';
 import { buildItem } from '../builders';
 

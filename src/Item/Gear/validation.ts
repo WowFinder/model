@@ -1,7 +1,7 @@
-import { ValidationError, validateEnumValue } from '@model/Validable';
+import { ValidationError, validateEnumValue } from 'Validable';
 import type { Gear } from './base';
 import GearSlot, { Shape } from './Slot';
-import Size from '@model/Character/Size';
+import Size from 'Character/Size';
 
 function validateShape(shape: Shape): void {
     if (!Array.isArray(shape)) {

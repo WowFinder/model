@@ -1,4 +1,4 @@
-import { sum } from '../../../utils';
+import { sum } from 'ts-utils';
 import { Mass, MassUnit } from '../../Units';
 import { StatKey } from './keys';
 

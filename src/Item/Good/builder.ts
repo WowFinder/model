@@ -1,5 +1,5 @@
-import { builder } from '../../../utils';
-import { Item } from '../base';
+// import { builder } from 'ts-utils';
+// import { Item } from '../base';
 import { Cloth } from './Cloth';
 import { CommonGood } from './CommonGood';
 import { EnchantingReagent } from './Enchanting';
@@ -9,7 +9,7 @@ import { Leather } from './Leather';
 import { Ore, MetalBar, Stone } from './Mining';
 import { Pigment } from './Pigment';
 
-const goodBuilderByTypeKey: { [key: string]: builder<Item> } = {
+const goodBuilderByTypeKey: { [key: string]: any /* builder<Item> */ } = {
     Ore: Ore.build,
     Metal: MetalBar.build,
     Stone: Stone.build,

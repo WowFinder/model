@@ -1,4 +1,4 @@
-import { ValidationError } from '@model/Validable';
+import { ValidationError } from 'Validable';
 import type { SpellList, SpellListEntry } from '.';
 import { Spell } from '../Spell/Spell';
 

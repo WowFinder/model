@@ -1,4 +1,4 @@
-import { ValidationError } from '@model/Validable';
+import { ValidationError } from 'Validable';
 
 interface MoneyBreakdown {
     _: number;

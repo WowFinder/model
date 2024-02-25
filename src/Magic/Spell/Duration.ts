@@ -1,7 +1,7 @@
-import { TFunction } from 'i18next';
-import { Time } from '../../../types/Units';
-import { unreachable } from '@utils/debug';
-import { ValidationError } from '@model/Validable';
+// import { TFunction } from 'i18next';
+import { Time } from 'Units';
+// import { unreachable } from 'ts-utils/debug';
+import { ValidationError } from 'Validable';
 
 type FixedSpellDuration = {
     durationType: 'fixed';
@@ -21,7 +21,10 @@ type SpellDuration =
     | FixedSpellDuration
     | PerLevelSpellDuration;
 
-function stringify(value: SpellDuration, t: TFunction<'translation'>): string {
+function stringify(
+    value: SpellDuration,
+    t: any /* TFunction<'translation'> */,
+): string {
     if (value === 'special') {
         return t('magic.duration.special');
     } else if (value === 'instantaneous') {
@@ -35,7 +38,8 @@ function stringify(value: SpellDuration, t: TFunction<'translation'>): string {
     } else if (value.durationType === 'perLevel') {
         return t('magic.duration.perLevel', { duration: value.duration });
     } else {
-        return unreachable(value);
+        throw new Error('Unreachable code');
+        // return unreachable(value);
     }
 }
 

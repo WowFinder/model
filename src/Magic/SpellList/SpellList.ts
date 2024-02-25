@@ -1,4 +1,4 @@
-import { forceDataLoadKeyS } from '@utils';
+// import { forceDataLoadKeyS } from 'ts-utils';
 import type { SpellListBuilder, SpellListLevels } from './helpers';
 import { ValidateSpellList } from './validations';
 import { buildSpellListLevel } from './builders';
@@ -44,14 +44,15 @@ class SpellList implements SpellListBuilder {
         return new SpellList(raw);
     }
 
-    static #loaded: SpellLists | null = null;
+    // static #loaded: SpellLists | null = null;
 
-    static load(reThrowErrors = false): SpellLists {
-        return (this.#loaded ||= forceDataLoadKeyS<SpellList>(
+    static load(/* reThrowErrors = false */): SpellLists {
+        throw new Error('Not implemented');
+        /* return (this.#loaded ||= forceDataLoadKeyS<SpellList>(
             window.Main.asset('SpellLists'),
             this.build,
             reThrowErrors,
-        ));
+        )); */
     }
 }
 

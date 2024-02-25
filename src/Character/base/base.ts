@@ -13,7 +13,7 @@ import {
     EffectiveCasterLevels,
     buildCasterLevels,
     zeroCasterLevel,
-} from '@model/Magic';
+} from 'Magic';
 
 abstract class CharacterBase {
     #key: string;

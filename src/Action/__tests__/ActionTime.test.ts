@@ -1,9 +1,8 @@
 import { Time, TimeUnit } from '../../Units';
 import { ActionTime } from '../ActionTime';
-import type { TFunction } from 'i18next';
 import { ActionLength } from '../ActionLength';
 
-const t = ((key: string): string => key) as TFunction<'translation'>;
+const t = (key: string): string => key;
 
 describe('ActionTime', () => {
     describe('stringify', () => {

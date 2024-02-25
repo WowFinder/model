@@ -1,5 +1,5 @@
-import { Validable, validateNumber } from '@model/Validable';
-import { sum } from '../../../utils';
+import { Validable, validateNumber } from 'Validable';
+import { sum } from 'ts-utils';
 import { DamageType } from '../../Damage';
 import type { ResistancePartialSet, ResistanceSet } from '../Resistances';
 

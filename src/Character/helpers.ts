@@ -1,4 +1,4 @@
-import { JsonValue } from '../../utils';
+import { JsonValue } from 'ts-utils';
 import { Bonus } from './Bonus';
 import { Class } from './Class';
 import { Feat } from './Feats';

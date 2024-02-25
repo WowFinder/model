@@ -1,5 +1,5 @@
-import { validateEnumValue } from '@model/Assets';
-import { ValidationError } from '@model/Validable';
+import { validateEnumValue } from 'Assets';
+import { ValidationError } from 'Validable';
 
 enum School {
     abj = 'abj',

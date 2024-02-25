@@ -1,8 +1,4 @@
-import {
-    Validable,
-    ValidationError,
-    validateEnumValue,
-} from '@model/Validable';
+import { Validable, ValidationError, validateEnumValue } from 'Validable';
 import { StatKey } from '../Character/Stats';
 import { Dice } from '../Dice';
 import { DamageModifier, computeModifier } from './DamageModifier';

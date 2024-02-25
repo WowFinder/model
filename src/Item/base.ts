@@ -1,12 +1,8 @@
-import { Asset, validateEnumValue } from '@model/Assets';
-import {
-    builder,
-    ByKeyRecursive,
-    forceDataLoadKeySRecursive,
-} from '../../utils';
+import { Asset, validateEnumValue } from 'Assets';
+// import { builder, ByKeyRecursive, forceDataLoadKeySRecursive } from 'ts-utils';
 import { Mass } from '../Units';
 import { Rarity } from './Rarity';
-import { ValidationError } from '@model/Validable';
+import { ValidationError } from 'Validable';
 import Money from './Money';
 
 interface ItemBuilder {
@@ -60,9 +56,13 @@ abstract class Item implements Asset {
         };
     }
 
-    static #loaded: ByKeyRecursive<Item> | null = null;
+    // static #loaded: ByKeyRecursive<Item> | null = null;
 
-    static load(
+    static load(): any {
+        throw new Error('Not implemented');
+    }
+
+    /* static load(
         build: builder<Item>,
         reThrowErrors = false,
     ): ByKeyRecursive<Item> {
@@ -71,7 +71,7 @@ abstract class Item implements Asset {
             build,
             reThrowErrors,
         ));
-    }
+    } */
 }
 
 export type { ItemBuilder };

@@ -1,4 +1,4 @@
-import { validateEnumValues } from '@model/Assets';
+import { validateEnumValues } from 'Assets';
 import { SpellBase } from './base';
 import { SpellDescriptor } from './Descriptor';
 import { SpellCoreComponent } from './Components';
@@ -10,7 +10,7 @@ import { SpellFlag } from './Flags';
 import type { Spell } from './Spell';
 import { validateSchool } from '../School';
 import { SpellRank } from './Rank';
-import { CompoundValidationError, ValidationError } from '@model/Validable';
+import { CompoundValidationError, ValidationError } from 'Validable';
 
 type SpellBaseValidableFields = 'castingTime' | 'range' | 'duration';
 

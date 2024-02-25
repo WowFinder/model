@@ -1,6 +1,6 @@
 import { Skill, SkillSet } from '../Skill';
-import { sum } from '../../../utils';
-import { Validable, validateNumber } from '@model/Validable';
+import { sum } from 'ts-utils';
+import { Validable, validateNumber } from 'Validable';
 
 export default class SkillsBonus implements Validable {
     #values: SkillSet;

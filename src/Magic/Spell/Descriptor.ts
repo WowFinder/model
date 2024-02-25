@@ -1,6 +1,6 @@
 import { AlignmentDescriptor } from '../../Character/Alignment';
 import { EnergyType } from '../../Damage';
-import { Stringifier } from '@utils/strings';
+import { Stringifier } from 'ts-utils';
 
 enum ElementalDescriptor {
     air = 'air',

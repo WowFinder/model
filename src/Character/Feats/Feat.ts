@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from '../../../utils';
+import { capitalizeFirstLetter } from 'ts-utils';
 import {
     ExoticWeaponProficiency,
     MartialWeaponProficiency,

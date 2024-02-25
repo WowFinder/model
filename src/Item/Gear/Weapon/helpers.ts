@@ -1,4 +1,4 @@
-import { Length, LengthUnit } from '@model/Units';
+import { Length, LengthUnit } from 'Units';
 
 type Range = number | Length;
 function asFeet(r: Range): Length {

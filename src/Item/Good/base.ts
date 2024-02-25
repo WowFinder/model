@@ -1,7 +1,7 @@
 import { Money, asMoney } from '../Money';
 import { Item, ItemBuilder } from '../base';
 import { Rarity, rarityMultipliers } from '../Rarity';
-import { ValidationError } from '@model/Validable';
+import { ValidationError } from 'Validable';
 
 interface GoodBuilder extends ItemBuilder {
     label: string;

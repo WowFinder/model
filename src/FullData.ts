@@ -2,11 +2,11 @@ import { Adventure, Adventures } from './Adventure';
 import { Character, Characters } from './Character';
 import { Class, Classes } from './Character/Class';
 import { Faction, Factions } from './Faction';
-import { buildItem, Item } from './Item';
+import { Item } from './Item';
 import { SpellList, SpellLists } from './Magic';
 import { Spell, Spells } from './Magic/Spell';
 import { RewardsByCharacter, RewardsByFaction } from './Rewards';
-import { ByKeyRecursive, debugOutput } from '../utils';
+// import { ByKeyRecursive, debugOutput } from 'ts-utils';
 import { Race, Races } from './Character/Race';
 
 class FullData {
@@ -16,19 +16,20 @@ class FullData {
     #rewards: RewardsByCharacter;
     #classes: Classes;
     #races: Races;
-    #items: ByKeyRecursive<Item>;
+    #items: any; // ByKeyRecursive<Item>;
     #spells: Spells;
     #spellLists: SpellLists;
-    private constructor(reThrowErrors = false) {
+    private constructor(/* reThrowErrors = false */) {
         this.#factions = Faction.load();
         this.#chars = Character.load();
         this.#adventures = Adventure.load();
         this.#rewards = Adventure.combined(this.#adventures);
         this.#classes = Class.load();
         this.#races = Race.load();
-        this.#items = Item.load(buildItem, reThrowErrors);
-        this.#spells = Spell.load(reThrowErrors);
-        this.#spellLists = SpellList.load(reThrowErrors);
+        this.#items = Item.load(/* buildItem, reThrowErrors */);
+        this.#items = Item.load();
+        this.#spells = Spell.load(/* reThrowErrors */);
+        this.#spellLists = SpellList.load(/* reThrowErrors */);
     }
 
     get factions(): Factions {
@@ -56,7 +57,7 @@ class FullData {
                 byFaction[f][c] = byChar[c][f];
             }
         }
-        debugOutput('rewardsByFaction', { byChar, byFaction });
+        // debugOutput('rewardsByFaction', { byChar, byFaction });
         return byFaction;
     }
 
@@ -68,7 +69,7 @@ class FullData {
         return this.#races;
     }
 
-    get items(): ByKeyRecursive<Item> {
+    get items(): any /* ByKeyRecursive<Item> */ {
         return this.#items;
     }
 
@@ -81,8 +82,8 @@ class FullData {
     }
 
     static #loaded: FullData | null = null;
-    static load(reThrowErrors = false): FullData {
-        return (this.#loaded ||= new FullData(reThrowErrors));
+    static load(/* reThrowErrors = false */): FullData {
+        return (this.#loaded ||= new FullData(/* reThrowErrors */));
     }
 }
 

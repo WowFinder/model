@@ -1,5 +1,5 @@
-import { TFunction } from 'i18next';
-import { assertDefined, Optional, toRoman } from '../../../utils';
+// import { TFunction } from 'i18next';
+import { assertDefined, Optional, toRoman } from 'ts-utils';
 import { fullParseSchool, School, SubSchool } from '../School';
 import { SpellBase, SpellBaseBuilder } from './base';
 import { ActionTime } from '../../Action/ActionTime';
@@ -63,11 +63,11 @@ class RankedSpell extends SpellBase implements RankedSpellBuilder {
         return this.#subSchool || this.#school;
     }
 
-    getFullName(t: TFunction<'translation'>): string {
+    getFullName(t: any /* TFunction<'translation'> */): string {
         return `${t(this.key)} - ${toRoman(this.#rank)}`;
     }
 
-    getDescription(t: TFunction<'translation'>): string {
+    getDescription(t: any /* TFunction<'translation'> */): string {
         return `${t(`spells.${this.key}.description`)}\n\n${t(
             `spells.${this.key}.${this.#rank}`,
         )}`;

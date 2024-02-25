@@ -1,11 +1,11 @@
-import { DamageSpec } from '@model/Damage';
-import { Length } from '@model/Units';
+import { DamageSpec } from 'Damage';
+import { Length } from 'Units';
 import {
     ValidationError,
     validateEnumValue,
     validateEnumValues,
     validateNumber,
-} from '@model/Validable';
+} from 'Validable';
 import WeaponFlags from './Flags';
 import WeaponGroup from './Group';
 import WeaponProficiency from './Proficiency';

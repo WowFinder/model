@@ -1,4 +1,3 @@
-import { forceDataLoadKeyS } from '../../../utils';
 import Language, { defaultLang } from '../../Language';
 import Alignment, { playableAlignments } from '../Alignment';
 import Size from '../Size';
@@ -118,13 +117,14 @@ export default class Race {
         return new Race(raw);
     }
 
-    static #loaded: Races | null = null;
+    // static #loaded: Races | null = null;
 
     static load(): Races {
-        return (this.#loaded ||= forceDataLoadKeyS(
+        throw new Error('Not implemented');
+        /* return (this.#loaded ||= forceDataLoadKeyS(
             window.Main.asset('Races'),
             this.build,
-        ));
+        )); */
     }
 }
 

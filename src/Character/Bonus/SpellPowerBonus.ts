@@ -1,4 +1,4 @@
-import { sum } from '../../../utils';
+import { sum } from 'ts-utils';
 import { CastingMode, School, SubSchool } from '../../Magic';
 import {
     computedSpellPower,

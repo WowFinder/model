@@ -1,4 +1,4 @@
-import { EffectiveCasterLevels } from '@model/Magic';
+import { EffectiveCasterLevels } from 'Magic';
 import { Skill } from '../Skill';
 import { ClassFeature } from './Features';
 

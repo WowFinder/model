@@ -1,6 +1,6 @@
 import { SimpleSaves } from '../Saves';
 import type { SimpleSavesBuilder } from '../Saves';
-import { sum } from '../../../utils';
+import { sum } from 'ts-utils';
 
 export default class SavesBonus extends SimpleSaves {
     constructor({ fort = 0, refl = 0, will = 0 }: SimpleSavesBuilder) {

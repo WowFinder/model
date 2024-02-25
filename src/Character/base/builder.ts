@@ -1,5 +1,5 @@
-import { EffectiveCasterLevels } from '@model/Magic';
-import { JsonValue } from '../../../utils';
+import { EffectiveCasterLevels } from 'Magic';
+import { JsonValue } from 'ts-utils';
 import { InventoryBuilder, InventoryExport } from '../../Item/Inventory';
 import { FeatChoice, FeatChoiceExport } from '../helpers';
 import { CharPersonalDetailsBuilder } from '../Personal';

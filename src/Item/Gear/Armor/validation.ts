@@ -2,7 +2,7 @@ import {
     validateEnumValue,
     validateEnumValues,
     validateNumber,
-} from '@model/Validable';
+} from 'Validable';
 import type { Armor } from './Armor';
 import ArmorType from './Type';
 import ArmorBonusType from './BonusType';

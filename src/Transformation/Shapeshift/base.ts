@@ -1,7 +1,7 @@
 import { CharacterOverride } from '../../Character/base/CharacterOverride';
 import { Character } from '../../Character';
 import { Transformation } from '../base';
-import { sum } from '@utils/numbers';
+import { sum } from 'ts-utils';
 
 const druidClasses = ['drd'];
 

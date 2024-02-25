@@ -1,4 +1,4 @@
-import { EffectiveCasterLevels } from '@model/Magic';
+import { EffectiveCasterLevels } from 'Magic';
 import { Resistances } from '../Resistances';
 import Size from '../Size';
 import { Speeds } from '../Speeds';

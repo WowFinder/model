@@ -1,4 +1,4 @@
-import { Validable, validateEnumValue } from '@model/Assets';
+import { Validable, validateEnumValue } from 'Assets';
 import { converter, Scalar } from './base';
 import { convertLength, Length, LengthUnit } from './Length';
 import { convertTime, Time, TimeUnit } from './Time';

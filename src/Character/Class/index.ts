@@ -1,11 +1,10 @@
-import { forceDataLoadKeyS } from '../../../utils';
 import { Money } from '../../Item';
 import { Skill } from '../Skill';
 import { Aura, AurasList } from './Aura';
 import { ClassBonuses } from './ClassBonuses';
 import { ClassTier } from './ClassTier';
 import { ClassFeature, FeaturesList } from './Features';
-import { ClassBuilder, applyClassDefaults, preBuild } from './builder';
+import { ClassBuilder, applyClassDefaults } from './builder';
 import { combineClassBonuses } from './combineBonuses';
 import {
     CastingProgression,
@@ -126,13 +125,14 @@ class Class {
         return combineClassBonuses(classLevels);
     }
 
-    static #loaded: Classes | null = null;
+    // static #loaded: Classes | null = null;
 
     static load(): Classes {
-        return (this.#loaded ||= forceDataLoadKeyS(
+        throw new Error('Not implemented');
+        /* return (this.#loaded ||= forceDataLoadKeyS(
             window.Main.asset('Classes'),
             raw => new Class(preBuild(raw)),
-        ));
+        )); */
     }
 }
 

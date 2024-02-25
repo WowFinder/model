@@ -1,5 +1,5 @@
-import { builder } from '../../../utils';
-import { Item } from '../base';
+// import { builder } from 'ts-utils';
+// import { Item } from '../base';
 import {
     Elixir,
     Food,
@@ -11,7 +11,7 @@ import {
 } from './Craftable';
 import { SpellPotion, SpellScroll, Wand } from './SpellContainer';
 
-const consumableBuilderByTypeKey: { [key: string]: builder<Item> } = {
+const consumableBuilderByTypeKey: { [key: string]: any /* builder<Item> */ } = {
     SpellPotion: SpellPotion.build,
     SpellScroll: SpellScroll.build,
     SpellWand: Wand.build,

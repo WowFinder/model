@@ -1,6 +1,6 @@
-import { validateEnumValue } from '@model/Assets';
+import { validateEnumValue } from 'Assets';
 import { converter, makeConverter, Scalar } from './base';
-import { ValidationError } from '@model/Validable';
+import { ValidationError } from 'Validable';
 
 enum LengthUnit {
     yard = 'yard',

@@ -1,4 +1,4 @@
-import { Exportable, forceDataLoadKeyS, JsonValue } from '../utils';
+import { Exportable, JsonValue } from 'ts-utils';
 import type { RewardsByCharacter } from './Rewards';
 
 function jclone<T>(obj: T): T {
@@ -72,13 +72,14 @@ class Adventure implements Exportable<AdventureExport> {
         return new Adventure(raw);
     }
 
-    static #loaded: Adventures | null = null;
+    // static #loaded: Adventures | null = null;
 
     static load(): Adventures {
-        return (this.#loaded ||= forceDataLoadKeyS<Adventure>(
+        throw new Error('Not implemented');
+        /* return (this.#loaded ||= forceDataLoadKeyS<Adventure>(
             window.Main.asset('Adventures'),
             this.build,
-        ));
+        )); */
     }
 
     static combined(adventures: Adventures): RewardsByCharacter {

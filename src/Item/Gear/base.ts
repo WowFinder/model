@@ -1,4 +1,4 @@
-import { ByKeyRecursive, forceDataLoadKeySRecursive } from '../../../utils';
+// import { ByKeyRecursive, forceDataLoadKeySRecursive } from 'ts-utils';
 import {
     Bonus,
     BonusProvider,
@@ -96,14 +96,18 @@ class Gear extends Item implements BonusProvider {
         return new Gear(Gear.preBuild(raw));
     }
 
-    static #loaded: ByKeyRecursive<Gear> | null = null;
+    // static #loaded: ByKeyRecursive<Gear> | null = null;
 
-    static load(builder: (raw: any) => Gear): ByKeyRecursive<Gear> {
+    static load(): any {
+        throw new Error('Not implemented.');
+    }
+
+    /* static load(builder: (raw: any) => Gear): ByKeyRecursive<Gear> {
         return (this.#loaded ||= forceDataLoadKeySRecursive<Gear>(
             window.Main.asset('Items/gear'),
             builder,
         ));
-    }
+    } */
 }
 
 export type { Weight, GearBuilder };

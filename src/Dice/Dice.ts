@@ -1,4 +1,4 @@
-import { Validable } from '@model/Validable';
+import { Validable } from 'Validable';
 import type { DiceBuilder } from './helpers';
 import { average, make, max, min } from './helpers';
 

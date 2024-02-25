@@ -1,4 +1,4 @@
-import { Validable } from '@model/Validable';
+import { Validable } from 'Validable';
 import { Length, LengthUnit } from '../../../Units';
 import WeaponFlags from './Flags';
 import { WeaponBase } from './base';
