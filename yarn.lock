@@ -1308,6 +1308,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ajv@npm:^8.12.0":
+  version: 8.12.0
+  resolution: "ajv@npm:8.12.0"
+  dependencies:
+    fast-deep-equal: "npm:^3.1.1"
+    json-schema-traverse: "npm:^1.0.0"
+    require-from-string: "npm:^2.0.2"
+    uri-js: "npm:^4.2.2"
+  checksum: 10c0/ac4f72adf727ee425e049bc9d8b31d4a57e1c90da8d28bcd23d60781b12fcd6fc3d68db5df16994c57b78b94eed7988f5a6b482fd376dc5b084125e20a0a622e
+  languageName: node
+  linkType: hard
+
 "ansi-escapes@npm:^4.2.1":
   version: 4.3.2
   resolution: "ansi-escapes@npm:4.3.2"
@@ -4042,6 +4054,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json-schema-traverse@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "json-schema-traverse@npm:1.0.0"
+  checksum: 10c0/71e30015d7f3d6dc1c316d6298047c8ef98a06d31ad064919976583eb61e1018a60a0067338f0f79cabc00d84af3fcc489bd48ce8a46ea165d9541ba17fb30c6
+  languageName: node
+  linkType: hard
+
 "json-stable-stringify-without-jsonify@npm:^1.0.1":
   version: 1.0.1
   resolution: "json-stable-stringify-without-jsonify@npm:1.0.1"
@@ -4467,7 +4486,9 @@ __metadata:
     jest: "npm:^29.7.0"
     npm-run-all: "npm:^4.1.5"
     prettier: "npm:^3.2.5"
+    public-assets: "https://github.com/WowFinder/public-assets.git"
     rimraf: "npm:^5.0.5"
+    ts-enums: "https://github.com/WowFinder/ts-enums.git"
     ts-jest: "npm:^29.1.2"
     ts-utils: "https://github.com/WowFinder/ts-utils.git"
     tsd: "npm:^0.30.7"
@@ -4978,6 +4999,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"public-assets@https://github.com/WowFinder/public-assets.git":
+  version: 0.0.1
+  resolution: "public-assets@https://github.com/WowFinder/public-assets.git#commit=1842ff8968cc7a96fdaa887ace43a04307388a27"
+  dependencies:
+    ajv: "npm:^8.12.0"
+  checksum: 10c0/44e4749f234f266465e300173479d18bf7e5507b728e84a234d5e602be1b4fd3815329b261de8c5e7f27bfe457d330fd48e572edd13fcec03ed8c93ff221224b
+  languageName: node
+  linkType: hard
+
 "punycode@npm:^2.1.0":
   version: 2.3.1
   resolution: "punycode@npm:2.3.1"
@@ -5080,6 +5110,13 @@ __metadata:
   version: 2.1.1
   resolution: "require-directory@npm:2.1.1"
   checksum: 10c0/83aa76a7bc1531f68d92c75a2ca2f54f1b01463cb566cf3fbc787d0de8be30c9dbc211d1d46be3497dac5785fe296f2dd11d531945ac29730643357978966e99
+  languageName: node
+  linkType: hard
+
+"require-from-string@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "require-from-string@npm:2.0.2"
+  checksum: 10c0/aaa267e0c5b022fc5fd4eef49d8285086b15f2a1c54b28240fdf03599cbd9c26049fee3eab894f2e1f6ca65e513b030a7c264201e3f005601e80c49fb2937ce2
   languageName: node
   linkType: hard
 
@@ -5719,6 +5756,13 @@ __metadata:
   peerDependencies:
     typescript: ">=4.2.0"
   checksum: 10c0/8ddb493e7ae581d3f57a2e469142feb60b420d4ad8366ab969fe8e36531f8f301f370676b47e8d97f28b5f5fd10d6f2d55f656943a8546ef95e35ce5cf117754
+  languageName: node
+  linkType: hard
+
+"ts-enums@https://github.com/WowFinder/ts-enums.git":
+  version: 0.0.2
+  resolution: "ts-enums@https://github.com/WowFinder/ts-enums.git#commit=32170f79f2b372341a891c3eb3d880ffbf9c2080"
+  checksum: 10c0/50b4d71f1415890399d756d7a0664a1bfdc9b460a759fdf39a3a33ba67812341142a8a2beba41fbcc7a19bf741a0c48aa5499c335cb496ce98efc5199f1cf3a3
   languageName: node
   linkType: hard
 

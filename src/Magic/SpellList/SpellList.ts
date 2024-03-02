@@ -1,6 +1,5 @@
 // import { forceDataLoadKeyS } from 'ts-utils';
 import type { SpellListBuilder, SpellListLevels } from './helpers';
-import { ValidateSpellList } from './validations';
 import { buildSpellListLevel } from './builders';
 
 type SpellLists = { [key: string]: SpellList };
@@ -17,7 +16,6 @@ class SpellList implements SpellListBuilder {
                 buildSpellListLevel(entries),
             ]),
         );
-        this.validate();
     }
 
     get key(): string {
@@ -34,10 +32,6 @@ class SpellList implements SpellListBuilder {
             res[l] = [...entries];
         }
         return res;
-    }
-
-    validate(): asserts this is SpellList {
-        ValidateSpellList(this);
     }
 
     static build(raw: any): SpellList {

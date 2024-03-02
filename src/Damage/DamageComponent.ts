@@ -1,4 +1,3 @@
-import { Validable, ValidationError, validateEnumValue } from 'Validable';
 import { StatKey } from '../Character/Stats';
 import { Dice } from '../Dice';
 import { DamageModifier, computeModifier } from './DamageModifier';
@@ -40,7 +39,7 @@ interface DamageComponentSpecBuilder extends DamageComponentBaseBuilder {
 
 class DamageComponentSpec
     extends DamageComponentBase
-    implements DamageComponentSpecBuilder, Validable
+    implements DamageComponentSpecBuilder
 {
     #dice: Dice;
     #mod?: DamageModifier;
@@ -79,22 +78,6 @@ class DamageComponentSpec
 
     get dice(): Dice {
         return this.#dice;
-    }
-
-    validate(): asserts this is DamageComponentSpec {
-        if (this.#mod) {
-            validateEnumValue<DamageModifier>(this.#mod, DamageModifier);
-        }
-        if (!this.#dice || !(this.#dice instanceof Dice)) {
-            throw new ValidationError(this, 'Invalid dice');
-        }
-        this.#dice.validate();
-    }
-
-    static validate(
-        spec: DamageComponentSpec,
-    ): asserts spec is DamageComponentSpec {
-        spec.validate();
     }
 
     roll(args: DamageRollArguments): DamageComponentValue {
