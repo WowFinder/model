@@ -1,5 +1,3 @@
-import { ValidationError } from 'Validable';
-
 interface MoneyBreakdown {
     _: number;
     c: number;
@@ -80,21 +78,10 @@ export default class Money {
         const breakdown = this.split;
         return displayCoinTypes.map(t => `${breakdown[t]}${t}`).join();
     }
-
-    validate(): void {
-        if (Number.isNaN(this.#raw)) {
-            throw new ValidationError(
-                this,
-                'Money value must be a real number',
-            );
-        }
-    }
 }
 
 function asMoney(value: Money | number): Money {
-    return value instanceof Money
-        ? value
-        : Money.fromRaw((value as number) || 0);
+    return value instanceof Money ? value : Money.fromRaw(value || 0);
 }
 
 export type { CoinType };

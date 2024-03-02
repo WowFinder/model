@@ -1,4 +1,3 @@
-import { Validable, validateArray } from 'Validable';
 import {
     DamageComponentSpec,
     DamageComponentSpecBuilder,
@@ -10,7 +9,7 @@ interface DamageSpecBuilder {
     components: DamageComponentSpecBuilder[];
 }
 
-class DamageSpec implements DamageSpecBuilder, Validable {
+class DamageSpec implements DamageSpecBuilder {
     #components: DamageComponentSpec[];
     constructor({ components }: DamageSpecBuilder) {
         this.#components = components.map(c => new DamageComponentSpec(c));
@@ -24,14 +23,6 @@ class DamageSpec implements DamageSpecBuilder, Validable {
         return new DamageValue({
             components: this.#components.map(c => c.roll(args)),
         });
-    }
-
-    validate(): asserts this is DamageSpec {
-        validateArray(this.#components, DamageComponentSpec.validate);
-    }
-
-    static validate(spec: DamageSpec): asserts spec is DamageSpec {
-        spec.validate();
     }
 }
 

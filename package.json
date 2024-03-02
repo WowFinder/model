@@ -14,7 +14,7 @@
     "scripts": {
         "lint": "eslint . --ext js,ts",
         "lint:fix": "eslint . --ext js,ts --fix",
-        "prettier": "prettier --write \"src/**/*.{js,ts,json,json5}",
+        "prettier": "prettier --write \"src/**/*.{js,ts,json,json5}\"",
         "test": "jest",
         "test:coverage": "jest --coverage",
         "tsc": "tsc",
@@ -27,6 +27,8 @@
         "prepare": "yarn run build"
     },
     "dependencies": {
+        "public-assets": "https://github.com/WowFinder/public-assets.git",
+        "ts-enums": "https://github.com/WowFinder/ts-enums.git",
         "ts-utils": "https://github.com/WowFinder/ts-utils.git"
     },
     "devDependencies": {

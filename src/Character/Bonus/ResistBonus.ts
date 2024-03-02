@@ -1,4 +1,3 @@
-import { Validable, validateNumber } from 'Validable';
 import { sum } from 'ts-utils';
 import { DamageType } from '../../Damage';
 import type { ResistancePartialSet, ResistanceSet } from '../Resistances';
@@ -18,7 +17,7 @@ function fill(data: ResistancePartialSet, filler = 0): ResistanceSet {
     };
 }
 
-export default class ResistBonus implements Validable {
+export default class ResistBonus {
     #values: ResistanceSet;
 
     constructor(data: ResistancePartialSet) {
@@ -31,16 +30,6 @@ export default class ResistBonus implements Validable {
 
     get isZero(): boolean {
         return Object.values(this.#values).every(v => v === 0);
-    }
-
-    validate(): void {
-        Object.keys(DamageType).forEach(type => {
-            validateNumber(this.#values[type as DamageType]);
-        });
-    }
-
-    static validate(bonus: ResistBonus): asserts bonus is ResistBonus {
-        bonus.validate();
     }
 
     static get zero(): ResistBonus {

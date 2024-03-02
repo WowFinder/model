@@ -4,8 +4,6 @@ import { fullParseSchool, School, SubSchool } from '../School';
 import { SpellBaseBuilder, SpellBase } from './base';
 import { SpellRank, SpellRankBuilder } from './Rank';
 import { RankedSpell, RankedSpellBuilder } from './RankedSpell';
-import { Asset } from 'Assets';
-import { validateSpell } from './validation';
 
 interface SpellBuilder extends SpellBaseBuilder {
     key: string;
@@ -27,7 +25,7 @@ function getFirstDefined<T>(
     throw new Error(failMessage);
 }
 
-class Spell extends SpellBase implements SpellBuilder, Asset {
+class Spell extends SpellBase implements SpellBuilder {
     #key: string;
     #ranks: SpellRank[];
     #subSchool?: SubSchool;
@@ -59,7 +57,6 @@ class Spell extends SpellBase implements SpellBuilder, Asset {
         }
         this.#school = schoolParsed.school;
         this.#subSchool = schoolParsed.subSchool;
-        this.validate();
     }
 
     get key(): string {
@@ -144,10 +141,6 @@ class Spell extends SpellBase implements SpellBuilder, Asset {
             throw new Error(`Invalid spell key: ${key}`);
         }
         return rank === undefined ? spell : spell.getRank(rank);
-    }
-
-    validate(): void {
-        validateSpell(this);
     }
 }
 

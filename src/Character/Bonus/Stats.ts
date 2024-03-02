@@ -1,8 +1,7 @@
-import { Validable, validateNumber } from 'Validable';
 import { sum } from 'ts-utils';
 import { PartialStatSet, StatKey, StatSet, zeroDefault } from '../Stats';
 
-export default class StatsBonus implements Validable {
+export default class StatsBonus {
     #values: StatSet;
 
     constructor(values: PartialStatSet) {
@@ -22,16 +21,6 @@ export default class StatsBonus implements Validable {
 
     get isZero(): boolean {
         return Object.values(this.#values).every(v => v === 0);
-    }
-
-    validate(): void {
-        for (const stat of Object.keys(StatKey)) {
-            validateNumber(this.#values[stat as StatKey]);
-        }
-    }
-
-    static validate(bonus: StatsBonus): void {
-        bonus.validate();
     }
 
     static get zero(): StatsBonus {

@@ -1,7 +1,5 @@
 import { ActionLength } from './ActionLength';
 import { Time } from '../Units';
-import { validateEnumValue } from 'Assets';
-import { CompoundValidationError, ValidatorContainer } from 'Validable';
 
 type Stringifier<T> = (
     value: T,
@@ -9,6 +7,7 @@ type Stringifier<T> = (
 ) => string;
 
 type ActionTime = ActionLength | Time | 'special';
+type Parseable = Exclude<ActionTime, 'special'> | string;
 
 const stringify: Stringifier<ActionTime> = (value, t) => {
     if (value === 'special') {
@@ -20,7 +19,7 @@ const stringify: Stringifier<ActionTime> = (value, t) => {
     return t(`action.${value}`);
 };
 
-const ActionTime: ValidatorContainer<ActionTime> = {
+const ActionTime = {
     tryParse(input: string): ActionTime | undefined {
         if (input === 'special') {
             return 'special';
@@ -35,11 +34,11 @@ const ActionTime: ValidatorContainer<ActionTime> = {
         return undefined;
     },
 
-    tryParseExtended(input: string | ActionTime): ActionTime | undefined {
+    tryParseExtended(input: Parseable): ActionTime | undefined {
         return typeof input === 'string' ? ActionTime.tryParse(input) : input;
     },
 
-    parseExtended(input: string | ActionTime): ActionTime {
+    parseExtended(input: Parseable): ActionTime {
         const result = ActionTime.tryParseExtended(input);
         if (result) {
             return result;
@@ -53,26 +52,6 @@ const ActionTime: ValidatorContainer<ActionTime> = {
     ): ActionTime {
         return ActionTime.tryParse(input) ?? defaultValue;
     },
-
-    validate(value: unknown): asserts value is ActionTime {
-        try {
-            if (value === 'special') {
-                return;
-            }
-            if (value instanceof Time) {
-                value.validate();
-            } else {
-                validateEnumValue(value, ActionLength);
-            }
-        } catch (error) {
-            throw new CompoundValidationError(
-                value,
-                'Invalid ActionTime',
-                error as Error,
-            );
-        }
-    },
-
     stringify,
 } as const;
 

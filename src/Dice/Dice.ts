@@ -1,8 +1,7 @@
-import { Validable } from 'Validable';
 import type { DiceBuilder } from './helpers';
 import { average, make, max, min } from './helpers';
 
-class Dice implements Validable {
+class Dice {
     #sides: number;
     #qtty: number;
     #mod: number;
@@ -69,15 +68,12 @@ class Dice implements Validable {
     }
 
     static build(raw: any): Dice {
-        const cured = Object.assign(
-            {
-                sides: 6,
-                qtty: 1,
-                fixedMod: 0,
-            },
-            raw,
-        );
-        return new Dice(cured);
+        return new Dice({
+            sides: 6,
+            qtty: 1,
+            fixedMod: 0,
+            ...raw,
+        });
     }
 
     static make(value: number | Dice | DiceBuilder): Dice {

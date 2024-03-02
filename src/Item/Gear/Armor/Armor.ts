@@ -4,7 +4,6 @@ import ArmorBonusType from './BonusType';
 import ArmorFlags from './Flags';
 import ArmorType from './Type';
 import { ArmorBuilder, armorPreBuild } from './builder';
-import { validateArmor } from './validation';
 
 class Armor extends Gear {
     #type: ArmorType;
@@ -95,11 +94,6 @@ class Armor extends Gear {
 
     get $type(): string {
         return 'Armor';
-    }
-
-    validate(): void {
-        super.validate();
-        validateArmor(this);
     }
 
     static preBuild(raw: any): ArmorBuilder {

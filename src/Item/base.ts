@@ -1,8 +1,6 @@
-import { Asset, validateEnumValue } from 'Assets';
 // import { builder, ByKeyRecursive, forceDataLoadKeySRecursive } from 'ts-utils';
 import { Mass } from '../Units';
 import { Rarity } from './Rarity';
-import { ValidationError } from 'Validable';
 import Money from './Money';
 
 interface ItemBuilder {
@@ -10,7 +8,7 @@ interface ItemBuilder {
     label: string;
 }
 
-abstract class Item implements Asset {
+abstract class Item {
     #label: string;
     #rarity: Rarity;
     constructor({ label, rarity = Rarity.common }: ItemBuilder) {
@@ -33,21 +31,6 @@ abstract class Item implements Asset {
     abstract get weight(): Mass;
 
     abstract get value(): Money;
-
-    validate(): void {
-        validateEnumValue(this.#rarity, Rarity);
-        if (this.weight instanceof Mass) {
-            this.weight.validate();
-        } else {
-            throw new ValidationError(this, 'Weight is required');
-        }
-        const value = this.value;
-        if (value instanceof Money) {
-            value.validate();
-        } else {
-            throw new ValidationError(this, 'Value is required');
-        }
-    }
 
     static preBuild(raw: any): ItemBuilder {
         return {

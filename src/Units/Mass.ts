@@ -1,4 +1,3 @@
-import { validateEnumValue } from 'Assets';
 import { converter, makeConverter, Scalar } from './base';
 
 enum MassUnit {
@@ -25,12 +24,7 @@ class Mass extends Scalar<MassUnit> {
     static asPounds(w: Weight): Mass {
         return w instanceof Mass
             ? w
-            : new Mass({ value: w as number, unit: MassUnit.lb });
-    }
-
-    validate(): void {
-        super.validate();
-        validateEnumValue(this.unit, MassUnit);
+            : new Mass({ value: w, unit: MassUnit.lb });
     }
 }
 

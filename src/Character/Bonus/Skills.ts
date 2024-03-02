@@ -1,8 +1,7 @@
 import { Skill, SkillSet } from '../Skill';
 import { sum } from 'ts-utils';
-import { Validable, validateNumber } from 'Validable';
 
-export default class SkillsBonus implements Validable {
+export default class SkillsBonus {
     #values: SkillSet;
 
     constructor(values: SkillSet) {
@@ -30,16 +29,6 @@ export default class SkillsBonus implements Validable {
 
     static get zero(): SkillsBonus {
         return new SkillsBonus({});
-    }
-
-    validate(): void {
-        Object.keys(Skill).forEach(skill => {
-            validateNumber(this.#values[skill as Skill]);
-        });
-    }
-
-    static validate(bonus: SkillsBonus): void {
-        bonus.validate();
     }
 
     static sum(...args: SkillsBonus[]): SkillsBonus {
