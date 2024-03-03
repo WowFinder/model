@@ -1,5 +1,5 @@
 import { sum } from '@wowfinder/ts-utils';
-import { DamageType } from '../../Damage';
+import { DamageType } from '@wowfinder/ts-enums';
 import type { ResistancePartialSet, ResistanceSet } from '../Resistances';
 
 function fill(data: ResistancePartialSet, filler = 0): ResistanceSet {

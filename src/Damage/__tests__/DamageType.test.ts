@@ -1,8 +1,5 @@
-import {
-    DamageType,
-    buildFullDamageTypes,
-    makeFullDamageTypes,
-} from '../DamageType';
+import { DamageType } from '@wowfinder/ts-enums';
+import { buildFullDamageTypes, makeFullDamageTypes } from '../DamageType';
 import { mockDamageTypes } from './utils';
 describe('DamageType', () => {
     describe('makeFullDamageTypes', () => {

@@ -28,7 +28,7 @@ abstract class CharacterBase {
 
     constructor(builder: CharacterBaseBuilder) {
         this.#key = builder.key;
-        this.#featChoices = parseFeatChoices([...(builder.featChoices || [])]);
+        this.#featChoices = parseFeatChoices([...(builder.featChoices ?? [])]);
         this.#miscHP = builder.miscHP ?? 0;
         this.#baseStats = builder.baseStats;
         this.#baseResistances = builder.baseResistances
@@ -41,7 +41,7 @@ abstract class CharacterBase {
             this.#naturalArmor = race.naturalArmor;
             this.#casterLevelsBonus = { ...zeroCasterLevel };
         } else {
-            this.#size = parseSize(builder.size) || Size.medium;
+            this.#size = parseSize(builder.size) ?? Size.medium;
             this.#speeds = builder.speeds
                 ? new Speeds(builder.speeds)
                 : Speeds.default;

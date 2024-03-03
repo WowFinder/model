@@ -1,5 +1,5 @@
 import type { JsonValue } from '@wowfinder/ts-utils';
-import type { DamageType } from '../../Damage';
+import type { DamageType } from '@wowfinder/ts-enums';
 import type { ResistanceBreakdown } from './ResistanceBreakdown';
 
 type ResistancesBuilder = { [key in DamageType]?: ResistanceBreakdown };
