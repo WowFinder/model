@@ -1,3 +1,4 @@
+import { FeatFlag } from '@wowfinder/ts-enums';
 import { Character } from '../../../Character';
 import { ClassFeature } from '../../Class';
 import {
@@ -14,7 +15,6 @@ import {
 } from '../../Requirements';
 import { StatKey } from '../../Stats';
 import { Feat, WeaponFeat, weaponFeats } from '../Feat';
-import { FeatFlag } from '../FeatFlag';
 import { FeatSpec } from '../FeatSpec';
 
 const raw: { [key in Feat]?: FeatSpec } = {};

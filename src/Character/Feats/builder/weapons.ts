@@ -5,9 +5,9 @@ import {
     SimpleWeaponProficiency,
 } from '../../../Item/Gear/Weapon/Proficiency';
 import { SimpleWeaponKey, WeaponFeat, WeaponKey } from '../Feat';
-import { FeatFlag } from '../FeatFlag';
 import { FeatSpec } from '../FeatSpec';
 import { allOf, checkWeaponFeatKey, feat, req } from './helpers';
+import { FeatFlag } from '@wowfinder/ts-enums';
 
 function mkKey(prefix: string, weapon: string): WeaponFeat {
     const w = capitalizeFirstLetter(weapon);
