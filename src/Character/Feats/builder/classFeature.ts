@@ -1,6 +1,5 @@
-import { FeatFlag } from '@wowfinder/ts-enums';
+import { FeatFlag, StatKey } from '@wowfinder/ts-enums';
 import { ClassFeature } from '../../Class';
-import { StatKey } from '../../Stats';
 import { ClassFeatureFeat } from '../core/classFeature';
 import { Feat } from '../Feat';
 import { FeatSpec } from '../FeatSpec';

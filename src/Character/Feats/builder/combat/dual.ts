@@ -1,4 +1,4 @@
-import { StatKey } from '../../../Stats';
+import { StatKey } from '@wowfinder/ts-enums';
 import { CombatDualWieldFeat } from '../../core/combat/dual';
 import { Feat } from '../../Feat';
 import { FeatSpec } from '../../FeatSpec';

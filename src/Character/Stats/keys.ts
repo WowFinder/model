@@ -1,21 +1,4 @@
-enum StatPhysical {
-    STR = 'STR',
-    DEX = 'DEX',
-    CON = 'CON',
-}
-
-enum StatMental {
-    INT = 'INT',
-    WIS = 'WIS',
-    CHA = 'CHA',
-}
-
-const StatKey = {
-    ...StatPhysical,
-    ...StatMental,
-} as const;
-
-type StatKey = (typeof StatKey)[keyof typeof StatKey];
+import { StatKey } from '@wowfinder/ts-enums';
 
 const StatKeys: StatKey[] = [
     StatKey.STR,
@@ -26,4 +9,4 @@ const StatKeys: StatKey[] = [
     StatKey.CHA,
 ];
 
-export { StatKey, StatKeys, StatPhysical, StatMental };
+export { StatKeys };

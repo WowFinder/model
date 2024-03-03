@@ -19,7 +19,7 @@ class MoonkinForm extends Shapeshift {
                 specific spells
              */
             casterLevels: {
-                esp: Shapeshift.effectiveDruidLevel(base),
+                spontaneous: Shapeshift.effectiveDruidLevel(base),
             },
             size: 1,
             naturalArmor: 2 + 2 * rank, // TODO switch to deflection bonus

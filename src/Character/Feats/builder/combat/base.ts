@@ -1,5 +1,4 @@
-import { FeatFlag } from '@wowfinder/ts-enums';
-import { StatKey } from '../../../Stats';
+import { FeatFlag, StatKey } from '@wowfinder/ts-enums';
 import { CombatBaseFeat } from '../../core/combat/base';
 import { Feat } from '../../Feat';
 import { FeatSpec } from '../../FeatSpec';

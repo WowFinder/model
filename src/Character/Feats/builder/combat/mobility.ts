@@ -1,4 +1,4 @@
-import { StatKey } from '../../../Stats';
+import { StatKey } from '@wowfinder/ts-enums';
 import { CombatMobilityFeat } from '../../core/combat/mobility';
 import { Feat } from '../../Feat';
 import { FeatSpec } from '../../FeatSpec';

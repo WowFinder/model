@@ -1,4 +1,4 @@
-import { FeatFlag } from '@wowfinder/ts-enums';
+import { FeatFlag, StatKey } from '@wowfinder/ts-enums';
 import { Character } from '../../../Character';
 import { ClassFeature } from '../../Class';
 import {
@@ -13,7 +13,6 @@ import {
     or as either,
     Requirement,
 } from '../../Requirements';
-import { StatKey } from '../../Stats';
 import { Feat, WeaponFeat, weaponFeats } from '../Feat';
 import { FeatSpec } from '../FeatSpec';
 

@@ -1,9 +1,8 @@
-import { Aura, Size } from '@wowfinder/ts-enums';
+import { Aura, CastingMode, Size } from '@wowfinder/ts-enums';
 import { Exportable, JsonValue, sum } from '@wowfinder/ts-utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
 import {
-    CastingMode,
     computedSpellPower,
     EffectiveCasterLevels,
     FullComputedSpellPower,
@@ -161,9 +160,9 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         const efl = this.classBonuses.efl;
         const bonus = this.casterLevelsBonus;
         return {
-            arc: efl.arc + bonus.arc,
-            div: efl.div + bonus.div,
-            esp: efl.esp + bonus.esp,
+            arcane: efl.arcane + bonus.arcane,
+            divine: efl.divine + bonus.divine,
+            spontaneous: efl.spontaneous + bonus.spontaneous,
         };
     }
 

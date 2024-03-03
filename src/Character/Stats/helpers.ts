@@ -1,6 +1,6 @@
 import { sum } from '@wowfinder/ts-utils';
 import { Mass, MassUnit } from '../../Units';
-import { StatKey } from './keys';
+import { StatKey } from '@wowfinder/ts-enums';
 
 function statMod(stat: number): number {
     return Math.floor(stat / 2 - 5);

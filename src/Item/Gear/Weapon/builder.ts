@@ -1,5 +1,4 @@
-import { StatKey } from 'Character/Stats';
-import { DamageType } from '@wowfinder/ts-enums';
+import { DamageType, StatKey } from '@wowfinder/ts-enums';
 import { DamageSpec, makeFullDamageTypes } from 'Damage';
 import { Gear, GearBuilder } from '../base';
 import WeaponFlags from './Flags';

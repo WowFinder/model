@@ -24,7 +24,7 @@ class CharacterLevelRequirement extends LevelRequirementBase {
 class CasterLevelRequirement extends LevelRequirementBase {
     test(value: Character): boolean {
         const efl = value.classBonuses.efl;
-        return efl.arc + efl.div + efl.esp >= this.level;
+        return efl.arcane + efl.divine + efl.spontaneous >= this.level;
     }
 }
 
