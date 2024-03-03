@@ -27,6 +27,7 @@ jobs:
             - name: Install dependencies
               run: rm yarn.lock && yarn
               env:
+                  YARN_ENABLE_HARDENED_MODE: 0
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Lint validation
               run: yarn lint
