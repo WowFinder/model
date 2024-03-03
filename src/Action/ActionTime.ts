@@ -1,5 +1,5 @@
 import { ActionLength } from '@wowfinder/ts-enums';
-import { Time } from '../Units';
+import { Time } from '../Scalar';
 
 type Stringifier<T> = (
     value: T,

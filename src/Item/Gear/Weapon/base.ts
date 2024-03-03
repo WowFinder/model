@@ -1,5 +1,5 @@
 import { DamageSpec } from 'Damage';
-import { Length } from 'Units';
+import { Length } from 'Scalar';
 import { Gear } from '../base';
 import { WeaponBuilder, buildWeaponDamage } from './builder';
 import { asFeet } from './helpers';

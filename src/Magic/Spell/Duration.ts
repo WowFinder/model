@@ -1,5 +1,5 @@
 // import { TFunction } from 'i18next';
-import { Time } from 'Units';
+import { Time } from 'Scalar';
 import { Debugger } from '@wowfinder/ts-utils';
 
 type FixedSpellDuration = {

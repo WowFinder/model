@@ -1,13 +1,5 @@
+import { LengthUnit } from '@wowfinder/ts-enums';
 import { converter, makeConverter, Scalar } from './base';
-
-enum LengthUnit {
-    yard = 'yard',
-    foot = 'foot',
-    square = 'square',
-    meter = 'meter',
-    inch = 'inch',
-    cm = 'cm',
-}
 
 const metersInYard = 0.9144; // By international definition
 
@@ -56,6 +48,14 @@ class Length extends Scalar<LengthUnit> {
         return `${this.feetInches} (${meters}m) (${squares}□)`;
     }
 
+    convert(to: LengthUnit): Length {
+        const { value, unit } = convertLength(this, to);
+        return new Length({
+            value,
+            unit,
+        });
+    }
+
     static tryParseLength(input: string): Length | undefined {
         const base = Scalar.tryParse(
             input,
@@ -65,4 +65,4 @@ class Length extends Scalar<LengthUnit> {
     }
 }
 
-export { LengthUnit, convertLength, Length };
+export { convertLength, Length };

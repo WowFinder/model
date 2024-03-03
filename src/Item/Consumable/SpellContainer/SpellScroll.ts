@@ -1,4 +1,4 @@
-import { Mass } from '../../../Units';
+import { Mass } from '../../../Scalar';
 import { SpellContainer } from './base';
 
 class SpellScroll extends SpellContainer {

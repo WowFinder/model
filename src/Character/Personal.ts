@@ -4,13 +4,10 @@ import {
     convertMass,
     convertTime,
     Length,
-    LengthUnit,
     Mass,
-    MassUnit,
     Time,
-    TimeUnit,
-} from '../Units';
-import { Alignment } from '@wowfinder/ts-enums';
+} from '../Scalar';
+import { Alignment, LengthUnit, MassUnit, TimeUnit } from '@wowfinder/ts-enums';
 
 interface DetailsCommon {
     fullName: string;
@@ -56,7 +53,7 @@ const personalDefaults: CharPersonalDetails = {
     gender: '',
     age: new Time({
         value: 20,
-        unit: TimeUnit.year,
+        unit: TimeUnit.y,
     }),
 };
 
@@ -76,7 +73,7 @@ function jsonImport(raw: any): CharPersonalDetails {
     res.age =
         res.age instanceof Time
             ? res.age
-            : new Time({ value: res.age, unit: TimeUnit.year });
+            : new Time({ value: res.age, unit: TimeUnit.y });
     return res;
 }
 
@@ -92,7 +89,7 @@ function jsonExport(source: CharPersonalDetails): CharPersonalDetailsBuilder {
         eyes: source.eyes,
         skin: source.skin,
         gender: source.gender,
-        age: convertTime(source.age, TimeUnit.year).value,
+        age: convertTime(source.age, TimeUnit.y).value,
     };
 }
 

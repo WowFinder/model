@@ -1,4 +1,4 @@
-import { Time } from '../../Units';
+import { Time } from '../../Scalar';
 import { Quantified, assertDefined } from '@wowfinder/ts-utils';
 import { Item } from '../base';
 import { ItemCollection } from './ItemCollection';

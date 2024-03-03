@@ -1,5 +1,5 @@
 // import { TFunction } from 'i18next';
-import { Length } from '../../Units';
+import { Length } from '../../Scalar';
 // import { unreachable } from 'ts-utils/debug';
 
 type SpellSelf = {

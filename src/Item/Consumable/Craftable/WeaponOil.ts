@@ -1,4 +1,4 @@
-import { Mass, Time } from '../../../Units';
+import { Mass, Time } from '../../../Scalar';
 import { Bonus, BonusBuilder } from '../../../Character/Bonus';
 import { CraftableConsumable, CraftableConsumableBuilder } from './base';
 import { Consumable } from '../base';

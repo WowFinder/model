@@ -1,11 +1,5 @@
+import { MassUnit } from '@wowfinder/ts-enums';
 import { converter, makeConverter, Scalar } from './base';
-
-enum MassUnit {
-    lb = 'lb',
-    g = 'g',
-    kg = 'kg',
-    oz = 'oz',
-}
 
 const kgInLb = 0.45359237; // By international definition
 
@@ -31,4 +25,4 @@ class Mass extends Scalar<MassUnit> {
 type Weight = number | Mass;
 
 export type { Weight };
-export { MassUnit, convertMass, Mass };
+export { convertMass, Mass };

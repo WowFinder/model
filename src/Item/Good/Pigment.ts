@@ -1,4 +1,4 @@
-import { Mass } from '../../Units';
+import { Mass } from '../../Scalar';
 import { Good } from './base';
 
 class Pigment extends Good {
