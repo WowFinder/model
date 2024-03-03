@@ -1,12 +1,11 @@
 import { sum } from '@wowfinder/ts-utils';
-import { School, SubSchool } from '../../Magic';
 import {
     computedSpellPower,
     fillSpellPowerValues,
     SpellPowerValues,
     SpellPowerValuesPartial,
 } from '../../Magic/SpellPower';
-import { CastingMode } from '@wowfinder/ts-enums';
+import { CastingMode, School, SubSchool } from '@wowfinder/ts-enums';
 
 export default class SpellPowerBonus implements SpellPowerValues<number> {
     #data: SpellPowerValues<number>;

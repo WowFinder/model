@@ -1,4 +1,10 @@
-import { Aura, CastingMode, Size } from '@wowfinder/ts-enums';
+import {
+    Aura,
+    CastingMode,
+    Size,
+    School,
+    SubSchool,
+} from '@wowfinder/ts-enums';
 import { Exportable, JsonValue, sum } from '@wowfinder/ts-utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
@@ -7,8 +13,6 @@ import {
     EffectiveCasterLevels,
     FullComputedSpellPower,
     fullComputedSpellPower,
-    School,
-    SubSchool,
 } from '../Magic';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
 import {

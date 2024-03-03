@@ -15,14 +15,12 @@ import {
     allSubSchoolsByParent,
     fillSchoolValues,
     fillSubSchoolValues,
-    School,
     SchoolValues,
     SchoolValuesPartial,
-    SubSchool,
     SubSchoolValues,
     SubSchoolValuesPartial,
 } from './School';
-import { CastingMode } from '@wowfinder/ts-enums';
+import { CastingMode, School, SubSchool } from '@wowfinder/ts-enums';
 
 type SpellPowerValues<T> = CastingModeValues<T> &
     SchoolValues<T> &
