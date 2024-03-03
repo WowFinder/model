@@ -1,4 +1,4 @@
-// import { ByKeyRecursive, forceDataLoadKeySRecursive } from 'ts-utils';
+// import { ByKeyRecursive, forceDataLoadKeySRecursive } from '@wowfinder/ts-utils';
 import {
     Bonus,
     BonusProvider,

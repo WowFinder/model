@@ -3,7 +3,7 @@ import Money from '../../Money';
 import type { SpellContainerBuilder } from './helpers';
 import { SpellContainerRawBuilder, buildSpellContainer } from './helpers';
 import { SpellContainerBaseBuilder } from './builder';
-import { assertDefined } from 'ts-utils';
+import { assertDefined } from '@wowfinder/ts-utils';
 import { Spell } from '../../../Magic';
 
 abstract class SpellContainer extends SpellContainerBaseBuilder {

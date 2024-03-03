@@ -6,7 +6,7 @@ import { Item } from './Item';
 import { SpellList, SpellLists } from './Magic';
 import { Spell, Spells } from './Magic/Spell';
 import { RewardsByCharacter, RewardsByFaction } from './Rewards';
-// import { ByKeyRecursive, debugOutput } from 'ts-utils';
+// import { ByKeyRecursive, debugOutput } from '@wowfinder/ts-utils';
 import { Race, Races } from './Character/Race';
 
 class FullData {

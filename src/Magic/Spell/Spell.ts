@@ -1,5 +1,5 @@
 // import { TFunction } from 'i18next';
-// import { forceDataLoadKeyS } from 'ts-utils';
+// import { forceDataLoadKeyS } from '@wowfinder/ts-utils';
 import { fullParseSchool, School, SubSchool } from '../School';
 import { SpellBaseBuilder, SpellBase } from './base';
 import { SpellRank, SpellRankBuilder } from './Rank';

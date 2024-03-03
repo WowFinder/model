@@ -2,7 +2,7 @@ import StatsBonus from './Stats';
 import SkillsBonus from './Skills';
 import { VitalNeeds } from './VitalNeeds';
 import Senses from './Senses';
-import { sum } from 'ts-utils';
+import { sum } from '@wowfinder/ts-utils';
 import SavesBonus from './Saves';
 import ResistBonus from './ResistBonus';
 import SpellPowerBonus from './SpellPowerBonus';

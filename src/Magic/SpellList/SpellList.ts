@@ -1,4 +1,4 @@
-// import { forceDataLoadKeyS } from 'ts-utils';
+// import { forceDataLoadKeyS } from '@wowfinder/ts-utils';
 import type { SpellListBuilder, SpellListLevels } from './helpers';
 import { buildSpellListLevel } from './builders';
 

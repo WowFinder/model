@@ -1,5 +1,5 @@
 import { Skill, SkillSet } from '../Skill';
-import { sum } from 'ts-utils';
+import { sum } from '@wowfinder/ts-utils';
 
 export default class SkillsBonus {
     #values: SkillSet;

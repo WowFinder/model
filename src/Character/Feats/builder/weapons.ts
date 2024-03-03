@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from 'ts-utils';
+import { capitalizeFirstLetter } from '@wowfinder/ts-utils';
 import {
     ExoticWeaponProficiency,
     MartialWeaponProficiency,

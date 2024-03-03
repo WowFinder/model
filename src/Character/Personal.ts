@@ -1,4 +1,4 @@
-import { JsonValue } from 'ts-utils';
+import { JsonValue } from '@wowfinder/ts-utils';
 import {
     convertLength,
     convertMass,

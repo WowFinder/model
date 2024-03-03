@@ -7,7 +7,6 @@
     "repository": "https://github.com/WowFinder/model.git",
     "author": "Edurne Pascual <herenvardo@gmail.com>",
     "license": "GPL3",
-    "private": true,
     "files": [
         "dist"
     ],
@@ -27,9 +26,9 @@
         "prepare": "yarn run build"
     },
     "dependencies": {
-        "public-assets": "https://github.com/WowFinder/public-assets.git",
-        "ts-enums": "https://github.com/WowFinder/ts-enums.git",
-        "ts-utils": "https://github.com/WowFinder/ts-utils.git"
+        "@wowfinder/public-assets": "git+https://github.com/WowFinder/public-assets.git",
+        "@wowfinder/ts-enums": "^0.0.2",
+        "@wowfinder/ts-utils": "^0.0.2"
     },
     "devDependencies": {
         "@tsconfig/recommended": "^1.0.3",
