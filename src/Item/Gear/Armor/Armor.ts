@@ -1,4 +1,5 @@
-import { Bonus, BonusType, MultiBonus } from '../../../Character/Bonus';
+import { BonusType } from '@wowfinder/ts-enums';
+import { Bonus, MultiBonus } from '../../../Character/Bonus';
 import { Gear } from '../base';
 import ArmorBonusType from './BonusType';
 import ArmorFlags from './Flags';

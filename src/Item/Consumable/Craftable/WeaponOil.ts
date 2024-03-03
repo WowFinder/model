@@ -1,7 +1,8 @@
 import { Mass, Time } from '../../../Units';
-import { Bonus, BonusBuilder, BonusType } from '../../../Character/Bonus';
+import { Bonus, BonusBuilder } from '../../../Character/Bonus';
 import { CraftableConsumable, CraftableConsumableBuilder } from './base';
 import { Consumable } from '../base';
+import { BonusType } from '@wowfinder/ts-enums';
 
 interface WeaponOilBuilder extends CraftableConsumableBuilder {
     duration: string;

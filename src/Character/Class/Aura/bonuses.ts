@@ -1,5 +1,5 @@
-import { Aura } from '@wowfinder/ts-enums';
-import { Bonus, BonusType, ResistBonus, StatsBonus } from '../../Bonus';
+import { Aura, BonusType } from '@wowfinder/ts-enums';
+import { Bonus, ResistBonus, StatsBonus } from '../../Bonus';
 import { fillResistBonus } from '../../Bonus/ResistBonus';
 import { AuraBonus } from './base';
 
