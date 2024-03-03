@@ -1,4 +1,4 @@
-import { Aura } from '@wowfinder/ts-enums';
+import { Aura, Size } from '@wowfinder/ts-enums';
 import { Exportable, JsonValue, sum } from '@wowfinder/ts-utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
@@ -36,7 +36,6 @@ import { buildStats, checkClass, checkRace } from './helpers';
 import Race from './Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
-import Size from './Size';
 import { statMod, Stats } from './Stats';
 
 type Characters = { [key: string]: Character };

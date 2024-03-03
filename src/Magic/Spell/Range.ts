@@ -1,4 +1,4 @@
-import Size from '../../Character/Size';
+import { Size } from '@wowfinder/ts-enums';
 import { Length, LengthUnit } from '../../Units';
 
 enum StandardRange {

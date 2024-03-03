@@ -1,4 +1,4 @@
-import Size from '../Size';
+import { Size } from '@wowfinder/ts-enums';
 import { Stats } from '../Stats';
 
 interface ArmorValuesBuilder {

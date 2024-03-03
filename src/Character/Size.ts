@@ -1,14 +1,4 @@
-enum Size {
-    fine = -4,
-    diminutive = -3,
-    tiny = -2,
-    small = -1,
-    medium = 0,
-    large = 1,
-    huge = 2,
-    gargantuan = 3,
-    colossal = 4,
-}
+import { Size } from '@wowfinder/ts-enums';
 
 function sizeCombatMod(size: Size): number {
     switch (size) {
@@ -34,5 +24,4 @@ function parseSize(raw?: number): Size | undefined {
     return undefined;
 }
 
-export default Size;
 export { sizeCombatMod, parseSize };

@@ -1,7 +1,6 @@
-import { Alignment } from '@wowfinder/ts-enums';
+import { Alignment, Size } from '@wowfinder/ts-enums';
 import Language, { defaultLang } from '../../Language';
 import { playableAlignments } from '../Alignment';
-import Size from '../Size';
 import { SkillSet } from '../Skill';
 import { SpeedBuilder, Speeds } from '../Speeds';
 import { StatSet, zeroDefault as statsZero } from '../Stats';
