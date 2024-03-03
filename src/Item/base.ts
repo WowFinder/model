@@ -1,6 +1,6 @@
 // import { builder, ByKeyRecursive, forceDataLoadKeySRecursive } from '@wowfinder/ts-utils';
+import { Rarity } from '@wowfinder/ts-enums';
 import { Mass } from '../Units';
-import { Rarity } from './Rarity';
 import Money from './Money';
 
 interface ItemBuilder {

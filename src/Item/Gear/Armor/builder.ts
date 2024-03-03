@@ -1,7 +1,5 @@
+import { ArmorType, ArmorBonusType, ArmorFlags } from '@wowfinder/ts-enums';
 import { Gear, GearBuilder } from '../base';
-import ArmorBonusType from './BonusType';
-import ArmorFlags from './Flags';
-import ArmorType from './Type';
 
 interface ArmorBuilder extends GearBuilder {
     type?: ArmorType;
