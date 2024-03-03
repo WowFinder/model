@@ -1,6 +1,6 @@
 import { Time, TimeUnit } from '../../Units';
 import { ActionTime } from '../ActionTime';
-import { ActionLength } from '../ActionLength';
+import { ActionLength } from '@wowfinder/ts-enums';
 
 const t = (key: string): string => key;
 

@@ -1,12 +1,5 @@
-import { convertSpeed, LengthUnit, Speed, SpeedUnit, TimeUnit } from '../Units';
-
-enum FlyManeuverability {
-    clumsy = 'clumsy',
-    poor = 'poor',
-    average = 'average',
-    good = 'good',
-    perfect = 'perfect',
-}
+import { FlyManeuverability } from '@wowfinder/ts-enums';
+import { LengthUnit, Speed, SpeedUnit, TimeUnit } from '../Units';
 
 function flyManeuverabilityBonus(maneuverability: FlyManeuverability): number {
     switch (maneuverability) {
@@ -47,14 +40,21 @@ interface SpeedBuilder {
     maneuverability?: FlyManeuverability;
 }
 
-const asFeet: (value: SpeedValue) => number = value =>
-    value === 0
-        ? 0
-        : (value as number) ||
-          convertSpeed(value as Speed, defaultSpeedUnit).value;
+function asFeet(value: SpeedValue): number {
+    if (!value) {
+        return 0;
+    }
+    if (typeof value === 'number') {
+        return new Speed({ value, unit: defaultSpeedUnit }).value;
+    }
+    return value.convert(defaultSpeedUnit).value;
+}
 
-const encumbered: (value: number) => number = value =>
-    value > 0 ? value - (value >= 30 ? 10 : 5) : value;
+function encumbered(value: number): number {
+    const penalty = value >= 30 ? 10 : 5;
+    const isPositive = value > 0;
+    return isPositive ? value - penalty : value;
+}
 
 const wrap: (value: number) => Speed = value =>
     new Speed({ value, unit: defaultSpeedUnit });
@@ -144,7 +144,6 @@ class Speeds {
 
 export {
     Speeds,
-    FlyManeuverability,
     ManeuverabilitySortedValues,
     flyManeuverabilityBonus,
     defaultSpeedUnit,

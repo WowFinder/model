@@ -1,9 +1,10 @@
 import { Dice, RollableValue } from '../../../Dice';
-import { ActionLength, ActionTime } from '../../../Action';
+import { ActionTime } from '../../../Action';
 import { Consumable } from '../base';
 import { Mass } from '../../../Units';
 import { ItemBuilder as CraftableConsumableBuilder } from '../../base';
 import { CraftableConsumable } from './base';
+import { ActionLength } from '@wowfinder/ts-enums';
 
 interface RestoreValues {
     health: number;
