@@ -10,7 +10,7 @@ import {
     Time,
     TimeUnit,
 } from '../Units';
-import Alignment from './Alignment';
+import { Alignment } from '@wowfinder/ts-enums';
 
 interface DetailsCommon {
     fullName: string;
@@ -61,7 +61,7 @@ const personalDefaults: CharPersonalDetails = {
 };
 
 function jsonImport(raw: any): CharPersonalDetails {
-    const res = Object.assign({}, personalDefaults, raw);
+    const res = { ...personalDefaults, ...raw };
     res.align = Object.values(Alignment).includes(res.align)
         ? res.align
         : Alignment.NN;

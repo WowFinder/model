@@ -1,23 +1,4 @@
-enum Alignment {
-    LG = 'LG',
-    LN = 'LN',
-    LE = 'LE',
-    NG = 'NG',
-    NN = 'NN',
-    NE = 'NE',
-    CG = 'CG',
-    CN = 'CN',
-    CE = 'CE',
-}
-
-export default Alignment;
-
-enum AlignmentDescriptor {
-    chaotic = 'chaotic',
-    evil = 'evil',
-    good = 'good',
-    lawful = 'lawful',
-}
+import { AlignmentDescriptor, Alignment } from '@wowfinder/ts-enums';
 
 function combineAlignmentDescriptors(
     ...descriptors: AlignmentDescriptor[]
@@ -25,12 +6,22 @@ function combineAlignmentDescriptors(
     const uniques = [...new Set(descriptors)];
     const isGood = uniques.includes(AlignmentDescriptor.good);
     const isEvil = uniques.includes(AlignmentDescriptor.evil);
-    const morals: 'G' | 'N' | 'E' =
-        isGood && !isEvil ? 'G' : isEvil && !isGood ? 'E' : 'N';
+    let morals: 'G' | 'N' | 'E' = 'N';
+    if (isGood && !isEvil) {
+        morals = 'G';
+    }
+    if (isEvil && !isGood) {
+        morals = 'E';
+    }
     const isLawful = uniques.includes(AlignmentDescriptor.lawful);
     const isChaotic = uniques.includes(AlignmentDescriptor.chaotic);
-    const ethics: 'L' | 'N' | 'C' =
-        isLawful && !isChaotic ? 'L' : isChaotic && !isLawful ? 'C' : 'N';
+    let ethics: 'L' | 'N' | 'C' = 'N';
+    if (isLawful && !isChaotic) {
+        ethics = 'L';
+    }
+    if (isChaotic && !isLawful) {
+        ethics = 'C';
+    }
     return Alignment[`${ethics}${morals}`];
 }
 
@@ -50,8 +41,6 @@ const isLawful = (alignment: Alignment): boolean => /L/.test(alignment);
 const isNeutral = (alignment: Alignment): boolean => /N/.test(alignment);
 
 export {
-    Alignment,
-    AlignmentDescriptor,
     isGood,
     isEvil,
     isChaotic,
