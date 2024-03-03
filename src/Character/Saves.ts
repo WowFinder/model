@@ -1,10 +1,5 @@
+import { Save } from '@wowfinder/ts-enums';
 import { Stats } from './Stats';
-
-enum SaveType {
-    fort = 'fort',
-    refl = 'refl',
-    will = 'will',
-}
 
 interface SaveBreakdownBuilder {
     base: number;
@@ -16,12 +11,12 @@ interface SaveBreakdownBuilder {
 }
 
 class SaveBreakdown {
-    private _base: number;
-    private _stat: number;
-    private _enhance: number;
-    private _gear: number;
-    private _misc: number;
-    private _temp: number;
+    #base: number;
+    #stat: number;
+    #enhance: number;
+    #gear: number;
+    #misc: number;
+    #temp: number;
     constructor({
         base,
         stat,
@@ -30,47 +25,47 @@ class SaveBreakdown {
         misc,
         temp,
     }: SaveBreakdownBuilder) {
-        this._base = base;
-        this._stat = stat;
-        this._enhance = enhance;
-        this._gear = gear;
-        this._misc = misc;
-        this._temp = temp;
+        this.#base = base;
+        this.#stat = stat;
+        this.#enhance = enhance;
+        this.#gear = gear;
+        this.#misc = misc;
+        this.#temp = temp;
     }
 
     get total(): number {
         return (
-            this._stat +
-            this._base +
-            this._enhance +
-            this._gear +
-            this._misc +
-            this._temp
+            this.#stat +
+            this.#base +
+            this.#enhance +
+            this.#gear +
+            this.#misc +
+            this.#temp
         );
     }
 
     get base(): number {
-        return this._base;
+        return this.#base;
     }
 
     get stat(): number {
-        return this._stat;
+        return this.#stat;
     }
 
     get enhance(): number {
-        return this._enhance;
+        return this.#enhance;
     }
 
     get gear(): number {
-        return this._gear;
+        return this.#gear;
     }
 
     get misc(): number {
-        return this._misc;
+        return this.#misc;
     }
 
     get temp(): number {
-        return this._temp;
+        return this.#temp;
     }
 }
 
@@ -103,7 +98,7 @@ class SimpleSaves {
         return this._will;
     }
 
-    get indexed(): Record<SaveType, number> {
+    get indexed(): Record<Save, number> {
         return {
             fort: this._fort,
             refl: this._refl,
@@ -113,6 +108,14 @@ class SimpleSaves {
 
     get isZero(): boolean {
         return this._fort === 0 && this._refl === 0 && this._will === 0;
+    }
+
+    copy(): SimpleSaves {
+        return new SimpleSaves({
+            fort: this._fort,
+            refl: this._refl,
+            will: this._will,
+        });
     }
 
     static get zero(): SimpleSaves {
@@ -157,23 +160,23 @@ class Saves {
     }
 
     get base(): SimpleSaves {
-        return Object.assign({}, this._base);
+        return this._base.copy();
     }
 
     get enhance(): SimpleSaves {
-        return Object.assign({}, this._ehn);
+        return this._ehn.copy();
     }
 
     get gear(): SimpleSaves {
-        return Object.assign({}, this._gear);
+        return this._gear.copy();
     }
 
     get misc(): SimpleSaves {
-        return Object.assign({}, this._misc);
+        return this._misc.copy();
     }
 
     get temp(): SimpleSaves {
-        return Object.assign({}, this._temp);
+        return this._temp.copy();
     }
 
     get fort(): SaveBreakdown {
@@ -210,6 +213,6 @@ class Saves {
     }
 }
 
-export type { SimpleSavesBuilder, SaveType };
+export type { SimpleSavesBuilder };
 
 export { Saves, SimpleSaves, SaveBreakdown };

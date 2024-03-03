@@ -1,4 +1,4 @@
-import { SaveType } from '../../Character/Saves';
+import { Save } from '@wowfinder/ts-enums';
 
 enum SpellSaveEffect {
     negate = 'negate',
@@ -9,12 +9,12 @@ enum SpellSaveEffect {
 
 interface SpellSaveBuilder {
     effect: SpellSaveEffect;
-    save: SaveType;
+    save: Save;
 }
 
 class SpellSave implements SpellSaveBuilder {
     #effect: SpellSaveEffect;
-    #save: SaveType;
+    #save: Save;
     constructor({ effect, save }: SpellSaveBuilder) {
         this.#effect = effect;
         this.#save = save;
@@ -24,7 +24,7 @@ class SpellSave implements SpellSaveBuilder {
         return this.#effect;
     }
 
-    get save(): SaveType {
+    get save(): Save {
         return this.#save;
     }
 }
