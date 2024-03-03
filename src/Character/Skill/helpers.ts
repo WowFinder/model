@@ -1,5 +1,5 @@
+import { Skill } from '@wowfinder/ts-enums';
 import { StatKey } from '../Stats';
-import { Skill } from './Skill';
 import { SkillSpec } from './SkillSpec';
 import { SkillTotalBuilder } from './builders';
 

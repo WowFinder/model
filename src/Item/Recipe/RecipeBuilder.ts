@@ -1,4 +1,4 @@
-import { Skill } from '../../Character/Skill';
+import { Skill } from '@wowfinder/ts-enums';
 import { ItemCollectionBuilder } from './ItemCollection';
 
 interface RecipeBuilder {

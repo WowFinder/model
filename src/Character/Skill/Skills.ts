@@ -1,4 +1,4 @@
-import { Skill } from './Skill';
+import { Skill } from '@wowfinder/ts-enums';
 import { StatKey } from '../Stats';
 import { SkillSpec } from './SkillSpec';
 import { mkSkill } from './helpers';

@@ -1,4 +1,4 @@
-import { Skill } from '../Skill';
+import { Skill } from '@wowfinder/ts-enums';
 import { ClassBonuses } from './ClassBonuses';
 import { hdFirst, hdAverage, ClassLevels } from './helpers';
 
@@ -42,7 +42,7 @@ function combineClassBonuses(classLevels: ClassLevels): ClassBonuses {
         result.efl.esp += cls.casting.spontaneous * level;
         result.skillRanks += cls.skillRanks * level;
         for (const f of cls.featuresList.filter(f => f.level <= level)) {
-            result.features[f.feature] = (result.features[f.feature] || 0) + 1;
+            result.features[f.feature] = (result.features[f.feature] ?? 0) + 1;
         }
         cls.classSkills.forEach((value: Skill) =>
             result.classSkills.add(value),
