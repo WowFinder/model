@@ -1059,7 +1059,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^7.0.2":
+"@typescript-eslint/eslint-plugin@npm:^7.1.0":
   version: 7.1.0
   resolution: "@typescript-eslint/eslint-plugin@npm:7.1.0"
   dependencies:
@@ -1084,7 +1084,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^7.0.2":
+"@typescript-eslint/parser@npm:^7.1.0":
   version: 7.1.0
   resolution: "@typescript-eslint/parser@npm:7.1.0"
   dependencies:
@@ -1252,10 +1252,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wowfinder/ts-utils@npm:^0.0.2":
-  version: 0.0.2
-  resolution: "@wowfinder/ts-utils@npm:0.0.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40wowfinder%2Fts-utils%2F0.0.2%2F79edc4be7a914a6079312986cefc37178de03240"
-  checksum: 10c0/5c159b2c51139c8c3cda7d865319e8e51992d0f6dc1ce54cdb9798f3dae05410d80b42b496afffb252ec3ad9a32b1287f53fd95b44037bf89e5c1ec53435cb9e
+"@wowfinder/ts-utils@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@wowfinder/ts-utils@npm:0.0.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40wowfinder%2Fts-utils%2F0.0.3%2F9b72e42a2f975ebdf040e1eda4a9b8994f303fa9"
+  checksum: 10c0/25e23b34828b708f0cd1a5bc107a3238271c32c8d627d7fba33a175200446b7cc86089e09a9a225a1555cd10645d5d1d270646f0721555801ac7c2134e86c799
   languageName: node
   linkType: hard
 
@@ -4460,9 +4460,9 @@ __metadata:
   dependencies:
     "@tsconfig/recommended": "npm:^1.0.3"
     "@types/jest": "npm:^29.5.12"
-    "@typescript-eslint/eslint-plugin": "npm:^7.0.2"
-    "@typescript-eslint/parser": "npm:^7.0.2"
-    "@wowfinder/ts-utils": "npm:^0.0.2"
+    "@typescript-eslint/eslint-plugin": "npm:^7.1.0"
+    "@typescript-eslint/parser": "npm:^7.1.0"
+    "@wowfinder/ts-utils": "npm:^0.0.3"
     eslint: "npm:^8.57.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-config-standard: "npm:^17.1.0"
