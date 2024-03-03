@@ -1,22 +1,11 @@
-enum Reputation {
-    hated = 'hated',
-    hostile = 'hostile',
-    unfriendly = 'undfriendly',
-    neutral = 'neutral',
-    friendly = 'friendly',
-    honored = 'honored',
-    revered = 'revered',
-    exalted = 'exalted',
-}
-
-type Rep = Reputation;
+import { Reputation } from '@wowfinder/ts-enums';
 
 const initialHatedScore = -42000;
 
-const threshholds: { [key in Rep]: number } = {
+const threshholds: { [key in Reputation]: number } = {
     hated: -42000,
     hostile: -6000,
-    undfriendly: -3000,
+    unfriendly: -3000,
     neutral: 0,
     friendly: 3000,
     honored: 9000,
@@ -25,14 +14,14 @@ const threshholds: { [key in Rep]: number } = {
 };
 Object.freeze(threshholds);
 
-const sortedDownTiers = ([...Object.keys(threshholds)] as Rep[]).sort(
-    (a: Rep, b: Rep): number => threshholds[b] - threshholds[a],
+const sortedDownTiers = ([...Object.keys(threshholds)] as Reputation[]).sort(
+    (a: Reputation, b: Reputation): number => threshholds[b] - threshholds[a],
 );
 const lastRep = sortedDownTiers[sortedDownTiers.length - 1];
 
 const sortedUpScores = [...Object.values(threshholds)].sort((a, b) => a - b);
 
-function reputationByScoreNullable(score: number): Rep | null {
+function reputationByScoreNullable(score: number): Reputation | null {
     for (const k of sortedDownTiers) {
         if (score >= threshholds[k]) {
             return k;
@@ -40,8 +29,8 @@ function reputationByScoreNullable(score: number): Rep | null {
     }
     return null;
 }
-function reputationByScore(score: number): Rep {
-    return reputationByScoreNullable(score) || lastRep;
+function reputationByScore(score: number): Reputation {
+    return reputationByScoreNullable(score) ?? lastRep;
 }
 
 function nextScore(current: number): number {
