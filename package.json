@@ -19,15 +19,13 @@
         "tsc": "tsc",
         "checks:quick": "npm-run-all --sequential lint tsc",
         "checks:standard": "npm-run-all --sequential lint tsc test",
-        "checks:pedantic": "npm-run-all --sequential lint:fix prettier tsc test:coverage build",
+        "checks:pedantic": "npm-run-all --sequential lint:fix prettier build test:coverage",
         "prebuild": "rimraf dist",
         "build": "tsc",
         "prepublishOnly": "yarn run build",
         "prepare": "yarn run build"
     },
     "dependencies": {
-        "@wowfinder/public-assets": "git+https://github.com/WowFinder/public-assets.git",
-        "@wowfinder/ts-enums": "^0.0.2",
         "@wowfinder/ts-utils": "^0.0.2"
     },
     "devDependencies": {
