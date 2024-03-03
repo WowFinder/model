@@ -1,5 +1,6 @@
+import { Aura } from '@wowfinder/ts-enums';
 import { Skill } from '../Skill';
-import { Aura, AurasList } from './Aura';
+import { AurasList } from './Aura';
 import { ClassFeature, FeaturesList } from './Features';
 import type { Class } from './index';
 

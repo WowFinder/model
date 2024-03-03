@@ -1,3 +1,4 @@
+import { Aura } from '@wowfinder/ts-enums';
 import { Exportable, JsonValue, sum } from '@wowfinder/ts-utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
@@ -20,7 +21,6 @@ import {
 } from './base';
 import { Bonus } from './Bonus';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
-import { Aura } from './Class/Aura';
 import {
     ClassAurasCondensed,
     getAuraBonuses,

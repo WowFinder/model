@@ -1,6 +1,7 @@
 import { Bonus, BonusType } from '../../Bonus';
 import type { Character } from '../..';
-import { Aura, auraBonuses } from '.';
+import { auraBonuses } from '.';
+import { Aura } from '@wowfinder/ts-enums';
 
 type ClassAurasCondensed = { aura: Aura; count: number }[];
 

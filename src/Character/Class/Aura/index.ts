@@ -1,4 +1,5 @@
-import { Aura, AuraBonus } from './base';
+import { Aura } from '@wowfinder/ts-enums';
+import { AuraBonus } from './base';
 
 type AuraEntry = {
     level: number;
@@ -12,4 +13,3 @@ type AurasList = {
 
 export { auraBonuses } from './bonuses';
 export type { AuraBonus, AuraEntry, AurasList };
-export { Aura };
