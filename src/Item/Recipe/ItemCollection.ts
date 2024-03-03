@@ -1,4 +1,4 @@
-import { Quantified } from 'ts-utils';
+import { Quantified } from '@wowfinder/ts-utils';
 import { Item } from '../base';
 import { buildItem } from '../builders';
 

@@ -1,4 +1,4 @@
-import { Exportable, JsonValue } from 'ts-utils';
+import { Exportable, JsonValue } from '@wowfinder/ts-utils';
 import type { RewardsByCharacter } from './Rewards';
 
 function jclone<T>(obj: T): T {

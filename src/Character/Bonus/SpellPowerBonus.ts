@@ -1,4 +1,4 @@
-import { sum } from 'ts-utils';
+import { sum } from '@wowfinder/ts-utils';
 import { CastingMode, School, SubSchool } from '../../Magic';
 import {
     computedSpellPower,

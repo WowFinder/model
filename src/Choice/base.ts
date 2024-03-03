@@ -1,4 +1,4 @@
-import { Validator } from 'ts-utils';
+import { Validator } from '@wowfinder/ts-utils';
 
 interface BaseChoiceBuilder {
     label: string;

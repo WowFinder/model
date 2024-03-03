@@ -1,4 +1,4 @@
-import { sum } from 'ts-utils';
+import { sum } from '@wowfinder/ts-utils';
 import { Mass, MassUnit } from '../../Units';
 import { StatKey } from './keys';
 

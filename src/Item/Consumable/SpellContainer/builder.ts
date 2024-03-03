@@ -1,5 +1,5 @@
 import { ItemBuilder } from '../../base';
-import { Counter } from 'ts-utils';
+import { Counter } from '@wowfinder/ts-utils';
 import { RankedSpell } from '../../../Magic/Spell';
 import { Consumable } from '../base';
 import { SpellContainerBase } from './helpers';

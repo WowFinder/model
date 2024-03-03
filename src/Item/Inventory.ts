@@ -1,4 +1,4 @@
-import { JsonValue, sum } from 'ts-utils';
+import { JsonValue, sum } from '@wowfinder/ts-utils';
 import { buildItem, Gear, Item } from '.';
 import { convertMass, MassUnit } from '../Units/Mass';
 import Money from './Money';

@@ -1,5 +1,5 @@
 // import { TFunction } from 'i18next';
-import { assertDefined, Optional, toRoman } from 'ts-utils';
+import { assertDefined, Optional, toRoman } from '@wowfinder/ts-utils';
 import { fullParseSchool, School, SubSchool } from '../School';
 import { SpellBase, SpellBaseBuilder } from './base';
 import { ActionTime } from '../../Action/ActionTime';

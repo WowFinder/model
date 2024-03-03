@@ -1,6 +1,6 @@
 import { AlignmentDescriptor } from '../../Character/Alignment';
 import { EnergyType } from '../../Damage';
-import { Stringifier } from 'ts-utils';
+import { Stringifier } from '@wowfinder/ts-utils';
 
 enum ElementalDescriptor {
     air = 'air',

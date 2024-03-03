@@ -1,4 +1,4 @@
-import { sum } from 'ts-utils';
+import { sum } from '@wowfinder/ts-utils';
 import { DamageType } from '../../Damage';
 import type { ResistancePartialSet, ResistanceSet } from '../Resistances';
 

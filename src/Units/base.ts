@@ -1,5 +1,5 @@
 // import { TFunction } from 'i18next';
-import { sum, TryParser } from 'ts-utils';
+import { sum, TryParser } from '@wowfinder/ts-utils';
 
 class Scalar<T> {
     private _value: number;

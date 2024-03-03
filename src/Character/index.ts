@@ -1,4 +1,4 @@
-import { Exportable, JsonValue, sum } from 'ts-utils';
+import { Exportable, JsonValue, sum } from '@wowfinder/ts-utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
 import {

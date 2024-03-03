@@ -1,4 +1,4 @@
-// import { builder, ByKeyRecursive, forceDataLoadKeySRecursive } from 'ts-utils';
+// import { builder, ByKeyRecursive, forceDataLoadKeySRecursive } from '@wowfinder/ts-utils';
 import { Mass } from '../Units';
 import { Rarity } from './Rarity';
 import Money from './Money';
