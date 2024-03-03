@@ -1,6 +1,7 @@
 import { Mass } from '../../../Units';
-import { ActionLength, ActionTime } from '../../../Action';
+import { ActionTime } from '../../../Action';
 import { SpellContainer } from './base';
+import { ActionLength } from '@wowfinder/ts-enums';
 
 class SpellPotion extends SpellContainer {
     get useTime(): ActionTime {

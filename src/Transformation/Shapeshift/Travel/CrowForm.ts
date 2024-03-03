@@ -1,11 +1,9 @@
-import {
-    FlyManeuverability,
-    defaultSpeedUnit,
-} from '../../../Character/Speeds';
+import { defaultSpeedUnit } from '../../../Character/Speeds';
 import { Character } from '../../../Character';
 import { CharacterOverride } from '../../../Character/base/CharacterOverride';
 import type { ShapeshiftBuilder } from '../base';
 import { Shapeshift } from '../base';
+import { FlyManeuverability } from '@wowfinder/ts-enums';
 
 class CrowForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
