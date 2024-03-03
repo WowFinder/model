@@ -1,4 +1,4 @@
-import { parseIfNeeded } from 'ts-utils';
+import { parseIfNeeded } from '@wowfinder/ts-utils';
 import { parseArea, SpellArea } from './Area';
 import { ActionTime } from '../../Action/ActionTime';
 import { parseSpellComponent, SpellComponent } from './Components';

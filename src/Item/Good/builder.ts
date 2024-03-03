@@ -1,4 +1,4 @@
-// import { builder } from 'ts-utils';
+// import { builder } from '@wowfinder/ts-utils';
 // import { Item } from '../base';
 import { Cloth } from './Cloth';
 import { CommonGood } from './CommonGood';

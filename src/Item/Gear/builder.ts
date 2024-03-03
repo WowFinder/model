@@ -1,4 +1,4 @@
-// import { builder, ByKeyRecursive, ByKeyRecursiveEntry } from 'ts-utils';
+// import { builder, ByKeyRecursive, ByKeyRecursiveEntry } from '@wowfinder/ts-utils';
 // import { Item } from '../base';
 import { Armor } from './Armor';
 import { Weapon } from './Weapon';

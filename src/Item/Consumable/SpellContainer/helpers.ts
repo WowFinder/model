@@ -1,5 +1,5 @@
 import { ItemBuilder } from '../../base';
-import { Counter, Labeled } from 'ts-utils';
+import { Counter, Labeled } from '@wowfinder/ts-utils';
 import { RankedSpell, Spell } from '../../../Magic/Spell';
 
 interface SpellContainerBuilder extends ItemBuilder {

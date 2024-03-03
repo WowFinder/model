@@ -1,6 +1,6 @@
 import { Requirement } from '.';
 import { Character } from '..';
-import { sum } from 'ts-utils';
+import { sum } from '@wowfinder/ts-utils';
 
 abstract class LevelRequirementBase implements Requirement<Character> {
     #level: number;

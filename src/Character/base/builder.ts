@@ -1,5 +1,5 @@
 import { EffectiveCasterLevels } from 'Magic';
-import { JsonValue } from 'ts-utils';
+import { JsonValue } from '@wowfinder/ts-utils';
 import { InventoryBuilder, InventoryExport } from '../../Item/Inventory';
 import { FeatChoice, FeatChoiceExport } from '../helpers';
 import { CharPersonalDetailsBuilder } from '../Personal';
