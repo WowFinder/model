@@ -1,4 +1,4 @@
-import { DamageType } from '../../Damage';
+import { DamageType } from '@wowfinder/ts-enums';
 import {
     ResistanceBreakdown,
     ResistanceBreakdownImpl,
@@ -11,16 +11,16 @@ abstract class TypedResistances implements FullResistances, ResistancesBuilder {
     #data: FullResistances;
     constructor(data: ResistancesBuilder) {
         this.#data = {
-            [DamageType.bludgeoning]: data.bludgeoning || zero(),
-            [DamageType.slashing]: data.slashing || zero(),
-            [DamageType.piercing]: data.piercing || zero(),
-            [DamageType.arcane]: data.arcane || zero(),
-            [DamageType.fire]: data.fire || zero(),
-            [DamageType.cold]: data.cold || zero(),
-            [DamageType.nature]: data.nature || zero(),
-            [DamageType.shadow]: data.shadow || zero(),
-            [DamageType.holy]: data.holy || zero(),
-            [DamageType.psychic]: data.psychic || zero(),
+            [DamageType.bludgeoning]: data.bludgeoning ?? zero(),
+            [DamageType.slashing]: data.slashing ?? zero(),
+            [DamageType.piercing]: data.piercing ?? zero(),
+            [DamageType.arcane]: data.arcane ?? zero(),
+            [DamageType.fire]: data.fire ?? zero(),
+            [DamageType.cold]: data.cold ?? zero(),
+            [DamageType.nature]: data.nature ?? zero(),
+            [DamageType.shadow]: data.shadow ?? zero(),
+            [DamageType.holy]: data.holy ?? zero(),
+            [DamageType.psychic]: data.psychic ?? zero(),
         };
     }
 

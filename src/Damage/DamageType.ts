@@ -1,28 +1,4 @@
-enum PhysicalDamageType {
-    bludgeoning = 'bludgeoning',
-    slashing = 'slashing',
-    piercing = 'piercing',
-}
-
-enum EnergyType {
-    arcane = 'arcane',
-    fire = 'fire',
-    cold = 'cold',
-    nature = 'nature',
-    shadow = 'shadow',
-    holy = 'holy',
-}
-
-enum SpecialDamageType {
-    psychic = 'psychic',
-}
-
-const DamageType = {
-    ...PhysicalDamageType,
-    ...EnergyType,
-    ...SpecialDamageType,
-};
-type DamageType = PhysicalDamageType | EnergyType | SpecialDamageType;
+import { DamageType, EnergyType, SpecialDamageType } from '@wowfinder/ts-enums';
 
 type DamageTypes = { [key in DamageType]?: boolean };
 type FullDamageTypes = { [key in DamageType]: boolean };
@@ -63,12 +39,4 @@ function buildFullDamageTypes(builder: DamageTypes): FullDamageTypes {
 
 export type { DamageTypes, FullDamageTypes };
 
-export {
-    PhysicalDamageType,
-    EnergyType,
-    DamageType,
-    SpecialDamageType,
-    HybridTypes,
-    buildFullDamageTypes,
-    makeFullDamageTypes,
-};
+export { HybridTypes, buildFullDamageTypes, makeFullDamageTypes };

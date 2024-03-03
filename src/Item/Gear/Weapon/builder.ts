@@ -1,5 +1,6 @@
 import { StatKey } from 'Character/Stats';
-import { DamageSpec, DamageType, makeFullDamageTypes } from 'Damage';
+import { DamageType } from '@wowfinder/ts-enums';
+import { DamageSpec, makeFullDamageTypes } from 'Damage';
 import { Gear, GearBuilder } from '../base';
 import WeaponFlags from './Flags';
 import WeaponGroup from './Group';
@@ -21,9 +22,9 @@ function buildWeaponDamage(...specs: WeaponDamageBuilder[]): DamageSpec {
     return new DamageSpec({
         components: specs.map(s => ({
             types: makeFullDamageTypes(...s.types),
-            diceCount: s.baseRoll.count || 1,
+            diceCount: s.baseRoll.count ?? 1,
             diceSides: s.baseRoll.sides,
-            fixedMod: s.baseRoll.fixedMod || 0,
+            fixedMod: s.baseRoll.fixedMod ?? 0,
             modStat: s.modStat,
         })),
     });

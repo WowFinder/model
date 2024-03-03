@@ -1,4 +1,4 @@
-import { DamageType } from '../../Damage';
+import { DamageType } from '@wowfinder/ts-enums';
 
 type ResistancePartialSet = { [key in DamageType]?: number };
 
@@ -10,7 +10,7 @@ class ResistanceSetImpl implements ResistanceSet {
     constructor(source: ResistancePartialSet) {
         const curated: ResistancePartialSet = {};
         for (const t of Object.keys(DamageType)) {
-            curated[t as DamageType] = source[t as DamageType] || 0;
+            curated[t as DamageType] = source[t as DamageType] ?? 0;
         }
         this._data = curated as ResistanceSet;
     }

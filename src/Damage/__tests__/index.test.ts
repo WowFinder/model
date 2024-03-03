@@ -3,10 +3,6 @@ import {
     DamageValue,
     DamageComponentValue,
     DamageComponentSpec,
-    PhysicalDamageType,
-    EnergyType,
-    DamageType,
-    SpecialDamageType,
     HybridTypes,
     buildFullDamageTypes,
     makeFullDamageTypes,
@@ -27,18 +23,6 @@ describe('Damage', () => {
     });
     it('should export DamageComponentSpec', () => {
         expect(DamageComponentSpec).toBeDefined();
-    });
-    it('should export PhysicalDamageType', () => {
-        expect(PhysicalDamageType).toBeDefined();
-    });
-    it('should export EnergyType', () => {
-        expect(EnergyType).toBeDefined();
-    });
-    it('should export DamageType', () => {
-        expect(DamageType).toBeDefined();
-    });
-    it('should export SpecialDamageType', () => {
-        expect(SpecialDamageType).toBeDefined();
     });
     it('should export HybridTypes', () => {
         expect(HybridTypes).toBeDefined();

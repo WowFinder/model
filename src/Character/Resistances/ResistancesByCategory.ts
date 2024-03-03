@@ -1,4 +1,4 @@
-import { DamageType } from '../../Damage';
+import { DamageType } from '@wowfinder/ts-enums';
 import {
     CategorizedResistances,
     CategorizedResistancesBuilder,

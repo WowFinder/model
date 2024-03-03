@@ -1,4 +1,4 @@
-import { DamageType } from '../../Damage';
+import { DamageType } from '@wowfinder/ts-enums';
 import {
     ResistanceBreakdownImpl,
     ResistanceBreakdown,
@@ -27,10 +27,10 @@ class CategorizedResistances
     private _temp: ResistanceSet;
 
     constructor({ enhance, gear, misc, temp }: CategorizedResistancesBuilder) {
-        this._enh = new ResistanceSetImpl(enhance || {});
-        this._gear = new ResistanceSetImpl(gear || {});
-        this._misc = new ResistanceSetImpl(misc || {});
-        this._temp = new ResistanceSetImpl(temp || {});
+        this._enh = new ResistanceSetImpl(enhance ?? {});
+        this._gear = new ResistanceSetImpl(gear ?? {});
+        this._misc = new ResistanceSetImpl(misc ?? {});
+        this._temp = new ResistanceSetImpl(temp ?? {});
     }
 
     get enhance(): ResistanceSet {

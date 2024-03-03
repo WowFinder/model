@@ -3,7 +3,7 @@ import { ResistanceBreakdownImpl } from './ResistanceBreakdown';
 import { ResistancesByCategory } from './ResistancesByCategory';
 import { ResistancesBuilder, ResistancesExport } from './helpers';
 
-class Resistances extends ResistancesByCategory {
+class Resistances extends ResistancesByCategory implements ResistancesBuilder {
     static fromCategorized(source: CategorizedResistancesBuilder): Resistances {
         return new Resistances(ResistancesByCategory.fromCategorized(source));
     }
@@ -23,14 +23,12 @@ class Resistances extends ResistancesByCategory {
     }
 
     updatedByType(data: ResistancesBuilder): Resistances {
-        return new Resistances(
-            Object.assign({}, this, data) as ResistancesBuilder,
-        );
+        return new Resistances({ ...this, ...data } as ResistancesBuilder);
     }
 
     updatedByCategory(data: CategorizedResistancesBuilder): Resistances {
         const { enhance, gear, misc, temp } = this.categorized;
-        const curated = Object.assign({}, { enhance, gear, misc, temp }, data);
+        const curated = { enhance, gear, misc, temp, ...data };
         return Resistances.fromCategorized(
             curated as CategorizedResistancesBuilder,
         );
