@@ -1,11 +1,4 @@
-import { Save } from '@wowfinder/ts-enums';
-
-enum SpellSaveEffect {
-    negate = 'negate',
-    partial = 'partial',
-    half = 'half',
-    special = 'special',
-}
+import { Save, SpellSaveEffect } from '@wowfinder/ts-enums';
 
 interface SpellSaveBuilder {
     effect: SpellSaveEffect;
@@ -29,4 +22,4 @@ class SpellSave implements SpellSaveBuilder {
     }
 }
 
-export { SpellSaveEffect, SpellSave };
+export { SpellSave };

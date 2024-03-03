@@ -1,13 +1,5 @@
-import { Size } from '@wowfinder/ts-enums';
+import { Size, StandardRange } from '@wowfinder/ts-enums';
 import { Length, LengthUnit } from '../../Units';
-
-enum StandardRange {
-    self = 'self',
-    touch = 'touch',
-    close = 'close',
-    medium = 'medium',
-    long = 'long',
-}
 
 function rangeInFeet(range: StandardRange, size: Size, efl: number): number {
     switch (range) {
@@ -58,4 +50,4 @@ const SpellRange = {
     },
 } as const;
 
-export { StandardRange, computeRange, SpellRange };
+export { computeRange, SpellRange };

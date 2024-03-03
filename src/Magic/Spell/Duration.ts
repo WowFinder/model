@@ -1,6 +1,6 @@
 // import { TFunction } from 'i18next';
 import { Time } from 'Units';
-// import { unreachable } from 'ts-utils/debug';
+import { Debugger } from '@wowfinder/ts-utils';
 
 type FixedSpellDuration = {
     durationType: 'fixed';
@@ -37,8 +37,7 @@ function stringify(
     } else if (value.durationType === 'perLevel') {
         return t('magic.duration.perLevel', { duration: value.duration });
     } else {
-        throw new Error('Unreachable code');
-        // return unreachable(value);
+        return Debugger.unreachable(value);
     }
 }
 

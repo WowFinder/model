@@ -25,9 +25,4 @@ const stringify: Stringifier<SpellDescriptor> = (value, t) => {
     return t(`magic.descriptor.${value}`);
 };
 
-export {
-    SpellDescriptor,
-    stringify,
-    tryParseSpellDescriptor,
-    parseValidSpellDescriptors,
-};
+export { stringify, tryParseSpellDescriptor, parseValidSpellDescriptors };
