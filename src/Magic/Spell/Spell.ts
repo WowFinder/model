@@ -1,6 +1,7 @@
 // import { TFunction } from 'i18next';
 // import { forceDataLoadKeyS } from '@wowfinder/ts-utils';
-import { fullParseSchool, School, SubSchool } from '../School';
+import { School, SubSchool } from '@wowfinder/ts-enums';
+import { fullParseSchool } from '../School';
 import { SpellBaseBuilder, SpellBase } from './base';
 import { SpellRank, SpellRankBuilder } from './Rank';
 import { RankedSpell, RankedSpellBuilder } from './RankedSpell';
@@ -51,7 +52,7 @@ class Spell extends SpellBase implements SpellBuilder {
             // rankAssert(!!rank.area || !!this.area, 'Missing area');
             rankAssert(!!rank.duration || !!this.duration, 'Missing duration');
         }
-        const schoolParsed = fullParseSchool(sch || '');
+        const schoolParsed = fullParseSchool(sch ?? '');
         if (!schoolParsed) {
             throw new Error(`Invalid school: ${sch}`);
         }
@@ -84,7 +85,7 @@ class Spell extends SpellBase implements SpellBuilder {
     }
 
     get sch(): SubSchool | School {
-        return this.#subSchool || this.#school;
+        return this.#subSchool ?? this.#school;
     }
 
     getRank(rank: number): RankedSpell {
@@ -102,7 +103,7 @@ class Spell extends SpellBase implements SpellBuilder {
         const builder = {
             key: this.#key,
             rank,
-            area: rankObj.area || this.area,
+            area: rankObj.area ?? this.area,
             castingTime: getProp('castingTime'),
             components: getProp('components'),
             descriptors: getProp('descriptors'),

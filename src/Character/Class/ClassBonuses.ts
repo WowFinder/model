@@ -1,6 +1,6 @@
 import { EffectiveCasterLevels } from 'Magic';
-import { Skill } from '../Skill';
 import { ClassFeature } from './Features';
+import { Skill } from '@wowfinder/ts-enums';
 
 interface ClassBonuses {
     hp: number;

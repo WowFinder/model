@@ -1,5 +1,5 @@
+import { ClassTier } from '@wowfinder/ts-enums';
 import { AuraEntry } from './Aura';
-import { ClassTier } from './ClassTier';
 import { ClassFeatureEntry } from './Features';
 
 type RawFeaturesEntry = ClassFeatureEntry | AuraEntry;

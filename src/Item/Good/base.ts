@@ -1,6 +1,7 @@
 import { Money, asMoney } from '../Money';
 import { Item, ItemBuilder } from '../base';
-import { Rarity, rarityMultipliers } from '../Rarity';
+import { rarityMultipliers } from '../Rarity';
+import { Rarity } from '@wowfinder/ts-enums';
 
 interface GoodBuilder extends ItemBuilder {
     label: string;

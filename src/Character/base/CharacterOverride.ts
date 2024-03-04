@@ -1,5 +1,5 @@
+import { Size } from '@wowfinder/ts-enums';
 import { Resistances } from '../Resistances';
-import Size from '../Size';
 import { baseDefault } from '../Stats';
 import { CharacterBase } from './base';
 import type { CharacterOverrideBuilder } from './builder';

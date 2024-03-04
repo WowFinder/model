@@ -1,7 +1,8 @@
 import { JsonValue, sum } from '@wowfinder/ts-utils';
 import { buildItem, Gear, Item } from '.';
-import { convertMass, MassUnit } from '../Units/Mass';
+import { convertMass } from '../Scalar/Mass';
 import Money from './Money';
+import { MassUnit } from '@wowfinder/ts-enums';
 
 interface InventoryBuilder {
     money?: number;
@@ -19,7 +20,7 @@ interface InventoryExport {
 }
 
 const needsPreffix = (val: any): boolean =>
-    typeof val === 'string' && !/^gear\./.test(val);
+    typeof val === 'string' && !val.startsWith('gear');
 const addPreffix = (val: any): any => (needsPreffix(val) ? `gear.${val}` : val);
 const isGear = (i: Item): boolean => i instanceof Gear;
 const asGear = (i: Item): Gear => i as Gear;

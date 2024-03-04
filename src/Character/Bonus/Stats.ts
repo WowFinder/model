@@ -1,5 +1,6 @@
 import { sum } from '@wowfinder/ts-utils';
-import { PartialStatSet, StatKey, StatSet, zeroDefault } from '../Stats';
+import { PartialStatSet, StatSet, zeroDefault } from '../Stats';
+import { StatKey } from '@wowfinder/ts-enums';
 
 export default class StatsBonus {
     #values: StatSet;

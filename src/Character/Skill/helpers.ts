@@ -1,5 +1,4 @@
-import { StatKey } from '../Stats';
-import { Skill } from './Skill';
+import { Skill, StatKey } from '@wowfinder/ts-enums';
 import { SkillSpec } from './SkillSpec';
 import { SkillTotalBuilder } from './builders';
 
@@ -16,7 +15,7 @@ function computeSkillTotal({
     size = 0,
 }: TotalArguments): number | null {
     const isClass = byClass.includes(spec.key);
-    const tRanks = ranks[spec.key] || 0;
+    const tRanks = ranks[spec.key] ?? 0;
     const isTrained = tRanks > 0;
     const trainedBonus = isClass && isTrained ? classTrainedBonus : 0;
     if (spec.trainedOnly && !isTrained && !isClass) {

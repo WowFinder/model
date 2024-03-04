@@ -5,9 +5,9 @@ import { FeatChoice, FeatChoiceExport } from '../helpers';
 import { CharPersonalDetailsBuilder } from '../Personal';
 import Race from '../Race';
 import { Resistances, ResistancesExport } from '../Resistances';
-import Size from '../Size';
 import { SpeedBuilder } from '../Speeds';
 import { StatSet } from '../Stats';
+import { Size } from '@wowfinder/ts-enums';
 
 type SkillRanks = { [key: string]: number };
 

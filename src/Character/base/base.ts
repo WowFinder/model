@@ -7,13 +7,14 @@ import {
     exportFeatchChoices,
     parseFeatChoices,
 } from '../helpers';
-import Size, { parseSize } from '../Size';
+import { parseSize } from '../Size';
 import { Speeds } from '../Speeds';
 import {
     EffectiveCasterLevels,
     buildCasterLevels,
     zeroCasterLevel,
 } from 'Magic';
+import { Size } from '@wowfinder/ts-enums';
 
 abstract class CharacterBase {
     #key: string;

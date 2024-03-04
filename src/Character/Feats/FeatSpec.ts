@@ -1,6 +1,6 @@
+import { FeatFlag } from '@wowfinder/ts-enums';
 import { Character } from '..';
 import { EmptyRequirement, Requirement } from '../Requirements';
-import { FeatFlag } from './FeatFlag';
 
 interface FeatBuilder {
     label: string;
@@ -14,7 +14,7 @@ class FeatSpec {
     #flags: Set<FeatFlag>;
     constructor({ label, requirements, flags }: FeatBuilder) {
         this.#label = `${label}`;
-        this.#requirements = requirements || new EmptyRequirement<Character>();
+        this.#requirements = requirements ?? new EmptyRequirement<Character>();
         this.#flags = new Set<FeatFlag>(flags);
     }
 

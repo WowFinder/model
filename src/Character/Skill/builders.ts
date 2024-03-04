@@ -1,5 +1,5 @@
-import { Skill } from './Skill';
-import { StatKey, StatSet } from '../Stats';
+import { Skill, StatKey } from '@wowfinder/ts-enums';
+import { StatSet } from '../Stats';
 
 interface SkillSpecBuilder {
     key: Skill;

@@ -1,16 +1,15 @@
 import { capitalizeFirstLetter } from '@wowfinder/ts-utils';
+import { CoreFeat } from './core';
 import {
     ExoticWeaponProficiency,
     MartialWeaponProficiency,
     SimpleWeaponProficiency,
-} from '../../Item/Gear/Weapon/Proficiency';
-import { CoreFeat } from './core';
+} from '@wowfinder/ts-enums';
 
-type SimpleWeaponKey = keyof typeof SimpleWeaponProficiency;
-type MartialWeaponKey = keyof typeof MartialWeaponProficiency;
-type ExoticWeaponKey = keyof typeof ExoticWeaponProficiency;
-
-type WeaponKey = SimpleWeaponKey | MartialWeaponKey | ExoticWeaponKey;
+type WeaponKey =
+    | SimpleWeaponProficiency
+    | MartialWeaponProficiency
+    | ExoticWeaponProficiency;
 
 const prof = 'proficiency';
 const focus = 'weaponFocus';
@@ -68,11 +67,4 @@ type WeaponFeat = keyof typeof weaponFeats;
 type Feat = keyof typeof Feat;
 
 export { Feat, weaponFeats };
-export type {
-    WeaponFeat,
-    WeaponKey,
-    WeaponFeatKeyPrefix,
-    SimpleWeaponKey,
-    MartialWeaponKey,
-    ExoticWeaponKey,
-};
+export type { WeaponFeat, WeaponKey, WeaponFeatKeyPrefix };

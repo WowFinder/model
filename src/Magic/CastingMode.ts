@@ -1,11 +1,4 @@
-import { StatKey } from '../Character/Stats';
-
-// TODO #708 Consolidate CastingMode and related types
-enum CastingMode {
-    arcane = 'arcane',
-    divine = 'divine',
-    spontaneous = 'spontaneous',
-}
+import { CastingMode, StatKey } from '@wowfinder/ts-enums';
 
 const castingStats = {
     [CastingMode.arcane]: StatKey.INT,
@@ -34,4 +27,4 @@ function fillCastingModeValues<T>(
 }
 
 export type { CastingModeValues, CastingModeValuesPartial };
-export { CastingMode, castingStats, fillCastingModeValues };
+export { castingStats, fillCastingModeValues };

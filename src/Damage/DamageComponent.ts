@@ -1,4 +1,4 @@
-import { StatKey } from '../Character/Stats';
+import { StatKey } from '@wowfinder/ts-enums';
 import { Dice } from '../Dice';
 import { DamageModifier, computeModifier } from './DamageModifier';
 import { DamageRollArguments } from './DamageRollArguments';

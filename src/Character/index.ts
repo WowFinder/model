@@ -1,14 +1,18 @@
+import {
+    Aura,
+    CastingMode,
+    Size,
+    School,
+    SubSchool,
+} from '@wowfinder/ts-enums';
 import { Exportable, JsonValue, sum } from '@wowfinder/ts-utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
 import {
-    CastingMode,
     computedSpellPower,
     EffectiveCasterLevels,
     FullComputedSpellPower,
     fullComputedSpellPower,
-    School,
-    SubSchool,
 } from '../Magic';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
 import {
@@ -20,7 +24,6 @@ import {
 } from './base';
 import { Bonus } from './Bonus';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
-import { Aura } from './Class/Aura';
 import {
     ClassAurasCondensed,
     getAuraBonuses,
@@ -36,7 +39,6 @@ import { buildStats, checkClass, checkRace } from './helpers';
 import Race from './Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
-import Size from './Size';
 import { statMod, Stats } from './Stats';
 
 type Characters = { [key: string]: Character };
@@ -162,9 +164,9 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         const efl = this.classBonuses.efl;
         const bonus = this.casterLevelsBonus;
         return {
-            arc: efl.arc + bonus.arc,
-            div: efl.div + bonus.div,
-            esp: efl.esp + bonus.esp,
+            arcane: efl.arcane + bonus.arcane,
+            divine: efl.divine + bonus.divine,
+            spontaneous: efl.spontaneous + bonus.spontaneous,
         };
     }
 

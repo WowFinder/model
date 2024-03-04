@@ -1,4 +1,4 @@
-import { AssetType } from './AssetType';
+import { AssetType } from '@wowfinder/ts-enums';
 
 type AssetJsonBundle = {
     assets: {

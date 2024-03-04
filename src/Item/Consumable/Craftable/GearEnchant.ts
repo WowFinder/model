@@ -1,8 +1,9 @@
-import { Mass, Time, TimeUnit } from '../../../Units';
+import { Mass, Time } from '../../../Scalar';
 import { ItemBuilder as CraftableConsumableBuilder } from '../../base';
 import { CraftableConsumable } from './base';
-import { Bonus, BonusBuilder, BonusType } from '../../../Character/Bonus';
+import { Bonus, BonusBuilder } from '../../../Character/Bonus';
 import { Shape, buildShape } from '../../Gear';
+import { BonusType, TimeUnit } from '@wowfinder/ts-enums';
 
 interface GearEnchantBuilder extends CraftableConsumableBuilder {
     bonus: Omit<BonusBuilder, 'type'>;
@@ -20,7 +21,7 @@ class GearEnchant extends CraftableConsumable {
     }
 
     get useTime(): Time {
-        return new Time({ value: 1, unit: TimeUnit.min });
+        return new Time({ value: 1, unit: TimeUnit.m });
     }
 
     get bonus(): Bonus {

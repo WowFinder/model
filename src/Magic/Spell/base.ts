@@ -1,10 +1,11 @@
 import { parseIfNeeded } from '@wowfinder/ts-utils';
+import { SpellDescriptor, SpellFlag } from '@wowfinder/ts-enums';
 import { parseArea, SpellArea } from './Area';
 import { ActionTime } from '../../Action/ActionTime';
 import { parseSpellComponent, SpellComponent } from './Components';
-import { parseValidSpellDescriptors, SpellDescriptor } from './Descriptor';
+import { parseValidSpellDescriptors } from './Descriptor';
 import { SpellDuration, tryParseSpellDuration } from './Duration';
-import { parseValidFlags, SpellFlag } from './Flags';
+import { parseValidFlags } from './Flags';
 import { SpellRange } from './Range';
 
 interface SpellBaseBuilder {

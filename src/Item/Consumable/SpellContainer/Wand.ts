@@ -1,4 +1,4 @@
-import { Mass } from '../../../Units';
+import { Mass } from '../../../Scalar';
 import { ActionTime } from '../../../Action';
 import { SpellContainer, SpellContainerBuilder } from './base';
 

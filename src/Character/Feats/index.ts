@@ -6,7 +6,6 @@ import {
     weaponFeats,
 } from './builder';
 import { Feat } from './Feat';
-import { FeatFlag } from './FeatFlag';
 import { FeatSpec } from './FeatSpec';
 
 const feats: { [key in Feat]: FeatSpec } = {
@@ -17,4 +16,4 @@ const feats: { [key in Feat]: FeatSpec } = {
     ...weaponFeats,
 };
 
-export { Feat, FeatFlag, FeatSpec, feats };
+export { Feat, FeatSpec, feats };

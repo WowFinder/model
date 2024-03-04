@@ -1,6 +1,7 @@
+import { LengthUnit, TimeUnit } from '@wowfinder/ts-enums';
 import { converter, Scalar } from './base';
-import { convertLength, Length, LengthUnit } from './Length';
-import { convertTime, Time, TimeUnit } from './Time';
+import { convertLength, Length } from './Length';
+import { convertTime, Time } from './Time';
 
 interface SpeedUnitBuilder {
     length: LengthUnit;

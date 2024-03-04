@@ -1,4 +1,4 @@
-import { Skill } from '../Skill';
+import { Skill } from '@wowfinder/ts-enums';
 import { ClassBonuses } from './ClassBonuses';
 import { hdFirst, hdAverage, ClassLevels } from './helpers';
 
@@ -17,9 +17,9 @@ function combineClassBonuses(classLevels: ClassLevels): ClassBonuses {
             will: 0,
         },
         efl: {
-            arc: 0,
-            div: 0,
-            esp: 0,
+            arcane: 0,
+            divine: 0,
+            spontaneous: 0,
         },
         skillRanks: 0,
         features: {},
@@ -37,12 +37,12 @@ function combineClassBonuses(classLevels: ClassLevels): ClassBonuses {
         goodSaves.refl ||= cls.saves.reflexes;
         result.saves.will += (cls.saves.will ? 1 / 2 : 1 / 3) * level;
         goodSaves.will ||= cls.saves.will;
-        result.efl.arc += cls.casting.arcane * level;
-        result.efl.div += cls.casting.divine * level;
-        result.efl.esp += cls.casting.spontaneous * level;
+        result.efl.arcane += cls.casting.arcane * level;
+        result.efl.divine += cls.casting.divine * level;
+        result.efl.spontaneous += cls.casting.spontaneous * level;
         result.skillRanks += cls.skillRanks * level;
         for (const f of cls.featuresList.filter(f => f.level <= level)) {
-            result.features[f.feature] = (result.features[f.feature] || 0) + 1;
+            result.features[f.feature] = (result.features[f.feature] ?? 0) + 1;
         }
         cls.classSkills.forEach((value: Skill) =>
             result.classSkills.add(value),
@@ -62,9 +62,9 @@ function combineClassBonuses(classLevels: ClassLevels): ClassBonuses {
     result.saves.fort = Math.floor(result.saves.fort);
     result.saves.refl = Math.floor(result.saves.refl);
     result.saves.will = Math.floor(result.saves.will);
-    result.efl.arc = Math.floor(result.efl.arc);
-    result.efl.div = Math.floor(result.efl.div);
-    result.efl.esp = Math.floor(result.efl.esp);
+    result.efl.arcane = Math.floor(result.efl.arcane);
+    result.efl.divine = Math.floor(result.efl.divine);
+    result.efl.spontaneous = Math.floor(result.efl.spontaneous);
     return result;
 }
 

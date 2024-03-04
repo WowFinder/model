@@ -1,8 +1,9 @@
-import { StatKey, statMod } from '../../Character/Stats';
+import { statMod } from '../../Character/Stats';
 import type { StatSet } from '../../Character/Stats';
 import type { DamageComponentSpecBuilder } from '../DamageComponent';
 import type { FullDamageTypes } from '../DamageType';
 import type { DamageRollArguments } from '../DamageRollArguments';
+import { StatKey } from '@wowfinder/ts-enums';
 
 const mockDamageTypes: FullDamageTypes = {
     bludgeoning: true,

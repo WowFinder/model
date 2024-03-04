@@ -1,7 +1,7 @@
 import { DamageSpec } from '../DamageSpec';
-import { StatKey } from '../../Character/Stats';
 import { mockDamageTypes, minRoll, maxRoll, rollArgsSimple } from './utils';
 import type { DamageComponentSpecBuilder } from '../DamageComponent';
+import { StatKey } from '@wowfinder/ts-enums';
 
 describe('DamageSpec', () => {
     const testDamageComponentSpecBuilder: DamageComponentSpecBuilder = {

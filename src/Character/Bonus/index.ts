@@ -6,21 +6,7 @@ import { sum } from '@wowfinder/ts-utils';
 import SavesBonus from './Saves';
 import ResistBonus from './ResistBonus';
 import SpellPowerBonus from './SpellPowerBonus';
-
-enum BonusType {
-    armor = 'armor',
-    gear = 'gear',
-    racial = 'racial',
-    shield = 'shield',
-    complement = 'complement',
-    enhancement = 'enhancement',
-    deflection = 'deflection',
-    dodge = 'dodge',
-    natural = 'natural',
-    temporal = 'temporal',
-    aura = 'aura',
-    enchant = 'enchant',
-}
+import { BonusType } from '@wowfinder/ts-enums';
 
 const stackables: BonusType[] = [
     BonusType.gear,
@@ -275,7 +261,6 @@ export type { BonusProvider };
 
 export {
     BonusBuilder,
-    BonusType,
     Bonus,
     MultiBonus,
     StatsBonus,

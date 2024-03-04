@@ -1,13 +1,13 @@
 import { capitalizeFirstLetter } from '@wowfinder/ts-utils';
-import {
-    ExoticWeaponProficiency,
-    MartialWeaponProficiency,
-    SimpleWeaponProficiency,
-} from '../../../Item/Gear/Weapon/Proficiency';
-import { SimpleWeaponKey, WeaponFeat, WeaponKey } from '../Feat';
-import { FeatFlag } from '../FeatFlag';
+import { WeaponFeat, WeaponKey } from '../Feat';
 import { FeatSpec } from '../FeatSpec';
 import { allOf, checkWeaponFeatKey, feat, req } from './helpers';
+import {
+    ExoticWeaponProficiency,
+    FeatFlag,
+    MartialWeaponProficiency,
+    SimpleWeaponProficiency,
+} from '@wowfinder/ts-enums';
 
 function mkKey(prefix: string, weapon: string): WeaponFeat {
     const w = capitalizeFirstLetter(weapon);
@@ -26,7 +26,7 @@ const partialWeaponFeats: Partial<WeaponFeatSpecs> = {};
 const weaponFocusFlags = [FeatFlag.byWeapon, FeatFlag.weaponFocus];
 const weaponProficiencyFlags = [FeatFlag.byWeapon, FeatFlag.proficiency];
 
-const simpleWeapons = Object.keys(SimpleWeaponProficiency) as SimpleWeaponKey[];
+const simpleWeapons = Object.keys(SimpleWeaponProficiency);
 const nonSimpleWeapons = ([] as string[]).concat(
     Object.keys(MartialWeaponProficiency),
     Object.keys(ExoticWeaponProficiency),

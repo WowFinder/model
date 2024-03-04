@@ -1,8 +1,7 @@
+import { Aura, ClassTier, Skill } from '@wowfinder/ts-enums';
 import { Money } from '../../Item';
-import { Skill } from '../Skill';
-import { Aura, AurasList } from './Aura';
+import { AurasList } from './Aura';
 import { ClassBonuses } from './ClassBonuses';
-import { ClassTier } from './ClassTier';
 import { ClassFeature, FeaturesList } from './Features';
 import { ClassBuilder, applyClassDefaults } from './builder';
 import { combineClassBonuses } from './combineBonuses';

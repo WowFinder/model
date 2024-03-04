@@ -1,6 +1,6 @@
 import { DamageTypes } from '../../../../Damage';
 import { CraftableConsumable, CraftableConsumableBuilder } from '../base';
-import { Mass, Time } from '../../../../Units';
+import { Mass, Time } from '../../../../Scalar';
 
 interface WeaponStoneBuilder extends CraftableConsumableBuilder {
     bonus: number;

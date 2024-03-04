@@ -1,11 +1,13 @@
-import { StatKey } from 'Character/Stats';
-import { DamageType } from '@wowfinder/ts-enums';
+import {
+    DamageType,
+    StatKey,
+    WeaponFlags,
+    WeaponGroup,
+    WeaponProficiency,
+    WeaponRank,
+} from '@wowfinder/ts-enums';
 import { DamageSpec, makeFullDamageTypes } from 'Damage';
 import { Gear, GearBuilder } from '../base';
-import WeaponFlags from './Flags';
-import WeaponGroup from './Group';
-import WeaponProficiency from './Proficiency';
-import WeaponRank from './Rank';
 import { Range } from './helpers';
 
 interface WeaponDamageBuilder {

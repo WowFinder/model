@@ -1,13 +1,4 @@
-enum Rarity {
-    trash = 'trash', // Useless / only for scraps
-    vulgar = 'vulgar', // Commonly found from vendors
-    common = 'common',
-    uncommon = 'uncommon',
-    rare = 'rare',
-    epic = 'epic',
-    legendary = 'legendary',
-    artifact = 'artifact',
-}
+import { Rarity } from '@wowfinder/ts-enums';
 
 type ByRarity<Values> = Readonly<{ [key in Rarity]: Values }>;
 
@@ -56,7 +47,6 @@ const rarityColorsLight: ByRarity<`#${string}`> = Object.freeze({
 });
 
 export {
-    Rarity,
     rarityMultipliers,
     iLevelMultipliers,
     rarityColorsDark,

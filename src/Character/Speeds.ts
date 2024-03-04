@@ -1,5 +1,5 @@
-import { FlyManeuverability } from '@wowfinder/ts-enums';
-import { LengthUnit, Speed, SpeedUnit, TimeUnit } from '../Units';
+import { FlyManeuverability, LengthUnit, TimeUnit } from '@wowfinder/ts-enums';
+import { Speed, SpeedUnit } from '../Scalar';
 
 function flyManeuverabilityBonus(maneuverability: FlyManeuverability): number {
     switch (maneuverability) {
@@ -26,7 +26,7 @@ type SpeedValue = number | Speed; // number taken as feet/turn
 
 const defaultSpeedUnit = new SpeedUnit({
     length: LengthUnit.foot,
-    time: TimeUnit.turn,
+    time: TimeUnit.t,
 });
 
 interface SpeedBuilder {

@@ -1,12 +1,12 @@
 import { EffectiveCasterLevels } from 'Magic';
 import { Resistances } from '../Resistances';
-import Size from '../Size';
 import { Speeds } from '../Speeds';
 import { StatSet } from '../Stats';
 import { FeatChoice } from '../helpers';
 import { CharacterOverride } from './CharacterOverride';
 import { CharacterBase } from './base';
 import { OverridableCharacterBaseBuilder } from './builder';
+import { Size } from '@wowfinder/ts-enums';
 
 abstract class OverridableCharacterBase extends CharacterBase {
     #override: CharacterOverride | null;
@@ -21,11 +21,11 @@ abstract class OverridableCharacterBase extends CharacterBase {
     }
 
     get key(): string {
-        return this.#override?.key || super.key;
+        return this.#override?.key ?? super.key;
     }
 
     get feats(): FeatChoice[] {
-        return this.#override?.feats || super.feats;
+        return this.#override?.feats ?? super.feats;
     }
 
     get miscHP(): number | undefined {
@@ -33,23 +33,22 @@ abstract class OverridableCharacterBase extends CharacterBase {
     }
 
     get baseStats(): StatSet {
-        return Object.assign({}, super.baseStats, this.#override?.baseStats);
+        return { ...super.baseStats, ...this.#override?.baseStats };
     }
 
     get baseResistances(): Resistances {
-        return Object.assign(
-            {},
-            super.baseResistances,
-            this.#override?.baseResistances,
-        );
+        return new Resistances({
+            ...super.baseResistances,
+            ...this.#override?.baseResistances,
+        });
     }
 
     get size(): Size {
-        return this.#override?.size || super.size;
+        return this.#override?.size ?? super.size;
     }
 
     get speeds(): Speeds {
-        return this.#override?.speeds || super.speeds;
+        return this.#override?.speeds ?? super.speeds;
     }
 
     get naturalArmor(): number {

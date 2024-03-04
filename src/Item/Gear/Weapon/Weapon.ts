@@ -1,5 +1,5 @@
-import { Length, LengthUnit } from '../../../Units';
-import WeaponFlags from './Flags';
+import { LengthUnit, WeaponFlags } from '@wowfinder/ts-enums';
+import { Length } from '../../../Scalar';
 import { WeaponBase } from './base';
 import { WeaponBuilder, preBuildWeapon } from './builder';
 

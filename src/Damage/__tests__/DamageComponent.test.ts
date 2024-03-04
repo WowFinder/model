@@ -1,4 +1,4 @@
-import { StatKey } from '../../Character/Stats';
+import { StatKey } from '@wowfinder/ts-enums';
 import { DamageComponentValue, DamageComponentSpec } from '../DamageComponent';
 import {
     damageComponentSpecBuilder,
