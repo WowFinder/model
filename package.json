@@ -18,23 +18,25 @@
         "test": "jest",
         "test:coverage": "jest --coverage",
         "tsc": "tsc",
-        "checks:quick": "npm-run-all --sequential lint tsc",
-        "checks:standard": "npm-run-all --sequential lint tsc test",
-        "checks:pedantic": "npm-run-all --sequential lint:fix prettier tsc test:coverage build",
-        "prebuild": "rimraf dist",
-        "build": "tsc",
+        "checks:quick": "npm-run-all -pc lint tsc",
+        "checks:standard": "npm-run-all -pc lint tsc test",
+        "checks:pedantic": "npm-run-all -sc lint:fix prettier build test:coverage",
+        "build:pre": "rimraf dist",
+        "build:tsc": "tsc",
+        "build": "npm-run-all -s build:pre build:tsc",
         "prepublishOnly": "yarn run build",
         "prepare": "yarn run build"
     },
     "dependencies": {
+        "@wowfinder/assets": "^0.0.2",
         "@wowfinder/ts-enums": "^0.0.2",
-        "@wowfinder/ts-utils": "^0.0.4"
+        "@wowfinder/ts-utils": "^0.0.5"
     },
     "devDependencies": {
         "@tsconfig/recommended": "^1.0.3",
         "@types/jest": "^29.5.12",
-        "@typescript-eslint/eslint-plugin": "^7.1.0",
-        "@typescript-eslint/parser": "^7.1.0",
+        "@typescript-eslint/eslint-plugin": "^7.1.1",
+        "@typescript-eslint/parser": "^7.1.1",
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-config-standard": "^17.1.0",
@@ -52,5 +54,5 @@
         "tsd": "^0.30.7",
         "typescript": "^5.3.3"
     },
-    "packageManager": "yarn@4.1.0"
+    "packageManager": "yarn@4.1.1"
 }
