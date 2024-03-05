@@ -1,9 +1,6 @@
-import { Exportable, JsonValue } from '@wowfinder/ts-utils';
+import { Exportable, JsonValue, jClone } from '@wowfinder/ts-utils';
 import type { RewardsByCharacter } from './Rewards';
-
-function jclone<T>(obj: T): T {
-    return JSON.parse(JSON.stringify(obj));
-}
+import { RawAdventureAsset } from '@wowfinder/assets';
 
 function combineRewards(rewards: RewardsByCharacter[]): RewardsByCharacter {
     const result: RewardsByCharacter = {};
@@ -15,7 +12,7 @@ function combineRewards(rewards: RewardsByCharacter[]): RewardsByCharacter {
                     result[c][f] += r[c][f];
                 }
             } else {
-                result[c] = jclone(r[c]);
+                result[c] = jClone(r[c]);
             }
         }
     }
@@ -24,79 +21,55 @@ function combineRewards(rewards: RewardsByCharacter[]): RewardsByCharacter {
 
 type Adventures = { [key: string]: Adventure };
 
-type AdventureBuilder = {
-    key: string;
-    title: string;
-    date: string;
-    rewards: RewardsByCharacter;
-};
-
-type AdventureExport = AdventureBuilder & { [key: string]: JsonValue };
+type AdventureExport = RawAdventureAsset & { [key: string]: JsonValue };
 
 class Adventure implements Exportable<AdventureExport> {
-    private _key: string;
-    private _title: string;
-    private _date: string;
-    private _rewards: RewardsByCharacter;
+    #key: string;
+    #title: string;
+    #date: string;
+    #rewards: RewardsByCharacter;
 
-    constructor({ key, title, date, rewards }: AdventureBuilder) {
-        this._key = key;
-        this._title = title;
-        this._date = date;
-        this._rewards = rewards;
+    constructor({ key, title, date, rewards }: RawAdventureAsset) {
+        this.#key = key;
+        this.#title = title;
+        this.#date = date;
+        this.#rewards = rewards;
     }
 
     get key(): string {
-        return this._key;
+        return this.#key;
     }
 
     get title(): string {
-        return this._title;
+        return this.#title;
     }
 
     get date(): string {
-        return this._date;
+        return this.#date;
     }
 
     get rewards(): RewardsByCharacter {
-        return this._rewards;
+        return this.#rewards;
     }
 
     // String representation suitable for sorting (by date, then title)
     toString(): string {
-        return `[${this._date}] ${this._title}`;
+        return `[${this.#date}] ${this.#title}`;
     }
 
-    static build(raw: any): Adventure {
-        // TODO #426: Validate props
-        return new Adventure(raw);
-    }
-
-    // static #loaded: Adventures | null = null;
-
-    static load(): Adventures {
-        throw new Error('Not implemented');
-        /* return (this.#loaded ||= forceDataLoadKeyS<Adventure>(
-            window.Main.asset('Adventures'),
-            this.build,
-        )); */
-    }
-
-    static combined(adventures: Adventures): RewardsByCharacter {
-        return combineRewards(
-            Object.keys(adventures).map(k => adventures[k].rewards),
-        );
+    static combined(adventures: Iterable<Adventure>): RewardsByCharacter {
+        return combineRewards([...adventures].map(a => a.rewards));
     }
 
     export(): AdventureExport {
         return {
-            key: this._key,
-            title: this._title,
-            date: this._date,
-            rewards: this._rewards,
+            key: this.#key,
+            title: this.#title,
+            date: this.#date,
+            rewards: this.#rewards,
         };
     }
 }
 
-export type { Adventures, AdventureBuilder, AdventureExport };
+export type { Adventures, AdventureExport };
 export { Adventure };
