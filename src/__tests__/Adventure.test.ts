@@ -24,7 +24,7 @@ describe('Adventure class', () => {
             },
         },
     };
-    const construct = (props: Partial<RawAdventureAsset>) =>
+    const construct = (props: Partial<RawAdventureAsset>): Adventure =>
         new Adventure({ ...simpleAdventure, ...props });
     it('should construct properly', () => {
         const adventure = construct({});
