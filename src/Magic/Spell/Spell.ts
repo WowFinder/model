@@ -1,16 +1,18 @@
-// import { TFunction } from 'i18next';
-// import { forceDataLoadKeyS } from '@wowfinder/ts-utils';
-import { School, SubSchool } from '@wowfinder/ts-enums';
+import {
+    School,
+    SpellDescriptor,
+    SpellFlag,
+    SubSchool,
+} from '@wowfinder/ts-enums';
 import { fullParseSchool } from '../School';
-import { SpellBaseBuilder, SpellBase } from './base';
-import { SpellRank, SpellRankBuilder } from './Rank';
+import { SpellBase } from './base';
+import { SpellRank } from './Rank';
 import { RankedSpell, RankedSpellBuilder } from './RankedSpell';
-
-interface SpellBuilder extends SpellBaseBuilder {
-    key: string;
-    ranks: SpellRankBuilder[];
-    sch?: SubSchool | School | string;
-}
+import { RawSpellAsset } from '@wowfinder/assets';
+import { parseIfNeeded } from '@wowfinder/ts-utils';
+import { SpellComponent, parseSpellComponent } from './Components';
+import { parseValidSpellDescriptors } from './Descriptor';
+import { parseValidFlags } from './Flags';
 
 type Spells = { [key: string]: Spell };
 
@@ -26,16 +28,32 @@ function getFirstDefined<T>(
     throw new Error(failMessage);
 }
 
-class Spell extends SpellBase implements SpellBuilder {
+class Spell extends SpellBase {
     #key: string;
     #ranks: SpellRank[];
     #subSchool?: SubSchool;
     #school: School;
+    #descriptors: Set<SpellDescriptor>;
+    #components: SpellComponent[];
+    #flags: Set<SpellFlag>;
 
-    constructor({ key, ranks, sch, ...rest }: SpellBuilder) {
+    constructor({
+        key,
+        ranks,
+        sch,
+        descriptors = [],
+        components = [],
+        flags = [],
+        ...rest
+    }: RawSpellAsset) {
         super(rest);
         this.#key = key;
         this.#ranks = ranks.map(rank => new SpellRank(rank));
+        this.#descriptors = new Set(parseValidSpellDescriptors(descriptors));
+        this.#components = components.map(c =>
+            parseIfNeeded(c, parseSpellComponent),
+        );
+        this.#flags = new Set(parseValidFlags(flags));
         for (const rank of this.#ranks) {
             const rankAssert = (condition: boolean, message: string): void => {
                 if (!condition) {
@@ -49,7 +67,6 @@ class Spell extends SpellBase implements SpellBuilder {
                 'Missing casting time',
             );
             rankAssert(!!rank.range || !!this.range, 'Missing range');
-            // rankAssert(!!rank.area || !!this.area, 'Missing area');
             rankAssert(!!rank.duration || !!this.duration, 'Missing duration');
         }
         const schoolParsed = fullParseSchool(sch ?? '');
@@ -88,6 +105,18 @@ class Spell extends SpellBase implements SpellBuilder {
         return this.#subSchool ?? this.#school;
     }
 
+    get descriptors(): SpellDescriptor[] {
+        return [...this.#descriptors];
+    }
+
+    get components(): SpellComponent[] {
+        return [...this.#components];
+    }
+
+    get flags(): SpellFlag[] {
+        return [...this.#flags];
+    }
+
     getRank(rank: number): RankedSpell {
         const rankObj = this.#ranks.find(r => r.rank === rank);
         if (!rankObj) {
@@ -103,13 +132,13 @@ class Spell extends SpellBase implements SpellBuilder {
         const builder = {
             key: this.#key,
             rank,
-            area: rankObj.area ?? this.area,
+            area: (rankObj.area ?? this.area) as any,
             castingTime: getProp('castingTime'),
-            components: getProp('components'),
-            descriptors: getProp('descriptors'),
+            components: this.#components as any,
+            descriptors: [...this.#descriptors],
             duration: getProp('duration'),
             range: getProp('range'),
-            flags: getProp('flags'),
+            flags: [...this.#flags],
             sch: this.sch,
         } satisfies RankedSpellBuilder;
         return new RankedSpell(builder);
@@ -123,15 +152,8 @@ class Spell extends SpellBase implements SpellBuilder {
         return new Spell(raw);
     }
 
-    // static #loaded: Spells | null = null;
-
     static load(/* reThrowErrors = false */): Spells {
         throw new Error('Not implemented');
-        /* return (this.#loaded ||= forceDataLoadKeyS<Spell>(
-            window.Main.asset('Spells'),
-            this.build,
-            reThrowErrors,
-        )); */
     }
 
     static byKey(key: string): Spell;
@@ -144,7 +166,5 @@ class Spell extends SpellBase implements SpellBuilder {
         return rank === undefined ? spell : spell.getRank(rank);
     }
 }
-
-export type { SpellBuilder, Spells };
 
 export { Spell };

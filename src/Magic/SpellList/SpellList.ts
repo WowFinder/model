@@ -1,54 +1,62 @@
-// import { forceDataLoadKeyS } from '@wowfinder/ts-utils';
-import type { SpellListBuilder, SpellListLevels } from './helpers';
-import { buildSpellListLevel } from './builders';
+import { RawSpellListAsset } from '@wowfinder/assets';
+import { ForcedKeyResolver } from '@wowfinder/ts-utils';
+import { Spell } from 'Magic/Spell/Spell';
 
-type SpellLists = { [key: string]: SpellList };
+interface SpellListEntry {
+    spell: Spell;
+    rank: number;
+}
 
-class SpellList implements SpellListBuilder {
+type SpellListLevel = SpellListEntry[];
+
+type SpellListLevels = { [key: number]: SpellListLevel };
+
+type SpellListConstructorArgs = RawSpellListAsset & {
+    resolver: ForcedKeyResolver<Spell>;
+};
+
+class SpellList {
     #key: string;
+    #core: boolean;
     #spells: SpellListLevels;
 
-    constructor({ key, spells }: SpellListBuilder) {
+    constructor({
+        key,
+        spells,
+        core = false,
+        resolver,
+    }: SpellListConstructorArgs) {
         this.#key = key;
-        this.#spells = Object.fromEntries(
-            Object.entries(spells).map(([level, entries]) => [
-                level,
-                buildSpellListLevel(entries),
-            ]),
-        );
+        this.#core = core;
+        this.#spells = {};
+        for (const [level, entries] of Object.entries(spells)) {
+            const l = Number(level);
+            if (isNaN(l)) {
+                throw new Error(`Invalid spell list level: ${level}`);
+            }
+            this.#spells[l] = entries.map(entry => ({
+                spell: resolver(entry.spell),
+                rank: entry.rank,
+            }));
+        }
     }
 
     get key(): string {
         return this.#key;
     }
 
+    get core(): boolean {
+        return this.#core;
+    }
+
     get spells(): SpellListLevels {
         const res: SpellListLevels = {};
         for (const [level, entries] of Object.entries(this.#spells)) {
             const l = Number(level);
-            if (isNaN(l)) {
-                throw new Error(`Invalid spell list level: ${level}`);
-            }
             res[l] = [...entries];
         }
         return res;
     }
-
-    static build(raw: any): SpellList {
-        return new SpellList(raw);
-    }
-
-    // static #loaded: SpellLists | null = null;
-
-    static load(/* reThrowErrors = false */): SpellLists {
-        throw new Error('Not implemented');
-        /* return (this.#loaded ||= forceDataLoadKeyS<SpellList>(
-            window.Main.asset('SpellLists'),
-            this.build,
-            reThrowErrors,
-        )); */
-    }
 }
 
-export type { SpellLists };
 export { SpellList };

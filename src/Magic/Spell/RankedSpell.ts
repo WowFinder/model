@@ -1,19 +1,26 @@
-// import { TFunction } from 'i18next';
-import { assertDefined, Optional, toRoman } from '@wowfinder/ts-utils';
+import {
+    StringFormatter,
+    assertDefined,
+    Optional,
+    toRoman,
+} from '@wowfinder/ts-utils';
 import { School, SubSchool } from '@wowfinder/ts-enums';
 import { fullParseSchool } from '../School';
-import { SpellBase, SpellBaseBuilder } from './base';
+import { SpellBase } from './base';
 import { ActionTime } from '../../Action/ActionTime';
 import { SpellDuration } from './Duration';
 import { SpellRange } from './Range';
-import { SpellBuilder } from './Spell';
+import { RawSpellAsset, RawSpellBase } from '@wowfinder/assets';
 
 type RankedSpellBuilder = Omit<
-    Optional<Required<SpellBaseBuilder & SpellBuilder>, 'area'>,
+    Optional<
+        Required<RawSpellBase & RawSpellAsset>,
+        'area' | 'target' | 'trigger' | 'save'
+    >,
     'ranks'
 > & { rank: number };
 
-class RankedSpell extends SpellBase implements RankedSpellBuilder {
+class RankedSpell extends SpellBase {
     #key: string;
     #rank: number;
     #subSchool?: SubSchool;
@@ -64,13 +71,14 @@ class RankedSpell extends SpellBase implements RankedSpellBuilder {
         return this.#subSchool ?? this.#school;
     }
 
-    getFullName(t: any /* TFunction<'translation'> */): string {
+    getFullName(t: StringFormatter): string {
         return `${t(this.key)} - ${toRoman(this.#rank)}`;
     }
 
     getDescription(t: any /* TFunction<'translation'> */): string {
-        const translated = t(`spells.${this.key}.description`);
-        return `${translated}\n\n${t(`spells.${this.key}.${this.#rank}`)}`;
+        const descriptionMain = t(`spells.${this.key}.description`);
+        const descriptionRank = t(`spells.${this.key}.${this.#rank}`);
+        return `${descriptionMain}\n\n${descriptionRank}`;
     }
 }
 

@@ -1,6 +1,5 @@
-// import { TFunction } from 'i18next';
+import { Debugger, Stringifier } from '@wowfinder/ts-utils';
 import { Length } from '../../Scalar';
-// import { unreachable } from 'ts-utils/debug';
 
 type SpellSelf = {
     spellAreaType: 'self';
@@ -41,7 +40,7 @@ type SpellArea =
 
 function stringify(
     value: SpellArea,
-    t: any /* TFunction<'translation'> */,
+    t: Parameters<Stringifier<SpellArea>>[1], // TODO: replace with Stringifier (from upcoming ts-utils version)
 ): string {
     switch (value.spellAreaType) {
         case 'self':
@@ -61,8 +60,7 @@ function stringify(
             });
         }
         default: {
-            throw new Error('Unreachable code');
-            // return unreachable(value);
+            return Debugger.unreachable(value);
         }
     }
 }
