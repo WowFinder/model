@@ -1252,12 +1252,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wowfinder/assets@npm:^0.0.2":
-  version: 0.0.2
-  resolution: "@wowfinder/assets@npm:0.0.2"
+"@wowfinder/assets@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@wowfinder/assets@npm:0.0.3"
   dependencies:
     ajv: "npm:^8.12.0"
-  checksum: 10c0/3f5fec594b2d899a7b774c203667c45ecbb2176c52e4990a4236a934235c2f5d5d3165326d254f99034f70e2762a40de24decb4aa30cb51ace5952fecaaa775c
+  checksum: 10c0/fafe68df3dab4f27c717f55f21eb51a23cc5b6353af8e1c26168f07c22d2e3c86b9c8c1ea89e7d8d2f8e849799551df58b66bb443505a503a4a165f83c1d8c90
   languageName: node
   linkType: hard
 
@@ -4497,7 +4497,7 @@ __metadata:
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.1.1"
     "@typescript-eslint/parser": "npm:^7.1.1"
-    "@wowfinder/assets": "npm:^0.0.2"
+    "@wowfinder/assets": "npm:^0.0.3"
     "@wowfinder/ts-enums": "npm:^0.0.2"
     "@wowfinder/ts-utils": "npm:^0.0.5"
     eslint: "npm:^8.57.0"
