@@ -1,68 +1,43 @@
-import { parseIfNeeded } from '@wowfinder/ts-utils';
+import { PossiblyString, parseIfNeeded } from '@wowfinder/ts-utils';
 import { SpellDescriptor, SpellFlag } from '@wowfinder/ts-enums';
+import { RawSpellBase } from '@wowfinder/assets';
 import { parseArea, SpellArea } from './Area';
 import { ActionTime } from '../../Action/ActionTime';
-import { parseSpellComponent, SpellComponent } from './Components';
-import { parseValidSpellDescriptors } from './Descriptor';
+import { SpellComponent } from './Components';
 import { SpellDuration, tryParseSpellDuration } from './Duration';
-import { parseValidFlags } from './Flags';
 import { SpellRange } from './Range';
 
 interface SpellBaseBuilder {
-    descriptors?: (SpellDescriptor | string)[];
-    castingTime?: ActionTime | string;
-    components?: (SpellComponent | string)[];
-    range?: SpellRange | string;
-    area?: SpellArea | string;
+    descriptors?: PossiblyString<SpellDescriptor>[];
+    castingTime?: PossiblyString<ActionTime>;
+    components?: PossiblyString<SpellComponent>[];
+    range?: PossiblyString<SpellRange>;
+    area?: PossiblyString<SpellArea>;
     // effect: ???;
     // targets: SpellTarget[];
-    duration?: SpellDuration | string;
+    duration?: PossiblyString<SpellDuration>;
     // savingThrow?: Save || false;
-    flags?: (SpellFlag | string)[];
+    flags?: PossiblyString<SpellFlag>[];
 }
 
 abstract class SpellBase implements SpellBaseBuilder {
-    #descriptors: Set<SpellDescriptor>;
     #castingTime?: ActionTime;
-    #components: SpellComponent[];
     #range?: SpellRange;
     #area?: SpellArea;
     // #effect, #targets
     #duration?: SpellDuration;
     // #savingThrow
-    #flags: Set<SpellFlag>;
-    constructor({
-        descriptors = [],
-        castingTime,
-        components = [],
-        range,
-        area,
-        duration,
-        flags = [],
-    }: SpellBaseBuilder) {
-        this.#descriptors = new Set(parseValidSpellDescriptors(descriptors));
+    constructor({ castingTime, range, area, duration }: RawSpellBase) {
         this.#castingTime = parseIfNeeded(castingTime, ActionTime.tryParse);
-        this.#components = components.map(c =>
-            parseIfNeeded(c, parseSpellComponent),
-        );
         this.#range = parseIfNeeded(range, SpellRange.tryParse);
         this.#area = parseIfNeeded(area, parseArea);
         // #effect, #targets
         this.#duration = parseIfNeeded(duration, tryParseSpellDuration);
         // #duration, #savingThrow
-        this.#flags = new Set(parseValidFlags(flags));
-    }
-
-    get descriptors(): SpellDescriptor[] {
-        return [...this.#descriptors];
     }
 
     get castingTime(): ActionTime | undefined {
         return this.#castingTime;
-    }
-
-    get components(): SpellComponent[] {
-        return [...this.#components];
     }
 
     get range(): SpellRange | undefined {
@@ -77,10 +52,6 @@ abstract class SpellBase implements SpellBaseBuilder {
 
     get duration(): SpellDuration | undefined {
         return this.#duration;
-    }
-
-    get flags(): SpellFlag[] {
-        return [...this.#flags];
     }
 }
 

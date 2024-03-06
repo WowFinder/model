@@ -1,3 +1,4 @@
+import { RawSpellRank } from '@wowfinder/assets';
 import { SpellBase, SpellBaseBuilder } from './base';
 
 interface SpellRankBuilder extends SpellBaseBuilder {
@@ -7,7 +8,7 @@ interface SpellRankBuilder extends SpellBaseBuilder {
 class SpellRank extends SpellBase implements SpellRankBuilder {
     #rank: number;
 
-    constructor({ rank, ...rest }: SpellRankBuilder) {
+    constructor({ rank, ...rest }: RawSpellRank) {
         super(rest);
         this.#rank = rank ?? 0;
     }
