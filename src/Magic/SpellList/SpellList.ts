@@ -53,9 +53,6 @@ class SpellList {
         const res: SpellListLevels = {};
         for (const [level, entries] of Object.entries(this.#spells)) {
             const l = Number(level);
-            if (isNaN(l)) {
-                throw new Error(`Invalid spell list level: ${level}`);
-            }
             res[l] = [...entries];
         }
         return res;
