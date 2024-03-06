@@ -1268,10 +1268,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wowfinder/ts-utils@npm:^0.0.5":
-  version: 0.0.5
-  resolution: "@wowfinder/ts-utils@npm:0.0.5"
-  checksum: 10c0/dd267b0da9af62dca643ad5e6411c0408b8314e5c56c05e28f4700c9e7980e02a627a8829140c1cfe800674b0ebb650a491b03267d1f9fff9871d07e6628daa2
+"@wowfinder/ts-utils@npm:^0.0.7":
+  version: 0.0.7
+  resolution: "@wowfinder/ts-utils@npm:0.0.7"
+  checksum: 10c0/31a4c964bd456514063fa3062532048071a8b211ecb1f8bed60afe0b346131806e0291ee0616997829b62cc62d7221b022bf0c10eca9df178317e6de76159925
   languageName: node
   linkType: hard
 
@@ -4499,7 +4499,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^7.1.1"
     "@wowfinder/assets": "npm:^0.0.2"
     "@wowfinder/ts-enums": "npm:^0.0.2"
-    "@wowfinder/ts-utils": "npm:^0.0.5"
+    "@wowfinder/ts-utils": "npm:^0.0.7"
     eslint: "npm:^8.57.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-config-standard: "npm:^17.1.0"
