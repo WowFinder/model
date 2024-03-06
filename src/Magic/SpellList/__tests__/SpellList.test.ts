@@ -23,19 +23,17 @@ describe('SpellList', () => {
         expect(list.core).toBe(false);
     });
     it('should throw an error if the level is not a number', () => {
-        try {
-            expect(() => {
-                new SpellList({
-                    key: 'test',
-                    spells: {
-                        3: [{ spell: exampleSpell.key, rank: 1 }],
-                        a: [{ spell: exampleSpell.key, rank: 3 }],
-                    },
-                    resolver: mockedSpellResolver,
-                });
-            }).toThrow('Invalid spell list level: a');
-        } finally {
-            expect.hasAssertions();
-        }
+        let instance: SpellList | undefined;
+        expect(() => {
+            instance = new SpellList({
+                key: 'test',
+                spells: {
+                    3: [{ spell: exampleSpell.key, rank: 1 }],
+                    a: [{ spell: exampleSpell.key, rank: 3 }],
+                },
+                resolver: mockedSpellResolver,
+            });
+        }).toThrow('Invalid spell list level: a');
+        expect(instance).toBeUndefined();
     });
 });
