@@ -5,11 +5,18 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
+    - package-ecosystem: 'npm' # See documentation for possible values
+      directory: '/' # Location of package manifests
+      schedule:
+          interval: 'daily'
+      ignore:
+          - dependency-name: '@wowfinder/assets'
+            versions: ['0.x']
+          - dependency-name: '@wowfinder/ts-enums'
+            versions: ['0.x']
+          - dependency-name: '@wowfinder/ts-utils'
+            versions: ['0.x']
+    - package-ecosystem: 'github-actions'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
