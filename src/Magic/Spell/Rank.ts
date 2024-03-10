@@ -1,4 +1,4 @@
-import { RawSpellRank } from '@wowfinder/assets';
+import { RawSpellRank } from '@wowfinder/asset-schemas';
 import { SpellBase, SpellBaseBuilder } from './base';
 
 interface SpellRankBuilder extends SpellBaseBuilder {

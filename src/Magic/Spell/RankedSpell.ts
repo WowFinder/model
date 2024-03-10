@@ -10,7 +10,7 @@ import { SpellBase } from './base';
 import { ActionTime } from '../../Action/ActionTime';
 import { SpellDuration } from './Duration';
 import { SpellRange } from './Range';
-import { RawSpellAsset, RawSpellBase } from '@wowfinder/assets';
+import { RawSpellAsset, RawSpellBase } from '@wowfinder/asset-schemas';
 
 type RankedSpellBuilder = Omit<
     Optional<
@@ -75,7 +75,7 @@ class RankedSpell extends SpellBase {
         return `${t(this.key)} - ${toRoman(this.#rank)}`;
     }
 
-    getDescription(t: any /* TFunction<'translation'> */): string {
+    getDescription(t: StringFormatter): string {
         const descriptionMain = t(`spells.${this.key}.description`);
         const descriptionRank = t(`spells.${this.key}.${this.#rank}`);
         return `${descriptionMain}\n\n${descriptionRank}`;

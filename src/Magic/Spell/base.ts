@@ -1,6 +1,6 @@
 import { PossiblyString, parseIfNeeded } from '@wowfinder/ts-utils';
 import { SpellDescriptor, SpellFlag } from '@wowfinder/ts-enums';
-import { RawSpellBase } from '@wowfinder/assets';
+import { RawSpellBase } from '@wowfinder/asset-schemas';
 import { parseArea, SpellArea } from './Area';
 import { ActionTime } from '../../Action/ActionTime';
 import { SpellComponent } from './Components';

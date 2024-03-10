@@ -1,4 +1,4 @@
-import { RawSpellAsset } from '@wowfinder/assets';
+import { RawSpellAsset } from '@wowfinder/asset-schemas';
 
 export default {
     key: 'yellowSnowBall',

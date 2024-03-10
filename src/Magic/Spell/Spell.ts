@@ -8,7 +8,7 @@ import { fullParseSchool } from '../School';
 import { SpellBase } from './base';
 import { SpellRank } from './Rank';
 import { RankedSpell, RankedSpellBuilder } from './RankedSpell';
-import { RawSpellAsset } from '@wowfinder/assets';
+import { RawSpellAsset } from '@wowfinder/asset-schemas';
 import { parseIfNeeded } from '@wowfinder/ts-utils';
 import { SpellComponent, parseSpellComponent } from './Components';
 import { parseValidSpellDescriptors } from './Descriptor';
