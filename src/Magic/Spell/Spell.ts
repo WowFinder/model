@@ -40,7 +40,7 @@ class Spell extends SpellBase {
     constructor({
         key,
         ranks,
-        sch,
+        school,
         descriptors = [],
         components = [],
         flags = [],
@@ -69,9 +69,9 @@ class Spell extends SpellBase {
             rankAssert(!!rank.range || !!this.range, 'Missing range');
             rankAssert(!!rank.duration || !!this.duration, 'Missing duration');
         }
-        const schoolParsed = fullParseSchool(sch ?? '');
+        const schoolParsed = fullParseSchool(school ?? '');
         if (!schoolParsed) {
-            throw new Error(`Invalid school: ${sch}`);
+            throw new Error(`Invalid school: ${school}`);
         }
         this.#school = schoolParsed.school;
         this.#subSchool = schoolParsed.subSchool;
@@ -101,7 +101,7 @@ class Spell extends SpellBase {
         return this.#subSchool;
     }
 
-    get sch(): SubSchool | School {
+    get schoolDescription(): SubSchool | School {
         return this.#subSchool ?? this.#school;
     }
 
@@ -139,7 +139,7 @@ class Spell extends SpellBase {
             duration: getProp('duration'),
             range: getProp('range'),
             flags: [...this.#flags],
-            sch: this.sch,
+            school: this.school,
         } satisfies RankedSpellBuilder;
         return new RankedSpell(builder);
     }

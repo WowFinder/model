@@ -2,12 +2,12 @@ import { TimeUnit } from '@wowfinder/ts-enums';
 import { converter, makeConverter, Scalar } from './base';
 
 const convertTime: converter<TimeUnit> = makeConverter({
-    [TimeUnit.s]: 1, // Reference unit
-    [TimeUnit.t]: 6, // 1t = 6s; 10t = 1m
-    [TimeUnit.m]: 60, // 1m = 60s;
-    [TimeUnit.h]: 60 * 60, // 1h = 60m
-    [TimeUnit.d]: 60 * 60 * 24, // 1d = 24h
-    [TimeUnit.y]: 60 * 60 * 24 * 365, // 1y = 365d
+    [TimeUnit.second]: 1, // Reference unit
+    [TimeUnit.turn]: 6, // 1t = 6s; 10t = 1m
+    [TimeUnit.minute]: 60, // 1m = 60s;
+    [TimeUnit.hour]: 60 * 60, // 1h = 60m
+    [TimeUnit.day]: 60 * 60 * 24, // 1d = 24h
+    [TimeUnit.year]: 60 * 60 * 24 * 365, // 1y = 365d
 });
 
 class Time extends Scalar<TimeUnit> {
@@ -16,7 +16,7 @@ class Time extends Scalar<TimeUnit> {
     }
 
     get fullYears(): number {
-        return Math.floor(convertTime(this, TimeUnit.y).value);
+        return Math.floor(convertTime(this, TimeUnit.year).value);
     }
 
     static tryParseTime(input: string): Time | undefined {

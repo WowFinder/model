@@ -83,7 +83,9 @@ class Inventory {
 
     get load(): number {
         const items = [...this.#gear, ...this.#carried];
-        return sum(...items.map(g => convertMass(g.weight, MassUnit.lb).value));
+        return sum(
+            ...items.map(g => convertMass(g.weight, MassUnit.pound).value),
+        );
     }
 
     export(): InventoryExport {

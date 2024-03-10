@@ -31,8 +31,8 @@ class FullArmorValues extends ArmorValues {
         const mods = stats.totalMods;
         return new FullArmorValues({
             ...base,
-            str: mods.STR,
-            dex: mods.DEX,
+            str: mods.strength,
+            dex: mods.dexterity,
             bab,
             size: sizeCombatMod(size),
         });

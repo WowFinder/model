@@ -26,13 +26,13 @@ class RankedSpell extends SpellBase {
     #subSchool?: SubSchool;
     #school: School;
 
-    constructor({ key, rank, sch, ...rest }: RankedSpellBuilder) {
+    constructor({ key, rank, school, ...rest }: RankedSpellBuilder) {
         super(rest);
         this.#key = key;
         this.#rank = rank;
-        const schoolParsed = fullParseSchool(sch || '');
+        const schoolParsed = fullParseSchool(school || '');
         if (!schoolParsed) {
-            throw new Error(`Invalid school: ${sch}`);
+            throw new Error(`Invalid school: ${school}`);
         }
         this.#school = schoolParsed.school;
         this.#subSchool = schoolParsed.subSchool;
@@ -67,7 +67,7 @@ class RankedSpell extends SpellBase {
         return res;
     }
 
-    get sch(): SubSchool | School | string {
+    get school(): SubSchool | School | string {
         return this.#subSchool ?? this.#school;
     }
 

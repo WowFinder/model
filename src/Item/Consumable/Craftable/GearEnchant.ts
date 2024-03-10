@@ -21,7 +21,7 @@ class GearEnchant extends CraftableConsumable {
     }
 
     get useTime(): Time {
-        return new Time({ value: 1, unit: TimeUnit.m });
+        return new Time({ value: 1, unit: TimeUnit.minute });
     }
 
     get bonus(): Bonus {

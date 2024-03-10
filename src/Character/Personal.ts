@@ -36,14 +36,14 @@ interface CharPersonalDetailsBuilder extends DetailsCommon {
 
 const personalDefaults: CharPersonalDetails = {
     fullName: '',
-    align: Alignment.NN,
+    align: Alignment.neutralNeutral,
     height: new Length({
         value: 63,
         unit: LengthUnit.inch,
     }), // 5'3" ~ 1m60cm
     weight: new Mass({
         value: 143,
-        unit: MassUnit.lb,
+        unit: MassUnit.pound,
     }), // ~ 65kg
     faith: '',
     origin: '',
@@ -53,7 +53,7 @@ const personalDefaults: CharPersonalDetails = {
     gender: '',
     age: new Time({
         value: 20,
-        unit: TimeUnit.y,
+        unit: TimeUnit.year,
     }),
 };
 
@@ -61,7 +61,7 @@ function jsonImport(raw: any): CharPersonalDetails {
     const res = { ...personalDefaults, ...raw };
     res.align = Object.values(Alignment).includes(res.align)
         ? res.align
-        : Alignment.NN;
+        : Alignment.neutralNeutral;
     res.height =
         res.height instanceof Length
             ? res.height
@@ -69,11 +69,11 @@ function jsonImport(raw: any): CharPersonalDetails {
     res.weight =
         res.weight instanceof Mass
             ? res.weight
-            : new Mass({ value: res.weight, unit: MassUnit.lb });
+            : new Mass({ value: res.weight, unit: MassUnit.pound });
     res.age =
         res.age instanceof Time
             ? res.age
-            : new Time({ value: res.age, unit: TimeUnit.y });
+            : new Time({ value: res.age, unit: TimeUnit.year });
     return res;
 }
 
@@ -82,14 +82,14 @@ function jsonExport(source: CharPersonalDetails): CharPersonalDetailsBuilder {
         fullName: source.fullName,
         align: source.align.toString(),
         height: convertLength(source.height, LengthUnit.inch).value,
-        weight: convertMass(source.weight, MassUnit.lb).value,
+        weight: convertMass(source.weight, MassUnit.pound).value,
         faith: source.faith,
         origin: source.origin,
         hair: source.hair,
         eyes: source.eyes,
         skin: source.skin,
         gender: source.gender,
-        age: convertTime(source.age, TimeUnit.y).value,
+        age: convertTime(source.age, TimeUnit.year).value,
     };
 }
 

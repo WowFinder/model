@@ -1,10 +1,10 @@
-import { Skill, StatKey } from '@wowfinder/ts-enums';
+import { Skill, Stat } from '@wowfinder/ts-enums';
 import { StatSet } from '../Stats';
 
 interface SkillSpecBuilder {
     key: Skill;
-    primary: StatKey;
-    secondary: StatKey | null;
+    primary: Stat;
+    secondary: Stat | null;
     trainedOnly: boolean;
     sizeModFactor: number;
 }

@@ -1,12 +1,12 @@
-import { StatKey } from '@wowfinder/ts-enums';
+import { Stat } from '@wowfinder/ts-enums';
 
-const StatKeys: StatKey[] = [
-    StatKey.STR,
-    StatKey.DEX,
-    StatKey.CON,
-    StatKey.INT,
-    StatKey.WIS,
-    StatKey.CHA,
+const StatKeys: Stat[] = [
+    Stat.strength,
+    Stat.dexterity,
+    Stat.constitution,
+    Stat.intelligence,
+    Stat.wisdom,
+    Stat.charisma,
 ];
 
 export { StatKeys };

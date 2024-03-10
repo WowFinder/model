@@ -2,8 +2,8 @@ import { AssetType } from '@wowfinder/ts-enums';
 
 type AssetJsonBundle = {
     assets: {
-        [AssetType.Adventures]: { [k: string]: string };
-        [AssetType.Characters]: { [k: string]: string };
+        [AssetType.adventures]: { [k: string]: string };
+        [AssetType.characters]: { [k: string]: string };
     };
 };
 

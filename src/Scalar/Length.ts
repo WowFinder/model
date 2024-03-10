@@ -9,7 +9,7 @@ const convertLength: converter<LengthUnit> = makeConverter({
     [LengthUnit.square]: (metersInYard / 3) * 5, // 1 square = 5 foot
     [LengthUnit.meter]: 1, // Reference unit
     [LengthUnit.inch]: metersInYard / (3 * 12), // 12 inch = 1 foot
-    [LengthUnit.cm]: 1 / 100, // 100 cm = 1 m
+    [LengthUnit.centiMeter]: 1 / 100, // 100 cm = 1 m
 });
 
 class Length extends Scalar<LengthUnit> {

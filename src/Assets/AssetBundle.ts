@@ -4,8 +4,8 @@ import { CharacterExport } from '../Character';
 
 type AssetBundle = {
     assets: {
-        [AssetType.Adventures]: { [k: string]: AdventureExport };
-        [AssetType.Characters]: { [k: string]: CharacterExport };
+        [AssetType.adventures]: { [k: string]: AdventureExport };
+        [AssetType.characters]: { [k: string]: CharacterExport };
     };
 };
 

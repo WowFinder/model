@@ -1,4 +1,4 @@
-import { StatKey } from '@wowfinder/ts-enums';
+import { Stat } from '@wowfinder/ts-enums';
 import { DamageComponentValue, DamageComponentSpec } from '../DamageComponent';
 import {
     damageComponentSpecBuilder,
@@ -42,7 +42,7 @@ describe('DamageComponentSpec', () => {
         expect(damageComponent.diceCount).toEqual(2);
         expect(damageComponent.diceSides).toEqual(6);
         expect(damageComponent.fixedMod).toEqual(3);
-        expect(damageComponent.mod).toEqual(StatKey.STR);
+        expect(damageComponent.mod).toEqual(Stat.strength);
         expect(damageComponent.dice.qtty).toEqual(2);
         expect(damageComponent.dice.sides).toEqual(6);
         expect(damageComponent.dice.fixedMod).toEqual(3);

@@ -183,4 +183,28 @@ describe('Dice', () => {
             expect(dice.fixedMod).toBe(6);
         });
     });
+    describe('validate', () => {
+        it('should throw an error if the sides is not a positive integer', () => {
+            const badSides = new Dice({ sides: 0 });
+            expect(() => {
+                badSides.validate();
+            }).toThrow('Dice sides must be greater than 0');
+        });
+        it('should throw an error if the quantity is not a positive integer', () => {
+            const badQtty = new Dice({ sides: 6, qtty: 0 });
+            expect(() => {
+                badQtty.validate();
+            }).toThrow('Dice quantity must be greater than 0');
+        });
+        it('should throw an error if the modifier is not a number', () => {
+            const badMod = new Dice({
+                sides: 6,
+                qtty: 1,
+                fixedMod: Number.NaN,
+            });
+            expect(() => {
+                badMod.validate();
+            }).toThrow('Dice modifier must be a number');
+        });
+    });
 });

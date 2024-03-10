@@ -1,7 +1,7 @@
 import { DamageSpec } from '../DamageSpec';
 import { mockDamageTypes, minRoll, maxRoll, rollArgsSimple } from './utils';
 import type { DamageComponentSpecBuilder } from '../DamageComponent';
-import { StatKey } from '@wowfinder/ts-enums';
+import { Stat } from '@wowfinder/ts-enums';
 
 describe('DamageSpec', () => {
     const testDamageComponentSpecBuilder: DamageComponentSpecBuilder = {
@@ -9,7 +9,7 @@ describe('DamageSpec', () => {
         diceCount: 2,
         diceSides: 6,
         fixedMod: 3,
-        modStat: StatKey.STR,
+        modStat: Stat.strength,
     };
     it('should initialize with the provided components', () => {
         const damageSpec = new DamageSpec({
@@ -21,7 +21,7 @@ describe('DamageSpec', () => {
         expect(components[0].diceCount).toEqual(2);
         expect(components[0].diceSides).toEqual(6);
         expect(components[0].fixedMod).toEqual(3);
-        expect(components[0].mod).toEqual(StatKey.STR);
+        expect(components[0].mod).toEqual(Stat.strength);
     });
     it('should always roll within the expected range', () => {
         const numberOfTestRolls = 100;

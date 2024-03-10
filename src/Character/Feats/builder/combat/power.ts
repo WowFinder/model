@@ -1,4 +1,4 @@
-import { StatKey } from '@wowfinder/ts-enums';
+import { Stat } from '@wowfinder/ts-enums';
 import { CombatPowerFeat } from '../../core/combat/power';
 import { Feat } from '../../Feat';
 import { FeatSpec } from '../../FeatSpec';
@@ -7,7 +7,7 @@ import { build, req } from '../helpers';
 const combatPowerFeats: { [key in CombatPowerFeat]: FeatSpec } = {
     powerAttack: build.combat(
         Feat.powerAttack,
-        req.stat(StatKey.STR, 13),
+        req.stat(Stat.strength, 13),
         req.level.bab(1),
     ),
     cleave: build.combat(Feat.cleave, ...req.feats('powerAttack')),

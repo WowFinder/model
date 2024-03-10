@@ -16,17 +16,17 @@ class Stats extends StatsBase {
     get totalMods(): StatSet {
         const totals = this.totals;
         return {
-            STR: statMod(totals.STR),
-            DEX: statMod(totals.DEX),
-            CON: statMod(totals.CON),
-            INT: statMod(totals.INT),
-            WIS: statMod(totals.WIS),
-            CHA: statMod(totals.CHA),
+            strength: statMod(totals.strength),
+            dexterity: statMod(totals.dexterity),
+            constitution: statMod(totals.constitution),
+            intelligence: statMod(totals.intelligence),
+            wisdom: statMod(totals.wisdom),
+            charisma: statMod(totals.charisma),
         };
     }
 
     get carry(): Mass {
-        return carry(this.totals.STR);
+        return carry(this.totals.strength);
     }
 
     updated({

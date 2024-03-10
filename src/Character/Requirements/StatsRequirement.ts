@@ -9,28 +9,28 @@ class MinStatsRequirement implements StatSet, Requirement<StatSet> {
         this.#min = Object.assign({}, zeroDefault, min);
     }
 
-    get STR(): number {
-        return this.#min.STR;
+    get strength(): number {
+        return this.#min.strength;
     }
 
-    get DEX(): number {
-        return this.#min.DEX;
+    get dexterity(): number {
+        return this.#min.dexterity;
     }
 
-    get CON(): number {
-        return this.#min.CON;
+    get constitution(): number {
+        return this.#min.constitution;
     }
 
-    get INT(): number {
-        return this.#min.INT;
+    get intelligence(): number {
+        return this.#min.intelligence;
     }
 
-    get WIS(): number {
-        return this.#min.WIS;
+    get wisdom(): number {
+        return this.#min.wisdom;
     }
 
-    get CHA(): number {
-        return this.#min.CHA;
+    get charisma(): number {
+        return this.#min.charisma;
     }
 
     test(value: PartialStatSet): boolean {
@@ -45,28 +45,28 @@ class MaxStatsRequirement implements StatSet, Requirement<StatSet> {
         this.#max = Object.assign({}, zeroDefault, max);
     }
 
-    get STR(): number {
-        return this.#max.STR;
+    get strength(): number {
+        return this.#max.strength;
     }
 
-    get DEX(): number {
-        return this.#max.DEX;
+    get dexterity(): number {
+        return this.#max.dexterity;
     }
 
-    get CON(): number {
-        return this.#max.CON;
+    get constitution(): number {
+        return this.#max.constitution;
     }
 
-    get INT(): number {
-        return this.#max.INT;
+    get intelligence(): number {
+        return this.#max.intelligence;
     }
 
-    get WIS(): number {
-        return this.#max.WIS;
+    get wisdom(): number {
+        return this.#max.wisdom;
     }
 
-    get CHA(): number {
-        return this.#max.CHA;
+    get charisma(): number {
+        return this.#max.charisma;
     }
 
     test(value: PartialStatSet): boolean {

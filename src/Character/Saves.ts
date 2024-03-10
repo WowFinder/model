@@ -69,59 +69,57 @@ class SaveBreakdown {
     }
 }
 
-interface SimpleSavesBuilder {
-    fort?: number;
-    refl?: number;
-    will?: number;
-}
+type SimpleSavesBuilder = Partial<Record<Save, number>>;
 
 class SimpleSaves {
-    protected _fort: number;
-    protected _refl: number;
-    protected _will: number;
+    #fortitude: number;
+    #reflexes: number;
+    #will: number;
 
-    constructor({ fort = 0, refl = 0, will = 0 }: SimpleSavesBuilder) {
-        this._fort = fort;
-        this._refl = refl;
-        this._will = will;
+    constructor({ fortitude = 0, reflexes = 0, will = 0 }: SimpleSavesBuilder) {
+        this.#fortitude = fortitude;
+        this.#reflexes = reflexes;
+        this.#will = will;
     }
 
-    get fort(): number {
-        return this._fort;
+    get fortitude(): number {
+        return this.#fortitude;
     }
 
-    get refl(): number {
-        return this._refl;
+    get reflexes(): number {
+        return this.#reflexes;
     }
 
     get will(): number {
-        return this._will;
+        return this.#will;
     }
 
     get indexed(): Record<Save, number> {
         return {
-            fort: this._fort,
-            refl: this._refl,
-            will: this._will,
+            fortitude: this.#fortitude,
+            reflexes: this.#reflexes,
+            will: this.#will,
         };
     }
 
     get isZero(): boolean {
-        return this._fort === 0 && this._refl === 0 && this._will === 0;
+        return (
+            this.#fortitude === 0 && this.#reflexes === 0 && this.#will === 0
+        );
     }
 
     copy(): SimpleSaves {
         return new SimpleSaves({
-            fort: this._fort,
-            refl: this._refl,
-            will: this._will,
+            fortitude: this.#fortitude,
+            reflexes: this.#reflexes,
+            will: this.#will,
         });
     }
 
     static get zero(): SimpleSaves {
         return new SimpleSaves({
-            fort: 0,
-            refl: 0,
+            fortitude: 0,
+            reflexes: 0,
             will: 0,
         });
     }
@@ -137,12 +135,12 @@ interface SavesBuilder {
 }
 
 class Saves {
-    private _stats: Stats;
-    private _base: SimpleSaves;
-    private _ehn: SimpleSaves;
-    private _gear: SimpleSaves;
-    private _misc: SimpleSaves;
-    private _temp: SimpleSaves;
+    #stats: Stats;
+    #base: SimpleSaves;
+    #enhancement: SimpleSaves;
+    #gear: SimpleSaves;
+    #misc: SimpleSaves;
+    #temporal: SimpleSaves;
     constructor({
         stats,
         base = SimpleSaves.zero,
@@ -151,64 +149,64 @@ class Saves {
         misc = SimpleSaves.zero,
         temp = SimpleSaves.zero,
     }: SavesBuilder) {
-        this._stats = new Stats(stats);
-        this._base = new SimpleSaves(base);
-        this._ehn = new SimpleSaves(enhance);
-        this._gear = new SimpleSaves(gear);
-        this._misc = new SimpleSaves(misc);
-        this._temp = new SimpleSaves(temp);
+        this.#stats = new Stats(stats);
+        this.#base = new SimpleSaves(base);
+        this.#enhancement = new SimpleSaves(enhance);
+        this.#gear = new SimpleSaves(gear);
+        this.#misc = new SimpleSaves(misc);
+        this.#temporal = new SimpleSaves(temp);
     }
 
     get base(): SimpleSaves {
-        return this._base.copy();
+        return this.#base.copy();
     }
 
     get enhance(): SimpleSaves {
-        return this._ehn.copy();
+        return this.#enhancement.copy();
     }
 
     get gear(): SimpleSaves {
-        return this._gear.copy();
+        return this.#gear.copy();
     }
 
     get misc(): SimpleSaves {
-        return this._misc.copy();
+        return this.#misc.copy();
     }
 
     get temp(): SimpleSaves {
-        return this._temp.copy();
+        return this.#temporal.copy();
     }
 
     get fort(): SaveBreakdown {
         return new SaveBreakdown({
-            base: this._base.fort,
-            stat: this._stats.totalMods.CON,
-            enhance: this._ehn.fort,
-            gear: this._gear.fort,
-            misc: this._misc.fort,
-            temp: this._temp.fort,
+            base: this.#base.fortitude,
+            stat: this.#stats.totalMods.constitution,
+            enhance: this.#enhancement.fortitude,
+            gear: this.#gear.fortitude,
+            misc: this.#misc.fortitude,
+            temp: this.#temporal.fortitude,
         });
     }
 
     get refl(): SaveBreakdown {
         return new SaveBreakdown({
-            base: this._base.refl,
-            stat: this._stats.totalMods.DEX,
-            enhance: this._ehn.refl,
-            gear: this._gear.refl,
-            misc: this._misc.refl,
-            temp: this._temp.refl,
+            base: this.#base.reflexes,
+            stat: this.#stats.totalMods.dexterity,
+            enhance: this.#enhancement.reflexes,
+            gear: this.#gear.reflexes,
+            misc: this.#misc.reflexes,
+            temp: this.#temporal.reflexes,
         });
     }
 
     get will(): SaveBreakdown {
         return new SaveBreakdown({
-            base: this._base.will,
-            stat: this._stats.totalMods.WIS,
-            enhance: this._ehn.will,
-            gear: this._gear.will,
-            misc: this._misc.will,
-            temp: this._temp.will,
+            base: this.#base.will,
+            stat: this.#stats.totalMods.wisdom,
+            enhance: this.#enhancement.will,
+            gear: this.#gear.will,
+            misc: this.#misc.will,
+            temp: this.#temporal.will,
         });
     }
 }

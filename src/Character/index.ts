@@ -177,14 +177,14 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     get maxSkillRanks(): number {
         return (
             this.classBonuses.skillRanks +
-            statMod(this.stats.intrinsic.INT) * this.totalLevel
+            statMod(this.stats.intrinsic.intelligence) * this.totalLevel
         );
     }
 
     get maxHitPoints(): number {
         return (
             this.classBonuses.hp +
-            statMod(this.stats.totals.CON) * this.totalLevel
+            statMod(this.stats.totals.constitution) * this.totalLevel
         );
     }
 

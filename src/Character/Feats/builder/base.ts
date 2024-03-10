@@ -1,4 +1,4 @@
-import { StatKey } from '@wowfinder/ts-enums';
+import { Stat } from '@wowfinder/ts-enums';
 import { BaseFeat } from '../core/base';
 import { Feat } from '../Feat';
 import { FeatSpec } from '../FeatSpec';
@@ -9,11 +9,11 @@ const baseFeats: { [key in BaseFeat]: FeatSpec } = {
     diehard: build.basic(Feat.diehard, ...req.feats(Feat.endurance)),
     fleet: build.basic(Feat.fleet),
     leadership: build.basic(Feat.leadership, req.level.global(7)),
-    nimbleMoves: build.basic(Feat.nimbleMoves, req.stat(StatKey.DEX, 13)),
+    nimbleMoves: build.basic(Feat.nimbleMoves, req.stat(Stat.dexterity, 13)),
     acrobaticSteps: build.basic(
         Feat.acrobaticSteps,
         ...req.feats(Feat.nimbleMoves),
-        req.stat(StatKey.DEX, 15),
+        req.stat(Stat.dexterity, 15),
     ),
     run: build.basic(Feat.run),
     greatFortitude: build.save(Feat.greatFortitude),

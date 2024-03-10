@@ -1,4 +1,4 @@
-import { StatKey } from '@wowfinder/ts-enums';
+import { Stat } from '@wowfinder/ts-enums';
 import { Dice } from '../Dice';
 import { DamageModifier, computeModifier } from './DamageModifier';
 import { DamageRollArguments } from './DamageRollArguments';
@@ -34,7 +34,7 @@ interface DamageComponentSpecBuilder extends DamageComponentBaseBuilder {
     diceCount: number;
     diceSides: number;
     fixedMod?: number;
-    modStat?: StatKey;
+    modStat?: Stat;
 }
 
 class DamageComponentSpec

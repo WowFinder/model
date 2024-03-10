@@ -20,8 +20,8 @@ const upperLimbs = (pairs = 1, fingersPerHand = 5): Shape => [
     { slot: GearSlot.shoulders, qtty: pairs },
     { slot: GearSlot.hands, qtty: pairs },
     { slot: GearSlot.wrists, qtty: pairs },
-    { slot: GearSlot.mhand, qtty: pairs },
-    { slot: GearSlot.ohand, qtty: pairs },
+    { slot: GearSlot.mainHand, qtty: pairs },
+    { slot: GearSlot.offHand, qtty: pairs },
     { slot: GearSlot.ring, qtty: 2 * pairs * fingersPerHand },
 ];
 

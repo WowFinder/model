@@ -1,4 +1,4 @@
-import { StatKey } from '@wowfinder/ts-enums';
+import { Stat } from '@wowfinder/ts-enums';
 import { CombatDualWieldFeat } from '../../core/combat/dual';
 import { Feat } from '../../Feat';
 import { FeatSpec } from '../../FeatSpec';
@@ -7,7 +7,7 @@ import { build, req } from '../helpers';
 const combatDualWieldFeats: { [key in CombatDualWieldFeat]: FeatSpec } = {
     twoWeaponFighting: build.combat(
         Feat.twoWeaponFighting,
-        req.stat(StatKey.DEX, 15),
+        req.stat(Stat.dexterity, 15),
     ),
     doubleSlice: build.combat(
         Feat.doubleSlice,
@@ -17,7 +17,7 @@ const combatDualWieldFeats: { [key in CombatDualWieldFeat]: FeatSpec } = {
         Feat.improvedTwoWeaponFighting,
         ...req.feats('twoWeaponFighting'),
         req.level.bab(6),
-        req.stat(StatKey.DEX, 17),
+        req.stat(Stat.dexterity, 17),
     ),
     twoWeaponRend: build.combat(
         Feat.twoWeaponRend,
@@ -28,7 +28,7 @@ const combatDualWieldFeats: { [key in CombatDualWieldFeat]: FeatSpec } = {
         Feat.greaterTwoWeaponFighting,
         ...req.feats('improvedTwoWeaponFighting'),
         req.level.bab(11),
-        req.stat(StatKey.DEX, 19),
+        req.stat(Stat.dexterity, 19),
     ),
     twoWeaponDefense: build.combat(
         Feat.twoWeaponDefense,

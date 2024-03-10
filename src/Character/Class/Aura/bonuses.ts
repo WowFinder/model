@@ -9,7 +9,7 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             // Commanding Shout (fgt)
             type: BonusType.aura,
             stats: new StatsBonus({
-                CON: rank * 6,
+                constitution: rank * 6,
             }),
             resistances: new ResistBonus(fillResistBonus({}, rank * 2)),
         }),
@@ -18,7 +18,7 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             // Furious Howl (brb)
             type: BonusType.aura,
             stats: new StatsBonus({
-                STR: rank * 4,
+                strength: rank * 4,
             }),
             resistances: new ResistBonus(fillResistBonus({}, rank * 4)),
         }),
@@ -27,8 +27,8 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             // Arcane brillance (mag)
             type: BonusType.aura,
             stats: new StatsBonus({
-                INT: rank * 6,
-                CHA: rank * 6,
+                intelligence: rank * 6,
+                charisma: rank * 6,
             }),
         }),
     [Aura.wild]: (rank: number) =>
@@ -36,12 +36,12 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             // Gift of the wild (drd)
             type: BonusType.aura,
             stats: new StatsBonus({
-                STR: rank * 2,
-                DEX: rank * 2,
-                CON: rank * 2,
-                INT: rank * 2,
-                WIS: rank * 2,
-                CHA: rank * 2,
+                strength: rank * 2,
+                dexterity: rank * 2,
+                constitution: rank * 2,
+                intelligence: rank * 2,
+                wisdom: rank * 2,
+                charisma: rank * 2,
             }),
             resistances: new ResistBonus(fillResistBonus({}, rank * 1)),
         }),
@@ -50,8 +50,8 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             // Misterious Fortitude (ora)
             type: BonusType.aura,
             stats: new StatsBonus({
-                CON: rank * 6,
-                CHA: rank * 6,
+                constitution: rank * 6,
+                charisma: rank * 6,
             }),
         }),
     [Aura.fortitude]: (rank: number) =>
@@ -59,8 +59,8 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             // Power Word: Fortitude (clr)
             type: BonusType.aura,
             stats: new StatsBonus({
-                CON: rank * 6,
-                WIS: rank * 6,
+                constitution: rank * 6,
+                wisdom: rank * 6,
             }),
         }),
 };

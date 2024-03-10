@@ -1,11 +1,11 @@
-import { Skill, StatKey } from '@wowfinder/ts-enums';
+import { Skill, Stat } from '@wowfinder/ts-enums';
 import { SkillSpecBuilder, SkillTotalBuilder } from './builders';
 import { computeSkillTotal } from './helpers';
 
 class SkillSpec {
     #key: Skill;
-    #primary: StatKey;
-    #secondary: StatKey | null;
+    #primary: Stat;
+    #secondary: Stat | null;
     #trainedOnly: boolean;
     #sizeModFactor: number;
 
@@ -28,11 +28,11 @@ class SkillSpec {
         return this.#key;
     }
 
-    get primary(): StatKey {
+    get primary(): Stat {
         return this.#primary;
     }
 
-    get secondary(): StatKey | null {
+    get secondary(): Stat | null {
         return this.#secondary;
     }
 
@@ -41,7 +41,8 @@ class SkillSpec {
     }
 
     get acp(): number {
-        return this.#primary === StatKey.STR || this.#primary === StatKey.DEX
+        return this.#primary === Stat.strength ||
+            this.#primary === Stat.dexterity
             ? 1
             : 0;
     }

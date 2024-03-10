@@ -14,9 +14,9 @@ interface ClassBuilder {
     refl?: boolean;
     will?: boolean;
     skl?: number;
-    arc?: number;
-    div?: number;
-    esp?: number;
+    arcane?: number;
+    divine?: number;
+    spontaneous?: number;
     wealth?: number;
     features?: RawFeaturesEntry[];
     skills?: string[];
@@ -28,9 +28,9 @@ const classBuilderDefaults = {
     refl: false,
     will: false,
     skl: 0,
-    arc: 0,
-    div: 0,
-    esp: 0,
+    arcane: 0,
+    divine: 0,
+    spontaneous: 0,
     wealth: 0,
     features: [],
     skills: [],

@@ -48,9 +48,9 @@ class Class {
         };
         this.#skl = args.skl;
         this.#casting = {
-            arcane: args.arc,
-            divine: args.div,
-            spontaneous: args.esp,
+            arcane: args.arcane,
+            divine: args.divine,
+            spontaneous: args.spontaneous,
         };
         this.#wealth = args.wealth;
         this.#features = mapFeatures(args.features);

@@ -6,39 +6,42 @@ function combineAlignmentDescriptors(
     const uniques = [...new Set(descriptors)];
     const isGood = uniques.includes(AlignmentDescriptor.good);
     const isEvil = uniques.includes(AlignmentDescriptor.evil);
-    let morals: 'G' | 'N' | 'E' = 'N';
+    let morals: 'Good' | 'Neutral' | 'Evil' = 'Neutral';
     if (isGood && !isEvil) {
-        morals = 'G';
+        morals = 'Good';
     }
     if (isEvil && !isGood) {
-        morals = 'E';
+        morals = 'Evil';
     }
     const isLawful = uniques.includes(AlignmentDescriptor.lawful);
     const isChaotic = uniques.includes(AlignmentDescriptor.chaotic);
-    let ethics: 'L' | 'N' | 'C' = 'N';
+    let ethics: 'lawful' | 'neutral' | 'chaotic' = 'neutral';
     if (isLawful && !isChaotic) {
-        ethics = 'L';
+        ethics = 'lawful';
     }
     if (isChaotic && !isLawful) {
-        ethics = 'C';
+        ethics = 'chaotic';
     }
     return Alignment[`${ethics}${morals}`];
 }
 
 const playableAlignments = [
-    Alignment.LG,
-    Alignment.LN,
-    Alignment.NG,
-    Alignment.NN,
-    Alignment.CG,
-    Alignment.CN,
+    Alignment.lawfulGood,
+    Alignment.lawfulNeutral,
+    Alignment.neutralGood,
+    Alignment.neutralNeutral,
+    Alignment.chaoticGood,
+    Alignment.chaoticNeutral,
 ];
 
-const isGood = (alignment: Alignment): boolean => /G/.test(alignment);
-const isEvil = (alignment: Alignment): boolean => /E/.test(alignment);
-const isChaotic = (alignment: Alignment): boolean => /C/.test(alignment);
-const isLawful = (alignment: Alignment): boolean => /L/.test(alignment);
-const isNeutral = (alignment: Alignment): boolean => /N/.test(alignment);
+const isGood = (alignment: Alignment): boolean => alignment.endsWith('Good');
+const isEvil = (alignment: Alignment): boolean => alignment.endsWith('Evil');
+const isChaotic = (alignment: Alignment): boolean =>
+    alignment.startsWith('chaotic');
+const isLawful = (alignment: Alignment): boolean =>
+    alignment.startsWith('lawful');
+const isNeutral = (alignment: Alignment): boolean =>
+    alignment.toLowerCase().includes('neutral');
 
 export {
     isGood,

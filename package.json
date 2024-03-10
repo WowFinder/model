@@ -28,8 +28,8 @@
         "prepare": "yarn run build"
     },
     "dependencies": {
-        "@wowfinder/asset-schemas": "^0.0.5",
-        "@wowfinder/ts-enums": "^0.0.2",
+        "@wowfinder/asset-schemas": "^0.0.6",
+        "@wowfinder/ts-enums": "^0.0.5",
         "@wowfinder/ts-utils": "^0.0.8"
     },
     "devDependencies": {

@@ -1,4 +1,4 @@
-import { StatKey } from '@wowfinder/ts-enums';
+import { Stat } from '@wowfinder/ts-enums';
 import { statMod } from '../../Character/Stats';
 import {
     computeModifier,
@@ -15,7 +15,7 @@ import {
 
 describe('computeModifier', () => {
     describe('should compute modifier for each stat', () => {
-        Object.values(StatKey).forEach(stat => {
+        Object.values(Stat).forEach(stat => {
             it(`should compute modifier for ${stat}`, () => {
                 const result = computeModifier(stat, rollArgsSimple);
                 expect(result).toBe(statMod(stats[stat]));
@@ -36,21 +36,21 @@ describe('computeModifier', () => {
             SpecialDamageModifier.Finesse,
             rollArgsFinesseSpell,
         );
-        expect(result).toBe(statMod(stats.DEX));
+        expect(result).toBe(statMod(stats.dexterity));
     });
-    it('should use STR when better than DEX even with Weapon Finesse', () => {
+    it('should use strength when better than dexterity even with Weapon Finesse', () => {
         const result2 = computeModifier(
             SpecialDamageModifier.Finesse,
             rollArgsBadFinnese,
         );
-        expect(result2).toBe(statMod(statsBadFinnesse.STR));
+        expect(result2).toBe(statMod(statsBadFinnesse.strength));
     });
-    it('should use STR when the Weapon Finesse feat is not present', () => {
+    it('should use strength when the Weapon Finesse feat is not present', () => {
         const result = computeModifier(
             SpecialDamageModifier.Finesse,
             rollArgsSimple,
         );
-        expect(result).toBe(statMod(stats.STR));
+        expect(result).toBe(statMod(stats.strength));
     });
 
     it('should compute modifier with multiplier', () => {
@@ -61,6 +61,6 @@ describe('computeModifier', () => {
             rollArgsFinesseSpell,
             multiplier,
         );
-        expect(result).toBe(statMod(stats.DEX) * multiplier);
+        expect(result).toBe(statMod(stats.dexterity) * multiplier);
     });
 });

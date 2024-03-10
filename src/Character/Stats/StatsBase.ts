@@ -72,7 +72,7 @@ class StatsBase {
     }
 
     get carry(): Mass {
-        return carry(this.totals.STR);
+        return carry(this.totals.strength);
     }
 }
 
