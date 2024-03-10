@@ -1,4 +1,4 @@
-import { StatKey } from '@wowfinder/ts-enums';
+import { Stat } from '@wowfinder/ts-enums';
 import { statMod } from '../Character/Stats';
 import { DamageRollArguments } from './DamageRollArguments';
 
@@ -7,8 +7,8 @@ enum SpecialDamageModifier {
     Finesse = 'Finesse',
 }
 
-type DamageModifier = StatKey | SpecialDamageModifier;
-const DamageModifier = { ...StatKey, ...SpecialDamageModifier };
+type DamageModifier = Stat | SpecialDamageModifier;
+const DamageModifier = { ...Stat, ...SpecialDamageModifier };
 
 function computeModifier(
     modifier: DamageModifier,
@@ -23,8 +23,8 @@ function computeModifier(
         case SpecialDamageModifier.Finesse:
             base = statMod(
                 feats.includes('weaponFinesse')
-                    ? Math.max(stats.DEX, stats.STR)
-                    : stats.STR,
+                    ? Math.max(stats.dexterity, stats.strength)
+                    : stats.strength,
             );
             break;
         default:

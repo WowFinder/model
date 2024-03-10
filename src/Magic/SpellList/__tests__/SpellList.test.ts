@@ -1,6 +1,6 @@
 import { SpellList } from '../SpellList';
 import { Spell } from 'Magic/Spell/Spell';
-import exampleSpell from '../../__tests__/mocks/yellowSnowBall';
+import exampleSpell from 'Magic/__tests__/mocks/yellowSnowBall';
 const mockedSpell = new Spell(exampleSpell);
 const mockedSpellResolver = (): Spell => mockedSpell;
 

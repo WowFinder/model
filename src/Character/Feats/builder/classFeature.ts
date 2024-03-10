@@ -1,4 +1,4 @@
-import { FeatFlag, StatKey } from '@wowfinder/ts-enums';
+import { FeatFlag, Stat } from '@wowfinder/ts-enums';
 import { ClassFeature } from '../../Class';
 import { ClassFeatureFeat } from '../core/classFeature';
 import { Feat } from '../Feat';
@@ -34,7 +34,7 @@ const classFeatureFeats: { [key in ClassFeatureFeat]: FeatSpec } = {
     improvedChannel: build.channelEnh(Feat.improvedChannel),
     selectiveChannel: build.channelEnh(
         Feat.selectiveChannel,
-        req.stat(StatKey.CHA, 13),
+        req.stat(Stat.charisma, 13),
     ),
     turnUndead: build.channelType(Feat.turnUndead),
     channelSmite: feat(

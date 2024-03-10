@@ -1,4 +1,4 @@
-import { Skill, StatKey } from '@wowfinder/ts-enums';
+import { Skill, Stat } from '@wowfinder/ts-enums';
 import { SkillSpec } from './SkillSpec';
 import { SkillTotalBuilder } from './builders';
 
@@ -40,8 +40,8 @@ function computeSkillTotal({
 
 function mkSkill(
     key: Skill,
-    primary: StatKey,
-    secondary: StatKey | null = null,
+    primary: Stat,
+    secondary: Stat | null = null,
     trainedOnly = false,
     sizeModFactor = 0,
 ): SkillSpec {

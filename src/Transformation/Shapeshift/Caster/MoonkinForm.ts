@@ -12,7 +12,7 @@ class MoonkinForm extends Shapeshift {
             key: `${base.key}-moonkin-${rank}`,
             baseStats: {
                 ...base.stats.base,
-                CHA: base.stats.base.CHA + 2 + 2 * rank,
+                charisma: base.stats.base.charisma + 2 + 2 * rank,
             },
             /* TODO:
                 Touch attack rolls (ranged): +3 + 3 * rank

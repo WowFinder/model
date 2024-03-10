@@ -1,9 +1,9 @@
-import { CastingMode, StatKey } from '@wowfinder/ts-enums';
+import { CastingMode, Stat } from '@wowfinder/ts-enums';
 
 const castingStats = {
-    [CastingMode.arcane]: StatKey.INT,
-    [CastingMode.divine]: StatKey.WIS,
-    [CastingMode.spontaneous]: StatKey.CHA,
+    [CastingMode.arcane]: Stat.intelligence,
+    [CastingMode.divine]: Stat.wisdom,
+    [CastingMode.spontaneous]: Stat.charisma,
 };
 
 type CastingModeValues<T> = {

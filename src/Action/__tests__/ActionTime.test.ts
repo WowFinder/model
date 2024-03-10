@@ -13,12 +13,12 @@ describe('ActionTime', () => {
         });
         describe('should stringify Time objects', () => {
             const testTimes = [
-                { value: 1, unit: TimeUnit.d },
-                { value: 2, unit: TimeUnit.h },
-                { value: 3, unit: TimeUnit.m },
-                { value: 4, unit: TimeUnit.s },
-                { value: 5, unit: TimeUnit.t },
-                { value: 6, unit: TimeUnit.y },
+                { value: 1, unit: TimeUnit.day },
+                { value: 2, unit: TimeUnit.hour },
+                { value: 3, unit: TimeUnit.minute },
+                { value: 4, unit: TimeUnit.second },
+                { value: 5, unit: TimeUnit.turn },
+                { value: 6, unit: TimeUnit.year },
             ] as const;
             testTimes.forEach(testTime => {
                 it(`should stringify ${testTime.value} ${testTime.unit}`, () => {
@@ -45,12 +45,12 @@ describe('ActionTime', () => {
         });
         describe('should parse Time objects', () => {
             const testTimes = [
-                { value: 1, unit: TimeUnit.d },
-                { value: 2, unit: TimeUnit.h },
-                { value: 3, unit: TimeUnit.m },
-                { value: 4, unit: TimeUnit.s },
-                { value: 5, unit: TimeUnit.t },
-                { value: 6, unit: TimeUnit.y },
+                { value: 1, unit: TimeUnit.day },
+                { value: 2, unit: TimeUnit.hour },
+                { value: 3, unit: TimeUnit.minute },
+                { value: 4, unit: TimeUnit.second },
+                { value: 5, unit: TimeUnit.turn },
+                { value: 6, unit: TimeUnit.year },
             ].map(entry => new Time(entry));
             testTimes.forEach(time => {
                 const timeString = time.toString();
@@ -83,7 +83,7 @@ describe('ActionTime', () => {
             expect(ActionTime.tryParseExtended(ActionLength.standard)).toBe(
                 ActionLength.standard,
             );
-            const timeObject = new Time({ value: 1, unit: TimeUnit.d });
+            const timeObject = new Time({ value: 1, unit: TimeUnit.day });
             expect(ActionTime.tryParseExtended(timeObject)).toBe(timeObject);
         });
         describe('should defer to tryParse if the input is a string', () => {

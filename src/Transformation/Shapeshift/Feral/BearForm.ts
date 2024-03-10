@@ -13,7 +13,7 @@ class BearForm extends Shapeshift {
             key: `${base.key}-bear-${rank}`,
             baseStats: {
                 ...base.stats.base,
-                CON: base.stats.base.CON + 2 + 2 * rank,
+                constitution: base.stats.base.constitution + 2 + 2 * rank,
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),

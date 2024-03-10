@@ -1,64 +1,64 @@
 import { sum } from '@wowfinder/ts-utils';
 import { Mass } from '../../Scalar';
-import { MassUnit, StatKey } from '@wowfinder/ts-enums';
+import { MassUnit, Stat } from '@wowfinder/ts-enums';
 
 function statMod(stat: number): number {
     return Math.floor(stat / 2 - 5);
 }
 
-type StatSet = { [key in StatKey]: number };
+type StatSet = { [key in Stat]: number };
 
-type PartialStatSet = { [key in StatKey]?: number };
+type PartialStatSet = { [key in Stat]?: number };
 
 function fillStatSet(base: PartialStatSet, defaultValue: number = 0): StatSet {
     return {
-        STR: base.STR ?? defaultValue,
-        DEX: base.DEX ?? defaultValue,
-        CON: base.CON ?? defaultValue,
-        INT: base.INT ?? defaultValue,
-        WIS: base.WIS ?? defaultValue,
-        CHA: base.CHA ?? defaultValue,
+        strength: base.strength ?? defaultValue,
+        dexterity: base.dexterity ?? defaultValue,
+        constitution: base.constitution ?? defaultValue,
+        intelligence: base.intelligence ?? defaultValue,
+        wisdom: base.wisdom ?? defaultValue,
+        charisma: base.charisma ?? defaultValue,
     };
 }
 
 function addStatSets(...args: StatSet[]): StatSet {
     return {
-        STR: sum(...args.map(s => s.STR)),
-        DEX: sum(...args.map(s => s.DEX)),
-        CON: sum(...args.map(s => s.CON)),
-        INT: sum(...args.map(s => s.INT)),
-        WIS: sum(...args.map(s => s.WIS)),
-        CHA: sum(...args.map(s => s.CHA)),
+        strength: sum(...args.map(s => s.strength)),
+        dexterity: sum(...args.map(s => s.dexterity)),
+        constitution: sum(...args.map(s => s.constitution)),
+        intelligence: sum(...args.map(s => s.intelligence)),
+        wisdom: sum(...args.map(s => s.wisdom)),
+        charisma: sum(...args.map(s => s.charisma)),
     };
 }
 
 function scaleStatSet(stats: StatSet, factor: number): StatSet {
     return {
-        STR: Math.floor(stats.STR * factor),
-        DEX: Math.floor(stats.DEX * factor),
-        CON: Math.floor(stats.CON * factor),
-        INT: Math.floor(stats.INT * factor),
-        WIS: Math.floor(stats.WIS * factor),
-        CHA: Math.floor(stats.CHA * factor),
+        strength: Math.floor(stats.strength * factor),
+        dexterity: Math.floor(stats.dexterity * factor),
+        constitution: Math.floor(stats.constitution * factor),
+        intelligence: Math.floor(stats.intelligence * factor),
+        wisdom: Math.floor(stats.wisdom * factor),
+        charisma: Math.floor(stats.charisma * factor),
     };
 }
 
 const baseDefault: StatSet = {
-    STR: 10,
-    DEX: 10,
-    CON: 10,
-    INT: 10,
-    WIS: 10,
-    CHA: 10,
+    strength: 10,
+    dexterity: 10,
+    constitution: 10,
+    intelligence: 10,
+    wisdom: 10,
+    charisma: 10,
 };
 
 const zeroDefault: StatSet = {
-    STR: 0,
-    DEX: 0,
-    CON: 0,
-    INT: 0,
-    WIS: 0,
-    CHA: 0,
+    strength: 0,
+    dexterity: 0,
+    constitution: 0,
+    intelligence: 0,
+    wisdom: 0,
+    charisma: 0,
 };
 
 type PartialStatBlock = {
@@ -72,7 +72,7 @@ type PartialStatBlock = {
 
 function carry(str: number): Mass {
     if (str <= 0) {
-        return new Mass({ value: 0, unit: MassUnit.lb });
+        return new Mass({ value: 0, unit: MassUnit.pound });
     }
     let mult = 1;
     while (str > 20) {
@@ -85,7 +85,7 @@ function carry(str: number): Mass {
     ];
     return new Mass({
         value: Math.floor(base[str - 1] * mult),
-        unit: MassUnit.lb,
+        unit: MassUnit.pound,
     });
 }
 

@@ -1,6 +1,6 @@
 import {
     DamageType,
-    StatKey,
+    Stat,
     WeaponFlags,
     WeaponGroup,
     WeaponProficiency,
@@ -17,7 +17,7 @@ interface WeaponDamageBuilder {
         count?: number;
         fixedMod?: number;
     };
-    modStat?: StatKey; // TODO #431: add support for variants like finesse
+    modStat?: Stat; // TODO #431: add support for variants like finesse
 }
 
 function buildWeaponDamage(...specs: WeaponDamageBuilder[]): DamageSpec {

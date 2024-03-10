@@ -1,4 +1,4 @@
-import { RawAdventureAsset } from '@wowfinder/assets';
+import { RawAdventureAsset } from '@wowfinder/asset-schemas';
 import { Adventure } from 'Adventure';
 
 describe('Adventure class', () => {

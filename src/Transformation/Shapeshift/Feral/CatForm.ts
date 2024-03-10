@@ -13,7 +13,7 @@ class CatForm extends Shapeshift {
             key: `${base.key}-cat-${rank}`,
             baseStats: {
                 ...base.stats.base,
-                DEX: base.stats.base.DEX + 2 + 2 * rank,
+                dexterity: base.stats.base.dexterity + 2 + 2 * rank,
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),

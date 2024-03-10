@@ -1252,19 +1252,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wowfinder/assets@npm:^0.0.3":
-  version: 0.0.3
-  resolution: "@wowfinder/assets@npm:0.0.3"
+"@wowfinder/asset-schemas@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "@wowfinder/asset-schemas@npm:0.0.6"
   dependencies:
+    "@wowfinder/ts-enums": "npm:^0.0.5"
     ajv: "npm:^8.12.0"
-  checksum: 10c0/fafe68df3dab4f27c717f55f21eb51a23cc5b6353af8e1c26168f07c22d2e3c86b9c8c1ea89e7d8d2f8e849799551df58b66bb443505a503a4a165f83c1d8c90
+  checksum: 10c0/258d9e9c8757f64e2aebd269b967699940e8767c03de4ebcfb2bc6e302367f593a1fcf79f17c2d354f088fdd738780c6ebe906bcaa7824d7ae0e8f0a67ff445c
   languageName: node
   linkType: hard
 
-"@wowfinder/ts-enums@npm:^0.0.2":
-  version: 0.0.2
-  resolution: "@wowfinder/ts-enums@npm:0.0.2"
-  checksum: 10c0/de5bfead8c5af717d1e5a842277c2adf46a2260fdb4decf19edc178bbf3591bce9222821bcf653bfd5131ecd0a14cf4490d8e1f194bfaa282bd54eed7f4063fb
+"@wowfinder/ts-enums@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@wowfinder/ts-enums@npm:0.0.5"
+  checksum: 10c0/741daac3edfeb564524fea28c5380bc233490407db2713e27630cf28cd56c2a3a21d4386d3f1bb2d68dea7ea9acc675ce2642807dc2bdae73c8e8ea208df81ad
   languageName: node
   linkType: hard
 
@@ -4497,8 +4498,8 @@ __metadata:
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.1.1"
     "@typescript-eslint/parser": "npm:^7.1.1"
-    "@wowfinder/assets": "npm:^0.0.3"
-    "@wowfinder/ts-enums": "npm:^0.0.2"
+    "@wowfinder/asset-schemas": "npm:^0.0.6"
+    "@wowfinder/ts-enums": "npm:^0.0.5"
     "@wowfinder/ts-utils": "npm:^0.0.8"
     eslint: "npm:^8.57.0"
     eslint-config-prettier: "npm:^9.1.0"

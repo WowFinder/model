@@ -25,40 +25,40 @@ export default class SpellPowerBonus implements SpellPowerValues<number> {
         return this.#data.spontaneous;
     }
 
-    get abj(): number {
-        return this.#data.abj;
+    get abjuration(): number {
+        return this.#data.abjuration;
     }
 
-    get con(): number {
-        return this.#data.con;
+    get conjuration(): number {
+        return this.#data.conjuration;
     }
 
-    get div(): number {
-        return this.#data.div;
+    get divination(): number {
+        return this.#data.divination;
     }
 
-    get enc(): number {
-        return this.#data.enc;
+    get enchantment(): number {
+        return this.#data.enchantment;
     }
 
-    get evo(): number {
-        return this.#data.evo;
+    get evocation(): number {
+        return this.#data.evocation;
     }
 
-    get ill(): number {
-        return this.#data.ill;
+    get illusion(): number {
+        return this.#data.illusion;
     }
 
-    get nec(): number {
-        return this.#data.nec;
+    get necromancy(): number {
+        return this.#data.necromancy;
     }
 
-    get tra(): number {
-        return this.#data.tra;
+    get transmutation(): number {
+        return this.#data.transmutation;
     }
 
-    get uni(): number {
-        return this.#data.uni;
+    get universal(): number {
+        return this.#data.universal;
     }
 
     get void(): number {

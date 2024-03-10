@@ -1,4 +1,4 @@
-import { FeatFlag, StatKey } from '@wowfinder/ts-enums';
+import { FeatFlag, Stat } from '@wowfinder/ts-enums';
 import { Character } from '../../../Character';
 import { ClassFeature } from '../../Class';
 import {
@@ -43,7 +43,7 @@ const req = {
         caster: (level: number): Req => new CasterLevelRequirement(level),
         bab: (level: number): Req => new AttackBonusRequirement(level),
     },
-    stat: (stat: StatKey, min: number): Req =>
+    stat: (stat: Stat, min: number): Req =>
         characterStatsRequirement(new MinStatsRequirement({ [stat]: min })),
     feats: (...feats: Feat[]): Reqs =>
         feats.map(f => new CharacterFeatRequirement(f)),

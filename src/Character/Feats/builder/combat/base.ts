@@ -1,4 +1,4 @@
-import { FeatFlag, StatKey } from '@wowfinder/ts-enums';
+import { FeatFlag, Stat } from '@wowfinder/ts-enums';
 import { CombatBaseFeat } from '../../core/combat/base';
 import { Feat } from '../../Feat';
 import { FeatSpec } from '../../FeatSpec';
@@ -30,7 +30,7 @@ const combatBaseFeats: { [key in CombatBaseFeat]: FeatSpec } = {
     ),
     deadlyAim: build.combat(
         Feat.deadlyAim,
-        req.stat(StatKey.DEX, 13),
+        req.stat(Stat.dexterity, 13),
         req.level.bab(1),
     ),
     defensiveCombatTraining: build.combat(Feat.defensiveCombatTraining),

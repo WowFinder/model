@@ -1,4 +1,4 @@
-import { RawSpellAsset } from '@wowfinder/assets';
+import { RawSpellAsset } from '@wowfinder/asset-schemas';
 
 export default {
     key: 'yellowSnowBall',
@@ -39,9 +39,9 @@ export default {
             },
         },
     ],
-    sch: 'evo',
+    school: 'evocation',
     castingTime: 'standard',
-    components: ['V', 'S', 'M'],
+    components: ['verbal', 'somatic', 'material'],
     range: 'long',
     duration: 'instantaneous',
     save: {

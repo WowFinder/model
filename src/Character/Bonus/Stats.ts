@@ -1,17 +1,17 @@
 import { sum } from '@wowfinder/ts-utils';
 import { PartialStatSet, StatSet, zeroDefault } from '../Stats';
-import { StatKey } from '@wowfinder/ts-enums';
+import { Stat } from '@wowfinder/ts-enums';
 
 export default class StatsBonus {
     #values: StatSet;
 
     constructor(values: PartialStatSet) {
         this.#values = { ...zeroDefault, ...values };
-        for (const stat of Object.keys(StatKey)) {
+        for (const stat of Object.keys(Stat)) {
             Object.defineProperty(this, stat, {
                 enumerable: true,
                 configurable: false,
-                get: () => this.#values[stat as StatKey] || 0,
+                get: () => this.#values[stat as Stat] || 0,
             });
         }
     }
@@ -30,9 +30,9 @@ export default class StatsBonus {
 
     static sum(...args: StatsBonus[]): StatsBonus {
         const result = this.zero;
-        for (const stat of Object.keys(StatKey)) {
-            result.#values[stat as StatKey] = sum(
-                ...args.map(s => s.#values[stat as StatKey]),
+        for (const stat of Object.keys(Stat)) {
+            result.#values[stat as Stat] = sum(
+                ...args.map(s => s.#values[stat as Stat]),
             );
         }
         return result;
@@ -40,9 +40,9 @@ export default class StatsBonus {
 
     static max(...args: StatsBonus[]): StatsBonus {
         const result = this.zero;
-        for (const stat of Object.keys(StatKey)) {
-            result.#values[stat as StatKey] = Math.max(
-                ...args.map(s => s.#values[stat as StatKey]),
+        for (const stat of Object.keys(Stat)) {
+            result.#values[stat as Stat] = Math.max(
+                ...args.map(s => s.#values[stat as Stat]),
             );
         }
         return result;
@@ -50,16 +50,15 @@ export default class StatsBonus {
 
     static multiply(bonus: StatsBonus, factor: number): StatsBonus {
         const result = this.zero;
-        for (const stat of Object.keys(StatKey)) {
-            result.#values[stat as StatKey] =
-                bonus.#values[stat as StatKey] * factor;
+        for (const stat of Object.keys(Stat)) {
+            result.#values[stat as Stat] = bonus.#values[stat as Stat] * factor;
         }
         return result;
     }
 
     static build(raw: any = {}): StatsBonus {
         const cured: any = {};
-        for (const k of Object.keys(StatKey)) {
+        for (const k of Object.keys(Stat)) {
             if (raw[k]) {
                 cured[k] = raw[k] || 0;
             }

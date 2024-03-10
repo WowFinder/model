@@ -1,16 +1,11 @@
-import {
-    StatKey,
-    StatGroup,
-    MentalStatKey,
-    PhysicalStatKey,
-} from '@wowfinder/ts-enums';
+import { Stat, StatGroup, MentalStat, PhysicalStat } from '@wowfinder/ts-enums';
 
 const statGroups = {
-    [StatGroup.physical]: Object.keys(PhysicalStatKey),
-    [StatGroup.mental]: Object.keys(MentalStatKey),
+    [StatGroup.physical]: Object.keys(PhysicalStat),
+    [StatGroup.mental]: Object.keys(MentalStat),
 };
 
-function inGroup(stat: StatKey, group: StatGroup): boolean {
+function inGroup(stat: Stat, group: StatGroup): boolean {
     return statGroups[group].includes(stat);
 }
 

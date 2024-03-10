@@ -10,7 +10,7 @@ import { SpellBase } from './base';
 import { ActionTime } from '../../Action/ActionTime';
 import { SpellDuration } from './Duration';
 import { SpellRange } from './Range';
-import { RawSpellAsset, RawSpellBase } from '@wowfinder/assets';
+import { RawSpellAsset, RawSpellBase } from '@wowfinder/asset-schemas';
 
 type RankedSpellBuilder = Omit<
     Optional<
@@ -26,13 +26,13 @@ class RankedSpell extends SpellBase {
     #subSchool?: SubSchool;
     #school: School;
 
-    constructor({ key, rank, sch, ...rest }: RankedSpellBuilder) {
+    constructor({ key, rank, school, ...rest }: RankedSpellBuilder) {
         super(rest);
         this.#key = key;
         this.#rank = rank;
-        const schoolParsed = fullParseSchool(sch || '');
+        const schoolParsed = fullParseSchool(school || '');
         if (!schoolParsed) {
-            throw new Error(`Invalid school: ${sch}`);
+            throw new Error(`Invalid school: ${school}`);
         }
         this.#school = schoolParsed.school;
         this.#subSchool = schoolParsed.subSchool;
@@ -67,7 +67,7 @@ class RankedSpell extends SpellBase {
         return res;
     }
 
-    get sch(): SubSchool | School | string {
+    get school(): SubSchool | School | string {
         return this.#subSchool ?? this.#school;
     }
 
@@ -75,7 +75,7 @@ class RankedSpell extends SpellBase {
         return `${t(this.key)} - ${toRoman(this.#rank)}`;
     }
 
-    getDescription(t: any /* TFunction<'translation'> */): string {
+    getDescription(t: StringFormatter): string {
         const descriptionMain = t(`spells.${this.key}.description`);
         const descriptionRank = t(`spells.${this.key}.${this.#rank}`);
         return `${descriptionMain}\n\n${descriptionRank}`;
