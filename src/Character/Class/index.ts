@@ -3,8 +3,8 @@ import { Money } from '../../Item';
 import { AurasList } from './Aura';
 import { ClassBonuses } from './ClassBonuses';
 import { ClassFeature, FeaturesList } from './Features';
-import { ClassBuilder, applyClassDefaults } from './builder';
-import { combineClassBonuses } from './combineBonuses';
+import { applyClassDefaults } from './builder';
+import { combineClassBonuses } from './combineClassBonuses';
 import {
     CastingProgression,
     ClassLevels,
@@ -14,6 +14,7 @@ import {
     mapAuras,
     mapFeatures,
 } from './helpers';
+import { RawClassAsset } from '@wowfinder/asset-schemas';
 
 function baseHitPoints(hd: number): [number, number] {
     const base = Math.ceil((hd + 1) / 2);
@@ -27,14 +28,14 @@ class Class {
     #hd: number;
     #bab: number;
     #saves: SavesProgression;
-    #skl: number;
+    #skillRanks: number;
     #casting: CastingProgression;
-    #wealth: number;
+    #startingWealth: number;
     #features: FeaturesList;
     #auras: AurasList;
     #skills: Set<Skill>;
 
-    constructor(rawArgs: ClassBuilder) {
+    constructor(rawArgs: RawClassAsset) {
         const args = applyClassDefaults(rawArgs);
         this.#key = args.key;
         this.#maxLevel = args.maxLevel;
@@ -42,17 +43,17 @@ class Class {
         this.#hd = args.hd;
         this.#bab = args.bab;
         this.#saves = {
-            fortitude: args.fort,
-            reflexes: args.refl,
-            will: args.will,
+            fortitude: args.goodFortitude,
+            reflexes: args.goodReflexes,
+            will: args.goodWill,
         };
-        this.#skl = args.skl;
+        this.#skillRanks = args.skillRanks;
         this.#casting = {
             arcane: args.arcane,
             divine: args.divine,
             spontaneous: args.spontaneous,
         };
-        this.#wealth = args.wealth;
+        this.#startingWealth = args.startingWealth;
         this.#features = mapFeatures(args.features);
         this.#auras = mapAuras(args.features);
         this.#skills = filterSkills(args.skills);
@@ -83,7 +84,7 @@ class Class {
     }
 
     get skillRanks(): number {
-        return this.#skl;
+        return this.#skillRanks;
     }
 
     get classSkills(): Set<Skill> {
@@ -117,21 +118,16 @@ class Class {
     }
 
     get startingWealth(): Money {
-        return Money.fromRaw(this.#wealth);
+        return Money.fromRaw(this.#startingWealth);
     }
 
     static multiclass(classLevels: ClassLevels): ClassBonuses {
         return combineClassBonuses(classLevels);
     }
 
-    // static #loaded: Classes | null = null;
-
+    /** @deprecated */
     static load(): Classes {
         throw new Error('Not implemented');
-        /* return (this.#loaded ||= forceDataLoadKeyS(
-            window.Main.asset('Classes'),
-            raw => new Class(preBuild(raw)),
-        )); */
     }
 }
 
