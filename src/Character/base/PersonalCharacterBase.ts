@@ -16,7 +16,7 @@ abstract class PersonalCharacterBase extends OverridableCharacterBase {
     }
 
     get personal(): CharPersonalDetails {
-        return Object.assign({}, this.#personal);
+        return { ...this.#personal };
     }
 
     get fullName(): string {
