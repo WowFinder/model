@@ -18,8 +18,6 @@ interface CastingProgression {
 type Classes = { [key: string]: Class };
 type ClassLevels = { cls: Class; level: number }[];
 
-const validSkills = new Set(Object.values(Skill));
-
 function hdAverage(hd: number): number {
     return Math.ceil((hd + 1) / 2);
 }
@@ -28,22 +26,28 @@ function hdFirst(hd: number): number {
     return hd - hdAverage(hd);
 }
 
+const validFeatures = new Set(Object.values(ClassFeature));
+
 function mapFeatures(
     list: { level: number; feature?: string }[],
 ): FeaturesList {
     return list
-        .filter(entry => entry.feature as ClassFeature)
-        .map(f => ({
-            level: f.level,
-            feature: ClassFeature[f.feature as keyof typeof ClassFeature],
+        .filter(entry => validFeatures.has(entry.feature as ClassFeature))
+        .map(entry => ({
+            level: entry.level,
+            feature: ClassFeature[entry.feature as keyof typeof ClassFeature],
         }));
 }
 
-function mapAuras(list: { level: number; aura?: Aura }[]): AurasList {
+const validAuras = new Set(Object.values(Aura));
+
+function mapAuras(list: { level: number; aura?: string }[]): AurasList {
     return list
-        .filter(entry => entry.aura as Aura)
+        .filter(entry => entry.aura && validAuras.has(entry.aura as Aura))
         .map(entry => ({ level: entry.level, aura: entry.aura as Aura }));
 }
+
+const validSkills = new Set(Object.values(Skill));
 
 function filterSkills(raw: string[]): Set<Skill> {
     return new Set(
@@ -53,5 +57,5 @@ function filterSkills(raw: string[]): Set<Skill> {
     );
 }
 
-export { validSkills, hdAverage, hdFirst, mapFeatures, mapAuras, filterSkills };
+export { hdAverage, hdFirst, mapFeatures, mapAuras, filterSkills };
 export type { Classes, ClassLevels, SavesProgression, CastingProgression };
