@@ -1,26 +1,34 @@
-import type { RawClassAsset } from '@wowfinder/asset-schemas';
 import { applyClassDefaults } from '../builder';
 import { ClassTier, Skill } from '@wowfinder/ts-enums';
 
 const minClassAsset = {
     key: 'test',
     tier: ClassTier.base,
-    hd: 8,
-    bab: 1,
+    hitDie: 8,
+    baseAttackProgression: 1,
+    maxLevel: 20,
+    skillRanks: 0,
+    startingWealth: 0,
+    skills: [],
+    features: [],
 };
 
 describe('applyClassDefaults', () => {
     it('should apply defaults', () => {
-        const result = applyClassDefaults(minClassAsset as RawClassAsset);
+        const result = applyClassDefaults(minClassAsset);
         expect(result).toEqual({
             ...minClassAsset,
-            goodFortitude: false,
-            goodReflexes: false,
-            goodWill: false,
+            goodSaves: {
+                fortitude: false,
+                reflexes: false,
+                will: false,
+            },
             skillRanks: 0,
-            arcane: 0,
-            divine: 0,
-            spontaneous: 0,
+            spellCasting: {
+                arcane: 0,
+                divine: 0,
+                spontaneous: 0,
+            },
             startingWealth: 0,
             features: [],
             skills: [],
@@ -31,13 +39,17 @@ describe('applyClassDefaults', () => {
     it('defaults must not replace provided values', () => {
         const result = applyClassDefaults({
             ...minClassAsset,
-            goodFortitude: true,
-            goodReflexes: true,
-            goodWill: true,
+            goodSaves: {
+                fortitude: true,
+                reflexes: true,
+                will: true,
+            },
             skillRanks: 2,
-            arcane: 1,
-            divine: 1,
-            spontaneous: 1,
+            spellCasting: {
+                arcane: 1,
+                divine: 1,
+                spontaneous: 1,
+            },
             startingWealth: 10000,
             features: [{ level: 1, feature: 'test' }],
             skills: [Skill.acrobatics, Skill.stealth],
@@ -45,13 +57,17 @@ describe('applyClassDefaults', () => {
         });
         expect(result).toEqual({
             ...minClassAsset,
-            goodFortitude: true,
-            goodReflexes: true,
-            goodWill: true,
+            goodSaves: {
+                fortitude: true,
+                reflexes: true,
+                will: true,
+            },
             skillRanks: 2,
-            arcane: 1,
-            divine: 1,
-            spontaneous: 1,
+            spellCasting: {
+                arcane: 1,
+                divine: 1,
+                spontaneous: 1,
+            },
             startingWealth: 10000,
             features: [{ level: 1, feature: 'test' }],
             skills: [Skill.acrobatics, Skill.stealth],

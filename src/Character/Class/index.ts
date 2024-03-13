@@ -16,17 +16,17 @@ import {
 } from './helpers';
 import { RawClassAsset } from '@wowfinder/asset-schemas';
 
-function baseHitPoints(hd: number): [number, number] {
-    const base = Math.ceil((hd + 1) / 2);
-    const extra = hd - base;
+function baseHitPoints(hitDie: number): [number, number] {
+    const base = Math.ceil((hitDie + 1) / 2);
+    const extra = hitDie - base;
     return [base, extra];
 }
 class Class {
     #key: string;
     #tier: ClassTier;
     #maxLevel: number;
-    #hd: number;
-    #bab: number;
+    #hitDie: number;
+    #baseAttackProgression: number;
     #saves: SavesProgression;
     #skillRanks: number;
     #casting: CastingProgression;
@@ -40,19 +40,11 @@ class Class {
         this.#key = args.key;
         this.#maxLevel = args.maxLevel;
         this.#tier = args.tier;
-        this.#hd = args.hd;
-        this.#bab = args.bab;
-        this.#saves = {
-            fortitude: args.goodFortitude,
-            reflexes: args.goodReflexes,
-            will: args.goodWill,
-        };
+        this.#hitDie = args.hitDie;
+        this.#baseAttackProgression = args.baseAttackProgression;
+        this.#saves = { ...args.goodSaves };
         this.#skillRanks = args.skillRanks;
-        this.#casting = {
-            arcane: args.arcane,
-            divine: args.divine,
-            spontaneous: args.spontaneous,
-        };
+        this.#casting = { ...args.spellCasting };
         this.#startingWealth = args.startingWealth;
         this.#features = mapFeatures(args.features);
         this.#auras = mapAuras(args.features);
@@ -72,11 +64,11 @@ class Class {
     }
 
     get hitDie(): number {
-        return this.#hd;
+        return this.#hitDie;
     }
 
-    get baseAttack(): number {
-        return this.#bab;
+    get baseAttackProgression(): number {
+        return this.#baseAttackProgression;
     }
 
     get saves(): SavesProgression {

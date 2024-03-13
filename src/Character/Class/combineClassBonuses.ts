@@ -30,7 +30,7 @@ function combineClassBonuses(classLevels: ClassLevels): ClassBonuses {
     }
     for (const { cls, level } of classLevels) {
         result.hp += hdAverage(cls.hitDie) * level;
-        result.bab += cls.baseAttack * level;
+        result.bab += cls.baseAttackProgression * level;
         result.saves.fort += (cls.saves.fortitude ? 1 / 2 : 1 / 3) * level;
         goodSaves.fort ||= cls.saves.fortitude;
         result.saves.refl += (cls.saves.reflexes ? 1 / 2 : 1 / 3) * level;
