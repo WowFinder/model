@@ -15,7 +15,7 @@ class FullData {
         this.#chars = Character.load();
         this.#classes = Class.load();
         this.#races = Race.load();
-        this.#items = Item.load(/* buildItem, reThrowErrors */);
+        this.#items = Item.load();
         this.#items = Item.load();
     }
 

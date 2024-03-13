@@ -9,9 +9,8 @@ function getClassAuras(char: Character): Aura[] {
     return char.classes.map(c => c.cls.auras(c.level)).flat();
 }
 
-function getClassAurasCondensed(char: Character): ClassAurasCondensed {
+function condenseClassAuras(auras: Aura[]): ClassAurasCondensed {
     const counts: { [key: string]: number } = {};
-    const auras = getClassAuras(char);
     for (const a of auras) {
         if (!(a in counts)) {
             counts[a] = 0;
@@ -24,15 +23,15 @@ function getClassAurasCondensed(char: Character): ClassAurasCondensed {
     }));
 }
 
-function getAuraBonuses(char: Character): Bonus {
+function getAuraBonuses(auras: Aura[]): Bonus {
     return Bonus.sum(
         BonusType.aura,
-        ...getClassAurasCondensed(char).map(({ aura, count }) =>
+        ...condenseClassAuras(auras).map(({ aura, count }) =>
             auraBonuses[aura](count),
         ),
     );
 }
 
-export { getClassAurasCondensed, getAuraBonuses };
+export { condenseClassAuras, getAuraBonuses, getClassAuras };
 
 export type { ClassAurasCondensed };

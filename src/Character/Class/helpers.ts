@@ -18,12 +18,12 @@ interface CastingProgression {
 type Classes = { [key: string]: Class };
 type ClassLevels = { cls: Class; level: number }[];
 
-function hdAverage(hd: number): number {
-    return Math.ceil((hd + 1) / 2);
+function hdAverage(hitDie: number): number {
+    return Math.ceil((hitDie + 1) / 2);
 }
 
-function hdFirst(hd: number): number {
-    return hd - hdAverage(hd);
+function hdFirst(hitDie: number): number {
+    return hitDie - hdAverage(hitDie);
 }
 
 const validFeatures = new Set(Object.values(ClassFeature));

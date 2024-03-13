@@ -27,7 +27,8 @@ import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import {
     ClassAurasCondensed,
     getAuraBonuses,
-    getClassAurasCondensed,
+    condenseClassAuras,
+    getClassAuras,
 } from './Class/Aura/characterHelpers';
 import { CondensedClassFeatures } from './Class/Features';
 import {
@@ -253,11 +254,11 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     }
 
     get classAurasCondensed(): ClassAurasCondensed {
-        return getClassAurasCondensed(this);
+        return condenseClassAuras(getClassAuras(this));
     }
 
     get auraBonuses(): Bonus {
-        return getAuraBonuses(this);
+        return getAuraBonuses(getClassAuras(this));
     }
 
     spellPower(mode: CastingMode, school: School | SubSchool): number {
