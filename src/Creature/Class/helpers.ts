@@ -16,7 +16,7 @@ interface CastingProgression {
 }
 
 type Classes = { [key: string]: Class };
-type ClassLevels = { cls: Class; level: number }[];
+type ClassLevels = { class: Class; level: number }[];
 
 function hdAverage(hitDie: number): number {
     return Math.ceil((hitDie + 1) / 2);

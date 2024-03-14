@@ -6,7 +6,7 @@ import {
 } from '../characterHelpers';
 import { auraBonuses } from '..';
 import { Bonus } from 'Character/Bonus';
-import { Character } from 'Character';
+import { CreatureBase } from 'Creature/base';
 
 const auras: Record<string, Aura[]> = {
     empty: [],
@@ -24,22 +24,22 @@ function auraMocker(Aura: Aura): (level: number) => Aura[] {
 const charMock = {
     classes: [
         {
-            cls: {
+            class: {
                 auras: auraMocker(Aura.arcane),
             },
             level: 14,
         },
         {
-            cls: {
+            class: {
                 auras: auraMocker(Aura.commanding),
             },
             level: 9,
         },
     ],
-} as Character;
+} as CreatureBase;
 const charMockEmpty = {
     classes: [],
-} as unknown as Character;
+} as unknown as CreatureBase;
 
 describe('condenseClassAuras', () => {
     it('should return an empty array if no auras are present', () => {

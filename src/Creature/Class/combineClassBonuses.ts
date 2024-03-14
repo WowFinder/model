@@ -26,27 +26,25 @@ function combineClassBonuses(classLevels: ClassLevels): ClassBonuses {
         classSkills: new Set<Skill>(),
     };
     if (classLevels.length > 0) {
-        result.hp += hdFirst(classLevels[0].cls.hitDie);
+        result.hp += hdFirst(classLevels[0].class.hitDie);
     }
-    for (const { cls, level } of classLevels) {
-        result.hp += hdAverage(cls.hitDie) * level;
-        result.bab += cls.baseAttackProgression * level;
-        result.saves.fort += (cls.saves.fortitude ? 1 / 2 : 1 / 3) * level;
-        goodSaves.fort ||= cls.saves.fortitude;
-        result.saves.refl += (cls.saves.reflexes ? 1 / 2 : 1 / 3) * level;
-        goodSaves.refl ||= cls.saves.reflexes;
-        result.saves.will += (cls.saves.will ? 1 / 2 : 1 / 3) * level;
-        goodSaves.will ||= cls.saves.will;
-        result.efl.arcane += cls.casting.arcane * level;
-        result.efl.divine += cls.casting.divine * level;
-        result.efl.spontaneous += cls.casting.spontaneous * level;
-        result.skillRanks += cls.skillRanks * level;
-        for (const f of cls.featuresList.filter(f => f.level <= level)) {
+    for (const { class: c, level } of classLevels) {
+        result.hp += hdAverage(c.hitDie) * level;
+        result.bab += c.baseAttackProgression * level;
+        result.saves.fort += (c.saves.fortitude ? 1 / 2 : 1 / 3) * level;
+        goodSaves.fort ||= c.saves.fortitude;
+        result.saves.refl += (c.saves.reflexes ? 1 / 2 : 1 / 3) * level;
+        goodSaves.refl ||= c.saves.reflexes;
+        result.saves.will += (c.saves.will ? 1 / 2 : 1 / 3) * level;
+        goodSaves.will ||= c.saves.will;
+        result.efl.arcane += c.casting.arcane * level;
+        result.efl.divine += c.casting.divine * level;
+        result.efl.spontaneous += c.casting.spontaneous * level;
+        result.skillRanks += c.skillRanks * level;
+        for (const f of c.featuresList.filter(f => f.level <= level)) {
             result.features[f.feature] = (result.features[f.feature] ?? 0) + 1;
         }
-        cls.classSkills.forEach((value: Skill) =>
-            result.classSkills.add(value),
-        );
+        c.classSkills.forEach((value: Skill) => result.classSkills.add(value));
     }
     if (goodSaves.fort) {
         result.saves.fort += 2;

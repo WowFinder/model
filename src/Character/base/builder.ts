@@ -35,7 +35,7 @@ type CharacterBaseBuilder = CharacterBaseFullBuilder | CharacterBaseRaceBuilder;
 interface CharacterBuilder extends CharacterBaseCoreBuilder {
     race: string;
     personal: CharPersonalDetailsBuilder;
-    classes: { cls: string; level: number }[];
+    classes: { class: string; level: number }[];
     active?: boolean;
     skillRanks?: SkillRanks;
     inventory?: InventoryBuilder;
@@ -66,7 +66,7 @@ interface CharacterPersonalExport extends CharacterBaseExport {
 interface CharacterExport extends CharacterPersonalExport {
     [key: string]: JsonValue;
     race: string;
-    classes: { cls: string; level: number }[];
+    classes: { class: string; level: number }[];
     active: boolean;
     skillRanks: SkillRanks;
     inventory: InventoryExport;

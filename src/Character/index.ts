@@ -46,6 +46,7 @@ import Race from './Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
 import { statMod, StatsBlock } from './Stats';
+import { CreatureBase } from 'Creature/base';
 
 type Characters = { [key: string]: Character };
 
@@ -75,8 +76,8 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         this.#race = checkRace(rest.race);
         this.#active = active;
         this.#classes = [];
-        for (const { cls, level } of classes) {
-            this.#classes.push({ cls: checkClass(cls), level });
+        for (const { class: c, level } of classes) {
+            this.#classes.push({ class: checkClass(c), level });
         }
         const auras = this.auraBonuses;
         this.#skillRanks = { ...skillRanks };
@@ -127,7 +128,10 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     }
 
     get classes(): ClassLevels {
-        return this.#classes.map(({ cls, level }) => ({ cls, level }));
+        return this.#classes.map(({ class: c, level }) => ({
+            class: c,
+            level,
+        }));
     }
 
     get skillRanks(): SkillRanks {
@@ -205,7 +209,7 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
                     (entry.class
                         ? sum(
                               ...this.#classes
-                                  .filter(c => entry.class === c.cls)
+                                  .filter(c => entry.class === c.class)
                                   .map(c => c.level),
                           )
                         : sum(...this.classes.map(entry => entry.level))) >=
@@ -242,28 +246,32 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         return combined;
     }
 
+    private get __creatureInterop(): CreatureBase {
+        return this as unknown as CreatureBase;
+    }
+
     get gearBonuses(): Bonus {
         return (this.#cachedGearBonuses ||= this.#combineGearBonuses());
     }
 
     get classFeatures(): ClassFeature[] {
-        return getClassFeatures(this);
+        return getClassFeatures(this.__creatureInterop);
     }
 
     get classFeaturesCondensed(): CondensedClassFeatures {
-        return getClassFeaturesCondensed(this);
+        return getClassFeaturesCondensed(this.__creatureInterop);
     }
 
     get classAuras(): Aura[] {
-        return this.classes.map(c => c.cls.auras(c.level)).flat();
+        return this.classes.map(c => c.class.auras(c.level)).flat();
     }
 
     get classAurasCondensed(): ClassAurasCondensed {
-        return condenseClassAuras(getClassAuras(this));
+        return condenseClassAuras(getClassAuras(this.__creatureInterop));
     }
 
     get auraBonuses(): Bonus {
-        return getAuraBonuses(getClassAuras(this));
+        return getAuraBonuses(getClassAuras(this.__creatureInterop));
     }
 
     spellPower(mode: CastingMode, school: School | SubSchool): number {
@@ -285,11 +293,11 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     }
 
     addLevel(cls: Class, levels = 1): ClassLevels {
-        const matches = this.#classes.filter(c => c.cls.key === cls.key);
+        const matches = this.#classes.filter(c => c.class.key === cls.key);
         if (matches.length > 0) {
             matches[0].level += levels;
         } else {
-            this.#classes.push({ cls, level: levels });
+            this.#classes.push({ class: cls, level: levels });
         }
         this.#invalidateCache();
         return this.classes;
@@ -300,7 +308,7 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
             ...super.export(),
             race: this.#race?.key || '',
             classes: this.#classes.map(c => ({
-                cls: c.cls.key,
+                class: c.class.key,
                 level: c.level,
             })),
             active: this.#active,
