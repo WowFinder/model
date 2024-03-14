@@ -2,7 +2,13 @@ import { AssetType } from '@wowfinder/ts-enums';
 import { Adventure } from 'Adventure';
 import { AssetResolver } from 'Assets/AssetResolver';
 import { Character } from 'Character';
-import { Class } from 'Character/Class';
+import { Class } from 'Creature/Class';
+import {
+    mockedMeleeClassRawAsset,
+    mockedArcaneClassRawAsset,
+    mockedDivineClassRawAsset,
+    mockedStealthClassRawAsset,
+} from '__mocks__/Creature/class';
 import { Race } from 'Character/Race';
 import { mockedRaceRawAsset } from '__mocks__/Creature/race';
 import { Faction } from 'Faction';
@@ -28,7 +34,18 @@ class MockAssetResolver extends AssetResolver {
     }
 
     resolveClass(key: string): Class {
-        return noAsset(AssetType.classes, key);
+        switch (key) {
+            case 'mocked-melee-class':
+                return new Class(mockedMeleeClassRawAsset);
+            case 'mocked-arcane-class':
+                return new Class(mockedArcaneClassRawAsset);
+            case 'mocked-divine-class':
+                return new Class(mockedDivineClassRawAsset);
+            case 'mocked-stealth-class':
+                return new Class(mockedStealthClassRawAsset);
+            default:
+                return noAsset(AssetType.classes, key);
+        }
     }
 
     resolveFaction(key: string): Faction {

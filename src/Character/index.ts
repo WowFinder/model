@@ -23,18 +23,23 @@ import {
     SkillRanks,
 } from './base';
 import { Bonus } from './Bonus';
-import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
+import {
+    Class,
+    ClassBonuses,
+    ClassFeature,
+    ClassLevels,
+} from '../Creature/Class';
 import {
     ClassAurasCondensed,
     getAuraBonuses,
     condenseClassAuras,
     getClassAuras,
-} from './Class/Aura/characterHelpers';
-import { CondensedClassFeatures } from './Class/Features';
+} from '../Creature/Class/Aura/characterHelpers';
+import { CondensedClassFeatures } from '../Creature/Class/Features';
 import {
     getClassFeatures,
     getClassFeaturesCondensed,
-} from './Class/Features/characterHelpers';
+} from '../Creature/Class/Features/characterHelpers';
 import { Feat, feats } from './Feats';
 import { buildStats, checkClass, checkRace } from './helpers';
 import Race from './Race';

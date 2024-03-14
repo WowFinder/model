@@ -16,13 +16,14 @@ const rawBaseCreatureExpanded: RawCreatureAsset = {
     key: 'base-creature-mock-expanded',
     personal: {
         ...rawBaseCreatureMinimal.personal,
-        alignment: Alignment.neutralNeutral,
+        alignment: Alignment.lawfulGood,
         weight: 180,
     },
     classes: [
         { class: 'mocked-melee-class', level: 8 },
         { class: 'mocked-arcane-class', level: 4 },
         { class: 'mocked-divine-class', level: 2 },
+        { class: 'mocked-stealth-class', level: 2 },
     ],
 } as const;
 

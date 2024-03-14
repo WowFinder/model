@@ -1,6 +1,6 @@
 import { JsonValue } from '@wowfinder/ts-utils';
 import { Bonus } from './Bonus';
-import { Class } from './Class';
+import { Class } from '../Creature/Class';
 import { Feat } from './Feats';
 import Race from './Race';
 import { StatsBlock } from './Stats';

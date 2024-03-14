@@ -1,6 +1,6 @@
 import { FeatFlag, Stat } from '@wowfinder/ts-enums';
 import { Character } from '../../../Character';
-import { ClassFeature } from '../../Class';
+import { ClassFeature } from '../../../Creature/Class';
 import {
     and as allOf,
     AttackBonusRequirement,

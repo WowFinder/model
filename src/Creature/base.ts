@@ -2,7 +2,7 @@ import { Stats } from '@wowfinder/asset-schemas';
 import { RawCreatureAsset } from '@wowfinder/asset-schemas/dist/Creature/base';
 import { BaseCreaturePersonal } from '@wowfinder/asset-schemas/dist/Creature/personal';
 import { AssetResolver } from 'Assets/AssetResolver';
-import { Class } from 'Character/Class';
+import { Class } from './Class';
 import Race from 'Character/Race';
 
 type ClassEntry = { class: Class; level: number };
@@ -53,5 +53,7 @@ abstract class CreatureBase {
         return this.#classes.map(entry => ({ ...entry }));
     }
 }
+
+export type { ClassEntry, ClassEntries };
 
 export { CreatureBase };

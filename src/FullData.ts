@@ -1,5 +1,5 @@
 import { Character, Characters } from './Character';
-import { Class, Classes } from './Character/Class';
+import { Class, Classes } from './Creature/Class';
 import { Faction, Factions } from './Faction';
 import { Item } from './Item';
 import { Race, Races } from './Character/Race';

@@ -2,7 +2,7 @@ import { AssetType } from '@wowfinder/ts-enums';
 import { Debugger } from '@wowfinder/ts-utils';
 import { Adventure } from 'Adventure';
 import { Character } from 'Character';
-import { Class } from 'Character/Class';
+import { Class } from 'Creature/Class';
 import Race from 'Character/Race';
 import { Faction } from 'Faction';
 import { Item } from 'Item';
