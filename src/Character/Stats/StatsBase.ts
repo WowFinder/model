@@ -1,6 +1,6 @@
+import { Stats } from '@wowfinder/asset-schemas';
 import { Mass } from '../../Scalar';
 import {
-    StatSet,
     baseDefault,
     zeroDefault,
     PartialStatBlock,
@@ -8,13 +8,13 @@ import {
     carry,
 } from './helpers';
 
-class StatsBase {
-    #base: StatSet;
-    #racial: StatSet;
-    #enhance: StatSet;
-    #gear: StatSet;
-    #misc: StatSet;
-    #temp: StatSet;
+class StatsBlockBase {
+    #base: Stats;
+    #racial: Stats;
+    #enhance: Stats;
+    #gear: Stats;
+    #misc: Stats;
+    #temp: Stats;
 
     constructor({
         base = baseDefault,
@@ -32,7 +32,7 @@ class StatsBase {
         this.#temp = temp;
     }
 
-    get totals(): StatSet {
+    get totals(): Stats {
         return addStatSets(
             this.#base,
             this.#racial,
@@ -43,32 +43,32 @@ class StatsBase {
         );
     }
 
-    get intrinsic(): StatSet {
+    get intrinsic(): Stats {
         return addStatSets(this.#base, this.#racial);
     }
 
-    get base(): StatSet {
-        return Object.assign({}, this.#base);
+    get base(): Stats {
+        return { ...this.#base };
     }
 
-    get racial(): StatSet {
-        return Object.assign({}, this.#racial);
+    get racial(): Stats {
+        return { ...this.#racial };
     }
 
-    get enhance(): StatSet {
-        return Object.assign({}, this.#enhance);
+    get enhance(): Stats {
+        return { ...this.#enhance };
     }
 
-    get gear(): StatSet {
-        return Object.assign({}, this.#gear);
+    get gear(): Stats {
+        return { ...this.#gear };
     }
 
-    get misc(): StatSet {
-        return Object.assign({}, this.#misc);
+    get misc(): Stats {
+        return { ...this.#misc };
     }
 
-    get temp(): StatSet {
-        return Object.assign({}, this.#temp);
+    get temp(): Stats {
+        return { ...this.#temp };
     }
 
     get carry(): Mass {
@@ -76,4 +76,4 @@ class StatsBase {
     }
 }
 
-export { StatsBase };
+export { StatsBlockBase };

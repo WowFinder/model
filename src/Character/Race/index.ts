@@ -1,38 +1,28 @@
-import { Alignment, Size } from '@wowfinder/ts-enums';
-import Language, { defaultLang } from '../../Language';
-import { playableAlignments } from '../Alignment';
+import { Alignment, Languages, Size } from '@wowfinder/ts-enums';
 import { SkillSet } from '../Skill';
-import { SpeedBuilder, Speeds } from '../Speeds';
-import { StatSet, zeroDefault as statsZero } from '../Stats';
-
-interface RaceBuilder {
-    key: string;
-    size?: Size;
-    statMods?: StatSet;
-    skillMods?: SkillSet;
-    bonusSkillRanks?: number; // Per level
-    bonusStartingFeats?: number;
-    initialLangs: Language[];
-    additionalLangs?: Language[];
-    commonAligns?: Alignment[];
-    speeds?: SpeedBuilder;
-    naturalArmor?: number;
-}
+import { Speeds } from '../Speeds';
+import { zeroDefault as statsZero } from '../Stats';
+import { RawRaceAsset, Saves, Stats } from '@wowfinder/asset-schemas';
 
 type Races = { [key: string]: Race };
 
+const defaultSaves: Saves = {
+    fortitude: 0,
+    reflexes: 0,
+    will: 0,
+};
 export default class Race {
-    private _key: string;
-    private _size: Size;
-    private _stats: StatSet;
-    private _skills: SkillSet;
-    private _bonusSkills: number;
-    private _bonusFeats: number;
-    private _initial: Language[];
-    private _additional: Language[];
-    private _aligns: Alignment[];
-    private _speeds: Speeds;
-    private _naturalArmor: number;
+    #key: string;
+    #size: Size;
+    #statMods: Stats;
+    #skillMods: SkillSet;
+    #bonusSkillRanks: number;
+    #bonusStartingFeats: number;
+    #initialLanguages: Languages[];
+    #additionalLanguages: Languages[];
+    #commonAlignments: Alignment[];
+    #speeds: Speeds;
+    #saves: Saves;
 
     constructor({
         key,
@@ -41,75 +31,78 @@ export default class Race {
         skillMods = {},
         bonusSkillRanks = 0,
         bonusStartingFeats = 0,
-        initialLangs = defaultLang,
-        additionalLangs = [],
-        commonAligns = playableAlignments,
+        initialLanguages,
+        additionalLanguages,
+        commonAlignments,
         speeds,
-        naturalArmor = 0,
-    }: RaceBuilder) {
-        this._key = key;
-        this._size = size;
-        Object.freeze((this._stats = statMods));
-        Object.freeze((this._skills = skillMods));
-        this._bonusSkills = bonusSkillRanks || 0;
-        this._bonusFeats = bonusStartingFeats || 0;
-        Object.freeze((this._initial = [...initialLangs]));
-        Object.freeze((this._additional = [...additionalLangs]));
-        Object.freeze((this._aligns = [...commonAligns]));
-        Object.freeze(
-            // TODO #436: Add speed data in race definitions!
-            (this._speeds = speeds ? new Speeds(speeds) : Speeds.default),
-        );
-        this._naturalArmor = naturalArmor || 0;
-        Object.freeze(this);
+        saves,
+    }: RawRaceAsset) {
+        this.#key = key;
+        this.#size = size;
+        this.#statMods = statMods;
+        this.#skillMods = skillMods;
+        this.#bonusSkillRanks = bonusSkillRanks || 0;
+        this.#bonusStartingFeats = bonusStartingFeats || 0;
+        this.#initialLanguages = [...initialLanguages];
+        this.#additionalLanguages = [...additionalLanguages];
+        this.#commonAlignments = [...commonAlignments];
+        this.#speeds = speeds ? new Speeds(speeds) : Speeds.default;
+        this.#saves = {
+            ...defaultSaves,
+            ...(saves ?? {}),
+        };
     }
 
     get key(): string {
-        return this._key;
+        return this.#key;
     }
 
     get size(): Size {
-        return this._size;
+        return this.#size;
     }
 
-    get statMods(): StatSet {
-        return this._stats;
+    get statMods(): Stats {
+        return { ...this.#statMods };
     }
 
     get skillMods(): SkillSet {
-        return this._skills;
+        return { ...this.#skillMods };
     }
 
     get bonusSkillRanksPerLevel(): number {
-        return this._bonusSkills;
+        return this.#bonusSkillRanks;
     }
 
     get bonusFeats(): number {
-        return this._bonusFeats;
+        return this.#bonusStartingFeats;
     }
 
-    get initialLanguages(): Language[] {
-        return [...this._initial];
+    get initialLanguages(): Languages[] {
+        return [...this.#initialLanguages];
     }
 
-    get additionalLanguages(): Language[] {
-        return [...this._additional];
+    get additionalLanguages(): Languages[] {
+        return [...this.#additionalLanguages];
     }
 
     get commonAlignments(): Alignment[] {
-        return [...this._aligns];
+        return [...this.#commonAlignments];
     }
 
     isCommonAlignment(alignment: Alignment): boolean {
-        return this._aligns.includes(alignment);
+        return this.#commonAlignments.includes(alignment);
     }
 
     get speeds(): Speeds {
-        return this._speeds;
+        return new Speeds(this.#speeds);
+    }
+
+    get saves(): Saves {
+        return { ...this.#saves };
     }
 
     get naturalArmor(): number {
-        return this._naturalArmor;
+        return 0;
     }
 
     static build(raw: any): Race {

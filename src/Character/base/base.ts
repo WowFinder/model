@@ -1,5 +1,4 @@
 import { Resistances } from '../Resistances';
-import { StatSet } from '../Stats';
 import { CharacterBaseBuilder, CharacterBaseExport } from './builder';
 import {
     FeatChoice,
@@ -15,12 +14,13 @@ import {
     zeroCasterLevel,
 } from 'Magic';
 import { Size } from '@wowfinder/ts-enums';
+import { Stats } from '@wowfinder/asset-schemas';
 
 abstract class CharacterBase {
     #key: string;
     #featChoices: FeatChoice[];
     #miscHP?: number;
-    #baseStats: StatSet;
+    #baseStats: Stats;
     #baseResistances: Resistances;
     #size: Size;
     #speeds: Speeds;
@@ -65,7 +65,7 @@ abstract class CharacterBase {
         return this.#miscHP;
     }
 
-    get baseStats(): StatSet {
+    get baseStats(): Stats {
         return this.#baseStats;
     }
 

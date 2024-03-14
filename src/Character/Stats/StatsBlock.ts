@@ -1,19 +1,14 @@
 import { Mass } from '../../Scalar';
-import { StatsBase } from './StatsBase';
-import {
-    StatSet,
-    PartialStatBlock,
-    addStatSets,
-    statMod,
-    carry,
-} from './helpers';
+import { StatsBlockBase } from './StatsBase';
+import { Stats as StatValues } from '@wowfinder/asset-schemas';
+import { PartialStatBlock, addStatSets, statMod, carry } from './helpers';
 
-class Stats extends StatsBase {
-    get active(): StatSet {
+class StatsBlock extends StatsBlockBase {
+    get active(): StatValues {
         return addStatSets(this.base, this.racial, this.enhance);
     }
 
-    get totalMods(): StatSet {
+    get totalMods(): StatValues {
         const totals = this.totals;
         return {
             strength: statMod(totals.strength),
@@ -36,8 +31,8 @@ class Stats extends StatsBase {
         gear,
         misc,
         temp,
-    }: PartialStatBlock): Stats {
-        return new Stats({
+    }: PartialStatBlock): StatsBlock {
+        return new StatsBlock({
             base: base || this.base,
             racial: racial || this.racial,
             enhance: enhance || this.enhance,
@@ -48,4 +43,4 @@ class Stats extends StatsBase {
     }
 }
 
-export { Stats };
+export { StatsBlock };

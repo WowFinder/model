@@ -3,7 +3,7 @@ import {
     zeroCasterLevel,
 } from './EffectiveCasterLevels';
 import type { Expanded } from '@wowfinder/ts-utils';
-import { Stats, StatSet, zeroDefault } from '../Character/Stats';
+import { StatsBlock, zeroDefault } from '../Character/Stats';
 import {
     CastingModeValues,
     CastingModeValuesPartial,
@@ -21,6 +21,7 @@ import {
     SubSchoolValuesPartial,
 } from './School';
 import { CastingMode, School, SubSchool } from '@wowfinder/ts-enums';
+import { Stats } from '@wowfinder/asset-schemas';
 
 type SpellPowerValues<T> = CastingModeValues<T> &
     SchoolValues<T> &
@@ -54,17 +55,17 @@ function computedSpellPower(
     data: SpellPowerValues<number>,
     mode: CastingMode,
     school: School | SubSchool,
-    stats?: StatSet,
+    stats?: Stats,
     efl: EffectiveCasterLevels = zeroCasterLevel,
 ): number {
-    const smods = new Stats({ base: stats ?? zeroDefault });
+    const smods = new StatsBlock({ base: stats ?? zeroDefault });
     const smod = smods.totalMods[castingStats[mode]];
     return data[mode] + data[school] + smod + (efl[mode] ?? 0);
 }
 
 function fullComputedSpellPower(
     data: SpellPowerValues<number>,
-    stats?: StatSet,
+    stats?: Stats,
     efl: EffectiveCasterLevels = zeroCasterLevel,
 ): FullComputedSpellPower {
     const res: PartialComputedSpellPower = {};

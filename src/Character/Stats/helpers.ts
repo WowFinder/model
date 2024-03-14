@@ -1,16 +1,13 @@
 import { sum } from '@wowfinder/ts-utils';
 import { Mass } from '../../Scalar';
-import { MassUnit, Stat } from '@wowfinder/ts-enums';
+import { MassUnit } from '@wowfinder/ts-enums';
+import { Stats } from '@wowfinder/asset-schemas';
 
 function statMod(stat: number): number {
     return Math.floor(stat / 2 - 5);
 }
 
-type StatSet = { [key in Stat]: number };
-
-type PartialStatSet = { [key in Stat]?: number };
-
-function fillStatSet(base: PartialStatSet, defaultValue: number = 0): StatSet {
+function fillStatSet(base: Partial<Stats>, defaultValue: number = 0): Stats {
     return {
         strength: base.strength ?? defaultValue,
         dexterity: base.dexterity ?? defaultValue,
@@ -21,7 +18,7 @@ function fillStatSet(base: PartialStatSet, defaultValue: number = 0): StatSet {
     };
 }
 
-function addStatSets(...args: StatSet[]): StatSet {
+function addStatSets(...args: Stats[]): Stats {
     return {
         strength: sum(...args.map(s => s.strength)),
         dexterity: sum(...args.map(s => s.dexterity)),
@@ -32,7 +29,7 @@ function addStatSets(...args: StatSet[]): StatSet {
     };
 }
 
-function scaleStatSet(stats: StatSet, factor: number): StatSet {
+function scaleStatSet(stats: Stats, factor: number): Stats {
     return {
         strength: Math.floor(stats.strength * factor),
         dexterity: Math.floor(stats.dexterity * factor),
@@ -43,7 +40,7 @@ function scaleStatSet(stats: StatSet, factor: number): StatSet {
     };
 }
 
-const baseDefault: StatSet = {
+const baseDefault: Stats = {
     strength: 10,
     dexterity: 10,
     constitution: 10,
@@ -52,7 +49,7 @@ const baseDefault: StatSet = {
     charisma: 10,
 };
 
-const zeroDefault: StatSet = {
+const zeroDefault: Stats = {
     strength: 0,
     dexterity: 0,
     constitution: 0,
@@ -62,12 +59,12 @@ const zeroDefault: StatSet = {
 };
 
 type PartialStatBlock = {
-    base?: StatSet;
-    racial?: StatSet;
-    enhance?: StatSet;
-    gear?: StatSet;
-    misc?: StatSet;
-    temp?: StatSet;
+    base?: Stats;
+    racial?: Stats;
+    enhance?: Stats;
+    gear?: Stats;
+    misc?: Stats;
+    temp?: Stats;
 };
 
 function carry(str: number): Mass {
@@ -90,8 +87,6 @@ function carry(str: number): Mass {
 }
 
 export {
-    StatSet,
-    PartialStatSet,
     fillStatSet,
     PartialStatBlock,
     addStatSets,

@@ -3,7 +3,8 @@ import { Bonus } from './Bonus';
 import { Class } from './Class';
 import { Feat } from './Feats';
 import Race from './Race';
-import { Stats, StatSet } from './Stats';
+import { StatsBlock } from './Stats';
+import { Stats } from '@wowfinder/asset-schemas';
 
 const defaultRace = 'human.cha';
 function checkRace(raceName: string | Race): Race {
@@ -81,12 +82,12 @@ function buildStats({
     auras,
     gear,
 }: {
-    base: StatSet;
+    base: Stats;
     race: Race;
     auras: Bonus;
     gear: Bonus;
-}): Stats {
-    return new Stats({
+}): StatsBlock {
+    return new StatsBlock({
         base,
         racial: race.statMods,
         // TODO #445: enhance

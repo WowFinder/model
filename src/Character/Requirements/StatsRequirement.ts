@@ -1,12 +1,13 @@
 import { Requirement } from './base';
-import { PartialStatSet, StatKeys, StatSet, zeroDefault } from '../Stats';
+import { StatKeys, zeroDefault } from '../Stats';
 import { Character } from '..';
 import { FunctionBasedRequirement } from '.';
+import { Stats } from '@wowfinder/asset-schemas';
 
-class MinStatsRequirement implements StatSet, Requirement<StatSet> {
-    #min: StatSet;
-    constructor(min: PartialStatSet) {
-        this.#min = Object.assign({}, zeroDefault, min);
+class MinStatsRequirement implements Stats, Requirement<Stats> {
+    #min: Stats;
+    constructor(min: Partial<Stats>) {
+        this.#min = { ...zeroDefault, ...min };
     }
 
     get strength(): number {
@@ -33,16 +34,16 @@ class MinStatsRequirement implements StatSet, Requirement<StatSet> {
         return this.#min.charisma;
     }
 
-    test(value: PartialStatSet): boolean {
+    test(value: Partial<Stats>): boolean {
         return StatKeys.every(
-            k => (value[k] || zeroDefault[k]) >= this.#min[k],
+            k => (value[k] ?? zeroDefault[k]) >= this.#min[k],
         );
     }
 }
-class MaxStatsRequirement implements StatSet, Requirement<StatSet> {
-    #max: StatSet;
-    constructor(max: PartialStatSet) {
-        this.#max = Object.assign({}, zeroDefault, max);
+class MaxStatsRequirement implements Stats, Requirement<Stats> {
+    #max: Stats;
+    constructor(max: Partial<Stats>) {
+        this.#max = { ...zeroDefault, ...max };
     }
 
     get strength(): number {
@@ -69,17 +70,17 @@ class MaxStatsRequirement implements StatSet, Requirement<StatSet> {
         return this.#max.charisma;
     }
 
-    test(value: PartialStatSet): boolean {
+    test(value: Partial<Stats>): boolean {
         const keys = Object.keys(this.#max);
         return StatKeys.every(
             k =>
                 !keys.includes(k) ||
-                (value[k] || zeroDefault[k]) <= this.#max[k],
+                (value[k] ?? zeroDefault[k]) <= this.#max[k],
         );
     }
 }
 
-function characterStatsRequirement<T extends Requirement<StatSet>>(
+function characterStatsRequirement<T extends Requirement<Stats>>(
     req: T,
 ): Requirement<Character> {
     return new FunctionBasedRequirement<Character>((char: Character) =>

@@ -40,7 +40,7 @@ import { buildStats, checkClass, checkRace } from './helpers';
 import Race from './Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
-import { statMod, Stats } from './Stats';
+import { statMod, StatsBlock } from './Stats';
 
 type Characters = { [key: string]: Character };
 
@@ -108,7 +108,7 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         return this.#active;
     }
 
-    get stats(): Stats {
+    get stats(): StatsBlock {
         return buildStats({
             base: this.baseStats,
             race: this.#race,

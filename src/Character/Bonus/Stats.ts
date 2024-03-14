@@ -1,11 +1,12 @@
 import { sum } from '@wowfinder/ts-utils';
-import { PartialStatSet, StatSet, zeroDefault } from '../Stats';
+import { zeroDefault } from '../Stats';
 import { Stat } from '@wowfinder/ts-enums';
+import { Stats } from '@wowfinder/asset-schemas';
 
 export default class StatsBonus {
-    #values: StatSet;
+    #values: Stats;
 
-    constructor(values: PartialStatSet) {
+    constructor(values: Partial<Stats>) {
         this.#values = { ...zeroDefault, ...values };
         for (const stat of Object.keys(Stat)) {
             Object.defineProperty(this, stat, {
@@ -16,7 +17,7 @@ export default class StatsBonus {
         }
     }
 
-    get values(): StatSet {
+    get values(): Stats {
         return { ...this.#values };
     }
 

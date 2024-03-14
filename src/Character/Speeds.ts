@@ -93,11 +93,12 @@ class Speeds {
         return wrap(this.#base);
     }
 
-    get fly(): { speed: Speed; maneuverability: FlyManeuverability } {
-        return {
-            speed: wrap(this.#fly),
-            maneuverability: this.#maneuverablity,
-        };
+    get fly(): Speed {
+        return wrap(this.#fly);
+    }
+
+    get maneuverability(): FlyManeuverability {
+        return this.#maneuverablity;
     }
 
     get swim(): Speed {

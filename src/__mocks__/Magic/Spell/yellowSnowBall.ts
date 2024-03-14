@@ -1,6 +1,6 @@
 import { RawSpellAsset } from '@wowfinder/asset-schemas';
 
-export default {
+const yellowSnowBall = {
     key: 'yellowSnowBall',
     ranks: [
         {
@@ -50,3 +50,5 @@ export default {
     },
     flags: ['spellResistance'],
 } as RawSpellAsset;
+
+export { yellowSnowBall };

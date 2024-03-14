@@ -6,8 +6,8 @@ import { CharPersonalDetailsBuilder } from '../Personal';
 import Race from '../Race';
 import { Resistances, ResistancesExport } from '../Resistances';
 import { SpeedBuilder } from '../Speeds';
-import { StatSet } from '../Stats';
 import { Size } from '@wowfinder/ts-enums';
+import { Stats } from '@wowfinder/asset-schemas';
 
 type SkillRanks = { [key: string]: number };
 
@@ -15,7 +15,7 @@ interface CharacterBaseCoreBuilder {
     key: string;
     featChoices?: Iterable<FeatChoice>;
     miscHP?: number;
-    baseStats: StatSet;
+    baseStats: Stats;
     baseResistances?: Resistances;
 }
 
@@ -55,7 +55,7 @@ interface CharacterBaseExport {
     key: string;
     featChoices: FeatChoiceExport[];
     miscHP: number | null;
-    baseStats: StatSet;
+    baseStats: Stats;
     baseResistances: ResistancesExport;
     size: Size | null;
     naturalArmor: number | null;

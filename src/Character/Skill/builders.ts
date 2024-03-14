@@ -1,5 +1,5 @@
+import { Stats } from '@wowfinder/asset-schemas';
 import { Skill, Stat } from '@wowfinder/ts-enums';
-import { StatSet } from '../Stats';
 
 interface SkillSpecBuilder {
     key: Skill;
@@ -10,7 +10,7 @@ interface SkillSpecBuilder {
 }
 
 interface SkillTotalBuilder {
-    stats: StatSet;
+    stats: Stats;
     ranks: { [key in Skill]?: number };
     byClass: Skill[];
     acp: number;

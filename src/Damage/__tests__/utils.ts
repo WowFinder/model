@@ -1,9 +1,9 @@
 import { statMod } from '../../Character/Stats';
-import type { StatSet } from '../../Character/Stats';
 import type { DamageComponentSpecBuilder } from '../DamageComponent';
 import type { FullDamageTypes } from '../DamageType';
 import type { DamageRollArguments } from '../DamageRollArguments';
 import { Stat } from '@wowfinder/ts-enums';
+import { Stats } from '@wowfinder/asset-schemas';
 
 const mockDamageTypes: FullDamageTypes = {
     bludgeoning: true,
@@ -28,7 +28,7 @@ const damageComponentSpecBuilder: DamageComponentSpecBuilder = {
     fixedMod: 3,
     modStat: Stat.strength,
 };
-const stats: StatSet = {
+const stats: Stats = {
     [Stat.strength]: 8,
     [Stat.dexterity]: 12,
     [Stat.constitution]: 14,
@@ -37,7 +37,7 @@ const stats: StatSet = {
     [Stat.charisma]: 15,
 };
 
-const statsBadFinnesse: StatSet = {
+const statsBadFinnesse: Stats = {
     [Stat.strength]: 12,
     [Stat.dexterity]: 8,
     [Stat.constitution]: 14,
@@ -66,11 +66,11 @@ const rollArgsBadFinnese: DamageRollArguments = {
     feats: ['weaponFinesse'],
 };
 
-const minRoll = (spec: DamageComponentSpecBuilder, stats: StatSet): number =>
+const minRoll = (spec: DamageComponentSpecBuilder, stats: Stats): number =>
     spec.diceCount +
     (spec.fixedMod ?? 0) +
     (spec.modStat ? statMod(stats[spec.modStat]) : 0);
-const maxRoll = (spec: DamageComponentSpecBuilder, stats: StatSet): number =>
+const maxRoll = (spec: DamageComponentSpecBuilder, stats: Stats): number =>
     spec.diceCount * spec.diceSides +
     (spec.fixedMod ?? 0) +
     (spec.modStat ? statMod(stats[spec.modStat]) : 0);
