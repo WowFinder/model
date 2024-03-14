@@ -3,7 +3,7 @@ import { JsonValue } from '@wowfinder/ts-utils';
 import { InventoryBuilder, InventoryExport } from '../../Item/Inventory';
 import { FeatChoice, FeatChoiceExport } from '../helpers';
 import { CharPersonalDetailsBuilder } from '../Personal';
-import Race from '../Race';
+import Race from '../../Creature/Race';
 import { Resistances, ResistancesExport } from '../Resistances';
 import { SpeedBuilder } from '../Speeds';
 import { Size } from '@wowfinder/ts-enums';

@@ -42,7 +42,7 @@ import {
 } from '../Creature/Class/Features/characterHelpers';
 import { Feat, feats } from './Feats';
 import { buildStats, checkClass, checkRace } from './helpers';
-import Race from './Race';
+import Race from '../Creature/Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
 import { statMod, StatsBlock } from './Stats';

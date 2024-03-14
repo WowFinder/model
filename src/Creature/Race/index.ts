@@ -1,7 +1,6 @@
 import { Alignment, Languages, Size } from '@wowfinder/ts-enums';
-import { SkillSet } from '../Skill';
-import { Speeds } from '../Speeds';
-import { zeroDefault as statsZero } from '../Stats';
+import { SkillSet } from '../../Character/Skill';
+import { Speeds } from '../../Character/Speeds';
 import { RawRaceAsset, Saves, Stats } from '@wowfinder/asset-schemas';
 
 type Races = { [key: string]: Race };
@@ -11,6 +10,7 @@ const defaultSaves: Saves = {
     reflexes: 0,
     will: 0,
 };
+
 export default class Race {
     #key: string;
     #size: Size;
@@ -24,32 +24,20 @@ export default class Race {
     #speeds: Speeds;
     #saves: Saves;
 
-    constructor({
-        key,
-        size = Size.medium,
-        statMods = statsZero,
-        skillMods = {},
-        bonusSkillRanks = 0,
-        bonusStartingFeats = 0,
-        initialLanguages,
-        additionalLanguages,
-        commonAlignments,
-        speeds,
-        saves,
-    }: RawRaceAsset) {
-        this.#key = key;
-        this.#size = size;
-        this.#statMods = statMods;
-        this.#skillMods = skillMods;
-        this.#bonusSkillRanks = bonusSkillRanks || 0;
-        this.#bonusStartingFeats = bonusStartingFeats || 0;
-        this.#initialLanguages = [...initialLanguages];
-        this.#additionalLanguages = [...additionalLanguages];
-        this.#commonAlignments = [...commonAlignments];
-        this.#speeds = speeds ? new Speeds(speeds) : Speeds.default;
+    constructor(raw: RawRaceAsset) {
+        this.#key = raw.key;
+        this.#size = raw.size;
+        this.#statMods = raw.statMods;
+        this.#skillMods = raw.skillMods ?? {};
+        this.#bonusSkillRanks = raw.bonusSkillRanks ?? 0;
+        this.#bonusStartingFeats = raw.bonusStartingFeats ?? 0;
+        this.#initialLanguages = [...raw.initialLanguages];
+        this.#additionalLanguages = [...raw.additionalLanguages];
+        this.#commonAlignments = [...raw.commonAlignments];
+        this.#speeds = raw.speeds ? new Speeds(raw.speeds) : Speeds.default;
         this.#saves = {
             ...defaultSaves,
-            ...(saves ?? {}),
+            ...(raw.saves ?? {}),
         };
     }
 
@@ -73,7 +61,7 @@ export default class Race {
         return this.#bonusSkillRanks;
     }
 
-    get bonusFeats(): number {
+    get bonusStartingFeats(): number {
         return this.#bonusStartingFeats;
     }
 
@@ -105,19 +93,9 @@ export default class Race {
         return 0;
     }
 
-    static build(raw: any): Race {
-        // TODO #437: Validate props
-        return new Race(raw);
-    }
-
-    // static #loaded: Races | null = null;
-
+    /** @deprecated */
     static load(): Races {
         throw new Error('Not implemented');
-        /* return (this.#loaded ||= forceDataLoadKeyS(
-            window.Main.asset('Races'),
-            this.build,
-        )); */
     }
 }
 

@@ -9,7 +9,7 @@ import {
     mockedDivineClassRawAsset,
     mockedStealthClassRawAsset,
 } from '__mocks__/Creature/class';
-import { Race } from 'Character/Race';
+import { Race } from 'Creature/Race';
 import { mockedRaceRawAsset } from '__mocks__/Creature/race';
 import { Faction } from 'Faction';
 import { Item } from 'Item';

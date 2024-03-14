@@ -2,7 +2,7 @@ import { Character, Characters } from './Character';
 import { Class, Classes } from './Creature/Class';
 import { Faction, Factions } from './Faction';
 import { Item } from './Item';
-import { Race, Races } from './Character/Race';
+import { Race, Races } from './Creature/Race';
 
 class FullData {
     #factions: Factions;

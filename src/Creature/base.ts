@@ -3,7 +3,7 @@ import { RawCreatureAsset } from '@wowfinder/asset-schemas/dist/Creature/base';
 import { BaseCreaturePersonal } from '@wowfinder/asset-schemas/dist/Creature/personal';
 import { AssetResolver } from 'Assets/AssetResolver';
 import { Class } from './Class';
-import Race from 'Character/Race';
+import Race from 'Creature/Race';
 
 type ClassEntry = { class: Class; level: number };
 type ClassEntries = ClassEntry[];

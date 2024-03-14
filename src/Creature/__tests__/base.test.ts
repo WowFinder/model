@@ -1,4 +1,4 @@
-import Race from 'Character/Race';
+import Race from 'Creature/Race';
 import { CreatureBase } from '../base';
 import {
     rawBaseCreatureMinimal,

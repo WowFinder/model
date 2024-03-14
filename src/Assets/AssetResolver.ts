@@ -3,7 +3,7 @@ import { Debugger } from '@wowfinder/ts-utils';
 import { Adventure } from 'Adventure';
 import { Character } from 'Character';
 import { Class } from 'Creature/Class';
-import Race from 'Character/Race';
+import Race from 'Creature/Race';
 import { Faction } from 'Faction';
 import { Item } from 'Item';
 import { Spell, SpellList } from 'Magic';

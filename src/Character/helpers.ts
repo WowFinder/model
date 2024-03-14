@@ -2,7 +2,7 @@ import { JsonValue } from '@wowfinder/ts-utils';
 import { Bonus } from './Bonus';
 import { Class } from '../Creature/Class';
 import { Feat } from './Feats';
-import Race from './Race';
+import Race from '../Creature/Race';
 import { StatsBlock } from './Stats';
 import { Stats } from '@wowfinder/asset-schemas';
 
@@ -71,7 +71,7 @@ function parseFeatChoices(raw: any[]): FeatChoice[] {
 function exportFeatchChoices(...raw: FeatChoice[]): FeatChoiceExport[] {
     return raw.map(f => ({
         feat: f.feat,
-        class: f.class?.key || '',
+        class: f.class?.key ?? '',
         level: f.level,
     }));
 }
