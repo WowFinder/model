@@ -1,6 +1,6 @@
 import { Alignment, Languages, Size } from '@wowfinder/ts-enums';
 import { SkillSet } from '../../Character/Skill';
-import { Speeds } from '../../Character/Speeds';
+import { Speeds } from '../Speeds';
 import { RawRaceAsset, Saves, Stats } from '@wowfinder/asset-schemas';
 
 type Races = { [key: string]: Race };

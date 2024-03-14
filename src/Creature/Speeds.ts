@@ -1,5 +1,6 @@
 import { FlyManeuverability, LengthUnit, TimeUnit } from '@wowfinder/ts-enums';
 import { Speed, SpeedUnit } from '../Scalar';
+import { Debugger } from '@wowfinder/ts-utils';
 
 function flyManeuverabilityBonus(maneuverability: FlyManeuverability): number {
     switch (maneuverability) {
@@ -13,6 +14,8 @@ function flyManeuverabilityBonus(maneuverability: FlyManeuverability): number {
             return 4;
         case FlyManeuverability.perfect:
             return 8;
+        default:
+            return Debugger.unreachable(maneuverability);
     }
 }
 
@@ -35,7 +38,6 @@ interface SpeedBuilder {
     swim?: SpeedValue;
     burrow?: SpeedValue;
     climb?: SpeedValue;
-    misc?: SpeedValue;
     encumberance?: boolean;
     maneuverability?: FlyManeuverability;
 }
@@ -65,7 +67,6 @@ class Speeds {
     #swim: number;
     #burrow: number;
     #climb: number;
-    #misc: number;
     #encumberance: boolean;
     #maneuverablity: FlyManeuverability;
 
@@ -75,7 +76,6 @@ class Speeds {
         swim = 0,
         burrow = 0,
         climb = 0,
-        misc = 0,
         encumberance = true,
         maneuverability = FlyManeuverability.average,
     }: SpeedBuilder) {
@@ -84,7 +84,6 @@ class Speeds {
         this.#swim = asFeet(swim);
         this.#burrow = asFeet(burrow);
         this.#climb = asFeet(climb);
-        this.#misc = asFeet(misc);
         this.#encumberance = encumberance;
         this.#maneuverablity = maneuverability;
     }
@@ -113,10 +112,6 @@ class Speeds {
         return wrap(this.#climb);
     }
 
-    get misc(): Speed {
-        return wrap(this.#misc);
-    }
-
     get encumbered(): Speed {
         return wrap(this.#encumberance ? encumbered(this.#base) : this.#base);
     }
@@ -128,7 +123,6 @@ class Speeds {
             swim: this.#swim,
             burrow: this.#burrow,
             climb: this.#climb,
-            misc: this.#misc,
             encumberance: this.#encumberance,
             maneuverability: this.#maneuverablity,
         };

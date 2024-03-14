@@ -19,6 +19,7 @@ const rawBaseCreatureExpanded: RawCreatureAsset = {
         alignment: Alignment.lawfulGood,
         weight: 180,
     },
+    notes: 'This is a mock creature for testing purposes.',
     classes: [
         { class: 'mocked-melee-class', level: 8 },
         { class: 'mocked-arcane-class', level: 4 },

@@ -1,6 +1,6 @@
 import { EffectiveCasterLevels } from 'Magic';
 import { Resistances } from '../Resistances';
-import { Speeds } from '../Speeds';
+import { Speeds } from '../../Creature/Speeds';
 import { FeatChoice } from '../helpers';
 import { CharacterOverride } from './CharacterOverride';
 import { CharacterBase } from './base';

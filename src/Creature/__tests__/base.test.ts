@@ -16,6 +16,7 @@ describe('CreatureBase', () => {
             mockAssetResolver,
         );
         expect(instance.key).toBe('base-creature-mock-minimal');
+        expect(instance.notes).toEqual('');
         expect(instance.baseStats).toEqual(rawBaseCreatureMinimal.baseStats);
         expect(instance.race instanceof Race).toBe(true);
     });
@@ -25,6 +26,7 @@ describe('CreatureBase', () => {
             mockAssetResolver,
         );
         expect(instance.key).toBe('base-creature-mock-expanded');
+        expect(instance.notes).toEqual(rawBaseCreatureExpanded.notes);
         expect(instance.baseStats).toEqual(rawBaseCreatureExpanded.baseStats);
         expect(instance.race instanceof Race).toBe(true);
         expect(instance.personal.alignment).toBe(

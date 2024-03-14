@@ -5,7 +5,7 @@ import { FeatChoice, FeatChoiceExport } from '../helpers';
 import { CharPersonalDetailsBuilder } from '../Personal';
 import Race from '../../Creature/Race';
 import { Resistances, ResistancesExport } from '../Resistances';
-import { SpeedBuilder } from '../Speeds';
+import { SpeedBuilder } from '../../Creature/Speeds';
 import { Size } from '@wowfinder/ts-enums';
 import { Stats } from '@wowfinder/asset-schemas';
 
