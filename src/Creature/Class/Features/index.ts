@@ -66,7 +66,7 @@ class CondensedClassFeatures {
 
     count(feature: string): number {
         const match = this.#raw.find(f => f.feature === feature);
-        return match?.count || 0;
+        return match?.count ?? 0;
     }
 
     get list(): ClassFeaturesCondensed {
