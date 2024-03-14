@@ -34,7 +34,7 @@ export default class Race {
         this.#initialLanguages = [...raw.initialLanguages];
         this.#additionalLanguages = [...raw.additionalLanguages];
         this.#commonAlignments = [...raw.commonAlignments];
-        this.#speeds = raw.speeds ? new Speeds(raw.speeds) : Speeds.default;
+        this.#speeds = new Speeds(raw.speeds);
         this.#saves = {
             ...defaultSaves,
             ...(raw.saves ?? {}),
