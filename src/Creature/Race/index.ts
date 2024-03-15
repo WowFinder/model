@@ -1,5 +1,5 @@
 import { Alignment, Languages, Size } from '@wowfinder/ts-enums';
-import { SkillSet } from '../../Character/Skill';
+import { SkillSet } from '../Skill';
 import { Speeds } from '../Speeds';
 import { RawRaceAsset, Saves, Stats } from '@wowfinder/asset-schemas';
 
@@ -93,6 +93,7 @@ export default class Race {
         return 0;
     }
 
+    /* istanbul ignore next */
     /** @deprecated */
     static load(): Races {
         throw new Error('Not implemented');

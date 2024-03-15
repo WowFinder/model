@@ -2,12 +2,13 @@ import { Skill, Stat } from '@wowfinder/ts-enums';
 import { SkillSpecBuilder, SkillTotalBuilder } from './builders';
 import { computeSkillTotal } from './helpers';
 
+/** @immutable */
 class SkillSpec {
-    #key: Skill;
-    #primary: Stat;
-    #secondary: Stat | null;
-    #trainedOnly: boolean;
-    #sizeModFactor: number;
+    readonly #key: Skill;
+    readonly #primary: Stat;
+    readonly #secondary: Stat | null;
+    readonly #trainedOnly: boolean;
+    readonly #sizeModFactor: number;
 
     constructor({
         key,

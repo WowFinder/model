@@ -1,14 +1,15 @@
 import { Skill, Stat } from '@wowfinder/ts-enums';
 import { SkillSpec } from './SkillSpec';
 import { SkillTotalBuilder } from './builders';
+import { statMod, baseDefault } from 'Character/Stats';
 
 const classTrainedBonus = 3;
 
-type TotalArguments = SkillTotalBuilder & { spec: SkillSpec };
+type TotalArguments = Partial<SkillTotalBuilder> & { spec: SkillSpec };
 
 function computeSkillTotal({
     spec,
-    stats,
+    stats = baseDefault,
     ranks = {},
     byClass = [],
     acp = 0,
@@ -25,8 +26,11 @@ function computeSkillTotal({
     const secondary: number | null = spec.secondary
         ? stats[spec.secondary]
         : null;
-    const statBonus: number =
-        secondary == null ? primary : Math.max(primary, secondary);
+    const statValue: number = Math.max(
+        primary,
+        secondary ?? Number.NEGATIVE_INFINITY,
+    );
+    const statBonus: number = statMod(statValue);
 
     // TODO #434: Racial, Gear, Misc, Temp
     return (
@@ -54,4 +58,28 @@ function mkSkill(
     });
 }
 
-export { computeSkillTotal, mkSkill, classTrainedBonus };
+function mkCraft(key: Skill): SkillSpec {
+    return mkSkill(key, Stat.intelligence, Stat.dexterity, true);
+}
+
+function mkLore(key: Skill): SkillSpec {
+    return mkSkill(key, Stat.intelligence, Stat.wisdom, true);
+}
+
+function mkProfession(key: Skill): SkillSpec {
+    return mkSkill(key, Stat.wisdom, Stat.intelligence, true);
+}
+
+function mkPerform(key: Skill): SkillSpec {
+    return mkSkill(key, Stat.charisma);
+}
+
+export {
+    classTrainedBonus,
+    computeSkillTotal,
+    mkCraft,
+    mkLore,
+    mkPerform,
+    mkProfession,
+    mkSkill,
+};

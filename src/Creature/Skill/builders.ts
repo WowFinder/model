@@ -4,9 +4,9 @@ import { Skill, Stat } from '@wowfinder/ts-enums';
 interface SkillSpecBuilder {
     key: Skill;
     primary: Stat;
-    secondary: Stat | null;
-    trainedOnly: boolean;
-    sizeModFactor: number;
+    secondary?: Stat | null;
+    trainedOnly?: boolean;
+    sizeModFactor?: number;
 }
 
 interface SkillTotalBuilder {
