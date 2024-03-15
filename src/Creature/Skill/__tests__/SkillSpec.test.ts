@@ -13,27 +13,27 @@ describe('SkillSpec', () => {
     it('is immutable', () => {
         const spec = new SkillSpec(minimalBuilder);
         expect(() => {
-            // @ts-expect-error
+            // @ts-expect-error: TS2540: Cannot assign to 'key' because it is a read-only property.
             spec.key = 'athletics';
         }).toThrow();
         expect(() => {
-            // @ts-expect-error
+            // @ts-expect-error: TS2540: Cannot assign to 'primary' because it is a read-only property.
             spec.primary = 'strength';
         }).toThrow();
         expect(() => {
-            // @ts-expect-error
+            // @ts-expect-error: TS2540: Cannot assign to 'secondary' because it is a read-only property.
             spec.secondary = 'strength';
         }).toThrow();
         expect(() => {
-            // @ts-expect-error
+            // @ts-expect-error: TS2540: Cannot assign to 'trainedOnly' because it is a read-only property.
             spec.trainedOnly = true;
         }).toThrow();
         expect(() => {
-            // @ts-expect-error
+            // @ts-expect-error: TS2540: Cannot assign to 'acp' because it is a read-only property.
             spec.acp = 1;
         }).toThrow();
         expect(() => {
-            // @ts-expect-error
+            // @ts-expect-error: TS2540: Cannot assign to 'sizeModFactor' because it is a read-only property.
             spec.sizeModFactor = 1;
         }).toThrow();
     });

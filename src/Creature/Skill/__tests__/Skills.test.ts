@@ -4,7 +4,7 @@ import { SkillSpec } from '../SkillSpec';
 
 describe('Skills', () => {
     describe('should provide an exhaustive set of valid Skill specs', () => {
-        for (let s of Object.values(Skill)) {
+        for (const s of Object.values(Skill)) {
             it(`Entry for ${s} should be a valid SkillSpec`, () => {
                 const spec = Skills[s];
                 expect(spec).toBeInstanceOf(SkillSpec);
