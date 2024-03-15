@@ -26,7 +26,7 @@ function hdFirst(hitDie: number): number {
     return hitDie - hdAverage(hitDie);
 }
 
-const validFeatures = new Set(Object.values(ClassFeature));
+const validFeatures = new Set<ClassFeature>(Object.values(ClassFeature));
 
 function mapFeatures(
     list: { level: number; feature?: string }[],
