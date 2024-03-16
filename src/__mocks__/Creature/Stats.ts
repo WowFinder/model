@@ -36,4 +36,23 @@ const twentyStatsMock: Stats = {
     charisma: 20,
 };
 
-export { mixedStatsMock, minimalStatsMock, defaultStatsMock, twentyStatsMock };
+const goodFinesseStatsMock: Stats = {
+    ...defaultStatsMock,
+    strength: 8,
+    dexterity: 12,
+};
+
+const badFinesseStatsMock: Stats = {
+    ...defaultStatsMock,
+    strength: 12,
+    dexterity: 8,
+};
+
+export {
+    mixedStatsMock,
+    minimalStatsMock,
+    defaultStatsMock,
+    twentyStatsMock,
+    goodFinesseStatsMock,
+    badFinesseStatsMock,
+};

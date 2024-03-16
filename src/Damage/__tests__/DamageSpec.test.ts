@@ -1,11 +1,12 @@
 import { DamageSpec } from '../DamageSpec';
-import { mockDamageTypes, minRoll, maxRoll, rollArgsSimple } from './utils';
+import { minRoll, maxRoll } from './utils';
 import type { DamageComponentSpecBuilder } from '../DamageComponent';
 import { Stat } from '@wowfinder/ts-enums';
+import { mockMindBurnFullDamageTypes, rollArgsSimple } from '__mocks__';
 
 describe('DamageSpec', () => {
     const testDamageComponentSpecBuilder: DamageComponentSpecBuilder = {
-        types: mockDamageTypes,
+        types: mockMindBurnFullDamageTypes,
         diceCount: 2,
         diceSides: 6,
         fixedMod: 3,
@@ -17,7 +18,7 @@ describe('DamageSpec', () => {
         });
         const components = damageSpec.components;
         expect(components.length).toEqual(1);
-        expect(components[0].types).toEqual(mockDamageTypes);
+        expect(components[0].types).toEqual(mockMindBurnFullDamageTypes);
         expect(components[0].diceCount).toEqual(2);
         expect(components[0].diceSides).toEqual(6);
         expect(components[0].fixedMod).toEqual(3);

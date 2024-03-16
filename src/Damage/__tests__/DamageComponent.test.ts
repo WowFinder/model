@@ -1,28 +1,27 @@
 import { Stat } from '@wowfinder/ts-enums';
 import { DamageComponentValue, DamageComponentSpec } from '../DamageComponent';
+import { maxRoll, minRoll } from './utils';
 import {
-    damageComponentSpecBuilder,
-    maxRoll,
-    minRoll,
-    mockDamageTypes,
+    defaultStatsMock,
     rollArgsSimple,
-    stats,
-} from './utils';
+    mockMindBurnFullDamageTypes,
+    damageComponentSpecBuilder,
+} from '__mocks__';
 
 describe('DamageComponentValue', () => {
     it('should initialize with the provided damage types and total', () => {
         const damageComponent = new DamageComponentValue({
-            types: mockDamageTypes,
+            types: mockMindBurnFullDamageTypes,
             total: 15,
         });
 
-        expect(damageComponent.types).toEqual(mockDamageTypes);
+        expect(damageComponent.types).toEqual(mockMindBurnFullDamageTypes);
         expect(damageComponent.total).toEqual(15);
     });
 
     it('should multiply the total by the provided multiplier', () => {
         const damageComponent = new DamageComponentValue({
-            types: mockDamageTypes,
+            types: mockMindBurnFullDamageTypes,
             total: 15,
         });
 
@@ -38,7 +37,7 @@ describe('DamageComponentSpec', () => {
             damageComponentSpecBuilder,
         );
 
-        expect(damageComponent.types).toEqual(mockDamageTypes);
+        expect(damageComponent.types).toEqual(mockMindBurnFullDamageTypes);
         expect(damageComponent.diceCount).toEqual(2);
         expect(damageComponent.diceSides).toEqual(6);
         expect(damageComponent.fixedMod).toEqual(3);
@@ -68,10 +67,10 @@ describe('DamageComponentSpec', () => {
             );
             const rolled = partialDamageComponent.roll(rollArgsSimple);
             expect(rolled.total).toBeGreaterThanOrEqual(
-                minRoll(partialDamageComponentSpecBuilder, stats),
+                minRoll(partialDamageComponentSpecBuilder, defaultStatsMock),
             );
             expect(rolled.total).toBeLessThanOrEqual(
-                maxRoll(partialDamageComponentSpecBuilder, stats),
+                maxRoll(partialDamageComponentSpecBuilder, defaultStatsMock),
             );
         });
     });
@@ -83,10 +82,10 @@ describe('DamageComponentSpec', () => {
         for (let i = 0; i < numberOfTestRolls; i++) {
             const roll = damageComponent.roll(rollArgsSimple);
             expect(roll.total).toBeGreaterThanOrEqual(
-                minRoll(damageComponentSpecBuilder, stats),
+                minRoll(damageComponentSpecBuilder, defaultStatsMock),
             );
             expect(roll.total).toBeLessThanOrEqual(
-                maxRoll(damageComponentSpecBuilder, stats),
+                maxRoll(damageComponentSpecBuilder, defaultStatsMock),
             );
         }
     });

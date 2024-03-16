@@ -14,10 +14,10 @@ const auras: Record<string, Aura[]> = {
     mixed: [Aura.arcane, Aura.arcane, Aura.commanding],
 };
 
-function auraMocker(Aura: Aura): (level: number) => Aura[] {
+function auraMocker(aura: Aura): (level: number) => Aura[] {
     return (level: number) => {
         const auraRank = Math.floor((level - 2) / 4);
-        return Array(auraRank).fill(Aura);
+        return Array(auraRank).fill(aura);
     };
 }
 

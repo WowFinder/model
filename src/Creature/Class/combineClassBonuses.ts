@@ -41,9 +41,12 @@ function combineClassBonuses(classLevels: ClassLevels): ClassBonuses {
         result.efl.divine += c.casting.divine * level;
         result.efl.spontaneous += c.casting.spontaneous * level;
         result.skillRanks += c.skillRanks * level;
-        for (const f of c.featuresList.filter(f => f.level <= level)) {
-            result.features[f.feature] = (result.features[f.feature] ?? 0) + 1;
-        }
+        c.featuresList
+            .filter(f => f.level <= level)
+            .forEach(f => {
+                result.features[f.feature] =
+                    (result.features[f.feature] ?? 0) + 1;
+            });
         c.classSkills.forEach((value: Skill) => result.classSkills.add(value));
     }
     if (goodSaves.fort) {

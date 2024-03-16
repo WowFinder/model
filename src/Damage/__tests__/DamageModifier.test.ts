@@ -6,19 +6,21 @@ import {
     SpecialDamageModifier,
 } from '../DamageModifier';
 import {
-    stats,
     rollArgsSimple,
     rollArgsFinesseSpell,
     rollArgsBadFinnese,
-    statsBadFinnesse,
-} from './utils';
+    rollArgsBadStrength,
+    badFinesseStatsMock,
+    defaultStatsMock,
+    goodFinesseStatsMock,
+} from '__mocks__';
 
 describe('computeModifier', () => {
     describe('should compute modifier for each stat', () => {
         Object.values(Stat).forEach(stat => {
             it(`should compute modifier for ${stat}`, () => {
                 const result = computeModifier(stat, rollArgsSimple);
-                expect(result).toBe(statMod(stats[stat]));
+                expect(result).toBe(statMod(defaultStatsMock[stat]));
             });
         });
     });
@@ -36,21 +38,21 @@ describe('computeModifier', () => {
             SpecialDamageModifier.Finesse,
             rollArgsFinesseSpell,
         );
-        expect(result).toBe(statMod(stats.dexterity));
+        expect(result).toBe(statMod(goodFinesseStatsMock.dexterity));
     });
     it('should use strength when better than dexterity even with Weapon Finesse', () => {
         const result2 = computeModifier(
             SpecialDamageModifier.Finesse,
             rollArgsBadFinnese,
         );
-        expect(result2).toBe(statMod(statsBadFinnesse.strength));
+        expect(result2).toBe(statMod(badFinesseStatsMock.strength));
     });
     it('should use strength when the Weapon Finesse feat is not present', () => {
         const result = computeModifier(
             SpecialDamageModifier.Finesse,
-            rollArgsSimple,
+            rollArgsBadStrength,
         );
-        expect(result).toBe(statMod(stats.strength));
+        expect(result).toBe(statMod(goodFinesseStatsMock.strength));
     });
 
     it('should compute modifier with multiplier', () => {
@@ -61,6 +63,8 @@ describe('computeModifier', () => {
             rollArgsFinesseSpell,
             multiplier,
         );
-        expect(result).toBe(statMod(stats.dexterity) * multiplier);
+        expect(result).toBe(
+            statMod(goodFinesseStatsMock.dexterity) * multiplier,
+        );
     });
 });
