@@ -21,8 +21,16 @@ module.exports = {
         sourceType: 'module',
         project: ['./tsconfig.json', './tsconfig.tests.json'],
     },
-    plugins: ['prettier', '@typescript-eslint', 'deprecation', 'misc'],
+    plugins: [
+        'prettier',
+        '@typescript-eslint',
+        'deprecation',
+        'misc',
+        'istanbul',
+    ],
     rules: {
+        'istanbul/no-ignore-file': 'error',
+        'istanbul/prefer-ignore-reason': 'error',
         'deprecation/deprecation': 'warn',
         quotes: [
             'error',

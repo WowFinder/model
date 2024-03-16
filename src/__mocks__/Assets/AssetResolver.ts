@@ -8,9 +8,9 @@ import {
     mockedArcaneClassRawAsset,
     mockedDivineClassRawAsset,
     mockedStealthClassRawAsset,
-} from '__mocks__/Creature/class';
+    mockedRaceRawAsset,
+} from '__mocks__';
 import { Race } from 'Creature/Race';
-import { mockedRaceRawAsset } from '__mocks__/Creature/race';
 import { Faction } from 'Faction';
 import { Item } from 'Item';
 import { Spell, SpellList } from 'Magic';

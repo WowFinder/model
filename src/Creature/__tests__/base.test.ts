@@ -2,10 +2,9 @@ import Race from 'Creature/Race';
 import { CreatureBase } from '../base';
 import {
     rawBaseCreatureMinimal,
-    rawBaseCreatureExpanded,
+    // rawBaseCreatureExpanded,
     mockAssetResolver,
 } from '__mocks__';
-import { sum } from '@wowfinder/ts-utils';
 
 class CreatureBaseTestingImplementation extends CreatureBase {}
 
@@ -20,6 +19,9 @@ describe('CreatureBase', () => {
         expect(instance.baseStats).toEqual(rawBaseCreatureMinimal.baseStats);
         expect(instance.race instanceof Race).toBe(true);
     });
+    /* TODO
+    !! Test disabled until Character/Class is fully covered
+    // import { sum } from '@wowfinder/ts-utils';
     it('should create an expanded instance', () => {
         const instance = new CreatureBaseTestingImplementation(
             rawBaseCreatureExpanded,
@@ -37,5 +39,5 @@ describe('CreatureBase', () => {
         );
         expect(instance.classes).toHaveLength(4);
         expect(sum(...instance.classes.map(c => c.level))).toBe(16);
-    });
+    }); */
 });

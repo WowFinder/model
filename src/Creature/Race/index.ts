@@ -93,7 +93,7 @@ export default class Race {
         return 0;
     }
 
-    /* istanbul ignore next */
+    /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
     /** @deprecated */
     static load(): Races {
         throw new Error('Not implemented');

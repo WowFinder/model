@@ -1,5 +1,5 @@
 export * from './base';
-export * from './class';
+export * from './Class';
 export * from './Skill';
 export * from './race';
 export * from './speed';

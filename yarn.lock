@@ -2449,6 +2449,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-istanbul@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "eslint-plugin-istanbul@npm:0.1.2"
+  peerDependencies:
+    eslint: ^6.0.0 || ^7.0.0
+  checksum: 10c0/fa99f156f2b43771e6c719000c7c11b1d35807c8ecd31ef560ad1d9cfb5f05bb723cae929496418a79e2682c9f8b074fd4b9fe036e972d4581979ec8a74377fd
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-misc@npm:^2.1.1":
   version: 2.1.1
   resolution: "eslint-plugin-misc@npm:2.1.1"
@@ -4616,6 +4625,7 @@ __metadata:
     eslint-config-standard: "npm:^17.1.0"
     eslint-plugin-deprecation: "npm:^2.0.0"
     eslint-plugin-import: "npm:^2.29.1"
+    eslint-plugin-istanbul: "npm:^0.1.2"
     eslint-plugin-misc: "npm:^2.1.1"
     eslint-plugin-n: "npm:^16.6.2"
     eslint-plugin-node: "npm:^11.1.0"
