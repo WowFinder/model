@@ -6,7 +6,7 @@ import {
 } from '../characterHelpers';
 import { auraBonuses } from '..';
 import { Bonus } from 'Character/Bonus';
-import { CreatureBase } from 'Creature/base';
+import { CreatureBase } from 'Creature/CreatureBase';
 
 const auras: Record<string, Aura[]> = {
     empty: [],

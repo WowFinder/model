@@ -46,7 +46,7 @@ import Race from '../Creature/Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
 import { statMod, StatsBlock } from './Stats';
-import { CreatureBase } from 'Creature/base';
+import { CreatureBase } from 'Creature/CreatureBase';
 
 type Characters = { [key: string]: Character };
 

@@ -1,5 +1,5 @@
 import { ClassFeature, CondensedClassFeatures } from '.';
-import { CreatureBase } from 'Creature/base';
+import { CreatureBase } from 'Creature/CreatureBase';
 
 // TODO: Refactor for testability or eliminate.
 /* istanbul ignore next: untestable due to requiring circular imports */
