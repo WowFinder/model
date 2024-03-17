@@ -1,9 +1,10 @@
 import { JsonValue } from '@wowfinder/ts-utils';
 import { Bonus } from './Bonus';
-import { Class } from './Class';
+import { Class } from '../Creature/Class';
 import { Feat } from './Feats';
-import Race from './Race';
-import { Stats, StatSet } from './Stats';
+import Race from '../Creature/Race';
+import { StatsBlock } from './Stats';
+import { Stats } from '@wowfinder/asset-schemas';
 
 const defaultRace = 'human.cha';
 function checkRace(raceName: string | Race): Race {
@@ -70,7 +71,7 @@ function parseFeatChoices(raw: any[]): FeatChoice[] {
 function exportFeatchChoices(...raw: FeatChoice[]): FeatChoiceExport[] {
     return raw.map(f => ({
         feat: f.feat,
-        class: f.class?.key || '',
+        class: f.class?.key ?? '',
         level: f.level,
     }));
 }
@@ -81,12 +82,12 @@ function buildStats({
     auras,
     gear,
 }: {
-    base: StatSet;
+    base: Stats;
     race: Race;
     auras: Bonus;
     gear: Bonus;
-}): Stats {
-    return new Stats({
+}): StatsBlock {
+    return new StatsBlock({
         base,
         racial: race.statMods,
         // TODO #445: enhance

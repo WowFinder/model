@@ -3,11 +3,11 @@ import { JsonValue } from '@wowfinder/ts-utils';
 import { InventoryBuilder, InventoryExport } from '../../Item/Inventory';
 import { FeatChoice, FeatChoiceExport } from '../helpers';
 import { CharPersonalDetailsBuilder } from '../Personal';
-import Race from '../Race';
+import Race from '../../Creature/Race';
 import { Resistances, ResistancesExport } from '../Resistances';
-import { SpeedBuilder } from '../Speeds';
-import { StatSet } from '../Stats';
+import { SpeedBuilder } from '../../Creature/Speeds';
 import { Size } from '@wowfinder/ts-enums';
+import { Stats } from '@wowfinder/asset-schemas';
 
 type SkillRanks = { [key: string]: number };
 
@@ -15,7 +15,7 @@ interface CharacterBaseCoreBuilder {
     key: string;
     featChoices?: Iterable<FeatChoice>;
     miscHP?: number;
-    baseStats: StatSet;
+    baseStats: Stats;
     baseResistances?: Resistances;
 }
 
@@ -35,7 +35,7 @@ type CharacterBaseBuilder = CharacterBaseFullBuilder | CharacterBaseRaceBuilder;
 interface CharacterBuilder extends CharacterBaseCoreBuilder {
     race: string;
     personal: CharPersonalDetailsBuilder;
-    classes: { cls: string; level: number }[];
+    classes: { class: string; level: number }[];
     active?: boolean;
     skillRanks?: SkillRanks;
     inventory?: InventoryBuilder;
@@ -55,7 +55,7 @@ interface CharacterBaseExport {
     key: string;
     featChoices: FeatChoiceExport[];
     miscHP: number | null;
-    baseStats: StatSet;
+    baseStats: Stats;
     baseResistances: ResistancesExport;
     size: Size | null;
     naturalArmor: number | null;
@@ -66,7 +66,7 @@ interface CharacterPersonalExport extends CharacterBaseExport {
 interface CharacterExport extends CharacterPersonalExport {
     [key: string]: JsonValue;
     race: string;
-    classes: { cls: string; level: number }[];
+    classes: { class: string; level: number }[];
     active: boolean;
     skillRanks: SkillRanks;
     inventory: InventoryExport;

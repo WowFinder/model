@@ -1,7 +1,7 @@
 import { SpellList } from '../SpellList';
 import { Spell } from 'Magic/Spell/Spell';
-import exampleSpell from 'Magic/__mocks__/yellowSnowBall';
-const mockedSpell = new Spell(exampleSpell);
+import { yellowSnowBall } from '__mocks__';
+const mockedSpell = new Spell(yellowSnowBall);
 const mockedSpellResolver = (): Spell => mockedSpell;
 
 describe('SpellList', () => {
@@ -10,9 +10,9 @@ describe('SpellList', () => {
             key: 'test',
             core: false,
             spells: {
-                3: [{ spell: exampleSpell.key, rank: 1 }],
-                7: [{ spell: exampleSpell.key, rank: 2 }],
-                10: [{ spell: exampleSpell.key, rank: 3 }],
+                3: [{ spell: yellowSnowBall.key, rank: 1 }],
+                7: [{ spell: yellowSnowBall.key, rank: 2 }],
+                10: [{ spell: yellowSnowBall.key, rank: 3 }],
             },
             resolver: mockedSpellResolver,
         });
@@ -28,8 +28,8 @@ describe('SpellList', () => {
             instance = new SpellList({
                 key: 'test',
                 spells: {
-                    3: [{ spell: exampleSpell.key, rank: 1 }],
-                    a: [{ spell: exampleSpell.key, rank: 3 }],
+                    3: [{ spell: yellowSnowBall.key, rank: 1 }],
+                    a: [{ spell: yellowSnowBall.key, rank: 3 }],
                 },
                 resolver: mockedSpellResolver,
             });

@@ -1,5 +1,5 @@
 import { Save } from '@wowfinder/ts-enums';
-import { Stats } from './Stats';
+import { StatsBlock } from './Stats';
 
 interface SaveBreakdownBuilder {
     base: number;
@@ -126,7 +126,7 @@ class SimpleSaves {
 }
 
 interface SavesBuilder {
-    stats: Stats;
+    stats: StatsBlock;
     base?: SimpleSaves;
     enhance?: SimpleSaves;
     gear?: SimpleSaves;
@@ -135,7 +135,7 @@ interface SavesBuilder {
 }
 
 class Saves {
-    #stats: Stats;
+    #stats: StatsBlock;
     #base: SimpleSaves;
     #enhancement: SimpleSaves;
     #gear: SimpleSaves;
@@ -149,7 +149,7 @@ class Saves {
         misc = SimpleSaves.zero,
         temp = SimpleSaves.zero,
     }: SavesBuilder) {
-        this.#stats = new Stats(stats);
+        this.#stats = new StatsBlock(stats);
         this.#base = new SimpleSaves(base);
         this.#enhancement = new SimpleSaves(enhance);
         this.#gear = new SimpleSaves(gear);

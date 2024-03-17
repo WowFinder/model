@@ -1,6 +1,6 @@
 import { Requirement } from '.';
 import { Character } from '..';
-import { ClassFeature } from '../Class';
+import { ClassFeature } from '../../Creature/Class';
 
 class ClassFeatureRequirement extends Requirement<Character> {
     #feature: ClassFeature;

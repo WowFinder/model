@@ -1,12 +1,12 @@
 import { EffectiveCasterLevels } from 'Magic';
 import { Resistances } from '../Resistances';
-import { Speeds } from '../Speeds';
-import { StatSet } from '../Stats';
+import { Speeds } from '../../Creature/Speeds';
 import { FeatChoice } from '../helpers';
 import { CharacterOverride } from './CharacterOverride';
 import { CharacterBase } from './base';
 import { OverridableCharacterBaseBuilder } from './builder';
 import { Size } from '@wowfinder/ts-enums';
+import { Stats } from '@wowfinder/asset-schemas';
 
 abstract class OverridableCharacterBase extends CharacterBase {
     #override: CharacterOverride | null;
@@ -32,7 +32,7 @@ abstract class OverridableCharacterBase extends CharacterBase {
         return this.#override?.miscHP ?? super.miscHP;
     }
 
-    get baseStats(): StatSet {
+    get baseStats(): Stats {
         return { ...super.baseStats, ...this.#override?.baseStats };
     }
 

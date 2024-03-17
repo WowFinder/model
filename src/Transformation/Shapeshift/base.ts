@@ -33,7 +33,7 @@ abstract class Shapeshift implements Transformation {
     static effectiveDruidLevel(base: Character): number {
         return sum(
             ...base.classes
-                .filter(c => druidClasses.includes(c.cls.key))
+                .filter(c => druidClasses.includes(c.class.key))
                 .map(c => c.level),
         );
     }

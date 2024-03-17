@@ -1,8 +1,8 @@
+import { Stats } from '@wowfinder/asset-schemas';
 import { Feat } from '../Character/Feats';
-import { StatSet } from '../Character/Stats';
 
 interface DamageRollArguments {
-    stats: StatSet;
+    stats: Stats;
     casterLevel: number;
     spellPower: number;
     feats?: Feat[];

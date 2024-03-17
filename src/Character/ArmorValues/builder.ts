@@ -1,5 +1,5 @@
 import { Size } from '@wowfinder/ts-enums';
-import { Stats } from '../Stats';
+import { StatsBlock } from '../Stats';
 
 interface ArmorValuesBuilder {
     armor?: number;
@@ -24,7 +24,7 @@ interface FullArmorValuesBuilder extends ArmorValuesBuilder {
 
 interface FullFromBaseBuilder {
     base: ArmorValuesBuilder;
-    stats: Stats;
+    stats: StatsBlock;
     bab: number;
     size: Size;
 }

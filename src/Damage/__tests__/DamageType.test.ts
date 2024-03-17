@@ -1,6 +1,9 @@
 import { DamageType } from '@wowfinder/ts-enums';
 import { buildFullDamageTypes, makeFullDamageTypes } from '../DamageType';
-import { mockDamageTypes } from './utils';
+import {
+    mockMindBurnFullDamageTypes,
+    mockMindBurnPartialDamageTypes,
+} from '__mocks__';
 describe('DamageType', () => {
     describe('makeFullDamageTypes', () => {
         it('should build a full damage type', () => {
@@ -15,17 +18,11 @@ describe('DamageType', () => {
     });
     describe('buildFullDamageTypes', () => {
         it('should build a full damage type', () => {
-            const types = buildFullDamageTypes({
-                bludgeoning: true,
-                fire: true,
-                cold: false,
-                shadow: false,
-                psychic: true,
-            });
+            const types = buildFullDamageTypes(mockMindBurnPartialDamageTypes);
             expect(types.bludgeoning).toBe(true);
             expect(types.fire).toBe(true);
             expect(types.cold).toBe(false);
-            expect(types).toEqual(mockDamageTypes);
+            expect(types).toEqual(mockMindBurnFullDamageTypes);
         });
     });
 });

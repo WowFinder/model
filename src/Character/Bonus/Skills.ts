@@ -1,5 +1,5 @@
 import { Skill } from '@wowfinder/ts-enums';
-import { SkillSet } from '../Skill';
+import { SkillSet } from '../../Creature/Skill';
 import { sum } from '@wowfinder/ts-utils';
 
 export default class SkillsBonus {

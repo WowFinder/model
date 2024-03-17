@@ -1,0 +1,27 @@
+enum MonkClassFeature {
+    bonusMonkFeat = 'bonusMonkFeat',
+    flurryBlows = 'flurryBlows',
+    stunningFist = 'stunningFist',
+    unarmedStrike = 'unarmedStrike',
+    maneuverTraining = 'maneuverTraining',
+    stillMind = 'stillMind',
+    kiPool = 'kiPool',
+    kiStrikeMagic = 'kiStrikeMagic',
+    kiStrikeSilver = 'kiStrikeSilver',
+    kiStrikeLawful = 'kiStrikeLawful',
+    kiStrikeAdamantine = 'kiStrikeAdamantine',
+    slowFall = 'slowFall',
+    highJump = 'highJump',
+    purityBody = 'purityBody',
+    wholenessBody = 'wholenessBody',
+    improvedEvasion = 'improvedEvasion',
+    diamondBody = 'diamondBody',
+    abundantStep = 'abundantStep',
+    diamondSoul = 'diamondSoul',
+    quiveringPalm = 'quiveringPalm',
+    tongueSunMoon = 'tongueSunMoon',
+    emptyBody = 'emptyBody',
+    perfectSelf = 'perfectSelf',
+}
+
+export { MonkClassFeature };
