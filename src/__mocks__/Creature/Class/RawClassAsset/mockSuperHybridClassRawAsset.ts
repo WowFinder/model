@@ -1,11 +1,11 @@
 import { RawClassAsset } from '@wowfinder/asset-schemas';
 import { ClassTier, Skill } from '@wowfinder/ts-enums';
-import { mockedMeleeClassRawAsset } from './mockedMeleeClassRawAsset';
-import { mockedArcaneClassRawAsset } from './mockedArcaneClassRawAsset';
-import { mockedDivineClassRawAsset } from './mockedDivineClassRawAsset';
-import { mockedStealthClassRawAsset } from './mockedStealthClassRawAsset';
+import { mockMeleeClassRawAsset } from './mockMeleeClassRawAsset';
+import { mockArcaneClassRawAsset } from './mockArcaneClassRawAsset';
+import { mockDivineClassRawAsset } from './mockDivineClassRawAsset';
+import { mockStealthClassRawAsset } from './mockStealthClassRawAsset';
 
-const mockedSuperHybridClassRawAsset: RawClassAsset = {
+const mockSuperHybridClassRawAsset: RawClassAsset = {
     key: 'mocked-super-hybrid-class',
     tier: ClassTier.advanced,
     maxLevel: 10,
@@ -25,11 +25,11 @@ const mockedSuperHybridClassRawAsset: RawClassAsset = {
     // Arbitrary inclusion of skills: taking any skill with an even length key
     skills: Object.values(Skill).filter(s => `${s}`.length % 2 === 0),
     features: [
-        ...mockedMeleeClassRawAsset.features,
-        ...mockedArcaneClassRawAsset.features,
-        ...mockedDivineClassRawAsset.features,
-        ...mockedStealthClassRawAsset.features,
+        ...mockMeleeClassRawAsset.features,
+        ...mockArcaneClassRawAsset.features,
+        ...mockDivineClassRawAsset.features,
+        ...mockStealthClassRawAsset.features,
     ],
 };
 
-export { mockedSuperHybridClassRawAsset };
+export { mockSuperHybridClassRawAsset };

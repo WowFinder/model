@@ -6,18 +6,18 @@ import {
     poorSave,
 } from '../combineClassBonuses';
 import {
-    mockedMeleeClassRawAsset,
-    mockedArcaneClassRawAsset,
-    mockedDivineClassRawAsset,
-    mockedStealthClassRawAsset,
+    mockMeleeClassRawAsset,
+    mockArcaneClassRawAsset,
+    mockDivineClassRawAsset,
+    mockStealthClassRawAsset,
 } from '__mocks__';
 
 describe('combineClassBonuses', () => {
     const classes = {
-        melee: new Class(mockedMeleeClassRawAsset),
-        arcane: new Class(mockedArcaneClassRawAsset),
-        divine: new Class(mockedDivineClassRawAsset),
-        stealth: new Class(mockedStealthClassRawAsset),
+        melee: new Class(mockMeleeClassRawAsset),
+        arcane: new Class(mockArcaneClassRawAsset),
+        divine: new Class(mockDivineClassRawAsset),
+        stealth: new Class(mockStealthClassRawAsset),
     };
     const classLevels: ClassLevels = [
         { class: classes.melee, level: 8 },

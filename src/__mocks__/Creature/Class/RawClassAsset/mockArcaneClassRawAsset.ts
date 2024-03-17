@@ -1,7 +1,7 @@
 import { RawClassAsset } from '@wowfinder/asset-schemas';
 import { Aura, ClassTier, Skill } from '@wowfinder/ts-enums';
 
-const mockedArcaneClassRawAsset: RawClassAsset = {
+const mockArcaneClassRawAsset: RawClassAsset = {
     key: 'mocked-arcane-class',
     tier: ClassTier.base,
     maxLevel: 20,
@@ -37,4 +37,4 @@ const mockedArcaneClassRawAsset: RawClassAsset = {
     ],
 };
 
-export { mockedArcaneClassRawAsset };
+export { mockArcaneClassRawAsset };
