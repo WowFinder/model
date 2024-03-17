@@ -2,6 +2,10 @@ import { Skill } from '@wowfinder/ts-enums';
 import { ClassBonuses } from './ClassBonuses';
 import { hdFirst, hdAverage, ClassLevels } from './helpers';
 
+const goodSave = 1.0 / 2.0;
+const poorSave = 1.0 / 3.0;
+const saveMult = (good: boolean): number => (good ? goodSave : poorSave);
+
 function combineClassBonuses(classLevels: ClassLevels): ClassBonuses {
     const goodSaves = {
         fort: false,
@@ -31,11 +35,11 @@ function combineClassBonuses(classLevels: ClassLevels): ClassBonuses {
     for (const { class: c, level } of classLevels) {
         result.hp += hdAverage(c.hitDie) * level;
         result.bab += c.baseAttackProgression * level;
-        result.saves.fort += (c.saves.fortitude ? 1 / 2 : 1 / 3) * level;
+        result.saves.fort += saveMult(c.saves.fortitude) * level;
         goodSaves.fort ||= c.saves.fortitude;
-        result.saves.refl += (c.saves.reflexes ? 1 / 2 : 1 / 3) * level;
+        result.saves.refl += saveMult(c.saves.reflexes) * level;
         goodSaves.refl ||= c.saves.reflexes;
-        result.saves.will += (c.saves.will ? 1 / 2 : 1 / 3) * level;
+        result.saves.will += saveMult(c.saves.will) * level;
         goodSaves.will ||= c.saves.will;
         result.efl.arcane += c.casting.arcane * level;
         result.efl.divine += c.casting.divine * level;
@@ -69,4 +73,4 @@ function combineClassBonuses(classLevels: ClassLevels): ClassBonuses {
     return result;
 }
 
-export { combineClassBonuses };
+export { combineClassBonuses, saveMult, goodSave, poorSave };

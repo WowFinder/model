@@ -31,10 +31,8 @@ type FullClassAsset = Required<Omit<RawClassAsset, 'list'>> &
 
 function applyClassDefaults(builder: RawClassAsset): FullClassAsset {
     const res = { ...classBuilderDefaults, ...builder };
-    const defaultMaxLevel = res.tier === ClassTier.prestige ? 10 : 20;
     return {
         ...res,
-        maxLevel: res.maxLevel ?? defaultMaxLevel,
         goodSaves: {
             ...classBuilderDefaults.goodSaves,
             ...res.goodSaves,
