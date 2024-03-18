@@ -9,7 +9,7 @@ import {
     mkSkill,
 } from '../helpers';
 import { SkillSpec } from '../SkillSpec';
-import { baseDefault } from 'Character/Stats';
+import { baseDefault } from '../../../Creature/Stats';
 describe('Skill helpers', () => {
     describe('mkSkill', () => {
         it('should return a SkillSpec', () => {

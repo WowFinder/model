@@ -1,8 +1,9 @@
-import { Requirement } from './base';
-import { StatKeys, zeroDefault } from '../Stats';
-import { Character } from '..';
-import { FunctionBasedRequirement } from '.';
 import { Stats } from '@wowfinder/asset-schemas';
+import { Stat } from '@wowfinder/ts-enums';
+import { zeroDefault } from 'Creature/Stats';
+import { FunctionBasedRequirement } from '.';
+import { Character } from '..';
+import { Requirement } from './base';
 
 class MinStatsRequirement implements Stats, Requirement<Stats> {
     #min: Stats;
@@ -35,9 +36,9 @@ class MinStatsRequirement implements Stats, Requirement<Stats> {
     }
 
     test(value: Partial<Stats>): boolean {
-        return StatKeys.every(
-            k => (value[k] ?? zeroDefault[k]) >= this.#min[k],
-        );
+        return Object.keys(Stat)
+            .map(k => k as keyof Stats)
+            .every(k => (value[k] ?? zeroDefault[k]) >= this.#min[k]);
     }
 }
 class MaxStatsRequirement implements Stats, Requirement<Stats> {
@@ -72,11 +73,13 @@ class MaxStatsRequirement implements Stats, Requirement<Stats> {
 
     test(value: Partial<Stats>): boolean {
         const keys = Object.keys(this.#max);
-        return StatKeys.every(
-            k =>
-                !keys.includes(k) ||
-                (value[k] ?? zeroDefault[k]) <= this.#max[k],
-        );
+        return Object.keys(Stat)
+            .map(k => k as keyof Stats)
+            .every(
+                k =>
+                    !keys.includes(k) ||
+                    (value[k] ?? zeroDefault[k]) <= this.#max[k],
+            );
     }
 }
 
@@ -88,4 +91,4 @@ function characterStatsRequirement<T extends Requirement<Stats>>(
     );
 }
 
-export { MinStatsRequirement, MaxStatsRequirement, characterStatsRequirement };
+export { MaxStatsRequirement, MinStatsRequirement, characterStatsRequirement };

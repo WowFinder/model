@@ -6,7 +6,7 @@ import {
     defaultStatsMock,
     mixedStatsMock,
 } from '__mocks__';
-import { statMod } from 'Character/Stats';
+import { statMod } from '../../../Creature/Stats';
 import { classTrainedBonus } from '../helpers';
 
 describe('SkillSpec', () => {

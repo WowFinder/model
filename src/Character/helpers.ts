@@ -3,7 +3,7 @@ import { Bonus } from './Bonus';
 import { Class } from '../Creature/Class';
 import { Feat } from './Feats';
 import Race from '../Creature/Race';
-import { StatsBlock } from './Stats';
+import { StatsBlock } from 'Creature/Stats';
 import { Stats } from '@wowfinder/asset-schemas';
 
 const defaultRace = 'human.cha';

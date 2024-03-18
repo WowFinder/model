@@ -1,5 +1,5 @@
 import { CastingMode } from '@wowfinder/ts-enums';
-import { statMod } from '../Character/Stats';
+import { statMod } from '../Creature/Stats';
 
 function slotsByLevelPrep(casterLevel: number, spellLevel: number): number {
     const diff = casterLevel - 2 * spellLevel + 1;

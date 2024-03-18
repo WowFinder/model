@@ -2,7 +2,7 @@ import { DamageSpec } from '../DamageSpec';
 import { minRoll, maxRoll } from './utils';
 import type { DamageComponentSpecBuilder } from '../DamageComponent';
 import { Stat } from '@wowfinder/ts-enums';
-import { mockMindBurnFullDamageTypes, rollArgsSimple } from '__mocks__';
+import { mockMindBurnFullDamageTypes, rollArgsSimple } from '../../__mocks__';
 
 describe('DamageSpec', () => {
     const testDamageComponentSpecBuilder: DamageComponentSpecBuilder = {

@@ -1,7 +1,7 @@
 import { Skill, Stat } from '@wowfinder/ts-enums';
 import { SkillSpec } from './SkillSpec';
 import { SkillTotalBuilder } from './builders';
-import { statMod, baseDefault } from 'Character/Stats';
+import { statMod, baseDefault } from '../Stats';
 
 const classTrainedBonus = 3;
 

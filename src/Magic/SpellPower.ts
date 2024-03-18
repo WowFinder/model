@@ -3,7 +3,7 @@ import {
     zeroCasterLevel,
 } from './EffectiveCasterLevels';
 import type { Expanded } from '@wowfinder/ts-utils';
-import { StatsBlock, zeroDefault } from '../Character/Stats';
+import { StatsBlock, zeroDefault } from '../Creature/Stats';
 import {
     CastingModeValues,
     CastingModeValuesPartial,

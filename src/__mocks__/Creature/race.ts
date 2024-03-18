@@ -1,12 +1,12 @@
 import { RawRaceAsset } from '@wowfinder/asset-schemas';
 import { Alignment, Languages } from '@wowfinder/ts-enums';
-import { zeroDefault } from 'Character/Stats';
+import { zeroStatsMock } from './Stats';
 
 const mockedRaceRawAsset: RawRaceAsset = {
     key: 'mocked-race',
     racialPoints: 10,
     size: 0,
-    statMods: zeroDefault,
+    statMods: zeroStatsMock,
     initialLanguages: [Languages.common],
     additionalLanguages: [],
     commonAlignments: [Alignment.neutralNeutral],

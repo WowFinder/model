@@ -1,5 +1,5 @@
 import { Size } from '@wowfinder/ts-enums';
-import { StatsBlock } from '../Stats';
+import { StatsBlock } from 'Creature/Stats';
 
 interface ArmorValuesBuilder {
     armor?: number;
