@@ -931,6 +931,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/deasync@npm:^0.1.5":
+  version: 0.1.5
+  resolution: "@types/deasync@npm:0.1.5"
+  checksum: 10c0/6d8afa2c4c0d0f969038b6e8abdf77ff90174aa739aefac40e88fa0b64d3f2196f823c49c6ffaf93d5cdd0f5147731390c6777acddbddc03556012791020adba
+  languageName: node
+  linkType: hard
+
 "@types/eslint@npm:^7.2.13":
   version: 7.29.0
   resolution: "@types/eslint@npm:7.29.0"
@@ -1221,7 +1228,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:7.2.0":
+"@typescript-eslint/utils@npm:7.2.0, @typescript-eslint/utils@npm:^7.2.0":
   version: 7.2.0
   resolution: "@typescript-eslint/utils@npm:7.2.0"
   dependencies:
@@ -1650,6 +1657,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bindings@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "bindings@npm:1.5.0"
+  dependencies:
+    file-uri-to-path: "npm:1.0.0"
+  checksum: 10c0/3dab2491b4bb24124252a91e656803eac24292473e56554e35bbfe3cc1875332cfa77600c3bac7564049dc95075bf6fcc63a4609920ff2d64d0fe405fcf0d4ba
+  languageName: node
+  linkType: hard
+
 "brace-expansion@npm:^1.1.7":
   version: 1.1.11
   resolution: "brace-expansion@npm:1.1.11"
@@ -1984,6 +2000,16 @@ __metadata:
   version: 3.5.0
   resolution: "date-fns@npm:3.5.0"
   checksum: 10c0/588866a963af617c46f71d7ae4971d2e88bce67bda39916f03ec6c2807c0344da27c4793d718a9082e7651d37a4c9ffaecc1cc1dee057d6eafcd85535a795a9f
+  languageName: node
+  linkType: hard
+
+"deasync@npm:^0.1.29":
+  version: 0.1.29
+  resolution: "deasync@npm:0.1.29"
+  dependencies:
+    bindings: "npm:^1.5.0"
+    node-addon-api: "npm:^1.7.1"
+  checksum: 10c0/16b7dbadd6a8785f8e1dc11e0e1fc537c5b1d392500accec55b9de52318debab3579731e2665867d3e83f687dd2ab9fc3417716304905cccaedc56945d26e449
   languageName: node
   linkType: hard
 
@@ -2796,6 +2822,13 @@ __metadata:
   dependencies:
     flat-cache: "npm:^3.0.4"
   checksum: 10c0/58473e8a82794d01b38e5e435f6feaf648e3f36fdb3a56e98f417f4efae71ad1c0d4ebd8a9a7c50c3ad085820a93fc7494ad721e0e4ebc1da3573f4e1c3c7cdd
+  languageName: node
+  linkType: hard
+
+"file-uri-to-path@npm:1.0.0":
+  version: 1.0.0
+  resolution: "file-uri-to-path@npm:1.0.0"
+  checksum: 10c0/3b545e3a341d322d368e880e1c204ef55f1d45cdea65f7efc6c6ce9e0c4d22d802d5629320eb779d006fe59624ac17b0e848d83cc5af7cd101f206cb704f5519
   languageName: node
   linkType: hard
 
@@ -4614,12 +4647,15 @@ __metadata:
   resolution: "model@workspace:."
   dependencies:
     "@tsconfig/recommended": "npm:^1.0.3"
+    "@types/deasync": "npm:^0.1.5"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
     "@typescript-eslint/parser": "npm:^7.2.0"
+    "@typescript-eslint/utils": "npm:^7.2.0"
     "@wowfinder/asset-schemas": "npm:0.0.7"
     "@wowfinder/ts-enums": "npm:^0.0.5"
     "@wowfinder/ts-utils": "npm:^0.0.8"
+    deasync: "npm:^0.1.29"
     eslint: "npm:^8.57.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-config-standard: "npm:^17.1.0"
@@ -4673,6 +4709,15 @@ __metadata:
   version: 1.0.5
   resolution: "nice-try@npm:1.0.5"
   checksum: 10c0/95568c1b73e1d0d4069a3e3061a2102d854513d37bcfda73300015b7ba4868d3b27c198d1dbbd8ebdef4112fc2ed9e895d4a0f2e1cce0bd334f2a1346dc9205f
+  languageName: node
+  linkType: hard
+
+"node-addon-api@npm:^1.7.1":
+  version: 1.7.2
+  resolution: "node-addon-api@npm:1.7.2"
+  dependencies:
+    node-gyp: "npm:latest"
+  checksum: 10c0/bcf526f2ce788182730d3c3df5206585873d1e837a6e1378ff84abccf2f19cf3f93a8274f9c1245af0de63a0dbd1bb95ca2f767ecf5c678d6930326aaf396c4e
   languageName: node
   linkType: hard
 
