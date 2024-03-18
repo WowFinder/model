@@ -120,4 +120,8 @@ class Class {
     }
 }
 
+type ClassEntry = { class: Class; level: number };
+type ClassEntries = ClassEntry[];
+
 export { Class };
+export type { ClassEntry, ClassEntries };

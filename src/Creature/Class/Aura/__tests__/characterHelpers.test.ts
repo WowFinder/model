@@ -6,7 +6,7 @@ import {
 } from '../characterHelpers';
 import { auraBonuses } from '..';
 import { Bonus } from 'Character/Bonus';
-import { CreatureBase } from 'Creature/CreatureBase';
+import type { CreatureBase } from 'Creature/CreatureBase';
 
 const auras: Record<string, Aura[]> = {
     empty: [],
@@ -82,10 +82,10 @@ describe('getAuraBonuses', () => {
 
 describe('getClassAuras', () => {
     it('should return an empty array if no classes are present', () => {
-        expect(getClassAuras(charMockEmpty)).toEqual([]);
+        expect(getClassAuras([])).toEqual([]);
     });
     it('should return a single aura for a single class', () => {
-        expect(getClassAuras(charMock)).toEqual([
+        expect(getClassAuras(charMock.classes)).toEqual([
             Aura.arcane,
             Aura.arcane,
             Aura.arcane,

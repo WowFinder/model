@@ -46,7 +46,6 @@ import Race from '../Creature/Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
 import { statMod, StatsBlock } from './Stats';
-import { CreatureBase } from 'Creature/CreatureBase';
 
 type Characters = { [key: string]: Character };
 
@@ -246,20 +245,16 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         return combined;
     }
 
-    private get __creatureInterop(): CreatureBase {
-        return this as unknown as CreatureBase;
-    }
-
     get gearBonuses(): Bonus {
         return (this.#cachedGearBonuses ||= this.#combineGearBonuses());
     }
 
     get classFeatures(): ClassFeature[] {
-        return getClassFeatures(this.__creatureInterop);
+        return getClassFeatures(this.classes);
     }
 
     get classFeaturesCondensed(): CondensedClassFeatures {
-        return getClassFeaturesCondensed(this.__creatureInterop);
+        return getClassFeaturesCondensed(this.classes);
     }
 
     get classAuras(): Aura[] {
@@ -267,11 +262,11 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     }
 
     get classAurasCondensed(): ClassAurasCondensed {
-        return condenseClassAuras(getClassAuras(this.__creatureInterop));
+        return condenseClassAuras(getClassAuras(this.classes));
     }
 
     get auraBonuses(): Bonus {
-        return getAuraBonuses(getClassAuras(this.__creatureInterop));
+        return getAuraBonuses(getClassAuras(this.classes));
     }
 
     spellPower(mode: CastingMode, school: School | SubSchool): number {

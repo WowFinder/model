@@ -1,12 +1,9 @@
 import { Stats } from '@wowfinder/asset-schemas';
 import { RawCreatureAsset } from '@wowfinder/asset-schemas/dist/Creature/base';
 import { BaseCreaturePersonal } from '@wowfinder/asset-schemas/dist/Creature/personal';
-import { AssetResolver } from 'Assets/AssetResolver';
-import { Class } from './Class';
-import { Race } from 'Creature/Race';
-
-type ClassEntry = { class: Class; level: number };
-type ClassEntries = ClassEntry[];
+import type { AssetResolver } from 'Assets/AssetResolver';
+import type { ClassEntry, ClassEntries } from './Class';
+import type { Race } from './Race';
 
 abstract class CreatureBase {
     #key: string;
