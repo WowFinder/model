@@ -70,3 +70,28 @@ describe('carry', () => {
         }
     });
 });
+describe('statMod', () => {
+    it('should return the correct modifier for a given score', () => {
+        expect(statMod(1)).toEqual(-5);
+        expect(statMod(3)).toEqual(-4);
+        expect(statMod(7)).toEqual(-2);
+        expect(statMod(8)).toEqual(-1);
+        expect(statMod(9)).toEqual(-1);
+        expect(statMod(10)).toEqual(0);
+        expect(statMod(11)).toEqual(0);
+        expect(statMod(12)).toEqual(1);
+        expect(statMod(13)).toEqual(1);
+        expect(statMod(14)).toEqual(2);
+        expect(statMod(15)).toEqual(2);
+        expect(statMod(16)).toEqual(3);
+        expect(statMod(17)).toEqual(3);
+        expect(statMod(18)).toEqual(4);
+        expect(statMod(19)).toEqual(4);
+        expect(statMod(20)).toEqual(5);
+        expect(statMod(30)).toEqual(10);
+        expect(statMod(40)).toEqual(15);
+        expect(statMod(60)).toEqual(25);
+        expect(statMod(100)).toEqual(45);
+        expect(statMod(1000)).toEqual(495);
+    });
+});
