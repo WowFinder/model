@@ -1,14 +1,15 @@
-import { Stats } from '@wowfinder/asset-schemas';
 import { Mass } from '../../Scalar';
+import { Stats as StatValues, Stats } from '@wowfinder/asset-schemas';
 import {
-    baseDefault,
-    zeroDefault,
     PartialStatBlock,
     addStatSets,
+    statMod,
     carry,
+    baseDefault,
+    zeroDefault,
 } from './helpers';
 
-class StatsBlockBase {
+class StatsBlock {
     #base: Stats;
     #racial: Stats;
     #enhance: Stats;
@@ -71,9 +72,44 @@ class StatsBlockBase {
         return { ...this.#temp };
     }
 
+    get active(): StatValues {
+        return addStatSets(this.base, this.racial, this.enhance);
+    }
+
+    get totalMods(): StatValues {
+        const totals = this.totals;
+        return {
+            strength: statMod(totals.strength),
+            dexterity: statMod(totals.dexterity),
+            constitution: statMod(totals.constitution),
+            intelligence: statMod(totals.intelligence),
+            wisdom: statMod(totals.wisdom),
+            charisma: statMod(totals.charisma),
+        };
+    }
+
+    /* istanbul ignore next: covered by `carry` tests on ./helpers.ts */
     get carry(): Mass {
         return carry(this.totals.strength);
     }
+
+    updated({
+        base,
+        racial,
+        enhance,
+        gear,
+        misc,
+        temp,
+    }: PartialStatBlock): StatsBlock {
+        return new StatsBlock({
+            base: base ?? this.base,
+            racial: racial ?? this.racial,
+            enhance: enhance ?? this.enhance,
+            gear: gear ?? this.gear,
+            misc: misc ?? this.misc,
+            temp: temp ?? this.temp,
+        });
+    }
 }
 
-export { StatsBlockBase };
+export { StatsBlock };

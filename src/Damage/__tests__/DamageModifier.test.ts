@@ -1,5 +1,5 @@
 import { Stat } from '@wowfinder/ts-enums';
-import { statMod } from '../../Character/Stats';
+import { statMod } from '../../Creature/Stats';
 import {
     computeModifier,
     DamageModifier,
@@ -13,7 +13,7 @@ import {
     badFinesseStatsMock,
     defaultStatsMock,
     goodFinesseStatsMock,
-} from '__mocks__';
+} from '../../__mocks__';
 
 describe('computeModifier', () => {
     describe('should compute modifier for each stat', () => {

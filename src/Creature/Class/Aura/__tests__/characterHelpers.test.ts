@@ -6,7 +6,7 @@ import {
 } from '../characterHelpers';
 import { auraBonuses } from '..';
 import { Bonus } from 'Character/Bonus';
-import { CreatureBase } from 'Creature/base';
+import type { ClassEntries } from '../../Class';
 
 const auras: Record<string, Aura[]> = {
     empty: [],
@@ -21,25 +21,20 @@ function auraMocker(aura: Aura): (level: number) => Aura[] {
     };
 }
 
-const charMock = {
-    classes: [
-        {
-            class: {
-                auras: auraMocker(Aura.arcane),
-            },
-            level: 14,
+const classesMock = [
+    {
+        class: {
+            auras: auraMocker(Aura.arcane),
         },
-        {
-            class: {
-                auras: auraMocker(Aura.commanding),
-            },
-            level: 9,
+        level: 14,
+    },
+    {
+        class: {
+            auras: auraMocker(Aura.commanding),
         },
-    ],
-} as CreatureBase;
-const charMockEmpty = {
-    classes: [],
-} as unknown as CreatureBase;
+        level: 9,
+    },
+] as ClassEntries;
 
 describe('condenseClassAuras', () => {
     it('should return an empty array if no auras are present', () => {
@@ -82,10 +77,10 @@ describe('getAuraBonuses', () => {
 
 describe('getClassAuras', () => {
     it('should return an empty array if no classes are present', () => {
-        expect(getClassAuras(charMockEmpty)).toEqual([]);
+        expect(getClassAuras([])).toEqual([]);
     });
     it('should return a single aura for a single class', () => {
-        expect(getClassAuras(charMock)).toEqual([
+        expect(getClassAuras(classesMock)).toEqual([
             Aura.arcane,
             Aura.arcane,
             Aura.arcane,

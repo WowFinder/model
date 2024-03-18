@@ -4,10 +4,10 @@ import { AssetResolver } from 'Assets/AssetResolver';
 import { Character } from 'Character';
 import { Class } from 'Creature/Class';
 import {
-    mockedMeleeClassRawAsset,
-    mockedArcaneClassRawAsset,
-    mockedDivineClassRawAsset,
-    mockedStealthClassRawAsset,
+    mockMeleeClassRawAsset,
+    mockArcaneClassRawAsset,
+    mockDivineClassRawAsset,
+    mockStealthClassRawAsset,
     mockedRaceRawAsset,
 } from '__mocks__';
 import { Race } from 'Creature/Race';
@@ -36,13 +36,13 @@ class MockAssetResolver extends AssetResolver {
     resolveClass(key: string): Class {
         switch (key) {
             case 'mocked-melee-class':
-                return new Class(mockedMeleeClassRawAsset);
+                return new Class(mockMeleeClassRawAsset);
             case 'mocked-arcane-class':
-                return new Class(mockedArcaneClassRawAsset);
+                return new Class(mockArcaneClassRawAsset);
             case 'mocked-divine-class':
-                return new Class(mockedDivineClassRawAsset);
+                return new Class(mockDivineClassRawAsset);
             case 'mocked-stealth-class':
-                return new Class(mockedStealthClassRawAsset);
+                return new Class(mockStealthClassRawAsset);
             default:
                 return noAsset(AssetType.classes, key);
         }

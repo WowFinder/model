@@ -1,4 +1,4 @@
-import { statMod } from '../../Character/Stats';
+import { statMod } from '../../Creature/Stats';
 import type { DamageComponentSpecBuilder } from '../DamageComponent';
 import { Stats } from '@wowfinder/asset-schemas';
 

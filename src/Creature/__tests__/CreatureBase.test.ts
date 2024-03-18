@@ -1,5 +1,5 @@
 import Race from 'Creature/Race';
-import { CreatureBase } from '../base';
+import { CreatureBase } from '../CreatureBase';
 import {
     rawBaseCreatureMinimal,
     // rawBaseCreatureExpanded,

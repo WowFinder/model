@@ -27,8 +27,8 @@ export default class Race {
     constructor(raw: RawRaceAsset) {
         this.#key = raw.key;
         this.#size = raw.size;
-        this.#statMods = raw.statMods;
-        this.#skillMods = raw.skillMods ?? {};
+        this.#statMods = { ...raw.statMods };
+        this.#skillMods = { ...(raw.skillMods ?? {}) };
         this.#bonusSkillRanks = raw.bonusSkillRanks ?? 0;
         this.#bonusStartingFeats = raw.bonusStartingFeats ?? 0;
         this.#initialLanguages = [...raw.initialLanguages];

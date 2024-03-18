@@ -1,5 +1,5 @@
 import { Save } from '@wowfinder/ts-enums';
-import { StatsBlock } from './Stats';
+import { StatsBlock } from 'Creature/Stats';
 
 interface SaveBreakdownBuilder {
     base: number;

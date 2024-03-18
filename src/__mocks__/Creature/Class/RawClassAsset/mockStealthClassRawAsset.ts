@@ -1,7 +1,7 @@
 import { RawClassAsset } from '@wowfinder/asset-schemas';
 import { ClassTier, Skill } from '@wowfinder/ts-enums';
 
-const mockedStealthClassRawAsset: RawClassAsset = {
+const mockStealthClassRawAsset: RawClassAsset = {
     key: 'mocked-stealth-class',
     tier: ClassTier.base,
     maxLevel: 20,
@@ -42,4 +42,4 @@ const mockedStealthClassRawAsset: RawClassAsset = {
     ],
 };
 
-export { mockedStealthClassRawAsset };
+export { mockStealthClassRawAsset };

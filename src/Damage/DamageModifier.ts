@@ -1,5 +1,5 @@
 import { Stat } from '@wowfinder/ts-enums';
-import { statMod } from '../Character/Stats';
+import { statMod } from '../Creature/Stats';
 import { DamageRollArguments } from './DamageRollArguments';
 
 enum SpecialDamageModifier {

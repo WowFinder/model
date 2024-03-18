@@ -1,12 +1,21 @@
 import { AssetType } from '@wowfinder/ts-enums';
 import { Debugger } from '@wowfinder/ts-utils';
-import { Adventure } from 'Adventure';
-import { Character } from 'Character';
-import { Class } from 'Creature/Class';
-import Race from 'Creature/Race';
-import { Faction } from 'Faction';
-import { Item } from 'Item';
-import { Spell, SpellList } from 'Magic';
+import type { Adventure } from 'Adventure';
+import type { Character } from 'Character';
+import type { Class, Race } from 'Creature';
+import type { Faction } from 'Faction';
+import type { Item } from 'Item';
+import type { Spell, SpellList } from 'Magic';
+import {
+    AdventureResolver,
+    CharacterResolver,
+    ClassResolver,
+    FactionResolver,
+    ItemResolver,
+    RaceResolver,
+    SpellListResolver,
+    SpellResolver,
+} from './base';
 
 type AnyAsset =
     | Adventure
@@ -17,8 +26,17 @@ type AnyAsset =
     | Race
     | Spell
     | SpellList;
-
-abstract class AssetResolver {
+abstract class AssetResolver
+    implements
+        AdventureResolver,
+        CharacterResolver,
+        ClassResolver,
+        FactionResolver,
+        ItemResolver,
+        RaceResolver,
+        SpellResolver,
+        SpellListResolver
+{
     abstract resolveAdventure(key: string): Adventure;
     abstract resolveCharacter(key: string): Character;
     abstract resolveClass(key: string): Class;

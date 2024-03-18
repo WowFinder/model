@@ -1,9 +1,9 @@
 import { sum } from '@wowfinder/ts-utils';
-import { mockedSuperHybridClassRawAsset } from '__mocks__';
+import { mockSuperHybridClassRawAsset } from '__mocks__';
 import { Class } from '../Class';
 import { ClassFeature } from '../Features';
 
-const hybrid = new Class(mockedSuperHybridClassRawAsset);
+const hybrid = new Class(mockSuperHybridClassRawAsset);
 const cmp = (a: any, b: any): number => `${a}`.localeCompare(`${b}`);
 const expectedByLevelUnsorted = [
     [], // omit index/level 0

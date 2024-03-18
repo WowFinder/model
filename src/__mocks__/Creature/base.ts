@@ -1,5 +1,5 @@
 import { RawCreatureAsset } from '@wowfinder/asset-schemas/dist/Creature/base';
-import { baseDefault } from '../../Character/Stats';
+import { baseDefault } from '../../Creature/Stats';
 import { Alignment } from '@wowfinder/ts-enums';
 
 const rawBaseCreatureMinimal: RawCreatureAsset = {

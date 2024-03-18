@@ -32,13 +32,16 @@
     "dependencies": {
         "@wowfinder/asset-schemas": "0.0.7",
         "@wowfinder/ts-enums": "^0.0.5",
-        "@wowfinder/ts-utils": "^0.0.8"
+        "@wowfinder/ts-utils": "^0.0.8",
+        "deasync": "^0.1.29"
     },
     "devDependencies": {
         "@tsconfig/recommended": "^1.0.3",
+        "@types/deasync": "^0.1.5",
         "@types/jest": "^29.5.12",
         "@typescript-eslint/eslint-plugin": "^7.2.0",
         "@typescript-eslint/parser": "^7.2.0",
+        "@typescript-eslint/utils": "^7.2.0",
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-config-standard": "^17.1.0",

@@ -1,31 +1,32 @@
-import { DamageRollArguments } from 'Damage/DamageRollArguments';
+import { DamageRollArguments } from '../../Damage/DamageRollArguments';
 import {
     defaultStatsMock,
     goodFinesseStatsMock,
     badFinesseStatsMock,
-} from '__mocks__/Creature';
+} from '../Creature';
 
+console.log('defaultStatsMock', defaultStatsMock);
 const rollArgsSimple: DamageRollArguments = {
-    stats: defaultStatsMock,
+    stats: { ...defaultStatsMock },
     casterLevel: 0,
     spellPower: 0,
 };
 
 const rollArgsBadStrength: DamageRollArguments = {
-    stats: goodFinesseStatsMock,
+    stats: { ...goodFinesseStatsMock },
     casterLevel: 0,
     spellPower: 0,
 };
 
 const rollArgsFinesseSpell: DamageRollArguments = {
-    stats: goodFinesseStatsMock,
+    stats: { ...goodFinesseStatsMock },
     casterLevel: 0,
     spellPower: 0,
     feats: ['weaponFinesse'],
 };
 
 const rollArgsBadFinnese: DamageRollArguments = {
-    stats: badFinesseStatsMock,
+    stats: { ...badFinesseStatsMock },
     casterLevel: 0,
     spellPower: 0,
     feats: ['weaponFinesse'],
