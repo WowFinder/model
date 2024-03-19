@@ -1,5 +1,4 @@
-// import { TFunction } from 'i18next';
-import { sum, TryParser } from '@wowfinder/ts-utils';
+import { StringFormatter, sum, TryParser } from '@wowfinder/ts-utils';
 
 class Scalar<T> {
     private _value: number;
@@ -19,9 +18,9 @@ class Scalar<T> {
 
     toString(): string;
 
-    toString(t: any /* TFunction<'translation'> */): string;
+    toString(t: StringFormatter): string;
 
-    toString(t?: any /* TFunction<'translation'> */): string {
+    toString(t?: StringFormatter): string {
         const unit = t ? t(`units.${this._unit}`) : this._unit;
         return `${this._value} ${unit}`;
     }
@@ -30,7 +29,7 @@ class Scalar<T> {
         input: string,
         unitParser: TryParser<T>,
     ): Scalar<T> | undefined {
-        const match = input.match(/(\d+\.?\d*)\s*(\w+)/);
+        const match = /(\d+\.?\d*)\s*(\w+)/.exec(input);
         if (!match) {
             return undefined;
         }
