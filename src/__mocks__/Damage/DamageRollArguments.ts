@@ -5,7 +5,6 @@ import {
     badFinesseStatsMock,
 } from '../Creature';
 
-console.log('defaultStatsMock', defaultStatsMock);
 const rollArgsSimple: DamageRollArguments = {
     stats: { ...defaultStatsMock },
     casterLevel: 0,

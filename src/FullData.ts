@@ -4,6 +4,8 @@ import { Faction, Factions } from './Faction';
 import { Item } from './Item';
 import { Race, Races } from './Creature/Race';
 
+/* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
+/** @deprecated */
 class FullData {
     #factions: Factions;
     #chars: Characters;
@@ -40,4 +42,4 @@ class FullData {
     }
 }
 
-export { /** @deprecated */ FullData };
+export { FullData };
