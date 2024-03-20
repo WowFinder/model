@@ -1,6 +1,6 @@
-import { AssetType } from '@wowfinder/ts-enums';
+import type { AssetType } from '@wowfinder/ts-enums';
 import type { AdventureExport } from '../Adventure';
-import { CharacterExport } from '../Character';
+import type { CharacterExport } from '../Character';
 
 type AssetBundle = {
     assets: {

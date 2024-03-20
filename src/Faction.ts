@@ -48,9 +48,9 @@ type Factions = {
 };
 
 class Faction {
-    private _key: number;
-    private _label: string;
-    private _name: string;
+    #key: number;
+    #label: string;
+    #name: string;
 
     constructor({
         key,
@@ -61,38 +61,30 @@ class Faction {
         label: string;
         name: string;
     }) {
-        this._key = key;
-        this._label = label;
-        this._name = name;
+        this.#key = key;
+        this.#label = label;
+        this.#name = name;
         Object.freeze(this);
     }
 
     get key(): number {
-        return this._key;
+        return this.#key;
     }
 
     get label(): string {
-        return this._label;
+        return this.#label;
     }
 
     get name(): string {
-        return this._name;
+        return this.#name;
     }
 
     toString(): string {
         return this.name;
     }
 
-    static build(raw: any): Faction {
-        return new Faction({
-            key: parseInt(raw.key) || 0,
-            label: (raw.label || '') + '',
-            name: (raw.name || '') + '',
-        });
-    }
-
-    // static #loaded: Factions | null = null;
-
+    /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
+    /** @deprecated */
     static load(): Factions {
         throw new Error('Reimplementation in modular strucutre required!');
     }
@@ -101,9 +93,7 @@ class Faction {
 export type { Factions };
 export {
     Faction,
-    Reputation,
     reputationByScore,
-    reputationByScoreNullable,
     nextScore,
     initialHatedScore,
     threshholds,

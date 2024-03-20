@@ -1,5 +1,5 @@
 import { LengthUnit } from '@wowfinder/ts-enums';
-import { converter, makeConverter, Scalar } from './base';
+import { converter, makeConverter, Scalar } from './Scalar';
 
 const metersInYard = 0.9144; // By international definition
 
@@ -11,6 +11,17 @@ const convertLength: converter<LengthUnit> = makeConverter({
     [LengthUnit.inch]: metersInYard / (3 * 12), // 12 inch = 1 foot
     [LengthUnit.centiMeter]: 1 / 100, // 100 cm = 1 m
 });
+
+const lengthUnitAliases: { [key: string]: LengthUnit } = {
+    m: LengthUnit.meter,
+    cm: LengthUnit.centiMeter,
+    in: LengthUnit.inch,
+    ft: LengthUnit.foot,
+    yd: LengthUnit.yard,
+    '"': LengthUnit.inch,
+    "'": LengthUnit.foot,
+    '□': LengthUnit.square,
+};
 
 class Length extends Scalar<LengthUnit> {
     constructor({ value, unit }: { value: number; unit: LengthUnit }) {
@@ -31,9 +42,12 @@ class Length extends Scalar<LengthUnit> {
             LengthUnit.inch,
         );
         const inches = Math.round(inchesOnly.value);
-        const strFeet = feet !== 0 ? `${feet}'` : '';
-        const strInches = inches !== 0 ? ` ${inches}"` : '';
-        return `${strFeet}${strInches}`;
+        const hasFeet = feet !== 0;
+        const hasInches = inches !== 0;
+        const separator = hasFeet && hasInches ? ' ' : '';
+        const strFeet = hasFeet ? `${feet}'` : '';
+        const strInches = hasInches ? `${inches}"` : '';
+        return `${strFeet}${separator}${strInches}`;
     }
 
     get inches(): number {
@@ -59,7 +73,9 @@ class Length extends Scalar<LengthUnit> {
     static tryParseLength(input: string): Length | undefined {
         const base = Scalar.tryParse(
             input,
-            (value: string) => LengthUnit[value as keyof typeof LengthUnit],
+            (value: string) =>
+                LengthUnit[value as keyof typeof LengthUnit] ??
+                lengthUnitAliases[value],
         );
         return base ? new Length(base) : undefined;
     }

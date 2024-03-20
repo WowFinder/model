@@ -1,5 +1,5 @@
 import { TimeUnit } from '@wowfinder/ts-enums';
-import { converter, makeConverter, Scalar } from './base';
+import { converter, makeConverter, Scalar } from './Scalar';
 
 const convertTime: converter<TimeUnit> = makeConverter({
     [TimeUnit.second]: 1, // Reference unit
@@ -10,19 +10,37 @@ const convertTime: converter<TimeUnit> = makeConverter({
     [TimeUnit.year]: 60 * 60 * 24 * 365, // 1y = 365d
 });
 
-class Time extends Scalar<TimeUnit> {
-    constructor({ value, unit }: { value: number; unit: TimeUnit }) {
-        super({ value, unit });
-    }
+const timeUnitAliases: { [key: string]: TimeUnit } = {
+    s: TimeUnit.second,
+    t: TimeUnit.turn,
+    m: TimeUnit.minute,
+    h: TimeUnit.hour,
+    d: TimeUnit.day,
+    y: TimeUnit.year,
+    '"': TimeUnit.second,
+    "'": TimeUnit.minute,
+    '°': TimeUnit.hour,
+};
 
+class Time extends Scalar<TimeUnit> {
     get fullYears(): number {
         return Math.floor(convertTime(this, TimeUnit.year).value);
+    }
+
+    convert(to: TimeUnit): Time {
+        const { value, unit } = convertTime(this, to);
+        return new Time({
+            value,
+            unit,
+        });
     }
 
     static tryParseTime(input: string): Time | undefined {
         const base = Scalar.tryParse<TimeUnit>(
             input,
-            unit => TimeUnit[unit as keyof typeof TimeUnit] || unit,
+            unit =>
+                TimeUnit[unit as keyof typeof TimeUnit] ??
+                timeUnitAliases[unit],
         );
         return base ? new Time(base) : undefined;
     }
