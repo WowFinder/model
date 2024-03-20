@@ -1,3 +1,4 @@
+export * from './ArmorValues';
 export * from './base';
 export * from './Class';
 export * from './Skill';

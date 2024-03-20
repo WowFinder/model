@@ -1,31 +1,31 @@
 import { Size } from '@wowfinder/ts-enums';
-import { StatsBlock } from 'Creature/Stats';
+import { PartialStatBlock } from 'Creature/Stats';
 
 interface ArmorValuesBuilder {
     armor?: number;
     shield?: number;
     dodge?: number;
-    nat?: number;
-    defl?: number;
+    natural?: number;
+    deflection?: number;
     misc?: number;
-    miscP?: number;
-    miscE?: number;
-    temp?: number;
-    tempP?: number;
-    tempE?: number;
+    miscPhysical?: number;
+    miscEvasion?: number;
+    temporary?: number;
+    temporaryPhysical?: number;
+    temporaryEvasion?: number;
 }
 
 interface FullArmorValuesBuilder extends ArmorValuesBuilder {
-    str?: number;
-    dex?: number;
-    bab?: number;
+    strength?: number;
+    dexterity?: number;
+    baseAttack?: number;
     size?: number;
 }
 
 interface FullFromBaseBuilder {
     base: ArmorValuesBuilder;
-    stats: StatsBlock;
-    bab: number;
+    stats: PartialStatBlock;
+    baseAttack: number;
     size: Size;
 }
 
