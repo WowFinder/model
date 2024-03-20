@@ -1,5 +1,5 @@
 import { LengthUnit, TimeUnit } from '@wowfinder/ts-enums';
-import { converter, Scalar } from './base';
+import { converter, Scalar } from './Scalar';
 import { convertLength, Length } from './Length';
 import { convertTime, Time } from './Time';
 
@@ -9,19 +9,19 @@ interface SpeedUnitBuilder {
 }
 
 class SpeedUnit {
-    private _length: LengthUnit;
-    private _time: TimeUnit;
+    #length: LengthUnit;
+    #time: TimeUnit;
     constructor({ length, time }: SpeedUnitBuilder) {
-        this._length = length;
-        this._time = time;
+        this.#length = length;
+        this.#time = time;
     }
 
     get length(): LengthUnit {
-        return this._length;
+        return this.#length;
     }
 
     get time(): TimeUnit {
-        return this._time;
+        return this.#time;
     }
 }
 

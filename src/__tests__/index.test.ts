@@ -2,7 +2,6 @@ import {
     ActionTime,
     Adventure,
     AssetResolver,
-    DeferredAssetResolver,
     DamageSpec,
     Dice,
     Faction,
@@ -26,7 +25,6 @@ describe('index', () => {
     });
     it('should export Asset-related members', () => {
         expect(AssetResolver).toBeDefined();
-        expect(DeferredAssetResolver).toBeDefined();
     });
     // Intentionally excluded: Character (pending rewrite)
     // Intentionally excluded: Choice (pending rewrite)
