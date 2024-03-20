@@ -1,4 +1,5 @@
 import { Stats } from '@wowfinder/asset-schemas';
+import { PartialStatBlock } from 'Creature';
 
 const zeroStatsMock: Stats = {
     strength: 0,
@@ -70,6 +71,11 @@ const badFinesseStatsMock: Stats = {
     dexterity: 8,
 };
 
+const mixedStatBlockMock: PartialStatBlock = {
+    base: mixedStatsMock,
+    racial: mixedBonusStatsMock,
+};
+
 export {
     zeroStatsMock,
     mixedStatsMock,
@@ -80,4 +86,5 @@ export {
     badFinesseStatsMock,
     meleeBonusesStatsMock,
     mixedBonusStatsMock,
+    mixedStatBlockMock,
 };

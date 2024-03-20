@@ -1,3 +1,4 @@
+export * from './ArmorValues';
 export * from './Class';
 export * from './CreatureBase';
 export * from './Race';

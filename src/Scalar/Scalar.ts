@@ -34,9 +34,7 @@ class Scalar<T> {
         input: string,
         unitParser: TryParser<T>,
     ): Scalar<T> | undefined {
-        console.log(`Attempting to parse ${input}`);
         const match = /(\d+\.?\d*)\s*(.+)/.exec(input);
-        console.log({ match });
         if (!match) {
             return undefined;
         }

@@ -14,7 +14,7 @@ import {
     FullComputedSpellPower,
     fullComputedSpellPower,
 } from '../Magic';
-import { ArmorValues, FullArmorValues } from './ArmorValues';
+import { ArmorValues, FullArmorValues } from '../Creature/ArmorValues';
 import {
     CharacterBuilder,
     CharacterExport,
@@ -141,7 +141,7 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         return FullArmorValues.fromBaseValues({
             base: this.#armor.export(),
             stats: this.stats,
-            bab: this.classBonuses.bab,
+            baseAttack: this.classBonuses.bab,
             size: this.#race?.size || Size.medium,
         });
     }
@@ -239,8 +239,8 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
             shield: Math.max(
                 ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass),
             ),
-            nat: this.naturalArmor,
-            miscP: combined.armorClass,
+            natural: this.naturalArmor,
+            miscPhysical: combined.armorClass,
         });
         return combined;
     }
