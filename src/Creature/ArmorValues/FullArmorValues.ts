@@ -34,7 +34,7 @@ class FullArmorValues extends ArmorValues {
             ...base,
             strength: mods.strength,
             dexterity: mods.dexterity,
-            baseAttack: baseAttack,
+            baseAttack,
             size: sizeCombatMod(size),
         });
     }
