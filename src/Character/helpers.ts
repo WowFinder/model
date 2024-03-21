@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { JsonValue } from '@wowfinder/ts-utils';
 import { Bonus } from './Bonus';
 import { Class } from '../Creature/Class';
@@ -7,6 +8,8 @@ import { StatsBlock } from 'Creature/Stats';
 import { Stats } from '@wowfinder/asset-schemas';
 
 const defaultRace = 'human.cha';
+/* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
+/** @deprecated */
 function checkRace(raceName: string | Race): Race {
     if (raceName instanceof Race) {
         return raceName;
@@ -18,6 +21,8 @@ function checkRace(raceName: string | Race): Race {
     return r;
 }
 
+/* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
+/** @deprecated */
 function checkClass(className: string): Class {
     const c = Class.load()[className];
     if (!c) {
@@ -26,12 +31,14 @@ function checkClass(className: string): Class {
     return c;
 }
 
+/** @deprecated */
 interface FeatChoice {
     feat: Feat;
     class?: Class;
     level: number;
 }
 
+/** @deprecated */
 interface FeatChoiceExport {
     [key: string]: JsonValue;
     feat: string;
@@ -58,6 +65,8 @@ function parseFeatChoice(raw: any): FeatChoice | null {
     return res;
 }
 
+/* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
+/** @deprecated */
 function parseFeatChoices(raw: any[]): FeatChoice[] {
     const res: FeatChoice[] = [];
     for (const f of raw.map(parseFeatChoice)) {
@@ -68,6 +77,8 @@ function parseFeatChoices(raw: any[]): FeatChoice[] {
     return res;
 }
 
+/* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
+/** @deprecated */
 function exportFeatchChoices(...raw: FeatChoice[]): FeatChoiceExport[] {
     return raw.map(f => ({
         feat: f.feat,
@@ -76,6 +87,8 @@ function exportFeatchChoices(...raw: FeatChoice[]): FeatChoiceExport[] {
     }));
 }
 
+/* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
+/** @deprecated */
 function buildStats({
     base,
     race,
@@ -97,11 +110,14 @@ function buildStats({
     });
 }
 
-export type { FeatChoice, FeatChoiceExport };
+export type {
+    /** @deprecated */ FeatChoice,
+    /** @deprecated */ FeatChoiceExport,
+};
 export {
-    checkRace,
-    checkClass,
-    parseFeatChoices,
-    exportFeatchChoices,
-    buildStats,
+    /** @deprecated */ checkRace,
+    /** @deprecated */ checkClass,
+    /** @deprecated */ parseFeatChoices,
+    /** @deprecated */ exportFeatchChoices,
+    /** @deprecated */ buildStats,
 };

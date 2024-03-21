@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { EffectiveCasterLevels } from 'Magic';
 import { Resistances } from '../Resistances';
 import { Speeds } from '../../Creature/Speeds';
