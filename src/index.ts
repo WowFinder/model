@@ -6,7 +6,6 @@ export * from './Choice';
 export * from './Damage';
 export * from './Dice';
 export * from './Faction';
-export * from './FullData';
 export * from './Item';
 export * from './Language';
 export * from './Magic';

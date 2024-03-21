@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { Resistances } from '../Resistances';
 import { CharacterBaseBuilder, CharacterBaseExport } from './builder';
 import {
@@ -16,6 +17,8 @@ import {
 import { Size } from '@wowfinder/ts-enums';
 import { Stats } from '@wowfinder/asset-schemas';
 
+/* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
+/** @deprecated */
 abstract class CharacterBase {
     #key: string;
     #featChoices: FeatChoice[];

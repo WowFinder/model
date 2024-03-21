@@ -68,7 +68,7 @@ function gt0(qtty: number): boolean {
 
 function explodeShape(shape: Shape): string[] {
     const res: string[] = [];
-    for (const elem of shape.filter(shape => gt0(shape.qtty))) {
+    for (const elem of shape.filter(s => gt0(s.qtty))) {
         res.push(...Array(elem.qtty).fill(elem.slot));
     }
     return res;

@@ -1,9 +1,12 @@
+/* eslint-disable deprecation/deprecation */
 import { Size } from '@wowfinder/ts-enums';
 import { Resistances } from '../Resistances';
 import { baseDefault } from 'Creature/Stats';
 import { CharacterBase } from './base';
 import type { CharacterOverrideBuilder } from './builder';
 
+/* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
+/** @deprecated */
 class CharacterOverride extends CharacterBase {
     /* TODO: #433
         Support natural attacks (see #706)

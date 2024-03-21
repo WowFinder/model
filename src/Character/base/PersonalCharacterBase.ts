@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import CharPersonalDetails, {
     jsonExport as personalDetailsJsonExport,
     jsonImport as personalDetailsJsonImport,

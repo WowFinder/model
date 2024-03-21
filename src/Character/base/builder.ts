@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { EffectiveCasterLevels } from 'Magic';
 import { JsonValue } from '@wowfinder/ts-utils';
 import { InventoryBuilder, InventoryExport } from '../../Item/Inventory';
@@ -9,8 +10,10 @@ import { SpeedBuilder } from '../../Creature/Speeds';
 import { Size } from '@wowfinder/ts-enums';
 import { Stats } from '@wowfinder/asset-schemas';
 
+/** @deprecated */
 type SkillRanks = { [key: string]: number };
 
+/** @deprecated */
 interface CharacterBaseCoreBuilder {
     key: string;
     featChoices?: Iterable<FeatChoice>;
@@ -19,11 +22,13 @@ interface CharacterBaseCoreBuilder {
     baseResistances?: Resistances;
 }
 
+/** @deprecated */
 interface CharacterBaseRaceBuilder extends CharacterBaseCoreBuilder {
     builderType: 'race';
     race: Race | string;
 }
 
+/** @deprecated */
 interface CharacterBaseFullBuilder extends CharacterBaseCoreBuilder {
     builderType: 'full';
     size: number;
@@ -31,7 +36,10 @@ interface CharacterBaseFullBuilder extends CharacterBaseCoreBuilder {
     speeds?: SpeedBuilder;
     casterLevels?: Partial<EffectiveCasterLevels>;
 }
+/** @deprecated */
 type CharacterBaseBuilder = CharacterBaseFullBuilder | CharacterBaseRaceBuilder;
+
+/** @deprecated */
 interface CharacterBuilder extends CharacterBaseCoreBuilder {
     race: string;
     personal: CharPersonalDetailsBuilder;
@@ -41,16 +49,20 @@ interface CharacterBuilder extends CharacterBaseCoreBuilder {
     inventory?: InventoryBuilder;
 }
 
+/** @deprecated */
 type CharacterOverrideBuilder = Omit<CharacterBaseFullBuilder, 'builderType'>;
 
+/** @deprecated */
 type OverridableCharacterBaseBuilder = CharacterBaseBuilder & {
     override?: CharacterOverrideBuilder;
 };
 
+/** @deprecated */
 type PersonalCharacterBaseBuilder = OverridableCharacterBaseBuilder & {
     personal: CharPersonalDetailsBuilder;
 };
 
+/** @deprecated */
 interface CharacterBaseExport {
     key: string;
     featChoices: FeatChoiceExport[];
@@ -60,9 +72,11 @@ interface CharacterBaseExport {
     size: Size | null;
     naturalArmor: number | null;
 }
+/** @deprecated */
 interface CharacterPersonalExport extends CharacterBaseExport {
     personal: CharPersonalDetailsBuilder;
 }
+/** @deprecated */
 interface CharacterExport extends CharacterPersonalExport {
     [key: string]: JsonValue;
     race: string;
@@ -72,8 +86,10 @@ interface CharacterExport extends CharacterPersonalExport {
     inventory: InventoryExport;
 }
 
+/** @deprecated */
 type CharacterOverrideExport = CharacterBaseExport;
 
+/** @deprecated */
 interface OverridableCharacterBaseExport extends CharacterBaseExport {
     override: CharacterOverrideExport;
 }

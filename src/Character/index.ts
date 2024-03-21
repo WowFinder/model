@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import {
     Aura,
     CastingMode,
@@ -47,8 +48,11 @@ import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
 import { statMod, StatsBlock } from 'Creature/Stats';
 
+/** @deprecated */
 type Characters = { [key: string]: Character };
 
+/* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
+/** @deprecated */
 class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     #active: boolean;
     #race: Race;
@@ -211,7 +215,7 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
                                   .filter(c => entry.class === c.class)
                                   .map(c => c.level),
                           )
-                        : sum(...this.classes.map(entry => entry.level))) >=
+                        : sum(...this.classes.map(e => e.level))) >=
                     entry.level;
                 return (
                     entry.level === 0 ||
