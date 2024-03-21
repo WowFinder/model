@@ -1,4 +1,4 @@
-import { ClassFeature } from './ClassFeature';
+import { ClassFeature } from '@wowfinder/ts-enums';
 
 type ClassFeatureEntry = {
     level: number;
