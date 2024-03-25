@@ -18,7 +18,7 @@ describe('CreatureBase', () => {
         expect(instance.notes).toEqual('');
         expect(instance.baseStats).toEqual(rawBaseCreatureMinimal.baseStats);
         expect(instance.race instanceof Race).toBe(true);
-        expect(instance.personal.fullName).toBe(
+        expect(instance.personal.fullName).toEqual(
             rawBaseCreatureMinimal.personal.fullName,
         );
         expect(instance.classes).toHaveLength(0);

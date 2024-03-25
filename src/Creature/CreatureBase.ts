@@ -18,7 +18,6 @@ abstract class CreatureBase {
         this.#baseStats = { ...raw.baseStats };
         this.#race = resolver.resolveRace(raw.race);
         this.#notes = raw.notes ?? '';
-        // TODO: Actually parse personal details
         this.#personal = importPersonalDetails(raw.personal);
         this.#classes =
             raw.classes?.map(({ class: cls, level }) => ({
@@ -44,7 +43,7 @@ abstract class CreatureBase {
     }
 
     get personal(): PersonalDetails {
-        return { ...this.#personal };
+        return this.#personal;
     }
 
     get classes(): ClassEntries {
