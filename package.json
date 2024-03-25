@@ -35,7 +35,7 @@
         "@wowfinder/ts-utils": "^0.0.8"
     },
     "devDependencies": {
-        "@tsconfig/recommended": "^1.0.3",
+        "@tsconfig/recommended": "^1.0.4",
         "@types/deasync": "^0.1.5",
         "@types/jest": "^29.5.12",
         "@typescript-eslint/eslint-plugin": "^7.3.1",
