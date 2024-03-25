@@ -1,9 +1,7 @@
 /* eslint-disable deprecation/deprecation */
 import { EffectiveCasterLevels } from 'Magic';
-import { JsonValue } from '@wowfinder/ts-utils';
-import { InventoryBuilder, InventoryExport } from '../../Item/Inventory';
+import { InventoryBuilder } from '../../Item/Inventory';
 import { FeatChoice, FeatChoiceExport } from '../helpers';
-import { CharPersonalDetailsBuilder } from '../Personal';
 import Race from '../../Creature/Race';
 import { Resistances, ResistancesExport } from '../Resistances';
 import { SpeedBuilder } from '../../Creature/Speeds';
@@ -42,7 +40,7 @@ type CharacterBaseBuilder = CharacterBaseFullBuilder | CharacterBaseRaceBuilder;
 /** @deprecated */
 interface CharacterBuilder extends CharacterBaseCoreBuilder {
     race: string;
-    personal: CharPersonalDetailsBuilder;
+    personal: any; // Formerly: PersonalDetailsBuilder;
     classes: { class: string; level: number }[];
     active?: boolean;
     skillRanks?: SkillRanks;
@@ -59,7 +57,7 @@ type OverridableCharacterBaseBuilder = CharacterBaseBuilder & {
 
 /** @deprecated */
 type PersonalCharacterBaseBuilder = OverridableCharacterBaseBuilder & {
-    personal: CharPersonalDetailsBuilder;
+    personal: any; // Formerly: PersonalDetailsBuilder;
 };
 
 /** @deprecated */
@@ -74,16 +72,7 @@ interface CharacterBaseExport {
 }
 /** @deprecated */
 interface CharacterPersonalExport extends CharacterBaseExport {
-    personal: CharPersonalDetailsBuilder;
-}
-/** @deprecated */
-interface CharacterExport extends CharacterPersonalExport {
-    [key: string]: JsonValue;
-    race: string;
-    classes: { class: string; level: number }[];
-    active: boolean;
-    skillRanks: SkillRanks;
-    inventory: InventoryExport;
+    personal: any; // Formerly: PersonalDetailsBuilder;
 }
 
 /** @deprecated */
@@ -106,7 +95,6 @@ export type {
     PersonalCharacterBaseBuilder,
     CharacterBaseExport,
     CharacterPersonalExport,
-    CharacterExport,
     CharacterOverrideExport,
     OverridableCharacterBaseExport,
 };

@@ -1,5 +1,5 @@
 import { StatsBlock } from '../Stats';
-import { sizeCombatMod } from '../../Character/Size';
+import { sizeCombatMod } from '../Size';
 import { ArmorValues } from './ArmorValues';
 import { FullArmorValuesBuilder, FullFromBaseBuilder } from './builder';
 

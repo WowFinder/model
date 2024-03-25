@@ -12,7 +12,9 @@
         "dist"
     ],
     "scripts": {
-        "lint": "eslint . --ext js,ts",
+        "lint:base": "eslint . --ext js,ts",
+        "lint:stricter": "eslint . --ext js,ts --config .eslintrc-stricter.js",
+        "lint": "npm-run-all -sc lint:base lint:stricter",
         "lint:fix": "eslint . --ext js,ts --fix",
         "format": "prettier --write \"src/**/*.{js,ts,json,json5}\"",
         "format:check": "prettier --check \"src/**/*.{js,ts,json,json5}\"",
@@ -30,12 +32,12 @@
         "prepare": "yarn run build"
     },
     "dependencies": {
-        "@wowfinder/asset-schemas": "0.0.7",
+        "@wowfinder/asset-schemas": "0.0.8",
         "@wowfinder/ts-enums": "^0.0.6",
-        "@wowfinder/ts-utils": "^0.0.8"
+        "@wowfinder/ts-utils": "^0.1.0"
     },
     "devDependencies": {
-        "@tsconfig/recommended": "^1.0.3",
+        "@tsconfig/recommended": "^1.0.4",
         "@types/deasync": "^0.1.5",
         "@types/jest": "^29.5.12",
         "@typescript-eslint/eslint-plugin": "^7.3.1",

@@ -1,4 +1,3 @@
-// import { builder, ByKeyRecursive, ByKeyRecursiveEntry } from '@wowfinder/ts-utils';
 import { Item } from './base';
 import { consumableBuilderByTypeKey } from './Consumable';
 import { gearBuilderByTypeKey } from './Gear';
@@ -18,22 +17,9 @@ const errors = {
     badData: (raw: any): Error => new Error(`Invalid item data: ${raw}`),
 };
 
-function retrievePreloaded(fqkey: string): Item {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    let data: any /* ByKeyRecursiveEntry<Item> = Item.load(buildItem) */ =
-        Item.load();
-    for (const chunk of fqkey.split('.')) {
-        if (Object.keys(data).includes(chunk)) {
-            data = (data as any) /* ByKeyRecursive<Item> */[chunk];
-        } else {
-            throw errors.badKey(fqkey);
-        }
-    }
-    if (data instanceof Item) {
-        return data as Item;
-    } else {
-        throw errors.badKey(fqkey);
-    }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function retrievePreloaded(fqKey: string): Item {
+    throw new Error('Not implemented');
 }
 
 function buildItem(raw: any): Item {
@@ -41,7 +27,7 @@ function buildItem(raw: any): Item {
         return raw;
     }
     if (typeof raw === 'string') {
-        return retrievePreloaded(raw as string);
+        return retrievePreloaded(raw);
     }
     const $type = (raw?.$type as string) || '';
     if (builderKeys.includes($type)) {

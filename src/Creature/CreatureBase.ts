@@ -1,16 +1,16 @@
 import { Stats } from '@wowfinder/asset-schemas';
 import { RawCreatureAsset } from '@wowfinder/asset-schemas/dist/Creature/base';
-import { BaseCreaturePersonal } from '@wowfinder/asset-schemas/dist/Creature/personal';
 import type { AssetResolver } from 'Assets/AssetResolver';
 import type { ClassEntry, ClassEntries } from './Class';
 import type { Race } from './Race';
+import { PersonalDetails, importPersonalDetails } from './Personal';
 
 abstract class CreatureBase {
     #key: string;
     #baseStats: Stats;
     #race: Race;
     #notes: string;
-    #personal: BaseCreaturePersonal;
+    #personal: PersonalDetails;
     #classes: ClassEntries;
 
     constructor(raw: RawCreatureAsset, resolver: AssetResolver) {
@@ -18,7 +18,7 @@ abstract class CreatureBase {
         this.#baseStats = { ...raw.baseStats };
         this.#race = resolver.resolveRace(raw.race);
         this.#notes = raw.notes ?? '';
-        this.#personal = { ...raw.personal };
+        this.#personal = importPersonalDetails(raw.personal);
         this.#classes =
             raw.classes?.map(({ class: cls, level }) => ({
                 class: resolver.resolveClass(cls),
@@ -42,8 +42,8 @@ abstract class CreatureBase {
         return this.#notes;
     }
 
-    get personal(): BaseCreaturePersonal {
-        return { ...this.#personal };
+    get personal(): PersonalDetails {
+        return this.#personal;
     }
 
     get classes(): ClassEntries {

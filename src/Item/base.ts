@@ -1,4 +1,3 @@
-// import { builder, ByKeyRecursive, forceDataLoadKeySRecursive } from '@wowfinder/ts-utils';
 import { Rarity } from '@wowfinder/ts-enums';
 import { Mass } from '../Scalar';
 import Money from './Money';
@@ -39,21 +38,8 @@ abstract class Item {
         };
     }
 
-    // static #loaded: ByKeyRecursive<Item> | null = null;
-
-    static load(): any {
+    /* static load(): any {
         throw new Error('Not implemented');
-    }
-
-    /* static load(
-        build: builder<Item>,
-        reThrowErrors = false,
-    ): ByKeyRecursive<Item> {
-        return (this.#loaded ||= forceDataLoadKeySRecursive<Item>(
-            window.Main.asset('Items'),
-            build,
-            reThrowErrors,
-        ));
     } */
 }
 

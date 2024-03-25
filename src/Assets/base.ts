@@ -1,4 +1,5 @@
 import { AssetType } from '@wowfinder/ts-enums';
+import { ForcedKeyResolver } from '@wowfinder/ts-utils';
 import type { Adventure } from 'Adventure';
 import type { Character } from 'Character';
 import type { Class } from 'Creature/Class';
@@ -7,53 +8,53 @@ import type { Faction } from 'Faction';
 import type { Item } from 'Item';
 import type { Spell, SpellList } from 'Magic';
 
-interface AdventureResolver {
-    resolveAdventure(key: string): Adventure;
+interface AdventureAssetResolver {
+    resolveAdventure: ForcedKeyResolver<Adventure>;
     resolve(type: AssetType.adventures, key: string): Adventure;
 }
 
-interface CharacterResolver {
-    resolveCharacter(key: string): Character;
+interface CharacterAssetResolver {
+    resolveCharacter: ForcedKeyResolver<Character>;
     resolve(type: AssetType.characters, key: string): Character;
 }
 
-interface ClassResolver {
-    resolveClass(key: string): Class;
+interface ClassAssetResolver {
+    resolveClass: ForcedKeyResolver<Class>;
     resolve(type: AssetType.classes, key: string): Class;
 }
 
-interface FactionResolver {
-    resolveFaction(key: string): Faction;
+interface FactionAssetResolver {
+    resolveFaction: ForcedKeyResolver<Faction>;
     resolve(type: AssetType.factions, key: string): Faction;
 }
 
-interface ItemResolver {
-    resolveItem(key: string): Item;
+interface ItemAssetResolver {
+    resolveItem: ForcedKeyResolver<Item>;
     resolve(type: AssetType.items, key: string): Item;
 }
 
-interface RaceResolver {
-    resolveRace(key: string): Race;
+interface RaceAssetResolver {
+    resolveRace: ForcedKeyResolver<Race>;
     resolve(type: AssetType.races, key: string): Race;
 }
 
-interface SpellResolver {
-    resolveSpell(key: string): Spell;
+interface SpellAssetResolver {
+    resolveSpell: ForcedKeyResolver<Spell>;
     resolve(type: AssetType.spells, key: string): Spell;
 }
 
-interface SpellListResolver {
-    resolveSpellList(key: string): SpellList;
+interface SpellListAssetResolver {
+    resolveSpellList: ForcedKeyResolver<SpellList>;
     resolve(type: AssetType.spellLists, key: string): SpellList;
 }
 
 export {
-    AdventureResolver,
-    CharacterResolver,
-    ClassResolver,
-    FactionResolver,
-    ItemResolver,
-    RaceResolver,
-    SpellResolver,
-    SpellListResolver,
+    AdventureAssetResolver,
+    CharacterAssetResolver,
+    ClassAssetResolver,
+    FactionAssetResolver,
+    ItemAssetResolver,
+    RaceAssetResolver,
+    SpellAssetResolver,
+    SpellListAssetResolver,
 };

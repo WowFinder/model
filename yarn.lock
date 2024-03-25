@@ -876,10 +876,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/recommended@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "@tsconfig/recommended@npm:1.0.3"
-  checksum: 10c0/2744d2798d52d337a7b0b78f6efa070ecda4e42262e93589d4bed615a55639a84035a8e3b2b020f2396f1f7832294b8c00d7acc78e644418566447ca53df9078
+"@tsconfig/recommended@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@tsconfig/recommended@npm:1.0.4"
+  checksum: 10c0/81304013565b64c100ad4c297908c6eba7808c109450f1190a2f4d5d87057ae0742cbb1d7fd571520b70e321b8de6bfe394be0a7653f4a88e23d77d64bc59e77
   languageName: node
   linkType: hard
 
@@ -1289,13 +1289,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wowfinder/asset-schemas@npm:0.0.7":
-  version: 0.0.7
-  resolution: "@wowfinder/asset-schemas@npm:0.0.7"
+"@wowfinder/asset-schemas@npm:0.0.8":
+  version: 0.0.8
+  resolution: "@wowfinder/asset-schemas@npm:0.0.8"
   dependencies:
     "@wowfinder/ts-enums": "npm:^0.0.5"
     ajv: "npm:^8.12.0"
-  checksum: 10c0/07e7f7006676ba556433a05711de9244faabe35b2f5c8b5fc2541c2b66c88c32ce8a627a0c6dd0ca40ff899fd86c789f8c2cf3baa931bd8aa39ccd1fd0e54e7c
+  checksum: 10c0/06d897972af232618b6f6967b1fc8d0842e756bdfd70cf165173f3f0e1c6f2254d1af109e037dee7fc38226f34d13054fe9804e3e3b6359532898ae92f1e6c8c
   languageName: node
   linkType: hard
 
@@ -1313,10 +1313,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wowfinder/ts-utils@npm:^0.0.8":
-  version: 0.0.8
-  resolution: "@wowfinder/ts-utils@npm:0.0.8"
-  checksum: 10c0/e7d94ec5f5e34030c5860700e2ceada29a4a8d69015e9893f7b2bb3879349938786e9ad3418f0e9cf8f658a846078ab854a2853b9d169f3c9fe054d3ac59e620
+"@wowfinder/ts-utils@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@wowfinder/ts-utils@npm:0.1.0"
+  checksum: 10c0/8a2f9ac3fe63ffd09c65333d4945f30a01db58cb01bb636ba3a167954c6223fd16513e8458bef9a550d8e066e0f3a58fdfbada0c0a6b9d893d5980d50cac5839
   languageName: node
   linkType: hard
 
@@ -4627,15 +4627,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "model@workspace:."
   dependencies:
-    "@tsconfig/recommended": "npm:^1.0.3"
+    "@tsconfig/recommended": "npm:^1.0.4"
     "@types/deasync": "npm:^0.1.5"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.3.1"
     "@typescript-eslint/parser": "npm:^7.3.1"
     "@typescript-eslint/utils": "npm:^7.3.1"
-    "@wowfinder/asset-schemas": "npm:0.0.7"
+    "@wowfinder/asset-schemas": "npm:0.0.8"
     "@wowfinder/ts-enums": "npm:^0.0.6"
-    "@wowfinder/ts-utils": "npm:^0.0.8"
+    "@wowfinder/ts-utils": "npm:^0.1.0"
     eslint: "npm:^8.57.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-config-standard: "npm:^17.1.0"

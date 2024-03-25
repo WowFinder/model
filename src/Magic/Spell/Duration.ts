@@ -1,6 +1,5 @@
-// import { TFunction } from 'i18next';
 import { Time } from 'Scalar';
-import { Debugger } from '@wowfinder/ts-utils';
+import { Debugger, StringFormatter } from '@wowfinder/ts-utils';
 
 type FixedSpellDuration = {
     durationType: 'fixed';
@@ -20,10 +19,7 @@ type SpellDuration =
     | FixedSpellDuration
     | PerLevelSpellDuration;
 
-function stringify(
-    value: SpellDuration,
-    t: any /* TFunction<'translation'> */,
-): string {
+function stringify(value: SpellDuration, t: StringFormatter): string {
     if (value === 'special') {
         return t('magic.duration.special');
     } else if (value === 'instantaneous') {
