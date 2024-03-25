@@ -7,7 +7,7 @@ import {
     exportFeatchChoices,
     parseFeatChoices,
 } from '../helpers';
-import { parseSize } from '../Size';
+import { parseSize } from '../../Creature/Size';
 import { Speeds } from '../../Creature/Speeds';
 import {
     EffectiveCasterLevels,

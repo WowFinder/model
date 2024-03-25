@@ -1,4 +1,5 @@
 /* eslint-disable deprecation/deprecation */
+/* eslint-disable max-lines */
 import {
     Aura,
     CastingMode,
@@ -6,7 +7,7 @@ import {
     School,
     SubSchool,
 } from '@wowfinder/ts-enums';
-import { Exportable, JsonValue, sum } from '@wowfinder/ts-utils';
+import { sum } from '@wowfinder/ts-utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
 import {
@@ -18,7 +19,6 @@ import {
 import { ArmorValues, FullArmorValues } from '../Creature/ArmorValues';
 import {
     CharacterBuilder,
-    CharacterExport,
     CharacterOverride,
     PersonalCharacterBase,
     SkillRanks,
@@ -45,7 +45,7 @@ import { Feat, feats } from './Feats';
 import { buildStats, checkClass, checkRace } from './helpers';
 import Race from '../Creature/Race';
 import { Resistances } from './Resistances';
-import { Saves, SimpleSaves } from './Saves';
+import { FullSaves, zeroSave } from '../Creature/Saves';
 import { statMod, StatsBlock } from 'Creature/Stats';
 
 /** @deprecated */
@@ -53,7 +53,7 @@ type Characters = { [key: string]: Character };
 
 /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
 /** @deprecated */
-class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
+class Character extends PersonalCharacterBase {
     #active: boolean;
     #race: Race;
     #classes: ClassLevels;
@@ -150,14 +150,14 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         });
     }
 
-    get saves(): Saves {
-        return new Saves({
+    get saves(): FullSaves {
+        return new FullSaves({
             stats: this.stats,
-            base: new SimpleSaves(this.classBonuses.saves),
-            enhance: SimpleSaves.zero, // TODO #432
-            gear: new SimpleSaves(this.gearBonuses.saves),
-            misc: SimpleSaves.zero, // TODO #432
-            temp: SimpleSaves.zero, // TODO #432
+            base: { ...this.classBonuses.saves },
+            enhancement: { ...zeroSave }, // TODO #432
+            gear: { ...this.gearBonuses.saves },
+            misc: { ...zeroSave }, // TODO #432
+            temporary: { ...zeroSave }, // TODO #432
         });
     }
 
@@ -302,20 +302,6 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         return this.classes;
     }
 
-    export(): CharacterExport {
-        return {
-            ...super.export(),
-            race: this.#race?.key || '',
-            classes: this.#classes.map(c => ({
-                class: c.class.key,
-                level: c.level,
-            })),
-            active: this.#active,
-            skillRanks: this.#skillRanks,
-            inventory: this.#inventory.export(),
-        };
-    }
-
     static build(raw: any): Character {
         // TODO #281: Validate props
         return new Character(raw);
@@ -332,5 +318,5 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     }
 }
 
-export type { Characters, CharacterBuilder, CharacterExport };
+export type { Characters, CharacterBuilder };
 export { Character };

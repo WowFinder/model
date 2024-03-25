@@ -66,13 +66,15 @@ module.exports = {
             },
         ],
         '@typescript-eslint/prefer-enum-initializers': 'warn',
-        'max-len': [
+        'max-lines': [
             'warn',
             {
-                code: 180,
-                ignoreComments: true,
+                max: 150,
+                skipBlankLines: true,
+                skipComments: true,
             },
         ],
+        complexity: ['warn', 10],
         '@typescript-eslint/no-non-null-assertion': 'off',
         // https://iliubinskii.github.io/eslint-plugin-misc/#rules
         // Not yet: 'misc/class-match-filename': 'warn',
@@ -86,6 +88,15 @@ module.exports = {
             files: ['*.test.ts*', '*.test.tsx'],
             rules: {
                 '@typescript-eslint/no-empty-function': 'off',
+                'max-lines': [
+                    'warn',
+                    {
+                        max: 300,
+                        skipBlankLines: true,
+                        skipComments: true,
+                    },
+                ],
+                complexity: ['warn', 5],
             },
         },
     ],

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import StatsBonus from './Stats';
 import SkillsBonus from './Skills';
 import { VitalNeeds } from './VitalNeeds';

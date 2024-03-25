@@ -1,6 +1,7 @@
 import { RawCreatureAsset } from '@wowfinder/asset-schemas/dist/Creature/base';
 import { baseDefault } from '../../Creature/Stats';
-import { Alignment } from '@wowfinder/ts-enums';
+import { Alignment, Skill } from '@wowfinder/ts-enums';
+import { DeepRequired } from '@wowfinder/ts-utils';
 
 const rawBaseCreatureMinimal: RawCreatureAsset = {
     key: 'base-creature-mock-minimal',
@@ -18,6 +19,31 @@ const rawBaseCreatureExpanded: RawCreatureAsset = {
         ...rawBaseCreatureMinimal.personal,
         alignment: Alignment.lawfulGood,
         weight: 180,
+    } as const,
+    notes: 'This is a mock creature for testing purposes.',
+    classes: [
+        { class: 'mocked-melee-class', level: 8 },
+        { class: 'mocked-arcane-class', level: 4 },
+        { class: 'mocked-divine-class', level: 2 },
+        { class: 'mocked-stealth-class', level: 2 },
+    ] as const,
+} as const;
+
+const rawBaseCreatureFull: DeepRequired<RawCreatureAsset> = {
+    ...rawBaseCreatureExpanded,
+    key: 'base-creature-mock-full',
+    personal: {
+        alignment: Alignment.lawfulGood,
+        fullName: 'Full Base Creature Mock',
+        faith: 'Mocked Deity',
+        origin: 'Mocked Place',
+        hair: 'Mocked Hair',
+        eyes: 'Mocked Eyes',
+        skin: 'Mocked Skin',
+        gender: 'Mocked gender',
+        height: 72,
+        weight: 180,
+        age: 25,
     },
     notes: 'This is a mock creature for testing purposes.',
     classes: [
@@ -25,7 +51,18 @@ const rawBaseCreatureExpanded: RawCreatureAsset = {
         { class: 'mocked-arcane-class', level: 4 },
         { class: 'mocked-divine-class', level: 2 },
         { class: 'mocked-stealth-class', level: 2 },
-    ],
+    ] as const,
+    skillRanks: {
+        [Skill.acrobatics]: 4,
+        [Skill.arcane]: 2,
+        [Skill.stealth]: 2,
+    } as const,
+    feats: [] as const,
+    inventory: {
+        money: 10000,
+        gear: [],
+        carried: [],
+    } as const,
 } as const;
 
-export { rawBaseCreatureMinimal, rawBaseCreatureExpanded };
+export { rawBaseCreatureMinimal, rawBaseCreatureExpanded, rawBaseCreatureFull };

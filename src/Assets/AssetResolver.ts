@@ -7,14 +7,14 @@ import type { Faction } from 'Faction';
 import type { Item } from 'Item';
 import type { Spell, SpellList } from 'Magic';
 import {
-    AdventureResolver,
-    CharacterResolver,
-    ClassResolver,
-    FactionResolver,
-    ItemResolver,
-    RaceResolver,
-    SpellListResolver,
-    SpellResolver,
+    AdventureAssetResolver,
+    CharacterAssetResolver,
+    ClassAssetResolver,
+    FactionAssetResolver,
+    ItemAssetResolver,
+    RaceAssetResolver,
+    SpellListAssetResolver,
+    SpellAssetResolver,
 } from './base';
 
 type AnyAsset =
@@ -28,14 +28,14 @@ type AnyAsset =
     | SpellList;
 abstract class AssetResolver
     implements
-        AdventureResolver,
-        CharacterResolver,
-        ClassResolver,
-        FactionResolver,
-        ItemResolver,
-        RaceResolver,
-        SpellResolver,
-        SpellListResolver
+        AdventureAssetResolver,
+        CharacterAssetResolver,
+        ClassAssetResolver,
+        FactionAssetResolver,
+        ItemAssetResolver,
+        RaceAssetResolver,
+        SpellAssetResolver,
+        SpellListAssetResolver
 {
     abstract resolveAdventure(key: string): Adventure;
     abstract resolveCharacter(key: string): Character;

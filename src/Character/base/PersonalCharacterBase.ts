@@ -1,8 +1,5 @@
 /* eslint-disable deprecation/deprecation */
-import CharPersonalDetails, {
-    jsonExport as personalDetailsJsonExport,
-    jsonImport as personalDetailsJsonImport,
-} from '../Personal';
+import { PersonalDetails, importPersonalDetails } from 'Creature/Personal';
 import { OverridableCharacterBase } from './OverridableCharacterBase';
 import {
     CharacterPersonalExport,
@@ -10,14 +7,14 @@ import {
 } from './builder';
 
 abstract class PersonalCharacterBase extends OverridableCharacterBase {
-    #personal: CharPersonalDetails;
+    #personal: PersonalDetails; // Formerly: PersonalDetailsBuilder;
     constructor({ personal, ...rest }: PersonalCharacterBaseBuilder) {
         super(rest);
-        this.#personal = personalDetailsJsonImport(personal);
+        this.#personal = importPersonalDetails(personal);
     }
 
-    get personal(): CharPersonalDetails {
-        return { ...this.#personal };
+    get personal(): PersonalDetails {
+        return this.#personal;
     }
 
     get fullName(): string {
@@ -31,7 +28,7 @@ abstract class PersonalCharacterBase extends OverridableCharacterBase {
     export(): CharacterPersonalExport {
         return {
             ...super.export(),
-            personal: personalDetailsJsonExport(this.#personal),
+            personal: this.#personal.export(),
         };
     }
 }

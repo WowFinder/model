@@ -1,4 +1,4 @@
-import { Exportable, JsonValue, jClone } from '@wowfinder/ts-utils';
+import { JsonExportable, safeJsonClone } from '@wowfinder/ts-utils';
 import type { RewardsByCharacter } from './Rewards';
 import { RawAdventureAsset } from '@wowfinder/asset-schemas';
 
@@ -12,7 +12,7 @@ function combineRewards(rewards: RewardsByCharacter[]): RewardsByCharacter {
                     result[c][f] += r[c][f];
                 }
             } else {
-                result[c] = jClone(r[c]);
+                result[c] = safeJsonClone(r[c]);
             }
         }
     }
@@ -21,9 +21,7 @@ function combineRewards(rewards: RewardsByCharacter[]): RewardsByCharacter {
 
 type Adventures = { [key: string]: Adventure };
 
-type AdventureExport = RawAdventureAsset & { [key: string]: JsonValue };
-
-class Adventure implements Exportable<AdventureExport> {
+class Adventure implements JsonExportable<RawAdventureAsset> {
     #key: string;
     #title: string;
     #date: string;
@@ -61,7 +59,7 @@ class Adventure implements Exportable<AdventureExport> {
         return combineRewards([...adventures].map(a => a.rewards));
     }
 
-    export(): AdventureExport {
+    export(): RawAdventureAsset {
         return {
             key: this.#key,
             title: this.#title,
@@ -71,5 +69,5 @@ class Adventure implements Exportable<AdventureExport> {
     }
 }
 
-export type { Adventures, AdventureExport };
+export type { Adventures };
 export { Adventure };

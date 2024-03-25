@@ -1,16 +1,38 @@
-import { SimpleSaves } from '../Saves';
+import { Saves as RawSaves } from '@wowfinder/asset-schemas';
 import { sum } from '@wowfinder/ts-utils';
 
-export default class SavesBonus extends SimpleSaves {
+export default class SavesBonus implements RawSaves {
+    #fortitude: number;
+    #reflexes: number;
+    #will: number;
+
+    constructor(raw?: Partial<RawSaves>) {
+        this.#fortitude = raw?.fortitude ?? 0;
+        this.#reflexes = raw?.reflexes ?? 0;
+        this.#will = raw?.will ?? 0;
+    }
+
+    get fortitude(): number {
+        return this.#fortitude;
+    }
+
+    get reflexes(): number {
+        return this.#reflexes;
+    }
+
+    get will(): number {
+        return this.#will;
+    }
+
     static get zero(): SavesBonus {
         return new SavesBonus({});
     }
 
     static sum(...args: SavesBonus[]): SavesBonus {
         return new SavesBonus({
-            fortitude: sum(...args.map(a => a.fortitude)),
-            reflexes: sum(...args.map(a => a.reflexes)),
-            will: sum(...args.map(a => a.will)),
+            fortitude: sum(...args.map(a => a.#fortitude)),
+            reflexes: sum(...args.map(a => a.#reflexes)),
+            will: sum(...args.map(a => a.#will)),
         });
     }
 
@@ -22,11 +44,12 @@ export default class SavesBonus extends SimpleSaves {
         });
     }
 
+    /** @deprecated */
     static build(raw: any = {}): SavesBonus {
         return new SavesBonus({
-            fortitude: raw.fort || 0,
-            reflexes: raw.refl || 0,
-            will: raw.will || 0,
+            fortitude: raw.fortitude ?? 0,
+            reflexes: raw.reflexes ?? 0,
+            will: raw.will ?? 0,
         });
     }
 }
