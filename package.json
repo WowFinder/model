@@ -32,7 +32,7 @@
     "dependencies": {
         "@wowfinder/asset-schemas": "0.0.7",
         "@wowfinder/ts-enums": "^0.0.6",
-        "@wowfinder/ts-utils": "^0.0.8"
+        "@wowfinder/ts-utils": "^0.1.0"
     },
     "devDependencies": {
         "@tsconfig/recommended": "^1.0.3",
