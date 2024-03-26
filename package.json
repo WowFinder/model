@@ -32,7 +32,7 @@
         "prepare": "yarn run build"
     },
     "dependencies": {
-        "@wowfinder/asset-schemas": "0.0.8",
+        "@wowfinder/asset-schemas": "0.0.9",
         "@wowfinder/ts-enums": "^0.0.6",
         "@wowfinder/ts-utils": "^0.1.0"
     },

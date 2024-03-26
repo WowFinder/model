@@ -1,5 +1,5 @@
 import { Save } from '@wowfinder/ts-enums';
-import { Saves as RawSaves } from '@wowfinder/asset-schemas';
+import { RawSaves } from '@wowfinder/asset-schemas';
 import { StatsBlock } from './Stats';
 
 interface SaveBreakdownBuilder {

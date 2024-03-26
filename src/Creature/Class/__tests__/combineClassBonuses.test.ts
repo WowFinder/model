@@ -1,4 +1,4 @@
-import { Saves } from '@wowfinder/asset-schemas';
+import { RawSaves } from '@wowfinder/asset-schemas';
 import { Class, ClassLevels } from '..';
 import {
     combineClassBonuses,
@@ -41,7 +41,7 @@ describe('combineClassBonuses', () => {
             reflexes: Good: 8 (melee) + 1 (stealth); Poor: 4 (arcane) + 2 (divine);
             will: Good: 2 (divine) + 2 (arcane); Poor: 8 (melee) + 1 (stealth);
         */
-        const expected: Saves = {
+        const expected: RawSaves = {
             fortitude: Math.floor(goodSave * (8 + 2) + poorSave * (4 + 1) + 2),
             reflexes: Math.floor(goodSave * (8 + 1) + poorSave * (4 + 2) + 2),
             will: Math.floor(goodSave * (2 + 2) + poorSave * (8 + 1) + 2),
