@@ -1,13 +1,13 @@
-import { Stats } from '@wowfinder/asset-schemas';
+import { RawStats } from '@wowfinder/asset-schemas';
 import { Stat } from '@wowfinder/ts-enums';
 import { zeroDefault } from 'Creature/Stats';
 import { FunctionBasedRequirement } from '.';
 import { Character } from '..';
 import { Requirement } from './base';
 
-class MinStatsRequirement implements Stats, Requirement<Stats> {
-    #min: Stats;
-    constructor(min: Partial<Stats>) {
+class MinStatsRequirement implements RawStats, Requirement<RawStats> {
+    #min: RawStats;
+    constructor(min: Partial<RawStats>) {
         this.#min = { ...zeroDefault, ...min };
     }
 
@@ -35,15 +35,15 @@ class MinStatsRequirement implements Stats, Requirement<Stats> {
         return this.#min.charisma;
     }
 
-    test(value: Partial<Stats>): boolean {
+    test(value: Partial<RawStats>): boolean {
         return Object.keys(Stat)
-            .map(k => k as keyof Stats)
+            .map(k => k as keyof RawStats)
             .every(k => (value[k] ?? zeroDefault[k]) >= this.#min[k]);
     }
 }
-class MaxStatsRequirement implements Stats, Requirement<Stats> {
-    #max: Stats;
-    constructor(max: Partial<Stats>) {
+class MaxStatsRequirement implements RawStats, Requirement<RawStats> {
+    #max: RawStats;
+    constructor(max: Partial<RawStats>) {
         this.#max = { ...zeroDefault, ...max };
     }
 
@@ -71,10 +71,10 @@ class MaxStatsRequirement implements Stats, Requirement<Stats> {
         return this.#max.charisma;
     }
 
-    test(value: Partial<Stats>): boolean {
+    test(value: Partial<RawStats>): boolean {
         const keys = Object.keys(this.#max);
         return Object.keys(Stat)
-            .map(k => k as keyof Stats)
+            .map(k => k as keyof RawStats)
             .every(
                 k =>
                     !keys.includes(k) ||
@@ -83,7 +83,7 @@ class MaxStatsRequirement implements Stats, Requirement<Stats> {
     }
 }
 
-function characterStatsRequirement<T extends Requirement<Stats>>(
+function characterStatsRequirement<T extends Requirement<RawStats>>(
     req: T,
 ): Requirement<Character> {
     return new FunctionBasedRequirement<Character>((char: Character) =>

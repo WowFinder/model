@@ -1,13 +1,16 @@
 import { sum } from '@wowfinder/ts-utils';
 import { Mass } from 'Scalar';
 import { MassUnit } from '@wowfinder/ts-enums';
-import { Stats } from '@wowfinder/asset-schemas';
+import { RawStats } from '@wowfinder/asset-schemas';
 
 function statMod(stat: number): number {
     return Math.floor(stat / 2 - 5);
 }
 
-function fillStatSet(base: Partial<Stats>, defaultValue: number = 0): Stats {
+function fillStatSet(
+    base: Partial<RawStats>,
+    defaultValue: number = 0,
+): RawStats {
     return {
         strength: base.strength ?? defaultValue,
         dexterity: base.dexterity ?? defaultValue,
@@ -18,7 +21,7 @@ function fillStatSet(base: Partial<Stats>, defaultValue: number = 0): Stats {
     };
 }
 
-function addStatSets(...args: Stats[]): Stats {
+function addStatSets(...args: RawStats[]): RawStats {
     return {
         strength: sum(...args.map(s => s.strength)),
         dexterity: sum(...args.map(s => s.dexterity)),
@@ -29,7 +32,7 @@ function addStatSets(...args: Stats[]): Stats {
     };
 }
 
-function scaleStatSet(stats: Stats, factor: number): Stats {
+function scaleStatSet(stats: RawStats, factor: number): RawStats {
     return {
         strength: Math.floor(stats.strength * factor),
         dexterity: Math.floor(stats.dexterity * factor),
@@ -40,7 +43,7 @@ function scaleStatSet(stats: Stats, factor: number): Stats {
     };
 }
 
-const baseDefault: Stats = {
+const baseDefault: RawStats = {
     strength: 10,
     dexterity: 10,
     constitution: 10,
@@ -49,7 +52,7 @@ const baseDefault: Stats = {
     charisma: 10,
 };
 
-const zeroDefault: Stats = {
+const zeroDefault: RawStats = {
     strength: 0,
     dexterity: 0,
     constitution: 0,
@@ -59,12 +62,12 @@ const zeroDefault: Stats = {
 };
 
 type PartialStatBlock = {
-    base?: Stats;
-    racial?: Stats;
-    enhance?: Stats;
-    gear?: Stats;
-    misc?: Stats;
-    temp?: Stats;
+    base?: RawStats;
+    racial?: RawStats;
+    enhance?: RawStats;
+    gear?: RawStats;
+    misc?: RawStats;
+    temp?: RawStats;
 };
 
 function carry(str: number): Mass {

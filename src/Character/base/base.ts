@@ -15,7 +15,7 @@ import {
     zeroCasterLevel,
 } from 'Magic';
 import { Size } from '@wowfinder/ts-enums';
-import { Stats } from '@wowfinder/asset-schemas';
+import { RawStats } from '@wowfinder/asset-schemas';
 
 /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
 /** @deprecated */
@@ -23,7 +23,7 @@ abstract class CharacterBase {
     #key: string;
     #featChoices: FeatChoice[];
     #miscHP?: number;
-    #baseStats: Stats;
+    #baseStats: RawStats;
     #baseResistances: Resistances;
     #size: Size;
     #speeds: Speeds;
@@ -68,7 +68,7 @@ abstract class CharacterBase {
         return this.#miscHP;
     }
 
-    get baseStats(): Stats {
+    get baseStats(): RawStats {
         return this.#baseStats;
     }
 

@@ -1,5 +1,5 @@
 import { Mass } from '../../Scalar';
-import { Stats as StatValues, Stats } from '@wowfinder/asset-schemas';
+import { RawStats } from '@wowfinder/asset-schemas';
 import {
     PartialStatBlock,
     addStatSets,
@@ -10,12 +10,12 @@ import {
 } from './helpers';
 
 class StatsBlock {
-    #base: Stats;
-    #racial: Stats;
-    #enhance: Stats;
-    #gear: Stats;
-    #misc: Stats;
-    #temp: Stats;
+    #base: RawStats;
+    #racial: RawStats;
+    #enhance: RawStats;
+    #gear: RawStats;
+    #misc: RawStats;
+    #temp: RawStats;
 
     constructor({
         base = baseDefault,
@@ -33,7 +33,7 @@ class StatsBlock {
         this.#temp = temp;
     }
 
-    get totals(): Stats {
+    get totals(): RawStats {
         return addStatSets(
             this.#base,
             this.#racial,
@@ -44,39 +44,39 @@ class StatsBlock {
         );
     }
 
-    get intrinsic(): Stats {
+    get intrinsic(): RawStats {
         return addStatSets(this.#base, this.#racial);
     }
 
-    get base(): Stats {
+    get base(): RawStats {
         return { ...this.#base };
     }
 
-    get racial(): Stats {
+    get racial(): RawStats {
         return { ...this.#racial };
     }
 
-    get enhance(): Stats {
+    get enhance(): RawStats {
         return { ...this.#enhance };
     }
 
-    get gear(): Stats {
+    get gear(): RawStats {
         return { ...this.#gear };
     }
 
-    get misc(): Stats {
+    get misc(): RawStats {
         return { ...this.#misc };
     }
 
-    get temp(): Stats {
+    get temp(): RawStats {
         return { ...this.#temp };
     }
 
-    get active(): StatValues {
+    get active(): RawStats {
         return addStatSets(this.base, this.racial, this.enhance);
     }
 
-    get totalMods(): StatValues {
+    get totalMods(): RawStats {
         const totals = this.totals;
         return {
             strength: statMod(totals.strength),

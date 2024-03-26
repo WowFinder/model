@@ -7,7 +7,7 @@ import { CharacterOverride } from './CharacterOverride';
 import { CharacterBase } from './base';
 import { OverridableCharacterBaseBuilder } from './builder';
 import { Size } from '@wowfinder/ts-enums';
-import { Stats } from '@wowfinder/asset-schemas';
+import { RawStats } from '@wowfinder/asset-schemas';
 
 abstract class OverridableCharacterBase extends CharacterBase {
     #override: CharacterOverride | null;
@@ -33,7 +33,7 @@ abstract class OverridableCharacterBase extends CharacterBase {
         return this.#override?.miscHP ?? super.miscHP;
     }
 
-    get baseStats(): Stats {
+    get baseStats(): RawStats {
         return { ...super.baseStats, ...this.#override?.baseStats };
     }
 

@@ -1,11 +1,11 @@
 import { Alignment, Languages, Size } from '@wowfinder/ts-enums';
 import { SkillSet } from '../Skill';
 import { Speeds } from '../Speeds';
-import { RawRaceAsset, Saves, Stats } from '@wowfinder/asset-schemas';
+import { RawRaceAsset, RawSaves, RawStats } from '@wowfinder/asset-schemas';
 
 type Races = { [key: string]: Race };
 
-const defaultSaves: Saves = {
+const defaultSaves: RawSaves = {
     fortitude: 0,
     reflexes: 0,
     will: 0,
@@ -14,7 +14,7 @@ const defaultSaves: Saves = {
 export default class Race {
     #key: string;
     #size: Size;
-    #statMods: Stats;
+    #statMods: RawStats;
     #skillMods: SkillSet;
     #bonusSkillRanks: number;
     #bonusStartingFeats: number;
@@ -22,7 +22,7 @@ export default class Race {
     #additionalLanguages: Languages[];
     #commonAlignments: Alignment[];
     #speeds: Speeds;
-    #saves: Saves;
+    #saves: RawSaves;
 
     constructor(raw: RawRaceAsset) {
         this.#key = raw.key;
@@ -49,7 +49,7 @@ export default class Race {
         return this.#size;
     }
 
-    get statMods(): Stats {
+    get statMods(): RawStats {
         return { ...this.#statMods };
     }
 
@@ -85,7 +85,7 @@ export default class Race {
         return new Speeds(this.#speeds);
     }
 
-    get saves(): Saves {
+    get saves(): RawSaves {
         return { ...this.#saves };
     }
 

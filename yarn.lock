@@ -1289,13 +1289,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wowfinder/asset-schemas@npm:0.0.8":
-  version: 0.0.8
-  resolution: "@wowfinder/asset-schemas@npm:0.0.8"
+"@wowfinder/asset-schemas@npm:0.0.9":
+  version: 0.0.9
+  resolution: "@wowfinder/asset-schemas@npm:0.0.9"
   dependencies:
     "@wowfinder/ts-enums": "npm:^0.0.5"
     ajv: "npm:^8.12.0"
-  checksum: 10c0/06d897972af232618b6f6967b1fc8d0842e756bdfd70cf165173f3f0e1c6f2254d1af109e037dee7fc38226f34d13054fe9804e3e3b6359532898ae92f1e6c8c
+  checksum: 10c0/645f3cb5fa6bb0b671c867aeb11123c57b3297e44c98e877b3c101b4a6d96b2641d44501e7952faa148ac95e880345e2e4d4b2ad287444c4dbf3f2e337082e11
   languageName: node
   linkType: hard
 
@@ -4633,7 +4633,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^7.3.1"
     "@typescript-eslint/parser": "npm:^7.3.1"
     "@typescript-eslint/utils": "npm:^7.3.1"
-    "@wowfinder/asset-schemas": "npm:0.0.8"
+    "@wowfinder/asset-schemas": "npm:0.0.9"
     "@wowfinder/ts-enums": "npm:^0.0.6"
     "@wowfinder/ts-utils": "npm:^0.1.0"
     eslint: "npm:^8.57.0"

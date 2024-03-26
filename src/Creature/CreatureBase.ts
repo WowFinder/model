@@ -1,4 +1,4 @@
-import { Stats } from '@wowfinder/asset-schemas';
+import { RawStats } from '@wowfinder/asset-schemas';
 import { RawCreatureAsset } from '@wowfinder/asset-schemas/dist/Creature/base';
 import type { AssetResolver } from 'Assets/AssetResolver';
 import type { ClassEntry, ClassEntries } from './Class';
@@ -7,7 +7,7 @@ import { PersonalDetails, importPersonalDetails } from './Personal';
 
 abstract class CreatureBase {
     #key: string;
-    #baseStats: Stats;
+    #baseStats: RawStats;
     #race: Race;
     #notes: string;
     #personal: PersonalDetails;
@@ -30,7 +30,7 @@ abstract class CreatureBase {
         return this.#key;
     }
 
-    get baseStats(): Stats {
+    get baseStats(): RawStats {
         return { ...this.#baseStats };
     }
 

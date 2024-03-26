@@ -1,4 +1,4 @@
-import { Saves as RawSaves } from '@wowfinder/asset-schemas';
+import { RawSaves } from '@wowfinder/asset-schemas';
 import { sum } from '@wowfinder/ts-utils';
 
 export default class SavesBonus implements RawSaves {

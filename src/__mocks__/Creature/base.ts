@@ -57,6 +57,7 @@ const rawBaseCreatureFull: DeepRequired<RawCreatureAsset> = {
         [Skill.arcane]: 2,
         [Skill.stealth]: 2,
     } as const,
+    templates: [] as const,
     feats: [] as const,
     inventory: {
         money: 10000,
