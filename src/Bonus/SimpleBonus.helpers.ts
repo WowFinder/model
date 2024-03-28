@@ -1,4 +1,3 @@
-import { BonusType } from '@wowfinder/ts-enums';
 import { JsonCompatible, sum } from '@wowfinder/ts-utils';
 import { ResistancesBonus } from './ResistancesBonus';
 import { SensesBonus } from './SensesBonus';
@@ -11,7 +10,7 @@ import { SpellPowerBonus } from './SpellPowerBonus';
 import { FeatsBonus } from './FeatsBonus';
 import { BaseSpeedsBonus, SpeedsModifiersBonus } from './SpeedsBonus';
 
-function sumBonus(type: BonusType, ...args: SimpleBonus[]): SimpleBonusBuilder {
+function sumBonus(...args: SimpleBonus[]): SimpleBonusBuilder {
     return {
         hp: sum(...args.map(s => s.hp)),
         armorClass: sum(...args.map(s => s.armorClass)),
@@ -33,7 +32,7 @@ function sumBonus(type: BonusType, ...args: SimpleBonus[]): SimpleBonusBuilder {
     };
 }
 
-function maxBonus(type: BonusType, ...args: SimpleBonus[]): SimpleBonusBuilder {
+function maxBonus(...args: SimpleBonus[]): SimpleBonusBuilder {
     return {
         hp: Math.max(...args.map(s => s.hp)),
         armorClass: Math.max(...args.map(s => s.armorClass)),

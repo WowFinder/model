@@ -1,4 +1,3 @@
-import { BonusType } from '@wowfinder/ts-enums';
 import {
     defaultSimpleBonusBuilder,
     fullSimpleBonusBuilder,
@@ -17,7 +16,6 @@ describe('SimpleBonus', () => {
     describe('export', () => {
         it('should export a bonus', () => {
             const exportedBonus = defaultSimpleBonus.export();
-            expect(exportedBonus.type).toBe(BonusType.temporal);
             expect(exportedBonus.hp).toBe(0);
             expect(exportedBonus.armorClass).toBe(0);
             expect(exportedBonus.stats).toBeDefined();
@@ -41,10 +39,7 @@ describe('SimpleBonus', () => {
             const count = bonusesToSum.filter(
                 b => b === fullSimpleBonus,
             ).length;
-            const bonusSum = SimpleBonus.sum(
-                BonusType.temporal,
-                ...bonusesToSum,
-            );
+            const bonusSum = SimpleBonus.sum(...bonusesToSum);
             expect(bonusSum.hp).toEqual(fullSimpleBonus.hp * count);
             expect(bonusSum.armorClass).toEqual(
                 fullSimpleBonus.armorClass * count,
@@ -60,13 +55,8 @@ describe('SimpleBonus', () => {
             expect(bonusSum.speedsModifiers).toBeDefined();
         });
         it('should be a noop when adding an empty bonus', () => {
-            const zero = SimpleBonus.zero();
-            const bonusSum = SimpleBonus.sum(
-                BonusType.temporal,
-                fullSimpleBonus,
-                zero,
-                zero,
-            );
+            const zero = SimpleBonus.zero;
+            const bonusSum = SimpleBonus.sum(fullSimpleBonus, zero, zero);
             expect(bonusSum.hp).toEqual(fullSimpleBonus.hp);
             expect(bonusSum.armorClass).toEqual(fullSimpleBonus.armorClass);
             expect(bonusSum.stats).toEqual(fullSimpleBonus.stats);
@@ -86,7 +76,6 @@ describe('SimpleBonus', () => {
     describe('max', () => {
         it('should get the maximum bonus', () => {
             const maxBonus = SimpleBonus.max(
-                BonusType.temporal,
                 defaultSimpleBonus,
                 fullSimpleBonus,
             );
@@ -131,7 +120,7 @@ describe('SimpleBonus', () => {
             expect(fullSimpleBonus.isZero).toBe(false);
         });
         it('should return true if all bonuses are zero', () => {
-            const zero = SimpleBonus.zero();
+            const zero = SimpleBonus.zero;
             expect(zero.isZero).toBe(true);
         });
     });

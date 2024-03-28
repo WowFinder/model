@@ -1,4 +1,3 @@
-import { BonusType } from '@wowfinder/ts-enums';
 import { SimpleBonusBuilder } from '../../Bonus/SimpleBonus.builder';
 import { mixedStatsMock } from '__mocks__/Creature';
 import { skillsBonusFullBuilder } from './SkillsBonusBuilders';
@@ -19,40 +18,24 @@ import {
     fullSpeedsModifiersBonusBuilder,
 } from './SpeedsBonusBuilders';
 
-const defaultSimpleBonusBuilder: SimpleBonusBuilder = {
-    type: BonusType.temporal,
+const defaultSimpleBonusBuilder: SimpleBonusBuilder = {};
+
+const fullSimpleBonusBuilder: SimpleBonusBuilder = {
+    hp: 10,
+    armorClass: 2,
+    stats: mixedStatsMock,
+    skills: skillsBonusFullBuilder,
+    resistances: resistancesBonusFullBuilder,
+    vitalNeeds: vitalNeedsBonusFullBuilder,
+    senses: sensesBonusFullBuilder,
+    spellPower: {
+        ...modeFullBuilder,
+        ...schoolFullBuilder,
+        ...subSchoolFullBuilder,
+    },
+    feats: [...mixedMartialFeatsBonusBuilder, ...mixedCasterFeatsBonusBuilder],
+    baseSpeeds: fullBaseSpeedsBonusBuilder,
+    speedsModifiers: fullSpeedsModifiersBonusBuilder,
 };
 
-function fullSimpleBonusBuilderByType(
-    type: BonusType = BonusType.temporal,
-): SimpleBonusBuilder {
-    return {
-        type,
-        hp: 10,
-        armorClass: 2,
-        stats: mixedStatsMock,
-        skills: skillsBonusFullBuilder,
-        resistances: resistancesBonusFullBuilder,
-        vitalNeeds: vitalNeedsBonusFullBuilder,
-        senses: sensesBonusFullBuilder,
-        spellPower: {
-            ...modeFullBuilder,
-            ...schoolFullBuilder,
-            ...subSchoolFullBuilder,
-        },
-        feats: [
-            ...mixedMartialFeatsBonusBuilder,
-            ...mixedCasterFeatsBonusBuilder,
-        ],
-        baseSpeeds: fullBaseSpeedsBonusBuilder,
-        speedsModifiers: fullSpeedsModifiersBonusBuilder,
-    };
-}
-
-const fullSimpleBonusBuilder = fullSimpleBonusBuilderByType();
-
-export {
-    defaultSimpleBonusBuilder,
-    fullSimpleBonusBuilder,
-    fullSimpleBonusBuilderByType,
-};
+export { defaultSimpleBonusBuilder, fullSimpleBonusBuilder };

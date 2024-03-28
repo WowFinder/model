@@ -93,17 +93,11 @@ class FullBonus implements BaseFullBonus, JsonExportable<ExportableMultiBonus> {
         Object.keys(stackableBonusTypes).forEach(type => {
             if (stackableBonusTypes[type as AdjustedBonusType]) {
                 builder[type as AdjustedBonusType] = new SimpleBonus(
-                    sumBonus(
-                        type as AdjustedBonusType,
-                        ...bonuses.map(b => b[type as AdjustedBonusType]),
-                    ),
+                    sumBonus(...bonuses.map(b => b[type as AdjustedBonusType])),
                 );
             } else {
                 builder[type as AdjustedBonusType] = new SimpleBonus(
-                    maxBonus(
-                        type as AdjustedBonusType,
-                        ...bonuses.map(b => b[type as AdjustedBonusType]),
-                    ),
+                    maxBonus(...bonuses.map(b => b[type as AdjustedBonusType])),
                 );
             }
         });

@@ -1,4 +1,3 @@
-import { BonusType } from '@wowfinder/ts-enums';
 import { ResistancesBonus } from './ResistancesBonus';
 import { SensesBonus } from './SensesBonus';
 import { SimpleBonusBuilder } from './SimpleBonus.builder';
@@ -109,16 +108,16 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         return exportBonus(this);
     }
 
-    static zero(type: BonusType = BonusType.temporal): SimpleBonus {
+    static get zero(): SimpleBonus {
         return new SimpleBonus({});
     }
 
-    static sum(type: BonusType, ...args: SimpleBonus[]): SimpleBonus {
-        return new SimpleBonus(sumBonus(type, ...args));
+    static sum(...args: SimpleBonus[]): SimpleBonus {
+        return new SimpleBonus(sumBonus(...args));
     }
 
-    static max(type: BonusType, ...args: SimpleBonus[]): SimpleBonus {
-        return new SimpleBonus(maxBonus(type, ...args));
+    static max(...args: SimpleBonus[]): SimpleBonus {
+        return new SimpleBonus(maxBonus(...args));
     }
 
     static multiply(bonus: SimpleBonus, factor: number): SimpleBonus {
