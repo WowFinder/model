@@ -1,0 +1,58 @@
+import { BonusType } from '@wowfinder/ts-enums';
+import { SimpleBonusBuilder } from '../../Bonus/SimpleBonus.builder';
+import { mixedStatsMock } from '__mocks__/Creature';
+import { skillsBonusFullBuilder } from './SkillsBonusBuilders';
+import { resistancesBonusFullBuilder } from './ResistancesBonusBuilders';
+import { vitalNeedsBonusFullBuilder } from './VitalNeedsBonusBuilders';
+import { sensesBonusFullBuilder } from './SensesBonusBuilders';
+import {
+    modeFullBuilder,
+    schoolFullBuilder,
+    subSchoolFullBuilder,
+} from './SpellPowerBonusBuilders';
+import {
+    mixedCasterFeatsBonusBuilder,
+    mixedMartialFeatsBonusBuilder,
+} from './FeatsBonusBuilders';
+import {
+    fullBaseSpeedsBonusBuilder,
+    fullSpeedsModifiersBonusBuilder,
+} from './SpeedsBonusBuilders';
+
+const defaultSimpleBonusBuilder: SimpleBonusBuilder = {
+    type: BonusType.temporal,
+};
+
+function fullSimpleBonusBuilderByType(
+    type: BonusType = BonusType.temporal,
+): SimpleBonusBuilder {
+    return {
+        type,
+        hp: 10,
+        armorClass: 2,
+        stats: mixedStatsMock,
+        skills: skillsBonusFullBuilder,
+        resistances: resistancesBonusFullBuilder,
+        vitalNeeds: vitalNeedsBonusFullBuilder,
+        senses: sensesBonusFullBuilder,
+        spellPower: {
+            ...modeFullBuilder,
+            ...schoolFullBuilder,
+            ...subSchoolFullBuilder,
+        },
+        feats: [
+            ...mixedMartialFeatsBonusBuilder,
+            ...mixedCasterFeatsBonusBuilder,
+        ],
+        baseSpeeds: fullBaseSpeedsBonusBuilder,
+        speedsModifiers: fullSpeedsModifiersBonusBuilder,
+    };
+}
+
+const fullSimpleBonusBuilder = fullSimpleBonusBuilderByType();
+
+export {
+    defaultSimpleBonusBuilder,
+    fullSimpleBonusBuilder,
+    fullSimpleBonusBuilderByType,
+};

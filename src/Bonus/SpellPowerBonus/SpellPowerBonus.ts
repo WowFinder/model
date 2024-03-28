@@ -56,6 +56,30 @@ class SpellPowerBonus implements JsonExportable<SpellPowerBonusBuilder> {
         );
     }
 
+    mode(mode: CastingMode): number {
+        return this.modes[mode];
+    }
+
+    school(school: School): number {
+        return this.schools[school];
+    }
+
+    subSchool(subSchool: SubSchool): number {
+        return this.subSchools[subSchool];
+    }
+
+    export(): JsonCompatible<SpellPowerBonusBuilder> {
+        return {
+            ...this.modes.export(),
+            ...this.schools.export(),
+            ...this.subSchools.export(),
+        };
+    }
+
+    static get zero(): SpellPowerBonus {
+        return new SpellPowerBonus({});
+    }
+
     static sum(...args: SpellPowerBonus[]): SpellPowerBonus {
         const result = new (this as any)({});
         result.#modes = ModeSpellPowerBonus.sum(...args.map(s => s.#modes));
@@ -92,26 +116,6 @@ class SpellPowerBonus implements JsonExportable<SpellPowerBonusBuilder> {
             factor,
         );
         return result;
-    }
-
-    mode(mode: CastingMode): number {
-        return this.modes[mode];
-    }
-
-    school(school: School): number {
-        return this.schools.raw[school];
-    }
-
-    subSchool(subSchool: SubSchool): number {
-        return this.subSchools.raw[subSchool];
-    }
-
-    export(): JsonCompatible<SpellPowerBonusBuilder> {
-        return {
-            ...this.modes.export(),
-            ...this.schools.export(),
-            ...this.subSchools.export(),
-        };
     }
 }
 

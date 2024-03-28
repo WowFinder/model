@@ -1,11 +1,18 @@
-import { RawStats, RawSkills, RawResistances } from '@wowfinder/asset-schemas';
-import { BonusType } from '@wowfinder/ts-enums';
-import { VitalNeedsBonusBuilder } from './VitalNeedsBonus';
-import { SensesBonusBuilder } from './SensesBonus';
-import { SpellPowerBonusBuilder } from './SpellPowerBonus';
+import type {
+    RawStats,
+    RawSkills,
+    RawResistances,
+} from '@wowfinder/asset-schemas';
+import type { VitalNeedsBonusBuilder } from './VitalNeedsBonus';
+import type { SensesBonusBuilder } from './SensesBonus';
+import type { SpellPowerBonusBuilder } from './SpellPowerBonus';
+import type { FeatsBonusBuilder } from './FeatsBonus';
+import {
+    BaseSpeedsBonusBuilder,
+    SpeedsModifiersBonusBuilder,
+} from './SpeedsBonus';
 
 interface SimpleBonusBuilder {
-    type: BonusType;
     hp?: number;
     armorClass?: number;
     stats?: Partial<RawStats>;
@@ -14,7 +21,9 @@ interface SimpleBonusBuilder {
     vitalNeeds?: VitalNeedsBonusBuilder;
     senses?: SensesBonusBuilder;
     spellPower?: SpellPowerBonusBuilder;
-    // TODO ...
+    feats?: FeatsBonusBuilder;
+    baseSpeeds?: BaseSpeedsBonusBuilder;
+    speedsModifiers?: SpeedsModifiersBonusBuilder;
 }
 
 export type { SimpleBonusBuilder };

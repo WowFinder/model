@@ -1,7 +1,8 @@
 import { RawStats } from '@wowfinder/asset-schemas';
 import { addStatSets } from '../Creature';
+import { JsonExportable, JsonCompatible } from '@wowfinder/ts-utils';
 
-class StatsBonus implements RawStats {
+class StatsBonus implements RawStats, JsonExportable<RawStats> {
     #strength: number;
     #dexterity: number;
     #constitution: number;
@@ -51,6 +52,17 @@ class StatsBonus implements RawStats {
             this.#wisdom === 0 &&
             this.#charisma === 0
         );
+    }
+
+    export(): JsonCompatible<RawStats> {
+        return {
+            strength: this.#strength,
+            dexterity: this.#dexterity,
+            constitution: this.#constitution,
+            intelligence: this.#intelligence,
+            wisdom: this.#wisdom,
+            charisma: this.#charisma,
+        };
     }
 
     static get zero(): StatsBonus {

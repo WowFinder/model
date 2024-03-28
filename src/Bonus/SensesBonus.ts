@@ -1,10 +1,14 @@
+import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
+
 interface SensesBonusBuilder {
     darkVision?: number;
     lowLightVision?: boolean;
     smell?: boolean;
 }
 
-class SensesBonus implements SensesBonusBuilder {
+class SensesBonus
+    implements SensesBonusBuilder, JsonExportable<SensesBonusBuilder>
+{
     #darkVision: number;
     #lowLightVision: boolean;
     #smell: boolean;
@@ -31,25 +35,20 @@ class SensesBonus implements SensesBonusBuilder {
         return this.#smell;
     }
 
-    static get defaults(): SensesBonus {
-        return new SensesBonus({});
+    get isZero(): boolean {
+        return this.#darkVision === 0 && !this.#lowLightVision && !this.#smell;
     }
 
-    static #combine(...args: SensesBonus[]): SensesBonusBuilder {
+    export(): JsonCompatible<SensesBonusBuilder> {
         return {
-            lowLightVision: args.some(s => s.#lowLightVision),
-            smell: args.some(s => s.#smell),
+            darkVision: this.#darkVision,
+            lowLightVision: this.#lowLightVision,
+            smell: this.#smell,
         };
     }
 
-    static sum(...args: SensesBonus[]): SensesBonus {
-        return new SensesBonus({
-            darkVision: args.reduce(
-                (prev, curr): number => prev + curr.#darkVision,
-                0,
-            ),
-            ...SensesBonus.#combine(...args),
-        });
+    static get defaults(): SensesBonus {
+        return new SensesBonus({});
     }
 
     static max(...args: SensesBonus[]): SensesBonus {
@@ -58,15 +57,8 @@ class SensesBonus implements SensesBonusBuilder {
                 (prev, curr): number => Math.max(prev, curr.#darkVision),
                 0,
             ),
-            ...SensesBonus.#combine(...args),
-        });
-    }
-
-    static multiply(bonus: SensesBonus, factor: number): SensesBonus {
-        return new SensesBonus({
-            darkVision: bonus.#darkVision * factor,
-            lowLightVision: bonus.#lowLightVision,
-            smell: bonus.#smell,
+            lowLightVision: args.some(s => s.#lowLightVision),
+            smell: args.some(s => s.#smell),
         });
     }
 }

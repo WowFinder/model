@@ -13,9 +13,10 @@ import {
 } from './SimpleBonus.helpers';
 import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
 import { SpellPowerBonus } from './SpellPowerBonus';
+import { FeatsBonus } from './FeatsBonus';
+import { BaseSpeedsBonus, SpeedsModifiersBonus } from './SpeedsBonus';
 
 class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
-    #type: BonusType;
     #hp: number;
     #armorClass: number;
     #stats: StatsBonus;
@@ -24,10 +25,11 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
     #vitalNeeds: VitalNeedsBonus;
     #senses: SensesBonus;
     #spellPower: SpellPowerBonus;
-    #feats: any; // TODO
+    #feats: FeatsBonus;
+    #baseSpeeds: BaseSpeedsBonus;
+    #speedsModifiers: SpeedsModifiersBonus;
 
     constructor(builder: SimpleBonusBuilder) {
-        this.#type = builder.type;
         this.#hp = builder.hp ?? 0;
         this.#armorClass = builder.armorClass ?? 0;
         this.#stats = new StatsBonus(builder.stats ?? {});
@@ -36,11 +38,11 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         this.#vitalNeeds = new VitalNeedsBonus(builder.vitalNeeds ?? {});
         this.#senses = new SensesBonus(builder.senses ?? {});
         this.#spellPower = new SpellPowerBonus(builder.spellPower ?? {});
-        // TODO ...
-    }
-
-    get type(): BonusType {
-        return this.#type;
+        this.#feats = new FeatsBonus(builder.feats ?? []);
+        this.#baseSpeeds = new BaseSpeedsBonus(builder.baseSpeeds ?? {});
+        this.#speedsModifiers = new SpeedsModifiersBonus(
+            builder.speedsModifiers ?? {},
+        );
     }
 
     get hp(): number {
@@ -75,6 +77,18 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         return this.#spellPower;
     }
 
+    get feats(): FeatsBonus {
+        return this.#feats;
+    }
+
+    get baseSpeeds(): BaseSpeedsBonus {
+        return this.#baseSpeeds;
+    }
+
+    get speedsModifiers(): SpeedsModifiersBonus {
+        return this.#speedsModifiers;
+    }
+
     get isZero(): boolean {
         return (
             this.#hp === 0 &&
@@ -82,8 +96,12 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
             this.#stats.isZero &&
             this.#skills.isZero &&
             this.#resistances.isZero &&
-            this.#vitalNeeds.isZero
-            // TODO && ...
+            this.#vitalNeeds.isZero &&
+            this.#senses.isZero &&
+            this.#spellPower.isZero &&
+            this.#feats.isZero &&
+            this.#baseSpeeds.isZero &&
+            this.#speedsModifiers.isZero
         );
     }
 
@@ -92,7 +110,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
     }
 
     static zero(type: BonusType = BonusType.temporal): SimpleBonus {
-        return new SimpleBonus({ type });
+        return new SimpleBonus({});
     }
 
     static sum(type: BonusType, ...args: SimpleBonus[]): SimpleBonus {

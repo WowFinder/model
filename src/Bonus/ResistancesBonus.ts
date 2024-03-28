@@ -1,6 +1,6 @@
 import { RawResistances } from '@wowfinder/asset-schemas';
 import { DamageType } from '@wowfinder/ts-enums';
-import { sum } from '@wowfinder/ts-utils';
+import { JsonCompatible, JsonExportable, sum } from '@wowfinder/ts-utils';
 
 const rawZeroResistances: RawResistances = Object.keys(DamageType).reduce(
     (acc, key) => {
@@ -10,19 +10,61 @@ const rawZeroResistances: RawResistances = Object.keys(DamageType).reduce(
     {} as RawResistances,
 );
 
-class ResistancesBonus {
+class ResistancesBonus
+    implements RawResistances, JsonExportable<RawResistances>
+{
     #raw: RawResistances;
 
     constructor(raw: Partial<RawResistances>) {
         this.#raw = { ...rawZeroResistances, ...raw };
     }
 
-    get raw(): RawResistances {
-        return { ...this.#raw };
+    get bludgeoning(): number {
+        return this.#raw.bludgeoning;
+    }
+
+    get piercing(): number {
+        return this.#raw.piercing;
+    }
+
+    get slashing(): number {
+        return this.#raw.slashing;
+    }
+
+    get arcane(): number {
+        return this.#raw.arcane;
+    }
+
+    get cold(): number {
+        return this.#raw.cold;
+    }
+
+    get fire(): number {
+        return this.#raw.fire;
+    }
+
+    get nature(): number {
+        return this.#raw.nature;
+    }
+
+    get holy(): number {
+        return this.#raw.holy;
+    }
+
+    get shadow(): number {
+        return this.#raw.shadow;
+    }
+
+    get psychic(): number {
+        return this.#raw.psychic;
     }
 
     get isZero(): boolean {
         return Object.values(this.#raw).every(v => v === 0);
+    }
+
+    export(): JsonCompatible<RawResistances> {
+        return { ...this.#raw };
     }
 
     static get zero(): ResistancesBonus {

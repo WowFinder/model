@@ -4,7 +4,9 @@ import { JsonCompatible, JsonExportable, sum } from '@wowfinder/ts-utils';
 type SchoolSpellPowerBonusBuilder = Partial<Record<School, number>>;
 
 class SchoolSpellPowerBonus
-    implements JsonExportable<SchoolSpellPowerBonusBuilder>
+    implements
+        Record<School, number>,
+        JsonExportable<SchoolSpellPowerBonusBuilder>
 {
     #data: Record<School, number>;
 
@@ -16,8 +18,40 @@ class SchoolSpellPowerBonus
         this.#data = full as Record<School, number>;
     }
 
-    get raw(): Record<School, number> {
-        return { ...this.#data };
+    get abjuration(): number {
+        return this.#data.abjuration;
+    }
+
+    get conjuration(): number {
+        return this.#data.conjuration;
+    }
+
+    get divination(): number {
+        return this.#data.divination;
+    }
+
+    get enchantment(): number {
+        return this.#data.enchantment;
+    }
+
+    get evocation(): number {
+        return this.#data.evocation;
+    }
+
+    get illusion(): number {
+        return this.#data.illusion;
+    }
+
+    get necromancy(): number {
+        return this.#data.necromancy;
+    }
+
+    get transmutation(): number {
+        return this.#data.transmutation;
+    }
+
+    get universal(): number {
+        return this.#data.universal;
     }
 
     get isZero(): boolean {
@@ -25,7 +59,7 @@ class SchoolSpellPowerBonus
     }
 
     export(): JsonCompatible<SchoolSpellPowerBonusBuilder> {
-        return this.raw;
+        return { ...this.#data };
     }
 
     static get zero(): SchoolSpellPowerBonus {
