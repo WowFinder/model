@@ -41,11 +41,11 @@ describe('StatsBonus', () => {
         expect(sumBonus.charisma).toBe(2);
     });
 
-    it('should get the maximum bonus', () => {
+    it('should get the maximum non-zero bonus', () => {
         const maxBonus = StatsBonus.max(meleeBonuses, mixedBonuses);
         expect(maxBonus.strength).toBe(2);
         expect(maxBonus.dexterity).toBe(1);
-        expect(maxBonus.constitution).toBe(0);
+        expect(maxBonus.constitution).toBe(-2);
         expect(maxBonus.intelligence).toBe(2);
         expect(maxBonus.wisdom).toBe(0);
         expect(maxBonus.charisma).toBe(2);

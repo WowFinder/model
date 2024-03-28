@@ -36,11 +36,15 @@ function maxBonus(...args: SimpleBonus[]): SimpleBonusBuilder {
     return {
         hp: Math.max(...args.map(s => s.hp)),
         armorClass: Math.max(...args.map(s => s.armorClass)),
-        stats: StatsBonus.max(...args.map(s => s.stats)),
-        skills: SkillsBonus.max(...args.map(s => s.skills)),
-        resistances: ResistancesBonus.max(...args.map(s => s.resistances)),
-        vitalNeeds: VitalNeedsBonus.max(...args.map(s => s.vitalNeeds)),
-        senses: SensesBonus.max(...args.map(s => s.senses)),
+        stats: StatsBonus.max(...args.map(s => s.stats)).export(),
+        skills: SkillsBonus.max(...args.map(s => s.skills)).export(),
+        resistances: ResistancesBonus.max(
+            ...args.map(s => s.resistances),
+        ).export(),
+        vitalNeeds: VitalNeedsBonus.max(
+            ...args.map(s => s.vitalNeeds),
+        ).export(),
+        senses: SensesBonus.max(...args.map(s => s.senses)).export(),
         spellPower: SpellPowerBonus.max(
             ...args.map(s => s.spellPower),
         ).export(),

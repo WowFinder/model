@@ -1,5 +1,5 @@
 import { SimpleBonusBuilder } from '../../Bonus/SimpleBonus.builder';
-import { mixedStatsMock } from '__mocks__/Creature';
+import { mixedBonusStatsMock } from '__mocks__/Creature/Stats';
 import { skillsBonusFullBuilder } from './SkillsBonusBuilders';
 import { resistancesBonusFullBuilder } from './ResistancesBonusBuilders';
 import { vitalNeedsBonusFullBuilder } from './VitalNeedsBonusBuilders';
@@ -23,7 +23,7 @@ const defaultSimpleBonusBuilder: SimpleBonusBuilder = {};
 const fullSimpleBonusBuilder: SimpleBonusBuilder = {
     hp: 10,
     armorClass: 2,
-    stats: mixedStatsMock,
+    stats: mixedBonusStatsMock,
     skills: skillsBonusFullBuilder,
     resistances: resistancesBonusFullBuilder,
     vitalNeeds: vitalNeedsBonusFullBuilder,

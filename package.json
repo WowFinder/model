@@ -33,16 +33,16 @@
     },
     "dependencies": {
         "@wowfinder/asset-schemas": "0.0.9",
-        "@wowfinder/ts-enums": "^0.0.6",
+        "@wowfinder/ts-enums": "^0.0.7",
         "@wowfinder/ts-utils": "^0.1.0"
     },
     "devDependencies": {
-        "@tsconfig/recommended": "^1.0.4",
+        "@tsconfig/recommended": "^1.0.5",
         "@types/deasync": "^0.1.5",
         "@types/jest": "^29.5.12",
-        "@typescript-eslint/eslint-plugin": "^7.3.1",
-        "@typescript-eslint/parser": "^7.3.1",
-        "@typescript-eslint/utils": "^7.3.1",
+        "@typescript-eslint/eslint-plugin": "^7.4.0",
+        "@typescript-eslint/parser": "^7.4.0",
+        "@typescript-eslint/utils": "^7.4.0",
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-config-standard": "^17.1.0",

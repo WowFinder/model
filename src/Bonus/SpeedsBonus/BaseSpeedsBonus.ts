@@ -65,14 +65,26 @@ class BaseSpeedsBonus
     }
 
     export(): JsonCompatible<BaseSpeedsBonusBuilder> {
-        return {
-            base: this.#base,
-            burrow: this.#burrow,
-            climb: this.#climb,
-            swim: this.#swim,
-            fly: this.#fly,
-            maneuverability: this.#maneuverability,
-        };
+        const result = {} as BaseSpeedsBonusBuilder;
+        if (typeof this.#base !== 'undefined') {
+            result.base = this.#base;
+        }
+        if (typeof this.#burrow !== 'undefined') {
+            result.burrow = this.#burrow;
+        }
+        if (typeof this.#climb !== 'undefined') {
+            result.climb = this.#climb;
+        }
+        if (typeof this.#swim !== 'undefined') {
+            result.swim = this.#swim;
+        }
+        if (typeof this.#fly !== 'undefined') {
+            result.fly = this.#fly;
+        }
+        if (typeof this.#maneuverability !== 'undefined') {
+            result.maneuverability = this.#maneuverability;
+        }
+        return result;
     }
 
     static get zero(): BaseSpeedsBonus {
@@ -80,14 +92,44 @@ class BaseSpeedsBonus
     }
 
     static max(...args: BaseSpeedsBonus[]): BaseSpeedsBonus {
-        return new BaseSpeedsBonus({
-            base: Math.max(...args.map(x => x.base ?? 0)),
-            burrow: Math.max(...args.map(x => x.burrow ?? 0)),
-            climb: Math.max(...args.map(x => x.climb ?? 0)),
-            swim: Math.max(...args.map(x => x.swim ?? 0)),
-            fly: Math.max(...args.map(x => x.fly ?? 0)),
+        const builder = {
+            base: Math.max(
+                ...args
+                    .filter(x => typeof x.#base !== 'undefined')
+                    .map(x => x.#base ?? 0),
+            ),
+            burrow: Math.max(
+                ...args
+                    .filter(x => typeof x.#burrow !== 'undefined')
+                    .map(x => x.#burrow ?? 0),
+            ),
+            climb: Math.max(
+                ...args
+                    .filter(x => typeof x.#climb !== 'undefined')
+                    .map(x => x.#climb ?? 0),
+            ),
+            swim: Math.max(
+                ...args
+                    .filter(x => typeof x.#swim !== 'undefined')
+                    .map(x => x.#swim ?? 0),
+            ),
+            fly: Math.max(
+                ...args
+                    .filter(x => typeof x.#fly !== 'undefined')
+                    .map(x => x.#fly ?? 0),
+            ),
             // TODO: select best maneuverability
-        });
+            maneuverability: args.find(x => x.#maneuverability)
+                ?.maneuverability,
+        } as BaseSpeedsBonusBuilder;
+        Object.keys(builder)
+            .filter(
+                k =>
+                    typeof builder[k as keyof RawSpeeds] === 'undefined' ||
+                    builder[k as keyof RawSpeeds] === Number.NEGATIVE_INFINITY,
+            )
+            .forEach(k => delete builder[k as keyof RawSpeeds]);
+        return new BaseSpeedsBonus(builder);
     }
 }
 

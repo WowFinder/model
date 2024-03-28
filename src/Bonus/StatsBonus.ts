@@ -1,6 +1,7 @@
 import { RawStats } from '@wowfinder/asset-schemas';
 import { addStatSets } from '../Creature';
 import { JsonExportable, JsonCompatible } from '@wowfinder/ts-utils';
+import { Stat } from '@wowfinder/ts-enums';
 
 class StatsBonus implements RawStats, JsonExportable<RawStats> {
     #strength: number;
@@ -74,14 +75,22 @@ class StatsBonus implements RawStats, JsonExportable<RawStats> {
     }
 
     static max(...args: StatsBonus[]): StatsBonus {
-        return new StatsBonus({
-            strength: Math.max(...args.map(s => s.strength)),
-            dexterity: Math.max(...args.map(s => s.dexterity)),
-            constitution: Math.max(...args.map(s => s.constitution)),
-            intelligence: Math.max(...args.map(s => s.intelligence)),
-            wisdom: Math.max(...args.map(s => s.wisdom)),
-            charisma: Math.max(...args.map(s => s.charisma)),
-        });
+        const builder = {
+            strength: Math.max(...args.map(s => s.strength).filter(s => !!s)),
+            dexterity: Math.max(...args.map(s => s.dexterity).filter(s => !!s)),
+            constitution: Math.max(
+                ...args.map(s => s.constitution).filter(s => !!s),
+            ),
+            intelligence: Math.max(
+                ...args.map(s => s.intelligence).filter(s => !!s),
+            ),
+            wisdom: Math.max(...args.map(s => s.wisdom).filter(s => !!s)),
+            charisma: Math.max(...args.map(s => s.charisma).filter(s => !!s)),
+        } satisfies Partial<RawStats>;
+        Object.keys(Stat)
+            .filter(key => builder[key as Stat] === Number.NEGATIVE_INFINITY)
+            .forEach(key => (builder[key as Stat] = 0));
+        return new StatsBonus(builder);
     }
 
     static multiply(bonus: StatsBonus, factor: number): StatsBonus {

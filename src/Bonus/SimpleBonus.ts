@@ -28,7 +28,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
     #baseSpeeds: BaseSpeedsBonus;
     #speedsModifiers: SpeedsModifiersBonus;
 
-    constructor(builder: SimpleBonusBuilder) {
+    constructor(builder: SimpleBonusBuilder = {}) {
         this.#hp = builder.hp ?? 0;
         this.#armorClass = builder.armorClass ?? 0;
         this.#stats = new StatsBonus(builder.stats ?? {});

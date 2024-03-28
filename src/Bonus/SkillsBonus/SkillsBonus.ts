@@ -36,13 +36,13 @@ class SkillsBonus
     }
 
     static max(...args: SkillsBonus[]): SkillsBonus {
-        const result = this.zero;
-        for (const skill of Object.keys(Skill)) {
-            result.raw[skill as Skill] = Math.max(
-                ...args.map(s => s.raw[skill as Skill]),
-            );
+        const builder: Partial<RawSkills> = {};
+        for (const strSkill of Object.keys(Skill)) {
+            const skill = strSkill as Skill;
+            const mapped = args.map(s => s.raw[skill]);
+            builder[skill] = Math.max(...mapped);
         }
-        return result;
+        return new SkillsBonus(builder);
     }
 
     static multiply(bonus: SkillsBonus, factor: number): SkillsBonus {

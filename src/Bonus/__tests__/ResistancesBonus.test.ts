@@ -1,6 +1,6 @@
 import { ResistancesBonus } from '../ResistancesBonus';
 import {
-    defaultResistancesBonusBuilder,
+    resistancesBonusDefaultBuilder,
     resistancesBonusFullBuilder,
 } from '../../__mocks__';
 import { DamageType } from '@wowfinder/ts-enums';
@@ -10,7 +10,7 @@ describe('ResistancesBonus', () => {
     let fullBonus: ResistancesBonus;
 
     beforeEach(() => {
-        defaultBonus = new ResistancesBonus(defaultResistancesBonusBuilder);
+        defaultBonus = new ResistancesBonus(resistancesBonusDefaultBuilder);
         fullBonus = new ResistancesBonus(resistancesBonusFullBuilder);
     });
 
@@ -57,6 +57,13 @@ describe('ResistancesBonus', () => {
             expect(maxBonus[resistance as DamageType]).toBe(
                 resistancesBonusFullBuilder[resistance as DamageType],
             );
+        }
+    });
+
+    it('should compute the correct maximum when given only defaults', () => {
+        const maxBonus = ResistancesBonus.max(defaultBonus, defaultBonus);
+        for (const resistance of Object.keys(DamageType)) {
+            expect(maxBonus[resistance as DamageType]).toBe(0);
         }
     });
 

@@ -23,6 +23,8 @@ import {
 import { CastingMode, School, SubSchool } from '@wowfinder/ts-enums';
 import { RawStats } from '@wowfinder/asset-schemas';
 
+type SpellPowerKeys = CastingMode | School | SubSchool;
+
 type SpellPowerValues<T> = CastingModeValues<T> &
     SchoolValues<T> &
     SubSchoolValues<T>;
@@ -89,6 +91,7 @@ function fullComputedSpellPower(
 const zeroSpellPower = fullComputedSpellPower(fillSpellPowerValues({}, 0));
 
 export type {
+    SpellPowerKeys,
     SpellPowerValues,
     SpellPowerValuesPartial,
     FullComputedSpellPower,

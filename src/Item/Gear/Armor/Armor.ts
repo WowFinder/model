@@ -1,17 +1,11 @@
-import {
-    ArmorBonusType,
-    ArmorFlags,
-    ArmorType,
-    BonusType,
-} from '@wowfinder/ts-enums';
-import { Bonus, MultiBonus } from '../../../Character/Bonus';
+import { ArmorFlags, ArmorType } from '@wowfinder/ts-enums';
+import { MultiBonus } from '../../../Character/Bonus';
 import { Gear } from '../base';
 import { ArmorBuilder, armorPreBuild } from './builder';
 
 class Armor extends Gear {
     #type: ArmorType;
     #acBonus: number;
-    #bonusType: ArmorBonusType;
     #intrinsic: number;
     #maxDex: number;
     #acp: number;
@@ -21,7 +15,6 @@ class Armor extends Gear {
     constructor({
         type = ArmorType.misc,
         acBonus = 0,
-        bonusType = ArmorBonusType.armor,
         intrinsic = 0,
         maxDex = Number.POSITIVE_INFINITY,
         acp = 0,
@@ -32,7 +25,6 @@ class Armor extends Gear {
         super(args);
         this.#type = type;
         this.#acBonus = acBonus;
-        this.#bonusType = bonusType;
         this.#intrinsic = intrinsic;
         this.#maxDex = maxDex;
         this.#acp = acp;
@@ -63,28 +55,13 @@ class Armor extends Gear {
     }
 
     get fullBonus(): MultiBonus {
-        const total = this.#acBonus + this.#intrinsic;
         return new MultiBonus({
-            armor: new Bonus({
-                type: BonusType.armor,
-                armorClass:
-                    this.#bonusType === ArmorBonusType.armor ? total : 0,
-            }),
-            shield: new Bonus({
-                type: BonusType.shield,
-                armorClass:
-                    this.#bonusType === ArmorBonusType.shield ? total : 0,
-            }),
             gear: this.bonuses,
         });
     }
 
     get type(): ArmorType {
         return this.#type;
-    }
-
-    get bonusType(): ArmorBonusType {
-        return this.#bonusType;
     }
 
     get acBonus(): number {

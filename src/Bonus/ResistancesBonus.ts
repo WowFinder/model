@@ -82,13 +82,16 @@ class ResistancesBonus
     }
 
     static max(...args: ResistancesBonus[]): ResistancesBonus {
-        const result = this.zero;
-        for (const resistance of Object.keys(DamageType)) {
-            result.#raw[resistance as DamageType] = Math.max(
-                ...args.map(s => s.#raw[resistance as DamageType]),
-            );
+        const builder: Partial<RawResistances> = {};
+        for (const strResistance of Object.keys(DamageType)) {
+            const resistance = strResistance as DamageType;
+            const mapped = args.map(s => s[resistance]).filter(s => !!s);
+            builder[resistance] = Math.max(...mapped);
+            if (builder[resistance] === Number.NEGATIVE_INFINITY) {
+                delete builder[resistance];
+            }
         }
-        return result;
+        return new ResistancesBonus(builder);
     }
 
     static multiply(bonus: ResistancesBonus, factor: number): ResistancesBonus {

@@ -21,7 +21,9 @@ class FeatsBonus implements JsonExportable<Feat[]> {
     }
 
     export(): JsonCompatible<Feat[]> {
-        return [...this.#feats];
+        return [...this.#feats]
+            .filter(x => !!x)
+            .toSorted((a: string, b: string) => a.localeCompare(b));
     }
 
     static get zero(): FeatsBonus {

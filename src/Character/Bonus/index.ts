@@ -9,12 +9,7 @@ import ResistBonus from './ResistBonus';
 import SpellPowerBonus from './SpellPowerBonus';
 import { BonusType } from '@wowfinder/ts-enums';
 
-const stackables: BonusType[] = [
-    BonusType.gear,
-    BonusType.dodge,
-    BonusType.temporal,
-    BonusType.enchant,
-];
+const stackables: BonusType[] = [BonusType.gear, BonusType.temporal];
 
 function stackable(type: BonusType): boolean {
     return stackables.includes(type);

@@ -1,6 +1,6 @@
 import { RawResistances } from '@wowfinder/asset-schemas';
 
-const defaultResistancesBonusBuilder: Partial<RawResistances> = {} as const;
+const resistancesBonusDefaultBuilder: Partial<RawResistances> = {} as const;
 
 const resistancesBonusFullBuilder: RawResistances = {
     bludgeoning: 1,
@@ -15,4 +15,4 @@ const resistancesBonusFullBuilder: RawResistances = {
     psychic: 10,
 };
 
-export { defaultResistancesBonusBuilder, resistancesBonusFullBuilder };
+export { resistancesBonusDefaultBuilder, resistancesBonusFullBuilder };
