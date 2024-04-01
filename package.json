@@ -1,13 +1,12 @@
 {
-    "name": "model",
+    "name": "@wowfinder/model",
     "version": "0.0.2",
     "description": "Data and Rules model for WowFinder",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "repository": "https://github.com/WowFinder/model.git",
     "author": "Edurne Pascual <herenvardo@gmail.com>",
-    "license": "GPL3",
-    "private": true,
+    "license": "GPL-3.0-or-later",
     "files": [
         "dist"
     ],
@@ -32,16 +31,15 @@
         "prepare": "yarn run build"
     },
     "dependencies": {
-        "@wowfinder/asset-schemas": "0.0.8",
-        "@wowfinder/ts-enums": "^0.0.6",
+        "@wowfinder/asset-schemas": "0.0.9",
+        "@wowfinder/ts-enums": "^0.0.7",
         "@wowfinder/ts-utils": "^0.1.0"
     },
     "devDependencies": {
         "@tsconfig/recommended": "^1.0.5",
-        "@types/deasync": "^0.1.5",
         "@types/jest": "^29.5.12",
-        "@typescript-eslint/eslint-plugin": "^7.3.1",
-        "@typescript-eslint/parser": "^7.3.1",
+        "@typescript-eslint/eslint-plugin": "^7.4.0",
+        "@typescript-eslint/parser": "^7.4.0",
         "@typescript-eslint/utils": "^7.4.0",
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^9.1.0",
@@ -59,7 +57,6 @@
         "prettier": "^3.2.5",
         "rimraf": "^5.0.5",
         "ts-jest": "^29.1.2",
-        "tsd": "^0.30.7",
         "typescript": "^5.4.3"
     },
     "packageManager": "yarn@4.1.1"

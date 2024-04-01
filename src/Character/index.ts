@@ -8,7 +8,6 @@ import {
     SubSchool,
 } from '@wowfinder/ts-enums';
 import { sum } from '@wowfinder/ts-utils';
-import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
 import {
     computedSpellPower,
@@ -233,16 +232,7 @@ class Character extends PersonalCharacterBase {
         this.#resistances = this.#resistances.updatedByCategory({
             gear: combined.resistances.values,
         });
-        const allArmor: Armor[] = this.#inventory.gear
-            .filter(g => g instanceof Armor)
-            .map(g => g as Armor);
         this.#armor = new ArmorValues({
-            armor: Math.max(
-                ...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass),
-            ),
-            shield: Math.max(
-                ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass),
-            ),
             natural: this.naturalArmor,
             miscPhysical: combined.armorClass,
         });

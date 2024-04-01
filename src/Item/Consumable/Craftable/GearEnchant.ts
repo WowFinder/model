@@ -16,7 +16,7 @@ class GearEnchant extends CraftableConsumable {
 
     constructor({ bonus, slots, ...rest }: GearEnchantBuilder) {
         super(rest);
-        this.#bonus = new Bonus({ ...bonus, type: BonusType.enchant });
+        this.#bonus = new Bonus({ ...bonus, type: BonusType.gear });
         this.#slots = buildShape(slots);
     }
 

@@ -14,6 +14,7 @@ class ArmorValues {
     #temporaryEvasion: number; // Temp bonus - Evasion (not ff)
 
     constructor({
+        /** @deprecated */
         armor = 0,
         shield = 0,
         dodge = 0,
@@ -39,14 +40,17 @@ class ArmorValues {
         this.#temporaryEvasion = temporaryEvasion;
     }
 
+    /** @deprecated use `gear` instead */
     get armor(): number {
         return this.#armor;
     }
 
+    /** @deprecated use `gear` instead */
     get shield(): number {
         return this.#shield;
     }
 
+    /** @deprecated use `deflection` instead */
     get dodge(): number {
         return this.#dodge;
     }

@@ -1,11 +1,10 @@
 /* eslint-disable deprecation/deprecation */
+import { RawStats } from '@wowfinder/asset-schemas';
 import { JsonValue } from '@wowfinder/ts-utils';
-import { Bonus } from './Bonus';
-import { Class } from '../Creature/Class';
-import { Feat } from './Feats';
+import { Class, StatsBlock } from '../Creature';
 import Race from '../Creature/Race';
-import { StatsBlock } from 'Creature/Stats';
-import { Stats } from '@wowfinder/asset-schemas';
+import { Bonus } from './Bonus';
+import { Feat } from './Feats';
 
 const defaultRace = 'human.cha';
 /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
@@ -95,7 +94,7 @@ function buildStats({
     auras,
     gear,
 }: {
-    base: Stats;
+    base: RawStats;
     race: Race;
     auras: Bonus;
     gear: Bonus;
@@ -110,14 +109,14 @@ function buildStats({
     });
 }
 
+export {
+    /** @deprecated */ buildStats,
+    /** @deprecated */ checkClass,
+    /** @deprecated */ checkRace,
+    /** @deprecated */ exportFeatchChoices,
+    /** @deprecated */ parseFeatChoices,
+};
 export type {
     /** @deprecated */ FeatChoice,
     /** @deprecated */ FeatChoiceExport,
-};
-export {
-    /** @deprecated */ checkRace,
-    /** @deprecated */ checkClass,
-    /** @deprecated */ parseFeatChoices,
-    /** @deprecated */ exportFeatchChoices,
-    /** @deprecated */ buildStats,
 };

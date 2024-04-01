@@ -1,7 +1,7 @@
-import { Stats } from '@wowfinder/asset-schemas';
+import { RawStats } from '@wowfinder/asset-schemas';
 import { PartialStatBlock } from 'Creature';
 
-const zeroStatsMock: Stats = {
+const zeroStatsMock: RawStats = {
     strength: 0,
     dexterity: 0,
     constitution: 0,
@@ -10,7 +10,7 @@ const zeroStatsMock: Stats = {
     charisma: 0,
 };
 
-const defaultStatsMock: Stats = {
+const defaultStatsMock: RawStats = {
     strength: 10,
     dexterity: 10,
     constitution: 10,
@@ -19,7 +19,7 @@ const defaultStatsMock: Stats = {
     charisma: 10,
 };
 
-const mixedStatsMock: Stats = {
+const mixedStatsMock: RawStats = {
     strength: 16,
     dexterity: 14,
     constitution: 12,
@@ -28,7 +28,7 @@ const mixedStatsMock: Stats = {
     charisma: 8,
 };
 
-const minimalStatsMock: Stats = {
+const minimalStatsMock: RawStats = {
     strength: 3,
     dexterity: 3,
     constitution: 3,
@@ -37,7 +37,7 @@ const minimalStatsMock: Stats = {
     charisma: 3,
 };
 
-const twentyStatsMock: Stats = {
+const twentyStatsMock: RawStats = {
     strength: 20,
     dexterity: 20,
     constitution: 20,
@@ -46,26 +46,26 @@ const twentyStatsMock: Stats = {
     charisma: 20,
 };
 
-const meleeBonusesStatsMock: Stats = {
+const meleeBonusesStatsMock: RawStats = {
     ...zeroStatsMock,
     strength: +2,
     dexterity: +1,
 };
 
-const mixedBonusStatsMock: Stats = {
+const mixedBonusStatsMock: RawStats = {
     ...zeroStatsMock,
     constitution: -2,
     intelligence: +2,
     charisma: +2,
 };
 
-const goodFinesseStatsMock: Stats = {
+const goodFinesseStatsMock: RawStats = {
     ...defaultStatsMock,
     strength: 8,
     dexterity: 12,
 };
 
-const badFinesseStatsMock: Stats = {
+const badFinesseStatsMock: RawStats = {
     ...defaultStatsMock,
     strength: 12,
     dexterity: 8,
