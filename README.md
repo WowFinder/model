@@ -29,6 +29,6 @@ Overview: https://sonarcloud.io/project/overview?id=WowFinder_model
 
 ### Internal dependencies
 
--   [ts-utils](https://github.com/WowFinder/ts-utils) ⏸️ [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=WowFinder_ts-utils&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=WowFinder_ts-utils)
+-   [ts-utils](https://github.com/WowFinder/ts-utils) ✅ [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=WowFinder_ts-utils&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=WowFinder_ts-utils)
 
--   [public-assets](https://github.com/WowFinder/public-assets) ⏸️ [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=WowFinder_public-assets&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=WowFinder_public-assets)
+-   [public-assets](https://github.com/WowFinder/asset-schemas) ⚠️ [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=WowFinder_assets&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=WowFinder_assets)
