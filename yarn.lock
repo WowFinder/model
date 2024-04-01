@@ -932,13 +932,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/deasync@npm:^0.1.5":
-  version: 0.1.5
-  resolution: "@types/deasync@npm:0.1.5"
-  checksum: 10c0/6d8afa2c4c0d0f969038b6e8abdf77ff90174aa739aefac40e88fa0b64d3f2196f823c49c6ffaf93d5cdd0f5147731390c6777acddbddc03556012791020adba
-  languageName: node
-  linkType: hard
-
 "@types/eslint@npm:^7.2.13":
   version: 7.29.0
   resolution: "@types/eslint@npm:7.29.0"
@@ -4669,7 +4662,6 @@ __metadata:
   resolution: "model@workspace:."
   dependencies:
     "@tsconfig/recommended": "npm:^1.0.5"
-    "@types/deasync": "npm:^0.1.5"
     "@types/jest": "npm:^29.5.12"
     "@typescript-eslint/eslint-plugin": "npm:^7.4.0"
     "@typescript-eslint/parser": "npm:^7.4.0"
