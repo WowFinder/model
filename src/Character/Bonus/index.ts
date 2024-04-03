@@ -253,17 +253,31 @@ interface BonusProvider {
     get fullBonus(): MultiBonus;
 }
 
-export type { BonusProvider };
+export type {
+    /** @deprecated (replacement WiP) */
+    BonusProvider,
+};
 
 export {
+    /** @deprecated (use SimpleBonusBuilder instead) */
     BonusBuilder,
+    /** @deprecated (use SimpleBonus instead) */
     Bonus,
+    /** @deprecated (use Bonus/MultiBonus instead) */
     MultiBonus,
+    /** @deprecated (use Bonus/StatsBonus instead) */
     StatsBonus,
+    /** @deprecated (use Bonus/SkillsBonus instead) */
     SkillsBonus,
+    /** @deprecated (use Bonus/VitalNeedsBonus instead) */
     VitalNeeds,
+    /** @deprecated (use Bonus/SensesBonus instead) */
     Senses,
+    /* TODO: Implement Bonus/SavesBonus */
+    /** @deprecated (use Bonus/SavesBonus instead) (WiP) */
     SavesBonus,
+    /** @deprecated (use ResistancesBonus instead) */
     ResistBonus,
+    /** @deprecated (use Bonus/SpellPowerBonus instead) */
     SpellPowerBonus,
 };

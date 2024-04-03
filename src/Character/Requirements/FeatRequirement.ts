@@ -1,7 +1,7 @@
-import { Character } from '..';
-import { Feat } from '../Feats/Feat';
-import { FeatSpec } from '../Feats/FeatSpec';
-import { Requirement } from './base';
+import type { Character } from 'Character';
+import type { Feat } from 'Character/Feats/Feat';
+import type { FeatSpec } from 'Character/Feats/FeatSpec';
+import type { Requirement } from './base';
 
 class FeatRequirement implements Requirement<Iterable<FeatSpec>> {
     #feat: Feat;
@@ -28,4 +28,5 @@ class CharacterFeatRequirement implements Requirement<Character> {
     }
 }
 
-export { FeatRequirement, CharacterFeatRequirement };
+export { CharacterFeatRequirement, FeatRequirement };
+
