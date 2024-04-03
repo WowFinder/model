@@ -1,0 +1,12 @@
+{
+    "fileExtensions": [
+        "js",
+        "ts"
+    ],
+    "tsConfig": "tsconfig.json",
+    "detectiveOptions": {
+        "ts": {
+            "skipTypeImports": true
+        }
+    }
+}
