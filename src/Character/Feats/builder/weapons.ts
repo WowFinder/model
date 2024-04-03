@@ -1,13 +1,13 @@
-import { capitalizeFirstLetter } from '@wowfinder/ts-utils';
-import { WeaponFeat, WeaponKey } from '../Feat';
-import { FeatSpec } from '../FeatSpec';
-import { allOf, checkWeaponFeatKey, feat, req } from './helpers';
 import {
     ExoticWeaponProficiency,
     FeatFlag,
     MartialWeaponProficiency,
     SimpleWeaponProficiency,
 } from '@wowfinder/ts-enums';
+import { capitalizeFirstLetter } from '@wowfinder/ts-utils';
+import { WeaponFeat, WeaponKey } from 'Character/Feats/Feat';
+import type { FeatSpec } from 'Character/Feats/FeatSpec';
+import { allOf, checkWeaponFeatKey, feat, req } from './helpers';
 
 function mkKey(prefix: string, weapon: string): WeaponFeat {
     const w = capitalizeFirstLetter(weapon);

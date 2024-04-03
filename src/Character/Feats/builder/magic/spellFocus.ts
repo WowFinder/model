@@ -1,6 +1,6 @@
-import { SpellFocusFeat } from '../../core/magic/spellFocus';
-import { Feat } from '../../Feat';
-import { FeatSpec } from '../../FeatSpec';
+import { Feat } from 'Character/Feats/Feat';
+import type { FeatSpec } from 'Character/Feats/FeatSpec';
+import { SpellFocusFeat } from 'Character/Feats/core/magic/spellFocus';
 import { allOf, req } from '../helpers';
 import { build } from './helpers';
 

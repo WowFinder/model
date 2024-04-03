@@ -1,6 +1,5 @@
-import { FeatFlag, Stat } from '@wowfinder/ts-enums';
-import { Character } from '../../../Character';
-import { ClassFeature } from '../../../Creature/Class';
+import { FeatFlag, Stat, ClassFeature } from '@wowfinder/ts-enums';
+import { Character } from 'Character';
 import {
     and as allOf,
     AttackBonusRequirement,
@@ -12,9 +11,9 @@ import {
     MinStatsRequirement,
     or as either,
     Requirement,
-} from '../../Requirements';
-import { Feat, WeaponFeat, weaponFeats } from '../Feat';
-import { FeatSpec } from '../FeatSpec';
+} from 'Character/Requirements';
+import { Feat, WeaponFeat, weaponFeats } from 'Character/Feats/Feat';
+import { FeatSpec } from 'Character/Feats/FeatSpec';
 
 const raw: { [key in Feat]?: FeatSpec } = {};
 
