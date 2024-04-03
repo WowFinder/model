@@ -26,8 +26,14 @@ class Dice {
 
     toString(): string {
         const m = Math.abs(this.#mod);
-        const modSuffix =
-            this.#mod > 0 ? ` + ${m}` : this.#mod < 0 ? ` - ${m}` : '';
+        let modSuffix = '';
+        if (this.#mod > 0) {
+            modSuffix = ` + ${m}`;
+        } else if (this.#mod < 0) {
+            modSuffix = ` - ${m}`;
+        }
+        // const modSuffix =
+        //    this.#mod > 0 ? ` + ${m}` : this.#mod < 0 ? ` - ${m}` : '';
         return `${this.#qtty}d${this.#sides}${modSuffix}`;
     }
 

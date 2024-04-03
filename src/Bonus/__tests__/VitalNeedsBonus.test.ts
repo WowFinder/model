@@ -1,8 +1,8 @@
-import { VitalNeedsBonus } from '../VitalNeedsBonus';
+import { VitalNeedsBonus } from '../';
 import {
     vitalNeedsBonusDefaultBuilder,
     vitalNeedsBonusFullBuilder,
-} from '../../__mocks__';
+} from '__mocks__';
 
 describe('VitalNeedsBonus', () => {
     let defaultBonus: VitalNeedsBonus;

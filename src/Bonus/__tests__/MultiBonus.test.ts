@@ -5,7 +5,7 @@ import {
     fullMultiBonusBuilder,
     defaultSimpleBonusBuilder,
     fullSimpleBonusBuilder,
-} from '../../__mocks__/';
+} from '__mocks__/';
 import { BonusType } from '@wowfinder/ts-enums';
 
 describe('MultiBonus', () => {

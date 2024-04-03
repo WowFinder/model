@@ -1,8 +1,5 @@
 import { SubSchoolSpellPowerBonus } from '../SubSchoolSpellPowerBonus';
-import {
-    subSchoolDefaultBuilder,
-    subSchoolFullBuilder,
-} from '../../../__mocks__';
+import { subSchoolDefaultBuilder, subSchoolFullBuilder } from '__mocks__';
 
 describe('SubSchoolSpellPowerBonus', () => {
     let defaultBonus: SubSchoolSpellPowerBonus;

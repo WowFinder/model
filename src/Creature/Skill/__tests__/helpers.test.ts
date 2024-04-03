@@ -1,13 +1,6 @@
 import { Skill, Stat } from '@wowfinder/ts-enums';
-import {
-    classTrainedBonus,
-    computeSkillTotal,
-    mkCraft,
-    mkLore,
-    mkPerform,
-    mkProfession,
-    mkSkill,
-} from '../helpers';
+import { classTrainedBonus, computeSkillTotal } from '../helpers';
+import { mkCraft, mkLore, mkPerform, mkProfession, mkSkill } from '../makers';
 import { SkillSpec } from '../SkillSpec';
 import { baseDefault } from '../../../Creature/Stats';
 describe('Skill helpers', () => {

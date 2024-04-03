@@ -4,7 +4,7 @@ import {
     modeFullBuilder,
     schoolFullBuilder,
     subSchoolFullBuilder,
-} from '../../../__mocks__';
+} from '__mocks__';
 import { CastingMode, School, SubSchool } from '@wowfinder/ts-enums';
 
 describe('SpellPowerBonus', () => {

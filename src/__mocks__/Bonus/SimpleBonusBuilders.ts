@@ -1,4 +1,4 @@
-import { SimpleBonusBuilder } from '../../Bonus/SimpleBonus.builder';
+import { SimpleBonusBuilder } from 'Bonus/SimpleBonus.builder';
 import { mixedBonusStatsMock } from '__mocks__/Creature/Stats';
 import { skillsBonusFullBuilder } from './SkillsBonusBuilders';
 import { resistancesBonusFullBuilder } from './ResistancesBonusBuilders';

@@ -1,6 +1,6 @@
 import { Skill, Stat } from '@wowfinder/ts-enums';
 import { SkillSpec } from './SkillSpec';
-import { mkCraft, mkLore, mkPerform, mkProfession, mkSkill } from './helpers';
+import { mkCraft, mkLore, mkPerform, mkProfession, mkSkill } from './makers';
 
 const Skills: { [key in Skill]: SkillSpec } = {
     acrobatics: mkSkill(Skill.acrobatics, Stat.dexterity, null, false, -2),

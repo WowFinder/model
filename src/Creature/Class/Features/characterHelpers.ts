@@ -1,5 +1,6 @@
-import { ClassFeature, CondensedClassFeatures } from '.';
-import { ClassEntries } from '../Class';
+import type { ClassFeature } from '@wowfinder/ts-enums';
+import { CondensedClassFeatures } from './CondensedClassFeatures';
+import type { ClassEntries } from '../Class';
 
 // TODO: Refactor for testability or eliminate.
 /* istanbul ignore next: untestable due to requiring circular imports */

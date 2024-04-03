@@ -13,7 +13,7 @@ import {
     badFinesseStatsMock,
     defaultStatsMock,
     goodFinesseStatsMock,
-} from '../../__mocks__';
+} from '__mocks__';
 
 describe('computeModifier', () => {
     describe('should compute modifier for each stat', () => {

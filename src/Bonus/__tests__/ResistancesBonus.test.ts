@@ -2,7 +2,7 @@ import { ResistancesBonus } from '../ResistancesBonus';
 import {
     resistancesBonusDefaultBuilder,
     resistancesBonusFullBuilder,
-} from '../../__mocks__';
+} from '__mocks__';
 import { DamageType } from '@wowfinder/ts-enums';
 
 describe('ResistancesBonus', () => {
