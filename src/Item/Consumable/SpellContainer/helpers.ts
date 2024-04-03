@@ -1,6 +1,6 @@
-import { ItemBuilder } from '../../base';
 import { Counter, Labeled } from '@wowfinder/ts-utils';
-import { RankedSpell, Spell } from '../../../Magic/Spell';
+import type { ItemBuilder } from 'Item/base';
+import { RankedSpell, Spell } from 'Magic/Spell';
 
 interface SpellContainerBuilder extends ItemBuilder {
     spell: string;
@@ -46,8 +46,7 @@ function buildSpellContainer({
 }
 
 export {
-    SpellContainerBuilder,
-    SpellContainerRawBuilder,
-    SpellContainerBase,
-    buildSpellContainer,
+    SpellContainerBase, SpellContainerBuilder,
+    SpellContainerRawBuilder, buildSpellContainer
 };
+

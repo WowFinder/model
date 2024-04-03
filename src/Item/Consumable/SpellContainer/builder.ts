@@ -1,9 +1,9 @@
-import { ItemBuilder } from '../../base';
+import type { ItemBuilder } from 'Item/base';
 import { Counter } from '@wowfinder/ts-utils';
-import { RankedSpell } from '../../../Magic/Spell';
+import type { RankedSpell } from 'Magic/Spell/RankedSpell';
 import { Consumable } from '../base';
 import { SpellContainerBase } from './helpers';
-import { ActionTime } from '../../../Action';
+import type { ActionTime } from 'Action/ActionTime';
 
 type SpellContainerBaseBuilderArgs = ItemBuilder & SpellContainerBase;
 

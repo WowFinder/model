@@ -1,10 +1,10 @@
 import { Consumable } from '../base';
-import Money from '../../Money';
+import { Money } from 'Item/Money';
 import type { SpellContainerBuilder } from './helpers';
 import { SpellContainerRawBuilder, buildSpellContainer } from './helpers';
 import { SpellContainerBaseBuilder } from './builder';
 import { assertDefined } from '@wowfinder/ts-utils';
-import { Spell } from '../../../Magic';
+import { Spell } from 'Magic/Spell/Spell';
 
 abstract class SpellContainer extends SpellContainerBaseBuilder {
     constructor(args: SpellContainerBuilder) {

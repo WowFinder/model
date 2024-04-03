@@ -1,9 +1,9 @@
-import { Time } from '../../Scalar';
+import { Skill } from '@wowfinder/ts-enums';
 import { Quantified, assertDefined } from '@wowfinder/ts-utils';
-import { Item } from '../base';
+import type { Item } from 'Item/base';
+import { Time } from 'Scalar';
 import { ItemCollection } from './ItemCollection';
 import type { RecipeBuilder } from './RecipeBuilder';
-import { Skill } from '@wowfinder/ts-enums';
 
 function parseTime(time: string): Time {
     const parsedTime = Time.tryParseTime(time);

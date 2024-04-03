@@ -1,6 +1,6 @@
 import { Rarity } from '@wowfinder/ts-enums';
-import { Mass } from '../Scalar';
-import Money from './Money';
+import type { Mass } from 'Scalar';
+import type { Money } from './Money';
 
 interface ItemBuilder {
     rarity?: Rarity;
@@ -43,5 +43,5 @@ abstract class Item {
     } */
 }
 
-export type { ItemBuilder };
 export { Item };
+export type { ItemBuilder };

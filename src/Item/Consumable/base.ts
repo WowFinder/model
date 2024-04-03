@@ -1,5 +1,5 @@
-import { ActionTime } from '../../Action';
-import Money from '../Money';
+import { ActionTime } from 'Action/ActionTime';
+import type { Money } from '../Money';
 import { Item, ItemBuilder } from '../base';
 
 interface ConsumableRawBuilder extends Partial<ItemBuilder> {
@@ -23,7 +23,7 @@ abstract class Consumable extends Item {
     ): ItemBuilder {
         return {
             ...Consumable.preBuild(raw),
-            label: `consumable.${infix}.${raw.key || ''}`,
+            label: `consumable.${infix}.${raw.key ?? ''}`,
         };
     }
 }

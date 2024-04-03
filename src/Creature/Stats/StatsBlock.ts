@@ -1,11 +1,11 @@
-import { Mass } from '../../Scalar';
-import { RawStats } from '@wowfinder/asset-schemas';
+import type { RawStats } from '@wowfinder/asset-schemas';
+import type { Mass } from 'Scalar';
 import {
     PartialStatBlock,
     addStatSets,
-    statMod,
-    carry,
     baseDefault,
+    carry,
+    statMod,
     zeroDefault,
 } from './helpers';
 

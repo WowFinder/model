@@ -1,8 +1,8 @@
 // import { ByKeyRecursive, forceDataLoadKeySRecursive } from '@wowfinder/ts-utils';
 import { BonusType, Size } from '@wowfinder/ts-enums';
-import { Bonus, BonusProvider, MultiBonus } from '../../Character/Bonus';
-import { Mass, Weight } from '../../Scalar';
-import Money from '../Money';
+import { Bonus, BonusProvider, MultiBonus } from 'Character/Bonus';
+import { Mass, Weight } from 'Scalar';
+import { Money } from '../Money';
 import { Item, ItemBuilder } from '../base';
 import { buildShape, explodeShape, Shape } from './Slot';
 
