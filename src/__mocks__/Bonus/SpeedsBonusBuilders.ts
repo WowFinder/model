@@ -1,5 +1,5 @@
 import { RawSpeeds } from '@wowfinder/asset-schemas';
-import { SpeedsModifiersBonusBuilder } from '../../Bonus/SpeedsBonus';
+import { SpeedsModifiersBonusBuilder } from 'Bonus/SpeedsBonus';
 
 const emptyBaseSpeedsBonusBuilder: Partial<RawSpeeds> = {};
 

@@ -1,8 +1,8 @@
-import { Dice, RollableValue } from '../../../Dice';
-import { ActionTime } from '../../../Action';
+import { Dice, RollableValue } from 'Dice';
+import { ActionTime } from 'Action/ActionTime';
 import { Consumable } from '../base';
-import { Mass } from '../../../Scalar';
-import { ItemBuilder as CraftableConsumableBuilder } from '../../base';
+import { Mass } from 'Scalar';
+import type { ItemBuilder as CraftableConsumableBuilder } from 'Item/base';
 import { CraftableConsumable } from './base';
 import { ActionLength } from '@wowfinder/ts-enums';
 

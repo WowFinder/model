@@ -1,8 +1,8 @@
-import { ActionTime } from '../../../Action';
-import { ItemBuilder } from '../../base';
-import { Consumable } from '../base';
-import Money from '../../Money';
 import { ActionLength } from '@wowfinder/ts-enums';
+import type { ActionTime } from 'Action/ActionTime';
+import { Consumable } from 'Item/Consumable/base';
+import { Money } from 'Item/Money';
+import type { ItemBuilder } from 'Item/base';
 
 interface CraftableConsumableBuilder extends ItemBuilder {
     dc?: number;

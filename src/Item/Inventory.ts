@@ -1,8 +1,8 @@
-import { JsonValue, sum } from '@wowfinder/ts-utils';
-import { buildItem, Gear, Item } from '.';
-import { convertMass } from '../Scalar/Mass';
-import Money from './Money';
 import { MassUnit } from '@wowfinder/ts-enums';
+import { JsonValue, sum } from '@wowfinder/ts-utils';
+import { convertMass } from 'Scalar/Mass';
+import { Gear, Item, buildItem } from '.';
+import { Money } from './Money';
 
 interface InventoryBuilder {
     money?: number;
@@ -98,5 +98,5 @@ class Inventory {
     }
 }
 
-export type { InventoryBuilder, InventoryExport };
 export { Inventory };
+export type { InventoryBuilder, InventoryExport };

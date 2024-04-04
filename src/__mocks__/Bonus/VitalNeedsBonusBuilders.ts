@@ -1,4 +1,4 @@
-import { VitalNeedsBonusBuilder } from '../../Bonus';
+import { VitalNeedsBonusBuilder } from 'Bonus';
 
 const vitalNeedsBonusDefaultBuilder: VitalNeedsBonusBuilder = {} as const;
 

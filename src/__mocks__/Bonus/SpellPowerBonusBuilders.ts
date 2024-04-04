@@ -1,6 +1,8 @@
-import { ModeSpellPowerBonusBuilder } from 'Bonus/SpellPowerBonus/ModeSpellPowerBonus';
-import { SchoolSpellPowerBonusBuilder } from '../../Bonus/SpellPowerBonus/SchoolSpellPowerBonus';
-import { SubSchoolSpellPowerBonusBuilder } from '../../Bonus/SpellPowerBonus/SubSchoolSpellPowerBonus';
+import type {
+    ModeSpellPowerBonusBuilder,
+    SchoolSpellPowerBonusBuilder,
+    SubSchoolSpellPowerBonusBuilder,
+} from 'Bonus';
 
 const defaultBuilder = {} as const;
 

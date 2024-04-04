@@ -1,6 +1,6 @@
-import { DamageTypes } from '../../../../Damage';
+import { DamageTypes } from 'Damage';
 import { CraftableConsumable, CraftableConsumableBuilder } from '../base';
-import { Mass, Time } from '../../../../Scalar';
+import { Mass, Time } from 'Scalar';
 
 interface WeaponStoneBuilder extends CraftableConsumableBuilder {
     bonus: number;
@@ -38,6 +38,10 @@ abstract class WeaponStone extends CraftableConsumable {
 
     get types(): DamageTypes {
         return this.#types;
+    }
+
+    get duration(): Time {
+        return this.#duration;
     }
 }
 

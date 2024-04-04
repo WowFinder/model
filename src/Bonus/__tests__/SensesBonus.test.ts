@@ -1,8 +1,5 @@
 import { SensesBonus } from '../SensesBonus';
-import {
-    sensesBonusDefaultBuilder,
-    sensesBonusFullBuilder,
-} from '../../__mocks__/';
+import { sensesBonusDefaultBuilder, sensesBonusFullBuilder } from '__mocks__/';
 
 describe('SensesBonus', () => {
     let defaultBonus: SensesBonus;

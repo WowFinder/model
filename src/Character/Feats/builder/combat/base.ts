@@ -1,8 +1,8 @@
 import { FeatFlag, Stat } from '@wowfinder/ts-enums';
-import { CombatBaseFeat } from '../../core/combat/base';
-import { Feat } from '../../Feat';
-import { FeatSpec } from '../../FeatSpec';
-import { build, feat, allOf, req, either } from '../helpers';
+import { Feat } from 'Character/Feats/Feat';
+import type { FeatSpec } from 'Character/Feats/FeatSpec';
+import type { CombatBaseFeat } from 'Character/Feats/core/combat/base';
+import { allOf, build, either, feat, req } from '../helpers';
 
 const combatBaseFeats: { [key in CombatBaseFeat]: FeatSpec } = {
     agileManeuvers: build.combat(Feat.agileManeuvers),

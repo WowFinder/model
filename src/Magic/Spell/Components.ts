@@ -1,5 +1,5 @@
 import { SpellCoreComponent } from '@wowfinder/ts-enums';
-import { buildItem, Item } from '../../Item';
+import { buildItem, Item } from 'Item';
 
 type SpellComponent = SpellCoreComponent | Item;
 

@@ -1,5 +1,5 @@
-import { StatsBonus } from '../../Bonus/StatsBonus';
-import { meleeBonusesStatsMock, mixedBonusStatsMock } from '../../__mocks__/';
+import { StatsBonus } from '../';
+import { meleeBonusesStatsMock, mixedBonusStatsMock } from '__mocks__/';
 
 describe('StatsBonus', () => {
     let meleeBonuses: StatsBonus;

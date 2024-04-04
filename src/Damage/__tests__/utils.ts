@@ -1,6 +1,6 @@
-import { statMod } from '../../Creature/Stats';
+import { statMod } from 'Creature/Stats/helpers';
 import type { DamageComponentSpecBuilder } from '../DamageComponent';
-import { RawStats } from '@wowfinder/asset-schemas';
+import type { RawStats } from '@wowfinder/asset-schemas';
 
 const minRoll = (spec: DamageComponentSpecBuilder, stats: RawStats): number =>
     spec.diceCount +

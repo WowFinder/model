@@ -1,6 +1,6 @@
-import { Time } from '../../Scalar';
-import { ActionTime } from '../ActionTime';
 import { ActionLength, TimeUnit } from '@wowfinder/ts-enums';
+import { Time } from 'Scalar';
+import { ActionTime } from '../ActionTime';
 
 const t = (key: string): string => key;
 

@@ -1,6 +1,6 @@
-import { CharacterOverride } from '../../Character/base/CharacterOverride';
-import { Character } from '../../Character';
-import { Transformation } from '../base';
+import type { CharacterOverride } from 'Character/base/CharacterOverride';
+import type { Character } from 'Character';
+import type { Transformation } from '../base';
 import { sum } from '@wowfinder/ts-utils';
 
 const druidClasses = ['drd'];

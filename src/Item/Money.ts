@@ -17,7 +17,7 @@ const ratios: MoneyBreakdown = {
     g: ratio ** 2,
 };
 
-export default class Money {
+class Money {
     #raw = 0;
     static explode(raw: number): MoneyBreakdown {
         const g = Math.floor(raw / ratios.g);

@@ -1,6 +1,6 @@
+import type { ClassFeature } from '@wowfinder/ts-enums';
+import type { Character } from 'Character';
 import { Requirement } from '.';
-import { Character } from '..';
-import { ClassFeature } from '../../Creature/Class';
 
 class ClassFeatureRequirement extends Requirement<Character> {
     #feature: ClassFeature;

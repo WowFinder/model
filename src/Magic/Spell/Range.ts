@@ -1,5 +1,5 @@
 import { LengthUnit, Size, StandardRange } from '@wowfinder/ts-enums';
-import { Length } from '../../Scalar';
+import { Length } from 'Scalar';
 
 function rangeInFeet(range: StandardRange, size: Size, efl: number): number {
     switch (range) {

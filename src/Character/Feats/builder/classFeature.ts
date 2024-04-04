@@ -1,8 +1,7 @@
-import { FeatFlag, Stat } from '@wowfinder/ts-enums';
-import { ClassFeature } from '../../../Creature/Class';
-import { ClassFeatureFeat } from '../core/classFeature';
-import { Feat } from '../Feat';
-import { FeatSpec } from '../FeatSpec';
+import { FeatFlag, Stat, ClassFeature } from '@wowfinder/ts-enums';
+import { ClassFeatureFeat } from 'Character/Feats/core/classFeature';
+import { Feat } from 'Character/Feats/Feat';
+import type { FeatSpec } from 'Character/Feats/FeatSpec';
 import { allOf, either, feat, req, Reqs } from './helpers';
 
 const build = {

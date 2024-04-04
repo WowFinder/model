@@ -1,4 +1,4 @@
-import { SensesBonusBuilder } from '../../Bonus';
+import { SensesBonusBuilder } from 'Bonus';
 
 const sensesBonusDefaultBuilder: SensesBonusBuilder = {} as const;
 

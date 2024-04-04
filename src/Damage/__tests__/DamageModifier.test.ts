@@ -1,19 +1,19 @@
 import { Stat } from '@wowfinder/ts-enums';
-import { statMod } from '../../Creature/Stats';
+import {
+    badFinesseStatsMock,
+    defaultStatsMock,
+    goodFinesseStatsMock,
+    rollArgsBadFinnese,
+    rollArgsBadStrength,
+    rollArgsFinesseSpell,
+    rollArgsSimple,
+} from '__mocks__';
+import { statMod } from 'Creature/Stats/helpers';
 import {
     computeModifier,
     DamageModifier,
     SpecialDamageModifier,
 } from '../DamageModifier';
-import {
-    rollArgsSimple,
-    rollArgsFinesseSpell,
-    rollArgsBadFinnese,
-    rollArgsBadStrength,
-    badFinesseStatsMock,
-    defaultStatsMock,
-    goodFinesseStatsMock,
-} from '../../__mocks__';
 
 describe('computeModifier', () => {
     describe('should compute modifier for each stat', () => {

@@ -1,16 +1,16 @@
+import type { RawSpellAsset, RawSpellBase } from '@wowfinder/asset-schemas';
+import type { School, SubSchool } from '@wowfinder/ts-enums';
 import {
+    Optional,
     StringFormatter,
     assertDefined,
-    Optional,
     toRoman,
 } from '@wowfinder/ts-utils';
-import { School, SubSchool } from '@wowfinder/ts-enums';
+import type { ActionTime } from 'Action/ActionTime';
 import { fullParseSchool } from '../School';
+import type { SpellDuration } from './Duration';
+import type { SpellRange } from './Range';
 import { SpellBase } from './base';
-import { ActionTime } from '../../Action/ActionTime';
-import { SpellDuration } from './Duration';
-import { SpellRange } from './Range';
-import { RawSpellAsset, RawSpellBase } from '@wowfinder/asset-schemas';
 
 type RankedSpellBuilder = Omit<
     Optional<
@@ -82,5 +82,5 @@ class RankedSpell extends SpellBase {
     }
 }
 
-export type { RankedSpellBuilder };
 export { RankedSpell };
+export type { RankedSpellBuilder };

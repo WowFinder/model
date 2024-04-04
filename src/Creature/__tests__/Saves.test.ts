@@ -1,6 +1,6 @@
 import { mixedStatsMock } from '__mocks__';
 import { FullSaves, SaveBreakdown, fillSaves } from '../Saves';
-import { StatsBlock } from '../Stats';
+import { StatsBlock } from 'Creature/Stats/StatsBlock';
 
 const saves123 = { fortitude: 1, reflexes: 2, will: 3 };
 const saves456 = { fortitude: 4, reflexes: 5, will: 6 };

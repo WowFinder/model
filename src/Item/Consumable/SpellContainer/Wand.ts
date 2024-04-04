@@ -1,5 +1,5 @@
-import { Mass } from '../../../Scalar';
-import { ActionTime } from '../../../Action';
+import { Mass } from 'Scalar';
+import type { ActionTime } from 'Action/ActionTime';
 import { SpellContainer, SpellContainerBuilder } from './base';
 
 class Wand extends SpellContainer {

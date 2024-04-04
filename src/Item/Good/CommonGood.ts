@@ -1,5 +1,5 @@
-import { Mass } from '../../Scalar';
-import Money from '../Money';
+import { Mass } from 'Scalar';
+import { Money } from '../Money';
 import { Item, ItemBuilder } from '../base';
 
 interface CommonGoodBuilder extends ItemBuilder {

@@ -1,6 +1,6 @@
-import { Requirement } from '.';
-import { Character } from '..';
 import { sum } from '@wowfinder/ts-utils';
+import type { Character } from 'Character';
+import { Requirement } from '.';
 
 abstract class LevelRequirementBase implements Requirement<Character> {
     #level: number;
@@ -35,7 +35,7 @@ class AttackBonusRequirement extends LevelRequirementBase {
 }
 
 export {
-    CharacterLevelRequirement,
-    CasterLevelRequirement,
     AttackBonusRequirement,
+    CasterLevelRequirement,
+    CharacterLevelRequirement,
 };

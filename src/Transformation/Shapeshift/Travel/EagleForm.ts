@@ -1,9 +1,9 @@
-import { defaultSpeedUnit } from '../../../Creature/Speeds';
-import { Character } from '../../../Character';
-import { CharacterOverride } from '../../../Character/base/CharacterOverride';
+import { FlyManeuverability } from '@wowfinder/ts-enums';
+import type { Character } from 'Character';
+import { CharacterOverride } from 'Character/base/CharacterOverride';
+import { defaultSpeedUnit } from 'Creature/Speeds';
 import type { ShapeshiftBuilder } from '../base';
 import { Shapeshift } from '../base';
-import { FlyManeuverability } from '@wowfinder/ts-enums';
 
 class EagleForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
