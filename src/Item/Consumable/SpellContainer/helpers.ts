@@ -46,7 +46,8 @@ function buildSpellContainer({
 }
 
 export {
-    SpellContainerBase, SpellContainerBuilder,
-    SpellContainerRawBuilder, buildSpellContainer
+    SpellContainerBase,
+    SpellContainerBuilder,
+    SpellContainerRawBuilder,
+    buildSpellContainer,
 };
-

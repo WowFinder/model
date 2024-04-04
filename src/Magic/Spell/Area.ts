@@ -65,6 +65,31 @@ function stringify(
     }
 }
 
+const partialParsers = {
+    cone: (length?: Length): SpellCone | undefined =>
+        length ? { spellAreaType: 'cone', radius: length } : undefined,
+    cube: (length?: Length): SpellCube | undefined =>
+        length ? { spellAreaType: 'cube', size: length } : undefined,
+    line: (length?: Length): SpellLine | undefined =>
+        length ? { spellAreaType: 'line', length } : undefined,
+    sphere: {
+        base:
+            (selfCentered: boolean) =>
+            (length?: Length): SpellSphere | undefined =>
+                length
+                    ? {
+                          spellAreaType: 'sphere',
+                          radius: length,
+                          selfCentered,
+                      }
+                    : undefined,
+        point: (length?: Length): SpellSphere | undefined =>
+            partialParsers.sphere.base(false)(length),
+        self: (length?: Length): SpellSphere | undefined =>
+            partialParsers.sphere.base(true)(length),
+    },
+};
+
 function tryParseArea(input: string): SpellArea | undefined {
     const matches = /^([a-z.]+)\s*(\(.*\))?$/.exec(input.toLowerCase());
     if (!matches) {
@@ -78,29 +103,15 @@ function tryParseArea(input: string): SpellArea | undefined {
         case 'point':
             return { spellAreaType: 'point' };
         case 'cone':
-            return length
-                ? { spellAreaType: 'cone', radius: length }
-                : undefined;
+            return partialParsers.cone(length);
         case 'cube':
-            return length ? { spellAreaType: 'cube', size: length } : undefined;
+            return partialParsers.cube(length);
         case 'line':
-            return length ? { spellAreaType: 'line', length } : undefined;
+            return partialParsers.line(length);
         case 'sphere.point':
-            return length
-                ? {
-                      spellAreaType: 'sphere',
-                      radius: length,
-                      selfCentered: false,
-                  }
-                : undefined;
+            return partialParsers.sphere.point(length);
         case 'sphere.self':
-            return length
-                ? {
-                      spellAreaType: 'sphere',
-                      radius: length,
-                      selfCentered: true,
-                  }
-                : undefined;
+            return partialParsers.sphere.self(length);
         default:
             return undefined;
     }

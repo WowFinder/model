@@ -1,89 +1,9 @@
-import { Save } from '@wowfinder/ts-enums';
-import { RawSaves } from '@wowfinder/asset-schemas';
-import { StatsBlock } from './Stats';
+import type { RawSaves } from '@wowfinder/asset-schemas';
+import { StatsBlock } from 'Creature/Stats/StatsBlock';
+import { SaveBreakdowns, SaveBreakdown } from './SaveBreakdown';
+import { fillSaves } from './helpers';
 
-interface SaveBreakdownBuilder {
-    base: number;
-    stat: number;
-    enhancement: number;
-    gear: number;
-    misc: number;
-    temporary: number;
-}
-
-class SaveBreakdown {
-    #base: number;
-    #stat: number;
-    #enhancement: number;
-    #gear: number;
-    #misc: number;
-    #temporary: number;
-    constructor({
-        base,
-        stat,
-        enhancement,
-        gear,
-        misc,
-        temporary,
-    }: SaveBreakdownBuilder) {
-        this.#base = base;
-        this.#stat = stat;
-        this.#enhancement = enhancement;
-        this.#gear = gear;
-        this.#misc = misc;
-        this.#temporary = temporary;
-    }
-
-    get total(): number {
-        return (
-            this.#stat +
-            this.#base +
-            this.#enhancement +
-            this.#gear +
-            this.#misc +
-            this.#temporary
-        );
-    }
-
-    get base(): number {
-        return this.#base;
-    }
-
-    get stat(): number {
-        return this.#stat;
-    }
-
-    get enhancement(): number {
-        return this.#enhancement;
-    }
-
-    get gear(): number {
-        return this.#gear;
-    }
-
-    get misc(): number {
-        return this.#misc;
-    }
-
-    get temporary(): number {
-        return this.#temporary;
-    }
-}
-
-const zeroSave = {
-    fortitude: 0,
-    reflexes: 0,
-    will: 0,
-};
-
-function fillSaves(saves?: Partial<RawSaves>): RawSaves {
-    return {
-        ...zeroSave,
-        ...(saves ?? {}),
-    };
-}
-
-interface SavesBuilder {
+interface FullSavesBuilder {
     stats: StatsBlock;
     base?: Partial<RawSaves>;
     enhancement?: Partial<RawSaves>;
@@ -91,8 +11,6 @@ interface SavesBuilder {
     misc?: Partial<RawSaves>;
     temporary?: Partial<RawSaves>;
 }
-
-type SaveBreakdowns = { [key in Save]: SaveBreakdown };
 
 class FullSaves implements SaveBreakdowns {
     #stats: StatsBlock;
@@ -108,7 +26,7 @@ class FullSaves implements SaveBreakdowns {
         gear,
         misc,
         temporary,
-    }: SavesBuilder) {
+    }: FullSavesBuilder) {
         this.#stats = new StatsBlock(stats);
         this.#base = fillSaves(base);
         this.#enhancement = fillSaves(enhancement);
@@ -171,4 +89,5 @@ class FullSaves implements SaveBreakdowns {
     }
 }
 
-export { FullSaves, SaveBreakdown, zeroSave, fillSaves };
+export type { FullSavesBuilder };
+export { FullSaves };

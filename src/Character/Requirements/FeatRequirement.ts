@@ -29,4 +29,3 @@ class CharacterFeatRequirement implements Requirement<Character> {
 }
 
 export { CharacterFeatRequirement, FeatRequirement };
-
