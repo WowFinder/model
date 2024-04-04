@@ -25,7 +25,7 @@
         "checks:quick": "npm-run-all -pc lint tsc",
         "checks:standard": "npm-run-all -pc lint tsc test",
         "checks:full": "npm-run-all -sc lint:fix format build test:coverage",
-        "checks:pedantic": "npm-run-all -sc lint format:check build test:coverage",
+        "checks:pedantic": "npm-run-all -sc lint format:check build test:coverage skott:circular",
         "build:pre": "rimraf dist",
         "build:tsc": "tsc",
         "build": "npm-run-all -s build:pre build:tsc",
