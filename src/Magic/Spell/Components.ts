@@ -1,5 +1,6 @@
 import { SpellCoreComponent } from '@wowfinder/ts-enums';
-import { buildItem, Item } from 'Item';
+import type { Item } from 'Item/base';
+import { buildItem } from 'Item/builders';
 
 type SpellComponent = SpellCoreComponent | Item;
 
@@ -10,5 +11,5 @@ function parseSpellComponent(component: string): SpellComponent {
     return buildItem(component);
 }
 
-export type { SpellComponent };
 export { parseSpellComponent };
+export type { SpellComponent };

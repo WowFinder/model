@@ -1,5 +1,3 @@
-// import { builder } from '@wowfinder/ts-utils';
-// import { Item } from '../base';
 import {
     Elixir,
     Food,
@@ -9,12 +7,9 @@ import {
     WeaponOil,
     WeightStone,
 } from './Craftable';
-import { SpellPotion, SpellScroll, Wand } from './SpellContainer';
 
-const consumableBuilderByTypeKey: { [key: string]: any /* builder<Item> */ } = {
-    SpellPotion: SpellPotion.build,
-    SpellScroll: SpellScroll.build,
-    SpellWand: Wand.build,
+// TODO: proper typing (requires raw types in @wowfinder/asset-schemas)
+const consumableBuilderByTypeKey: { [key: string]: any } = {
     Potion: Potion.build,
     Elixir: Elixir.build,
     SharpeningStone: SharpeningStone.build,
@@ -22,6 +17,6 @@ const consumableBuilderByTypeKey: { [key: string]: any /* builder<Item> */ } = {
     GearEnchant: GearEnchant.build,
     WeaponOil: WeaponOil.build,
     Food: Food.build,
-};
+} as const;
 
 export { consumableBuilderByTypeKey };

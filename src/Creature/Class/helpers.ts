@@ -1,7 +1,7 @@
 import { Aura, Skill } from '@wowfinder/ts-enums';
 import { AurasList } from './Aura';
 import { ClassFeature, FeaturesList } from './Features';
-import type { Class } from './index';
+import type { Class } from './Class';
 
 interface SavesProgression {
     fortitude: boolean;
