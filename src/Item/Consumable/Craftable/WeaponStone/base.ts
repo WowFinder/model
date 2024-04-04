@@ -1,4 +1,4 @@
-import { DamageTypes } from 'Damage';
+import type { DamageTypes } from 'Damage/DamageType';
 import { CraftableConsumable, CraftableConsumableBuilder } from '../base';
 import { Mass, Time } from 'Scalar';
 

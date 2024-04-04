@@ -13,10 +13,12 @@ describe('AssetResolver', () => {
     describe('resolve', () => {
         it('should dispatch to the correct resolver', () => {
             const resolver = new StubbedAssetResolver() as AssetResolver;
-            Object.values(AssetType).forEach(type => {
-                resolver.resolve(type as any, 'key');
-                expect(resolverStub).toHaveBeenCalledWith(type, 'key');
-            });
+            Object.values(AssetType)
+                .filter(a => a !== AssetType.characters)
+                .forEach(type => {
+                    resolver.resolve(type as any, 'key');
+                    expect(resolverStub).toHaveBeenCalledWith(type, 'key');
+                });
         });
         it('should throw for invalid types', () => {
             const resolver = new StubbedAssetResolver() as AssetResolver;

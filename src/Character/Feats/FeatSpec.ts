@@ -1,5 +1,5 @@
 import { FeatFlag } from '@wowfinder/ts-enums';
-import { Character } from '..';
+import type { Character } from '..';
 import { EmptyRequirement, Requirement } from '../Requirements';
 
 interface FeatBuilder {

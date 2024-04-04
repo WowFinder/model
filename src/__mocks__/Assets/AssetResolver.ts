@@ -1,15 +1,14 @@
 import { AssetType } from '@wowfinder/ts-enums';
 import { Adventure } from 'Adventure';
 import { AssetResolver } from 'Assets/AssetResolver';
-import { Character } from 'Character';
 import { Class } from 'Creature/Class';
 import {
     mockMeleeClassRawAsset,
     mockArcaneClassRawAsset,
     mockDivineClassRawAsset,
     mockStealthClassRawAsset,
-    mockedRaceRawAsset,
-} from '__mocks__';
+} from '__mocks__/Creature/Class';
+import { mockedRaceRawAsset } from '__mocks__/Creature/race';
 import { Race } from 'Creature/Race';
 import { Faction } from 'Faction';
 import { Item } from 'Item';
@@ -27,10 +26,6 @@ class MockAssetResolver extends AssetResolver {
             date: new Date().toISOString().substring(0, 10),
             rewards: {},
         });
-    }
-
-    resolveCharacter(key: string): Character {
-        return noAsset(AssetType.characters, key);
     }
 
     resolveClass(key: string): Class {
