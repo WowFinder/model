@@ -1,6 +1,7 @@
 export * from './ArmorValues';
 export * from './Class';
 export * from './CreatureBase';
+export * from './CreatureFacade';
 export * from './Race';
 export * from './Size';
 export * from './Skill';

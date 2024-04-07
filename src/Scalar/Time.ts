@@ -7,6 +7,7 @@ const convertTime: converter<TimeUnit> = makeConverter({
     [TimeUnit.minute]: 60, // 1m = 60s;
     [TimeUnit.hour]: 60 * 60, // 1h = 60m
     [TimeUnit.day]: 60 * 60 * 24, // 1d = 24h
+    [TimeUnit.week]: 60 * 60 * 24 * 7, // 1w = 7d
     [TimeUnit.year]: 60 * 60 * 24 * 365, // 1y = 365d
 });
 
@@ -16,6 +17,7 @@ const timeUnitAliases: { [key: string]: TimeUnit } = {
     m: TimeUnit.minute,
     h: TimeUnit.hour,
     d: TimeUnit.day,
+    w: TimeUnit.week,
     y: TimeUnit.year,
     '"': TimeUnit.second,
     "'": TimeUnit.minute,

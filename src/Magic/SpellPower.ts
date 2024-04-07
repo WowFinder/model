@@ -79,8 +79,7 @@ function fullComputedSpellPower(
             res[m]![s] = {
                 '': computedSpellPower(data, m, s, stats, efl),
             };
-            for (const subSchool of allSubSchoolsByParent[s]) {
-                const ss = subSchool as SubSchool;
+            for (const ss of allSubSchoolsByParent[s]) {
                 res[m]![s]![ss] = computedSpellPower(data, m, ss, stats, efl);
             }
         }
@@ -92,7 +91,9 @@ const zeroSpellPower = fullComputedSpellPower(fillSpellPowerValues({}, 0));
 
 export type {
     SpellPowerKeys,
+    /** @deprecated: use explicit mapped types instead */
     SpellPowerValues,
+    /** @deprecated: use explicit mapped types instead */
     SpellPowerValuesPartial,
     FullComputedSpellPower,
     FullComputedSchools,

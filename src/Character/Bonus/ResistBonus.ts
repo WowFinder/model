@@ -1,19 +1,51 @@
 import { sum } from '@wowfinder/ts-utils';
-import { DamageType } from '@wowfinder/ts-enums';
+import {
+    DamageType,
+    EnergyType,
+    PhysicalDamageType,
+    SpecialDamageType,
+} from '@wowfinder/ts-enums';
 import type { ResistancePartialSet, ResistanceSet } from '../Resistances';
 
-function fill(data: ResistancePartialSet, filler = 0): ResistanceSet {
+function fillPhysical(
+    data: ResistancePartialSet,
+    filler = 0,
+): Record<PhysicalDamageType, number> {
     return {
         bludgeoning: data.bludgeoning ?? filler,
         slashing: data.slashing ?? filler,
         piercing: data.piercing ?? filler,
+    };
+}
+
+function fillEnergy(
+    data: ResistancePartialSet,
+    filler = 0,
+): Record<EnergyType, number> {
+    return {
         arcane: data.arcane ?? filler,
         fire: data.fire ?? filler,
         cold: data.cold ?? filler,
         nature: data.nature ?? filler,
         shadow: data.shadow ?? filler,
         holy: data.holy ?? filler,
+    };
+}
+
+function fillSpecial(
+    data: ResistancePartialSet,
+    filler = 0,
+): Record<SpecialDamageType, number> {
+    return {
         psychic: data.psychic ?? filler,
+    };
+}
+
+function fill(data: ResistancePartialSet, filler = 0): ResistanceSet {
+    return {
+        ...fillPhysical(data, filler),
+        ...fillEnergy(data, filler),
+        ...fillSpecial(data, filler),
     };
 }
 

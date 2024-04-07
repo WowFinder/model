@@ -5,27 +5,18 @@ import type { Class, Race } from 'Creature';
 import type { Faction } from 'Faction';
 import type { Item } from 'Item';
 import type { Spell, SpellList } from 'Magic';
-
 import {
     AdventureAssetResolver,
+    AnyResolvableAsset,
     ClassAssetResolver,
     FactionAssetResolver,
     ItemAssetResolver,
     RaceAssetResolver,
-    SpellListAssetResolver,
+    ResolvableAssetType,
     SpellAssetResolver,
+    SpellListAssetResolver,
 } from './base';
 
-type ResolvableAssetType = Exclude<AssetType, AssetType.characters>;
-
-type AnyResolvableAsset =
-    | Adventure
-    | Class
-    | Faction
-    | Item
-    | Race
-    | Spell
-    | SpellList;
 abstract class AssetResolver
     implements
         AdventureAssetResolver,
@@ -43,6 +34,8 @@ abstract class AssetResolver
     abstract resolveRace(key: string): Race;
     abstract resolveSpell(key: string): Spell;
     abstract resolveSpellList(key: string): SpellList;
+
+    abstract list(type: ResolvableAssetType): string[];
 
     resolve(type: AssetType.adventures, key: string): Adventure;
     resolve(type: AssetType.classes, key: string): Class;

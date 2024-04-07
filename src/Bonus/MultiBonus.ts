@@ -88,7 +88,7 @@ class MultiBonus implements FullMultiBonus, JsonExportable<MultiBonusBuilder> {
             if (stackableBonusTypes[type]) {
                 builder[type] = sumBonus(...mapped);
             } else {
-                builder[type as BonusType] = maxBonus(...mapped);
+                builder[type] = maxBonus(...mapped);
             }
         });
         return new MultiBonus(builder);
