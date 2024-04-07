@@ -141,7 +141,7 @@ export default class SpellPowerBonus implements SpellPowerValues<number> {
         return computedSpellPower(this, mode, school);
     }
 
-    static #allKeys: string[] = [
+    static readonly #allKeys: string[] = [
         ...Object.keys(CastingMode),
         ...Object.keys(School),
         ...Object.keys(SubSchool),

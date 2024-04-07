@@ -2,17 +2,17 @@ import { AssetType } from '@wowfinder/ts-enums';
 import { Adventure } from 'Adventure';
 import { AssetResolver } from 'Assets/AssetResolver';
 import { Class } from 'Creature/Class';
-import {
-    mockMeleeClassRawAsset,
-    mockArcaneClassRawAsset,
-    mockDivineClassRawAsset,
-    mockStealthClassRawAsset,
-} from '__mocks__/Creature/Class';
-import { mockedRaceRawAsset } from '__mocks__/Creature/race';
 import { Race } from 'Creature/Race';
 import { Faction } from 'Faction';
 import { Item } from 'Item';
 import { Spell, SpellList } from 'Magic';
+import {
+    mockArcaneClassRawAsset,
+    mockDivineClassRawAsset,
+    mockMeleeClassRawAsset,
+    mockStealthClassRawAsset,
+} from '__mocks__/Creature/Class';
+import { mockedRaceRawAsset } from '__mocks__/Creature/race';
 
 function noAsset(type: AssetType, key: string): never {
     throw new Error(`No asset found for ${type} with key ${key}`);
@@ -68,6 +68,22 @@ class MockAssetResolver extends AssetResolver {
 
     resolveSpellList(key: string): SpellList {
         return noAsset(AssetType.spellLists, key);
+    }
+
+    list(type: AssetType): string[] {
+        switch (type) {
+            case AssetType.classes:
+                return [
+                    'mocked-melee-class',
+                    'mocked-arcane-class',
+                    'mocked-divine-class',
+                    'mocked-stealth-class',
+                ];
+            case AssetType.races:
+                return [mockedRaceRawAsset.key];
+            default:
+                return [];
+        }
     }
 }
 

@@ -10,5 +10,6 @@ export * from './Item';
 export * from './Language';
 export * from './Magic';
 export * from './Rewards';
-export * from './Transformation';
 export * from './Scalar';
+export * from './Transformation';
+export * from './__mocks__';

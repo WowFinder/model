@@ -15,6 +15,8 @@ import { SpellPowerBonus } from './SpellPowerBonus';
 import { FeatsBonus } from './FeatsBonus';
 import { BaseSpeedsBonus, SpeedsModifiersBonus } from './SpeedsBonus';
 
+type Zeroable = { isZero: boolean };
+
 class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
     #hp: number;
     #armorClass: number;
@@ -28,20 +30,30 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
     #baseSpeeds: BaseSpeedsBonus;
     #speedsModifiers: SpeedsModifiersBonus;
 
-    constructor(builder: SimpleBonusBuilder = {}) {
-        this.#hp = builder.hp ?? 0;
-        this.#armorClass = builder.armorClass ?? 0;
-        this.#stats = new StatsBonus(builder.stats ?? {});
-        this.#skills = new SkillsBonus(builder.skills ?? {});
-        this.#resistances = new ResistancesBonus(builder.resistances ?? {});
-        this.#vitalNeeds = new VitalNeedsBonus(builder.vitalNeeds ?? {});
-        this.#senses = new SensesBonus(builder.senses ?? {});
-        this.#spellPower = new SpellPowerBonus(builder.spellPower ?? {});
-        this.#feats = new FeatsBonus(builder.feats ?? []);
-        this.#baseSpeeds = new BaseSpeedsBonus(builder.baseSpeeds ?? {});
-        this.#speedsModifiers = new SpeedsModifiersBonus(
-            builder.speedsModifiers ?? {},
-        );
+    constructor({
+        hp = 0,
+        armorClass = 0,
+        stats = {},
+        skills = {},
+        resistances = {},
+        vitalNeeds = {},
+        senses = {},
+        spellPower = {},
+        feats = [],
+        baseSpeeds = {},
+        speedsModifiers = {},
+    }: SimpleBonusBuilder = {}) {
+        this.#hp = hp;
+        this.#armorClass = armorClass;
+        this.#stats = new StatsBonus(stats);
+        this.#skills = new SkillsBonus(skills);
+        this.#resistances = new ResistancesBonus(resistances);
+        this.#vitalNeeds = new VitalNeedsBonus(vitalNeeds);
+        this.#senses = new SensesBonus(senses);
+        this.#spellPower = new SpellPowerBonus(spellPower);
+        this.#feats = new FeatsBonus(feats ?? []);
+        this.#baseSpeeds = new BaseSpeedsBonus(baseSpeeds);
+        this.#speedsModifiers = new SpeedsModifiersBonus(speedsModifiers);
     }
 
     get hp(): number {
@@ -88,20 +100,26 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         return this.#speedsModifiers;
     }
 
+    get #allNumericValuesZero(): boolean {
+        return this.#hp === 0 && this.#armorClass === 0;
+    }
+
+    get #allCompoundValuesZero(): boolean {
+        return [
+            this.#stats,
+            this.#skills,
+            this.#resistances,
+            this.#vitalNeeds,
+            this.#senses,
+            this.#spellPower,
+            this.#feats,
+            this.#baseSpeeds,
+            this.#speedsModifiers,
+        ].every((value: Zeroable) => value.isZero);
+    }
+
     get isZero(): boolean {
-        return (
-            this.#hp === 0 &&
-            this.#armorClass === 0 &&
-            this.#stats.isZero &&
-            this.#skills.isZero &&
-            this.#resistances.isZero &&
-            this.#vitalNeeds.isZero &&
-            this.#senses.isZero &&
-            this.#spellPower.isZero &&
-            this.#feats.isZero &&
-            this.#baseSpeeds.isZero &&
-            this.#speedsModifiers.isZero
-        );
+        return this.#allNumericValuesZero && this.#allCompoundValuesZero;
     }
 
     export(): JsonCompatible<SimpleBonusBuilder> {

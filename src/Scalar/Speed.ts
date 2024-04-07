@@ -1,7 +1,7 @@
 import { LengthUnit, TimeUnit } from '@wowfinder/ts-enums';
-import { converter, Scalar } from './Scalar';
-import { convertLength, Length } from './Length';
-import { convertTime, Time } from './Time';
+import { Length, convertLength } from './Length';
+import { Scalar, converter } from './Scalar';
+import { Time, convertTime } from './Time';
 
 interface SpeedUnitBuilder {
     length: LengthUnit;
@@ -24,6 +24,29 @@ class SpeedUnit {
         return this.#time;
     }
 }
+
+const commonSpeedUnits = {
+    feetTurn: new SpeedUnit({
+        length: LengthUnit.foot,
+        time: TimeUnit.turn,
+    }),
+    metersSecond: new SpeedUnit({
+        length: LengthUnit.meter,
+        time: TimeUnit.second,
+    }),
+    milesHour: new SpeedUnit({
+        length: LengthUnit.mile,
+        time: TimeUnit.hour,
+    }),
+    milesDay: new SpeedUnit({
+        length: LengthUnit.mile,
+        time: TimeUnit.day,
+    }),
+    kilometersHour: new SpeedUnit({
+        length: LengthUnit.kiloMeter,
+        time: TimeUnit.hour,
+    }),
+};
 
 class Speed extends Scalar<SpeedUnit> {
     convert(to: SpeedUnit): Speed {
@@ -48,7 +71,28 @@ class Speed extends Scalar<SpeedUnit> {
         return this.convert(unit).value;
     }
 }
+
 const convertSpeed: converter<SpeedUnit> = (magnitude, to) =>
     new Speed(magnitude).convert(to);
 
-export { SpeedUnit, Speed, convertSpeed };
+function encumberedRaw(rawSpeed: number): number {
+    // assumes ft/turn; matches PFCRB given values from 5 to 120 ft/turn
+    // Ref: https://legacy.aonprd.com/coreRulebook/additionalRules.html#armor-and-encumbrance-for-other-base-speeds
+    return 5 * Math.ceil((2 * rawSpeed) / 15);
+}
+
+function encumbered(speed: Speed): Speed {
+    return new Speed({
+        value: encumberedRaw(speed.convert(commonSpeedUnits.feetTurn).value),
+        unit: commonSpeedUnits.feetTurn,
+    });
+}
+
+export {
+    Speed,
+    SpeedUnit,
+    commonSpeedUnits,
+    convertSpeed,
+    encumbered,
+    encumberedRaw,
+};

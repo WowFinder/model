@@ -1,6 +1,6 @@
 {
     "name": "@wowfinder/model",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Data and Rules model for WowFinder",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -23,8 +23,8 @@
         "skott:web": "skott -nit --displayMode=webapp --trackThirdPartyDependencies --trackBuiltinDependencies src/",
         "skott:circular": "skott -nit --showCircularDependencies --displayMode=raw",
         "checks:quick": "npm-run-all -pc lint tsc",
-        "checks:standard": "npm-run-all -pc lint tsc test",
-        "checks:full": "npm-run-all -sc lint:fix format build test:coverage",
+        "checks:standard": "npm-run-all -pc lint tsc test skott:circular",
+        "checks:full": "npm-run-all -sc lint:fix format build test:coverage skott:circular",
         "checks:pedantic": "npm-run-all -sc lint format:check build test:coverage skott:circular",
         "build:pre": "rimraf dist",
         "build:tsc": "tsc",
@@ -34,11 +34,11 @@
     },
     "dependencies": {
         "@wowfinder/asset-schemas": "0.0.9",
-        "@wowfinder/ts-enums": "0.0.9",
-        "@wowfinder/ts-utils": "^0.1.0"
+        "@wowfinder/ts-enums": "0.0.10",
+        "@wowfinder/ts-utils": "^0.1.1"
     },
     "devDependencies": {
-        "@tsconfig/recommended": "^1.0.5",
+        "@tsconfig/recommended": "^1.0.6",
         "@types/jest": "^29.5.12",
         "@typescript-eslint/eslint-plugin": "^7.5.0",
         "@typescript-eslint/parser": "^7.5.0",
