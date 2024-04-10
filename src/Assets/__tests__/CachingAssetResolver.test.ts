@@ -1,7 +1,7 @@
 import { AssetType } from '@wowfinder/ts-enums';
-import type { AsyncAssetResolver } from 'Assets/AsyncAssetResolver';
-import { AsyncCachingAssetResolver } from '../AsyncCachingAssetResolver';
-import { stubAsyncAssetResolver } from './AsyncAssetResolver.stubs';
+import type { AsyncAssetResolver } from 'Assets/AssetResolver';
+import { AsyncCachingAssetResolver } from '../CachingAssetResolver';
+import { StubbedAsyncAssetResolver } from './AssetResolver.stubs';
 
 let backendResolver: AsyncAssetResolver;
 let resolverStub: jest.Mock;
@@ -10,7 +10,7 @@ let cachingResolver: AsyncCachingAssetResolver;
 describe('CachingAssetResolver', () => {
     beforeEach(() => {
         resolverStub = jest.fn();
-        backendResolver = new (stubAsyncAssetResolver(resolverStub))();
+        backendResolver = new StubbedAsyncAssetResolver(resolverStub);
         cachingResolver = new AsyncCachingAssetResolver(backendResolver);
     });
     describe('should dispatch to the correct resolver after checking the cache', () => {

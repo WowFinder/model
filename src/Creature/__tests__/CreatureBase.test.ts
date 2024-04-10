@@ -9,7 +9,7 @@ import {
 class CreatureBaseTestingImplementation extends CreatureBase {}
 
 describe('CreatureBase', () => {
-    it('should create a minimal instance', () => {
+    it('should create a minimal instance', async () => {
         const instance = new CreatureBaseTestingImplementation(
             rawBaseCreatureMinimal,
             mockAssetResolver,
@@ -17,11 +17,11 @@ describe('CreatureBase', () => {
         expect(instance.key).toBe('base-creature-mock-minimal');
         expect(instance.notes).toEqual('');
         expect(instance.baseStats).toEqual(rawBaseCreatureMinimal.baseStats);
-        expect(instance.race instanceof Race).toBe(true);
+        expect((await instance.race) instanceof Race).toBe(true);
         expect(instance.personal.fullName).toEqual(
             rawBaseCreatureMinimal.personal.fullName,
         );
-        expect(instance.classes).toHaveLength(0);
+        expect(await instance.classes).toHaveLength(0);
     });
     /* TODO
     !! Test disabled until Character/Class is fully covered

@@ -1,4 +1,5 @@
 import { RawSpeeds } from '@wowfinder/asset-schemas';
+import { FlyManeuverability } from '@wowfinder/ts-enums';
 import { SpeedsModifiersBonusBuilder } from 'Bonus/SpeedsBonus';
 
 const emptyBaseSpeedsBonusBuilder: Partial<RawSpeeds> = {};
@@ -23,7 +24,7 @@ const fullBaseSpeedsBonusBuilder: Required<RawSpeeds> = {
     climb: 45,
     swim: 50,
     fly: 55,
-    maneuverability: 'perfect',
+    maneuverability: FlyManeuverability.perfect,
 };
 
 export {
