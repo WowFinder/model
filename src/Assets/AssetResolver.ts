@@ -5,47 +5,50 @@ import type { Class, Race } from 'Creature';
 import type { Faction } from 'Faction';
 import type { Item } from 'Item';
 import type { Spell, SpellList } from 'Magic';
-import {
-    AdventureAssetResolver,
+import type {
+    AdventureAsyncAssetResolver,
     AnyResolvableAsset,
-    ClassAssetResolver,
-    FactionAssetResolver,
-    ItemAssetResolver,
-    RaceAssetResolver,
+    ClassAsyncAssetResolver,
+    FactionAsyncAssetResolver,
+    ItemAsyncAssetResolver,
+    RaceAsyncAssetResolver,
     ResolvableAssetType,
-    SpellAssetResolver,
-    SpellListAssetResolver,
+    SpellAsyncAssetResolver,
+    SpellListAsyncAssetResolver,
 } from './base';
 
-abstract class AssetResolver
+abstract class AsyncAssetResolver
     implements
-        AdventureAssetResolver,
-        ClassAssetResolver,
-        FactionAssetResolver,
-        ItemAssetResolver,
-        RaceAssetResolver,
-        SpellAssetResolver,
-        SpellListAssetResolver
+        AdventureAsyncAssetResolver,
+        ClassAsyncAssetResolver,
+        FactionAsyncAssetResolver,
+        ItemAsyncAssetResolver,
+        RaceAsyncAssetResolver,
+        SpellAsyncAssetResolver,
+        SpellListAsyncAssetResolver
 {
-    abstract resolveAdventure(key: string): Adventure;
-    abstract resolveClass(key: string): Class;
-    abstract resolveFaction(key: string): Faction;
-    abstract resolveItem(key: string): Item;
-    abstract resolveRace(key: string): Race;
-    abstract resolveSpell(key: string): Spell;
-    abstract resolveSpellList(key: string): SpellList;
+    abstract resolveAdventure(key: string): Promise<Adventure>;
+    abstract resolveClass(key: string): Promise<Class>;
+    abstract resolveFaction(key: string): Promise<Faction>;
+    abstract resolveItem(key: string): Promise<Item>;
+    abstract resolveRace(key: string): Promise<Race>;
+    abstract resolveSpell(key: string): Promise<Spell>;
+    abstract resolveSpellList(key: string): Promise<SpellList>;
 
-    abstract list(type: ResolvableAssetType): string[];
+    abstract list(type: ResolvableAssetType): Promise<string[]>;
 
-    resolve(type: AssetType.adventures, key: string): Adventure;
-    resolve(type: AssetType.classes, key: string): Class;
-    resolve(type: AssetType.factions, key: string): Faction;
-    resolve(type: AssetType.items, key: string): Item;
-    resolve(type: AssetType.races, key: string): Race;
-    resolve(type: AssetType.spells, key: string): Spell;
-    resolve(type: AssetType.spellLists, key: string): SpellList;
+    resolve(type: AssetType.adventures, key: string): Promise<Adventure>;
+    resolve(type: AssetType.classes, key: string): Promise<Class>;
+    resolve(type: AssetType.factions, key: string): Promise<Faction>;
+    resolve(type: AssetType.items, key: string): Promise<Item>;
+    resolve(type: AssetType.races, key: string): Promise<Race>;
+    resolve(type: AssetType.spells, key: string): Promise<Spell>;
+    resolve(type: AssetType.spellLists, key: string): Promise<SpellList>;
 
-    resolve(type: ResolvableAssetType, key: string): AnyResolvableAsset {
+    resolve(
+        type: ResolvableAssetType,
+        key: string,
+    ): Promise<AnyResolvableAsset> {
         switch (type) {
             case AssetType.adventures:
                 return this.resolveAdventure(key);
@@ -67,4 +70,4 @@ abstract class AssetResolver
     }
 }
 
-export { AssetResolver };
+export { AsyncAssetResolver };

@@ -1,4 +1,4 @@
-/* eslint-ignore-file max-lines */
+/* eslint-disable max-lines */
 // It is not reasonable to make this file smaller: the game has 51 skills, so 51 accessors are needed.
 
 import { RawSkills } from '@wowfinder/asset-schemas';

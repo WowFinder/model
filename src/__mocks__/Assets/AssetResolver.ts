@@ -1,6 +1,6 @@
 import { AssetType } from '@wowfinder/ts-enums';
 import { Adventure } from 'Adventure';
-import { AssetResolver } from 'Assets/AssetResolver';
+import { AsyncAssetResolver } from 'Assets/AssetResolver';
 import { Class } from 'Creature/Class';
 import { Race } from 'Creature/Race';
 import { Faction } from 'Faction';
@@ -18,71 +18,77 @@ function noAsset(type: AssetType, key: string): never {
     throw new Error(`No asset found for ${type} with key ${key}`);
 }
 
-class MockAssetResolver extends AssetResolver {
-    resolveAdventure(key: string): Adventure {
-        return new Adventure({
-            key,
-            title: `Mock Adventure ${key}`,
-            date: new Date().toISOString().substring(0, 10),
-            rewards: {},
-        });
+class MockAssetResolver extends AsyncAssetResolver {
+    resolveAdventure(key: string): Promise<Adventure> {
+        return Promise.resolve(
+            new Adventure({
+                key,
+                title: `Mock Adventure ${key}`,
+                date: new Date().toISOString().substring(0, 10),
+                rewards: {},
+            }),
+        );
     }
 
-    resolveClass(key: string): Class {
+    resolveClass(key: string): Promise<Class> {
         switch (key) {
             case 'mocked-melee-class':
-                return new Class(mockMeleeClassRawAsset);
+                return Promise.resolve(new Class(mockMeleeClassRawAsset));
             case 'mocked-arcane-class':
-                return new Class(mockArcaneClassRawAsset);
+                return Promise.resolve(new Class(mockArcaneClassRawAsset));
             case 'mocked-divine-class':
-                return new Class(mockDivineClassRawAsset);
+                return Promise.resolve(new Class(mockDivineClassRawAsset));
             case 'mocked-stealth-class':
-                return new Class(mockStealthClassRawAsset);
+                return Promise.resolve(new Class(mockStealthClassRawAsset));
             default:
-                return noAsset(AssetType.classes, key);
+                noAsset(AssetType.classes, key);
         }
     }
 
-    resolveFaction(key: string): Faction {
-        return new Faction({
-            key: Math.random(),
-            name: `Mock Faction ${key}`,
-            label: key,
-        });
+    resolveFaction(key: string): Promise<Faction> {
+        return Promise.resolve(
+            new Faction({
+                key: Math.random(),
+                name: `Mock Faction ${key}`,
+                label: key,
+            }),
+        );
     }
 
-    resolveItem(key: string): Item {
+    resolveItem(key: string): Promise<Item> {
         return noAsset(AssetType.items, key);
     }
 
-    resolveRace(key: string): Race {
-        return new Race({
-            ...mockedRaceRawAsset,
-            key,
-        });
+    resolveRace(key: string): Promise<Race> {
+        return Promise.resolve(
+            new Race({
+                ...mockedRaceRawAsset,
+                key,
+            }),
+        );
     }
 
-    resolveSpell(key: string): Spell {
+    resolveSpell(key: string): Promise<Spell> {
         return noAsset(AssetType.spells, key);
     }
 
-    resolveSpellList(key: string): SpellList {
+    resolveSpellList(key: string): Promise<SpellList> {
         return noAsset(AssetType.spellLists, key);
     }
 
-    list(type: AssetType): string[] {
+    list(type: AssetType): Promise<string[]> {
         switch (type) {
             case AssetType.classes:
-                return [
+                return Promise.resolve([
                     'mocked-melee-class',
                     'mocked-arcane-class',
                     'mocked-divine-class',
                     'mocked-stealth-class',
-                ];
+                ]);
             case AssetType.races:
-                return [mockedRaceRawAsset.key];
+                return Promise.resolve([mockedRaceRawAsset.key]);
             default:
-                return [];
+                return Promise.resolve([]);
         }
     }
 }

@@ -1,4 +1,5 @@
 import { RawSpeeds } from '@wowfinder/asset-schemas';
+import { FlyManeuverability } from '@wowfinder/ts-enums';
 import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
 
 type BaseSpeedsBonusBuilder = Partial<RawSpeeds>;
@@ -11,7 +12,7 @@ class BaseSpeedsBonus
     #climb?: number;
     #swim?: number;
     #fly?: number;
-    #maneuverability?: string;
+    #maneuverability?: FlyManeuverability;
 
     constructor({
         base,
@@ -49,7 +50,7 @@ class BaseSpeedsBonus
         return this.#fly;
     }
 
-    get maneuverability(): string | undefined {
+    get maneuverability(): FlyManeuverability | undefined {
         return this.#maneuverability;
     }
 

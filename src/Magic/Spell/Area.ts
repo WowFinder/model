@@ -40,7 +40,7 @@ type SpellArea =
 
 function stringify(
     value: SpellArea,
-    t: Parameters<Stringifier<SpellArea>>[1], // TODO: replace with Stringifier (from upcoming ts-utils version)
+    t: Parameters<Stringifier<SpellArea>>[1],
 ): string {
     switch (value.spellAreaType) {
         case 'self':

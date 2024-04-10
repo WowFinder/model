@@ -1,6 +1,6 @@
 import { RawStats } from '@wowfinder/asset-schemas';
 import { RawCreatureAsset } from '@wowfinder/asset-schemas/dist/Creature/base';
-import type { AssetResolver } from 'Assets/AssetResolver';
+import type { AsyncAssetResolver } from 'Assets/AssetResolver';
 import type { ClassEntry, ClassEntries } from './Class';
 import type { Race } from './Race';
 import { PersonalDetails, importPersonalDetails } from './Personal';
@@ -8,22 +8,23 @@ import { PersonalDetails, importPersonalDetails } from './Personal';
 abstract class CreatureBase {
     #key: string;
     #baseStats: RawStats;
-    #race: Race;
+    #race: Promise<Race>;
     #notes: string;
     #personal: PersonalDetails;
-    #classes: ClassEntries;
+    #classes: Promise<ClassEntries>;
 
-    constructor(raw: RawCreatureAsset, resolver: AssetResolver) {
+    constructor(raw: RawCreatureAsset, resolver: AsyncAssetResolver) {
         this.#key = raw.key;
         this.#baseStats = { ...raw.baseStats };
         this.#race = resolver.resolveRace(raw.race);
         this.#notes = raw.notes ?? '';
         this.#personal = importPersonalDetails(raw.personal);
-        this.#classes =
-            raw.classes?.map(({ class: cls, level }) => ({
-                class: resolver.resolveClass(cls),
+        this.#classes = Promise.all(
+            (raw.classes ?? []).map(async ({ class: cls, level }) => ({
+                class: await resolver.resolveClass(cls),
                 level,
-            })) ?? [];
+            })),
+        );
     }
 
     get key(): string {
@@ -34,7 +35,7 @@ abstract class CreatureBase {
         return { ...this.#baseStats };
     }
 
-    get race(): Race {
+    get race(): Promise<Race> {
         return this.#race;
     }
 
@@ -46,8 +47,8 @@ abstract class CreatureBase {
         return this.#personal;
     }
 
-    get classes(): ClassEntries {
-        return this.#classes.map(entry => ({ ...entry }));
+    get classes(): Promise<ClassEntries> {
+        return this.#classes;
     }
 }
 
