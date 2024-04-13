@@ -5,7 +5,7 @@ import {
     mockedSpeedNegativeRawAsset,
     mockedSpeedSimpleRawAsset,
     mockedSpeedSlowRawAsset,
-} from '__mocks__/Creature/speed';
+} from '../../__mocks__/Creature/speed';
 
 describe('Speeds', () => {
     test('should create a Speeds instance with default values', () => {

@@ -1,5 +1,5 @@
 import { Debugger, Stringifier } from '@wowfinder/ts-utils';
-import { Length } from 'Scalar';
+import { Length } from '../../Scalar';
 
 type SpellSelf = {
     spellAreaType: 'self';

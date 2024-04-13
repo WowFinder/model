@@ -1,5 +1,5 @@
 import { sum } from '@wowfinder/ts-utils';
-import { mockSuperHybridClassRawAsset } from '__mocks__';
+import { mockSuperHybridClassRawAsset } from '../../../__mocks__';
 import { Class } from '../Class';
 import { ClassFeature } from '../Features';
 

@@ -1,7 +1,7 @@
 import { Stat } from '@wowfinder/ts-enums';
-import type { CombatDualWieldFeat } from 'Character/Feats/core/combat/dual';
-import { Feat } from 'Character/Feats/Feat';
-import type { FeatSpec } from 'Character/Feats/FeatSpec';
+import type { CombatDualWieldFeat } from '../../core/combat/dual';
+import { Feat } from '../../Feat';
+import type { FeatSpec } from '../../FeatSpec';
 import { build, req } from '../helpers';
 
 const combatDualWieldFeats: { [key in CombatDualWieldFeat]: FeatSpec } = {

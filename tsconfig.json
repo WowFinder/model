@@ -8,11 +8,10 @@
         "esModuleInterop": true,
         "noImplicitAny": true,
         "sourceMap": true,
-        "baseUrl": "./src",
         "outDir": "dist",
         "strict": true,
         "resolveJsonModule": true
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "src/.setup.ts"],
     "exclude": []
 }

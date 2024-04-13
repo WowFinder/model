@@ -1,5 +1,5 @@
 import { FlyManeuverability } from '@wowfinder/ts-enums';
-import type { SpeedBuilder } from 'Creature/Speeds';
+import type { SpeedBuilder } from '../../Creature/Speeds';
 const mockedSpeedSimpleRawAsset: SpeedBuilder = {
     base: 30,
 };

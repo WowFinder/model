@@ -10,7 +10,7 @@ import {
     mockArcaneClassRawAsset,
     mockDivineClassRawAsset,
     mockStealthClassRawAsset,
-} from '__mocks__';
+} from '../../../__mocks__';
 
 describe('combineClassBonuses', () => {
     const classes = {

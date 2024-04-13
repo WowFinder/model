@@ -1,6 +1,6 @@
 import { RawSpeeds } from '@wowfinder/asset-schemas';
 import { FlyManeuverability } from '@wowfinder/ts-enums';
-import { SpeedsModifiersBonusBuilder } from 'Bonus/SpeedsBonus';
+import { SpeedsModifiersBonusBuilder } from '../../Bonus/SpeedsBonus';
 
 const emptyBaseSpeedsBonusBuilder: Partial<RawSpeeds> = {};
 

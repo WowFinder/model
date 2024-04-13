@@ -1,5 +1,5 @@
 import { AssetType } from '@wowfinder/ts-enums';
-import type { AsyncAssetResolver } from 'Assets/AssetResolver';
+import type { AsyncAssetResolver } from '../../Assets/AssetResolver';
 import { AsyncCachingAssetResolver } from '../CachingAssetResolver';
 import { StubbedAsyncAssetResolver } from './AssetResolver.stubs';
 

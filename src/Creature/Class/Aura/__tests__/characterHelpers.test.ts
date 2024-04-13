@@ -5,8 +5,8 @@ import {
     getClassAuras,
 } from '../characterHelpers';
 import { auraBonuses } from '..';
-import { Bonus } from 'Character/Bonus';
-import type { ClassEntries } from 'Creature/Class';
+import { Bonus } from '../../../../Character/Bonus';
+import type { ClassEntries } from '../../Class';
 
 const auras: Record<string, Aura[]> = {
     empty: [],

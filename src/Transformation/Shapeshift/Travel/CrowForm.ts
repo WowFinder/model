@@ -1,7 +1,7 @@
 import { FlyManeuverability } from '@wowfinder/ts-enums';
-import type { Character } from 'Character';
-import { CharacterOverride } from 'Character/base/CharacterOverride';
-import { defaultSpeedUnit } from 'Creature/Speeds';
+import type { Character } from '../../../Character';
+import { CharacterOverride } from '../../../Character/base/CharacterOverride';
+import { defaultSpeedUnit } from '../../../Creature/Speeds';
 import type { ShapeshiftBuilder } from '../base';
 import { Shapeshift } from '../base';
 

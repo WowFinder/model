@@ -1,5 +1,5 @@
 import { ModeSpellPowerBonus } from '../ModeSpellPowerBonus';
-import { modeDefaultBuilder, modeFullBuilder } from '__mocks__';
+import { modeDefaultBuilder, modeFullBuilder } from '../../../__mocks__';
 
 describe('ModeSpellPowerBonus', () => {
     let defaultBonus: ModeSpellPowerBonus;

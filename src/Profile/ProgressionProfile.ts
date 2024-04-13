@@ -1,5 +1,5 @@
 import { sum } from '@wowfinder/ts-utils';
-import type { ClassEntries, ClassEntry } from 'Creature';
+import type { ClassEntries, ClassEntry } from '../Creature/Class';
 
 interface ProgressionProfile {
     xp?: number;

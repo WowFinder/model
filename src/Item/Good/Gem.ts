@@ -1,4 +1,4 @@
-import { Mass } from 'Scalar';
+import { Mass } from '../../Scalar';
 import { Good } from './base';
 
 class Gem extends Good {

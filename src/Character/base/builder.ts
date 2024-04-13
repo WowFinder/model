@@ -1,5 +1,5 @@
 /* eslint-disable deprecation/deprecation */
-import { EffectiveCasterLevels } from 'Magic';
+import { EffectiveCasterLevels } from '../../Magic';
 import { InventoryBuilder } from '../../Item/Inventory';
 import { FeatChoice, FeatChoiceExport } from '../helpers';
 import Race from '../../Creature/Race';

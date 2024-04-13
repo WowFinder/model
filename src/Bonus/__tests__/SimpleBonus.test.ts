@@ -1,4 +1,7 @@
-import { defaultSimpleBonusBuilder, fullSimpleBonusBuilder } from '__mocks__';
+import {
+    defaultSimpleBonusBuilder,
+    fullSimpleBonusBuilder,
+} from '../../__mocks__';
 import { SimpleBonus } from '../SimpleBonus';
 
 describe('SimpleBonus', () => {

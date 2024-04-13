@@ -1,4 +1,4 @@
-import type { CreatureProfile } from 'Profile';
+import type { CreatureProfile } from '../Profile';
 
 interface CreatureFacade {
     intrinsicProfile: CreatureProfile;

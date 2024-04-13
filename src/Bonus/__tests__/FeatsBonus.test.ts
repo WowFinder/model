@@ -3,8 +3,8 @@ import {
     defaultFeatsBonusBuilder,
     mixedMartialFeatsBonusBuilder,
     mixedCasterFeatsBonusBuilder,
-} from '__mocks__/';
-import { Feat } from 'Character/Feats';
+} from '../../__mocks__/';
+import { Feat } from '../../Character/Feats';
 
 describe('FeatsBonus', () => {
     let defaultFeatsBonus: FeatsBonus;

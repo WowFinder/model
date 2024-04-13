@@ -1,4 +1,4 @@
-import { Mass } from 'Scalar';
+import { Mass } from '../../Scalar';
 import { Money } from '../Money';
 import { Item, ItemBuilder } from '../base';
 

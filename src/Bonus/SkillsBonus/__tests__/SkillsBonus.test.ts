@@ -1,6 +1,9 @@
 import { Skill } from '@wowfinder/ts-enums';
 import { SkillsBonus } from '..';
-import { skillsBonusDefaultBuilder, skillsBonusFullBuilder } from '__mocks__';
+import {
+    skillsBonusDefaultBuilder,
+    skillsBonusFullBuilder,
+} from '../../../__mocks__';
 
 describe('SkillsBonus', () => {
     let defaultBonus: SkillsBonus;

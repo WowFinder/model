@@ -1,6 +1,6 @@
-import { Feat } from 'Character/Feats/Feat';
-import type { FeatSpec } from 'Character/Feats/FeatSpec';
-import { CombatVitalStrikeFeat } from 'Character/Feats/core/combat/vitalStrike';
+import { Feat } from '../../Feat';
+import type { FeatSpec } from '../../FeatSpec';
+import { CombatVitalStrikeFeat } from '../../core/combat/vitalStrike';
 import { build, req } from '../helpers';
 
 const combatVitalStrikeFeats: { [key in CombatVitalStrikeFeat]: FeatSpec } = {

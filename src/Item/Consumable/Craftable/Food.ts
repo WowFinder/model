@@ -1,10 +1,10 @@
-import { Mass, Time } from 'Scalar';
-import { Bonus, BonusBuilder } from 'Character/Bonus';
-import { CraftableConsumable, CraftableConsumableBuilder } from './base';
-import { Consumable } from '../base';
-import { Dice } from 'Dice';
-import { PotionBuilder, RestoreValues } from './Potion';
 import { BonusType } from '@wowfinder/ts-enums';
+import { Bonus, BonusBuilder } from '../../../Character/Bonus';
+import { Dice } from '../../../Dice';
+import { Mass, Time } from '../../../Scalar';
+import { Consumable } from '../base';
+import { PotionBuilder, RestoreValues } from './Potion';
+import { CraftableConsumable, CraftableConsumableBuilder } from './base';
 
 interface FoodBuilder extends CraftableConsumableBuilder, PotionBuilder {
     duration?: string;
@@ -71,4 +71,4 @@ class Food extends CraftableConsumable {
     }
 }
 
-export { FoodBuilder, Food };
+export { Food, FoodBuilder };

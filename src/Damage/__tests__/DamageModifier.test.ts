@@ -7,8 +7,8 @@ import {
     rollArgsBadStrength,
     rollArgsFinesseSpell,
     rollArgsSimple,
-} from '__mocks__';
-import { statMod } from 'Creature/Stats/helpers';
+} from '../../__mocks__';
+import { statMod } from '../../Creature/Stats/helpers';
 import {
     computeModifier,
     DamageModifier,

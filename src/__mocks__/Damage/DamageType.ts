@@ -1,4 +1,4 @@
-import { DamageTypes, FullDamageTypes } from 'Damage/DamageType';
+import { DamageTypes, FullDamageTypes } from '../../Damage/DamageType';
 
 const mockMindBurnFullDamageTypes: FullDamageTypes = {
     bludgeoning: true,

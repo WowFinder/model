@@ -1,10 +1,10 @@
-import { Dice, RollableValue } from 'Dice';
-import { ActionTime } from 'Action/ActionTime';
-import { Consumable } from '../base';
-import { Mass } from 'Scalar';
-import type { ItemBuilder as CraftableConsumableBuilder } from 'Item/base';
-import { CraftableConsumable } from './base';
 import { ActionLength } from '@wowfinder/ts-enums';
+import { ActionTime } from '../../../Action/ActionTime';
+import { Dice, RollableValue } from '../../../Dice';
+import { Mass } from '../../../Scalar';
+import type { ItemBuilder as CraftableConsumableBuilder } from '../../base';
+import { Consumable } from '../base';
+import { CraftableConsumable } from './base';
 
 interface RestoreValues {
     health: number;
@@ -76,4 +76,4 @@ class Potion extends CraftableConsumable {
     }
 }
 
-export { Potion, RestoreValues, PotionBuilder };
+export { Potion, PotionBuilder, RestoreValues };

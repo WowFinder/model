@@ -1,5 +1,5 @@
 import type { RawStats } from '@wowfinder/asset-schemas';
-import type { Mass } from 'Scalar';
+import type { Mass } from '../../Scalar';
 import {
     PartialStatBlock,
     addStatSets,

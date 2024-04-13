@@ -1,11 +1,11 @@
 import { Skill, Stat } from '@wowfinder/ts-enums';
-import { statMod } from 'Creature/Stats/helpers';
+import { statMod } from '../../Stats/helpers';
 import {
     defaultStatsMock,
     exhaustiveSkillSpecBuilderMock as exhaustiveBuilder,
     minimalSkillSpecBuilderMock as minimalBuilder,
     mixedStatsMock,
-} from '__mocks__';
+} from '../../../__mocks__';
 import { SkillSpec } from '../SkillSpec';
 import { classTrainedBonus } from '../helpers';
 

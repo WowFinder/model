@@ -1,6 +1,6 @@
 import { Aura, BonusType } from '@wowfinder/ts-enums';
-import { Bonus, ResistBonus, StatsBonus } from 'Character/Bonus';
-import { fillResistBonus } from 'Character/Bonus/ResistBonus';
+import { Bonus, ResistBonus, StatsBonus } from '../../../Character/Bonus';
+import { fillResistBonus } from '../../../Character/Bonus/ResistBonus';
 import { AuraBonus } from './base';
 
 const auraBonuses: { [key in Aura]: AuraBonus } = {

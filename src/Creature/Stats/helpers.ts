@@ -1,5 +1,5 @@
 import { sum } from '@wowfinder/ts-utils';
-import { Mass } from 'Scalar';
+import { Mass } from '../../Scalar';
 import { MassUnit } from '@wowfinder/ts-enums';
 import { RawStats } from '@wowfinder/asset-schemas';
 

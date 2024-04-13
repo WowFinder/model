@@ -1,8 +1,8 @@
 import { RawStats } from '@wowfinder/asset-schemas';
 import { Stat } from '@wowfinder/ts-enums';
-import { zeroDefault } from 'Creature/Stats';
+import { zeroDefault } from '../../Creature/Stats';
 import { FunctionBasedRequirement } from './base';
-import type { Character } from 'Character';
+import type { Character } from '../';
 import type { Requirement } from './base';
 
 class MinStatsRequirement implements RawStats, Requirement<RawStats> {

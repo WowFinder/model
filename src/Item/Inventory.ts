@@ -1,10 +1,10 @@
 import { MassUnit } from '@wowfinder/ts-enums';
 import { JsonValue, sum } from '@wowfinder/ts-utils';
-import { convertMass } from 'Scalar/Mass';
+import { convertMass } from '../Scalar/Mass';
 import { Gear } from './Gear';
+import { Money } from './Money';
 import { Item } from './base';
 import { buildItem } from './builders';
-import { Money } from './Money';
 
 interface InventoryBuilder {
     money?: number;

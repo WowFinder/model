@@ -1,7 +1,7 @@
 import { DamageValue } from '../DamageValue';
 
 import type { DamageComponentValueBuilder } from '../DamageComponent';
-import { mockMindBurnFullDamageTypes } from '__mocks__';
+import { mockMindBurnFullDamageTypes } from '../../__mocks__';
 
 describe('DamageValue', () => {
     const testDamageComponentValueBuilder: DamageComponentValueBuilder = {

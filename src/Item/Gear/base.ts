@@ -1,10 +1,9 @@
-// import { ByKeyRecursive, forceDataLoadKeySRecursive } from '@wowfinder/ts-utils';
 import { BonusType, Size } from '@wowfinder/ts-enums';
-import { Bonus, BonusProvider, MultiBonus } from 'Character/Bonus';
-import { Mass, Weight } from 'Scalar';
+import { Bonus, BonusProvider, MultiBonus } from '../../Character/Bonus';
+import { Mass, Weight } from '../../Scalar';
 import { Money } from '../Money';
 import { Item, ItemBuilder } from '../base';
-import { buildShape, explodeShape, Shape } from './Slot';
+import { Shape, buildShape, explodeShape } from './Slot';
 
 interface GearBuilder extends ItemBuilder {
     shape: string[];
@@ -85,20 +84,12 @@ class Gear extends Item implements BonusProvider {
         return new Gear(Gear.preBuild(raw));
     }
 
-    // static #loaded: ByKeyRecursive<Gear> | null = null;
-
+    /** @deprecated */
     static load(): any {
         throw new Error('Not implemented.');
     }
-
-    /* static load(builder: (raw: any) => Gear): ByKeyRecursive<Gear> {
-        return (this.#loaded ||= forceDataLoadKeySRecursive<Gear>(
-            window.Main.asset('Items/gear'),
-            builder,
-        ));
-    } */
 }
 
-export type { Weight, GearBuilder };
+export type { GearBuilder };
 
 export { Gear };

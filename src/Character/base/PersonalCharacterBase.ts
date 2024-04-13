@@ -1,5 +1,8 @@
 /* eslint-disable deprecation/deprecation */
-import { PersonalDetails, importPersonalDetails } from 'Creature/Personal';
+import {
+    PersonalDetails,
+    importPersonalDetails,
+} from '../../Creature/Personal';
 import { OverridableCharacterBase } from './OverridableCharacterBase';
 import {
     CharacterPersonalExport,

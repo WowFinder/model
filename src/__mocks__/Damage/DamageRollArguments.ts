@@ -1,4 +1,4 @@
-import { DamageRollArguments } from 'Damage/DamageRollArguments';
+import { DamageRollArguments } from '../../Damage/DamageRollArguments';
 import {
     defaultStatsMock,
     goodFinesseStatsMock,

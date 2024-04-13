@@ -1,6 +1,6 @@
-import type { DamageTypes } from 'Damage/DamageType';
+import type { DamageTypes } from '../../../../Damage/DamageType';
+import { Mass, Time } from '../../../../Scalar';
 import { CraftableConsumable, CraftableConsumableBuilder } from '../base';
-import { Mass, Time } from 'Scalar';
 
 interface WeaponStoneBuilder extends CraftableConsumableBuilder {
     bonus: number;
@@ -47,4 +47,4 @@ abstract class WeaponStone extends CraftableConsumable {
 
 type TypedWeaponStoneBuilder = Omit<WeaponStoneBuilder, 'types'>;
 
-export { WeaponStone, WeaponStoneBuilder, TypedWeaponStoneBuilder };
+export { TypedWeaponStoneBuilder, WeaponStone, WeaponStoneBuilder };

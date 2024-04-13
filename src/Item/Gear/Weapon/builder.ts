@@ -6,7 +6,7 @@ import {
     WeaponProficiency,
     WeaponRank,
 } from '@wowfinder/ts-enums';
-import { DamageSpec, makeFullDamageTypes } from 'Damage';
+import { DamageSpec, makeFullDamageTypes } from '../../../Damage';
 import { Gear, GearBuilder } from '../base';
 import { Range } from './helpers';
 

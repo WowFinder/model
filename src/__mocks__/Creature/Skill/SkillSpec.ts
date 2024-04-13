@@ -1,5 +1,5 @@
 import { Skill, Stat } from '@wowfinder/ts-enums';
-import { SkillSpecBuilder } from 'Creature/Skill/builders';
+import { SkillSpecBuilder } from '../../../Creature/Skill/builders';
 
 const minimalSkillSpecBuilderMock: SkillSpecBuilder = {
     key: Skill.acrobatics,

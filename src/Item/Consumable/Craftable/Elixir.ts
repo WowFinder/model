@@ -1,8 +1,8 @@
-import { Mass, Time } from 'Scalar';
-import { Bonus, BonusBuilder } from 'Character/Bonus';
-import { CraftableConsumable, CraftableConsumableBuilder } from './base';
-import { Consumable } from '../base';
 import { BonusType } from '@wowfinder/ts-enums';
+import { Bonus, BonusBuilder } from '../../../Character/Bonus';
+import { Mass, Time } from '../../../Scalar';
+import { Consumable } from '../base';
+import { CraftableConsumable, CraftableConsumableBuilder } from './base';
 
 interface ElixirBuilder extends CraftableConsumableBuilder {
     duration: string;
@@ -43,4 +43,4 @@ class Elixir extends CraftableConsumable {
     }
 }
 
-export { ElixirBuilder, Elixir };
+export { Elixir, ElixirBuilder };

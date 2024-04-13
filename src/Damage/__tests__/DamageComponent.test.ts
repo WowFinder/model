@@ -6,7 +6,7 @@ import {
     rollArgsSimple,
     mockMindBurnFullDamageTypes,
     damageComponentSpecBuilder,
-} from '__mocks__';
+} from '../../__mocks__';
 
 describe('DamageComponentValue', () => {
     it('should initialize with the provided damage types and total', () => {

@@ -1,5 +1,5 @@
-import type { Character } from 'Character';
-import { CharacterOverride } from 'Character/base/CharacterOverride';
+import type { Character } from '../../../Character';
+import { CharacterOverride } from '../../../Character/base/CharacterOverride';
 import type { ShapeshiftBuilder } from '../base';
 import { Shapeshift } from '../base';
 

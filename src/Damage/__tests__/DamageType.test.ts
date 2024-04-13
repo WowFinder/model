@@ -3,7 +3,7 @@ import { buildFullDamageTypes, makeFullDamageTypes } from '../DamageType';
 import {
     mockMindBurnFullDamageTypes,
     mockMindBurnPartialDamageTypes,
-} from '__mocks__';
+} from '../../__mocks__';
 describe('DamageType', () => {
     describe('makeFullDamageTypes', () => {
         it('should build a full damage type', () => {

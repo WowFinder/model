@@ -1,6 +1,6 @@
-import { Feat } from 'Character/Feats/Feat';
-import type { FeatSpec } from 'Character/Feats/FeatSpec';
-import { MagicFeat } from 'Character/Feats/core/magic';
+import { Feat } from '../../Feat';
+import type { FeatSpec } from '../../FeatSpec';
+import { MagicFeat } from '../../core/magic';
 import { build } from './helpers';
 import { magicCraftingFeats } from './magicCraft';
 import { metaMagicFeats } from './metaMagic';

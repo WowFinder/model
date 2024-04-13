@@ -1,5 +1,5 @@
 import type { Counter } from '@wowfinder/ts-utils';
-import type { Time } from 'Scalar';
+import type { Time } from '../Scalar';
 
 interface SleepProfile {
     minimumSleepTime: Time;

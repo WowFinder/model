@@ -13,7 +13,7 @@ import {
     EffectiveCasterLevels,
     buildCasterLevels,
     zeroCasterLevel,
-} from 'Magic';
+} from '../../Magic';
 import { Size } from '@wowfinder/ts-enums';
 import { RawStats } from '@wowfinder/asset-schemas';
 

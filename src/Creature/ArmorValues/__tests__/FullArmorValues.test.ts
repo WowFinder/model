@@ -3,7 +3,7 @@ import {
     mockArmorValuesBuilder,
     mockFullArmorValuesBuilder,
     expectedTotalsForArmorValuesMocks,
-} from '__mocks__';
+} from '../../../__mocks__';
 import { FullArmorValues } from '../FullArmorValues';
 
 describe('FullArmorValues', () => {

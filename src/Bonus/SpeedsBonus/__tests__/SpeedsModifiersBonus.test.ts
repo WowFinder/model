@@ -3,7 +3,7 @@ import { SpeedsModifiersBonus } from '../SpeedsModifiersBonus';
 import {
     defaultSpeedsModifiersBonusBuilder,
     fullSpeedsModifiersBonusBuilder,
-} from '__mocks__';
+} from '../../../__mocks__';
 
 describe('SpeedsModifiersBonus', () => {
     let defaultSpeedsModifiersBonus: SpeedsModifiersBonus;

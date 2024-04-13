@@ -1,5 +1,5 @@
 import { ArmorValues } from '../ArmorValues';
-import { mockArmorValuesBuilder } from '__mocks__';
+import { mockArmorValuesBuilder } from '../../../__mocks__';
 
 describe('ArmorValues', () => {
     it('should build an ArmorValues object with default values', () => {
