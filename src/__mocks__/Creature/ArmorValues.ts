@@ -1,7 +1,7 @@
 import {
     ArmorValuesBuilder,
     FullArmorValuesBuilder,
-} from 'Creature/ArmorValues/builder';
+} from '../../Creature/ArmorValues/builder';
 
 const mockArmorValuesBuilder: ArmorValuesBuilder = {
     armor: 1,

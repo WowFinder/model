@@ -1,5 +1,5 @@
-import { Character } from 'Character';
-import { CharacterOverride } from 'Character/base';
+import { Character } from '../../../Character';
+import { CharacterOverride } from '../../../Character/base';
 import { Shapeshift, ShapeshiftBuilder } from '../base';
 
 class MoonkinForm extends Shapeshift {

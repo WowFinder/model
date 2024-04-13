@@ -1,7 +1,7 @@
 import { Skill } from '@wowfinder/ts-enums';
 import { Quantified, assertDefined } from '@wowfinder/ts-utils';
-import type { Item } from 'Item/base';
-import { Time } from 'Scalar';
+import { Time } from '../../Scalar';
+import type { Item } from '../base';
 import { ItemCollection } from './ItemCollection';
 import type { RecipeBuilder } from './RecipeBuilder';
 

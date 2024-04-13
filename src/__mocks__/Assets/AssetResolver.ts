@@ -1,18 +1,18 @@
 import { AssetType } from '@wowfinder/ts-enums';
-import { Adventure } from 'Adventure';
-import { AsyncAssetResolver } from 'Assets/AssetResolver';
-import { Class } from 'Creature/Class';
-import { Race } from 'Creature/Race';
-import { Faction } from 'Faction';
-import { Item } from 'Item';
-import { Spell, SpellList } from 'Magic';
+import { Adventure } from '../../Adventure';
+import { AsyncAssetResolver } from '../../Assets/AssetResolver';
+import { Class } from '../../Creature/Class';
+import { Race } from '../../Creature/Race';
+import { Faction } from '../../Faction';
+import { Item } from '../../Item';
+import { Spell, SpellList } from '../../Magic';
 import {
     mockArcaneClassRawAsset,
     mockDivineClassRawAsset,
     mockMeleeClassRawAsset,
     mockStealthClassRawAsset,
-} from '__mocks__/Creature/Class';
-import { mockedRaceRawAsset } from '__mocks__/Creature/race';
+} from '../Creature/Class';
+import { mockedRaceRawAsset } from '../Creature/race';
 
 function noAsset(type: AssetType, key: string): never {
     throw new Error(`No asset found for ${type} with key ${key}`);

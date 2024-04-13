@@ -1,6 +1,6 @@
 import { RawStats } from '@wowfinder/asset-schemas';
 import { RawCreatureAsset } from '@wowfinder/asset-schemas/dist/Creature/base';
-import type { AsyncAssetResolver } from 'Assets/AssetResolver';
+import type { AsyncAssetResolver } from '../Assets/AssetResolver';
 import type { ClassEntry, ClassEntries } from './Class';
 import type { Race } from './Race';
 import { PersonalDetails, importPersonalDetails } from './Personal';

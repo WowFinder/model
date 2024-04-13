@@ -6,7 +6,7 @@ import {
     assertDefined,
     toRoman,
 } from '@wowfinder/ts-utils';
-import type { ActionTime } from 'Action/ActionTime';
+import type { ActionTime } from '../../Action/ActionTime';
 import { fullParseSchool } from '../School';
 import type { SpellDuration } from './Duration';
 import type { SpellRange } from './Range';

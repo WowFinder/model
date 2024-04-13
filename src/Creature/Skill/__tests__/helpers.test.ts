@@ -2,7 +2,7 @@ import { Skill, Stat } from '@wowfinder/ts-enums';
 import { classTrainedBonus, computeSkillTotal } from '../helpers';
 import { mkCraft, mkLore, mkPerform, mkProfession, mkSkill } from '../makers';
 import { SkillSpec } from '../SkillSpec';
-import { baseDefault } from 'Creature/Stats/helpers';
+import { baseDefault } from '../../Stats/helpers';
 describe('Skill helpers', () => {
     describe('mkSkill', () => {
         it('should return a SkillSpec', () => {

@@ -1,5 +1,5 @@
 import { ArmorFlags, ArmorType } from '@wowfinder/ts-enums';
-import { MultiBonus } from 'Character/Bonus';
+import { MultiBonus } from '../../../Character/Bonus';
 import { Gear } from '../base';
 import { ArmorBuilder, armorPreBuild } from './builder';
 

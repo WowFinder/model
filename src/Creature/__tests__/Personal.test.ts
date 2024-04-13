@@ -1,6 +1,6 @@
 import { TimeUnit } from '@wowfinder/ts-enums';
 import { personalDefaults, importPersonalDetails } from '../Personal';
-import { rawBaseCreatureFull } from '__mocks__';
+import { rawBaseCreatureFull } from '../../__mocks__';
 const minimalBuilder = {
     fullName: personalDefaults.fullName,
 };

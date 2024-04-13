@@ -1,5 +1,5 @@
 import { LengthUnit } from '@wowfinder/ts-enums';
-import { Length } from 'Scalar';
+import { Length } from '../../../Scalar';
 
 type Range = number | Length;
 function asFeet(r: Range): Length {
@@ -8,5 +8,5 @@ function asFeet(r: Range): Length {
         : r.convert(LengthUnit.foot);
 }
 
-export type { Range };
 export { asFeet };
+export type { Range };

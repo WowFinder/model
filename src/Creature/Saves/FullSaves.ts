@@ -1,5 +1,5 @@
 import type { RawSaves } from '@wowfinder/asset-schemas';
-import { StatsBlock } from 'Creature/Stats/StatsBlock';
+import { StatsBlock } from '../Stats/StatsBlock';
 import { SaveBreakdowns, SaveBreakdown } from './SaveBreakdown';
 import { fillSaves } from './helpers';
 

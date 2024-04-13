@@ -2,7 +2,7 @@ import type {
     ModeSpellPowerBonusBuilder,
     SchoolSpellPowerBonusBuilder,
     SubSchoolSpellPowerBonusBuilder,
-} from 'Bonus';
+} from '../../Bonus';
 
 const defaultBuilder = {} as const;
 

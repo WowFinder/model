@@ -1,10 +1,10 @@
-import Race from 'Creature/Race';
+import Race from '../Race';
 import { CreatureBase } from '../CreatureBase';
 import {
     rawBaseCreatureMinimal,
     // rawBaseCreatureExpanded,
     mockAssetResolver,
-} from '__mocks__';
+} from '../../__mocks__';
 
 class CreatureBaseTestingImplementation extends CreatureBase {}
 

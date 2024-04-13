@@ -1,5 +1,5 @@
 import { Rarity } from '@wowfinder/ts-enums';
-import type { Mass } from 'Scalar';
+import type { Mass } from '../Scalar';
 import type { Money } from './Money';
 
 interface ItemBuilder {

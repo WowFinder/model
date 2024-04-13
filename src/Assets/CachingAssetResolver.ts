@@ -1,8 +1,8 @@
-import type { Adventure } from 'Adventure';
-import type { Class, Race } from 'Creature';
-import type { Faction } from 'Faction';
-import type { Item } from 'Item';
-import type { Spell, SpellList } from 'Magic';
+import type { Adventure } from '../Adventure';
+import type { Class, Race } from '../Creature';
+import type { Faction } from '../Faction';
+import type { Item } from '../Item';
+import type { Spell, SpellList } from '../Magic';
 import { AsyncAssetResolver } from './AssetResolver';
 import { ResolvableAssetType } from './base';
 

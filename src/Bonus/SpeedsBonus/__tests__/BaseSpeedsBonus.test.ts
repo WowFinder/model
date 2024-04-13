@@ -3,7 +3,7 @@ import {
     emptyBaseSpeedsBonusBuilder,
     defaultBaseSpeedsBonusBuilder,
     fullBaseSpeedsBonusBuilder,
-} from '__mocks__';
+} from '../../../__mocks__';
 
 describe('BaseSpeedsBonus', () => {
     let emptyBaseSpeedsBonus: BaseSpeedsBonus;

@@ -1574,9 +1574,9 @@ __metadata:
   linkType: hard
 
 "@wowfinder/ts-utils@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "@wowfinder/ts-utils@npm:0.1.2"
-  checksum: 10c0/4b134849f760c2025a391b2c8cc081b8abd82bd575047661572da789914263b5f0f76b16b8f74cb456dab651d2975619f2ad3f26de97c93e9af247f705cdecd1
+  version: 0.1.4
+  resolution: "@wowfinder/ts-utils@npm:0.1.4"
+  checksum: 10c0/74df314e139dac4054f02caf6dc50f906a1496b143da7479b035c9175a2aa17df23b3951a11059cf79157783b42dd725cba1e38d804870a1d8d21c8c15be98bd
   languageName: node
   linkType: hard
 

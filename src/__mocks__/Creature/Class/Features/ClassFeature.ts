@@ -1,7 +1,7 @@
 import type {
     ClassFeature,
     ClassFeaturesCondensed,
-} from 'Creature/Class/Features';
+} from '../../../../Creature/Class/Features';
 
 const simpleMartialClassFeatureListMock: ClassFeature[] = [
     'bonusCombatFeat',

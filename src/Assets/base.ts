@@ -1,11 +1,11 @@
 import { AssetType } from '@wowfinder/ts-enums';
 import { ForcedKeyResolver } from '@wowfinder/ts-utils';
-import type { Adventure } from 'Adventure';
-import type { Class } from 'Creature/Class';
-import type { Race } from 'Creature/Race';
-import type { Faction } from 'Faction';
-import type { Item } from 'Item';
-import type { Spell, SpellList } from 'Magic';
+import type { Adventure } from '../Adventure';
+import type { Class } from '../Creature/Class';
+import type { Race } from '../Creature/Race';
+import type { Faction } from '../Faction';
+import type { Item } from '../Item';
+import type { Spell, SpellList } from '../Magic';
 
 type ResolvableAssetType = Exclude<AssetType, AssetType.characters>;
 

@@ -1,6 +1,6 @@
 import { type FlyManeuverability } from '@wowfinder/ts-enums';
 import { sum } from '@wowfinder/ts-utils';
-import { Speed, commonSpeedUnits, encumberedRaw } from 'Scalar';
+import { Speed, commonSpeedUnits, encumberedRaw } from '../Scalar';
 
 interface SpeedsProfile {
     baseSpeed: Speed;
@@ -72,5 +72,5 @@ function buildSpeedsProfile(data: SpeedsProfileBuilder): SpeedsProfile {
     return new SpeedsProfileImpl(data);
 }
 
-export type { SpeedsProfile };
 export { buildSpeedsProfile };
+export type { SpeedsProfile };

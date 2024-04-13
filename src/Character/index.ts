@@ -45,7 +45,7 @@ import { buildStats, checkClass, checkRace } from './helpers';
 import Race from '../Creature/Race';
 import { Resistances } from './Resistances';
 import { FullSaves, zeroSave } from '../Creature/Saves';
-import { statMod, StatsBlock } from 'Creature/Stats';
+import { statMod, StatsBlock } from '../Creature/Stats';
 
 /** @deprecated */
 type Characters = { [key: string]: Character };

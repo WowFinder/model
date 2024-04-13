@@ -1,5 +1,5 @@
-import { Time } from 'Scalar';
 import { Debugger, StringFormatter } from '@wowfinder/ts-utils';
+import { Time } from '../../Scalar';
 
 type FixedSpellDuration = {
     durationType: 'fixed';

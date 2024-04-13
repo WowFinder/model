@@ -1,6 +1,6 @@
 import type { Size } from '@wowfinder/ts-enums';
-import type { PersonalDetails } from 'Creature/Personal/builders';
-import type { Shape } from 'Item';
+import type { PersonalDetails } from '../Creature/Personal/builders';
+import type { Shape } from '../Item';
 import type { ArmorProfile } from './ArmorProfile';
 import type { BaseAttackProfile } from './BaseAttackProfile';
 import type { ProgressionProfile } from './ProgressionProfile';

@@ -1,4 +1,4 @@
-import { EffectiveCasterLevels } from 'Magic';
+import { EffectiveCasterLevels } from '../../Magic';
 import { ClassFeature } from './Features';
 import { Skill } from '@wowfinder/ts-enums';
 

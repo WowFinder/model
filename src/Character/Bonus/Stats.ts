@@ -1,7 +1,7 @@
 import { RawStats } from '@wowfinder/asset-schemas';
 import { Stat } from '@wowfinder/ts-enums';
 import { sum } from '@wowfinder/ts-utils';
-import { zeroDefault } from 'Creature/Stats';
+import { zeroDefault } from '../../Creature/Stats';
 
 export default class StatsBonus {
     #values: RawStats;

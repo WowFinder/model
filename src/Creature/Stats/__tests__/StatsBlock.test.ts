@@ -3,7 +3,7 @@ import {
     meleeBonusesStatsMock,
     mixedBonusStatsMock,
     mixedStatsMock,
-} from '__mocks__';
+} from '../../../__mocks__';
 import {
     addStatSets,
     baseDefault,

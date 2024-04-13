@@ -1,7 +1,7 @@
-import { mockedRaceRawAsset } from '__mocks__/Creature/race';
+import { mockedRaceRawAsset } from '../../../__mocks__/Creature/race';
 import { Race } from '../index';
 import { Alignment, Languages, Skill, Stat } from '@wowfinder/ts-enums';
-import { defaultSpeedUnit } from 'Creature/Speeds';
+import { defaultSpeedUnit } from '../../Speeds';
 
 describe('Race', () => {
     it('should be able to create a new instance', () => {

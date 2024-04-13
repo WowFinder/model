@@ -1,7 +1,7 @@
 import {
     simpleMartialClassFeatureListMock,
     simpleMartialClassFeatureCountsMock,
-} from '__mocks__';
+} from '../../../../__mocks__';
 import { CondensedClassFeatures, ClassFeature } from '../';
 
 describe('CondensedClassFeatures', () => {

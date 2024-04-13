@@ -1,5 +1,5 @@
 import { Size } from '@wowfinder/ts-enums';
-import { PartialStatBlock } from 'Creature/Stats';
+import { PartialStatBlock } from '../Stats';
 
 interface ArmorValuesBuilder {
     /** @deprecated use `gear` instead */

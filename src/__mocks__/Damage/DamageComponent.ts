@@ -1,5 +1,5 @@
 import { Stat } from '@wowfinder/ts-enums';
-import { DamageComponentSpecBuilder } from 'Damage';
+import { DamageComponentSpecBuilder } from '../../Damage';
 import { mockMindBurnFullDamageTypes } from './DamageType';
 
 const damageComponentSpecBuilder: DamageComponentSpecBuilder = {
