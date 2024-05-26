@@ -1,5 +1,5 @@
 import { RawStats } from '@wowfinder/asset-schemas';
-import { RawCreatureAsset } from '@wowfinder/asset-schemas/dist/Creature/base';
+import { RawCreatureAsset } from '@wowfinder/asset-schemas/Creature/base';
 import type { AsyncAssetResolver } from '../Assets/AssetResolver';
 import type { ClassEntry, ClassEntries } from './Class';
 import type { Race } from './Race';
