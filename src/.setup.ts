@@ -8,7 +8,7 @@ import path from 'path';
 function writeBufferSync(filePath: string[], raw: string): void {
     fs.writeFileSync(
         path.resolve(__dirname, ...filePath),
-        Buffer.from(raw, 'utf-8'),
+        Buffer.from(raw, 'utf-8').toString(),
     );
 }
 

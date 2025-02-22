@@ -1,17 +1,17 @@
 import { ArmorValuesBuilder } from './builder';
 
 class ArmorValues {
-    #armor: number;
-    #shield: number;
-    #dodge: number;
-    #natural: number;
-    #deflection: number;
-    #misc: number;
-    #miscPhysical: number; // Misc bonus - Physical (not touch)
-    #miscEvasion: number; // Misc bonus - Evasion (not ff)
-    #temporary: number;
-    #temporaryPhysical: number; // Temp bonus - Physical (not touch)
-    #temporaryEvasion: number; // Temp bonus - Evasion (not ff)
+    readonly #armor: number;
+    readonly #shield: number;
+    readonly #dodge: number;
+    readonly #natural: number;
+    readonly #deflection: number;
+    readonly #misc: number;
+    readonly #miscPhysical: number; // Misc bonus - Physical (not touch)
+    readonly #miscEvasion: number; // Misc bonus - Evasion (not ff)
+    readonly #temporary: number;
+    readonly #temporaryPhysical: number; // Temp bonus - Physical (not touch)
+    readonly #temporaryEvasion: number; // Temp bonus - Evasion (not ff)
 
     constructor({
         /** @deprecated */
