@@ -14,8 +14,8 @@ interface ProgressionProfileBuilder {
 }
 
 class ProgressionProfileImpl implements ProgressionProfile {
-    #xp: number;
-    #classes: ClassEntries;
+    readonly #xp: number;
+    readonly #classes: ClassEntries;
 
     constructor(data: ProgressionProfileBuilder) {
         this.#xp = data.xp;

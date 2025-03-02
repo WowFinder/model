@@ -29,13 +29,13 @@ function getFirstDefined<T>(
 }
 
 class Spell extends SpellBase {
-    #key: string;
-    #ranks: SpellRank[];
-    #subSchool?: SubSchool;
-    #school: School;
-    #descriptors: Set<SpellDescriptor>;
-    #components: SpellComponent[];
-    #flags: Set<SpellFlag>;
+    readonly #key: string;
+    readonly #ranks: SpellRank[];
+    readonly #subSchool?: SubSchool;
+    readonly #school: School;
+    readonly #descriptors: Set<SpellDescriptor>;
+    readonly #components: SpellComponent[];
+    readonly #flags: Set<SpellFlag>;
 
     constructor({
         key,

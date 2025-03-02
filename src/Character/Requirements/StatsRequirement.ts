@@ -6,7 +6,7 @@ import type { Character } from '../';
 import type { Requirement } from './base';
 
 class MinStatsRequirement implements RawStats, Requirement<RawStats> {
-    #min: RawStats;
+    readonly #min: RawStats;
     constructor(min: Partial<RawStats>) {
         this.#min = { ...zeroDefault, ...min };
     }
@@ -42,7 +42,7 @@ class MinStatsRequirement implements RawStats, Requirement<RawStats> {
     }
 }
 class MaxStatsRequirement implements RawStats, Requirement<RawStats> {
-    #max: RawStats;
+    readonly #max: RawStats;
     constructor(max: Partial<RawStats>) {
         this.#max = { ...zeroDefault, ...max };
     }

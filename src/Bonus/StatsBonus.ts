@@ -4,12 +4,12 @@ import { JsonExportable, JsonCompatible } from '@wowfinder/ts-utils';
 import { Stat } from '@wowfinder/ts-enums';
 
 class StatsBonus implements RawStats, JsonExportable<RawStats> {
-    #strength: number;
-    #dexterity: number;
-    #constitution: number;
-    #intelligence: number;
-    #wisdom: number;
-    #charisma: number;
+    readonly #strength: number;
+    readonly #dexterity: number;
+    readonly #constitution: number;
+    readonly #intelligence: number;
+    readonly #wisdom: number;
+    readonly #charisma: number;
 
     constructor(values: Partial<RawStats>) {
         this.#strength = values.strength ?? 0;

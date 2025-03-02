@@ -8,15 +8,15 @@ import { ResolvableAssetType } from './base';
 
 class AsyncCachingAssetResolver extends AsyncAssetResolver {
     backendResolver: AsyncAssetResolver;
-    #adventuresCache = new Map<string, Promise<Adventure>>();
-    #classesCache = new Map<string, Promise<Class>>();
-    #factionsCache = new Map<string, Promise<Faction>>();
-    #itemsCache = new Map<string, Promise<Item>>();
-    #racesCache = new Map<string, Promise<Race>>();
-    #spellsCache = new Map<string, Promise<Spell>>();
-    #spellListsCache = new Map<string, Promise<SpellList>>();
+    readonly #adventuresCache = new Map<string, Promise<Adventure>>();
+    readonly #classesCache = new Map<string, Promise<Class>>();
+    readonly #factionsCache = new Map<string, Promise<Faction>>();
+    readonly #itemsCache = new Map<string, Promise<Item>>();
+    readonly #racesCache = new Map<string, Promise<Race>>();
+    readonly #spellsCache = new Map<string, Promise<Spell>>();
+    readonly #spellListsCache = new Map<string, Promise<SpellList>>();
 
-    #listCache = new Map<ResolvableAssetType, Promise<string[]>>();
+    readonly #listCache = new Map<ResolvableAssetType, Promise<string[]>>();
 
     constructor(backendResolver: AsyncAssetResolver) {
         super();

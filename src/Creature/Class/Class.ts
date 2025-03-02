@@ -17,18 +17,18 @@ import {
 import { RawClassAsset } from '@wowfinder/asset-schemas';
 
 class Class {
-    #key: string;
-    #tier: ClassTier;
-    #maxLevel: number;
-    #hitDie: number;
-    #baseAttackProgression: number;
-    #saves: SavesProgression;
-    #skillRanks: number;
-    #casting: CastingProgression;
-    #startingWealth: number;
-    #features: FeaturesList;
-    #auras: AurasList;
-    #skills: Set<Skill>;
+    readonly #key: string;
+    readonly #tier: ClassTier;
+    readonly #maxLevel: number;
+    readonly #hitDie: number;
+    readonly #baseAttackProgression: number;
+    readonly #saves: SavesProgression;
+    readonly #skillRanks: number;
+    readonly #casting: CastingProgression;
+    readonly #startingWealth: number;
+    readonly #features: FeaturesList;
+    readonly #auras: AurasList;
+    readonly #skills: Set<Skill>;
 
     constructor(rawArgs: RawClassAsset) {
         const args = applyClassDefaults(rawArgs);

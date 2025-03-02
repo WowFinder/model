@@ -6,11 +6,11 @@ type SpeedsModifiersBonusBuilder = Partial<SpeedsModifiers>;
 class SpeedsModifiersBonus
     implements SpeedsModifiers, JsonExportable<SpeedsModifiers>
 {
-    #base: number;
-    #burrow: number;
-    #climb: number;
-    #swim: number;
-    #fly: number;
+    readonly #base: number;
+    readonly #burrow: number;
+    readonly #climb: number;
+    readonly #swim: number;
+    readonly #fly: number;
 
     constructor({
         base = 0,

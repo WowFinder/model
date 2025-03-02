@@ -9,8 +9,8 @@ interface SpeedUnitBuilder {
 }
 
 class SpeedUnit {
-    #length: LengthUnit;
-    #time: TimeUnit;
+    readonly #length: LengthUnit;
+    readonly #time: TimeUnit;
     constructor({ length, time }: SpeedUnitBuilder) {
         this.#length = length;
         this.#time = time;

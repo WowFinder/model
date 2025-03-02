@@ -17,12 +17,12 @@ const stackableBonusTypes: { [key in BonusType]: boolean } = {
 } as const;
 
 class MultiBonus implements FullMultiBonus, JsonExportable<MultiBonusBuilder> {
-    #gear: SimpleBonus;
-    #enhancement: SimpleBonus;
-    #deflection: SimpleBonus;
-    #natural: SimpleBonus;
-    #temporal: SimpleBonus;
-    #aura: SimpleBonus;
+    readonly #gear: SimpleBonus;
+    readonly #enhancement: SimpleBonus;
+    readonly #deflection: SimpleBonus;
+    readonly #natural: SimpleBonus;
+    readonly #temporal: SimpleBonus;
+    readonly #aura: SimpleBonus;
 
     constructor(builder: MultiBonusBuilder = {}) {
         this.#gear = new SimpleBonus(builder[BonusType.gear]);

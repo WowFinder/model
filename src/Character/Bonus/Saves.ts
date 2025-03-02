@@ -2,9 +2,9 @@ import { RawSaves } from '@wowfinder/asset-schemas';
 import { sum } from '@wowfinder/ts-utils';
 
 export default class SavesBonus implements RawSaves {
-    #fortitude: number;
-    #reflexes: number;
-    #will: number;
+    readonly #fortitude: number;
+    readonly #reflexes: number;
+    readonly #will: number;
 
     constructor(raw?: Partial<RawSaves>) {
         this.#fortitude = raw?.fortitude ?? 0;
