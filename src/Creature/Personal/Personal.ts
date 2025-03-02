@@ -4,17 +4,17 @@ import type { Length, Mass, Time } from '../../Scalar';
 import * as builders from './builders';
 
 class PersonalDetailsImpl implements builders.PersonalDetails {
-    #fullName: string;
-    #faith: string;
-    #origin: string;
-    #hair: string;
-    #eyes: string;
-    #skin: string;
-    #gender: string;
-    #alignment: Alignment;
-    #height: Length;
-    #weight: Mass;
-    #age: Time;
+    readonly #fullName: string;
+    readonly #faith: string;
+    readonly #origin: string;
+    readonly #hair: string;
+    readonly #eyes: string;
+    readonly #skin: string;
+    readonly #gender: string;
+    readonly #alignment: Alignment;
+    readonly #height: Length;
+    readonly #weight: Mass;
+    readonly #age: Time;
 
     constructor(builder: builders.PersonalDetailsBuilder) {
         this.#fullName = builder.fullName;
