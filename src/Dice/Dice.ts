@@ -2,9 +2,9 @@ import type { DiceBuilder } from './helpers';
 import { average, make, max, min } from './helpers';
 
 class Dice {
-    #sides: number;
-    #qtty: number;
-    #mod: number;
+    readonly #sides: number;
+    readonly #qtty: number;
+    readonly #mod: number;
 
     constructor({ sides, qtty = 1, fixedMod = 0 }: DiceBuilder) {
         this.#sides = sides;
@@ -32,8 +32,6 @@ class Dice {
         } else if (this.#mod < 0) {
             modSuffix = ` - ${m}`;
         }
-        // const modSuffix =
-        //    this.#mod > 0 ? ` + ${m}` : this.#mod < 0 ? ` - ${m}` : '';
         return `${this.#qtty}d${this.#sides}${modSuffix}`;
     }
 

@@ -6,8 +6,8 @@ function pluralize<T>(baseParser: TryParser<T>): TryParser<T> {
 }
 
 class Scalar<T> {
-    #value: number;
-    #unit: T;
+    readonly #value: number;
+    readonly #unit: T;
     constructor({ value, unit }: { value: number; unit: T }) {
         this.#value = value;
         this.#unit = unit;

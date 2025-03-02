@@ -4,10 +4,10 @@ import { ArmorValues } from './ArmorValues';
 import { FullArmorValuesBuilder, FullFromBaseBuilder } from './builder';
 
 class FullArmorValues extends ArmorValues {
-    #strength: number;
-    #dexterity: number;
-    #baseAttack: number;
-    #size: number;
+    readonly #strength: number;
+    readonly #dexterity: number;
+    readonly #baseAttack: number;
+    readonly #size: number;
 
     constructor({
         strength = 0,

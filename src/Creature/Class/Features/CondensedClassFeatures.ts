@@ -13,7 +13,7 @@ type FeaturesList = {
 type ClassFeaturesCondensed = { feature: ClassFeature; count: number }[];
 
 class CondensedClassFeatures {
-    #raw: ClassFeaturesCondensed;
+    readonly #raw: ClassFeaturesCondensed;
     constructor(features: ClassFeature[]) {
         const counts: { [key: string]: number } = {};
         for (const f of features) {

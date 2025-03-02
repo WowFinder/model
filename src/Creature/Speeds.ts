@@ -62,13 +62,13 @@ const wrap: (value: number) => Speed = value =>
     new Speed({ value, unit: defaultSpeedUnit });
 
 class Speeds {
-    #base: number;
-    #fly: number;
-    #swim: number;
-    #burrow: number;
-    #climb: number;
-    #encumberance: boolean;
-    #maneuverablity: FlyManeuverability;
+    readonly #base: number;
+    readonly #fly: number;
+    readonly #swim: number;
+    readonly #burrow: number;
+    readonly #climb: number;
+    readonly #encumberance: boolean;
+    readonly #maneuverablity: FlyManeuverability;
 
     constructor({
         base,

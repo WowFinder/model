@@ -20,15 +20,15 @@ import { RawStats } from '@wowfinder/asset-schemas';
 /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
 /** @deprecated */
 abstract class CharacterBase {
-    #key: string;
-    #featChoices: FeatChoice[];
-    #miscHP?: number;
-    #baseStats: RawStats;
-    #baseResistances: Resistances;
-    #size: Size;
-    #speeds: Speeds;
-    #naturalArmor: number;
-    #casterLevelsBonus: EffectiveCasterLevels;
+    readonly #key: string;
+    readonly #featChoices: FeatChoice[];
+    readonly #miscHP?: number;
+    readonly #baseStats: RawStats;
+    readonly #baseResistances: Resistances;
+    readonly #size: Size;
+    readonly #speeds: Speeds;
+    readonly #naturalArmor: number;
+    readonly #casterLevelsBonus: EffectiveCasterLevels;
 
     constructor(builder: CharacterBaseBuilder) {
         this.#key = builder.key;

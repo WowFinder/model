@@ -13,12 +13,12 @@ interface FullSavesBuilder {
 }
 
 class FullSaves implements SaveBreakdowns {
-    #stats: StatsBlock;
-    #base: RawSaves;
-    #enhancement: RawSaves;
-    #gear: RawSaves;
-    #misc: RawSaves;
-    #temporary: RawSaves;
+    readonly #stats: StatsBlock;
+    readonly #base: RawSaves;
+    readonly #enhancement: RawSaves;
+    readonly #gear: RawSaves;
+    readonly #misc: RawSaves;
+    readonly #temporary: RawSaves;
     constructor({
         stats,
         base,

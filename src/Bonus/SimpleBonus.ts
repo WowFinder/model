@@ -18,17 +18,17 @@ import { BaseSpeedsBonus, SpeedsModifiersBonus } from './SpeedsBonus';
 type Zeroable = { isZero: boolean };
 
 class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
-    #hp: number;
-    #armorClass: number;
-    #stats: StatsBonus;
-    #skills: SkillsBonus;
-    #resistances: ResistancesBonus;
-    #vitalNeeds: VitalNeedsBonus;
-    #senses: SensesBonus;
-    #spellPower: SpellPowerBonus;
-    #feats: FeatsBonus;
-    #baseSpeeds: BaseSpeedsBonus;
-    #speedsModifiers: SpeedsModifiersBonus;
+    readonly #hp: number;
+    readonly #armorClass: number;
+    readonly #stats: StatsBonus;
+    readonly #skills: SkillsBonus;
+    readonly #resistances: ResistancesBonus;
+    readonly #vitalNeeds: VitalNeedsBonus;
+    readonly #senses: SensesBonus;
+    readonly #spellPower: SpellPowerBonus;
+    readonly #feats: FeatsBonus;
+    readonly #baseSpeeds: BaseSpeedsBonus;
+    readonly #speedsModifiers: SpeedsModifiersBonus;
 
     constructor({
         hp = 0,

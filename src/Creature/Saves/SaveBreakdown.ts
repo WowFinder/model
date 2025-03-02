@@ -10,12 +10,12 @@ interface SaveBreakdownBuilder {
 }
 
 class SaveBreakdown {
-    #base: number;
-    #stat: number;
-    #enhancement: number;
-    #gear: number;
-    #misc: number;
-    #temporary: number;
+    readonly #base: number;
+    readonly #stat: number;
+    readonly #enhancement: number;
+    readonly #gear: number;
+    readonly #misc: number;
+    readonly #temporary: number;
     constructor({
         base,
         stat,

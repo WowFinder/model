@@ -48,9 +48,9 @@ type Factions = {
 };
 
 class Faction {
-    #key: number;
-    #label: string;
-    #name: string;
+    readonly #key: number;
+    readonly #label: string;
+    readonly #name: string;
 
     constructor({
         key,

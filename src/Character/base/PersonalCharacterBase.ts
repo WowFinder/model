@@ -10,7 +10,7 @@ import {
 } from './builder';
 
 abstract class PersonalCharacterBase extends OverridableCharacterBase {
-    #personal: PersonalDetails; // Formerly: PersonalDetailsBuilder;
+    readonly #personal: PersonalDetails; // Formerly: PersonalDetailsBuilder;
     constructor({ personal, ...rest }: PersonalCharacterBaseBuilder) {
         super(rest);
         this.#personal = importPersonalDetails(personal);

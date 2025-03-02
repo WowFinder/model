@@ -9,9 +9,9 @@ interface SensesBonusBuilder {
 class SensesBonus
     implements SensesBonusBuilder, JsonExportable<SensesBonusBuilder>
 {
-    #darkVision: number;
-    #lowLightVision: boolean;
-    #smell: boolean;
+    readonly #darkVision: number;
+    readonly #lowLightVision: boolean;
+    readonly #smell: boolean;
 
     constructor({
         darkVision = 0,

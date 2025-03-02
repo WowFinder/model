@@ -8,7 +8,7 @@ import {
 import { CastingMode, School, SubSchool } from '@wowfinder/ts-enums';
 
 export default class SpellPowerBonus implements SpellPowerValues<number> {
-    #data: SpellPowerValues<number>;
+    readonly #data: SpellPowerValues<number>;
     constructor(data: SpellPowerValuesPartial<number>) {
         this.#data = fillSpellPowerValues<number>(data, 0);
     }

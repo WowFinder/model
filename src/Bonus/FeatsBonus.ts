@@ -6,7 +6,7 @@ type FeatsBonusBuilder = Feat[];
 const featKeys = Object.keys(Feat).map(key => key as Feat);
 
 class FeatsBonus implements JsonExportable<Feat[]> {
-    #feats: Set<Feat>;
+    readonly #feats: Set<Feat>;
 
     constructor(builder: Iterable<Feat> = []) {
         this.#feats = new Set(builder);

@@ -8,9 +8,9 @@ interface ModeSpellPowerBonusBuilder {
 class ModeSpellPowerBonus
     implements JsonExportable<ModeSpellPowerBonusBuilder>
 {
-    #arcane: number;
-    #divine: number;
-    #spontaneous: number;
+    readonly #arcane: number;
+    readonly #divine: number;
+    readonly #spontaneous: number;
 
     constructor({
         arcane = 0,

@@ -6,8 +6,8 @@ interface SpellSaveBuilder {
 }
 
 class SpellSave implements SpellSaveBuilder {
-    #effect: SpellSaveEffect;
-    #save: Save;
+    readonly #effect: SpellSaveEffect;
+    readonly #save: Save;
     constructor({ effect, save }: SpellSaveBuilder) {
         this.#effect = effect;
         this.#save = save;

@@ -7,12 +7,12 @@ type BaseSpeedsBonusBuilder = Partial<RawSpeeds>;
 class BaseSpeedsBonus
     implements BaseSpeedsBonusBuilder, JsonExportable<BaseSpeedsBonusBuilder>
 {
-    #base?: number;
-    #burrow?: number;
-    #climb?: number;
-    #swim?: number;
-    #fly?: number;
-    #maneuverability?: FlyManeuverability;
+    readonly #base?: number;
+    readonly #burrow?: number;
+    readonly #climb?: number;
+    readonly #swim?: number;
+    readonly #fly?: number;
+    readonly #maneuverability?: FlyManeuverability;
 
     constructor({
         base,

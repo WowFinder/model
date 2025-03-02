@@ -12,17 +12,17 @@ const defaultSaves: RawSaves = {
 };
 
 export default class Race {
-    #key: string;
-    #size: Size;
-    #statMods: RawStats;
-    #skillMods: SkillSet;
-    #bonusSkillRanks: number;
-    #bonusStartingFeats: number;
-    #initialLanguages: Languages[];
-    #additionalLanguages: Languages[];
-    #commonAlignments: Alignment[];
-    #speeds: Speeds;
-    #saves: RawSaves;
+    readonly #key: string;
+    readonly #size: Size;
+    readonly #statMods: RawStats;
+    readonly #skillMods: SkillSet;
+    readonly #bonusSkillRanks: number;
+    readonly #bonusStartingFeats: number;
+    readonly #initialLanguages: Languages[];
+    readonly #additionalLanguages: Languages[];
+    readonly #commonAlignments: Alignment[];
+    readonly #speeds: Speeds;
+    readonly #saves: RawSaves;
 
     constructor(raw: RawRaceAsset) {
         this.#key = raw.key;

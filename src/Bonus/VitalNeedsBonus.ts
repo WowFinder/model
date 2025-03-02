@@ -11,9 +11,9 @@ class VitalNeedsBonus
 {
     // TODO: retype and implement arithmetics
     // ex: eat should be measured in rations/TimeUnit
-    #breathe: boolean;
-    #eat: boolean;
-    #sleep: boolean;
+    readonly #breathe: boolean;
+    readonly #eat: boolean;
+    readonly #sleep: boolean;
 
     constructor({
         breathe = true,

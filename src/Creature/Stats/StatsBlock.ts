@@ -10,12 +10,12 @@ import {
 } from './helpers';
 
 class StatsBlock {
-    #base: RawStats;
-    #racial: RawStats;
-    #enhance: RawStats;
-    #gear: RawStats;
-    #misc: RawStats;
-    #temp: RawStats;
+    readonly #base: RawStats;
+    readonly #racial: RawStats;
+    readonly #enhance: RawStats;
+    readonly #gear: RawStats;
+    readonly #misc: RawStats;
+    readonly #temp: RawStats;
 
     constructor({
         base = baseDefault,

@@ -16,9 +16,9 @@ type SpellListConstructorArgs = RawSpellListAsset & {
 };
 
 class SpellList {
-    #key: string;
-    #core: boolean;
-    #spells: SpellListLevels;
+    readonly #key: string;
+    readonly #core: boolean;
+    readonly #spells: SpellListLevels;
 
     constructor({
         key,

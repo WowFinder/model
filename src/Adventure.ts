@@ -22,10 +22,10 @@ function combineRewards(rewards: RewardsByCharacter[]): RewardsByCharacter {
 type Adventures = { [key: string]: Adventure };
 
 class Adventure implements JsonExportable<RawAdventureAsset> {
-    #key: string;
-    #title: string;
-    #date: string;
-    #rewards: RewardsByCharacter;
+    readonly #key: string;
+    readonly #title: string;
+    readonly #date: string;
+    readonly #rewards: RewardsByCharacter;
 
     constructor({ key, title, date, rewards }: RawAdventureAsset) {
         this.#key = key;
