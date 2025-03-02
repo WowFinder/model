@@ -1,30 +1,30 @@
 import { RawStats } from '@wowfinder/asset-schemas';
-import { RawCreatureAsset } from '@wowfinder/asset-schemas/Creature/base';
+import {
+    RawClassEntries,
+    RawCreatureAsset,
+} from '@wowfinder/asset-schemas/Creature/base';
 import type { AsyncAssetResolver } from '../Assets/AssetResolver';
 import type { ClassEntry, ClassEntries } from './Class';
 import type { Race } from './Race';
 import { PersonalDetails, importPersonalDetails } from './Personal';
 
 abstract class CreatureBase {
-    #key: string;
-    #baseStats: RawStats;
-    #race: Promise<Race>;
-    #notes: string;
-    #personal: PersonalDetails;
-    #classes: Promise<ClassEntries>;
+    readonly #resolver: AsyncAssetResolver;
+    readonly #key: string;
+    readonly #baseStats: RawStats;
+    readonly #notes: string;
+    readonly #personal: PersonalDetails;
+    readonly #raceKey: string;
+    readonly #classKeys: RawClassEntries;
 
     constructor(raw: RawCreatureAsset, resolver: AsyncAssetResolver) {
         this.#key = raw.key;
         this.#baseStats = { ...raw.baseStats };
-        this.#race = resolver.resolveRace(raw.race);
+        this.#resolver = resolver;
+        this.#raceKey = raw.race;
         this.#notes = raw.notes ?? '';
         this.#personal = importPersonalDetails(raw.personal);
-        this.#classes = Promise.all(
-            (raw.classes ?? []).map(async ({ class: cls, level }) => ({
-                class: await resolver.resolveClass(cls),
-                level,
-            })),
-        );
+        this.#classKeys = raw.classes ?? [];
     }
 
     get key(): string {
@@ -36,7 +36,7 @@ abstract class CreatureBase {
     }
 
     get race(): Promise<Race> {
-        return this.#race;
+        return this.#resolver.resolveRace(this.#raceKey);
     }
 
     get notes(): string {
@@ -48,7 +48,12 @@ abstract class CreatureBase {
     }
 
     get classes(): Promise<ClassEntries> {
-        return this.#classes;
+        return Promise.all(
+            this.#classKeys.map(async entry => ({
+                class: await this.#resolver.resolveClass(entry.class),
+                level: entry.level,
+            })),
+        );
     }
 }
 
