@@ -1,10 +1,11 @@
-import Race from '../Race';
-import { CreatureBase } from '../CreatureBase';
+import { sum } from '@wowfinder/ts-utils';
 import {
-    rawBaseCreatureMinimal,
-    // rawBaseCreatureExpanded,
     mockAssetResolver,
+    rawBaseCreatureExpanded,
+    rawBaseCreatureMinimal,
 } from '../../__mocks__';
+import { ClassEntries, CreatureBase } from '../CreatureBase';
+import Race from '../Race';
 
 class CreatureBaseTestingImplementation extends CreatureBase {}
 
@@ -23,10 +24,7 @@ describe('CreatureBase', () => {
         );
         expect(await instance.classes).toHaveLength(0);
     });
-    /* TODO
-    !! Test disabled until Character/Class is fully covered
-    // import { sum } from '@wowfinder/ts-utils';
-    it('should create an expanded instance', () => {
+    it('should create an expanded instance', async () => {
         const instance = new CreatureBaseTestingImplementation(
             rawBaseCreatureExpanded,
             mockAssetResolver,
@@ -34,14 +32,15 @@ describe('CreatureBase', () => {
         expect(instance.key).toBe('base-creature-mock-expanded');
         expect(instance.notes).toEqual(rawBaseCreatureExpanded.notes);
         expect(instance.baseStats).toEqual(rawBaseCreatureExpanded.baseStats);
-        expect(instance.race instanceof Race).toBe(true);
         expect(instance.personal.alignment).toBe(
             rawBaseCreatureExpanded.personal.alignment,
         );
-        expect(instance.personal.weight).toBe(
+        expect(instance.personal.weight.pounds).toBe(
             rawBaseCreatureExpanded.personal.weight,
         );
-        expect(instance.classes).toHaveLength(4);
-        expect(sum(...instance.classes.map(c => c.level))).toBe(16);
-    }); */
+        expect((await instance.race) instanceof Race).toBe(true);
+        const classes: ClassEntries = await instance.classes;
+        expect(classes).toHaveLength(4);
+        expect(sum(...classes.map(c => c.level))).toBe(16);
+    });
 });
