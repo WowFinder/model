@@ -49,4 +49,4 @@ class GearEnchant extends CraftableConsumable {
     }
 }
 
-export { GearEnchant, GearEnchantBuilder };
+export { GearEnchant, type GearEnchantBuilder };

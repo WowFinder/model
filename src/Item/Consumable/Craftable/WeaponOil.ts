@@ -43,4 +43,4 @@ class WeaponOil extends CraftableConsumable {
     }
 }
 
-export { WeaponOil, WeaponOilBuilder };
+export { WeaponOil, type WeaponOilBuilder };

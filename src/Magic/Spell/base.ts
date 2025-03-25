@@ -55,4 +55,4 @@ abstract class SpellBase implements SpellBaseBuilder {
     }
 }
 
-export { SpellBase, SpellBaseBuilder };
+export { SpellBase, type SpellBaseBuilder };

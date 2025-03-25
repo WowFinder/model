@@ -5,4 +5,4 @@ enum SpecialDamageRollMultiplier {
 
 type DamageRollMultiplier = number | SpecialDamageRollMultiplier;
 
-export { DamageRollMultiplier, SpecialDamageRollMultiplier };
+export { type DamageRollMultiplier, SpecialDamageRollMultiplier };

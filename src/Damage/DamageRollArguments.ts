@@ -8,4 +8,4 @@ interface DamageRollArguments {
     feats?: Feat[];
 }
 
-export { DamageRollArguments };
+export type { DamageRollArguments };

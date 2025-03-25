@@ -75,4 +75,4 @@ function add<T>(
     });
 }
 
-export { converter, makeConverter, Scalar, add };
+export { type converter, makeConverter, Scalar, add };

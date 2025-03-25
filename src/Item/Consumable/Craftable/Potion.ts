@@ -76,4 +76,4 @@ class Potion extends CraftableConsumable {
     }
 }
 
-export { Potion, PotionBuilder, RestoreValues };
+export { Potion, type PotionBuilder, type RestoreValues };

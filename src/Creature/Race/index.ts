@@ -100,4 +100,4 @@ export default class Race {
     }
 }
 
-export { Race, Races };
+export { Race, type Races };

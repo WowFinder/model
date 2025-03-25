@@ -59,4 +59,4 @@ function tryParseSpellDuration(input: string): SpellDuration | undefined {
     return undefined;
 }
 
-export { SpellDuration, stringify, tryParseSpellDuration };
+export { type SpellDuration, stringify, tryParseSpellDuration };

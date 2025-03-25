@@ -85,4 +85,4 @@ function asMoney(value: Money | number): Money {
 }
 
 export type { CoinType };
-export { Money, MoneyBreakdown, displayCoinTypes, asMoney };
+export { Money, type MoneyBreakdown, displayCoinTypes, asMoney };
