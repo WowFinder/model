@@ -28,4 +28,4 @@ abstract class Consumable extends Item {
     }
 }
 
-export { Consumable, ConsumableRawBuilder };
+export { Consumable, type ConsumableRawBuilder };

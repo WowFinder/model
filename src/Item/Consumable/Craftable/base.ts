@@ -30,4 +30,4 @@ abstract class CraftableConsumable extends Consumable {
     }
 }
 
-export { CraftableConsumable, CraftableConsumableBuilder };
+export { CraftableConsumable, type CraftableConsumableBuilder };

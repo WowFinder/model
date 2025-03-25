@@ -74,4 +74,4 @@ function explodeShape(shape: Shape): string[] {
     return res;
 }
 
-export { Shape, Shapes, buildShape, explodeShape };
+export { type Shape, Shapes, buildShape, explodeShape };

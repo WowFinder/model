@@ -91,7 +91,7 @@ function carry(str: number): Mass {
 
 export {
     fillStatSet,
-    PartialStatBlock,
+    type PartialStatBlock,
     addStatSets,
     scaleStatSet,
     baseDefault,

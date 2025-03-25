@@ -51,4 +51,4 @@ abstract class Good extends Item {
     }
 }
 
-export { Good, GoodBuilder, RawGoodBuilder };
+export { Good, type GoodBuilder, type RawGoodBuilder };

@@ -71,4 +71,4 @@ class Food extends CraftableConsumable {
     }
 }
 
-export { Food, FoodBuilder };
+export { Food, type FoodBuilder };

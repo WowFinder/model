@@ -26,4 +26,4 @@ function armorPreBuild(raw: any): ArmorBuilder {
     };
 }
 
-export { ArmorBuilder, armorPreBuild };
+export { type ArmorBuilder, armorPreBuild };

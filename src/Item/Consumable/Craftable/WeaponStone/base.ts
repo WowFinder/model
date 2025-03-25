@@ -47,4 +47,4 @@ abstract class WeaponStone extends CraftableConsumable {
 
 type TypedWeaponStoneBuilder = Omit<WeaponStoneBuilder, 'types'>;
 
-export { TypedWeaponStoneBuilder, WeaponStone, WeaponStoneBuilder };
+export { type TypedWeaponStoneBuilder, WeaponStone, type WeaponStoneBuilder };

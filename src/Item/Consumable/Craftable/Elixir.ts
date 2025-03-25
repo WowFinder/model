@@ -43,4 +43,4 @@ class Elixir extends CraftableConsumable {
     }
 }
 
-export { Elixir, ElixirBuilder };
+export { Elixir, type ElixirBuilder };

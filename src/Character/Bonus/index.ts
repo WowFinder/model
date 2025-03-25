@@ -260,7 +260,7 @@ export type {
 
 export {
     /** @deprecated (use SimpleBonusBuilder instead) */
-    BonusBuilder,
+    type BonusBuilder,
     /** @deprecated (use SimpleBonus instead) */
     Bonus,
     /** @deprecated (use Bonus/MultiBonus instead) */

@@ -14,7 +14,7 @@ interface RewardsByFaction {
     [factionLabel: string]: RewardByCharacter;
 }
 
-export {
+export type {
     RewardByFaction,
     RewardsByCharacter,
     RewardsByFaction,
