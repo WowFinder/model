@@ -16,8 +16,8 @@
         "test:coverage": "jest --coverage",
         "skott:web": "skott -nit --displayMode=webapp --trackThirdPartyDependencies --trackBuiltinDependencies src/",
         "skott:circular": "skott -nit --showCircularDependencies --displayMode=raw",
-        "checks:quick": "npm-run-all -pc lint tsc",
-        "checks:standard": "npm-run-all -pc lint tsc test skott:circular",
+        "checks:quick": "npm-run-all -pc lint build:tsc",
+        "checks:standard": "npm-run-all -pc lint build:tsc test skott:circular",
         "checks:full": "npm-run-all -sc lint:fix format build test:coverage skott:circular",
         "checks:pedantic": "npm-run-all -sc lint format:check build test:coverage skott:circular",
         "build:pre": "rimraf dist",
@@ -61,5 +61,5 @@
         "ts-jest": "^29.3.0",
         "typescript": "^5.8.2"
     },
-    "packageManager": "yarn@4.1.1"
+    "packageManager": "yarn@4.7.0"
 }
