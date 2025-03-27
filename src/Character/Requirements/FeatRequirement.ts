@@ -5,7 +5,7 @@ import { FeatSpec } from '../Feats/FeatSpec';
 import type { Requirement } from './base';
 
 class FeatRequirement implements Requirement<Iterable<FeatSpec>> {
-    #feat: Feat;
+    readonly #feat: Feat;
     constructor(feat: Feat) {
         this.#feat = feat;
     }
@@ -16,7 +16,7 @@ class FeatRequirement implements Requirement<Iterable<FeatSpec>> {
 }
 
 class CharacterFeatRequirement implements Requirement<Character> {
-    #feat: Feat;
+    readonly #feat: Feat;
     constructor(feat: Feat) {
         this.#feat = feat;
     }

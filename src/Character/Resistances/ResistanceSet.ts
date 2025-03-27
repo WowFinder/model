@@ -5,54 +5,54 @@ type ResistancePartialSet = { [key in DamageType]?: number };
 type ResistanceSet = { [key in DamageType]: number };
 
 class ResistanceSetImpl implements ResistanceSet {
-    private _data: ResistanceSet;
+    readonly #data: ResistanceSet;
 
     constructor(source: ResistancePartialSet) {
         const curated: ResistancePartialSet = {};
         for (const t of Object.keys(DamageType)) {
             curated[t as DamageType] = source[t as DamageType] ?? 0;
         }
-        this._data = curated as ResistanceSet;
+        this.#data = curated as ResistanceSet;
     }
 
     get bludgeoning(): number {
-        return this._data.bludgeoning;
+        return this.#data.bludgeoning;
     }
 
     get slashing(): number {
-        return this._data.slashing;
+        return this.#data.slashing;
     }
 
     get piercing(): number {
-        return this._data.piercing;
+        return this.#data.piercing;
     }
 
     get arcane(): number {
-        return this._data.arcane;
+        return this.#data.arcane;
     }
 
     get fire(): number {
-        return this._data.fire;
+        return this.#data.fire;
     }
 
     get cold(): number {
-        return this._data.cold;
+        return this.#data.cold;
     }
 
     get nature(): number {
-        return this._data.nature;
+        return this.#data.nature;
     }
 
     get shadow(): number {
-        return this._data.shadow;
+        return this.#data.shadow;
     }
 
     get holy(): number {
-        return this._data.holy;
+        return this.#data.holy;
     }
 
     get psychic(): number {
-        return this._data.psychic;
+        return this.#data.psychic;
     }
 }
 

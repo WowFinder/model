@@ -5,9 +5,9 @@ interface SensesBuilder {
 }
 
 export default class Senses {
-    #darkVision: number;
-    #lowLightVision: boolean;
-    #smell: boolean;
+    readonly #darkVision: number;
+    readonly #lowLightVision: boolean;
+    readonly #smell: boolean;
 
     constructor({
         darkVision = 0,
@@ -47,15 +47,11 @@ export default class Senses {
     }
 
     static build(raw: any = {}): Senses {
-        return new Senses(
-            Object.assign(
-                {
-                    darkVision: 0,
-                    lowLightVision: false,
-                    smell: false,
-                },
-                raw,
-            ),
-        );
+        return new Senses({
+            ...raw,
+            darkVision: 0,
+            lowLightVision: false,
+            smell: false,
+        });
     }
 }

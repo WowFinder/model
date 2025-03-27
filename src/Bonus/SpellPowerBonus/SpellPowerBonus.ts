@@ -26,9 +26,9 @@ type SpellPowerBonusBuilder = ModeSpellPowerBonusBuilder &
     SubSchoolSpellPowerBonusBuilder;
 
 class SpellPowerBonus implements JsonExportable<SpellPowerBonusBuilder> {
-    #modes: ModeSpellPowerBonus;
-    #schools: SchoolSpellPowerBonus;
-    #subSchools: SubSchoolSpellPowerBonus;
+    readonly #modes: ModeSpellPowerBonus;
+    readonly #schools: SchoolSpellPowerBonus;
+    readonly #subSchools: SubSchoolSpellPowerBonus;
 
     constructor(data: SpellPowerBonusBuilder) {
         this.#modes = new ModeSpellPowerBonus(data);

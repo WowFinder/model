@@ -12,11 +12,11 @@ function parseTime(time: string): Time {
 }
 
 class Recipe {
-    #skill: Skill;
-    #dc: number;
-    #materials: Quantified<Item>[];
-    #time: Time;
-    #output: Quantified<Item>[];
+    readonly #skill: Skill;
+    readonly #dc: number;
+    readonly #materials: Quantified<Item>[];
+    readonly #time: Time;
+    readonly #output: Quantified<Item>[];
     constructor({ skill, dc, materials, time, output }: RecipeBuilder) {
         this.#skill = skill;
         this.#dc = dc;

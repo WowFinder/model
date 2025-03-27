@@ -15,7 +15,7 @@ function asItem(value: Item | string): Item {
 }
 
 class ItemCollection {
-    #items: Quantified<Item>[];
+    readonly #items: Quantified<Item>[];
     constructor(items: ItemCollectionBuilder) {
         this.#items = [];
         asArray(items).forEach(entry => {

@@ -11,8 +11,8 @@ interface GearEnchantBuilder extends CraftableConsumableBuilder {
 }
 
 class GearEnchant extends CraftableConsumable {
-    #bonus: Bonus;
-    #slots: Shape;
+    readonly #bonus: Bonus;
+    readonly #slots: Shape;
 
     constructor({ bonus, slots, ...rest }: GearEnchantBuilder) {
         super(rest);

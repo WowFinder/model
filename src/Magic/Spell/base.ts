@@ -21,11 +21,11 @@ interface SpellBaseBuilder {
 }
 
 abstract class SpellBase implements SpellBaseBuilder {
-    #castingTime?: ActionTime;
-    #range?: SpellRange;
-    #area?: SpellArea;
+    readonly #castingTime?: ActionTime;
+    readonly #range?: SpellRange;
+    readonly #area?: SpellArea;
     // #effect, #targets
-    #duration?: SpellDuration;
+    readonly #duration?: SpellDuration;
     // #savingThrow
     constructor({ castingTime, range, area, duration }: RawSpellBase) {
         this.#castingTime = parseIfNeeded(castingTime, ActionTime.tryParse);

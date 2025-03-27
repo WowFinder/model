@@ -10,8 +10,8 @@ interface WeaponOilBuilder extends CraftableConsumableBuilder {
 }
 
 class WeaponOil extends CraftableConsumable {
-    #duration: Time;
-    #bonus: Bonus;
+    readonly #duration: Time;
+    readonly #bonus: Bonus;
     constructor({ duration, bonus, ...rest }: WeaponOilBuilder) {
         super(rest);
         this.#duration = Time.parseTime(duration);

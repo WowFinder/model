@@ -3,7 +3,7 @@ import { SkillSet } from '../../Creature/Skill';
 import { sum } from '@wowfinder/ts-utils';
 
 export default class SkillsBonus {
-    #values: SkillSet;
+    readonly #values: SkillSet;
 
     constructor(values: SkillSet) {
         this.#values = { ...values };

@@ -3,7 +3,7 @@ abstract class Requirement<T> {
 }
 
 class FunctionBasedRequirement<T> implements Requirement<T> {
-    #fn: (value: T) => boolean;
+    readonly #fn: (value: T) => boolean;
     constructor(fn: (value: T) => boolean) {
         this.#fn = fn;
     }

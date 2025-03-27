@@ -10,8 +10,8 @@ interface ElixirBuilder extends CraftableConsumableBuilder {
 }
 
 class Elixir extends CraftableConsumable {
-    #duration: Time;
-    #bonus: Bonus;
+    readonly #duration: Time;
+    readonly #bonus: Bonus;
     constructor({ duration, bonus, ...rest }: ElixirBuilder) {
         super(rest);
         this.#duration = Time.parseTime(duration);

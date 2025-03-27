@@ -21,10 +21,10 @@ type RankedSpellBuilder = Omit<
 > & { rank: number };
 
 class RankedSpell extends SpellBase {
-    #key: string;
-    #rank: number;
-    #subSchool?: SubSchool;
-    #school: School;
+    readonly #key: string;
+    readonly #rank: number;
+    readonly #subSchool?: SubSchool;
+    readonly #school: School;
 
     constructor({ key, rank, school, ...rest }: RankedSpellBuilder) {
         super(rest);

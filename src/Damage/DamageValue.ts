@@ -8,7 +8,7 @@ interface DamageValueBuilder {
 }
 
 class DamageValue implements DamageValueBuilder {
-    #components: DamageComponentValue[];
+    readonly #components: DamageComponentValue[];
     constructor({ components }: DamageValueBuilder) {
         this.#components = components.map(c => new DamageComponentValue(c));
     }

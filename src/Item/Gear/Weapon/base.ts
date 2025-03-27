@@ -11,15 +11,15 @@ import { WeaponBuilder, buildWeaponDamage } from './builder';
 import { asFeet } from './helpers';
 
 abstract class WeaponBase extends Gear {
-    #damage: DamageSpec;
-    #intrinsic: number;
-    #groups: Set<WeaponGroup>;
-    #rank: WeaponRank;
-    #proficiency: WeaponProficiency;
-    #flags: Set<WeaponFlags>;
-    #critRange: number;
-    #critMult: number;
-    #range: Length;
+    readonly #damage: DamageSpec;
+    readonly #intrinsic: number;
+    readonly #groups: Set<WeaponGroup>;
+    readonly #rank: WeaponRank;
+    readonly #proficiency: WeaponProficiency;
+    readonly #flags: Set<WeaponFlags>;
+    readonly #critRange: number;
+    readonly #critMult: number;
+    readonly #range: Length;
 
     constructor({
         damage,

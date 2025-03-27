@@ -3,7 +3,7 @@ import type { Character } from '../';
 import { Requirement } from './base';
 
 class ClassFeatureRequirement extends Requirement<Character> {
-    #feature: ClassFeature;
+    readonly #feature: ClassFeature;
     constructor(feature: ClassFeature) {
         super();
         this.#feature = feature;
