@@ -15,7 +15,7 @@ interface RawGoodBuilder extends Partial<Omit<ItemBuilder, 'rarity'>> {
 }
 
 abstract class Good extends Item {
-    #iLevel: number;
+    readonly #iLevel: number;
 
     constructor(args: GoodBuilder) {
         super(args);

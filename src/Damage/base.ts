@@ -9,7 +9,7 @@ interface DamageComponentBaseBuilder {
 }
 
 abstract class DamageComponentBase {
-    #types: FullDamageTypes;
+    readonly #types: FullDamageTypes;
     constructor({ types }: DamageComponentBaseBuilder) {
         this.#types = buildFullDamageTypes(types);
     }

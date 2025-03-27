@@ -4,13 +4,13 @@ import { Gear } from '../base';
 import { ArmorBuilder, armorPreBuild } from './builder';
 
 class Armor extends Gear {
-    #type: ArmorType;
-    #acBonus: number;
-    #intrinsic: number;
-    #maxDex: number;
-    #acp: number;
-    #asf: number;
-    #flags: Set<ArmorFlags>;
+    readonly #type: ArmorType;
+    readonly #acBonus: number;
+    readonly #intrinsic: number;
+    readonly #maxDex: number;
+    readonly #acp: number;
+    readonly #asf: number;
+    readonly #flags: Set<ArmorFlags>;
 
     constructor({
         type = ArmorType.misc,

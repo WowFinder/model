@@ -3,7 +3,7 @@ import type { Character } from '../';
 import type { Requirement } from './base';
 
 abstract class LevelRequirementBase implements Requirement<Character> {
-    #level: number;
+    readonly #level: number;
     constructor(level: number) {
         this.#level = level;
     }

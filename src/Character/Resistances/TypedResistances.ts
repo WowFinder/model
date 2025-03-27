@@ -8,7 +8,7 @@ import { FullResistances, ResistancesBuilder } from './helpers';
 const zero = (): ResistanceBreakdownImpl => ResistanceBreakdownImpl.zero;
 
 abstract class TypedResistances implements FullResistances, ResistancesBuilder {
-    #data: FullResistances;
+    readonly #data: FullResistances;
     constructor(data: ResistancesBuilder) {
         this.#data = {
             [DamageType.bludgeoning]: data.bludgeoning ?? zero(),

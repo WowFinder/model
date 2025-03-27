@@ -9,7 +9,7 @@ interface CraftableConsumableBuilder extends ItemBuilder {
 }
 
 abstract class CraftableConsumable extends Consumable {
-    #dc: number;
+    readonly #dc: number;
     constructor({ dc = 1, ...rest }: CraftableConsumableBuilder) {
         super(rest);
         this.#dc = dc;

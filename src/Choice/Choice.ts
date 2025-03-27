@@ -9,8 +9,8 @@ interface ChoiceBuilder extends BaseChoiceBuilder {
 }
 
 class Choice {
-    #label: string;
-    #validator: Validator<any>;
+    readonly #label: string;
+    readonly #validator: Validator<any>;
 
     constructor({ label, validator }: ChoiceBuilder) {
         this.#label = label;
@@ -31,8 +31,8 @@ interface ChoiceSelectionBuilder {
     value: any;
 }
 class ChoiceSelection {
-    #choice: Choice;
-    #value: any;
+    readonly #choice: Choice;
+    readonly #value: any;
 
     constructor({ choice, value }: ChoiceSelectionBuilder) {
         if (!choice.validate(value)) {

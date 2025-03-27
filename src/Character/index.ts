@@ -53,13 +53,13 @@ type Characters = { [key: string]: Character };
 /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
 /** @deprecated */
 class Character extends PersonalCharacterBase {
-    #active: boolean;
-    #race: Race;
-    #classes: ClassLevels;
-    #skillRanks: SkillRanks;
+    readonly #active: boolean;
+    readonly #race: Race;
+    readonly #classes: ClassLevels;
+    readonly #skillRanks: SkillRanks;
     #armor: ArmorValues;
     #resistances: Resistances;
-    #inventory: Inventory;
+    readonly #inventory: Inventory;
 
     #cachedClassBonuses: ClassBonuses | null = null;
     #cachedGearBonuses: Bonus | null = null;
@@ -240,7 +240,8 @@ class Character extends PersonalCharacterBase {
     }
 
     get gearBonuses(): Bonus {
-        return (this.#cachedGearBonuses ||= this.#combineGearBonuses());
+        this.#cachedGearBonuses ||= this.#combineGearBonuses();
+        return this.#cachedGearBonuses;
     }
 
     get classFeatures(): ClassFeature[] {

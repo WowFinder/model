@@ -9,9 +9,9 @@ interface FeatBuilder {
 }
 
 class FeatSpec {
-    #label: string;
-    #requirements: Requirement<Character>;
-    #flags: Set<FeatFlag>;
+    readonly #label: string;
+    readonly #requirements: Requirement<Character>;
+    readonly #flags: Set<FeatFlag>;
     constructor({ label, requirements, flags }: FeatBuilder) {
         this.#label = `${label}`;
         this.#requirements = requirements ?? new EmptyRequirement<Character>();

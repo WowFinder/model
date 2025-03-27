@@ -28,11 +28,12 @@ function checkNoDuplicate(key: string): void {
 }
 function feat(key: Feat, reqs?: Req, flags?: Flags): FeatSpec {
     checkNoDuplicate(key);
-    return (raw[key] = new FeatSpec({
+    raw[key] = new FeatSpec({
         label: key,
         requirements: reqs,
         flags,
-    }));
+    });
+    return raw[key];
 }
 
 const req = {

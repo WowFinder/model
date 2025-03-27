@@ -6,7 +6,7 @@ interface SpellRankBuilder extends SpellBaseBuilder {
 }
 
 class SpellRank extends SpellBase implements SpellRankBuilder {
-    #rank: number;
+    readonly #rank: number;
 
     constructor({ rank, ...rest }: RawSpellRank) {
         super(rest);

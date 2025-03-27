@@ -9,40 +9,40 @@ type ResistanceBreakdownBuilder = { [key in ResistanceCategory]?: number };
 class ResistanceBreakdownImpl
     implements ResistanceBreakdown, ResistanceBreakdownBuilder
 {
-    private _enh: number;
-    private _gear: number;
-    private _misc: number;
-    private _temp: number;
+    readonly #enh: number;
+    readonly #gear: number;
+    readonly #misc: number;
+    readonly #temp: number;
     constructor({
         enhance = 0,
         gear = 0,
         misc = 0,
         temp = 0,
     }: ResistanceBreakdownBuilder) {
-        this._enh = enhance;
-        this._gear = gear;
-        this._misc = misc;
-        this._temp = temp;
+        this.#enh = enhance;
+        this.#gear = gear;
+        this.#misc = misc;
+        this.#temp = temp;
     }
 
     get enhance(): number {
-        return this._enh;
+        return this.#enh;
     }
 
     get gear(): number {
-        return this._gear;
+        return this.#gear;
     }
 
     get misc(): number {
-        return this._misc;
+        return this.#misc;
     }
 
     get temp(): number {
-        return this._temp;
+        return this.#temp;
     }
 
     get total(): number {
-        return this._enh + this._gear + this._misc + this._temp;
+        return this.#enh + this.#gear + this.#misc + this.#temp;
     }
 
     static get zero(): ResistanceBreakdownImpl {

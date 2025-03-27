@@ -8,8 +8,8 @@ interface ItemBuilder {
 }
 
 abstract class Item {
-    #label: string;
-    #rarity: Rarity;
+    readonly #label: string;
+    readonly #rarity: Rarity;
     constructor({ label, rarity = Rarity.common }: ItemBuilder) {
         this.#label = label;
         this.#rarity = rarity;
@@ -37,10 +37,6 @@ abstract class Item {
             rarity: (raw.rarity as Rarity) || Rarity.common,
         };
     }
-
-    /* static load(): any {
-        throw new Error('Not implemented');
-    } */
 }
 
 export { Item };

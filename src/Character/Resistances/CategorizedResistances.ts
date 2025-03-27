@@ -21,40 +21,40 @@ type CategorizedResistancesBuilder = {
 class CategorizedResistances
     implements CategorizedResistancesBase, CategorizedResistancesBuilder
 {
-    private _enh: ResistanceSet;
-    private _gear: ResistanceSet;
-    private _misc: ResistanceSet;
-    private _temp: ResistanceSet;
+    readonly #enh: ResistanceSet;
+    readonly #gear: ResistanceSet;
+    readonly #misc: ResistanceSet;
+    readonly #temp: ResistanceSet;
 
     constructor({ enhance, gear, misc, temp }: CategorizedResistancesBuilder) {
-        this._enh = new ResistanceSetImpl(enhance ?? {});
-        this._gear = new ResistanceSetImpl(gear ?? {});
-        this._misc = new ResistanceSetImpl(misc ?? {});
-        this._temp = new ResistanceSetImpl(temp ?? {});
+        this.#enh = new ResistanceSetImpl(enhance ?? {});
+        this.#gear = new ResistanceSetImpl(gear ?? {});
+        this.#misc = new ResistanceSetImpl(misc ?? {});
+        this.#temp = new ResistanceSetImpl(temp ?? {});
     }
 
     get enhance(): ResistanceSet {
-        return this._enh;
+        return this.#enh;
     }
 
     get gear(): ResistanceSet {
-        return this._gear;
+        return this.#gear;
     }
 
     get misc(): ResistanceSet {
-        return this._misc;
+        return this.#misc;
     }
 
     get temp(): ResistanceSet {
-        return this._temp;
+        return this.#temp;
     }
 
     byType(type: DamageType): ResistanceBreakdown {
         return new ResistanceBreakdownImpl({
-            enhance: this._enh[type],
-            gear: this._gear[type],
-            misc: this._misc[type],
-            temp: this._temp[type],
+            enhance: this.#enh[type],
+            gear: this.#gear[type],
+            misc: this.#misc[type],
+            temp: this.#temp[type],
         });
     }
 }

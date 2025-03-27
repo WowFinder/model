@@ -8,8 +8,8 @@ interface CommonGoodBuilder extends ItemBuilder {
 }
 
 class CommonGood extends Item {
-    #weight: Mass;
-    #value: number;
+    readonly #weight: Mass;
+    readonly #value: number;
     constructor({ weight, value, ...args }: CommonGoodBuilder) {
         super(args);
         this.#weight = Mass.asPounds(weight);

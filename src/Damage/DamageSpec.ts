@@ -10,7 +10,7 @@ interface DamageSpecBuilder {
 }
 
 class DamageSpec implements DamageSpecBuilder {
-    #components: DamageComponentSpec[];
+    readonly #components: DamageComponentSpec[];
     constructor({ components }: DamageSpecBuilder) {
         this.#components = components.map(c => new DamageComponentSpec(c));
     }

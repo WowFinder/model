@@ -14,11 +14,11 @@ interface FoodBuilder extends CraftableConsumableBuilder, PotionBuilder {
 const defaultFoodDuration = '15m';
 
 class Food extends CraftableConsumable {
-    #duration: Time;
-    #bonus: Bonus;
-    #health: Dice;
-    #spells: Dice;
-    #sanity: Dice;
+    readonly #duration: Time;
+    readonly #bonus: Bonus;
+    readonly #health: Dice;
+    readonly #spells: Dice;
+    readonly #sanity: Dice;
     constructor({
         duration = defaultFoodDuration,
         bonus,

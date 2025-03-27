@@ -4,9 +4,9 @@ interface VitalNeedsBuilder {
     sleep?: boolean;
 }
 class VitalNeeds {
-    #breathe: boolean;
-    #eat: boolean;
-    #sleep: boolean;
+    readonly #breathe: boolean;
+    readonly #eat: boolean;
+    readonly #sleep: boolean;
 
     constructor({
         breathe = true,
@@ -47,16 +47,12 @@ class VitalNeeds {
     }
 
     static build(raw: any = {}): VitalNeeds {
-        return new VitalNeeds(
-            Object.assign(
-                {
-                    breathe: true,
-                    eat: true,
-                    sleep: true,
-                },
-                raw,
-            ),
-        );
+        return new VitalNeeds({
+            ...raw,
+            breathe: true,
+            eat: true,
+            sleep: true,
+        });
     }
 }
 

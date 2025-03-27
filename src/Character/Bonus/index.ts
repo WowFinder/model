@@ -33,16 +33,16 @@ interface BonusBuilder {
 }
 
 class Bonus {
-    #type: BonusType;
-    #hp: number;
-    #stats: StatsBonus;
-    #skills: SkillsBonus;
-    #saves: SavesBonus;
-    #resistances: ResistBonus;
-    #armorClass: number;
-    #vitalNeeds: VitalNeeds;
-    #senses: Senses;
-    #spellPower: SpellPowerBonus;
+    readonly #type: BonusType;
+    readonly #hp: number;
+    readonly #stats: StatsBonus;
+    readonly #skills: SkillsBonus;
+    readonly #saves: SavesBonus;
+    readonly #resistances: ResistBonus;
+    readonly #armorClass: number;
+    readonly #vitalNeeds: VitalNeeds;
+    readonly #senses: Senses;
+    readonly #spellPower: SpellPowerBonus;
 
     constructor({
         type,
@@ -212,7 +212,7 @@ class Bonus {
 }
 
 class MultiBonus {
-    #bonuses: PartialBonuses;
+    readonly #bonuses: PartialBonuses;
 
     constructor(bonuses: PartialBonuses) {
         this.#bonuses = { ...bonuses };

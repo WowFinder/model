@@ -28,10 +28,10 @@ const isGear = (i: Item): boolean => i instanceof Gear;
 const asGear = (i: Item): Gear => i as Gear;
 
 class Inventory {
-    #gear: Gear[];
-    #carried: Item[];
-    #owned: Item[];
-    #money: Money;
+    readonly #gear: Gear[];
+    readonly #carried: Item[];
+    readonly #owned: Item[];
+    readonly #money: Money;
 
     constructor({
         money = 0,

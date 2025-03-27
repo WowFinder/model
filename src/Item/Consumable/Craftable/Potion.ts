@@ -19,9 +19,9 @@ interface PotionBuilder extends CraftableConsumableBuilder {
 }
 
 class Potion extends CraftableConsumable {
-    #health: Dice;
-    #spells: Dice;
-    #sanity: Dice;
+    readonly #health: Dice;
+    readonly #spells: Dice;
+    readonly #sanity: Dice;
     constructor({
         health = 0,
         spells = 0,

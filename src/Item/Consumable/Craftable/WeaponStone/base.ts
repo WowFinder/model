@@ -9,9 +9,9 @@ interface WeaponStoneBuilder extends CraftableConsumableBuilder {
 }
 
 abstract class WeaponStone extends CraftableConsumable {
-    #bonus: number;
-    #types: DamageTypes;
-    #duration: Time;
+    readonly #bonus: number;
+    readonly #types: DamageTypes;
+    readonly #duration: Time;
     constructor({
         bonus,
         types,

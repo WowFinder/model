@@ -9,7 +9,7 @@ interface ShapeshiftBuilder {
     rank: number;
 }
 abstract class Shapeshift implements Transformation {
-    #rank: number;
+    readonly #rank: number;
 
     protected constructor({ rank }: ShapeshiftBuilder) {
         this.#rank = rank;

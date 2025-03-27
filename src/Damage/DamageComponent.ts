@@ -12,7 +12,7 @@ class DamageComponentValue
     extends DamageComponentBase
     implements DamageComponentValueBuilder
 {
-    #total: number;
+    readonly #total: number;
     constructor({ types, total }: DamageComponentValueBuilder) {
         super({ types });
         this.#total = total;
@@ -41,8 +41,8 @@ class DamageComponentSpec
     extends DamageComponentBase
     implements DamageComponentSpecBuilder
 {
-    #dice: Dice;
-    #mod?: DamageModifier;
+    readonly #dice: Dice;
+    readonly #mod?: DamageModifier;
 
     constructor({
         types,
