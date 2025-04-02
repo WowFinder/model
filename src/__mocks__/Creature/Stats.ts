@@ -59,6 +59,15 @@ const mixedBonusStatsMock: RawStats = {
     charisma: +2,
 };
 
+const fullBonusStatsMock: RawStats = {
+    strength: 2,
+    dexterity: 3,
+    constitution: 4,
+    intelligence: 1,
+    wisdom: 6,
+    charisma: 5,
+};
+
 const goodFinesseStatsMock: RawStats = {
     ...defaultStatsMock,
     strength: 8,
