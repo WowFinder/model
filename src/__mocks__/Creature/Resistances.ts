@@ -3,16 +3,16 @@ import { DamageType } from '@wowfinder/ts-enums';
 import { FullResistances } from '../../Creature';
 
 const mockZeroResistances: RawResistances = {
-    bludgeoning: 1,
-    slashing: 2,
-    piercing: 3,
-    arcane: 4,
-    fire: 5,
-    cold: 6,
-    nature: 7,
-    shadow: 8,
-    holy: 9,
-    psychic: 10,
+    bludgeoning: 0,
+    slashing: 0,
+    piercing: 0,
+    arcane: 0,
+    fire: 0,
+    cold: 0,
+    nature: 0,
+    shadow: 0,
+    holy: 0,
+    psychic: 0,
 };
 
 const mockDifferentResistances: RawResistances = {
