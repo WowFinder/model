@@ -1,7 +1,7 @@
 {
     "name": "@wowfinder/model",
     "type": "commonjs",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "description": "Data and Rules model for WowFinder",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -66,5 +66,5 @@
         "ts-jest": "^29.3.1",
         "typescript": "^5.8.2"
     },
-    "packageManager": "yarn@4.7.0"
+    "packageManager": "yarn@4.8.1"
 }
