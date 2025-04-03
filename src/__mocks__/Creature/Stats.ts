@@ -91,6 +91,7 @@ export {
     minimalStatsMock,
     defaultStatsMock,
     twentyStatsMock,
+    fullBonusStatsMock,
     goodFinesseStatsMock,
     badFinesseStatsMock,
     meleeBonusesStatsMock,
