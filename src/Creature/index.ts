@@ -3,6 +3,7 @@ export * from './Class';
 export * from './CreatureBase';
 export * from './CreatureFacade';
 export * from './Race';
+export * from './Resistances';
 export * from './Saves';
 export * from './Size';
 export * from './Skill';
