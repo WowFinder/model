@@ -1,3 +1,4 @@
+import { RawSaves } from '@wowfinder/asset-schemas';
 import { SaveBreakdown, SaveBreakdowns } from '../../Creature';
 
 const mockZero = (): SaveBreakdown =>
@@ -14,6 +15,12 @@ const zeroSavesMock: SaveBreakdowns = {
     fortitude: mockZero(),
     reflexes: mockZero(),
     will: mockZero(),
+};
+
+const zeroRawSavesMock: RawSaves = {
+    fortitude: 0,
+    reflexes: 0,
+    will: 0,
 };
 
 const exampleSavesMock: SaveBreakdowns = {
@@ -43,4 +50,10 @@ const exampleSavesMock: SaveBreakdowns = {
     }),
 };
 
-export { zeroSavesMock, exampleSavesMock };
+const exampleRawSavesMock: RawSaves = {
+    fortitude: 10,
+    reflexes: 8,
+    will: 12,
+};
+
+export { zeroSavesMock, zeroRawSavesMock, exampleSavesMock, exampleRawSavesMock };
