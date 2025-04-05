@@ -56,4 +56,9 @@ const exampleRawSavesMock: RawSaves = {
     will: 12,
 };
 
-export { zeroSavesMock, zeroRawSavesMock, exampleSavesMock, exampleRawSavesMock };
+export {
+    zeroSavesMock,
+    zeroRawSavesMock,
+    exampleSavesMock,
+    exampleRawSavesMock,
+};
