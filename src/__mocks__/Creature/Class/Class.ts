@@ -7,10 +7,19 @@ const mockMeleeClass = new Class(rawMocks.mockMeleeClassRawAsset);
 const mockStealthClass = new Class(rawMocks.mockStealthClassRawAsset);
 const mockSuperHybridClass = new Class(rawMocks.mockSuperHybridClassRawAsset);
 
+const mockedClasses = [
+    mockArcaneClass,
+    mockDivineClass,
+    mockMeleeClass,
+    mockStealthClass,
+    mockSuperHybridClass,
+] as const;
+
 export {
     mockArcaneClass,
     mockDivineClass,
     mockMeleeClass,
     mockStealthClass,
     mockSuperHybridClass,
+    mockedClasses,
 };
