@@ -81,11 +81,18 @@ function compareClassEntriesByLevelDescending(
     return levelCompare !== 0 ? levelCompare : keyCompare;
 }
 
-function combinedClassEntries(
-    classEntries: ClassEntries,
-): ClassEntries {
-    return mergeDuplicateEntries(classEntries).sort(compareClassEntriesByLevelDescending);
+function combinedClassEntries(classEntries: ClassEntries): ClassEntries {
+    return mergeDuplicateEntries(classEntries).sort(
+        compareClassEntriesByLevelDescending,
+    );
 }
 
-export { hdAverage, hdFirst, mapFeatures, mapAuras, filterSkills, combinedClassEntries };
+export {
+    hdAverage,
+    hdFirst,
+    mapFeatures,
+    mapAuras,
+    filterSkills,
+    combinedClassEntries,
+};
 export type { Classes, ClassLevels, SavesProgression, CastingProgression };
