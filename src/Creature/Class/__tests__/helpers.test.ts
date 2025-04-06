@@ -74,7 +74,7 @@ describe('combinedClassEntries', () => {
         { class: mockMeleeClass, level: 2 },
         { class: mockArcaneClass, level: 3 },
     ];
-    it('should combine aduplicate class entries and sort by level', () => {
+    it('should combine duplicate class entries and sort by level', () => {
         const result = combinedClassEntries(entries);
         expect(result).toEqual([
             { class: mockArcaneClass, level: 4 },
