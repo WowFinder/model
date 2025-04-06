@@ -69,16 +69,27 @@ describe('filterSkills', () => {
 });
 
 describe('combinedClassEntries', () => {
-    const entries = [
-        { class: mockArcaneClass, level: 1 },
-        { class: mockMeleeClass, level: 2 },
-        { class: mockArcaneClass, level: 3 },
-    ];
     it('should combine duplicate class entries and sort by level', () => {
+        const entries = [
+            { class: mockArcaneClass, level: 1 },
+            { class: mockMeleeClass, level: 2 },
+            { class: mockArcaneClass, level: 3 },
+        ];
         const result = combinedClassEntries(entries);
         expect(result).toEqual([
             { class: mockArcaneClass, level: 4 },
             { class: mockMeleeClass, level: 2 },
+        ]);
+    });
+    it('should sort alphabetically by key when levels are equal', () => {
+        const entries = [
+            { class: mockMeleeClass, level: 1 },
+            { class: mockArcaneClass, level: 1 },
+        ];
+        const result = combinedClassEntries(entries);
+        expect(result).toEqual([
+            { class: mockArcaneClass, level: 1 },
+            { class: mockMeleeClass, level: 1 },
         ]);
     });
 });
