@@ -5,8 +5,10 @@ import {
     mapFeatures,
     mapAuras,
     filterSkills,
+    combinedClassEntries,
 } from '../helpers';
 import { ClassFeature } from '../Features';
+import { mockArcaneClass, mockMeleeClass } from '../../../__mocks__';
 const hitDice = [
     { sides: 12, average: 7, first: 5 },
     { sides: 10, average: 6, first: 4 },
@@ -63,5 +65,20 @@ describe('filterSkills', () => {
     it('should filter out invalid skills', () => {
         const result = filterSkills([Skill.acrobatics, 'test', Skill.stealth]);
         expect(result).toEqual(new Set([Skill.acrobatics, Skill.stealth]));
+    });
+});
+
+describe('combinedClassEntries', () => {
+    const entries = [
+        { class: mockArcaneClass, level: 1 },
+        { class: mockMeleeClass, level: 2 },
+        { class: mockArcaneClass, level: 3 },
+    ];
+    it('should combine aduplicate class entries and sort by level', () => {
+        const result = combinedClassEntries(entries);
+        expect(result).toEqual([
+            { class: mockArcaneClass, level: 4 },
+            { class: mockMeleeClass, level: 2 },
+        ]);
     });
 });
