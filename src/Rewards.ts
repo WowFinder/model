@@ -1,18 +1,18 @@
-interface RewardByFaction {
+type RewardByFaction = {
     [factionLabel: string]: number;
-}
+};
 
-interface RewardByCharacter {
+type RewardByCharacter = {
     [characterKey: string]: number;
-}
+};
 
-interface RewardsByCharacter {
+type RewardsByCharacter = {
     [characterKey: string]: RewardByFaction;
-}
+};
 
-interface RewardsByFaction {
+type RewardsByFaction = {
     [factionLabel: string]: RewardByCharacter;
-}
+};
 
 export type {
     RewardByFaction,
