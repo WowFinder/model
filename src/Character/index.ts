@@ -25,21 +25,21 @@ import {
 import { Bonus } from './Bonus';
 import {
     Class,
-    ClassBonuses,
-    ClassFeature,
-    ClassLevels,
+    ProgressionBonuses,
+    ClassEntries,
+    ProgressionFeature as ClassFeature,
 } from '../Creature/Class';
 import {
     ClassAurasCondensed,
     getAuraBonuses,
     condenseClassAuras,
     getClassAuras,
-} from '../Creature/Class/Aura/characterHelpers';
-import { CondensedClassFeatures } from '../Creature/Class/Features';
+} from '../Creature/Progression/Aura/characterHelpers';
+import { CondensedProgressionFeatures as CondensedClassFeatures } from '../Creature/Progression/Features';
 import {
     getClassFeatures,
     getClassFeaturesCondensed,
-} from '../Creature/Class/Features/characterHelpers';
+} from '../Creature/Progression/Features/characterHelpers';
 import { Feat, feats } from './Feats';
 import { buildStats, checkClass, checkRace } from './helpers';
 import Race from '../Creature/Race';
@@ -55,13 +55,13 @@ type Characters = { [key: string]: Character };
 class Character extends PersonalCharacterBase {
     readonly #active: boolean;
     readonly #race: Race;
-    readonly #classes: ClassLevels;
+    readonly #classes: ClassEntries;
     readonly #skillRanks: SkillRanks;
     #armor: ArmorValues;
     #resistances: Resistances;
     readonly #inventory: Inventory;
 
-    #cachedClassBonuses: ClassBonuses | null = null;
+    #cachedClassBonuses: ProgressionBonuses | null = null;
     #cachedGearBonuses: Bonus | null = null;
 
     constructor({
@@ -129,7 +129,7 @@ class Character extends PersonalCharacterBase {
         return this.#race || null;
     }
 
-    get classes(): ClassLevels {
+    get classes(): ClassEntries {
         return this.#classes.map(({ class: c, level }) => ({
             class: c,
             level,
@@ -168,7 +168,7 @@ class Character extends PersonalCharacterBase {
         return this.#inventory;
     }
 
-    get classBonuses(): ClassBonuses {
+    get classBonuses(): ProgressionBonuses {
         return (this.#cachedClassBonuses ||= Class.multiclass(this.#classes));
     }
 
@@ -253,7 +253,7 @@ class Character extends PersonalCharacterBase {
     }
 
     get classAuras(): Aura[] {
-        return this.classes.map(c => c.class.auras(c.level)).flat();
+        return this.classes.map(c => c.class.aurasAtLevel(c.level)).flat();
     }
 
     get classAurasCondensed(): ClassAurasCondensed {
@@ -282,7 +282,7 @@ class Character extends PersonalCharacterBase {
         );
     }
 
-    addLevel(cls: Class, levels = 1): ClassLevels {
+    addLevel(cls: Class, levels = 1): ClassEntries {
         const matches = this.#classes.filter(c => c.class.key === cls.key);
         if (matches.length > 0) {
             matches[0].level += levels;

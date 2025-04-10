@@ -6,7 +6,7 @@ import {
 } from '../characterHelpers';
 import { auraBonuses } from '..';
 import { Bonus } from '../../../../Character/Bonus';
-import type { ClassEntries } from '../../Class';
+import type { ClassEntries } from '../../../Class/Class';
 
 const auras: Record<string, Aura[]> = {
     empty: [],
@@ -24,17 +24,17 @@ function auraMocker(aura: Aura): (level: number) => Aura[] {
 const classesMock = [
     {
         class: {
-            auras: auraMocker(Aura.arcane),
+            aurasAtLevel: auraMocker(Aura.arcane),
         },
         level: 14,
     },
     {
         class: {
-            auras: auraMocker(Aura.commanding),
+            aurasAtLevel: auraMocker(Aura.commanding),
         },
         level: 9,
     },
-] as ClassEntries;
+] as unknown as ClassEntries;
 
 describe('condenseClassAuras', () => {
     it('should return an empty array if no auras are present', () => {

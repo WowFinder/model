@@ -1,12 +1,12 @@
 import { Aura, BonusType } from '@wowfinder/ts-enums';
 import { Bonus } from '../../../Character/Bonus';
-import type { ClassEntries } from '../Class';
+import type { ClassEntries } from '../../Class/Class';
 import { auraBonuses } from '.';
 
 type ClassAurasCondensed = { aura: Aura; count: number }[];
 
 function getClassAuras(classes: ClassEntries): Aura[] {
-    return classes.map(c => c.class.auras(c.level)).flat();
+    return classes.map(c => c.class.aurasAtLevel(c.level)).flat();
 }
 
 function condenseClassAuras(auras: Aura[]): ClassAurasCondensed {

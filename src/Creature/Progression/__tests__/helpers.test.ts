@@ -5,10 +5,8 @@ import {
     mapFeatures,
     mapAuras,
     filterSkills,
-    combinedClassEntries,
 } from '../helpers';
-import { ClassFeature } from '../Features';
-import { mockArcaneClass, mockMeleeClass } from '../../../__mocks__';
+import { ProgressionFeature } from '../Features';
 const hitDice = [
     { sides: 12, average: 7, first: 5 },
     { sides: 10, average: 6, first: 4 },
@@ -36,13 +34,13 @@ describe('Class helpers', () => {
 describe('mapFeatures', () => {
     it('should map and filter features', () => {
         const result = mapFeatures([
-            { level: 1, feature: ClassFeature.abundantStep },
-            { level: 2, feature: ClassFeature.venomInmunity },
+            { level: 1, feature: ProgressionFeature.abundantStep },
+            { level: 2, feature: ProgressionFeature.venomInmunity },
             { level: 3, feature: 'test-invalid-feature' },
         ]);
         expect(result).toEqual([
-            { level: 1, feature: ClassFeature.abundantStep },
-            { level: 2, feature: ClassFeature.venomInmunity },
+            { level: 1, feature: ProgressionFeature.abundantStep },
+            { level: 2, feature: ProgressionFeature.venomInmunity },
         ]);
     });
 });
@@ -65,31 +63,5 @@ describe('filterSkills', () => {
     it('should filter out invalid skills', () => {
         const result = filterSkills([Skill.acrobatics, 'test', Skill.stealth]);
         expect(result).toEqual(new Set([Skill.acrobatics, Skill.stealth]));
-    });
-});
-
-describe('combinedClassEntries', () => {
-    it('should combine duplicate class entries and sort by level', () => {
-        const entries = [
-            { class: mockArcaneClass, level: 1 },
-            { class: mockMeleeClass, level: 2 },
-            { class: mockArcaneClass, level: 3 },
-        ];
-        const result = combinedClassEntries(entries);
-        expect(result).toEqual([
-            { class: mockArcaneClass, level: 4 },
-            { class: mockMeleeClass, level: 2 },
-        ]);
-    });
-    it('should sort alphabetically by key when levels are equal', () => {
-        const entries = [
-            { class: mockMeleeClass, level: 1 },
-            { class: mockArcaneClass, level: 1 },
-        ];
-        const result = combinedClassEntries(entries);
-        expect(result).toEqual([
-            { class: mockArcaneClass, level: 1 },
-            { class: mockMeleeClass, level: 1 },
-        ]);
     });
 });

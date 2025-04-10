@@ -7,25 +7,23 @@ import {
 import { ClassEntries, CreatureBase } from '../CreatureBase';
 import Race from '../Race';
 
-class CreatureBaseTestingImplementation extends CreatureBase {}
-
 describe('CreatureBase', () => {
     it('should create a minimal instance', async () => {
-        const instance = new CreatureBaseTestingImplementation(
+        const instance = await CreatureBase.buildCreature(
             rawBaseCreatureMinimal,
             mockAssetResolver,
         );
         expect(instance.key).toBe('base-creature-mock-minimal');
         expect(instance.notes).toEqual('');
         expect(instance.baseStats).toEqual(rawBaseCreatureMinimal.baseStats);
-        expect((await instance.race) instanceof Race).toBe(true);
+        expect(instance.race instanceof Race).toBe(true);
         expect(instance.personal.fullName).toEqual(
             rawBaseCreatureMinimal.personal.fullName,
         );
-        expect(await instance.classes).toHaveLength(0);
+        expect(instance.classes).toHaveLength(0);
     });
     it('should create an expanded instance', async () => {
-        const instance = new CreatureBaseTestingImplementation(
+        const instance = await CreatureBase.buildCreature(
             rawBaseCreatureExpanded,
             mockAssetResolver,
         );
@@ -38,8 +36,8 @@ describe('CreatureBase', () => {
         expect(instance.personal.weight.pounds).toBe(
             rawBaseCreatureExpanded.personal.weight,
         );
-        expect((await instance.race) instanceof Race).toBe(true);
-        const classes: ClassEntries = await instance.classes;
+        expect(instance.race instanceof Race).toBe(true);
+        const classes: ClassEntries = instance.classes;
         expect(classes).toHaveLength(4);
         expect(sum(...classes.map(c => c.level))).toBe(16);
     });

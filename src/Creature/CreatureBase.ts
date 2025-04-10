@@ -1,30 +1,44 @@
-import { RawStats } from '@wowfinder/asset-schemas';
 import {
     RawClassEntries,
     RawCreatureAsset,
-} from '@wowfinder/asset-schemas/Creature/base';
-import type { AsyncAssetResolver } from '../Assets/AssetResolver';
+    RawStats,
+} from '@wowfinder/asset-schemas';
 import type { ClassEntry, ClassEntries } from './Class';
 import type { Race } from './Race';
-import { PersonalDetails, importPersonalDetails } from './Personal';
+import { importPersonalDetails, PersonalDetails } from './Personal';
+import { AsyncAssetResolver } from '../Assets';
 
-abstract class CreatureBase {
-    readonly #resolver: AsyncAssetResolver;
+type CreatureBaseConstructorArgs = {
+    key: string;
+    baseStats: RawStats;
+    personal: PersonalDetails;
+    notes?: string;
+    race: Race;
+    classes: ClassEntries;
+};
+
+class CreatureBase {
     readonly #key: string;
     readonly #baseStats: RawStats;
-    readonly #notes: string;
     readonly #personal: PersonalDetails;
-    readonly #raceKey: string;
-    readonly #classKeys: RawClassEntries;
+    readonly #notes: string;
+    readonly #race: Race;
+    readonly #classes: ClassEntries;
 
-    constructor(raw: RawCreatureAsset, resolver: AsyncAssetResolver) {
-        this.#key = raw.key;
-        this.#baseStats = { ...raw.baseStats };
-        this.#resolver = resolver;
-        this.#raceKey = raw.race;
-        this.#notes = raw.notes ?? '';
-        this.#personal = importPersonalDetails(raw.personal);
-        this.#classKeys = raw.classes ?? [];
+    protected constructor({
+        key,
+        baseStats,
+        personal,
+        notes = '',
+        race,
+        classes,
+    }: CreatureBaseConstructorArgs) {
+        this.#key = key;
+        this.#baseStats = baseStats;
+        this.#personal = personal;
+        this.#notes = notes;
+        this.#race = race;
+        this.#classes = classes;
     }
 
     get key(): string {
@@ -35,8 +49,8 @@ abstract class CreatureBase {
         return { ...this.#baseStats };
     }
 
-    get race(): Promise<Race> {
-        return this.#resolver.resolveRace(this.#raceKey);
+    get race(): Race {
+        return this.#race;
     }
 
     get notes(): string {
@@ -47,16 +61,35 @@ abstract class CreatureBase {
         return this.#personal;
     }
 
-    get classes(): Promise<ClassEntries> {
-        return Promise.all(
-            this.#classKeys.map(async entry => ({
-                class: await this.#resolver.resolveClass(entry.class),
-                level: entry.level,
-            })),
-        );
+    get classes(): ClassEntries {
+        return [...this.#classes];
+    }
+
+    static async buildCreature(
+        rawAsset: RawCreatureAsset,
+        resolver: AsyncAssetResolver,
+    ): Promise<CreatureBase> {
+        const rawClasses: RawClassEntries = rawAsset.classes ?? [];
+        const args: CreatureBaseConstructorArgs = {
+            key: rawAsset.key,
+            baseStats: rawAsset.baseStats,
+            personal: importPersonalDetails(rawAsset.personal),
+            notes: rawAsset.notes,
+            race: await resolver.resolveRace(rawAsset.race),
+            classes: await Promise.all(
+                rawClasses.map(async classEntry => {
+                    const classAsset = await resolver.resolveClass(
+                        classEntry.class,
+                    );
+                    return {
+                        class: classAsset,
+                        level: classEntry.level,
+                    };
+                }),
+            ),
+        };
+        return new this(args);
     }
 }
 
-export type { ClassEntry, ClassEntries };
-
-export { CreatureBase };
+export { CreatureBase, type ClassEntry, type ClassEntries };
