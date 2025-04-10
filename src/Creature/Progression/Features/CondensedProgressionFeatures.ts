@@ -31,7 +31,7 @@ class CondensedProgressionFeatures {
         }));
     }
 
-    count(feature: string): number {
+    count(feature: ProgressionFeature): number {
         const match = this.#raw.find(f => f.feature === feature);
         return match?.count ?? 0;
     }
