@@ -1,9 +1,9 @@
 import type {
-    ClassFeature,
-    ClassFeaturesCondensed,
-} from '../../../../Creature/Class/Features';
+    ProgressionFeature,
+    ProgressionFeaturesCondensed,
+} from '../../../../Creature/Progression/Features';
 
-const simpleMartialClassFeatureListMock: ClassFeature[] = [
+const simpleMartialClassFeatureListMock: ProgressionFeature[] = [
     'bonusCombatFeat',
     'weaponTraining',
     'bonusCombatFeat',
@@ -12,7 +12,7 @@ const simpleMartialClassFeatureListMock: ClassFeature[] = [
     'armorTraining',
 ];
 
-const simpleMartialClassFeatureCountsMock: ClassFeaturesCondensed = [
+const simpleMartialClassFeatureCountsMock: ProgressionFeaturesCondensed = [
     { feature: 'bonusCombatFeat', count: 3 },
     { feature: 'weaponTraining', count: 2 },
     { feature: 'armorTraining', count: 1 },

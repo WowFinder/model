@@ -1,8 +1,8 @@
 import { EffectiveCasterLevels } from '../../Magic';
-import { ClassFeature } from './Features';
+import { ProgressionFeature } from './Features';
 import { Skill } from '@wowfinder/ts-enums';
 
-interface ClassBonuses {
+type ProgressionBonuses = {
     hp: number;
     bab: number;
     saves: {
@@ -13,7 +13,7 @@ interface ClassBonuses {
     efl: EffectiveCasterLevels;
     skillRanks: number;
     classSkills: Set<Skill>;
-    features: { [key in ClassFeature]?: number };
-}
+    features: { [key in ProgressionFeature]?: number };
+};
 
-export type { ClassBonuses };
+export type { ProgressionBonuses };

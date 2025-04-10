@@ -6,6 +6,9 @@ import {
     totalFeatureCountAtLevel,
 } from './Class.helpers';
 
+import { combinedClassEntries } from '../Class';
+import { mockArcaneClass, mockMeleeClass } from '../../../__mocks__';
+
 const evenKeyedSkills = Object.values(Skill).filter(
     s => `${s}`.length % 2 === 0,
 );
@@ -37,7 +40,7 @@ describe('Class', () => {
         expect(hybrid.skillRanks).toBe(6);
     });
     it('should have the correct class skills', () => {
-        expect(hybrid.classSkills).toEqual(new Set(evenKeyedSkills));
+        expect(hybrid.skills).toEqual(new Set(evenKeyedSkills));
     });
     it('should have the correct spell casting progression', () => {
         expect(hybrid.casting.arcane).toBe(0);
@@ -46,9 +49,11 @@ describe('Class', () => {
     });
     describe('features at each level', () => {
         const expectAtLevel = (level: number): void => {
-            const currentLevelSorted = hybrid.featuresAt(level).toSorted(cmp);
+            const currentLevelSorted = hybrid
+                .featuresAtExactLevel(level)
+                .toSorted(cmp);
             expect(currentLevelSorted).toEqual(expectedByLevel[level]);
-            const features = hybrid.features(level);
+            const features = hybrid.featuresAtLevel(level);
             expectedByLevel[level].forEach(f => {
                 expect(features).toContain(f);
             });
@@ -66,22 +71,22 @@ describe('Class', () => {
     });
     describe('aurasList', () => {
         it('should have the correct aurasList', () => {
-            expect(hybrid.aurasList.length).toEqual(6);
+            expect(hybrid.auras.length).toEqual(6);
         });
     });
     describe('auras', () => {
         it('should have no auras before level 6', () => {
             for (let i = 1; i < 6; i++) {
-                expect(hybrid.auras(i).length).toEqual(0);
+                expect(hybrid.aurasAtLevel(i).length).toEqual(0);
             }
         });
         it('should have three auras between levels 6 and 9 (inclusive)', () => {
             for (let i = 6; i < 10; i++) {
-                expect(hybrid.auras(i).length).toEqual(3);
+                expect(hybrid.aurasAtLevel(i).length).toEqual(3);
             }
         });
         it('should have six auras at level 10', () => {
-            expect(hybrid.auras(10).length).toEqual(6);
+            expect(hybrid.aurasAtLevel(10).length).toEqual(6);
         });
     });
     it('should have the correct starting wealth', () => {
@@ -89,5 +94,31 @@ describe('Class', () => {
     });
     describe('multiClass (static)', () => {
         it('should dispatch to the helper method', () => {});
+    });
+});
+
+describe('combinedClassEntries', () => {
+    it('should combine duplicate class entries and sort by level', () => {
+        const entries = [
+            { class: mockArcaneClass, level: 1 },
+            { class: mockMeleeClass, level: 2 },
+            { class: mockArcaneClass, level: 3 },
+        ];
+        const result = combinedClassEntries(entries);
+        expect(result).toEqual([
+            { class: mockArcaneClass, level: 4 },
+            { class: mockMeleeClass, level: 2 },
+        ]);
+    });
+    it('should sort alphabetically by key when levels are equal', () => {
+        const entries = [
+            { class: mockMeleeClass, level: 1 },
+            { class: mockArcaneClass, level: 1 },
+        ];
+        const result = combinedClassEntries(entries);
+        expect(result).toEqual([
+            { class: mockArcaneClass, level: 1 },
+            { class: mockMeleeClass, level: 1 },
+        ]);
     });
 });

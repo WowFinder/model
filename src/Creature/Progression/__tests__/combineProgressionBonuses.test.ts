@@ -1,10 +1,10 @@
 import { RawSaves } from '@wowfinder/asset-schemas';
-import { Class, ClassLevels } from '..';
+import { Class } from '../../Class';
 import {
-    combineClassBonuses,
+    combineProgressionBonuses,
     goodSave,
     poorSave,
-} from '../combineClassBonuses';
+} from '../combineProgressionBonuses';
 import {
     mockMeleeClassRawAsset,
     mockArcaneClassRawAsset,
@@ -19,13 +19,13 @@ describe('combineClassBonuses', () => {
         divine: new Class(mockDivineClassRawAsset),
         stealth: new Class(mockStealthClassRawAsset),
     };
-    const classLevels: ClassLevels = [
-        { class: classes.melee, level: 8 },
-        { class: classes.arcane, level: 4 },
-        { class: classes.divine, level: 2 },
-        { class: classes.stealth, level: 1 },
+    const classLevels = [
+        { progression: classes.melee, level: 8 },
+        { progression: classes.arcane, level: 4 },
+        { progression: classes.divine, level: 2 },
+        { progression: classes.stealth, level: 1 },
     ];
-    const bonuses = combineClassBonuses(classLevels);
+    const bonuses = combineProgressionBonuses(classLevels);
     it('should compute hitpoints correctly', () => {
         // 8 levels of d10, 4 levels of d6, 2 levels of d8, 1 level of d8
         // Bonus for first level: +4
@@ -62,7 +62,7 @@ describe('combineClassBonuses', () => {
     });
     it('should compute class skills correctly', () => {
         Object.values(classes).forEach(c => {
-            c.classSkills.forEach(s => {
+            c.skills.forEach(s => {
                 expect(bonuses.classSkills.has(s)).toBe(true);
             });
         });

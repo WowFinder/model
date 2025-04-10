@@ -1,1 +1,1 @@
-export * from './ClassFeature';
+export * from './ProgressionFeature';

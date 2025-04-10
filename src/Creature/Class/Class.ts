@@ -1,53 +1,39 @@
-import { Aura, ClassTier, Skill, ClassFeature } from '@wowfinder/ts-enums';
+import { ClassTier } from '@wowfinder/ts-enums';
 import { Money } from '../../Item';
-import { AurasList } from './Aura';
-import { ClassBonuses } from './ClassBonuses';
-import { FeaturesList } from './Features';
+import { ProgressionBonuses } from '../Progression/ProgressionBonuses';
 import { applyClassDefaults } from './builder';
-import { combineClassBonuses } from './combineClassBonuses';
-import {
-    CastingProgression,
-    ClassLevels,
-    Classes,
-    SavesProgression,
-    filterSkills,
-    mapAuras,
-    mapFeatures,
-} from './helpers';
+import { combineProgressionBonuses } from '../Progression/combineProgressionBonuses';
+import { filterSkills, mapAuras, mapFeatures } from '../Progression/helpers';
 import { RawClassAsset } from '@wowfinder/asset-schemas';
+import { Progression, ProgressionEntries } from '../Progression/Progression';
 
-class Class {
-    readonly #key: string;
+// TODO: make readonly (depends on full deprecation and removal of old Character types)
+type ClassEntry = { class: Class; level: number };
+type ClassEntries = ClassEntry[];
+
+type Classes = { [key: string]: Class };
+
+class Class extends Progression {
     readonly #tier: ClassTier;
     readonly #maxLevel: number;
-    readonly #hitDie: number;
-    readonly #baseAttackProgression: number;
-    readonly #saves: SavesProgression;
-    readonly #skillRanks: number;
-    readonly #casting: CastingProgression;
     readonly #startingWealth: number;
-    readonly #features: FeaturesList;
-    readonly #auras: AurasList;
-    readonly #skills: Set<Skill>;
 
     constructor(rawArgs: RawClassAsset) {
         const args = applyClassDefaults(rawArgs);
-        this.#key = args.key;
+        super({
+            key: args.key,
+            hitDie: args.hitDie,
+            baseAttackProgression: args.baseAttackProgression,
+            saves: { ...args.goodSaves },
+            casting: { ...args.spellCasting },
+            skillRanks: args.skillRanks,
+            features: mapFeatures(args.features),
+            auras: mapAuras(args.features),
+            skills: filterSkills(args.skills),
+        });
         this.#maxLevel = args.maxLevel;
         this.#tier = args.tier;
-        this.#hitDie = args.hitDie;
-        this.#baseAttackProgression = args.baseAttackProgression;
-        this.#saves = { ...args.goodSaves };
-        this.#skillRanks = args.skillRanks;
-        this.#casting = { ...args.spellCasting };
         this.#startingWealth = args.startingWealth;
-        this.#features = mapFeatures(args.features);
-        this.#auras = mapAuras(args.features);
-        this.#skills = filterSkills(args.skills);
-    }
-
-    get key(): string {
-        return this.#key;
     }
 
     get tier(): ClassTier {
@@ -58,59 +44,13 @@ class Class {
         return this.#maxLevel;
     }
 
-    get hitDie(): number {
-        return this.#hitDie;
-    }
-
-    get baseAttackProgression(): number {
-        return this.#baseAttackProgression;
-    }
-
-    get saves(): SavesProgression {
-        return { ...this.#saves };
-    }
-
-    get skillRanks(): number {
-        return this.#skillRanks;
-    }
-
-    get classSkills(): Set<Skill> {
-        return new Set(this.#skills);
-    }
-
-    get casting(): CastingProgression {
-        return { ...this.#casting };
-    }
-
-    get featuresList(): FeaturesList {
-        return [...this.#features];
-    }
-
-    featuresAt(level: number): ClassFeature[] {
-        return this.#features
-            .filter(f => f.level === level)
-            .map(f => f.feature);
-    }
-
-    features(level: number): ClassFeature[] {
-        return this.#features.filter(f => f.level <= level).map(f => f.feature);
-    }
-
-    get aurasList(): AurasList {
-        return [...this.#auras];
-    }
-
-    auras(level: number): Aura[] {
-        return this.#auras.filter(a => a.level <= level).map(a => a.aura);
-    }
-
     get startingWealth(): Money {
         return Money.fromRaw(this.#startingWealth);
     }
 
     /* istanbul ignore next: covered by `combineClassBonuses` tests */
-    static multiclass(classLevels: ClassLevels): ClassBonuses {
-        return combineClassBonuses(classLevels);
+    static multiclass(levels: ProgressionEntries): ProgressionBonuses {
+        return combineProgressionBonuses(levels);
     }
 
     /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
@@ -120,8 +60,34 @@ class Class {
     }
 }
 
-type ClassEntry = { class: Class; level: number };
-type ClassEntries = ClassEntry[];
+function compareClassEntriesByLevelDescending(
+    a: ClassEntry,
+    b: ClassEntry,
+): number {
+    const keyCompare = a.class.key.localeCompare(b.class.key);
+    const levelCompare = b.level - a.level;
+    return levelCompare !== 0 ? levelCompare : keyCompare;
+}
 
-export { Class };
-export type { ClassEntry, ClassEntries };
+function mergeDuplicateEntries(entries: ClassEntries): ClassEntries {
+    const merged: ClassEntries = [];
+
+    for (const entry of entries) {
+        const existingEntry = merged.find(e => e.class.key === entry.class.key);
+        if (existingEntry) {
+            existingEntry.level += entry.level;
+        } else {
+            merged.push({ ...entry });
+        }
+    }
+
+    return merged;
+}
+
+function combinedClassEntries(classEntries: ClassEntries): ClassEntries {
+    return mergeDuplicateEntries(classEntries).sort(
+        compareClassEntriesByLevelDescending,
+    );
+}
+
+export { Class, combinedClassEntries, type ClassEntry, type ClassEntries };
