@@ -1,7 +1,7 @@
 import { Skill } from '@wowfinder/ts-enums';
 import { ProgressionBonuses } from './ProgressionBonuses';
 import { hdFirst, hdAverage } from './helpers';
-import { ClassEntries } from '../Class/Class';
+import { type ClassEntries } from '../Class/Class';
 
 const goodSave = 1.0 / 2.0;
 const poorSave = 1.0 / 3.0;
