@@ -1,7 +1,7 @@
 {
     "name": "@wowfinder/model",
     "type": "commonjs",
-    "version": "0.0.17",
+    "version": "0.0.18",
     "description": "Data and Rules model for WowFinder",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -34,9 +34,9 @@
         "prepare": "yarn run build"
     },
     "dependencies": {
-        "@wowfinder/asset-schemas": "^0.0.15",
-        "@wowfinder/ts-enums": "^0.0.18",
-        "@wowfinder/ts-utils": "^0.1.9",
+        "@wowfinder/asset-schemas": "^0.0.17",
+        "@wowfinder/ts-enums": "^0.0.19",
+        "@wowfinder/ts-utils": "^0.1.10",
         "globals": "^16.0.0"
     },
     "devDependencies": {
@@ -49,7 +49,7 @@
         "@typescript-eslint/parser": "^8.29.1",
         "@typescript-eslint/utils": "^8.29.1",
         "eslint": "^9.24.0",
-        "eslint-config-prettier": "^10.1.1",
+        "eslint-config-prettier": "^10.1.2",
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-deprecation": "^3.0.0",
         "eslint-plugin-import": "^2.31.0",
@@ -67,5 +67,5 @@
         "ts-jest": "^29.3.1",
         "typescript": "^5.8.3"
     },
-    "packageManager": "yarn@4.8.1"
+    "packageManager": "yarn@4.9.0"
 }
