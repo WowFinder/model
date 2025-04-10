@@ -5,7 +5,7 @@ import { applyClassDefaults } from './builder';
 import { combineProgressionBonuses } from '../Progression/combineProgressionBonuses';
 import { filterSkills, mapAuras, mapFeatures } from '../Progression/helpers';
 import { RawClassAsset } from '@wowfinder/asset-schemas';
-import { Progression } from '../Progression/Progression';
+import { Progression, ProgressionEntries } from '../Progression/Progression';
 
 // TODO: make readonly (depends on full deprecation and removal of old Character types)
 type ClassEntry = { class: Class; level: number };
@@ -49,8 +49,8 @@ class Class extends Progression {
     }
 
     /* istanbul ignore next: covered by `combineClassBonuses` tests */
-    static multiclass(classLevels: ClassEntries): ProgressionBonuses {
-        return combineProgressionBonuses(classLevels);
+    static multiclass(levels: ProgressionEntries): ProgressionBonuses {
+        return combineProgressionBonuses(levels);
     }
 
     /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */

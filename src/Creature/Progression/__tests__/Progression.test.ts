@@ -86,4 +86,3 @@ describe('Progression', () => {
         expect(progression.skills.size).toBe(2);
     });
 });
-

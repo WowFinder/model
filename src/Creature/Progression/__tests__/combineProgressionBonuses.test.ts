@@ -20,10 +20,10 @@ describe('combineClassBonuses', () => {
         stealth: new Class(mockStealthClassRawAsset),
     };
     const classLevels = [
-        { class: classes.melee, level: 8 },
-        { class: classes.arcane, level: 4 },
-        { class: classes.divine, level: 2 },
-        { class: classes.stealth, level: 1 },
+        { progression: classes.melee, level: 8 },
+        { progression: classes.arcane, level: 4 },
+        { progression: classes.divine, level: 2 },
+        { progression: classes.stealth, level: 1 },
     ];
     const bonuses = combineProgressionBonuses(classLevels);
     it('should compute hitpoints correctly', () => {

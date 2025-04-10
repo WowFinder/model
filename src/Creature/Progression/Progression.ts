@@ -1,10 +1,7 @@
 import { Aura, ClassFeature, Skill } from '@wowfinder/ts-enums';
-import {
-    type SavesProgression,
-    type CastingProgression,
-    type FeaturesList,
-    type AurasList,
-} from '../Class';
+import { type SavesProgression, type CastingProgression } from './helpers';
+import { type FeaturesList } from './Features';
+import { type AurasList } from './Aura';
 
 type ProgressionConstructorArgs = {
     key: string;

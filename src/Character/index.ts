@@ -46,6 +46,7 @@ import Race from '../Creature/Race';
 import { Resistances } from './Resistances';
 import { FullSaves, zeroSave } from '../Creature/Saves';
 import { statMod, StatsBlock } from '../Creature/Stats';
+import { ProgressionEntries } from '../Creature/Progression/Progression';
 
 /** @deprecated */
 type Characters = { [key: string]: Character };
@@ -92,6 +93,13 @@ class Character extends PersonalCharacterBase {
         this.#forceResetCache();
     }
 
+    get progression(): ProgressionEntries {
+        return this.#classes.map(({ class: c, level }) => ({
+            progression: c,
+            level,
+        }));
+    }
+
     setOverride(override: CharacterOverride): void {
         super.setOverride(override);
         this.#forceResetCache();
@@ -109,7 +117,7 @@ class Character extends PersonalCharacterBase {
 
     #forceResetCache(): void {
         this.#cachedGearBonuses = this.#combineGearBonuses();
-        this.#cachedClassBonuses = Class.multiclass(this.#classes);
+        this.#cachedClassBonuses = Class.multiclass(this.progression);
     }
 
     get active(): boolean {
@@ -169,7 +177,9 @@ class Character extends PersonalCharacterBase {
     }
 
     get classBonuses(): ProgressionBonuses {
-        return (this.#cachedClassBonuses ||= Class.multiclass(this.#classes));
+        return (this.#cachedClassBonuses ||= Class.multiclass(
+            this.progression,
+        ));
     }
 
     get casterLevels(): EffectiveCasterLevels {

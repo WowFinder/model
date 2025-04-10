@@ -1,14 +1,14 @@
 import { Skill } from '@wowfinder/ts-enums';
 import { ProgressionBonuses } from './ProgressionBonuses';
 import { hdFirst, hdAverage } from './helpers';
-import { type ClassEntries } from '../Class/Class';
+import { type ProgressionEntries } from './Progression';
 
 const goodSave = 1.0 / 2.0;
 const poorSave = 1.0 / 3.0;
 const saveMult = (good: boolean): number => (good ? goodSave : poorSave);
 
 function combineProgressionBonuses(
-    classLevels: ClassEntries,
+    classLevels: ProgressionEntries,
 ): ProgressionBonuses {
     const goodSaves = {
         fort: false,
@@ -33,9 +33,9 @@ function combineProgressionBonuses(
         classSkills: new Set<Skill>(),
     };
     if (classLevels.length > 0) {
-        result.hp += hdFirst(classLevels[0].class.hitDie);
+        result.hp += hdFirst(classLevels[0].progression.hitDie);
     }
-    for (const { class: c, level } of classLevels) {
+    for (const { progression: c, level } of classLevels) {
         result.hp += hdAverage(c.hitDie) * level;
         result.bab += c.baseAttackProgression * level;
         result.saves.fort += saveMult(c.saves.fortitude) * level;
