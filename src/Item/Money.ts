@@ -1,9 +1,9 @@
-interface MoneyBreakdown {
+type MoneyBreakdown = {
     _: number;
     c: number;
     s: number;
     g: number;
-}
+};
 
 type CoinType = 'c' | 's' | 'g';
 

@@ -7,7 +7,7 @@ import type { SpellComponent } from './Components';
 import { SpellDuration, tryParseSpellDuration } from './Duration';
 import { SpellRange } from './Range';
 
-interface SpellBaseBuilder {
+type SpellBaseBuilder = {
     descriptors?: PossiblyString<SpellDescriptor>[];
     castingTime?: PossiblyString<ActionTime>;
     components?: PossiblyString<SpellComponent>[];
@@ -18,7 +18,7 @@ interface SpellBaseBuilder {
     duration?: PossiblyString<SpellDuration>;
     // savingThrow?: Save || false;
     flags?: PossiblyString<SpellFlag>[];
-}
+};
 
 abstract class SpellBase implements SpellBaseBuilder {
     readonly #castingTime?: ActionTime;

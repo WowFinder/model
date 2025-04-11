@@ -4,9 +4,9 @@ import {
     buildFullDamageTypes,
 } from './DamageType';
 
-interface DamageComponentBaseBuilder {
+type DamageComponentBaseBuilder = {
     types: DamageTypes;
-}
+};
 
 abstract class DamageComponentBase {
     readonly #types: FullDamageTypes;

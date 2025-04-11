@@ -4,10 +4,10 @@ import type { Class, Race } from '../../Creature';
 import type { Faction } from '../../Faction';
 import type { Item } from '../../Item';
 import type { Spell, SpellList } from '../../Magic';
-import { AsyncAssetResolver } from '../AssetResolver';
+import { AsyncAssetResolver } from '../AsyncAssetResolver';
 
 class StubbedAsyncAssetResolver extends AsyncAssetResolver {
-    #stub: jest.Mock;
+    readonly #stub: jest.Mock;
     constructor(stub: jest.Mock) {
         super();
         this.#stub = stub;

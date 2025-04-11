@@ -10,7 +10,7 @@ import { DamageSpec, makeFullDamageTypes } from '../../../Damage';
 import { Gear, GearBuilder } from '../base';
 import { Range } from './helpers';
 
-interface WeaponDamageBuilder {
+type WeaponDamageBuilder = {
     types: DamageType[];
     baseRoll: {
         sides: number;
@@ -18,7 +18,7 @@ interface WeaponDamageBuilder {
         fixedMod?: number;
     };
     modStat?: Stat; // TODO #431: add support for variants like finesse
-}
+};
 
 function buildWeaponDamage(...specs: WeaponDamageBuilder[]): DamageSpec {
     return new DamageSpec({
@@ -32,7 +32,7 @@ function buildWeaponDamage(...specs: WeaponDamageBuilder[]): DamageSpec {
     });
 }
 
-interface WeaponBuilder extends GearBuilder {
+type WeaponBuilder = GearBuilder & {
     damage: WeaponDamageBuilder[];
     intrinsic?: number;
     groups: Set<WeaponGroup>;
@@ -42,7 +42,7 @@ interface WeaponBuilder extends GearBuilder {
     criticalRange?: number;
     criticalMultiplier?: number;
     range?: Range;
-}
+};
 
 function preBuildWeapon(raw: any): WeaponBuilder {
     return {

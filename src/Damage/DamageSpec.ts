@@ -5,9 +5,9 @@ import {
 import { DamageRollArguments } from './DamageRollArguments';
 import { DamageValue } from './DamageValue';
 
-interface DamageSpecBuilder {
+type DamageSpecBuilder = {
     components: DamageComponentSpecBuilder[];
-}
+};
 
 class DamageSpec implements DamageSpecBuilder {
     readonly #components: DamageComponentSpec[];

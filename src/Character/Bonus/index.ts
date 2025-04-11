@@ -18,7 +18,7 @@ function stackable(type: BonusType): boolean {
 type PartialBonuses = { [key in BonusType]?: Bonus };
 type FullBonuses = { [key in BonusType]: Bonus };
 
-interface BonusBuilder {
+type BonusBuilder = {
     type: BonusType;
     hp?: number;
     stats?: StatsBonus;
@@ -30,7 +30,7 @@ interface BonusBuilder {
     senses?: Senses;
     spellPower?: SpellPowerBonus;
     // TODO #448: Speed
-}
+};
 
 class Bonus {
     readonly #type: BonusType;
@@ -249,9 +249,9 @@ class MultiBonus {
     }
 }
 
-interface BonusProvider {
+type BonusProvider = {
     get fullBonus(): MultiBonus;
-}
+};
 
 export type {
     /** @deprecated (replacement WiP) */

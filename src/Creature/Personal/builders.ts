@@ -3,7 +3,7 @@ import { Alignment, LengthUnit, MassUnit, TimeUnit } from '@wowfinder/ts-enums';
 import { JsonExportable } from '@wowfinder/ts-utils';
 import { Length, Mass, Time } from '../../Scalar';
 
-interface PersonalDetailsBase {
+type PersonalDetailsBase = {
     fullName: string;
     faith: string;
     origin: string;
@@ -15,7 +15,7 @@ interface PersonalDetailsBase {
     height: Length;
     weight: Mass;
     age: Time;
-}
+};
 
 const personalDefaults: PersonalDetailsBase = {
     fullName: '',
@@ -40,9 +40,7 @@ const personalDefaults: PersonalDetailsBase = {
     gender: '',
 };
 
-interface PersonalDetails
-    extends PersonalDetailsBase,
-        JsonExportable<RawPersonalDetails> {}
+type PersonalDetails = PersonalDetailsBase & JsonExportable<RawPersonalDetails>;
 
 type PersonalDetailsBuilder = PersonalDetailsBase | RawPersonalDetails;
 

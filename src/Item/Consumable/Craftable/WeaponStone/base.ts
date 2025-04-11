@@ -2,11 +2,11 @@ import type { DamageTypes } from '../../../../Damage/DamageType';
 import { Mass, Time } from '../../../../Scalar';
 import { CraftableConsumable, CraftableConsumableBuilder } from '../base';
 
-interface WeaponStoneBuilder extends CraftableConsumableBuilder {
+type WeaponStoneBuilder = CraftableConsumableBuilder & {
     bonus: number;
     types: DamageTypes;
     duration?: string;
-}
+};
 
 abstract class WeaponStone extends CraftableConsumable {
     readonly #bonus: number;

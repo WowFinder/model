@@ -1,9 +1,9 @@
 import { Save, SpellSaveEffect } from '@wowfinder/ts-enums';
 
-interface SpellSaveBuilder {
+type SpellSaveBuilder = {
     effect: SpellSaveEffect;
     save: Save;
-}
+};
 
 class SpellSave implements SpellSaveBuilder {
     readonly #effect: SpellSaveEffect;

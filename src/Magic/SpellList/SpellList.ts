@@ -2,10 +2,10 @@ import { RawSpellListAsset } from '@wowfinder/asset-schemas';
 import { ForcedKeyResolver } from '@wowfinder/ts-utils';
 import { Spell } from '../Spell/Spell';
 
-interface SpellListEntry {
+type SpellListEntry = {
     spell: Spell;
     rank: number;
-}
+};
 
 type SpellListLevel = SpellListEntry[];
 

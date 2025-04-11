@@ -1,7 +1,7 @@
 import { Size } from '@wowfinder/ts-enums';
 import { PartialStatBlock } from '../Stats';
 
-interface ArmorValuesBuilder {
+type ArmorValuesBuilder = {
     /** @deprecated use `gear` instead */
     armor?: number;
     /** @deprecated use `gear` instead */
@@ -16,20 +16,20 @@ interface ArmorValuesBuilder {
     temporary?: number;
     temporaryPhysical?: number;
     temporaryEvasion?: number;
-}
+};
 
-interface FullArmorValuesBuilder extends ArmorValuesBuilder {
+type FullArmorValuesBuilder = ArmorValuesBuilder & {
     strength?: number;
     dexterity?: number;
     baseAttack?: number;
     size?: number;
-}
+};
 
-interface FullFromBaseBuilder {
+type FullFromBaseBuilder = {
     base: ArmorValuesBuilder;
     stats: PartialStatBlock;
     baseAttack: number;
     size: Size;
-}
+};
 
 export type { ArmorValuesBuilder, FullArmorValuesBuilder, FullFromBaseBuilder };

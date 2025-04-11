@@ -2,11 +2,11 @@ import { FeatFlag } from '@wowfinder/ts-enums';
 import type { Character } from '..';
 import { EmptyRequirement, Requirement } from '../Requirements';
 
-interface FeatBuilder {
+type FeatBuilder = {
     label: string;
     requirements?: Requirement<Character>;
     flags?: Iterable<FeatFlag>;
-}
+};
 
 class FeatSpec {
     readonly #label: string;

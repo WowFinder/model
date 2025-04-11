@@ -6,10 +6,11 @@ import { Consumable } from '../base';
 import { PotionBuilder, RestoreValues } from './Potion';
 import { CraftableConsumable, CraftableConsumableBuilder } from './base';
 
-interface FoodBuilder extends CraftableConsumableBuilder, PotionBuilder {
-    duration?: string;
-    bonus: Omit<BonusBuilder, 'type'>;
-}
+type FoodBuilder = CraftableConsumableBuilder &
+    PotionBuilder & {
+        duration?: string;
+        bonus: Omit<BonusBuilder, 'type'>;
+    };
 
 const defaultFoodDuration = '15m';
 

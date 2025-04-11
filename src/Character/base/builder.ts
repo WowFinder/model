@@ -12,40 +12,40 @@ import { RawStats } from '@wowfinder/asset-schemas';
 type SkillRanks = { [key: string]: number };
 
 /** @deprecated */
-interface CharacterBaseCoreBuilder {
+type CharacterBaseCoreBuilder = {
     key: string;
     featChoices?: Iterable<FeatChoice>;
     miscHP?: number;
     baseStats: RawStats;
     baseResistances?: Resistances;
-}
+};
 
 /** @deprecated */
-interface CharacterBaseRaceBuilder extends CharacterBaseCoreBuilder {
+type CharacterBaseRaceBuilder = CharacterBaseCoreBuilder & {
     builderType: 'race';
     race: Race | string;
-}
+};
 
 /** @deprecated */
-interface CharacterBaseFullBuilder extends CharacterBaseCoreBuilder {
+type CharacterBaseFullBuilder = CharacterBaseCoreBuilder & {
     builderType: 'full';
     size: number;
     naturalArmor?: number;
     speeds?: SpeedBuilder;
     casterLevels?: Partial<EffectiveCasterLevels>;
-}
+};
 /** @deprecated */
 type CharacterBaseBuilder = CharacterBaseFullBuilder | CharacterBaseRaceBuilder;
 
 /** @deprecated */
-interface CharacterBuilder extends CharacterBaseCoreBuilder {
+type CharacterBuilder = CharacterBaseCoreBuilder & {
     race: string;
     personal: any; // Formerly: PersonalDetailsBuilder;
     classes: { class: string; level: number }[];
     active?: boolean;
     skillRanks?: SkillRanks;
     inventory?: InventoryBuilder;
-}
+};
 
 /** @deprecated */
 type CharacterOverrideBuilder = Omit<CharacterBaseFullBuilder, 'builderType'>;
@@ -61,7 +61,7 @@ type PersonalCharacterBaseBuilder = OverridableCharacterBaseBuilder & {
 };
 
 /** @deprecated */
-interface CharacterBaseExport {
+type CharacterBaseExport = {
     key: string;
     featChoices: FeatChoiceExport[];
     miscHP: number | null;
@@ -69,19 +69,19 @@ interface CharacterBaseExport {
     baseResistances: ResistancesExport;
     size: Size | null;
     naturalArmor: number | null;
-}
+};
 /** @deprecated */
-interface CharacterPersonalExport extends CharacterBaseExport {
+type CharacterPersonalExport = CharacterBaseExport & {
     personal: any; // Formerly: PersonalDetailsBuilder;
-}
+};
 
 /** @deprecated */
 type CharacterOverrideExport = CharacterBaseExport;
 
 /** @deprecated */
-interface OverridableCharacterBaseExport extends CharacterBaseExport {
+type OverridableCharacterBaseExport = CharacterBaseExport & {
     override: CharacterOverrideExport;
-}
+};
 
 export type {
     SkillRanks,

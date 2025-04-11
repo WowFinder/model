@@ -1,10 +1,10 @@
 import type { Dice } from './Dice';
 
-interface DiceBuilder {
+type DiceBuilder = {
     sides: number;
     qtty?: number;
     fixedMod?: number;
-}
+};
 
 function average(sides: number, qtty: number, mod: number): number {
     return mod + qtty * ((sides + 1) / 2);

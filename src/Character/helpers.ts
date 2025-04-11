@@ -31,19 +31,19 @@ function checkClass(className: string): Class {
 }
 
 /** @deprecated */
-interface FeatChoice {
+type FeatChoice = {
     feat: Feat;
     class?: Class;
     level: number;
-}
+};
 
 /** @deprecated */
-interface FeatChoiceExport {
+type FeatChoiceExport = {
     [key: string]: JsonValue;
     feat: string;
     class: string;
     level: number;
-}
+};
 
 function parseFeatChoice(raw: any): FeatChoice | null {
     const res = { ...raw };

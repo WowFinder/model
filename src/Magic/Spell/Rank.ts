@@ -1,9 +1,9 @@
 import { RawSpellRank } from '@wowfinder/asset-schemas';
 import { SpellBase, SpellBaseBuilder } from './base';
 
-interface SpellRankBuilder extends SpellBaseBuilder {
+type SpellRankBuilder = SpellBaseBuilder & {
     rank?: number;
-}
+};
 
 class SpellRank extends SpellBase implements SpellRankBuilder {
     readonly #rank: number;

@@ -1,17 +1,17 @@
 import { sum } from '@wowfinder/ts-utils';
 import type { ClassEntries, ClassEntry } from '../Creature/Class';
 
-interface ProgressionProfile {
+type ProgressionProfile = {
     xp?: number;
     level?: number;
     classes: ClassEntries;
     // TODO: template(s) progression
-}
+};
 
-interface ProgressionProfileBuilder {
+type ProgressionProfileBuilder = {
     xp: number;
     classes: Iterable<ClassEntry>;
-}
+};
 
 class ProgressionProfileImpl implements ProgressionProfile {
     readonly #xp: number;

@@ -1,7 +1,7 @@
 import { ArmorType, ArmorBonusType, ArmorFlags } from '@wowfinder/ts-enums';
 import { Gear, GearBuilder } from '../base';
 
-interface ArmorBuilder extends GearBuilder {
+type ArmorBuilder = GearBuilder & {
     type?: ArmorType;
     acBonus?: number;
     bonusType?: ArmorBonusType;
@@ -10,7 +10,7 @@ interface ArmorBuilder extends GearBuilder {
     acp?: number;
     asf?: number; // Normalized [0, 1]
     flags?: Set<ArmorFlags>;
-}
+};
 
 function armorPreBuild(raw: any): ArmorBuilder {
     return {

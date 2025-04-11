@@ -1,8 +1,8 @@
-interface VitalNeedsBuilder {
+type VitalNeedsBuilder = {
     breathe?: boolean;
     eat?: boolean;
     sleep?: boolean;
-}
+};
 class VitalNeeds {
     readonly #breathe: boolean;
     readonly #eat: boolean;

@@ -1,2 +1,2 @@
-export { AsyncAssetResolver } from './AssetResolver';
+export { AsyncAssetResolver } from './AsyncAssetResolver';
 export { AsyncCachingAssetResolver } from './CachingAssetResolver';

@@ -6,17 +6,17 @@ import type { ItemBuilder as CraftableConsumableBuilder } from '../../base';
 import { Consumable } from '../base';
 import { CraftableConsumable } from './base';
 
-interface RestoreValues {
+type RestoreValues = {
     health: number;
     spells: number;
     sanity: number;
-}
+};
 
-interface PotionBuilder extends CraftableConsumableBuilder {
+type PotionBuilder = CraftableConsumableBuilder & {
     health?: RollableValue;
     spells?: RollableValue;
     sanity?: RollableValue;
-}
+};
 
 class Potion extends CraftableConsumable {
     readonly #health: Dice;

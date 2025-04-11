@@ -2,9 +2,9 @@ import { FeatFlag } from '@wowfinder/ts-enums';
 import { feats, FeatSpec } from '../Character/Feats';
 import { BaseChoiceBuilder, Choice } from './Choice';
 
-interface FeatChoiceBuilder extends BaseChoiceBuilder {
+type FeatChoiceBuilder = BaseChoiceBuilder & {
     validFeats: FeatSpec[];
-}
+};
 
 class FeatChoice extends Choice {
     static #validator(validFeats: FeatSpec[]) {
