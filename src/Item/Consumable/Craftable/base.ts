@@ -4,9 +4,9 @@ import { Consumable } from '../base';
 import { Money } from '../../Money';
 import type { ItemBuilder } from '../../base';
 
-interface CraftableConsumableBuilder extends ItemBuilder {
+type CraftableConsumableBuilder = ItemBuilder & {
     dc?: number;
-}
+};
 
 abstract class CraftableConsumable extends Consumable {
     readonly #dc: number;

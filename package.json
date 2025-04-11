@@ -22,6 +22,7 @@
         "skott:circular": "skott -nit --showCircularDependencies --displayMode=raw",
         "checks:quick": "npm-run-all -pc lint build:tsc",
         "checks:standard": "npm-run-all -pc lint build:tsc test skott:circular",
+        "checks:refactor": "npm-run-all -sc lint:fix format build test",
         "checks:full": "npm-run-all -sc lint:fix format build test:coverage skott:circular",
         "checks:pedantic": "npm-run-all -sc lint format:check build test:coverage skott:circular",
         "build:pre": "rimraf dist",

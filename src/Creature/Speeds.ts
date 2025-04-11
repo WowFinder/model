@@ -32,7 +32,7 @@ const defaultSpeedUnit = new SpeedUnit({
     time: TimeUnit.turn,
 });
 
-interface SpeedBuilder {
+type SpeedBuilder = {
     base: SpeedValue;
     fly?: SpeedValue;
     swim?: SpeedValue;
@@ -40,7 +40,7 @@ interface SpeedBuilder {
     climb?: SpeedValue;
     encumberance?: boolean;
     maneuverability?: FlyManeuverability;
-}
+};
 
 function asFeet(value: SpeedValue): number {
     if (!value) {

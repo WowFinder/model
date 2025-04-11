@@ -2,7 +2,7 @@ import { type FlyManeuverability } from '@wowfinder/ts-enums';
 import { sum } from '@wowfinder/ts-utils';
 import { Speed, commonSpeedUnits, encumberedRaw } from '../Scalar';
 
-interface SpeedsProfile {
+type SpeedsProfile = {
     baseSpeed: Speed;
     reducedSpeed: Speed;
     burrowSpeed?: Speed;
@@ -11,9 +11,9 @@ interface SpeedsProfile {
     flyManeuverability?: FlyManeuverability;
     swimSpeed?: Speed;
     initiative: number;
-}
+};
 
-interface SpeedsProfileBuilder {
+type SpeedsProfileBuilder = {
     baseSpeed: number;
     encumberance?: boolean;
     burrowSpeed?: number;
@@ -23,7 +23,7 @@ interface SpeedsProfileBuilder {
     swimSpeed?: number;
     dexBonus?: number;
     otherInitiativeModifiers?: number[];
-}
+};
 
 function mkSpeed(rawFeetTurn: number): Speed;
 function mkSpeed(rawFeetTurn?: number): Speed | undefined;

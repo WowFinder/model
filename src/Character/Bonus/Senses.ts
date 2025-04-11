@@ -1,8 +1,8 @@
-interface SensesBuilder {
+type SensesBuilder = {
     darkVision?: number;
     lowLightVision?: boolean;
     smell?: boolean;
-}
+};
 
 export default class Senses {
     readonly #darkVision: number;

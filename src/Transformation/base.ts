@@ -1,7 +1,7 @@
 import { Character } from '../Character';
 
-interface Transformation {
+type Transformation = {
     apply(base: Character): Character;
-}
+};
 
 export type { Transformation };

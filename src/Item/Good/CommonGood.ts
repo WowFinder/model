@@ -2,10 +2,10 @@ import { Mass } from '../../Scalar';
 import { Money } from '../Money';
 import { Item, ItemBuilder } from '../base';
 
-interface CommonGoodBuilder extends ItemBuilder {
+type CommonGoodBuilder = ItemBuilder & {
     weight: Mass | number;
     value: number;
-}
+};
 
 class CommonGood extends Item {
     readonly #weight: Mass;

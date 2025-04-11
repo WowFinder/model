@@ -4,10 +4,10 @@ import { Mass, Time } from '../../../Scalar';
 import { Consumable } from '../base';
 import { CraftableConsumable, CraftableConsumableBuilder } from './base';
 
-interface WeaponOilBuilder extends CraftableConsumableBuilder {
+type WeaponOilBuilder = CraftableConsumableBuilder & {
     duration: string;
     bonus: Omit<BonusBuilder, 'type'>;
-}
+};
 
 class WeaponOil extends CraftableConsumable {
     readonly #duration: Time;

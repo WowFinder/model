@@ -4,9 +4,9 @@ import { DamageModifier, computeModifier } from './DamageModifier';
 import { DamageRollArguments } from './DamageRollArguments';
 import { DamageComponentBaseBuilder, DamageComponentBase } from './base';
 
-interface DamageComponentValueBuilder extends DamageComponentBaseBuilder {
+type DamageComponentValueBuilder = DamageComponentBaseBuilder & {
     total: number;
-}
+};
 
 class DamageComponentValue
     extends DamageComponentBase
@@ -30,12 +30,12 @@ class DamageComponentValue
     }
 }
 
-interface DamageComponentSpecBuilder extends DamageComponentBaseBuilder {
+type DamageComponentSpecBuilder = DamageComponentBaseBuilder & {
     diceCount: number;
     diceSides: number;
     fixedMod?: number;
     modStat?: Stat;
-}
+};
 
 class DamageComponentSpec
     extends DamageComponentBase

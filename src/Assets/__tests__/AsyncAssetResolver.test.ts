@@ -1,5 +1,5 @@
 import { AssetType } from '@wowfinder/ts-enums';
-import { StubbedAsyncAssetResolver } from './AssetResolver.stubs';
+import { StubbedAsyncAssetResolver } from './AsyncAssetResolver.stubs';
 
 let resolverStub: jest.Mock;
 

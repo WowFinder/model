@@ -3,14 +3,14 @@ import { StatsBlock } from '../Stats/StatsBlock';
 import { SaveBreakdowns, SaveBreakdown } from './SaveBreakdown';
 import { fillSaves } from './helpers';
 
-interface FullSavesBuilder {
+type FullSavesBuilder = {
     stats: StatsBlock;
     base?: Partial<RawSaves>;
     enhancement?: Partial<RawSaves>;
     gear?: Partial<RawSaves>;
     misc?: Partial<RawSaves>;
     temporary?: Partial<RawSaves>;
-}
+};
 
 class FullSaves implements SaveBreakdowns {
     readonly #stats: StatsBlock;

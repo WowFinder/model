@@ -12,7 +12,7 @@ import {
     SpeedsModifiersBonusBuilder,
 } from './SpeedsBonus';
 
-interface SimpleBonusBuilder {
+type SimpleBonusBuilder = {
     hp?: number;
     armorClass?: number;
     stats?: Partial<RawStats>;
@@ -24,6 +24,6 @@ interface SimpleBonusBuilder {
     feats?: FeatsBonusBuilder;
     baseSpeeds?: BaseSpeedsBonusBuilder;
     speedsModifiers?: SpeedsModifiersBonusBuilder;
-}
+};
 
 export type { SimpleBonusBuilder };

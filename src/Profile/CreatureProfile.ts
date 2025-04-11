@@ -16,7 +16,7 @@ import type {
     StatsProfile,
 } from './raw';
 
-interface CreatureProfile {
+type CreatureProfile = {
     personalDetails: PersonalDetails;
     shape: Shape;
     size: Size;
@@ -33,6 +33,6 @@ interface CreatureProfile {
     armorProfile: ArmorProfile;
     baseAttackProfile: BaseAttackProfile;
     spellPowerProfile: SpellPowerProfile;
-}
+};
 
 export type { CreatureProfile };

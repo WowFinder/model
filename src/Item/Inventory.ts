@@ -6,20 +6,20 @@ import { Money } from './Money';
 import { Item } from './base';
 import { buildItem } from './builders';
 
-interface InventoryBuilder {
+type InventoryBuilder = {
     money?: number;
     gear?: Gear[];
     carried?: Item[];
     owned?: Item[];
-}
+};
 
-interface InventoryExport {
+type InventoryExport = {
     [key: string]: JsonValue;
     money: number;
     gear: string[];
     carried: string[];
     owned: string[];
-}
+};
 
 const needsPreffix = (val: any): boolean =>
     typeof val === 'string' && !val.startsWith('gear');

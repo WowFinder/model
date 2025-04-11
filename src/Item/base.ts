@@ -2,10 +2,10 @@ import { Rarity } from '@wowfinder/ts-enums';
 import type { Mass } from '../Scalar';
 import type { Money } from './Money';
 
-interface ItemBuilder {
+type ItemBuilder = {
     rarity?: Rarity;
     label: string;
-}
+};
 
 abstract class Item {
     readonly #label: string;

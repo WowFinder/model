@@ -5,10 +5,10 @@ import { Shape, buildShape } from '../../Gear';
 import type { ItemBuilder as CraftableConsumableBuilder } from '../../base';
 import { CraftableConsumable } from './base';
 
-interface GearEnchantBuilder extends CraftableConsumableBuilder {
+type GearEnchantBuilder = CraftableConsumableBuilder & {
     bonus: Omit<BonusBuilder, 'type'>;
     slots: string[];
-}
+};
 
 class GearEnchant extends CraftableConsumable {
     readonly #bonus: Bonus;

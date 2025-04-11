@@ -3,10 +3,10 @@ import { Length, convertLength } from './Length';
 import { Scalar, converter } from './Scalar';
 import { Time, convertTime } from './Time';
 
-interface SpeedUnitBuilder {
+type SpeedUnitBuilder = {
     length: LengthUnit;
     time: TimeUnit;
-}
+};
 
 class SpeedUnit {
     readonly #length: LengthUnit;

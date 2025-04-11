@@ -1,8 +1,8 @@
-interface EffectiveCasterLevels {
+type EffectiveCasterLevels = {
     arcane: number;
     divine: number;
     spontaneous: number;
-}
+};
 
 const zeroCasterLevel: EffectiveCasterLevels = {
     arcane: 0,

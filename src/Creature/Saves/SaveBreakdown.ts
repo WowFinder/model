@@ -1,13 +1,13 @@
 import type { Save } from '@wowfinder/ts-enums';
 
-interface SaveBreakdownBuilder {
+type SaveBreakdownBuilder = {
     base: number;
     stat: number;
     enhancement: number;
     gear: number;
     misc: number;
     temporary: number;
-}
+};
 
 class SaveBreakdown {
     readonly #base: number;

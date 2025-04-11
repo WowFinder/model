@@ -2,9 +2,9 @@ import { ActionTime } from '../../Action/ActionTime';
 import type { Money } from '../Money';
 import { Item, ItemBuilder } from '../base';
 
-interface ConsumableRawBuilder extends Partial<ItemBuilder> {
+type ConsumableRawBuilder = ItemBuilder & {
     key?: string;
-}
+};
 
 abstract class Consumable extends Item {
     abstract get useTime(): ActionTime;

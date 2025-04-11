@@ -18,75 +18,75 @@ type AnyResolvableAsset =
     | Spell
     | SpellList;
 
-interface AdventureAssetResolver {
+type AdventureAssetResolver = {
     resolveAdventure: ForcedKeyResolver<Adventure>;
     resolve(type: AssetType.adventures, key: string): Adventure;
-}
+};
 
-interface AdventureAsyncAssetResolver {
+type AdventureAsyncAssetResolver = {
     resolveAdventure: ForcedKeyResolver<Promise<Adventure>>;
     resolve(type: AssetType.adventures, key: string): Promise<Adventure>;
-}
+};
 
-interface ClassAssetResolver {
+type ClassAssetResolver = {
     resolveClass: ForcedKeyResolver<Class>;
     resolve(type: AssetType.classes, key: string): Class;
-}
+};
 
-interface ClassAsyncAssetResolver {
+type ClassAsyncAssetResolver = {
     resolveClass: ForcedKeyResolver<Promise<Class>>;
     resolve(type: AssetType.classes, key: string): Promise<Class>;
-}
+};
 
-interface FactionAssetResolver {
+type FactionAssetResolver = {
     resolveFaction: ForcedKeyResolver<Faction>;
     resolve(type: AssetType.factions, key: string): Faction;
-}
+};
 
-interface FactionAsyncAssetResolver {
+type FactionAsyncAssetResolver = {
     resolveFaction: ForcedKeyResolver<Promise<Faction>>;
     resolve(type: AssetType.factions, key: string): Promise<Faction>;
-}
+};
 
-interface ItemAssetResolver {
+type ItemAssetResolver = {
     resolveItem: ForcedKeyResolver<Item>;
     resolve(type: AssetType.items, key: string): Item;
-}
+};
 
-interface ItemAsyncAssetResolver {
+type ItemAsyncAssetResolver = {
     resolveItem: ForcedKeyResolver<Promise<Item>>;
     resolve(type: AssetType.items, key: string): Promise<Item>;
-}
+};
 
-interface RaceAssetResolver {
+type RaceAssetResolver = {
     resolveRace: ForcedKeyResolver<Race>;
     resolve(type: AssetType.races, key: string): Race;
-}
+};
 
-interface RaceAsyncAssetResolver {
+type RaceAsyncAssetResolver = {
     resolveRace: ForcedKeyResolver<Promise<Race>>;
     resolve(type: AssetType.races, key: string): Promise<Race>;
-}
+};
 
-interface SpellAssetResolver {
+type SpellAssetResolver = {
     resolveSpell: ForcedKeyResolver<Spell>;
     resolve(type: AssetType.spells, key: string): Spell;
-}
+};
 
-interface SpellAsyncAssetResolver {
+type SpellAsyncAssetResolver = {
     resolveSpell: ForcedKeyResolver<Promise<Spell>>;
     resolve(type: AssetType.spells, key: string): Promise<Spell>;
-}
+};
 
-interface SpellListAssetResolver {
+type SpellListAssetResolver = {
     resolveSpellList: ForcedKeyResolver<SpellList>;
     resolve(type: AssetType.spellLists, key: string): SpellList;
-}
+};
 
-interface SpellListAsyncAssetResolver {
+type SpellListAsyncAssetResolver = {
     resolveSpellList: ForcedKeyResolver<Promise<SpellList>>;
     resolve(type: AssetType.spellLists, key: string): Promise<SpellList>;
-}
+};
 
 export type {
     AdventureAssetResolver,

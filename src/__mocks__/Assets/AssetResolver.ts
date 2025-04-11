@@ -1,6 +1,6 @@
 import { AssetType } from '@wowfinder/ts-enums';
 import { Adventure } from '../../Adventure';
-import { AsyncAssetResolver } from '../../Assets/AssetResolver';
+import { AsyncAssetResolver } from '../../Assets/AsyncAssetResolver';
 import { Class } from '../../Creature/Class';
 import { Race } from '../../Creature/Race';
 import { Faction } from '../../Faction';

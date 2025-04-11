@@ -5,12 +5,12 @@ import { Money } from '../Money';
 import { Item, ItemBuilder } from '../base';
 import { Shape, buildShape, explodeShape } from './Slot';
 
-interface GearBuilder extends ItemBuilder {
+type GearBuilder = ItemBuilder & {
     shape: string[];
     size: Size;
     bonuses?: Bonus;
     weight: Weight;
-}
+};
 
 class Gear extends Item implements BonusProvider {
     #shape: Shape;

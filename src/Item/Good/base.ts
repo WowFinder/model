@@ -3,16 +3,16 @@ import { Item, ItemBuilder } from '../base';
 import { rarityMultipliers } from '../Rarity';
 import { Rarity } from '@wowfinder/ts-enums';
 
-interface GoodBuilder extends ItemBuilder {
+type GoodBuilder = ItemBuilder & {
     label: string;
     iLevel: number;
-}
+};
 
-interface RawGoodBuilder extends Partial<Omit<ItemBuilder, 'rarity'>> {
+type RawGoodBuilder = Partial<Omit<ItemBuilder, 'rarity'>> & {
     key?: string;
     iLevel?: number;
     rarity?: Rarity | string;
-}
+};
 
 abstract class Good extends Item {
     readonly #iLevel: number;

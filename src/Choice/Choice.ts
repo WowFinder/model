@@ -1,12 +1,12 @@
 import { Validator } from '@wowfinder/ts-utils';
 
-interface BaseChoiceBuilder {
+type BaseChoiceBuilder = {
     label: string;
-}
+};
 
-interface ChoiceBuilder extends BaseChoiceBuilder {
+type ChoiceBuilder = BaseChoiceBuilder & {
     validator: Validator<any>;
-}
+};
 
 class Choice {
     readonly #label: string;
@@ -26,10 +26,10 @@ class Choice {
     }
 }
 
-interface ChoiceSelectionBuilder {
+type ChoiceSelectionBuilder = {
     choice: Choice;
     value: any;
-}
+};
 class ChoiceSelection {
     readonly #choice: Choice;
     readonly #value: any;

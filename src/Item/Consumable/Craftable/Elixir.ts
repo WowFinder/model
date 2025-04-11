@@ -4,10 +4,10 @@ import { Mass, Time } from '../../../Scalar';
 import { Consumable } from '../base';
 import { CraftableConsumable, CraftableConsumableBuilder } from './base';
 
-interface ElixirBuilder extends CraftableConsumableBuilder {
+type ElixirBuilder = CraftableConsumableBuilder & {
     duration: string;
     bonus: Omit<BonusBuilder, 'type'>;
-}
+};
 
 class Elixir extends CraftableConsumable {
     readonly #duration: Time;

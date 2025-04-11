@@ -5,9 +5,9 @@ import type { Transformation } from '../base';
 
 const druidClasses = ['drd'];
 
-interface ShapeshiftBuilder {
+type ShapeshiftBuilder = {
     rank: number;
-}
+};
 abstract class Shapeshift implements Transformation {
     readonly #rank: number;
 

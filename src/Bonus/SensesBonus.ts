@@ -1,10 +1,10 @@
 import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
 
-interface SensesBonusBuilder {
+type SensesBonusBuilder = {
     darkVision?: number;
     lowLightVision?: boolean;
     smell?: boolean;
-}
+};
 
 class SensesBonus
     implements SensesBonusBuilder, JsonExportable<SensesBonusBuilder>

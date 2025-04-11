@@ -3,9 +3,9 @@ import {
     DamageComponentValueBuilder,
 } from './DamageComponent';
 
-interface DamageValueBuilder {
+type DamageValueBuilder = {
     components: DamageComponentValueBuilder[];
-}
+};
 
 class DamageValue implements DamageValueBuilder {
     readonly #components: DamageComponentValue[];

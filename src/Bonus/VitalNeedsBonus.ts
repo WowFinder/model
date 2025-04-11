@@ -1,10 +1,10 @@
 import { JsonExportable } from '@wowfinder/ts-utils';
 
-interface VitalNeedsBonusBuilder {
+type VitalNeedsBonusBuilder = {
     breathe?: boolean;
     eat?: boolean;
     sleep?: boolean;
-}
+};
 
 class VitalNeedsBonus
     implements VitalNeedsBonusBuilder, JsonExportable<VitalNeedsBonusBuilder>
