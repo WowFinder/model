@@ -17,7 +17,9 @@ const ratios: MoneyBreakdown = {
     g: ratio ** 2,
 };
 
-function asRaw(value: Money | MoneyBreakdown | number): number {
+type MoneyValue = Money | MoneyBreakdown | number;
+
+function asRaw(value: MoneyValue): number {
     if (value instanceof Money) {
         return value.raw;
     } else if (typeof value === 'number') {
@@ -68,11 +70,11 @@ class Money {
         return new Money(0);
     }
 
-    add(value: Money | MoneyBreakdown | number): Money {
+    add(value: MoneyValue): Money {
         return new Money(this.#raw + asRaw(value));
     }
 
-    subtract(value: Money | MoneyBreakdown | number): Money {
+    subtract(value: MoneyValue): Money {
         return new Money(this.#raw - asRaw(value));
     }
 
