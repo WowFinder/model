@@ -17,8 +17,18 @@ const ratios: MoneyBreakdown = {
     g: ratio ** 2,
 };
 
+function asRaw(value: Money | MoneyBreakdown | number): number {
+    if (value instanceof Money) {
+        return value.raw;
+    } else if (typeof value === 'number') {
+        return value;
+    } else {
+        return Money.condense(value);
+    }
+}
+
 class Money {
-    #raw = 0;
+    readonly #raw: number;
     static explode(raw: number): MoneyBreakdown {
         const g = Math.floor(raw / ratios.g);
         raw %= ratios.g;
@@ -58,12 +68,12 @@ class Money {
         return new Money(0);
     }
 
-    add(args: MoneyBreakdown): void {
-        this.#raw += Money.condense(args);
+    add(value: Money | MoneyBreakdown | number): Money {
+        return new Money(this.#raw + asRaw(value));
     }
 
-    substract(args: MoneyBreakdown): void {
-        this.#raw -= Money.condense(args);
+    subtract(value: Money | MoneyBreakdown | number): Money {
+        return new Money(this.#raw - asRaw(value));
     }
 
     get raw(): number {
