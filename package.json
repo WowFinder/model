@@ -1,7 +1,7 @@
 {
     "name": "@wowfinder/model",
     "type": "commonjs",
-    "version": "0.0.21",
+    "version": "0.0.22",
     "description": "Data and Rules model for WowFinder",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -16,6 +16,7 @@
         "lint:fix": "eslint . --fix",
         "format": "prettier --write \"src/**/*.{js,ts,json,json5}\"",
         "format:check": "prettier --check \"src/**/*.{js,ts,json,json5}\"",
+        "precommit": "npm-run-all -s lint:fix format checks:pedantic",
         "test": "jest",
         "test:coverage": "jest --coverage",
         "skott:web": "skott -nit --displayMode=webapp --trackThirdPartyDependencies --trackBuiltinDependencies src/",

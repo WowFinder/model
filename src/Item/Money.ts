@@ -17,8 +17,22 @@ const ratios: MoneyBreakdown = {
     g: ratio ** 2,
 };
 
+type PartialMoneyBreakdown = Partial<MoneyBreakdown>;
+
+type MoneyValue = Money | PartialMoneyBreakdown | number;
+
+function asRaw(value: MoneyValue): number {
+    if (value instanceof Money) {
+        return value.raw;
+    } else if (typeof value === 'number') {
+        return value;
+    } else {
+        return Money.condense(value);
+    }
+}
+
 class Money {
-    #raw = 0;
+    readonly #raw: number;
     static explode(raw: number): MoneyBreakdown {
         const g = Math.floor(raw / ratios.g);
         raw %= ratios.g;
@@ -34,7 +48,12 @@ class Money {
         };
     }
 
-    static condense({ _ = 0, c = 0, s = 0, g = 0 }: MoneyBreakdown): number {
+    static condense({
+        _ = 0,
+        c = 0,
+        s = 0,
+        g = 0,
+    }: PartialMoneyBreakdown): number {
         return _ + c * ratios.c + s * ratios.s + g * ratios.g;
     }
 
@@ -46,7 +65,7 @@ class Money {
         return new Money(raw);
     }
 
-    static fromBreakdown(breakdown: MoneyBreakdown): Money {
+    static fromBreakdown(breakdown: PartialMoneyBreakdown): Money {
         return new Money(Money.condense(breakdown));
     }
 
@@ -58,12 +77,12 @@ class Money {
         return new Money(0);
     }
 
-    add(args: MoneyBreakdown): void {
-        this.#raw += Money.condense(args);
+    add(value: MoneyValue): Money {
+        return new Money(this.#raw + asRaw(value));
     }
 
-    substract(args: MoneyBreakdown): void {
-        this.#raw -= Money.condense(args);
+    subtract(value: MoneyValue): Money {
+        return new Money(this.#raw - asRaw(value));
     }
 
     get raw(): number {
@@ -76,13 +95,25 @@ class Money {
 
     toString(): string {
         const breakdown = this.split;
-        return displayCoinTypes.map(t => `${breakdown[t]}${t}`).join();
+        return displayCoinTypes.map(t => `${breakdown[t]}${t}`).join(' ');
     }
 }
 
-function asMoney(value: Money | number): Money {
-    return value instanceof Money ? value : Money.fromRaw(value || 0);
+function asMoney(value: MoneyValue): Money {
+    if (value instanceof Money) {
+        return value;
+    }
+    if (typeof value === 'number') {
+        return Money.fromRaw(value);
+    }
+    return Money.fromBreakdown(value);
 }
 
-export type { CoinType };
-export { Money, type MoneyBreakdown, displayCoinTypes, asMoney };
+export {
+    Money,
+    type CoinType,
+    type MoneyBreakdown,
+    type PartialMoneyBreakdown,
+    displayCoinTypes,
+    asMoney,
+};
