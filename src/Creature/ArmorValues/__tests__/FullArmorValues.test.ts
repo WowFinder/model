@@ -13,19 +13,17 @@ describe('FullArmorValues', () => {
     });
     it('should build a FullArmorValues object with custom values', () => {
         const fullArmorValues = new FullArmorValues(mockFullArmorValuesBuilder);
-        expect(fullArmorValues.armor).toEqual(1);
-        expect(fullArmorValues.shield).toEqual(2);
-        expect(fullArmorValues.dodge).toEqual(3);
-        expect(fullArmorValues.natural).toEqual(4);
-        expect(fullArmorValues.deflection).toEqual(5);
-        expect(fullArmorValues.misc).toEqual(6);
-        expect(fullArmorValues.miscPhysical).toEqual(7);
-        expect(fullArmorValues.miscEvasion).toEqual(8);
-        expect(fullArmorValues.miscAll).toEqual(21);
-        expect(fullArmorValues.temporary).toEqual(9);
-        expect(fullArmorValues.temporaryPhysical).toEqual(10);
-        expect(fullArmorValues.temporaryEvasion).toEqual(11);
-        expect(fullArmorValues.temporaryAll).toEqual(30);
+        expect(fullArmorValues.gear).toEqual(1);
+        expect(fullArmorValues.natural).toEqual(2);
+        expect(fullArmorValues.deflection).toEqual(3);
+        expect(fullArmorValues.misc).toEqual(4);
+        expect(fullArmorValues.miscPhysical).toEqual(5);
+        expect(fullArmorValues.miscEvasion).toEqual(6);
+        expect(fullArmorValues.miscAll).toEqual(15);
+        expect(fullArmorValues.temporary).toEqual(7);
+        expect(fullArmorValues.temporaryPhysical).toEqual(8);
+        expect(fullArmorValues.temporaryEvasion).toEqual(9);
+        expect(fullArmorValues.temporaryAll).toEqual(24);
         expect(fullArmorValues.strength).toEqual(-1);
         expect(fullArmorValues.dexterity).toEqual(-2);
         expect(fullArmorValues.baseAttack).toEqual(12);
@@ -67,7 +65,7 @@ describe('FullArmorValues', () => {
                 baseAttack: mockFullArmorValuesBuilder.baseAttack ?? 0,
                 size: mockFullArmorValuesBuilder.size ?? 0,
             });
-            expect(fullArmorValues.total).toEqual(74);
+            expect(fullArmorValues.total).toEqual(53);
         });
     });
 });

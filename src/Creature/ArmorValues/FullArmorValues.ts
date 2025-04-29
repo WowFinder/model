@@ -57,9 +57,7 @@ class FullArmorValues extends ArmorValues {
 
     get touch(): FullArmorValues {
         return new FullArmorValues({
-            armor: 0,
-            shield: 0,
-            dodge: this.dodge,
+            gear: 0,
             natural: 0,
             deflection: this.deflection,
             misc: this.misc + this.miscEvasion,
@@ -75,9 +73,7 @@ class FullArmorValues extends ArmorValues {
 
     get flatFooted(): FullArmorValues {
         return new FullArmorValues({
-            armor: this.armor,
-            shield: this.shield,
-            dodge: 0,
+            gear: this.gear,
             natural: this.natural,
             deflection: this.deflection,
             misc: this.misc + this.miscPhysical,
@@ -94,10 +90,8 @@ class FullArmorValues extends ArmorValues {
     get total(): number {
         return (
             10 +
-            this.armor +
-            this.shield +
+            this.gear +
             this.natural +
-            this.dodge +
             this.deflection +
             this.dexterity +
             this.size +
@@ -117,7 +111,6 @@ class FullArmorValues extends ArmorValues {
             this.strength +
             this.dexterity +
             this.size +
-            this.dodge +
             this.deflection +
             this.misc +
             this.miscEvasion +
