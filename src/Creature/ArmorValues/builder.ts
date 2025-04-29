@@ -2,12 +2,7 @@ import { Size } from '@wowfinder/ts-enums';
 import { PartialStatBlock } from '../Stats';
 
 type ArmorValuesBuilder = {
-    /** @deprecated use `gear` instead */
-    armor?: number;
-    /** @deprecated use `gear` instead */
-    shield?: number;
-    /** @deprecated use `deflection` instead */
-    dodge?: number;
+    gear?: number;
     natural?: number;
     deflection?: number;
     misc?: number;

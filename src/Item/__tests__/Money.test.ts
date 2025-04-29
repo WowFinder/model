@@ -81,8 +81,7 @@ describe('Money', () => {
             expect(result).toBeInstanceOf(Money);
             expect(result.raw).toBe(100);
         });
-    }
-    );
+    });
 
     it('should split an instance into a breakdown', () => {
         const money = Money.fromRaw(201510);
@@ -117,5 +116,4 @@ describe('asMoney', () => {
         expect(moneyInstance).toBeInstanceOf(Money);
         expect(moneyInstance.raw).toBe(201510);
     });
-
 });

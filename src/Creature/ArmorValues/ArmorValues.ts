@@ -1,9 +1,7 @@
 import { ArmorValuesBuilder } from './builder';
 
 class ArmorValues {
-    readonly #armor: number;
-    readonly #shield: number;
-    readonly #dodge: number;
+    readonly #gear: number;
     readonly #natural: number;
     readonly #deflection: number;
     readonly #misc: number;
@@ -14,10 +12,7 @@ class ArmorValues {
     readonly #temporaryEvasion: number; // Temp bonus - Evasion (not ff)
 
     constructor({
-        /** @deprecated */
-        armor = 0,
-        shield = 0,
-        dodge = 0,
+        gear = 0,
         natural = 0,
         deflection = 0,
         misc = 0,
@@ -27,9 +22,7 @@ class ArmorValues {
         temporaryPhysical = 0,
         temporaryEvasion = 0,
     }: ArmorValuesBuilder) {
-        this.#armor = armor;
-        this.#shield = shield;
-        this.#dodge = dodge;
+        this.#gear = gear;
         this.#natural = natural;
         this.#deflection = deflection;
         this.#misc = misc;
@@ -40,19 +33,8 @@ class ArmorValues {
         this.#temporaryEvasion = temporaryEvasion;
     }
 
-    /** @deprecated use `gear` instead */
-    get armor(): number {
-        return this.#armor;
-    }
-
-    /** @deprecated use `gear` instead */
-    get shield(): number {
-        return this.#shield;
-    }
-
-    /** @deprecated use `deflection` instead */
-    get dodge(): number {
-        return this.#dodge;
+    get gear(): number {
+        return this.#gear;
     }
 
     get natural(): number {
@@ -97,9 +79,7 @@ class ArmorValues {
 
     export(): ArmorValuesBuilder {
         return {
-            armor: this.armor,
-            shield: this.shield,
-            dodge: this.dodge,
+            gear: this.gear,
             natural: this.natural,
             deflection: this.deflection,
             misc: this.misc,
