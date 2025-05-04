@@ -10,6 +10,7 @@ export * from './Faction';
 export * from './Item';
 export * from './Language';
 export * from './Magic';
+export * from './Profile';
 export * from './Rewards';
 export * from './Scalar';
 export * from './Transformation';
