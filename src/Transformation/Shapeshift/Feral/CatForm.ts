@@ -1,5 +1,5 @@
-import { type CharacterRequirementsPlaceholder } from '../../../Character/Requirements/base';
-import { CharacterOverride } from '../../../Character/base';
+import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
+import { CharacterOverride } from '../../../Old.Character/base';
 import { Shapeshift, type ShapeshiftBuilder } from '../base';
 
 class CatForm extends Shapeshift {

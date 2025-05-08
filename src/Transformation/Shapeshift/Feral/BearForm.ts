@@ -1,5 +1,5 @@
-import { type CharacterRequirementsPlaceholder } from '../../../Character/Requirements/base';
-import { CharacterOverride } from '../../../Character/base/CharacterOverride';
+import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
+import { CharacterOverride } from '../../../Old.Character/base/CharacterOverride';
 import { type ShapeshiftBuilder, Shapeshift } from '../base';
 
 class BearForm extends Shapeshift {

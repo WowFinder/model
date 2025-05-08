@@ -1,5 +1,5 @@
 import { BonusType } from '@wowfinder/ts-enums';
-import { Bonus, BonusBuilder } from '../../../Character/Bonus';
+import { Bonus, BonusBuilder } from '../../../Old.Character/Bonus';
 import { Dice } from '../../../Dice';
 import { Mass, Time } from '../../../Scalar';
 import { Consumable } from '../base';

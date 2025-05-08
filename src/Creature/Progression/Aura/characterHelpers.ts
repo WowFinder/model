@@ -1,5 +1,5 @@
 import { Aura, BonusType } from '@wowfinder/ts-enums';
-import { Bonus } from '../../../Character/Bonus';
+import { Bonus } from '../../../Old.Character/Bonus';
 import type { ClassEntries } from '../../Class/Class';
 import { auraBonuses } from '.';
 

@@ -1,4 +1,4 @@
-import { type CharacterRequirementsPlaceholder } from '../Character/Requirements/base';
+import { type CharacterRequirementsPlaceholder } from '../Old.Character/Requirements/base';
 
 type Transformation = {
     apply(

@@ -1,5 +1,5 @@
-import { type CharacterRequirementsPlaceholder } from '../../Character/Requirements/base';
-import { type CharacterOverride } from '../../Character/base/CharacterOverride';
+import { type CharacterRequirementsPlaceholder } from '../../Old.Character/Requirements/base';
+import { type CharacterOverride } from '../../Old.Character/base/CharacterOverride';
 import { type Transformation } from '../base';
 
 const druidClasses = ['drd'];

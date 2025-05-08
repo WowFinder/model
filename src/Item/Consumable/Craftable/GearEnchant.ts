@@ -1,5 +1,5 @@
 import { BonusType, TimeUnit } from '@wowfinder/ts-enums';
-import { Bonus, BonusBuilder } from '../../../Character/Bonus';
+import { Bonus, BonusBuilder } from '../../../Old.Character/Bonus';
 import { Mass, Time } from '../../../Scalar';
 import { Shape, buildShape } from '../../Gear';
 import type { ItemBuilder as CraftableConsumableBuilder } from '../../base';
