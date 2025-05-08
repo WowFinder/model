@@ -1,8 +1,11 @@
-import type { Character } from '../';
 import { feats } from '../Feats';
 import type { Feat } from '../Feats/Feat';
 import { FeatSpec } from '../Feats/FeatSpec';
-import type { Requirement } from './base';
+import {
+    type CharacterRequirements,
+    type CharacterRequirementsPlaceholder,
+    type Requirement,
+} from './base';
 
 class FeatRequirement implements Requirement<Iterable<FeatSpec>> {
     readonly #feat: Feat;
@@ -15,16 +18,16 @@ class FeatRequirement implements Requirement<Iterable<FeatSpec>> {
     }
 }
 
-class CharacterFeatRequirement implements Requirement<Character> {
+class CharacterFeatRequirement implements CharacterRequirements {
     readonly #feat: Feat;
     constructor(feat: Feat) {
         this.#feat = feat;
     }
 
-    test(value: Character): boolean {
-        return value.feats.some(
-            f =>
-                f.feat === this.#feat && feats[f.feat].requirements.test(value),
+    test(value: CharacterRequirementsPlaceholder): boolean {
+        const fkeys = Object.keys(value.baseProfile.featsProfile) as Feat[];
+        return fkeys.some(
+            f => f === this.#feat && feats[f].requirements.test(value),
         );
     }
 }

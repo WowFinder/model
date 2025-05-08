@@ -1,21 +1,28 @@
-import type { Character } from '../../../Character';
-import { CharacterOverride } from '../../../Character/base/CharacterOverride';
 import { defaultSpeedUnit } from '../../../Creature/Speeds';
-import type { ShapeshiftBuilder } from '../base';
-import { Shapeshift } from '../base';
+import { type CharacterRequirementsPlaceholder } from '../../../Character/Requirements/base';
+import { CharacterOverride } from '../../../Character/base';
+import { Shapeshift, type ShapeshiftBuilder } from '../base';
 
 class DolphinForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
         super({ rank });
     }
 
-    compute(base: Character, rank: number): CharacterOverride {
+    compute(
+        base: CharacterRequirementsPlaceholder,
+        rank: number,
+    ): CharacterOverride {
+        const speeds = base.baseProfile.speedsProfile;
         return new CharacterOverride({
             key: `${base.key}-dolphin-${rank}`,
-            baseStats: base.stats.base,
+            baseStats: base.baseProfile.statsProfile,
             speeds: {
                 base: 0,
-                swim: 1.5 * base.speeds.base.as(defaultSpeedUnit),
+                fly: speeds.flySpeed,
+                maneuverability: speeds.flyManeuverability,
+                burrow: speeds.burrowSpeed,
+                climb: speeds.climbSpeed,
+                swim: 1.5 * speeds.baseSpeed.as(defaultSpeedUnit),
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),

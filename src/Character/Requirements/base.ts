@@ -1,3 +1,5 @@
+import { type CreatureProfile } from '../../Profile';
+
 abstract class Requirement<T> {
     abstract test(value: T): boolean;
 }
@@ -31,4 +33,26 @@ function and<T>(...requirements: Requirement<T>[]): Requirement<T> {
     );
 }
 
-export { Requirement, FunctionBasedRequirement, EmptyRequirement, or, and };
+/** TODO: Deprecate and remove (`CharacterRequirementsPlaceholder` and dependants) */
+
+type CharacterRequirementsPlaceholder = {
+    baseProfile: CreatureProfile;
+    key: string;
+};
+
+type CharacterRequirements = Requirement<CharacterRequirementsPlaceholder>;
+
+function getCharacterEmptyRequirement(): CharacterRequirements {
+    return new EmptyRequirement<CharacterRequirementsPlaceholder>();
+}
+
+export {
+    Requirement,
+    FunctionBasedRequirement,
+    EmptyRequirement,
+    or,
+    and,
+    type CharacterRequirementsPlaceholder,
+    type CharacterRequirements,
+    getCharacterEmptyRequirement,
+};

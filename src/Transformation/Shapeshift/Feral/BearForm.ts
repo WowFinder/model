@@ -1,19 +1,22 @@
-import type { Character } from '../../../Character';
+import { type CharacterRequirementsPlaceholder } from '../../../Character/Requirements/base';
 import { CharacterOverride } from '../../../Character/base/CharacterOverride';
-import type { ShapeshiftBuilder } from '../base';
-import { Shapeshift } from '../base';
+import { type ShapeshiftBuilder, Shapeshift } from '../base';
 
 class BearForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
         super({ rank });
     }
 
-    compute(base: Character, rank: number): CharacterOverride {
+    compute(
+        base: CharacterRequirementsPlaceholder,
+        rank: number,
+    ): CharacterOverride {
+        const stats = base.baseProfile.statsProfile;
         return new CharacterOverride({
             key: `${base.key}-bear-${rank}`,
             baseStats: {
-                ...base.stats.base,
-                constitution: base.stats.base.constitution + 2 + 2 * rank,
+                ...stats,
+                constitution: stats.constitution + 2 + 2 * rank,
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),

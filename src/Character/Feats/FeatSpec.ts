@@ -1,20 +1,23 @@
 import { FeatFlag } from '@wowfinder/ts-enums';
-import type { Character } from '..';
-import { EmptyRequirement, Requirement } from '../Requirements';
+import {
+    type CharacterRequirements,
+    type CharacterRequirementsPlaceholder,
+    getCharacterEmptyRequirement,
+} from '../Requirements/base';
 
 type FeatBuilder = {
     label: string;
-    requirements?: Requirement<Character>;
+    requirements?: CharacterRequirements;
     flags?: Iterable<FeatFlag>;
 };
 
 class FeatSpec {
     readonly #label: string;
-    readonly #requirements: Requirement<Character>;
+    readonly #requirements: CharacterRequirements;
     readonly #flags: Set<FeatFlag>;
     constructor({ label, requirements, flags }: FeatBuilder) {
         this.#label = `${label}`;
-        this.#requirements = requirements ?? new EmptyRequirement<Character>();
+        this.#requirements = requirements ?? getCharacterEmptyRequirement();
         this.#flags = new Set<FeatFlag>(flags);
     }
 
@@ -22,7 +25,7 @@ class FeatSpec {
         return this.#label;
     }
 
-    get requirements(): Requirement<Character> {
+    get requirements(): CharacterRequirements {
         return this.#requirements;
     }
 
@@ -30,7 +33,7 @@ class FeatSpec {
         return this.#flags;
     }
 
-    testRequirements(char: Character): boolean {
+    testRequirements(char: CharacterRequirementsPlaceholder): boolean {
         return this.#requirements.test(char);
     }
 

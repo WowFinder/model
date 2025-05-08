@@ -1,7 +1,9 @@
-import { Character } from '../Character';
+import { type CharacterRequirementsPlaceholder } from '../Character/Requirements/base';
 
 type Transformation = {
-    apply(base: Character): Character;
+    apply(
+        base: CharacterRequirementsPlaceholder,
+    ): CharacterRequirementsPlaceholder;
 };
 
 export type { Transformation };

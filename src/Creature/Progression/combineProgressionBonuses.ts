@@ -1,7 +1,8 @@
-import { Skill } from '@wowfinder/ts-enums';
-import { ProgressionBonuses } from './ProgressionBonuses';
+import { type Skill } from '@wowfinder/ts-enums';
+import { type ProgressionBonuses } from './ProgressionBonuses';
 import { hdFirst, hdAverage } from './helpers';
 import { type ProgressionEntries } from './Progression';
+import { type ClassEntries } from '../Class';
 
 const goodSave = 1.0 / 2.0;
 const poorSave = 1.0 / 3.0;
@@ -76,4 +77,18 @@ function combineProgressionBonuses(
     return result;
 }
 
-export { combineProgressionBonuses, saveMult, goodSave, poorSave };
+function combineClassBonuses(classes: ClassEntries): ProgressionBonuses {
+    const classLevels = classes.map(cls => ({
+        progression: cls.class,
+        level: cls.level,
+    }));
+    return combineProgressionBonuses(classLevels);
+}
+
+export {
+    combineProgressionBonuses,
+    combineClassBonuses,
+    saveMult,
+    goodSave,
+    poorSave,
+};

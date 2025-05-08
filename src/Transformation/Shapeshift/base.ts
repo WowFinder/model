@@ -1,7 +1,6 @@
-import { sum } from '@wowfinder/ts-utils';
-import type { Character } from '../../Character';
-import type { CharacterOverride } from '../../Character/base/CharacterOverride';
-import type { Transformation } from '../base';
+import { type CharacterRequirementsPlaceholder } from '../../Character/Requirements/base';
+import { type CharacterOverride } from '../../Character/base/CharacterOverride';
+import { type Transformation } from '../base';
 
 const druidClasses = ['drd'];
 
@@ -19,23 +18,23 @@ abstract class Shapeshift implements Transformation {
         return this.#rank;
     }
 
-    abstract compute(base: Character, rank: number): CharacterOverride;
+    abstract compute(
+        base: CharacterRequirementsPlaceholder,
+        rank: number,
+    ): CharacterOverride;
 
-    apply(base: Character): Character {
-        base.setOverride(this.compute(base, this.#rank));
-        return base;
+    apply(base: any): any {
+        // TODO: Reimplement
+        throw new Error('Not implemented yet');
     }
 
     static defaultSize(rank: number): number {
         return rank < 3 ? 0 : (rank - 1) / 2;
     }
 
-    static effectiveDruidLevel(base: Character): number {
-        return sum(
-            ...base.classes
-                .filter(c => druidClasses.includes(c.class.key))
-                .map(c => c.level),
-        );
+    static effectiveDruidLevel(base: any): number {
+        // TODO: Reimplement
+        throw new Error('Not implemented yet');
     }
 }
 

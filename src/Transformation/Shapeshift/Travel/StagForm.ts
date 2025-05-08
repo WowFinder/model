@@ -1,21 +1,29 @@
-import type { Character } from '../../../Character';
-import { CharacterOverride } from '../../../Character/base/CharacterOverride';
 import { defaultSpeedUnit } from '../../../Creature/Speeds';
-import type { ShapeshiftBuilder } from '../base';
-import { Shapeshift } from '../base';
+import { type CharacterRequirementsPlaceholder } from '../../../Character/Requirements/base';
+import { CharacterOverride } from '../../../Character/base';
+import { Shapeshift, type ShapeshiftBuilder } from '../base';
 
 class StagForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
         super({ rank });
     }
 
-    compute(base: Character, rank: number): CharacterOverride {
+    compute(
+        base: CharacterRequirementsPlaceholder,
+        rank: number,
+    ): CharacterOverride {
+        const speeds = base.baseProfile.speedsProfile;
         return new CharacterOverride({
             key: `${base.key}-stag-${rank}`,
-            baseStats: base.stats.base,
+            baseStats: base.baseProfile.statsProfile,
             speeds: {
-                ...base.speeds.export(),
-                base: 2 * base.speeds.base.as(defaultSpeedUnit),
+                fly: speeds.flySpeed,
+                maneuverability: speeds.flyManeuverability,
+                swim: speeds.swimSpeed,
+                burrow: speeds.burrowSpeed,
+                climb: speeds.climbSpeed,
+                // TODO: recompute encumberance
+                base: 2 * speeds.baseSpeed.as(defaultSpeedUnit),
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),

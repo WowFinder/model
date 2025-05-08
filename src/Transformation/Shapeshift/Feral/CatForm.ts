@@ -1,19 +1,22 @@
-import type { Character } from '../../../Character';
-import { CharacterOverride } from '../../../Character/base/CharacterOverride';
-import type { ShapeshiftBuilder } from '../base';
-import { Shapeshift } from '../base';
+import { type CharacterRequirementsPlaceholder } from '../../../Character/Requirements/base';
+import { CharacterOverride } from '../../../Character/base';
+import { Shapeshift, type ShapeshiftBuilder } from '../base';
 
 class CatForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
         super({ rank });
     }
 
-    compute(base: Character, rank: number): CharacterOverride {
+    compute(
+        base: CharacterRequirementsPlaceholder,
+        rank: number,
+    ): CharacterOverride {
+        const stats = base.baseProfile.statsProfile;
         return new CharacterOverride({
             key: `${base.key}-cat-${rank}`,
             baseStats: {
-                ...base.stats.base,
-                dexterity: base.stats.base.dexterity + 2 + 2 * rank,
+                ...stats,
+                dexterity: stats.dexterity + 2 + 2 * rank,
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),

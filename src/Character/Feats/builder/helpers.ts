@@ -1,5 +1,4 @@
 import { FeatFlag, Stat, ClassFeature } from '@wowfinder/ts-enums';
-import type { Character } from '../../';
 import {
     and as allOf,
     AttackBonusRequirement,
@@ -10,15 +9,15 @@ import {
     ClassFeatureRequirement,
     MinStatsRequirement,
     or as either,
-    Requirement,
 } from '../../Requirements';
-import { Feat, WeaponFeat, weaponFeats } from '../Feat';
+import { Feat, type WeaponFeat, weaponFeats } from '../Feat';
 import { FeatSpec } from '../FeatSpec';
+import { type CharacterRequirements } from '../../Requirements/base';
 
 const raw: { [key in Feat]?: FeatSpec } = {};
 
-type Req = Requirement<Character>;
-type Reqs = Requirement<Character>[];
+type Req = CharacterRequirements;
+type Reqs = CharacterRequirements[];
 type Flags = Iterable<FeatFlag>;
 
 function checkNoDuplicate(key: string): void {

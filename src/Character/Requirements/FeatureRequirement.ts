@@ -1,16 +1,17 @@
 import type { ClassFeature } from '@wowfinder/ts-enums';
-import type { Character } from '../';
-import { Requirement } from './base';
+import { type CharacterRequirementsPlaceholder, Requirement } from './base';
 
-class ClassFeatureRequirement extends Requirement<Character> {
+class ClassFeatureRequirement extends Requirement<CharacterRequirementsPlaceholder> {
     readonly #feature: ClassFeature;
     constructor(feature: ClassFeature) {
         super();
         this.#feature = feature;
     }
 
-    test(value: Character): boolean {
-        return value.classFeaturesCondensed.count(this.#feature) > 0;
+    test(value: CharacterRequirementsPlaceholder): boolean {
+        const featureCount =
+            value.baseProfile.classFeaturesProfile[this.#feature] ?? 0;
+        return featureCount > 0;
     }
 }
 

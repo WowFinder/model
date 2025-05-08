@@ -1,6 +1,6 @@
-import { ClassTier, Save } from '@wowfinder/ts-enums';
-import { RawClassAsset } from '@wowfinder/asset-schemas';
-import { CastingModeValues } from '../../Magic';
+import { ClassTier, type Save } from '@wowfinder/ts-enums';
+import { type RawClassAsset } from '@wowfinder/asset-schemas';
+import { type CastingModeValues } from '../../Magic';
 
 type GoodSaves = { [key in Save]: boolean };
 type SpellCasting = CastingModeValues<number>;
