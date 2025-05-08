@@ -7,4 +7,5 @@ export * from './SkillsBonus';
 export * from './SpeedsBonus';
 export * from './SpellPowerBonus';
 export * from './StatsBonus';
+export * from './TypedSimpleBonus';
 export * from './VitalNeedsBonus';

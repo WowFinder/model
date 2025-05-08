@@ -88,16 +88,18 @@ describe('MultiBonus', () => {
                 .map(t => t as BonusType)
                 .forEach(type => {
                     if (stackableBonusTypes[type]) {
-                        expect(combinedBonuses[type].export()).toEqual(
-                            SimpleBonus.multiply(
+                        expect(combinedBonuses[type].export()).toEqual({
+                            ...SimpleBonus.multiply(
                                 fullMultiBonus[type],
                                 2,
                             ).export(),
-                        );
+                            type,
+                        });
                     } else {
-                        expect(combinedBonuses[type].export()).toEqual(
-                            fullMultiBonus[type].export(),
-                        );
+                        expect(combinedBonuses[type].export()).toEqual({
+                            ...fullMultiBonus[type].export(),
+                            type,
+                        });
                     }
                 });
         });

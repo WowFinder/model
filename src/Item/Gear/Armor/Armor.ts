@@ -1,5 +1,5 @@
 import { ArmorFlags, ArmorType } from '@wowfinder/ts-enums';
-import { MultiBonus } from '../../../Old.Character/Bonus';
+import { MultiBonus } from '../../../Bonus/MultiBonus';
 import { Gear } from '../base';
 import { ArmorBuilder, armorPreBuild } from './builder';
 
@@ -56,7 +56,7 @@ class Armor extends Gear {
 
     get fullBonus(): MultiBonus {
         return new MultiBonus({
-            gear: this.bonuses,
+            gear: this.bonuses.export(),
         });
     }
 

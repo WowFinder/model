@@ -1,5 +1,5 @@
 import { BonusType } from '@wowfinder/ts-enums';
-import { Bonus, BonusBuilder } from '../../../Old.Character/Bonus';
+import { TypedSimpleBonus, type SimpleBonusBuilder } from '../../../Bonus';
 import { Dice } from '../../../Dice';
 import { Mass, Time } from '../../../Scalar';
 import { Consumable } from '../base';
@@ -9,14 +9,14 @@ import { CraftableConsumable, CraftableConsumableBuilder } from './base';
 type FoodBuilder = CraftableConsumableBuilder &
     PotionBuilder & {
         duration?: string;
-        bonus: Omit<BonusBuilder, 'type'>;
+        bonus: SimpleBonusBuilder;
     };
 
 const defaultFoodDuration = '15m';
 
 class Food extends CraftableConsumable {
     readonly #duration: Time;
-    readonly #bonus: Bonus;
+    readonly #bonus: TypedSimpleBonus;
     readonly #health: Dice;
     readonly #spells: Dice;
     readonly #sanity: Dice;
@@ -30,7 +30,10 @@ class Food extends CraftableConsumable {
     }: FoodBuilder) {
         super(rest);
         this.#duration = Time.parseTime(duration);
-        this.#bonus = new Bonus({ ...bonus, type: BonusType.temporal });
+        this.#bonus = new TypedSimpleBonus({
+            ...bonus,
+            type: BonusType.temporal,
+        });
         this.#health = Dice.make(health);
         this.#spells = Dice.make(spells);
         this.#sanity = Dice.make(sanity);
@@ -48,7 +51,7 @@ class Food extends CraftableConsumable {
         return this.#duration;
     }
 
-    get bonus(): BonusBuilder {
+    get bonus(): TypedSimpleBonus {
         return this.#bonus;
     }
 
