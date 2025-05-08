@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 import SkillsBonus from './Skills';
 import { VitalNeedsBonus } from '../../Bonus/VitalNeedsBonus';
-import Senses from './Senses';
+import { SensesBonus } from '../../Bonus/SensesBonus';
 import { sum } from '@wowfinder/ts-utils';
 import { SavesBonus } from '../../Bonus/SavesBonus';
 import SpellPowerBonus from './SpellPowerBonus';
@@ -27,7 +27,7 @@ type BonusBuilder = {
     resistances?: ResistancesBonus;
     armorClass?: number;
     vitalNeeds?: VitalNeedsBonus;
-    senses?: Senses;
+    senses?: SensesBonus;
     spellPower?: SpellPowerBonus;
     // TODO #448: Speed
 };
@@ -41,7 +41,7 @@ class Bonus {
     readonly #resistances: ResistancesBonus;
     readonly #armorClass: number;
     readonly #vitalNeeds: VitalNeedsBonus;
-    readonly #senses: Senses;
+    readonly #senses: SensesBonus;
     readonly #spellPower: SpellPowerBonus;
 
     constructor({
@@ -53,7 +53,7 @@ class Bonus {
         resistances = ResistancesBonus.zero,
         armorClass = 0,
         vitalNeeds = VitalNeedsBonus.zero,
-        senses = Senses.defaults,
+        senses = SensesBonus.defaults,
         spellPower = SpellPowerBonus.zero,
     }: BonusBuilder) {
         this.#type = type;
@@ -101,7 +101,7 @@ class Bonus {
         return this.#vitalNeeds;
     }
 
-    get senses(): Senses {
+    get senses(): SensesBonus {
         return this.#senses;
     }
 
@@ -119,7 +119,7 @@ class Bonus {
             resistances: ResistancesBonus.zero,
             armorClass: 0,
             vitalNeeds: VitalNeedsBonus.zero,
-            senses: Senses.defaults,
+            senses: SensesBonus.defaults,
             spellPower: SpellPowerBonus.zero,
         });
     }
@@ -134,7 +134,7 @@ class Bonus {
             resistances: ResistancesBonus.sum(...args.map(a => a.#resistances)),
             armorClass: sum(...args.map(a => a.#armorClass)),
             vitalNeeds: VitalNeedsBonus.max(...args.map(a => a.#vitalNeeds)),
-            senses: Senses.combine(...args.map(a => a.#senses)),
+            senses: SensesBonus.max(...args.map(a => a.#senses)),
             spellPower: SpellPowerBonus.sum(...args.map(a => a.#spellPower)),
         });
     }
@@ -149,7 +149,7 @@ class Bonus {
             resistances: ResistancesBonus.max(...args.map(a => a.#resistances)),
             armorClass: Math.max(...args.map(a => a.#armorClass)),
             vitalNeeds: VitalNeedsBonus.max(...args.map(a => a.#vitalNeeds)),
-            senses: Senses.combine(...args.map(a => a.#senses)),
+            senses: SensesBonus.max(...args.map(a => a.#senses)),
             spellPower: SpellPowerBonus.max(...args.map(a => a.#spellPower)),
         });
     }
@@ -205,7 +205,7 @@ class Bonus {
             resistances: new ResistancesBonus(raw.resistances),
             armorClass: (raw.armorClass as number) || 0,
             vitalNeeds: new VitalNeedsBonus(raw.vitalNeeds),
-            senses: Senses.build(raw.senses),
+            senses: new SensesBonus(raw.senses),
             spellPower: SpellPowerBonus.build(raw.spellPower),
         });
     }
@@ -253,12 +253,9 @@ type BonusProvider = {
     get fullBonus(): MultiBonus;
 };
 
-export type {
-    /** @deprecated (replacement WiP) */
-    BonusProvider,
-};
-
 export {
+    /** @deprecated (replacement WiP) */
+    type BonusProvider,
     /** @deprecated (use SimpleBonusBuilder instead) */
     type BonusBuilder,
     /** @deprecated (use SimpleBonus instead) */
@@ -267,11 +264,6 @@ export {
     MultiBonus,
     /** @deprecated (use Bonus/SkillsBonus instead) */
     SkillsBonus,
-    /** @deprecated (use Bonus/SensesBonus instead) */
-    Senses,
-    /* TODO: Implement Bonus/SavesBonus */
-    /** @deprecated (use Bonus/SavesBonus instead) (WiP) */
-    SavesBonus,
     /** @deprecated (use Bonus/SpellPowerBonus instead) */
     SpellPowerBonus,
 };
