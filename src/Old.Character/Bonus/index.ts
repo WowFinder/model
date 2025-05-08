@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import SkillsBonus from './Skills';
-import { VitalNeeds } from './VitalNeeds';
+import { VitalNeedsBonus } from '../../Bonus/VitalNeedsBonus';
 import Senses from './Senses';
 import { sum } from '@wowfinder/ts-utils';
 import SavesBonus from './Saves';
@@ -26,7 +26,7 @@ type BonusBuilder = {
     saves?: SavesBonus;
     resistances?: ResistancesBonus;
     armorClass?: number;
-    vitalNeeds?: VitalNeeds;
+    vitalNeeds?: VitalNeedsBonus;
     senses?: Senses;
     spellPower?: SpellPowerBonus;
     // TODO #448: Speed
@@ -40,7 +40,7 @@ class Bonus {
     readonly #saves: SavesBonus;
     readonly #resistances: ResistancesBonus;
     readonly #armorClass: number;
-    readonly #vitalNeeds: VitalNeeds;
+    readonly #vitalNeeds: VitalNeedsBonus;
     readonly #senses: Senses;
     readonly #spellPower: SpellPowerBonus;
 
@@ -52,7 +52,7 @@ class Bonus {
         saves = SavesBonus.zero,
         resistances = ResistancesBonus.zero,
         armorClass = 0,
-        vitalNeeds = VitalNeeds.zero,
+        vitalNeeds = VitalNeedsBonus.zero,
         senses = Senses.defaults,
         spellPower = SpellPowerBonus.zero,
     }: BonusBuilder) {
@@ -97,7 +97,7 @@ class Bonus {
         return this.#armorClass;
     }
 
-    get vitalNeeds(): VitalNeeds {
+    get vitalNeeds(): VitalNeedsBonus {
         return this.#vitalNeeds;
     }
 
@@ -118,7 +118,7 @@ class Bonus {
             saves: SavesBonus.zero,
             resistances: ResistancesBonus.zero,
             armorClass: 0,
-            vitalNeeds: VitalNeeds.zero,
+            vitalNeeds: VitalNeedsBonus.zero,
             senses: Senses.defaults,
             spellPower: SpellPowerBonus.zero,
         });
@@ -133,7 +133,7 @@ class Bonus {
             saves: SavesBonus.sum(...args.map(a => a.#saves)),
             resistances: ResistancesBonus.sum(...args.map(a => a.#resistances)),
             armorClass: sum(...args.map(a => a.#armorClass)),
-            vitalNeeds: VitalNeeds.combine(...args.map(a => a.#vitalNeeds)),
+            vitalNeeds: VitalNeedsBonus.max(...args.map(a => a.#vitalNeeds)),
             senses: Senses.combine(...args.map(a => a.#senses)),
             spellPower: SpellPowerBonus.sum(...args.map(a => a.#spellPower)),
         });
@@ -148,7 +148,7 @@ class Bonus {
             saves: SavesBonus.max(...args.map(a => a.#saves)),
             resistances: ResistancesBonus.max(...args.map(a => a.#resistances)),
             armorClass: Math.max(...args.map(a => a.#armorClass)),
-            vitalNeeds: VitalNeeds.combine(...args.map(a => a.#vitalNeeds)),
+            vitalNeeds: VitalNeedsBonus.max(...args.map(a => a.#vitalNeeds)),
             senses: Senses.combine(...args.map(a => a.#senses)),
             spellPower: SpellPowerBonus.max(...args.map(a => a.#spellPower)),
         });
@@ -204,7 +204,7 @@ class Bonus {
             saves: SavesBonus.build(raw.saves),
             resistances: new ResistancesBonus(raw.resistances),
             armorClass: (raw.armorClass as number) || 0,
-            vitalNeeds: VitalNeeds.build(raw.vitalNeeds),
+            vitalNeeds: new VitalNeedsBonus(raw.vitalNeeds),
             senses: Senses.build(raw.senses),
             spellPower: SpellPowerBonus.build(raw.spellPower),
         });
@@ -267,8 +267,6 @@ export {
     MultiBonus,
     /** @deprecated (use Bonus/SkillsBonus instead) */
     SkillsBonus,
-    /** @deprecated (use Bonus/VitalNeedsBonus instead) */
-    VitalNeeds,
     /** @deprecated (use Bonus/SensesBonus instead) */
     Senses,
     /* TODO: Implement Bonus/SavesBonus */
