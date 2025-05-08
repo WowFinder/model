@@ -1,7 +1,7 @@
 import { RawSaves } from '@wowfinder/asset-schemas';
 import { sum } from '@wowfinder/ts-utils';
 
-export default class SavesBonus implements RawSaves {
+class SavesBonus implements RawSaves {
     readonly #fortitude: number;
     readonly #reflexes: number;
     readonly #will: number;
@@ -43,13 +43,6 @@ export default class SavesBonus implements RawSaves {
             will: Math.max(...args.map(a => a.will)),
         });
     }
-
-    /** @deprecated */
-    static build(raw: any = {}): SavesBonus {
-        return new SavesBonus({
-            fortitude: raw.fortitude ?? 0,
-            reflexes: raw.reflexes ?? 0,
-            will: raw.will ?? 0,
-        });
-    }
 }
+
+export { SavesBonus }

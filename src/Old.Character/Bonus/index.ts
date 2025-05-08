@@ -3,7 +3,7 @@ import SkillsBonus from './Skills';
 import { VitalNeedsBonus } from '../../Bonus/VitalNeedsBonus';
 import Senses from './Senses';
 import { sum } from '@wowfinder/ts-utils';
-import SavesBonus from './Saves';
+import { SavesBonus } from '../../Bonus/SavesBonus';
 import SpellPowerBonus from './SpellPowerBonus';
 import { BonusType } from '@wowfinder/ts-enums';
 import { ResistancesBonus } from '../../Bonus/ResistancesBonus';
@@ -201,7 +201,7 @@ class Bonus {
             hp: (raw.hp as number) || 0,
             stats: new StatsBonus(raw.stats),
             skills: SkillsBonus.build(raw.skills),
-            saves: SavesBonus.build(raw.saves),
+            saves: new SavesBonus(raw.saves),
             resistances: new ResistancesBonus(raw.resistances),
             armorClass: (raw.armorClass as number) || 0,
             vitalNeeds: new VitalNeedsBonus(raw.vitalNeeds),
