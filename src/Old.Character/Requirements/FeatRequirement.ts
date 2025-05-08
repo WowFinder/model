@@ -1,5 +1,3 @@
-import { feats } from '../Feats';
-import type { Feat } from '../Feats/Feat';
 import { FeatSpec } from '../Feats/FeatSpec';
 import {
     type CharacterRequirements,
@@ -8,27 +6,27 @@ import {
 } from './base';
 
 class FeatRequirement implements Requirement<Iterable<FeatSpec>> {
-    readonly #feat: Feat;
-    constructor(feat: Feat) {
+    readonly #feat: FeatSpec;
+    constructor(feat: FeatSpec) {
         this.#feat = feat;
     }
 
     test(value: Iterable<FeatSpec>): boolean {
-        return [...value].some(f => f.label === this.#feat);
+        return [...value].some(f => f === this.#feat);
     }
 }
 
 class CharacterFeatRequirement implements CharacterRequirements {
-    readonly #feat: Feat;
-    constructor(feat: Feat) {
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+    readonly #feat: FeatSpec;
+    constructor(feat: FeatSpec) {
         this.#feat = feat;
     }
 
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
     test(value: CharacterRequirementsPlaceholder): boolean {
-        const fkeys = Object.keys(value.baseProfile.featsProfile) as Feat[];
-        return fkeys.some(
-            f => f === this.#feat && feats[f].requirements.test(value),
-        );
+        // TODO: Reimplement (avoid circular dependencies!)
+        return false;
     }
 }
 

@@ -103,8 +103,8 @@ function buildStats({
         base,
         racial: race.statMods,
         // TODO #445: enhance
-        gear: gear.stats.values,
-        misc: auras.stats.values,
+        gear: gear.stats,
+        misc: auras.stats,
         // TODO #445: temp
     });
 }

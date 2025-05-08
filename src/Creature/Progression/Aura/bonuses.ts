@@ -1,7 +1,8 @@
 import { Aura, BonusType } from '@wowfinder/ts-enums';
-import { Bonus, ResistBonus, StatsBonus } from '../../../Old.Character/Bonus';
-import { fillResistBonus } from '../../../Old.Character/Bonus/ResistBonus';
+import { Bonus } from '../../../Old.Character/Bonus';
+import { fillResistances } from '../../Resistances/fill';
 import { AuraBonus } from './base';
+import { ResistancesBonus, StatsBonus } from '../../../Bonus';
 
 const auraBonuses: { [key in Aura]: AuraBonus } = {
     [Aura.commanding]: (rank: number) =>
@@ -11,7 +12,7 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             stats: new StatsBonus({
                 constitution: rank * 6,
             }),
-            resistances: new ResistBonus(fillResistBonus({}, rank * 2)),
+            resistances: new ResistancesBonus(fillResistances({}, rank * 2)),
         }),
     [Aura.furious]: (rank: number) =>
         new Bonus({
@@ -20,7 +21,7 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             stats: new StatsBonus({
                 strength: rank * 4,
             }),
-            resistances: new ResistBonus(fillResistBonus({}, rank * 4)),
+            resistances: new ResistancesBonus(fillResistances({}, rank * 4)),
         }),
     [Aura.arcane]: (rank: number) =>
         new Bonus({
@@ -43,7 +44,7 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
                 wisdom: rank * 2,
                 charisma: rank * 2,
             }),
-            resistances: new ResistBonus(fillResistBonus({}, rank * 1)),
+            resistances: new ResistancesBonus(fillResistances({}, rank * 1)),
         }),
     [Aura.mysterious]: (rank: number) =>
         new Bonus({

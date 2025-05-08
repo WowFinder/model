@@ -1,5 +1,5 @@
 import { RawStats } from '@wowfinder/asset-schemas';
-import { addStatSets } from '../Creature';
+import { addStatSets } from '../Creature/Stats/helpers';
 import { JsonExportable, JsonCompatible } from '@wowfinder/ts-utils';
 import { Stat } from '@wowfinder/ts-enums';
 

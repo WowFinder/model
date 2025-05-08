@@ -1,13 +1,13 @@
 /* eslint-disable max-lines */
-import StatsBonus from './Stats';
 import SkillsBonus from './Skills';
 import { VitalNeeds } from './VitalNeeds';
 import Senses from './Senses';
 import { sum } from '@wowfinder/ts-utils';
 import SavesBonus from './Saves';
-import ResistBonus from './ResistBonus';
 import SpellPowerBonus from './SpellPowerBonus';
 import { BonusType } from '@wowfinder/ts-enums';
+import { ResistancesBonus } from '../../Bonus/ResistancesBonus';
+import { StatsBonus } from '../../Bonus/StatsBonus';
 
 const stackables: BonusType[] = [BonusType.gear, BonusType.temporal];
 
@@ -24,7 +24,7 @@ type BonusBuilder = {
     stats?: StatsBonus;
     skills?: SkillsBonus;
     saves?: SavesBonus;
-    resistances?: ResistBonus;
+    resistances?: ResistancesBonus;
     armorClass?: number;
     vitalNeeds?: VitalNeeds;
     senses?: Senses;
@@ -38,7 +38,7 @@ class Bonus {
     readonly #stats: StatsBonus;
     readonly #skills: SkillsBonus;
     readonly #saves: SavesBonus;
-    readonly #resistances: ResistBonus;
+    readonly #resistances: ResistancesBonus;
     readonly #armorClass: number;
     readonly #vitalNeeds: VitalNeeds;
     readonly #senses: Senses;
@@ -50,7 +50,7 @@ class Bonus {
         stats = StatsBonus.zero,
         skills = SkillsBonus.zero,
         saves = SavesBonus.zero,
-        resistances = ResistBonus.zero,
+        resistances = ResistancesBonus.zero,
         armorClass = 0,
         vitalNeeds = VitalNeeds.zero,
         senses = Senses.defaults,
@@ -61,7 +61,7 @@ class Bonus {
         this.#stats = StatsBonus.sum(stats);
         this.#skills = SkillsBonus.sum(skills);
         this.#saves = SavesBonus.sum(saves);
-        this.#resistances = ResistBonus.sum(resistances);
+        this.#resistances = ResistancesBonus.sum(resistances);
         this.#armorClass = armorClass;
         this.#vitalNeeds = vitalNeeds;
         this.#senses = senses;
@@ -89,8 +89,8 @@ class Bonus {
         return SavesBonus.sum(this.#saves);
     }
 
-    get resistances(): ResistBonus {
-        return ResistBonus.sum(this.#resistances);
+    get resistances(): ResistancesBonus {
+        return ResistancesBonus.sum(this.#resistances);
     }
 
     get armorClass(): number {
@@ -116,7 +116,7 @@ class Bonus {
             stats: StatsBonus.zero,
             skills: SkillsBonus.zero,
             saves: SavesBonus.zero,
-            resistances: ResistBonus.zero,
+            resistances: ResistancesBonus.zero,
             armorClass: 0,
             vitalNeeds: VitalNeeds.zero,
             senses: Senses.defaults,
@@ -131,7 +131,7 @@ class Bonus {
             stats: StatsBonus.sum(...args.map(a => a.#stats)),
             skills: SkillsBonus.sum(...args.map(a => a.#skills)),
             saves: SavesBonus.sum(...args.map(a => a.#saves)),
-            resistances: ResistBonus.sum(...args.map(a => a.#resistances)),
+            resistances: ResistancesBonus.sum(...args.map(a => a.#resistances)),
             armorClass: sum(...args.map(a => a.#armorClass)),
             vitalNeeds: VitalNeeds.combine(...args.map(a => a.#vitalNeeds)),
             senses: Senses.combine(...args.map(a => a.#senses)),
@@ -146,7 +146,7 @@ class Bonus {
             stats: StatsBonus.max(...args.map(a => a.#stats)),
             skills: SkillsBonus.max(...args.map(a => a.#skills)),
             saves: SavesBonus.max(...args.map(a => a.#saves)),
-            resistances: ResistBonus.max(...args.map(a => a.#resistances)),
+            resistances: ResistancesBonus.max(...args.map(a => a.#resistances)),
             armorClass: Math.max(...args.map(a => a.#armorClass)),
             vitalNeeds: VitalNeeds.combine(...args.map(a => a.#vitalNeeds)),
             senses: Senses.combine(...args.map(a => a.#senses)),
@@ -199,10 +199,10 @@ class Bonus {
         return new Bonus({
             type: (raw.type as BonusType) || BonusType.temporal,
             hp: (raw.hp as number) || 0,
-            stats: StatsBonus.build(raw.stats),
+            stats: new StatsBonus(raw.stats),
             skills: SkillsBonus.build(raw.skills),
             saves: SavesBonus.build(raw.saves),
-            resistances: ResistBonus.build(raw.resistances),
+            resistances: new ResistancesBonus(raw.resistances),
             armorClass: (raw.armorClass as number) || 0,
             vitalNeeds: VitalNeeds.build(raw.vitalNeeds),
             senses: Senses.build(raw.senses),
@@ -265,8 +265,6 @@ export {
     Bonus,
     /** @deprecated (use Bonus/MultiBonus instead) */
     MultiBonus,
-    /** @deprecated (use Bonus/StatsBonus instead) */
-    StatsBonus,
     /** @deprecated (use Bonus/SkillsBonus instead) */
     SkillsBonus,
     /** @deprecated (use Bonus/VitalNeedsBonus instead) */
@@ -276,8 +274,6 @@ export {
     /* TODO: Implement Bonus/SavesBonus */
     /** @deprecated (use Bonus/SavesBonus instead) (WiP) */
     SavesBonus,
-    /** @deprecated (use ResistancesBonus instead) */
-    ResistBonus,
     /** @deprecated (use Bonus/SpellPowerBonus instead) */
     SpellPowerBonus,
 };

@@ -44,8 +44,12 @@ const req = {
     },
     stat: (stat: Stat, min: number): Req =>
         characterStatsRequirement(new MinStatsRequirement({ [stat]: min })),
+    /* TODO: Reimplement (avoid circular dependency)
     feats: (...feats: Feat[]): Reqs =>
         feats.map(f => new CharacterFeatRequirement(f)),
+    */
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+    feats: (...feats: Feat[]): Reqs => [],
     features: (...features: ClassFeature[]): Reqs =>
         features.map(f => new ClassFeatureRequirement(f)),
 };
