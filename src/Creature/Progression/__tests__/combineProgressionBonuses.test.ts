@@ -1,6 +1,7 @@
 import { RawSaves } from '@wowfinder/asset-schemas';
-import { Class } from '../../Class';
+import { Class, type ClassEntry } from '../../Class';
 import {
+    combineClassBonuses,
     combineProgressionBonuses,
     goodSave,
     poorSave,
@@ -11,21 +12,33 @@ import {
     mockDivineClassRawAsset,
     mockStealthClassRawAsset,
 } from '../../../__mocks__';
+import { ProgressionEntry } from '../Progression';
 
-describe('combineClassBonuses', () => {
+describe('combineProgressionBonuses', () => {
     const classes = {
         melee: new Class(mockMeleeClassRawAsset),
         arcane: new Class(mockArcaneClassRawAsset),
         divine: new Class(mockDivineClassRawAsset),
         stealth: new Class(mockStealthClassRawAsset),
     };
-    const classLevels = [
+    const classLevels: (ProgressionEntry & Partial<ClassEntry>)[] = [
         { progression: classes.melee, level: 8 },
         { progression: classes.arcane, level: 4 },
         { progression: classes.divine, level: 2 },
         { progression: classes.stealth, level: 1 },
     ];
+    classLevels.forEach(entry => {
+        if (entry.progression instanceof Class) {
+            entry.class = entry.progression;
+        }
+    });
     const bonuses = combineProgressionBonuses(classLevels);
+    describe('combineClassBonuses', () => {
+        it('should correctly map class entries to progression entries', () => {
+            const classBonuses = combineClassBonuses(classLevels as ClassEntry[]);
+            expect(classBonuses).toEqual(bonuses);
+        });
+    });
     it('should compute hitpoints correctly', () => {
         // 8 levels of d10, 4 levels of d6, 2 levels of d8, 1 level of d8
         // Bonus for first level: +4
