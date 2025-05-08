@@ -45,4 +45,4 @@ class SavesBonus implements RawSaves {
     }
 }
 
-export { SavesBonus }
+export { SavesBonus };

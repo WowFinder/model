@@ -47,4 +47,3 @@ describe('SavesBonus', () => {
         expect(maxBonus.will).toBe(3);
     });
 });
-

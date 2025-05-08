@@ -35,7 +35,9 @@ describe('combineProgressionBonuses', () => {
     const bonuses = combineProgressionBonuses(classLevels);
     describe('combineClassBonuses', () => {
         it('should correctly map class entries to progression entries', () => {
-            const classBonuses = combineClassBonuses(classLevels as ClassEntry[]);
+            const classBonuses = combineClassBonuses(
+                classLevels as ClassEntry[],
+            );
             expect(classBonuses).toEqual(bonuses);
         });
     });
