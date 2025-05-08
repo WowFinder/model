@@ -17,22 +17,22 @@ import type {
 } from './raw';
 
 type CreatureProfile = {
-    personalDetails: PersonalDetails;
+    personal: PersonalDetails;
     shape: Shape;
     size: Size;
-    statsProfile: StatsProfile;
-    progressionProfile: ProgressionProfile;
-    speedsProfile: SpeedsProfile;
-    vitalsProfile: VitalsProfile;
-    skillsProfile: SkillsProfile;
-    savesProfile: SavesProfile;
-    resistancesProfile: ResistancesProfile;
+    stats: StatsProfile;
+    progression: ProgressionProfile;
+    speeds: SpeedsProfile;
+    vitals: VitalsProfile;
+    skills: SkillsProfile;
+    saves: SavesProfile;
+    resistances: ResistancesProfile;
     // TODO traitsProfile
-    classFeaturesProfile: ClassFeaturesProfile;
-    featsProfile: FeatsProfile;
-    armorProfile: ArmorProfile;
-    baseAttackProfile: BaseAttackProfile;
-    spellPowerProfile: SpellPowerProfile;
+    features: ClassFeaturesProfile;
+    feats: FeatsProfile;
+    armor: ArmorProfile;
+    attack: BaseAttackProfile;
+    spellPower: SpellPowerProfile;
 };
 
 export type { CreatureProfile };

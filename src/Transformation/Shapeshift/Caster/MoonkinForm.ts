@@ -11,7 +11,7 @@ class MoonkinForm extends Shapeshift {
         base: CharacterRequirementsPlaceholder,
         rank: number,
     ): CharacterOverride {
-        const stats = base.baseProfile.statsProfile;
+        const { stats } = base.baseProfile;
         return new CharacterOverride({
             key: `${base.key}-moonkin-${rank}`,
             baseStats: {

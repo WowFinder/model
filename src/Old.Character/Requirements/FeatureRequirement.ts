@@ -9,8 +9,7 @@ class ClassFeatureRequirement extends Requirement<CharacterRequirementsPlacehold
     }
 
     test(value: CharacterRequirementsPlaceholder): boolean {
-        const featureCount =
-            value.baseProfile.classFeaturesProfile[this.#feature] ?? 0;
+        const featureCount = value.baseProfile.features[this.#feature] ?? 0;
         return featureCount > 0;
     }
 }

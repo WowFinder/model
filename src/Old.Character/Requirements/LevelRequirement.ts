@@ -24,7 +24,7 @@ class CharacterLevelRequirement extends LevelRequirementBase {
     test(value: CharacterRequirementsPlaceholder): boolean {
         return (
             sum(
-                ...value.baseProfile.progressionProfile.classes.map(
+                ...value.baseProfile.progression.classes.map(
                     entry => entry.level,
                 ),
             ) >= this.level
@@ -35,7 +35,7 @@ class CharacterLevelRequirement extends LevelRequirementBase {
 class CasterLevelRequirement extends LevelRequirementBase {
     test(value: CharacterRequirementsPlaceholder): boolean {
         const { efl } = combineClassBonuses(
-            value.baseProfile.progressionProfile.classes,
+            value.baseProfile.progression.classes,
         );
         return efl.arcane + efl.divine + efl.spontaneous >= this.level;
     }
@@ -44,7 +44,7 @@ class CasterLevelRequirement extends LevelRequirementBase {
 class AttackBonusRequirement extends LevelRequirementBase {
     test(value: CharacterRequirementsPlaceholder): boolean {
         const { bab } = combineClassBonuses(
-            value.baseProfile.progressionProfile.classes,
+            value.baseProfile.progression.classes,
         );
         return bab >= this.level;
     }

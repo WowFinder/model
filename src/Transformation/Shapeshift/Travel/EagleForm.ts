@@ -13,10 +13,10 @@ class EagleForm extends Shapeshift {
         base: CharacterRequirementsPlaceholder,
         rank: number,
     ): CharacterOverride {
-        const speeds = base.baseProfile.speedsProfile;
+        const { speeds, stats } = base.baseProfile;
         return new CharacterOverride({
             key: `${base.key}-eagle-${rank}`,
-            baseStats: base.baseProfile.statsProfile,
+            baseStats: stats,
             speeds: {
                 ...speeds.export(),
                 // TODO: recompute encumberance

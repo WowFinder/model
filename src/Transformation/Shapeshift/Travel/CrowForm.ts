@@ -13,10 +13,10 @@ class CrowForm extends Shapeshift {
         base: CharacterRequirementsPlaceholder,
         rank: number,
     ): CharacterOverride {
-        const speeds = base.baseProfile.speedsProfile;
+        const { speeds, stats } = base.baseProfile;
         return new CharacterOverride({
             key: `${base.key}-crow-${rank}`,
-            baseStats: base.baseProfile.statsProfile,
+            baseStats: stats,
             speeds: {
                 ...speeds.export(),
                 fly: 1.5 * speeds.base.as(defaultSpeedUnit),

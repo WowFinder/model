@@ -12,10 +12,10 @@ class StagForm extends Shapeshift {
         base: CharacterRequirementsPlaceholder,
         rank: number,
     ): CharacterOverride {
-        const speeds = base.baseProfile.speedsProfile;
+        const { speeds, stats } = base.baseProfile;
         return new CharacterOverride({
             key: `${base.key}-stag-${rank}`,
-            baseStats: base.baseProfile.statsProfile,
+            baseStats: stats,
             speeds: {
                 ...speeds.export(),
                 base: 2 * speeds.base.as(defaultSpeedUnit),

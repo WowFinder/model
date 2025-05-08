@@ -90,7 +90,7 @@ function characterStatsRequirement<T extends Requirement<RawStats>>(
 ): Requirement<CharacterRequirementsPlaceholder> {
     return new FunctionBasedRequirement<CharacterRequirementsPlaceholder>(
         (char: CharacterRequirementsPlaceholder) =>
-            req.test(char.baseProfile.statsProfile),
+            req.test(char.baseProfile.stats),
     );
 }
 
