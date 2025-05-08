@@ -24,7 +24,7 @@ class EagleForm extends Shapeshift {
                 climb: speeds.climbSpeed,
                 // TODO: recompute encumberance
                 fly: 3.5 * speeds.baseSpeed.as(defaultSpeedUnit),
-                maneuverability: FlyManeuverability.average,
+                maneuverability: FlyManeuverability.perfect,
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),
