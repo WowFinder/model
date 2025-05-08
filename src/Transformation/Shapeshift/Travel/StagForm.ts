@@ -18,7 +18,7 @@ class StagForm extends Shapeshift {
             baseStats: stats,
             speeds: {
                 ...speeds.export(),
-                base: 2 * speeds.base.as(defaultSpeedUnit),
+                base: 3.5 * speeds.base.as(defaultSpeedUnit),
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),

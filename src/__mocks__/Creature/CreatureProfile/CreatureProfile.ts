@@ -2,7 +2,7 @@ import { DamageType, Size, Skill } from '@wowfinder/ts-enums';
 import { Shapes } from '../../../Item';
 import { type CreatureProfile, SpeedsProfile } from '../../../Profile';
 import { mockPersonalDetails } from './PersonalDetails';
-import { mockMeleeClass } from '../Class';
+import { mockDruidricClass, mockMeleeClass } from '../Class';
 import { mkCounter } from '@wowfinder/ts-utils';
 import { Time } from '../../../Scalar';
 import { fillSpellPowerValues, fullComputedSpellPower } from '../../../Magic';
@@ -85,4 +85,19 @@ const mockBasicCreatureProfile: CreatureProfile = {
     spellPower: fullComputedSpellPower(fillSpellPowerValues({}, 0)),
 };
 
-export { mockBasicCreatureProfile };
+const mockDruidCreatureProfile: CreatureProfile = {
+    ...mockBasicCreatureProfile,
+    progression: {
+        ...mockBasicCreatureProfile.progression,
+        level: 3,
+        xp: 6000,
+        classes: [
+            {
+                level: 3,
+                class: mockDruidricClass,
+            },
+        ],
+    },
+};
+
+export { mockBasicCreatureProfile, mockDruidCreatureProfile };

@@ -112,8 +112,6 @@ export default [
             // https://iliubinskii.github.io/eslint-plugin-misc/#rules
             'misc/class-match-filename': 'warn',
             'misc/no-shadow': 'warn',
-            'misc/sort-construct-signature': 'error',
-            'misc/sort-class-members': 'warn',
             'misc/typescript/no-unsafe-object-assignment': 'error',
         },
     },
