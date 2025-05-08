@@ -18,12 +18,8 @@ class CrowForm extends Shapeshift {
             key: `${base.key}-crow-${rank}`,
             baseStats: base.baseProfile.statsProfile,
             speeds: {
-                base: speeds.baseSpeed,
-                swim: speeds.swimSpeed,
-                burrow: speeds.burrowSpeed,
-                climb: speeds.climbSpeed,
-                // TODO: recompute encumberance
-                fly: 1.5 * speeds.baseSpeed.as(defaultSpeedUnit),
+                ...speeds.export(),
+                fly: 1.5 * speeds.base.as(defaultSpeedUnit),
                 maneuverability: FlyManeuverability.average,
             },
             featChoices: [],

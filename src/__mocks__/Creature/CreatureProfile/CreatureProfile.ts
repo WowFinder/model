@@ -1,6 +1,6 @@
 import { DamageType, Size, Skill } from '@wowfinder/ts-enums';
 import { Shapes } from '../../../Item';
-import { buildSpeedsProfile, type CreatureProfile } from '../../../Profile';
+import { type CreatureProfile, SpeedsProfile } from '../../../Profile';
 import { mockPersonalDetails } from './PersonalDetails';
 import { mockMeleeClass } from '../Class';
 import { mkCounter } from '@wowfinder/ts-utils';
@@ -42,8 +42,8 @@ const mockBasicCreatureProfile: CreatureProfile = {
             },
         ],
     },
-    speedsProfile: buildSpeedsProfile({
-        baseSpeed: 30,
+    speedsProfile: new SpeedsProfile({
+        base: 30,
         encumberance: true,
     }),
     vitalsProfile: {

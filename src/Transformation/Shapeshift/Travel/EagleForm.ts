@@ -18,12 +18,9 @@ class EagleForm extends Shapeshift {
             key: `${base.key}-eagle-${rank}`,
             baseStats: base.baseProfile.statsProfile,
             speeds: {
-                base: speeds.baseSpeed,
-                swim: speeds.swimSpeed,
-                burrow: speeds.burrowSpeed,
-                climb: speeds.climbSpeed,
+                ...speeds.export(),
                 // TODO: recompute encumberance
-                fly: 3.5 * speeds.baseSpeed.as(defaultSpeedUnit),
+                fly: 3.5 * speeds.base.as(defaultSpeedUnit),
                 maneuverability: FlyManeuverability.perfect,
             },
             featChoices: [],

@@ -17,13 +17,8 @@ class StagForm extends Shapeshift {
             key: `${base.key}-stag-${rank}`,
             baseStats: base.baseProfile.statsProfile,
             speeds: {
-                fly: speeds.flySpeed,
-                maneuverability: speeds.flyManeuverability,
-                swim: speeds.swimSpeed,
-                burrow: speeds.burrowSpeed,
-                climb: speeds.climbSpeed,
-                // TODO: recompute encumberance
-                base: 2 * speeds.baseSpeed.as(defaultSpeedUnit),
+                ...speeds.export(),
+                base: 2 * speeds.base.as(defaultSpeedUnit),
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),

@@ -17,7 +17,7 @@ describe('Speeds', () => {
         expect(speeds.swim.value).toBe(0);
         expect(speeds.burrow.value).toBe(0);
         expect(speeds.climb.value).toBe(0);
-        expect(speeds.encumbered.value).toBe(20);
+        expect(speeds.reduced.value).toBe(20);
         expect(speeds.maneuverability).toBe('average');
     });
 
@@ -30,14 +30,14 @@ describe('Speeds', () => {
         expect(speeds.swim.value).toBe(20);
         expect(speeds.burrow.value).toBe(10);
         expect(speeds.climb.value).toBe(15);
-        expect(speeds.encumbered.value).toBe(30);
+        expect(speeds.reduced.value).toBe(30);
         expect(speeds.maneuverability).toBe('good');
     });
     it('should compute correct values for unusual corner cases', () => {
         const speedsSlow = new Speeds(mockedSpeedSlowRawAsset);
-        expect(speedsSlow.encumbered.value).toBe(10);
+        expect(speedsSlow.reduced.value).toBe(10);
         const speedsNegative = new Speeds(mockedSpeedNegativeRawAsset);
-        expect(speedsNegative.encumbered.value).toBe(-15);
+        expect(speedsNegative.reduced.value).toBe(-15);
     });
     it('should export correctly', () => {
         const speeds = new Speeds(mockedSpeedCustomRawAsset);
@@ -59,7 +59,7 @@ describe('Speeds', () => {
         expect(speeds.swim.value).toBe(0);
         expect(speeds.burrow.value).toBe(0);
         expect(speeds.climb.value).toBe(0);
-        expect(speeds.encumbered.value).toBe(0);
+        expect(speeds.reduced.value).toBe(0);
         expect(speeds.maneuverability).toBe('average');
     });
     it('should return correct default speeds', () => {
@@ -70,7 +70,7 @@ describe('Speeds', () => {
         expect(speeds.swim.value).toBe(0);
         expect(speeds.burrow.value).toBe(0);
         expect(speeds.climb.value).toBe(0);
-        expect(speeds.encumbered.value).toBe(20);
+        expect(speeds.reduced.value).toBe(20);
         expect(speeds.maneuverability).toBe('average');
     });
 });
