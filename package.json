@@ -16,7 +16,7 @@
         "lint:fix": "eslint . --fix",
         "format": "prettier --write \"src/**/*.{js,ts,json,json5}\"",
         "format:check": "prettier --check \"src/**/*.{js,ts,json,json5}\"",
-        "precommit": "npm-run-all -s lint:fix format checks:pedantic",
+        "precommit": "npm-run-all -s lint:fix format build test:coverage skott:circular",
         "test": "jest",
         "test:coverage": "jest --coverage",
         "skott:web": "skott -nit --displayMode=webapp --trackThirdPartyDependencies --trackBuiltinDependencies src/",

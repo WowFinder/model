@@ -1,5 +1,5 @@
 import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
-import { CharacterOverride } from '../../../Old.Character/base';
+import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 import { Shapeshift, type ShapeshiftBuilder } from '../base';
 
 class CatForm extends Shapeshift {
@@ -10,15 +10,14 @@ class CatForm extends Shapeshift {
     compute(
         base: CharacterRequirementsPlaceholder,
         rank: number,
-    ): CharacterOverride {
+    ): CharacterOverridePlaceholder {
         const { stats } = base.baseProfile;
-        return new CharacterOverride({
+        return {
             key: `${base.key}-cat-${rank}`,
             baseStats: {
                 ...stats,
                 dexterity: stats.dexterity + 2 + 2 * rank,
             },
-            featChoices: [],
             size: Shapeshift.defaultSize(rank),
             /* TODO: #427 (epic)
                 Stealth: +8 +4 * rank
@@ -27,7 +26,7 @@ class CatForm extends Shapeshift {
                 Combo points
                 Special abilities: TBD / Pending rules review
             */
-        });
+        };
     }
 }
 

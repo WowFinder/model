@@ -1,7 +1,7 @@
 import { defaultSpeedUnit } from '../../../Creature/Speeds';
 import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
-import { CharacterOverride } from '../../../Old.Character/base';
 import { Shapeshift, type ShapeshiftBuilder } from '../base';
+import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 
 class DolphinForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
@@ -11,9 +11,9 @@ class DolphinForm extends Shapeshift {
     compute(
         base: CharacterRequirementsPlaceholder,
         rank: number,
-    ): CharacterOverride {
+    ): CharacterOverridePlaceholder {
         const { speeds, stats } = base.baseProfile;
-        return new CharacterOverride({
+        return {
             key: `${base.key}-dolphin-${rank}`,
             baseStats: stats,
             speeds: {
@@ -21,14 +21,13 @@ class DolphinForm extends Shapeshift {
                 base: 0,
                 swim: 1.5 * speeds.base.as(defaultSpeedUnit),
             },
-            featChoices: [],
             size: Shapeshift.defaultSize(rank),
             /* TODO: #427 (epic)
                 Special bonus: Hold breath (5 * constitution rounds)
                 Special bonus: Ignore water pressure: 100'
                 Natural attacks: weak bite (1d4)
              */
-        });
+        };
     }
 }
 

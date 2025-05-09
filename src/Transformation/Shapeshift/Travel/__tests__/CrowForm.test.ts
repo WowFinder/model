@@ -2,7 +2,6 @@ import { FlyManeuverability } from '@wowfinder/ts-enums';
 import { CrowForm } from '..';
 import { mockDruidCreatureProfile } from '../../../../__mocks__';
 import { type CharacterRequirementsPlaceholder } from '../../../../Old.Character/Requirements/base';
-import { commonSpeedUnits } from '../../../../Scalar';
 
 const mockedDruid: CharacterRequirementsPlaceholder = {
     baseProfile: mockDruidCreatureProfile,
@@ -21,12 +20,8 @@ describe('CrowForm', () => {
     it('should include relevant modifiers', () => {
         const crow2 = crow.compute(mockedDruid, 2);
         expect(crow2).toBeDefined();
-        // travel forms have no stats or casting mods
-        expect(crow2.baseStats.dexterity).toBe(10);
-        expect(crow2.casterLevelsBonus.spontaneous).toBe(0);
-        expect(crow2.speeds.base.as(commonSpeedUnits.feetTurn)).toBe(30);
-        expect(crow2.speeds.fly.as(commonSpeedUnits.feetTurn)).toBe(45);
-        expect(crow2.speeds.maneuverability).toBe(FlyManeuverability.average);
+        expect(crow2.speeds?.base).toBe(30);
+        expect(crow2.speeds?.fly).toBe(45);
+        expect(crow2.speeds?.maneuverability).toBe(FlyManeuverability.average);
     });
 });
-

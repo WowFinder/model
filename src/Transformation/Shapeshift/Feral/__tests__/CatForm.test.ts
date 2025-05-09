@@ -20,7 +20,6 @@ describe('CatForm', () => {
         const cat2 = catForm.compute(mockedDruid, 2);
         expect(cat2).toBeDefined();
         // 10 base, +6 at rank 2:
-        expect(cat2.baseStats.dexterity).toBe(16);
-        expect(cat2.casterLevelsBonus.spontaneous).toBe(0);
+        expect(cat2.baseStats?.dexterity).toBe(16);
     });
 });

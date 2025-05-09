@@ -20,7 +20,7 @@ describe('MoonkinForm', () => {
         const moonkin2 = moonkinForm.compute(mockedDruid, 2);
         expect(moonkin2).toBeDefined();
         // 10 base, +6 at rank 2:
-        expect(moonkin2.baseStats.charisma).toBe(16);
-        expect(moonkin2.casterLevelsBonus.spontaneous).toBe(3);
+        expect(moonkin2.baseStats?.charisma).toBe(16);
+        expect(moonkin2.casterLevels?.spontaneous).toBe(3);
     });
 });

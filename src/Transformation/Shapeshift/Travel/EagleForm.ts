@@ -1,8 +1,8 @@
 import { FlyManeuverability } from '@wowfinder/ts-enums';
 import { defaultSpeedUnit } from '../../../Creature/Speeds';
 import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
-import { CharacterOverride } from '../../../Old.Character/base';
 import { Shapeshift, type ShapeshiftBuilder } from '../base';
+import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 
 class EagleForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
@@ -12,9 +12,9 @@ class EagleForm extends Shapeshift {
     compute(
         base: CharacterRequirementsPlaceholder,
         rank: number,
-    ): CharacterOverride {
+    ): CharacterOverridePlaceholder {
         const { speeds, stats } = base.baseProfile;
-        return new CharacterOverride({
+        return {
             key: `${base.key}-eagle-${rank}`,
             baseStats: stats,
             speeds: {
@@ -23,13 +23,12 @@ class EagleForm extends Shapeshift {
                 fly: 3.5 * speeds.base.as(defaultSpeedUnit),
                 maneuverability: FlyManeuverability.perfect,
             },
-            featChoices: [],
             size: Shapeshift.defaultSize(rank),
             /* TODO: #427 (epic)
                 Rules for this form are still WiP
                 Natural attacks: 2 sharp claws (1d6) and weak bite (1d4)
              */
-        });
+        };
     }
 }
 

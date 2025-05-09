@@ -1,5 +1,5 @@
 import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
-import { CharacterOverride } from '../../../Old.Character/base/CharacterOverride';
+import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 import { type ShapeshiftBuilder, Shapeshift } from '../base';
 
 class BearForm extends Shapeshift {
@@ -10,15 +10,14 @@ class BearForm extends Shapeshift {
     compute(
         base: CharacterRequirementsPlaceholder,
         rank: number,
-    ): CharacterOverride {
+    ): CharacterOverridePlaceholder {
         const { stats } = base.baseProfile;
-        return new CharacterOverride({
+        return {
             key: `${base.key}-bear-${rank}`,
             baseStats: {
                 ...stats,
                 constitution: stats.constitution + 2 + 2 * rank,
             },
-            featChoices: [],
             size: Shapeshift.defaultSize(rank),
             naturalArmor: 2 + 2 * rank,
             /* TODO: #427 (epic)
@@ -30,7 +29,7 @@ class BearForm extends Shapeshift {
                     ? Flagelo (Lacerate) (Ex)
                     Faerie fire ~ Feral (Sp)
             */
-        });
+        };
     }
 }
 

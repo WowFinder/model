@@ -1,7 +1,7 @@
 import { defaultSpeedUnit } from '../../../Creature/Speeds';
 import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
-import { CharacterOverride } from '../../../Old.Character/base';
 import { Shapeshift, type ShapeshiftBuilder } from '../base';
+import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 
 class CheetahForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
@@ -11,23 +11,22 @@ class CheetahForm extends Shapeshift {
     compute(
         base: CharacterRequirementsPlaceholder,
         rank: number,
-    ): CharacterOverride {
+    ): CharacterOverridePlaceholder {
         const { speeds, stats } = base.baseProfile;
-        return new CharacterOverride({
+        return {
             key: `${base.key}-cheetah-${rank}`,
             baseStats: stats,
             speeds: {
                 ...speeds.export(),
                 base: 2 * speeds.base.as(defaultSpeedUnit),
             },
-            featChoices: [],
             size: Shapeshift.defaultSize(rank),
             /* TODO: #427 (epic)
                 Bonus feat: run
                 Acrobatics: bonus when jumping with run
                 Natural attacks: 2 claws (1d4) and bite (1d6)
              */
-        });
+        };
     }
 }
 

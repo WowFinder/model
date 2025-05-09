@@ -1,7 +1,7 @@
 import { sum } from '@wowfinder/ts-utils';
 import { type CharacterRequirementsPlaceholder } from '../../Old.Character/Requirements/base';
-import { type CharacterOverride } from '../../Old.Character/base/CharacterOverride';
 import { type Transformation } from '../base';
+import { CharacterOverridePlaceholder } from '../CharacterOverridePlaceholder';
 
 const druidClasses = ['drd', 'mocked-druidric-class'];
 
@@ -22,7 +22,7 @@ abstract class Shapeshift implements Transformation {
     abstract compute(
         base: CharacterRequirementsPlaceholder,
         rank: number,
-    ): CharacterOverride;
+    ): CharacterOverridePlaceholder;
 
     apply(base: any): any {
         // TODO: Reimplement

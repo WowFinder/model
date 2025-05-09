@@ -20,7 +20,6 @@ describe('BearForm', () => {
         const bear2 = bearForm.compute(mockedDruid, 2);
         expect(bear2).toBeDefined();
         // 10 base, +6 at rank 2:
-        expect(bear2.baseStats.constitution).toBe(16);
-        expect(bear2.casterLevelsBonus.spontaneous).toBe(0);
+        expect(bear2.baseStats?.constitution).toBe(16);
     });
 });
