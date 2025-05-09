@@ -1,5 +1,5 @@
 import { RawStats } from '@wowfinder/asset-schemas';
-import { Feat } from '../Old.Character/Feats';
+import { Feat } from '../Creature/Feats';
 
 type DamageRollArguments = {
     stats: RawStats;

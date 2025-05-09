@@ -5,7 +5,7 @@ import type {
     RawStats,
 } from '@wowfinder/asset-schemas';
 import { ClassFeature } from '@wowfinder/ts-enums';
-import type { Feat } from '../Old.Character/Feats/Feat';
+import type { Feat } from '../Creature/Feats/Feat';
 import { FullComputedSpellPower } from '../Magic/SpellPower';
 
 type ClassFeaturesProfile = Partial<Record<ClassFeature, number>>;

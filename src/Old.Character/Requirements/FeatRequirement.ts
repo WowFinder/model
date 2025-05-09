@@ -1,4 +1,4 @@
-import { FeatSpec } from '../Feats/FeatSpec';
+import { FeatSpec } from '../../Creature/Feats/FeatSpec';
 import {
     type CharacterRequirements,
     type CharacterRequirementsPlaceholder,

@@ -1,7 +1,6 @@
 import { Feat } from '../../Feat';
 import type { FeatSpec } from '../../FeatSpec';
 import { SpellFocusFeat } from '../../core/magic/spellFocus';
-import { allOf, req } from '../helpers';
 import { build } from './helpers';
 
 const spellFocusFeats: { [key in SpellFocusFeat]: FeatSpec } = {
@@ -15,10 +14,9 @@ const spellFocusFeats: { [key in SpellFocusFeat]: FeatSpec } = {
         Feat.greaterSpellFocusConjuration,
         Feat.spellFocusConjuration,
     ),
-    augmentSummoning: build.magic(
-        Feat.augmentSummoning,
-        allOf(...req.feats(Feat.spellFocusConjuration)),
-    ),
+    augmentSummoning: build.magic(Feat.augmentSummoning, [
+        Feat.spellFocusConjuration,
+    ]),
     spellFocusDivination: build.focus(Feat.spellFocusDivination),
     greaterSpellFocusDivination: build.focus(
         Feat.greaterSpellFocusDivination,

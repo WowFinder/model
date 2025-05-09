@@ -10,8 +10,7 @@ import {
     type ProgressionEntries,
 } from '../Progression/Progression';
 
-// TODO: make readonly (depends on full deprecation and removal of old Character types)
-type ClassEntry = { class: Class; level: number };
+type ClassEntry = { readonly class: Class; readonly level: number };
 type ClassEntries = ClassEntry[];
 
 type Classes = { [key: string]: Class };
@@ -73,7 +72,7 @@ function compareClassEntriesByLevelDescending(
 }
 
 function mergeDuplicateEntries(entries: ClassEntries): ClassEntries {
-    const merged: ClassEntries = [];
+    const merged: { class: Class; level: number }[] = [];
 
     for (const entry of entries) {
         const existingEntry = merged.find(e => e.class.key === entry.class.key);

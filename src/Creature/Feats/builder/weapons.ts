@@ -51,8 +51,9 @@ for (const w of nonSimpleWeapons) {
     const focus = focusKey(w);
     partialWeaponFeats[focus] = feat(
         focus,
-        allOf(...req.feats(proficiency), req.level.bab(1)),
+        req.level.bab(1),
         weaponProficiencyFlags,
+        req.feats(proficiency),
     );
 }
 for (const w of allWeapons) {
@@ -60,20 +61,23 @@ for (const w of allWeapons) {
     const gfocus = mkKey('greaterWeaponFocus', w);
     partialWeaponFeats[gfocus] = feat(
         gfocus,
-        allOf(...req.feats(focus), req.level.bab(8)),
+        req.level.bab(8),
         weaponFocusFlags,
+        req.feats(focus),
     );
     const specialization = mkKey('weaponSpecialization', w);
     partialWeaponFeats[specialization] = feat(
         specialization,
-        allOf(...req.feats(focus), req.level.bab(4)),
+        req.level.bab(4),
         weaponFocusFlags,
+        req.feats(focus),
     );
     const gSpecialization = mkKey('greaterWeaponSpecialization', w);
     partialWeaponFeats[gSpecialization] = feat(
         gSpecialization,
-        allOf(...req.feats(specialization), req.level.bab(12)),
+        req.level.bab(12),
         weaponFocusFlags,
+        req.feats(specialization),
     );
 }
 

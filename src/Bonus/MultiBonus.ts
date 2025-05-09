@@ -16,6 +16,16 @@ const stackableBonusTypes: { [key in BonusType]: boolean } = {
     [BonusType.aura]: false,
 } as const;
 
+function makeTsb(
+    builder: MultiBonusBuilder,
+    type: BonusType,
+): TypedSimpleBonus {
+    return new TypedSimpleBonus({
+        ...(builder[type] ?? {}),
+        type,
+    });
+}
+
 class MultiBonus implements FullMultiBonus, JsonExportable<MultiBonusBuilder> {
     readonly #gear: TypedSimpleBonus;
     readonly #enhancement: TypedSimpleBonus;
@@ -24,38 +34,13 @@ class MultiBonus implements FullMultiBonus, JsonExportable<MultiBonusBuilder> {
     readonly #temporal: TypedSimpleBonus;
     readonly #aura: TypedSimpleBonus;
 
-    constructor({
-        gear = {},
-        enhancement = {},
-        deflection = {},
-        natural = {},
-        temporal = {},
-        aura = {},
-    }: MultiBonusBuilder = {}) {
-        this.#gear = new TypedSimpleBonus({
-            ...gear,
-            type: BonusType.gear,
-        });
-        this.#enhancement = new TypedSimpleBonus({
-            ...enhancement,
-            type: BonusType.enhancement,
-        });
-        this.#deflection = new TypedSimpleBonus({
-            ...deflection,
-            type: BonusType.deflection,
-        });
-        this.#natural = new TypedSimpleBonus({
-            ...natural,
-            type: BonusType.natural,
-        });
-        this.#temporal = new TypedSimpleBonus({
-            ...temporal,
-            type: BonusType.temporal,
-        });
-        this.#aura = new TypedSimpleBonus({
-            ...aura,
-            type: BonusType.aura,
-        });
+    constructor(builder: MultiBonusBuilder = {}) {
+        this.#gear = makeTsb(builder, BonusType.gear);
+        this.#enhancement = makeTsb(builder, BonusType.enhancement);
+        this.#deflection = makeTsb(builder, BonusType.deflection);
+        this.#natural = makeTsb(builder, BonusType.natural);
+        this.#temporal = makeTsb(builder, BonusType.temporal);
+        this.#aura = makeTsb(builder, BonusType.aura);
     }
 
     get gear(): TypedSimpleBonus {
