@@ -16,23 +16,38 @@ import type {
     StatsProfile,
 } from './raw';
 
-type CreatureProfile = {
-    personal: PersonalDetails;
-    shape: Shape;
-    size: Size;
+type CreatureBaseProfile = {
     stats: StatsProfile;
-    progression: ProgressionProfile;
     speeds: SpeedsProfile;
     vitals: VitalsProfile;
     skills: SkillsProfile;
     saves: SavesProfile;
     resistances: ResistancesProfile;
-    // TODO traitsProfile
+    // TODO traits: TraitsProfile
     features: ClassFeaturesProfile;
     feats: FeatsProfile;
+};
+
+type CreatureProfile = CreatureBaseProfile & {
+    personal: PersonalDetails;
+    shape: Shape;
+    size: Size;
+    // TODO: @deprecate and remove: Used under Old.Character types and CharacterRequirementsPlaceholder */
+    progression: ProgressionProfile;
+    // TODO: @deprecate and remove (should be computed)
     armor: ArmorProfile;
     attack: BaseAttackProfile;
     spellPower: SpellPowerProfile;
 };
 
-export type { CreatureProfile };
+// TODO: Redefine with a `Transform<T>` type in @wowfinder/ts-utils
+// ie: type Transform<T> = (base: T) => T;
+type CreatureBaseProfileOverride = (
+    base: CreatureBaseProfile,
+) => CreatureBaseProfile;
+
+export {
+    type CreatureBaseProfile,
+    type CreatureProfile,
+    type CreatureBaseProfileOverride,
+};
