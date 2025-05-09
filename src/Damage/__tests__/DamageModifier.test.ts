@@ -11,7 +11,7 @@ import {
 import { statMod } from '../../Creature/Stats/helpers';
 import {
     computeModifier,
-    DamageModifier,
+    type DamageModifier,
     SpecialDamageModifier,
 } from '../DamageModifier';
 

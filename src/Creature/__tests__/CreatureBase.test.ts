@@ -4,7 +4,7 @@ import {
     rawBaseCreatureExpanded,
     rawBaseCreatureMinimal,
 } from '../../__mocks__';
-import { ClassEntries, CreatureBase } from '../CreatureBase';
+import { type ClassEntries, CreatureBase } from '../CreatureBase';
 import Race from '../Race';
 
 describe('CreatureBase', () => {

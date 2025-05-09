@@ -1,6 +1,6 @@
 import { FeatChoice, CombatFeatChoice, MagicFeatChoice } from '../FeatChoice';
 import { feats } from '../../Creature/Feats';
-import { Choice } from '../Choice';
+import { type Choice } from '../Choice';
 
 const mockedFeats = {
     simple: feats.diehard,
