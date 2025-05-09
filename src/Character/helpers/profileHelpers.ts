@@ -74,7 +74,7 @@ function profileAsBonus(profile: CreatureBaseProfile): SimpleBonus {
         resistances: profile.resistances,
         // TODO: handle vitals
         feats: Object.keys(profile.feats).reduce((acc, f) => {
-            const feat = f as keyof CreatureBaseProfile['feats'];
+            const feat = f as Feat;
             const count = profile.feats[feat] as number;
             for (let i = 0; i < count; i++) {
                 acc.push(feat);
@@ -106,7 +106,7 @@ function bonusAsProfile(bonus: SimpleBonus): CreatureBaseProfile {
         features: {},
         feats: bonus.feats.export().reduce(
             (acc, f) => {
-                const feat = f as keyof CreatureBaseProfile['feats'];
+                const feat = f as Feat;
                 acc[feat] = (acc[feat] ?? 0) + 1;
                 return acc;
             },
