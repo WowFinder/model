@@ -1,6 +1,5 @@
 /* eslint-disable deprecation/deprecation */
 import { Size } from '@wowfinder/ts-enums';
-import { Resistances } from '../Resistances';
 import { baseDefault } from '../../Creature/Stats';
 import { CharacterBase } from './base';
 import type { CharacterOverrideBuilder } from './builder';
@@ -24,7 +23,6 @@ class CharacterOverride extends CharacterBase {
             key: '',
             featChoices: [],
             baseStats: baseDefault,
-            baseResistances: Resistances.zero,
             size: Size.medium,
         });
     }

@@ -3,7 +3,6 @@ import { EffectiveCasterLevels } from '../../Magic';
 import { InventoryBuilder } from '../../Item/Inventory';
 import { FeatChoice, FeatChoiceExport } from '../helpers';
 import Race from '../../Creature/Race';
-import { Resistances, ResistancesExport } from '../Resistances';
 import { SpeedBuilder } from '../../Creature/Speeds';
 import { Size } from '@wowfinder/ts-enums';
 import { RawStats } from '@wowfinder/asset-schemas';
@@ -17,7 +16,7 @@ type CharacterBaseCoreBuilder = {
     featChoices?: Iterable<FeatChoice>;
     miscHP?: number;
     baseStats: RawStats;
-    baseResistances?: Resistances;
+    // baseResistances?: Resistances;
 };
 
 /** @deprecated */
@@ -66,7 +65,6 @@ type CharacterBaseExport = {
     featChoices: FeatChoiceExport[];
     miscHP: number | null;
     baseStats: RawStats;
-    baseResistances: ResistancesExport;
     size: Size | null;
     naturalArmor: number | null;
 };

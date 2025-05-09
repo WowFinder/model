@@ -1,5 +1,4 @@
 /* eslint-disable deprecation/deprecation */
-import { Resistances } from '../Resistances';
 import { CharacterBaseBuilder, CharacterBaseExport } from './builder';
 import {
     FeatChoice,
@@ -24,7 +23,6 @@ abstract class CharacterBase {
     readonly #featChoices: FeatChoice[];
     readonly #miscHP?: number;
     readonly #baseStats: RawStats;
-    readonly #baseResistances: Resistances;
     readonly #size: Size;
     readonly #speeds: Speeds;
     readonly #naturalArmor: number;
@@ -35,9 +33,6 @@ abstract class CharacterBase {
         this.#featChoices = parseFeatChoices([...(builder.featChoices ?? [])]);
         this.#miscHP = builder.miscHP ?? 0;
         this.#baseStats = builder.baseStats;
-        this.#baseResistances = builder.baseResistances
-            ? new Resistances(builder.baseResistances)
-            : Resistances.zero;
         if (builder.builderType === 'race') {
             const race = checkRace(builder.race);
             this.#size = race.size;
@@ -72,10 +67,6 @@ abstract class CharacterBase {
         return this.#baseStats;
     }
 
-    get baseResistances(): Resistances {
-        return this.#baseResistances;
-    }
-
     get size(): Size {
         return this.#size;
     }
@@ -98,7 +89,6 @@ abstract class CharacterBase {
             featChoices: exportFeatchChoices(...this.#featChoices),
             miscHP: this.#miscHP ?? null,
             baseStats: this.#baseStats,
-            baseResistances: this.#baseResistances.export(),
             size: this.#size,
             naturalArmor: this.#naturalArmor,
         };

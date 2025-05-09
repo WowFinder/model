@@ -1,6 +1,5 @@
 /* eslint-disable deprecation/deprecation */
 import { EffectiveCasterLevels } from '../../Magic';
-import { Resistances } from '../Resistances';
 import { Speeds } from '../../Creature/Speeds';
 import { FeatChoice } from '../helpers';
 import { CharacterOverride } from './CharacterOverride';
@@ -35,13 +34,6 @@ abstract class OverridableCharacterBase extends CharacterBase {
 
     get baseStats(): RawStats {
         return { ...super.baseStats, ...this.#override?.baseStats };
-    }
-
-    get baseResistances(): Resistances {
-        return new Resistances({
-            ...super.baseResistances,
-            ...this.#override?.baseResistances,
-        });
     }
 
     get size(): Size {
