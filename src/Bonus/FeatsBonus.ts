@@ -1,5 +1,5 @@
 import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
-import { Feat } from '../Old.Character/Feats/Feat';
+import { Feat } from '../Creature/Feats/Feat';
 
 type FeatsBonusBuilder = Feat[];
 

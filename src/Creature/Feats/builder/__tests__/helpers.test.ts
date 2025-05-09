@@ -1,6 +1,6 @@
 import { Feat } from '../../Feat';
 import { checkFeatKey, checkWeaponFeatKey } from '../helpers';
-import { raw, req, build, feat, allOf, either } from '../';
+import { raw, req, build, feat, allOf, either } from '..';
 
 describe('Feats/builder/helpers', () => {
     describe('checkNoDuplicate', () => {

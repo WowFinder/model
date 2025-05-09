@@ -4,7 +4,7 @@ import { type JsonValue } from '@wowfinder/ts-utils';
 import { Class, StatsBlock } from '../Creature';
 import Race from '../Creature/Race';
 import { type SimpleBonus } from '../Bonus';
-import { Feat } from './Feats/Feat';
+import { Feat } from '../Creature/Feats/Feat';
 
 const defaultRace = 'human.cha';
 /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */

@@ -1,5 +1,5 @@
 import type { FeatsBonusBuilder } from '../../Bonus/FeatsBonus';
-import { Feat } from '../../Old.Character/Feats';
+import { Feat } from '../../Creature/Feats';
 
 const defaultFeatsBonusBuilder: FeatsBonusBuilder = [] as const;
 

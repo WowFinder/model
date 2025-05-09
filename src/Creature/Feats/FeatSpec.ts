@@ -3,7 +3,7 @@ import {
     type CharacterRequirements,
     type CharacterRequirementsPlaceholder,
     getCharacterEmptyRequirement,
-} from '../Requirements/base';
+} from '../../Old.Character/Requirements/base';
 
 type FeatBuilder = {
     label: string;

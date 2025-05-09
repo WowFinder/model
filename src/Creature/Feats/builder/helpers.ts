@@ -9,10 +9,10 @@ import {
     ClassFeatureRequirement,
     MinStatsRequirement,
     or as either,
-} from '../../Requirements';
+} from '../../../Old.Character/Requirements';
 import { Feat, type WeaponFeat, weaponFeats } from '../Feat';
 import { FeatSpec } from '../FeatSpec';
-import { type CharacterRequirements } from '../../Requirements/base';
+import { type CharacterRequirements } from '../../../Old.Character/Requirements/base';
 
 const raw: { [key in Feat]?: FeatSpec } = {};
 type PendingFeatReqs = Feat[];
