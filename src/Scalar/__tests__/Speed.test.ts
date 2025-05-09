@@ -1,4 +1,10 @@
-import { Speed, SpeedUnit, convertSpeed } from '../Speed';
+import {
+    Speed,
+    SpeedUnit,
+    commonSpeedUnits,
+    convertSpeed,
+    encumbered,
+} from '../Speed';
 import { add } from '../Scalar';
 import { LengthUnit, TimeUnit } from '@wowfinder/ts-enums';
 
@@ -69,6 +75,21 @@ describe('Speed', () => {
                 new Speed({ value: 1, unit: metricSpeed }),
             );
             expect(sum.value).toBeCloseTo(296.85);
+        });
+    });
+    describe('encumbered', () => {
+        it('should calculate encumbered speeds', () => {
+            const feetEncumbered = (feet: number): number => {
+                const speed = new Speed({
+                    value: feet,
+                    unit: commonSpeedUnits.feetTurn,
+                });
+                return encumbered(speed).as(commonSpeedUnits.feetTurn);
+            };
+            expect(feetEncumbered(30)).toBeCloseTo(20);
+            expect(feetEncumbered(29)).toBeCloseTo(20);
+            expect(feetEncumbered(72)).toBeCloseTo(50);
+            expect(feetEncumbered(5)).toBeCloseTo(5);
         });
     });
 });
