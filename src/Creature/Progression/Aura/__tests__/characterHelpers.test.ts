@@ -70,16 +70,7 @@ describe('getAuraBonuses', () => {
             auraBonuses[Aura.arcane](2),
             auraBonuses[Aura.commanding](1),
         ).export();
-        console.warn({
-            computedBonuses,
-            expected,
-        });
-        expect(getAuraBonuses(auras.mixed).export()).toEqual(
-            TypedSimpleBonus.typedSum(
-                auraBonuses[Aura.arcane](2),
-                auraBonuses[Aura.commanding](1),
-            ).export(),
-        );
+        expect(computedBonuses).toEqual(expected);
     });
 });
 
