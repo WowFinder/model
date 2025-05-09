@@ -1,5 +1,5 @@
 import { BonusType, Size } from '@wowfinder/ts-enums';
-import { Bonus, BonusProvider, MultiBonus } from '../../Character/Bonus';
+import { TypedSimpleBonus, MultiBonus } from '../../Bonus';
 import { Mass, Weight } from '../../Scalar';
 import { Money } from '../Money';
 import { Item, ItemBuilder } from '../base';
@@ -8,21 +8,21 @@ import { Shape, buildShape, explodeShape } from './Slot';
 type GearBuilder = ItemBuilder & {
     shape: string[];
     size: Size;
-    bonuses?: Bonus;
+    bonuses?: TypedSimpleBonus;
     weight: Weight;
 };
 
-class Gear extends Item implements BonusProvider {
+class Gear extends Item {
     #shape: Shape;
     #size: Size;
-    #bonuses: Bonus;
+    #bonuses: TypedSimpleBonus;
     #weight: Mass;
 
     constructor({
         shape,
         size,
         weight,
-        bonuses = Bonus.zero(BonusType.gear),
+        bonuses = TypedSimpleBonus.typedZero(BonusType.gear),
         ...args
     }: GearBuilder) {
         super(args);
@@ -50,8 +50,8 @@ class Gear extends Item implements BonusProvider {
         return this.#size;
     }
 
-    get bonuses(): Bonus {
-        return this.#bonuses.asType(BonusType.gear);
+    get bonuses(): TypedSimpleBonus {
+        return this.#bonuses.retyped(BonusType.gear);
     }
 
     get value(): Money {
@@ -63,7 +63,7 @@ class Gear extends Item implements BonusProvider {
     }
 
     get fullBonus(): MultiBonus {
-        return new MultiBonus({ gear: this.bonuses });
+        return new MultiBonus({ [BonusType.gear]: this.bonuses.export() });
     }
 
     get $type(): string {
@@ -76,7 +76,7 @@ class Gear extends Item implements BonusProvider {
             shape: (raw.shape as string[]) || [],
             size: (raw.size as Size) || 0,
             weight: raw.weight || 0,
-            bonuses: Bonus.build(raw.bonuses || {}),
+            bonuses: new TypedSimpleBonus(raw.bonuses || {}),
         };
     }
 

@@ -1,29 +1,29 @@
 import { Aura, BonusType } from '@wowfinder/ts-enums';
-import { Bonus, ResistBonus, StatsBonus } from '../../../Character/Bonus';
-import { fillResistBonus } from '../../../Character/Bonus/ResistBonus';
+import { fillResistances } from '../../Resistances/fill';
 import { AuraBonus } from './base';
+import { ResistancesBonus, StatsBonus, TypedSimpleBonus } from '../../../Bonus';
 
 const auraBonuses: { [key in Aura]: AuraBonus } = {
     [Aura.commanding]: (rank: number) =>
-        new Bonus({
+        new TypedSimpleBonus({
             // Commanding Shout (fgt)
             type: BonusType.aura,
             stats: new StatsBonus({
                 constitution: rank * 6,
             }),
-            resistances: new ResistBonus(fillResistBonus({}, rank * 2)),
+            resistances: new ResistancesBonus(fillResistances({}, rank * 2)),
         }),
     [Aura.furious]: (rank: number) =>
-        new Bonus({
+        new TypedSimpleBonus({
             // Furious Howl (brb)
             type: BonusType.aura,
             stats: new StatsBonus({
                 strength: rank * 4,
             }),
-            resistances: new ResistBonus(fillResistBonus({}, rank * 4)),
+            resistances: new ResistancesBonus(fillResistances({}, rank * 4)),
         }),
     [Aura.arcane]: (rank: number) =>
-        new Bonus({
+        new TypedSimpleBonus({
             // Arcane brillance (mag)
             type: BonusType.aura,
             stats: new StatsBonus({
@@ -32,7 +32,7 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             }),
         }),
     [Aura.wild]: (rank: number) =>
-        new Bonus({
+        new TypedSimpleBonus({
             // Gift of the wild (drd)
             type: BonusType.aura,
             stats: new StatsBonus({
@@ -43,10 +43,10 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
                 wisdom: rank * 2,
                 charisma: rank * 2,
             }),
-            resistances: new ResistBonus(fillResistBonus({}, rank * 1)),
+            resistances: new ResistancesBonus(fillResistances({}, rank * 1)),
         }),
     [Aura.mysterious]: (rank: number) =>
-        new Bonus({
+        new TypedSimpleBonus({
             // Misterious Fortitude (ora)
             type: BonusType.aura,
             stats: new StatsBonus({
@@ -55,7 +55,7 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             }),
         }),
     [Aura.fortitude]: (rank: number) =>
-        new Bonus({
+        new TypedSimpleBonus({
             // Power Word: Fortitude (clr)
             type: BonusType.aura,
             stats: new StatsBonus({

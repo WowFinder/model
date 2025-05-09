@@ -51,7 +51,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         this.#vitalNeeds = new VitalNeedsBonus(vitalNeeds);
         this.#senses = new SensesBonus(senses);
         this.#spellPower = new SpellPowerBonus(spellPower);
-        this.#feats = new FeatsBonus(feats ?? []);
+        this.#feats = new FeatsBonus(feats);
         this.#baseSpeeds = new BaseSpeedsBonus(baseSpeeds);
         this.#speedsModifiers = new SpeedsModifiersBonus(speedsModifiers);
     }
@@ -143,4 +143,4 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
     }
 }
 
-export { SimpleBonus };
+export { SimpleBonus, type SimpleBonusBuilder };

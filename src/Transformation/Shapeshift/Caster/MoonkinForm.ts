@@ -1,5 +1,5 @@
-import { Character } from '../../../Character';
-import { CharacterOverride } from '../../../Character/base';
+import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
+import { CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 import { Shapeshift, ShapeshiftBuilder } from '../base';
 
 class MoonkinForm extends Shapeshift {
@@ -7,12 +7,16 @@ class MoonkinForm extends Shapeshift {
         super({ rank });
     }
 
-    compute(base: Character, rank: number): CharacterOverride {
-        return new CharacterOverride({
+    compute(
+        base: CharacterRequirementsPlaceholder,
+        rank: number,
+    ): CharacterOverridePlaceholder {
+        const { stats } = base.baseProfile;
+        return {
             key: `${base.key}-moonkin-${rank}`,
             baseStats: {
-                ...base.stats.base,
-                charisma: base.stats.base.charisma + 2 + 2 * rank,
+                ...stats,
+                charisma: stats.charisma + 2 + 2 * rank,
             },
             /* TODO:
                 Touch attack rolls (ranged): +3 + 3 * rank
@@ -23,7 +27,7 @@ class MoonkinForm extends Shapeshift {
             },
             size: 1,
             naturalArmor: 2 + 2 * rank, // TODO switch to deflection bonus
-        });
+        };
     }
 }
 

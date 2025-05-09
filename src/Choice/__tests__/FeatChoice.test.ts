@@ -1,5 +1,5 @@
 import { FeatChoice, CombatFeatChoice, MagicFeatChoice } from '../FeatChoice';
-import { feats } from '../../Character/Feats';
+import { feats } from '../../Old.Character/Feats';
 import { Choice } from '../Choice';
 
 const mockedFeats = {

@@ -21,6 +21,18 @@ describe('MultiBonus', () => {
         fullSimpleBonus = new SimpleBonus(fullSimpleBonusBuilder);
     });
 
+    it('should create an instance with no arguments', () => {
+        const multiBonus = new MultiBonus();
+        expect(multiBonus).toBeInstanceOf(MultiBonus);
+        expect(multiBonus.gear).toBeDefined();
+        expect(multiBonus.enhancement).toBeDefined();
+        expect(multiBonus.deflection).toBeDefined();
+        expect(multiBonus.natural).toBeDefined();
+        expect(multiBonus.temporal).toBeDefined();
+        expect(multiBonus.aura).toBeDefined();
+        expect(multiBonus.total.export()).toEqual(SimpleBonus.zero.export());
+    });
+
     it('should create an instance with default values', () => {
         expect(defaultMultiBonus).toBeInstanceOf(MultiBonus);
         expect(defaultMultiBonus.gear).toBeDefined();
@@ -76,16 +88,18 @@ describe('MultiBonus', () => {
                 .map(t => t as BonusType)
                 .forEach(type => {
                     if (stackableBonusTypes[type]) {
-                        expect(combinedBonuses[type].export()).toEqual(
-                            SimpleBonus.multiply(
+                        expect(combinedBonuses[type].export()).toEqual({
+                            ...SimpleBonus.multiply(
                                 fullMultiBonus[type],
                                 2,
                             ).export(),
-                        );
+                            type,
+                        });
                     } else {
-                        expect(combinedBonuses[type].export()).toEqual(
-                            fullMultiBonus[type].export(),
-                        );
+                        expect(combinedBonuses[type].export()).toEqual({
+                            ...fullMultiBonus[type].export(),
+                            type,
+                        });
                     }
                 });
         });

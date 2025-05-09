@@ -1,11 +1,14 @@
 import { ClassTier } from '@wowfinder/ts-enums';
-import { Money } from '../../Item';
-import { ProgressionBonuses } from '../Progression/ProgressionBonuses';
+import { Money } from '../../Item/Money';
+import { type ProgressionBonuses } from '../Progression/ProgressionBonuses';
 import { applyClassDefaults } from './builder';
 import { combineProgressionBonuses } from '../Progression/combineProgressionBonuses';
 import { filterSkills, mapAuras, mapFeatures } from '../Progression/helpers';
-import { RawClassAsset } from '@wowfinder/asset-schemas';
-import { Progression, ProgressionEntries } from '../Progression/Progression';
+import { type RawClassAsset } from '@wowfinder/asset-schemas';
+import {
+    Progression,
+    type ProgressionEntries,
+} from '../Progression/Progression';
 
 // TODO: make readonly (depends on full deprecation and removal of old Character types)
 type ClassEntry = { class: Class; level: number };

@@ -24,7 +24,12 @@ module.exports = {
     coverageDirectory: 'coverage',
 
     // An array of regexp pattern strings used to skip coverage collection
-    coveragePathIgnorePatterns: ['/node_modules/', '__tests__', '__mocks__'],
+    coveragePathIgnorePatterns: [
+        '/node_modules/',
+        '__tests__',
+        '__mocks__',
+        '.setup.ts',
+    ],
 
     // Indicates which provider should be used to instrument code for coverage
     // coverageProvider: "babel",
@@ -38,7 +43,14 @@ module.exports = {
     // ],
 
     // An object that configures minimum threshold enforcement for coverage results
-    // coverageThreshold: undefined,
+    coverageThreshold: {
+        global: {
+            branches: 60,
+            functions: 75,
+            lines: 80,
+            statements: 80,
+        },
+    },
 
     // A path to a custom dependency extractor
     // dependencyExtractor: undefined,
@@ -182,3 +194,4 @@ module.exports = {
     // Whether to use watchman for file crawling
     // watchman: true,
 };
+

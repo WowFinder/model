@@ -1,8 +1,8 @@
 import { DamageType, Size, Skill } from '@wowfinder/ts-enums';
 import { Shapes } from '../../../Item';
-import { buildSpeedsProfile, type CreatureProfile } from '../../../Profile';
+import { type CreatureProfile, SpeedsProfile } from '../../../Profile';
 import { mockPersonalDetails } from './PersonalDetails';
-import { mockMeleeClass } from '../Class';
+import { mockDruidricClass, mockMeleeClass } from '../Class';
 import { mkCounter } from '@wowfinder/ts-utils';
 import { Time } from '../../../Scalar';
 import { fillSpellPowerValues, fullComputedSpellPower } from '../../../Magic';
@@ -21,10 +21,10 @@ function mapEnum<TEnum extends string, TValue>(
 }
 
 const mockBasicCreatureProfile: CreatureProfile = {
-    personalDetails: mockPersonalDetails,
+    personal: mockPersonalDetails,
     shape: Shapes.Humanoid,
     size: Size.medium,
-    statsProfile: {
+    stats: {
         strength: 10,
         dexterity: 10,
         constitution: 10,
@@ -32,7 +32,7 @@ const mockBasicCreatureProfile: CreatureProfile = {
         wisdom: 10,
         charisma: 10,
     },
-    progressionProfile: {
+    progression: {
         level: 1,
         xp: 0,
         classes: [
@@ -42,11 +42,11 @@ const mockBasicCreatureProfile: CreatureProfile = {
             },
         ],
     },
-    speedsProfile: buildSpeedsProfile({
-        baseSpeed: 30,
+    speeds: new SpeedsProfile({
+        base: 30,
         encumberance: true,
     }),
-    vitalsProfile: {
+    vitals: {
         hp: mkCounter({ max: 10 }),
         sanity: mkCounter({ max: 0 }),
         sleep: {
@@ -59,30 +59,45 @@ const mockBasicCreatureProfile: CreatureProfile = {
             breathRecoveryTime: Time.parseTime('1m'),
         },
     },
-    skillsProfile: mapEnum(Skill, 0),
-    savesProfile: {
+    skills: mapEnum(Skill, 0),
+    saves: {
         fortitude: 0,
         reflexes: 0,
         will: 0,
     },
-    resistancesProfile: mapEnum(DamageType, 0),
-    classFeaturesProfile: {},
-    featsProfile: {},
-    armorProfile: {
+    resistances: mapEnum(DamageType, 0),
+    features: {},
+    feats: {},
+    armor: {
         armorClass: 10,
         touchArmorClass: 10,
         flatFootedArmorClass: 10,
         touchFlatFootedArmorClass: 10,
         combatManeuverDefense: 10,
     },
-    baseAttackProfile: {
+    attack: {
         meleeAttackBonus: 0,
         rangedAttackBonus: 0,
         touchAttackBonus: 0,
         rayAttackBonus: 0,
         combatManeuverBonus: 0,
     },
-    spellPowerProfile: fullComputedSpellPower(fillSpellPowerValues({}, 0)),
+    spellPower: fullComputedSpellPower(fillSpellPowerValues({}, 0)),
 };
 
-export { mockBasicCreatureProfile };
+const mockDruidCreatureProfile: CreatureProfile = {
+    ...mockBasicCreatureProfile,
+    progression: {
+        ...mockBasicCreatureProfile.progression,
+        level: 3,
+        xp: 6000,
+        classes: [
+            {
+                level: 3,
+                class: mockDruidricClass,
+            },
+        ],
+    },
+};
+
+export { mockBasicCreatureProfile, mockDruidCreatureProfile };

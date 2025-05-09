@@ -1,21 +1,24 @@
 import { BonusType } from '@wowfinder/ts-enums';
-import { Bonus, BonusBuilder } from '../../../Character/Bonus';
+import { TypedSimpleBonus, type SimpleBonusBuilder } from '../../../Bonus';
 import { Mass, Time } from '../../../Scalar';
 import { Consumable } from '../base';
 import { CraftableConsumable, CraftableConsumableBuilder } from './base';
 
 type ElixirBuilder = CraftableConsumableBuilder & {
     duration: string;
-    bonus: Omit<BonusBuilder, 'type'>;
+    bonus: SimpleBonusBuilder;
 };
 
 class Elixir extends CraftableConsumable {
     readonly #duration: Time;
-    readonly #bonus: Bonus;
+    readonly #bonus: TypedSimpleBonus;
     constructor({ duration, bonus, ...rest }: ElixirBuilder) {
         super(rest);
         this.#duration = Time.parseTime(duration);
-        this.#bonus = new Bonus({ ...bonus, type: BonusType.temporal });
+        this.#bonus = new TypedSimpleBonus({
+            ...bonus,
+            type: BonusType.temporal,
+        });
     }
 
     get weight(): Mass {
@@ -30,7 +33,7 @@ class Elixir extends CraftableConsumable {
         return this.#duration;
     }
 
-    get bonus(): BonusBuilder {
+    get bonus(): TypedSimpleBonus {
         return this.#bonus;
     }
 

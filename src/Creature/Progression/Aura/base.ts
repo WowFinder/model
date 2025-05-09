@@ -1,6 +1,5 @@
-// TODO Replace with new model under /src/Bonus
-import type { Bonus } from '../../../Character/Bonus';
+import { type TypedSimpleBonus } from '../../../Bonus';
 
-type AuraBonus = (rank: number) => Bonus;
+type AuraBonus = (rank: number) => TypedSimpleBonus;
 
-export type { AuraBonus };
+export { type AuraBonus };

@@ -112,7 +112,11 @@ class Speeds {
         return wrap(this.#climb);
     }
 
-    get encumbered(): Speed {
+    get encumberance(): boolean {
+        return this.#encumberance;
+    }
+
+    get reduced(): Speed {
         return wrap(this.#encumberance ? encumbered(this.#base) : this.#base);
     }
 

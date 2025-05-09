@@ -1,21 +1,23 @@
-import type { Character } from '../../../Character';
-import { CharacterOverride } from '../../../Character/base/CharacterOverride';
-import type { ShapeshiftBuilder } from '../base';
-import { Shapeshift } from '../base';
+import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
+import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
+import { Shapeshift, type ShapeshiftBuilder } from '../base';
 
 class CatForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
         super({ rank });
     }
 
-    compute(base: Character, rank: number): CharacterOverride {
-        return new CharacterOverride({
+    compute(
+        base: CharacterRequirementsPlaceholder,
+        rank: number,
+    ): CharacterOverridePlaceholder {
+        const { stats } = base.baseProfile;
+        return {
             key: `${base.key}-cat-${rank}`,
             baseStats: {
-                ...base.stats.base,
-                dexterity: base.stats.base.dexterity + 2 + 2 * rank,
+                ...stats,
+                dexterity: stats.dexterity + 2 + 2 * rank,
             },
-            featChoices: [],
             size: Shapeshift.defaultSize(rank),
             /* TODO: #427 (epic)
                 Stealth: +8 +4 * rank
@@ -24,7 +26,7 @@ class CatForm extends Shapeshift {
                 Combo points
                 Special abilities: TBD / Pending rules review
             */
-        });
+        };
     }
 }
 

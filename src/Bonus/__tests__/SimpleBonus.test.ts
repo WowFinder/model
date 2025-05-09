@@ -12,7 +12,11 @@ describe('SimpleBonus', () => {
         defaultSimpleBonus = new SimpleBonus(defaultSimpleBonusBuilder);
         fullSimpleBonus = new SimpleBonus(fullSimpleBonusBuilder);
     });
-
+    it('should build an instance with no arguments', () => {
+        const simpleBonus = new SimpleBonus();
+        expect(simpleBonus instanceof SimpleBonus).toBe(true);
+        expect(simpleBonus.hp).toBe(0);
+    });
     describe('export', () => {
         it('should export a bonus', () => {
             const exportedBonus = defaultSimpleBonus.export();

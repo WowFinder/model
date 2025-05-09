@@ -1,30 +1,32 @@
 import { defaultSpeedUnit } from '../../../Creature/Speeds';
-import type { Character } from '../../../Character';
-import { CharacterOverride } from '../../../Character/base/CharacterOverride';
-import type { ShapeshiftBuilder } from '../base';
-import { Shapeshift } from '../base';
+import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
+import { Shapeshift, type ShapeshiftBuilder } from '../base';
+import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 
 class CheetahForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
         super({ rank });
     }
 
-    compute(base: Character, rank: number): CharacterOverride {
-        return new CharacterOverride({
+    compute(
+        base: CharacterRequirementsPlaceholder,
+        rank: number,
+    ): CharacterOverridePlaceholder {
+        const { speeds, stats } = base.baseProfile;
+        return {
             key: `${base.key}-cheetah-${rank}`,
-            baseStats: base.stats.base,
+            baseStats: stats,
             speeds: {
-                ...base.speeds.export(),
-                base: 2 * base.speeds.base.as(defaultSpeedUnit),
+                ...speeds.export(),
+                base: 2 * speeds.base.as(defaultSpeedUnit),
             },
-            featChoices: [],
             size: Shapeshift.defaultSize(rank),
             /* TODO: #427 (epic)
                 Bonus feat: run
                 Acrobatics: bonus when jumping with run
                 Natural attacks: 2 claws (1d4) and bite (1d6)
              */
-        });
+        };
     }
 }
 

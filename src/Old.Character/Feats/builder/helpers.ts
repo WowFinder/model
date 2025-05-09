@@ -1,0 +1,90 @@
+import { FeatFlag, Stat, ClassFeature } from '@wowfinder/ts-enums';
+import {
+    and as allOf,
+    AttackBonusRequirement,
+    CasterLevelRequirement,
+    CharacterFeatRequirement,
+    CharacterLevelRequirement,
+    characterStatsRequirement,
+    ClassFeatureRequirement,
+    MinStatsRequirement,
+    or as either,
+} from '../../Requirements';
+import { Feat, type WeaponFeat, weaponFeats } from '../Feat';
+import { FeatSpec } from '../FeatSpec';
+import { type CharacterRequirements } from '../../Requirements/base';
+
+const raw: { [key in Feat]?: FeatSpec } = {};
+
+type Req = CharacterRequirements;
+type Reqs = CharacterRequirements[];
+type Flags = Iterable<FeatFlag>;
+
+function checkNoDuplicate(key: string): void {
+    if (Object.keys(raw).includes(key)) {
+        throw new Error(`Duplicate feat key: ${key}`);
+    }
+}
+function feat(key: Feat, reqs?: Req, flags?: Flags): FeatSpec {
+    checkNoDuplicate(key);
+    raw[key] = new FeatSpec({
+        label: key,
+        requirements: reqs,
+        flags,
+    });
+    return raw[key];
+}
+
+const req = {
+    none: allOf() as Req,
+    level: {
+        global: (level: number): Req => new CharacterLevelRequirement(level),
+        caster: (level: number): Req => new CasterLevelRequirement(level),
+        bab: (level: number): Req => new AttackBonusRequirement(level),
+    },
+    stat: (stat: Stat, min: number): Req =>
+        characterStatsRequirement(new MinStatsRequirement({ [stat]: min })),
+    /* TODO: Reimplement (avoid circular dependency)
+    feats: (...feats: Feat[]): Reqs =>
+        feats.map(f => new CharacterFeatRequirement(f)),
+    */
+    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+    feats: (...feats: Feat[]): Reqs => [],
+    features: (...features: ClassFeature[]): Reqs =>
+        features.map(f => new ClassFeatureRequirement(f)),
+};
+const build = {
+    basic: (key: Feat, ...reqs: Reqs): FeatSpec => feat(key, allOf(...reqs)),
+    save: (key: Feat, ...reqs: Reqs): FeatSpec =>
+        feat(key, allOf(...reqs), [FeatFlag.saves]),
+    combat: (key: Feat, ...reqs: Reqs): FeatSpec =>
+        feat(key, allOf(...reqs), [FeatFlag.combat]),
+    expertise: (key: Feat, ...reqs: Reqs): FeatSpec =>
+        feat(key, allOf(...reqs), [FeatFlag.combat, FeatFlag.expertise]),
+};
+
+const allFeatKeys = Object.keys(Feat);
+function checkFeatKey(key: string): asserts key is Feat {
+    if (!allFeatKeys.includes(key)) {
+        throw new Error(`Invalid feat key: ${key}`);
+    }
+}
+
+const allWeaponFeatKeys = Object.keys(weaponFeats);
+function checkWeaponFeatKey(key: string): asserts key is WeaponFeat {
+    if (!allWeaponFeatKeys) {
+        throw new Error(`Invalid weapon feat key: ${key}`);
+    }
+}
+
+export {
+    raw,
+    req,
+    build,
+    feat,
+    allOf,
+    either,
+    checkFeatKey,
+    checkWeaponFeatKey,
+};
+export type { Req, Reqs, Flags };

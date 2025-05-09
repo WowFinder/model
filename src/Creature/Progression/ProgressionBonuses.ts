@@ -1,6 +1,6 @@
-import { EffectiveCasterLevels } from '../../Magic';
-import { ProgressionFeature } from './Features';
-import { Skill } from '@wowfinder/ts-enums';
+import { type EffectiveCasterLevels } from '../../Magic';
+import { type ProgressionFeature } from './Features';
+import { type Skill } from '@wowfinder/ts-enums';
 
 type ProgressionBonuses = {
     hp: number;

@@ -33,4 +33,25 @@ const mockDivineClassRawAsset: RawClassAsset = {
     ],
 };
 
-export { mockDivineClassRawAsset };
+const mockDruidricClassRawAsset: RawClassAsset = {
+    ...mockDivineClassRawAsset,
+    key: 'mocked-druidric-class',
+    skills: [Skill.nature, Skill.handleAnimal, Skill.perception],
+    features: [
+        { level: 1, feature: 'natureBond' },
+        { level: 1, feature: 'wildEmpathy' },
+        { level: 1, feature: 'tracklessSteps' },
+        { level: 3, feature: 'rejuvenation' },
+        { level: 4, feature: 'bearForm' },
+        { level: 4, feature: 'tranquility' },
+        { level: 5, feature: 'regrowth' },
+        { level: 6, feature: 'catForm' },
+        { level: 6, feature: 'rejuvenation' },
+        { level: 8, feature: 'moonkinForm' },
+        { level: 8, feature: 'bearForm' },
+        { level: 9, feature: 'rejuvenation' },
+        { level: 10, feature: 'treeLifeForm' },
+    ],
+};
+
+export { mockDivineClassRawAsset, mockDruidricClassRawAsset };

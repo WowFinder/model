@@ -1,5 +1,5 @@
 import { Aura, BonusType } from '@wowfinder/ts-enums';
-import { Bonus } from '../../../Character/Bonus';
+import { SimpleBonus, TypedSimpleBonus } from '../../../Bonus';
 import type { ClassEntries } from '../../Class/Class';
 import { auraBonuses } from '.';
 
@@ -23,13 +23,15 @@ function condenseClassAuras(auras: Aura[]): ClassAurasCondensed {
     }));
 }
 
-function getAuraBonuses(auras: Aura[]): Bonus {
-    return Bonus.sum(
-        BonusType.aura,
-        ...condenseClassAuras(auras).map(({ aura, count }) =>
-            auraBonuses[aura](count),
-        ),
-    );
+function getAuraBonuses(auras: Aura[]): TypedSimpleBonus {
+    return new TypedSimpleBonus({
+        ...SimpleBonus.sum(
+            ...condenseClassAuras(auras).map(({ aura, count }) =>
+                auraBonuses[aura](count),
+            ),
+        ).export(),
+        type: BonusType.aura,
+    });
 }
 
 export { condenseClassAuras, getAuraBonuses, getClassAuras };

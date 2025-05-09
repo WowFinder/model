@@ -1,76 +1,36 @@
-import { type FlyManeuverability } from '@wowfinder/ts-enums';
 import { sum } from '@wowfinder/ts-utils';
-import { Speed, commonSpeedUnits, encumberedRaw } from '../Scalar';
+import { Speeds, type SpeedBuilder } from '../Creature/Speeds';
 
-type SpeedsProfile = {
-    baseSpeed: Speed;
-    reducedSpeed: Speed;
-    burrowSpeed?: Speed;
-    climbSpeed?: Speed;
-    flySpeed?: Speed;
-    flyManeuverability?: FlyManeuverability;
-    swimSpeed?: Speed;
-    initiative: number;
-};
-
-type SpeedsProfileBuilder = {
-    baseSpeed: number;
-    encumberance?: boolean;
-    burrowSpeed?: number;
-    climbSpeed?: number;
-    flySpeed?: number;
-    flyManeuverability?: FlyManeuverability;
-    swimSpeed?: number;
+type SpeedsProfileBuilder = SpeedBuilder & {
     dexBonus?: number;
     otherInitiativeModifiers?: number[];
 };
 
-function mkSpeed(rawFeetTurn: number): Speed;
-function mkSpeed(rawFeetTurn?: number): Speed | undefined;
-
-function mkSpeed(rawFeetTurn?: number): Speed | undefined {
-    return rawFeetTurn
-        ? new Speed({ value: rawFeetTurn, unit: commonSpeedUnits.feetTurn })
-        : undefined;
-}
-
-class SpeedsProfileImpl implements SpeedsProfile {
-    readonly baseSpeed: Speed;
-    readonly reducedSpeed: Speed;
-    readonly burrrowSpeed?: Speed;
-    readonly climbSpeed?: Speed;
-    readonly flySpeed?: Speed;
-    readonly swimSpeed?: Speed;
-    readonly flyManeuverability?: FlyManeuverability;
-    readonly initiative: number;
+class SpeedsProfile extends Speeds {
+    readonly #dexBonus: number;
+    readonly #initiativeBonuses: number[];
 
     constructor({
-        baseSpeed,
-        encumberance = false,
-        burrowSpeed,
-        climbSpeed,
-        flySpeed,
-        flyManeuverability,
-        swimSpeed,
         dexBonus = 0,
         otherInitiativeModifiers = [],
+        ...speeds
     }: SpeedsProfileBuilder) {
-        this.baseSpeed = mkSpeed(baseSpeed);
-        this.reducedSpeed = mkSpeed(
-            encumberance ? encumberedRaw(baseSpeed) : baseSpeed,
-        );
-        this.burrrowSpeed = mkSpeed(burrowSpeed);
-        this.climbSpeed = mkSpeed(climbSpeed);
-        this.flySpeed = mkSpeed(flySpeed);
-        this.swimSpeed = mkSpeed(swimSpeed);
-        this.flyManeuverability = flyManeuverability;
-        this.initiative = sum(dexBonus, ...otherInitiativeModifiers);
+        super(speeds);
+        this.#dexBonus = dexBonus;
+        this.#initiativeBonuses = otherInitiativeModifiers;
+    }
+
+    get initiative(): number {
+        return sum(this.#dexBonus, ...this.#initiativeBonuses);
+    }
+
+    export(): Required<SpeedsProfileBuilder> {
+        return {
+            ...super.export(),
+            dexBonus: this.#dexBonus,
+            otherInitiativeModifiers: this.#initiativeBonuses,
+        };
     }
 }
 
-function buildSpeedsProfile(data: SpeedsProfileBuilder): SpeedsProfile {
-    return new SpeedsProfileImpl(data);
-}
-
-export { buildSpeedsProfile };
-export type { SpeedsProfile };
+export { SpeedsProfile };

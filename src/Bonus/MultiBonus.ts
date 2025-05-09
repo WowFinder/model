@@ -1,11 +1,11 @@
 import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
-import { SimpleBonus } from './SimpleBonus';
-import { SimpleBonusBuilder } from './SimpleBonus.builder';
+import { TypedSimpleBonus } from './TypedSimpleBonus';
 import { BonusType } from '@wowfinder/ts-enums';
 import { maxBonus, sumBonus } from './SimpleBonus.helpers';
+import { SimpleBonus, type SimpleBonusBuilder } from './SimpleBonus';
 
 type MultiBonusBuilder = { [key in BonusType]?: SimpleBonusBuilder };
-type FullMultiBonus = Record<BonusType, SimpleBonus>;
+type FullMultiBonus = Record<BonusType, TypedSimpleBonus>;
 
 const stackableBonusTypes: { [key in BonusType]: boolean } = {
     [BonusType.gear]: true,
@@ -17,43 +17,68 @@ const stackableBonusTypes: { [key in BonusType]: boolean } = {
 } as const;
 
 class MultiBonus implements FullMultiBonus, JsonExportable<MultiBonusBuilder> {
-    readonly #gear: SimpleBonus;
-    readonly #enhancement: SimpleBonus;
-    readonly #deflection: SimpleBonus;
-    readonly #natural: SimpleBonus;
-    readonly #temporal: SimpleBonus;
-    readonly #aura: SimpleBonus;
+    readonly #gear: TypedSimpleBonus;
+    readonly #enhancement: TypedSimpleBonus;
+    readonly #deflection: TypedSimpleBonus;
+    readonly #natural: TypedSimpleBonus;
+    readonly #temporal: TypedSimpleBonus;
+    readonly #aura: TypedSimpleBonus;
 
-    constructor(builder: MultiBonusBuilder = {}) {
-        this.#gear = new SimpleBonus(builder[BonusType.gear]);
-        this.#enhancement = new SimpleBonus(builder[BonusType.enhancement]);
-        this.#deflection = new SimpleBonus(builder[BonusType.deflection]);
-        this.#natural = new SimpleBonus(builder[BonusType.natural]);
-        this.#temporal = new SimpleBonus(builder[BonusType.temporal]);
-        this.#aura = new SimpleBonus(builder[BonusType.aura]);
+    constructor({
+        gear = {},
+        enhancement = {},
+        deflection = {},
+        natural = {},
+        temporal = {},
+        aura = {},
+    }: MultiBonusBuilder = {}) {
+        this.#gear = new TypedSimpleBonus({
+            ...gear,
+            type: BonusType.gear,
+        });
+        this.#enhancement = new TypedSimpleBonus({
+            ...enhancement,
+            type: BonusType.enhancement,
+        });
+        this.#deflection = new TypedSimpleBonus({
+            ...deflection,
+            type: BonusType.deflection,
+        });
+        this.#natural = new TypedSimpleBonus({
+            ...natural,
+            type: BonusType.natural,
+        });
+        this.#temporal = new TypedSimpleBonus({
+            ...temporal,
+            type: BonusType.temporal,
+        });
+        this.#aura = new TypedSimpleBonus({
+            ...aura,
+            type: BonusType.aura,
+        });
     }
 
-    get gear(): SimpleBonus {
+    get gear(): TypedSimpleBonus {
         return this.#gear;
     }
 
-    get enhancement(): SimpleBonus {
+    get enhancement(): TypedSimpleBonus {
         return this.#enhancement;
     }
 
-    get deflection(): SimpleBonus {
+    get deflection(): TypedSimpleBonus {
         return this.#deflection;
     }
 
-    get natural(): SimpleBonus {
+    get natural(): TypedSimpleBonus {
         return this.#natural;
     }
 
-    get temporal(): SimpleBonus {
+    get temporal(): TypedSimpleBonus {
         return this.#temporal;
     }
 
-    get aura(): SimpleBonus {
+    get aura(): TypedSimpleBonus {
         return this.#aura;
     }
 

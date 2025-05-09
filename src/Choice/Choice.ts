@@ -4,15 +4,15 @@ type BaseChoiceBuilder = {
     label: string;
 };
 
-type ChoiceBuilder = BaseChoiceBuilder & {
-    validator: Validator<any>;
+type ChoiceBuilder<T> = BaseChoiceBuilder & {
+    validator: Validator<T>;
 };
 
-class Choice {
+class Choice<T = any> {
     readonly #label: string;
     readonly #validator: Validator<any>;
 
-    constructor({ label, validator }: ChoiceBuilder) {
+    constructor({ label, validator }: ChoiceBuilder<T>) {
         this.#label = label;
         this.#validator = validator;
     }
@@ -21,20 +21,20 @@ class Choice {
         return this.#label;
     }
 
-    validate(value: any): boolean {
+    validate(value: T): boolean {
         return this.#validator(value);
     }
 }
 
-type ChoiceSelectionBuilder = {
-    choice: Choice;
-    value: any;
+type ChoiceSelectionBuilder<T> = {
+    choice: Choice<T>;
+    value: T;
 };
-class ChoiceSelection {
+class ChoiceSelection<T = any> {
     readonly #choice: Choice;
-    readonly #value: any;
+    readonly #value: T;
 
-    constructor({ choice, value }: ChoiceSelectionBuilder) {
+    constructor({ choice, value }: ChoiceSelectionBuilder<T>) {
         if (!choice.validate(value)) {
             throw new Error(`Invalid value for choice ${choice.label}`);
         }
@@ -46,7 +46,7 @@ class ChoiceSelection {
         return this.#choice.label;
     }
 
-    get value(): any {
+    get value(): T {
         return this.#value;
     }
 }
