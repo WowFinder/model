@@ -1,6 +1,6 @@
-import { RawCreatureAsset } from "@wowfinder/asset-schemas";
-import { AsyncAssetResolver } from "../../Assets";
-import { CreatureBase } from "../CreatureBase";
+import { RawCreatureAsset } from '@wowfinder/asset-schemas';
+import { AsyncAssetResolver } from '../../Assets';
+import { CreatureBase } from '../CreatureBase';
 import {
     mockAssetResolver,
     rawBaseCreatureExpanded,
@@ -22,17 +22,11 @@ class CreatureBaseImpl extends CreatureBase {
 }
 
 async function mkMinimalCreature(): Promise<CreatureBase> {
-    return CreatureBaseImpl.build(
-        rawBaseCreatureMinimal,
-        mockAssetResolver,
-    );
+    return CreatureBaseImpl.build(rawBaseCreatureMinimal, mockAssetResolver);
 }
 
 async function mkExpandedCreature(): Promise<CreatureBase> {
-    return CreatureBaseImpl.build(
-        rawBaseCreatureExpanded,
-        mockAssetResolver,
-    );
+    return CreatureBaseImpl.build(rawBaseCreatureExpanded, mockAssetResolver);
 }
 
 export { CreatureBaseImpl, mkMinimalCreature, mkExpandedCreature };

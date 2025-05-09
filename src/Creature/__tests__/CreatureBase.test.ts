@@ -7,7 +7,6 @@ import { type ClassEntries } from '../CreatureBase';
 import Race from '../Race';
 import { mkExpandedCreature, mkMinimalCreature } from './helpers';
 
-
 describe('CreatureBase', () => {
     it('should create a minimal instance', async () => {
         const instance = await mkMinimalCreature();
