@@ -21,17 +21,13 @@ describe('combineProgressionBonuses', () => {
         divine: new Class(mockDivineClassRawAsset),
         stealth: new Class(mockStealthClassRawAsset),
     };
-    const classLevels: (ProgressionEntry & Partial<ClassEntry>)[] = [
-        { progression: classes.melee, level: 8 },
-        { progression: classes.arcane, level: 4 },
-        { progression: classes.divine, level: 2 },
-        { progression: classes.stealth, level: 1 },
+    const classLevels: (ProgressionEntry & ClassEntry)[] = [
+        { progression: classes.melee, class: classes.melee, level: 8 },
+        { progression: classes.arcane, class: classes.arcane,  level: 4 },
+        { progression: classes.divine, class: classes.divine, level: 2 },
+        { progression: classes.stealth, class: classes.stealth, level: 1 },
     ];
-    classLevels.forEach(entry => {
-        if (entry.progression instanceof Class) {
-            entry.class = entry.progression;
-        }
-    });
+
     const bonuses = combineProgressionBonuses(classLevels);
     describe('combineClassBonuses', () => {
         it('should correctly map class entries to progression entries', () => {
