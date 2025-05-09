@@ -26,9 +26,6 @@ class CharacterCoreImpl extends CharacterCore {
     set inventory(_: any) {
         notImplemented();
     }
-    get classProgression(): never {
-        return notImplemented();
-    }
     get totalBonuses(): never {
         return notImplemented();
     }
@@ -66,5 +63,13 @@ describe('CharacterCore', () => {
         });
         expect(char.key).toBe('base-creature-mock-expanded');
         expect(char.active).toBe(false);
+    });
+    it('should return the Creature class progression by default', async () => {
+        const args = await CharacterCore.buildCharacterArgs(
+            rawBaseCreatureExpanded,
+            mockAssetResolver,
+        );
+        const char = new CharacterCoreImpl(args);
+        expect(char.classProgression).toEqual(args.classes);
     });
 });

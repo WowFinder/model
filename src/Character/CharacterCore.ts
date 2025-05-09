@@ -37,7 +37,9 @@ abstract class CharacterCore
     abstract set overrides(overrides: CreatureBaseProfileOverride[]);
     abstract get inventory(): Inventory;
     abstract set inventory(inventory: Inventory);
-    abstract get classProgression(): ClassEntries;
+    get classProgression(): ClassEntries {
+        return this.classes;
+    }
     abstract get totalBonuses(): MultiBonus;
     abstract get totalProfile(): CreatureBaseProfile;
 
