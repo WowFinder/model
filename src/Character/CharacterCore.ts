@@ -23,7 +23,7 @@ abstract class CharacterCore
 {
     readonly #active: boolean;
 
-    protected constructor({ active = true, ...args }: CharacterCoreBuilder) {
+    constructor({ active = true, ...args }: CharacterCoreBuilder) {
         super(args);
         this.#active = active;
     }
