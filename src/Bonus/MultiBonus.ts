@@ -1,8 +1,5 @@
 import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
-import {
-    TypedSimpleBonus,
-    type TypedSimpleBonusBuilder,
-} from './TypedSimpleBonus';
+import { TypedSimpleBonus } from './TypedSimpleBonus';
 import { BonusType } from '@wowfinder/ts-enums';
 import { maxBonus, sumBonus } from './SimpleBonus.helpers';
 import { SimpleBonus, type SimpleBonusBuilder } from './SimpleBonus';
@@ -27,29 +24,36 @@ class MultiBonus implements FullMultiBonus, JsonExportable<MultiBonusBuilder> {
     readonly #temporal: TypedSimpleBonus;
     readonly #aura: TypedSimpleBonus;
 
-    constructor(builder: MultiBonusBuilder = {}) {
+    constructor({
+        gear = {},
+        enhancement = {},
+        deflection = {},
+        natural = {},
+        temporal = {},
+        aura = {},
+    }: MultiBonusBuilder = {}) {
         this.#gear = new TypedSimpleBonus({
-            ...builder[BonusType.gear],
+            ...gear,
             type: BonusType.gear,
         });
         this.#enhancement = new TypedSimpleBonus({
-            ...builder[BonusType.enhancement],
+            ...enhancement,
             type: BonusType.enhancement,
         });
         this.#deflection = new TypedSimpleBonus({
-            ...builder[BonusType.deflection],
+            ...deflection,
             type: BonusType.deflection,
         });
         this.#natural = new TypedSimpleBonus({
-            ...builder[BonusType.natural],
+            ...natural,
             type: BonusType.natural,
         });
         this.#temporal = new TypedSimpleBonus({
-            ...builder[BonusType.temporal],
+            ...temporal,
             type: BonusType.temporal,
         });
         this.#aura = new TypedSimpleBonus({
-            ...builder[BonusType.aura],
+            ...aura,
             type: BonusType.aura,
         });
     }
