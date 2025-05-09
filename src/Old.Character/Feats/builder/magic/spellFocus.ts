@@ -1,7 +1,6 @@
 import { Feat } from '../../Feat';
 import type { FeatSpec } from '../../FeatSpec';
 import { SpellFocusFeat } from '../../core/magic/spellFocus';
-import { allOf, req } from '../helpers';
 import { build } from './helpers';
 
 const spellFocusFeats: { [key in SpellFocusFeat]: FeatSpec } = {

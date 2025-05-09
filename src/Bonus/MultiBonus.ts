@@ -3,7 +3,6 @@ import { TypedSimpleBonus } from './TypedSimpleBonus';
 import { BonusType } from '@wowfinder/ts-enums';
 import { maxBonus, sumBonus } from './SimpleBonus.helpers';
 import { SimpleBonus, type SimpleBonusBuilder } from './SimpleBonus';
-import { make } from '../Dice';
 
 type MultiBonusBuilder = { [key in BonusType]?: SimpleBonusBuilder };
 type FullMultiBonus = Record<BonusType, TypedSimpleBonus>;

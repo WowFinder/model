@@ -38,7 +38,7 @@ const combatBaseFeats: { [key in CombatBaseFeat]: FeatSpec } = {
     improvedInitiative: build.combat(Feat.improvedInitiative),
     improvisedWeaponMastery: build.combat(
         Feat.improvisedWeaponMastery,
-        // either(...req.feats(Feat.catchOffGuard, Feat.throwAnything)), // TODO: Reimplement!
+        req.feats(Feat.catchOffGuard, Feat.throwAnything),
     ),
     lunge: build.combat(Feat.lunge, [], req.level.bab(6)),
     quickDraw: build.combat(Feat.quickDraw, [], req.level.bab(1)),

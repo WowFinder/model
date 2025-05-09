@@ -21,5 +21,5 @@ applyPendingReqs(feats);
 
 Object.freeze(feats);
 
-const frozenFeats = feats as { [key in Feat]: FeatSpec };
+const frozenFeats = feats as Readonly<typeof feats>;
 export { Feat, FeatSpec, frozenFeats as feats };
