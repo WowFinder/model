@@ -23,7 +23,7 @@ describe('combineProgressionBonuses', () => {
     };
     const classLevels: (ProgressionEntry & ClassEntry)[] = [
         { progression: classes.melee, class: classes.melee, level: 8 },
-        { progression: classes.arcane, class: classes.arcane,  level: 4 },
+        { progression: classes.arcane, class: classes.arcane, level: 4 },
         { progression: classes.divine, class: classes.divine, level: 2 },
         { progression: classes.stealth, class: classes.stealth, level: 1 },
     ];
