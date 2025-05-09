@@ -8,12 +8,12 @@ const combatShieldFeats: { [key in CombatShieldFeat]: FeatSpec } = {
     // TODO #443: improved shield bash, shield slam, shield master
     weaponFocusShield: build.combat(
         Feat.weaponFocusShield,
-        ...req.feats('proficiencyShield'),
+        req.feats('proficiencyShield'),
         req.level.bab(1),
     ),
     greaterWeaponFocusShield: build.combat(
         Feat.greaterWeaponFocusShield,
-        ...req.feats('weaponFocusShield'),
+        req.feats('weaponFocusShield'),
         req.level.bab(8),
     ),
 };

@@ -15,10 +15,9 @@ const spellFocusFeats: { [key in SpellFocusFeat]: FeatSpec } = {
         Feat.greaterSpellFocusConjuration,
         Feat.spellFocusConjuration,
     ),
-    augmentSummoning: build.magic(
-        Feat.augmentSummoning,
-        allOf(...req.feats(Feat.spellFocusConjuration)),
-    ),
+    augmentSummoning: build.magic(Feat.augmentSummoning, [
+        Feat.spellFocusConjuration,
+    ]),
     spellFocusDivination: build.focus(Feat.spellFocusDivination),
     greaterSpellFocusDivination: build.focus(
         Feat.greaterSpellFocusDivination,
