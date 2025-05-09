@@ -8,7 +8,7 @@ import type { Race } from './Race';
 import { importPersonalDetails, PersonalDetails } from './Personal';
 import { AsyncAssetResolver } from '../Assets';
 
-type CreatureBaseConstructorArgs = {
+type CreatureBaseBuilder = {
     key: string;
     baseStats: RawStats;
     personal: PersonalDetails;
@@ -17,7 +17,7 @@ type CreatureBaseConstructorArgs = {
     classes: ClassEntries;
 };
 
-class CreatureBase {
+abstract class CreatureBase {
     readonly #key: string;
     readonly #baseStats: RawStats;
     readonly #personal: PersonalDetails;
@@ -25,14 +25,14 @@ class CreatureBase {
     readonly #race: Race;
     readonly #classes: ClassEntries;
 
-    protected constructor({
+    constructor({
         key,
         baseStats,
         personal,
         notes = '',
         race,
         classes,
-    }: CreatureBaseConstructorArgs) {
+    }: CreatureBaseBuilder) {
         this.#key = key;
         this.#baseStats = baseStats;
         this.#personal = personal;
@@ -65,12 +65,12 @@ class CreatureBase {
         return [...this.#classes];
     }
 
-    static async buildCreature(
+    static async buildCreatureArgs(
         rawAsset: RawCreatureAsset,
         resolver: AsyncAssetResolver,
-    ): Promise<CreatureBase> {
+    ): Promise<CreatureBaseBuilder> {
         const rawClasses: RawClassEntries = rawAsset.classes ?? [];
-        const args: CreatureBaseConstructorArgs = {
+        return {
             key: rawAsset.key,
             baseStats: rawAsset.baseStats,
             personal: importPersonalDetails(rawAsset.personal),
@@ -88,8 +88,12 @@ class CreatureBase {
                 }),
             ),
         };
-        return new this(args);
     }
 }
 
-export { CreatureBase, type ClassEntry, type ClassEntries };
+export {
+    CreatureBase,
+    type ClassEntry,
+    type ClassEntries,
+    type CreatureBaseBuilder,
+};

@@ -28,6 +28,7 @@ type CreatureBaseProfile = {
     feats: FeatsProfile;
 };
 
+// TODO: Consider full deprecation
 type CreatureProfile = CreatureBaseProfile & {
     personal: PersonalDetails;
     shape: Shape;

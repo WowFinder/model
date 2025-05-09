@@ -3,7 +3,7 @@ import { type SavesProgression, type CastingProgression } from './helpers';
 import { type FeaturesList } from './Features';
 import { type AurasList } from './Aura';
 
-type ProgressionConstructorArgs = {
+type ProgressionBuilder = {
     key: string;
     hitDie?: number;
     baseAttackProgression?: number;
@@ -40,7 +40,7 @@ abstract class Progression {
         features = [],
         auras = [],
         skills = new Set<Skill>(),
-    }: ProgressionConstructorArgs) {
+    }: ProgressionBuilder) {
         this.#key = key;
         this.#hitDie = hitDie;
         this.#baseAttackProgression = baseAttackProgression;
@@ -100,7 +100,7 @@ abstract class Progression {
 
 export {
     Progression,
-    type ProgressionConstructorArgs,
+    type ProgressionBuilder,
     type ProgressionEntry,
     type ProgressionEntries,
 };

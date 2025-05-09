@@ -6,10 +6,26 @@ import {
 } from '../../__mocks__';
 import { type ClassEntries, CreatureBase } from '../CreatureBase';
 import Race from '../Race';
+import { type AsyncAssetResolver } from '../../Assets';
+import { type RawCreatureAsset } from '@wowfinder/asset-schemas';
+
+class CreatureBaseImpl extends CreatureBase {
+    constructor(args: ConstructorParameters<typeof CreatureBase>[0]) {
+        super(args);
+    }
+
+    static async build(
+        rawAsset: RawCreatureAsset,
+        resolver: AsyncAssetResolver,
+    ): Promise<CreatureBaseImpl> {
+        const args = await this.buildCreatureArgs(rawAsset, resolver);
+        return new this(args);
+    }
+}
 
 describe('CreatureBase', () => {
     it('should create a minimal instance', async () => {
-        const instance = await CreatureBase.buildCreature(
+        const instance = await CreatureBaseImpl.build(
             rawBaseCreatureMinimal,
             mockAssetResolver,
         );
@@ -23,7 +39,7 @@ describe('CreatureBase', () => {
         expect(instance.classes).toHaveLength(0);
     });
     it('should create an expanded instance', async () => {
-        const instance = await CreatureBase.buildCreature(
+        const instance = await CreatureBaseImpl.build(
             rawBaseCreatureExpanded,
             mockAssetResolver,
         );
