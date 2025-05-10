@@ -1,7 +1,7 @@
 import { defaultSpeedUnit } from '../../../Creature/Speeds';
-import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
 import { Shapeshift, type ShapeshiftBuilder } from '../base';
 import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
+import { type CharacterBaseInterface } from '../../../Character';
 
 class CheetahForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
@@ -9,7 +9,7 @@ class CheetahForm extends Shapeshift {
     }
 
     compute(
-        base: CharacterRequirementsPlaceholder,
+        base: CharacterBaseInterface,
         rank: number,
     ): CharacterOverridePlaceholder {
         const { speeds, stats } = base.baseProfile;

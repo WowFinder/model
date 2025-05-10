@@ -1,12 +1,10 @@
 import { sum } from '@wowfinder/ts-utils';
-import {
-    type Requirement,
-    type CharacterRequirementsPlaceholder,
-} from './base';
+import { type Requirement } from './base';
 import { combineClassBonuses } from '../../Creature';
+import { type CharacterBaseInterface } from '../../Character';
 
 abstract class LevelRequirementBase
-    implements Requirement<CharacterRequirementsPlaceholder>
+    implements Requirement<CharacterBaseInterface>
 {
     readonly #level: number;
     constructor(level: number) {
@@ -17,35 +15,28 @@ abstract class LevelRequirementBase
         return this.#level;
     }
 
-    abstract test(value: CharacterRequirementsPlaceholder): boolean;
+    abstract test(value: CharacterBaseInterface): boolean;
 }
 
 class CharacterLevelRequirement extends LevelRequirementBase {
-    test(value: CharacterRequirementsPlaceholder): boolean {
-        return (
-            sum(
-                ...value.baseProfile.progression.classes.map(
-                    entry => entry.level,
-                ),
-            ) >= this.level
+    test(value: CharacterBaseInterface): boolean {
+        const charLevel = sum(
+            ...value.classProgression.map(entry => entry.level),
         );
+        return charLevel >= this.level;
     }
 }
 
 class CasterLevelRequirement extends LevelRequirementBase {
-    test(value: CharacterRequirementsPlaceholder): boolean {
-        const { efl } = combineClassBonuses(
-            value.baseProfile.progression.classes,
-        );
+    test(value: CharacterBaseInterface): boolean {
+        const { efl } = combineClassBonuses(value.classProgression);
         return efl.arcane + efl.divine + efl.spontaneous >= this.level;
     }
 }
 
 class AttackBonusRequirement extends LevelRequirementBase {
-    test(value: CharacterRequirementsPlaceholder): boolean {
-        const { bab } = combineClassBonuses(
-            value.baseProfile.progression.classes,
-        );
+    test(value: CharacterBaseInterface): boolean {
+        const { bab } = combineClassBonuses(value.classProgression);
         return bab >= this.level;
     }
 }

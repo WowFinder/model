@@ -6,6 +6,11 @@ import { mockDruidricClass, mockMeleeClass } from '../Class';
 import { mkCounter } from '@wowfinder/ts-utils';
 import { Time } from '../../../Scalar';
 import { fillSpellPowerValues, fullComputedSpellPower } from '../../../Magic';
+import Race from '../../../Creature/Race';
+import { MultiBonus } from '../../../Bonus';
+import { type CharacterBaseInterface } from '../../../Character';
+import { Inventory } from '../../../Item/Inventory';
+import { mockedRaceRawAsset } from '../race';
 
 function mapEnum<TEnum extends string, TValue>(
     enumObj: Record<TEnum, TEnum>,
@@ -100,4 +105,25 @@ const mockDruidCreatureProfile: CreatureProfile = {
     },
 };
 
-export { mockBasicCreatureProfile, mockDruidCreatureProfile };
+const mockedDruidCharacter: CharacterBaseInterface = {
+    baseProfile: mockDruidCreatureProfile,
+    key: 'mocked-druid-profile',
+    personal: mockPersonalDetails,
+    overrides: [],
+    race: new Race(mockedRaceRawAsset),
+    classProgression: [
+        {
+            class: mockDruidricClass,
+            level: 3,
+        },
+    ],
+    inventory: new Inventory({}),
+    totalBonuses: MultiBonus.zero,
+    totalProfile: mockDruidCreatureProfile,
+};
+
+export {
+    mockBasicCreatureProfile,
+    mockDruidCreatureProfile,
+    mockedDruidCharacter,
+};

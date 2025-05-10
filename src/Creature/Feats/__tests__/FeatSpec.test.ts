@@ -40,7 +40,7 @@ describe('FeatSpec', () => {
                 featSpec.testRequirements({
                     key: 'dummy-character-placeholder',
                     baseProfile: mockBasicCreatureProfile,
-                }),
+                } as any),
             ).toBe(true);
         });
     });

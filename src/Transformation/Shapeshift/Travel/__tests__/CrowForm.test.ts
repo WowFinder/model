@@ -1,12 +1,6 @@
 import { FlyManeuverability } from '@wowfinder/ts-enums';
 import { CrowForm } from '..';
-import { mockDruidCreatureProfile } from '../../../../__mocks__';
-import { type CharacterRequirementsPlaceholder } from '../../../../Old.Character/Requirements/base';
-
-const mockedDruid: CharacterRequirementsPlaceholder = {
-    baseProfile: mockDruidCreatureProfile,
-    key: 'mocked-druid-profile',
-};
+import { mockedDruidCharacter } from '../../../../__mocks__';
 
 describe('CrowForm', () => {
     it('should be defined', () => {
@@ -18,7 +12,7 @@ describe('CrowForm', () => {
         expect(crow).toBeInstanceOf(CrowForm);
     });
     it('should include relevant modifiers', () => {
-        const crow2 = crow.compute(mockedDruid, 2);
+        const crow2 = crow.compute(mockedDruidCharacter, 2);
         expect(crow2).toBeDefined();
         expect(crow2.speeds?.base).toBe(30);
         expect(crow2.speeds?.fly).toBe(45);

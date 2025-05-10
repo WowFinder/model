@@ -1,11 +1,5 @@
 import { StagForm } from '..';
-import { mockDruidCreatureProfile } from '../../../../__mocks__';
-import { type CharacterRequirementsPlaceholder } from '../../../../Old.Character/Requirements/base';
-
-const mockedDruid: CharacterRequirementsPlaceholder = {
-    baseProfile: mockDruidCreatureProfile,
-    key: 'mocked-druid-profile',
-};
+import { mockedDruidCharacter } from '../../../../__mocks__';
 
 describe('StagForm', () => {
     it('should be defined', () => {
@@ -17,7 +11,7 @@ describe('StagForm', () => {
         expect(stag).toBeInstanceOf(StagForm);
     });
     it('should include relevant modifiers', () => {
-        const stag2 = stag.compute(mockedDruid, 2);
+        const stag2 = stag.compute(mockedDruidCharacter, 2);
         expect(stag2).toBeDefined();
         expect(stag2.speeds?.base).toBeCloseTo(105);
     });

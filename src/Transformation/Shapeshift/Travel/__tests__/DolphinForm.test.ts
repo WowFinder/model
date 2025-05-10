@@ -1,11 +1,5 @@
 import { DolphinForm } from '..';
-import { mockDruidCreatureProfile } from '../../../../__mocks__';
-import { type CharacterRequirementsPlaceholder } from '../../../../Old.Character/Requirements/base';
-
-const mockedDruid: CharacterRequirementsPlaceholder = {
-    baseProfile: mockDruidCreatureProfile,
-    key: 'mocked-druid-profile',
-};
+import { mockedDruidCharacter } from '../../../../__mocks__';
 
 describe('DolphinForm', () => {
     it('should be defined', () => {
@@ -17,7 +11,7 @@ describe('DolphinForm', () => {
         expect(dolphin).toBeInstanceOf(DolphinForm);
     });
     it('should include relevant modifiers', () => {
-        const dolphin2 = dolphin.compute(mockedDruid, 2);
+        const dolphin2 = dolphin.compute(mockedDruidCharacter, 2);
         expect(dolphin2).toBeDefined();
         expect(dolphin2.speeds?.base).toBe(0);
         expect(dolphin2.speeds?.swim).toBeCloseTo(45);

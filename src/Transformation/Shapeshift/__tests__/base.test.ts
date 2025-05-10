@@ -1,4 +1,4 @@
-import { mockDruidCreatureProfile } from '../../../__mocks__';
+import { mockedDruidCharacter } from '../../../__mocks__';
 import { Shapeshift, type ShapeshiftBuilder } from '../base';
 
 class ShapeshiftTest extends Shapeshift {
@@ -41,10 +41,7 @@ describe('Shapeshift', () => {
 
     describe('effectiveDruidLevel', () => {
         it('should return the effective druid level based on the base profile', () => {
-            const edl = Shapeshift.effectiveDruidLevel({
-                baseProfile: mockDruidCreatureProfile,
-                key: 'mocked-druid-profile',
-            });
+            const edl = Shapeshift.effectiveDruidLevel(mockedDruidCharacter);
             expect(edl).toBe(3);
         });
     });

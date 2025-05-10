@@ -1,11 +1,5 @@
 import { MoonkinForm } from '..';
-import { mockDruidCreatureProfile } from '../../../../__mocks__';
-import { type CharacterRequirementsPlaceholder } from '../../../../Old.Character/Requirements/base';
-
-const mockedDruid: CharacterRequirementsPlaceholder = {
-    baseProfile: mockDruidCreatureProfile,
-    key: 'mocked-druid-profile',
-};
+import { mockedDruidCharacter } from '../../../../__mocks__';
 
 describe('MoonkinForm', () => {
     it('should be defined', () => {
@@ -17,7 +11,7 @@ describe('MoonkinForm', () => {
         expect(moonkinForm).toBeInstanceOf(MoonkinForm);
     });
     it('should include relevant modifiers', () => {
-        const moonkin2 = moonkinForm.compute(mockedDruid, 2);
+        const moonkin2 = moonkinForm.compute(mockedDruidCharacter, 2);
         expect(moonkin2).toBeDefined();
         // 10 base, +6 at rank 2:
         expect(moonkin2.baseStats?.charisma).toBe(16);

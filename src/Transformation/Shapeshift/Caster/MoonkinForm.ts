@@ -1,4 +1,4 @@
-import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
+import { type CharacterBaseInterface } from '../../../Character';
 import { CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 import { Shapeshift, ShapeshiftBuilder } from '../base';
 
@@ -8,7 +8,7 @@ class MoonkinForm extends Shapeshift {
     }
 
     compute(
-        base: CharacterRequirementsPlaceholder,
+        base: CharacterBaseInterface,
         rank: number,
     ): CharacterOverridePlaceholder {
         const { stats } = base.baseProfile;

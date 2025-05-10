@@ -1,4 +1,4 @@
-import { type CharacterRequirementsPlaceholder } from '../../../Old.Character/Requirements/base';
+import { type CharacterBaseInterface } from '../../../Character';
 import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 import { type ShapeshiftBuilder, Shapeshift } from '../base';
 
@@ -8,7 +8,7 @@ class BearForm extends Shapeshift {
     }
 
     compute(
-        base: CharacterRequirementsPlaceholder,
+        base: CharacterBaseInterface,
         rank: number,
     ): CharacterOverridePlaceholder {
         const { stats } = base.baseProfile;

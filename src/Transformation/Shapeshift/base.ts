@@ -1,7 +1,7 @@
 import { sum } from '@wowfinder/ts-utils';
-import { type CharacterRequirementsPlaceholder } from '../../Old.Character/Requirements/base';
 import { type Transformation } from '../base';
 import { CharacterOverridePlaceholder } from '../CharacterOverridePlaceholder';
+import { type CharacterBaseInterface } from '../../Character';
 
 const druidClasses = ['drd', 'mocked-druidric-class'];
 
@@ -20,7 +20,7 @@ abstract class Shapeshift implements Transformation {
     }
 
     abstract compute(
-        base: CharacterRequirementsPlaceholder,
+        base: CharacterBaseInterface,
         rank: number,
     ): CharacterOverridePlaceholder;
 
@@ -33,9 +33,9 @@ abstract class Shapeshift implements Transformation {
         return rank < 3 ? 0 : Math.floor((rank - 1) / 2);
     }
 
-    static effectiveDruidLevel(base: CharacterRequirementsPlaceholder): number {
+    static effectiveDruidLevel(base: CharacterBaseInterface): number {
         return sum(
-            ...base.baseProfile.progression.classes
+            ...base.classProgression
                 .filter(c => druidClasses.includes(c.class.key))
                 .map(c => c.level),
         );

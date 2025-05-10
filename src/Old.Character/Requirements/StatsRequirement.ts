@@ -1,11 +1,8 @@
 import { RawStats } from '@wowfinder/asset-schemas';
 import { Stat } from '@wowfinder/ts-enums';
 import { zeroDefault } from '../../Creature/Stats';
-import {
-    FunctionBasedRequirement,
-    type Requirement,
-    type CharacterRequirementsPlaceholder,
-} from './base';
+import { FunctionBasedRequirement, type Requirement } from './base';
+import { type CharacterBaseInterface } from '../../Character';
 
 class MinStatsRequirement implements RawStats, Requirement<RawStats> {
     readonly #min: RawStats;
@@ -87,10 +84,9 @@ class MaxStatsRequirement implements RawStats, Requirement<RawStats> {
 
 function characterStatsRequirement<T extends Requirement<RawStats>>(
     req: T,
-): Requirement<CharacterRequirementsPlaceholder> {
-    return new FunctionBasedRequirement<CharacterRequirementsPlaceholder>(
-        (char: CharacterRequirementsPlaceholder) =>
-            req.test(char.baseProfile.stats),
+): Requirement<CharacterBaseInterface> {
+    return new FunctionBasedRequirement<CharacterBaseInterface>(
+        (char: CharacterBaseInterface) => req.test(char.baseProfile.stats),
     );
 }
 
