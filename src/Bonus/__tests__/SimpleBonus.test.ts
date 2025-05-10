@@ -24,6 +24,7 @@ describe('SimpleBonus', () => {
             expect(exportedBonus.armorClass).toBe(0);
             expect(exportedBonus.stats).toBeDefined();
             expect(exportedBonus.skills).toBeDefined();
+            expect(exportedBonus.saves).toBeDefined();
             expect(exportedBonus.resistances).toBeDefined();
             expect(exportedBonus.vitalNeeds).toBeDefined();
             expect(exportedBonus.senses).toBeDefined();
@@ -50,6 +51,7 @@ describe('SimpleBonus', () => {
             );
             expect(bonusSum.stats).toBeDefined();
             expect(bonusSum.skills).toBeDefined();
+            expect(bonusSum.saves).toBeDefined();
             expect(bonusSum.resistances).toBeDefined();
             expect(bonusSum.vitalNeeds).toBeDefined();
             expect(bonusSum.senses).toBeDefined();
@@ -65,6 +67,7 @@ describe('SimpleBonus', () => {
             expect(bonusSum.armorClass).toEqual(fullSimpleBonus.armorClass);
             expect(bonusSum.stats).toEqual(fullSimpleBonus.stats);
             expect(bonusSum.skills).toEqual(fullSimpleBonus.skills);
+            expect(bonusSum.saves).toEqual(fullSimpleBonus.saves);
             expect(bonusSum.resistances).toEqual(fullSimpleBonus.resistances);
             expect(bonusSum.vitalNeeds).toEqual(fullSimpleBonus.vitalNeeds);
             expect(bonusSum.senses).toEqual(fullSimpleBonus.senses);
@@ -87,6 +90,7 @@ describe('SimpleBonus', () => {
             expect(maxBonus.armorClass).toEqual(fullSimpleBonus.armorClass);
             expect(maxBonus.stats).toBeDefined();
             expect(maxBonus.skills).toBeDefined();
+            expect(maxBonus.saves).toBeDefined();
             expect(maxBonus.resistances).toBeDefined();
             expect(maxBonus.vitalNeeds).toBeDefined();
             expect(maxBonus.senses).toBeDefined();
@@ -110,6 +114,7 @@ describe('SimpleBonus', () => {
             );
             expect(multipliedBonus.stats).toBeDefined();
             expect(multipliedBonus.skills).toBeDefined();
+            expect(multipliedBonus.saves).toBeDefined();
             expect(multipliedBonus.resistances).toBeDefined();
             expect(multipliedBonus.vitalNeeds).toBeDefined();
             expect(multipliedBonus.senses).toBeDefined();

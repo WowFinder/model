@@ -14,6 +14,7 @@ import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
 import { SpellPowerBonus } from './SpellPowerBonus';
 import { FeatsBonus } from './FeatsBonus';
 import { BaseSpeedsBonus, SpeedsModifiersBonus } from './SpeedsBonus';
+import { SavesBonus } from './SavesBonus';
 
 type Zeroable = { isZero: boolean };
 
@@ -22,6 +23,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
     readonly #armorClass: number;
     readonly #stats: StatsBonus;
     readonly #skills: SkillsBonus;
+    readonly #saves: SavesBonus;
     readonly #resistances: ResistancesBonus;
     readonly #vitalNeeds: VitalNeedsBonus;
     readonly #senses: SensesBonus;
@@ -35,6 +37,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         armorClass = 0,
         stats = {},
         skills = {},
+        saves = {},
         resistances = {},
         vitalNeeds = {},
         senses = {},
@@ -47,6 +50,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         this.#armorClass = armorClass;
         this.#stats = new StatsBonus(stats);
         this.#skills = new SkillsBonus(skills);
+        this.#saves = new SavesBonus(saves);
         this.#resistances = new ResistancesBonus(resistances);
         this.#vitalNeeds = new VitalNeedsBonus(vitalNeeds);
         this.#senses = new SensesBonus(senses);
@@ -70,6 +74,10 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
 
     get skills(): SkillsBonus {
         return this.#skills;
+    }
+
+    get saves(): SavesBonus {
+        return this.#saves;
     }
 
     get resistances(): ResistancesBonus {
@@ -108,6 +116,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         return [
             this.#stats,
             this.#skills,
+            this.#saves,
             this.#resistances,
             this.#vitalNeeds,
             this.#senses,
