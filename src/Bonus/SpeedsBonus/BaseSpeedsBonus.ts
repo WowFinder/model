@@ -119,7 +119,7 @@ class BaseSpeedsBonus
                     .filter(x => typeof x.#fly !== 'undefined')
                     .map(x => x.#fly ?? 0),
             ),
-            // TODO: select best maneuverability
+            // https://github.com/WowFinder/model/issues/208
             maneuverability: args.find(x => x.#maneuverability)
                 ?.maneuverability,
         } as BaseSpeedsBonusBuilder;

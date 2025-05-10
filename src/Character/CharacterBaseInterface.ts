@@ -11,7 +11,7 @@ import {
 } from '../Profile';
 
 type CharacterBaseInterface = {
-    // TODO: model choices for character creation and progression
+    // https://github.com/WowFinder/model/issues/214: model choices for character creation and progression
     get key(): string;
     get personal(): PersonalDetails;
     get baseProfile(): CreatureBaseProfile;

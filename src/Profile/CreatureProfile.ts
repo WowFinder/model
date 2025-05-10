@@ -1,20 +1,21 @@
-import type { Size } from '@wowfinder/ts-enums';
-import type { PersonalDetails } from '../Creature/Personal/builders';
-import type { Shape } from '../Item';
-import type { ArmorProfile } from './ArmorProfile';
-import type { BaseAttackProfile } from './BaseAttackProfile';
-import type { ProgressionProfile } from './ProgressionProfile';
-import type { SpeedsProfile } from './SpeedsProfile';
-import type { VitalsProfile } from './VitalsProfile';
-import type {
-    ClassFeaturesProfile,
-    FeatsProfile,
-    ResistancesProfile,
-    SavesProfile,
-    SkillsProfile,
-    SpellPowerProfile,
-    StatsProfile,
+import { type Size } from '@wowfinder/ts-enums';
+import { type PersonalDetails } from '../Creature/Personal/builders';
+import { type Shape } from '../Item';
+import { type ArmorProfile } from './ArmorProfile';
+import { type BaseAttackProfile } from './BaseAttackProfile';
+import { type ProgressionProfile } from './ProgressionProfile';
+import { type SpeedsProfile } from './SpeedsProfile';
+import { type VitalsProfile } from './VitalsProfile';
+import {
+    type ClassFeaturesProfile,
+    type FeatsProfile,
+    type ResistancesProfile,
+    type SavesProfile,
+    type SkillsProfile,
+    type SpellPowerProfile,
+    type StatsProfile,
 } from './raw';
+import { type Transform } from '@wowfinder/ts-utils';
 
 type CreatureBaseProfile = {
     stats: StatsProfile;
@@ -41,11 +42,8 @@ type CreatureProfile = CreatureBaseProfile & {
     spellPower: SpellPowerProfile;
 };
 
-// TODO: Redefine with a `Transform<T>` type in @wowfinder/ts-utils
-// ie: type Transform<T> = (base: T) => T;
-type CreatureBaseProfileOverride = (
-    base: CreatureBaseProfile,
-) => CreatureBaseProfile;
+// TODO: Migrate to @wowfinder/ts-utils
+type CreatureBaseProfileOverride = Transform<CreatureBaseProfile>;
 
 export {
     type CreatureBaseProfile,

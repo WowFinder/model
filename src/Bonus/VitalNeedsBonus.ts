@@ -9,8 +9,10 @@ type VitalNeedsBonusBuilder = {
 class VitalNeedsBonus
     implements VitalNeedsBonusBuilder, JsonExportable<VitalNeedsBonusBuilder>
 {
-    // TODO: retype and implement arithmetics
+    // https://github.com/WowFinder/model/issues/210:
+    // retype and implement arithmetics
     // ex: eat should be measured in rations/TimeUnit
+    // See src/Profile/VitalsProfile.ts
     readonly #breathe: boolean;
     readonly #eat: boolean;
     readonly #sleep: boolean;

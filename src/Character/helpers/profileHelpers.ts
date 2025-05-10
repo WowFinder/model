@@ -51,14 +51,14 @@ function getBaseProfile(creature: CreatureBase): CreatureBaseProfile {
                 max: hp,
             }),
             sanity: mkCounter({ max: 0 }),
-            // TODO: support sleep details in race definitions
+            // https://github.com/WowFinder/model/issues/210: support sleep details in race definitions
             sleep: defaultSleepProfile,
-            // TODO: support breath details in race definitions
+            // https://github.com/WowFinder/model/issues/210: support breath details in race definitions
             breath: defaultBreathProfile,
         },
         skills: fillSkills(creature.race.skillMods),
         saves: { ...creature.race.saves },
-        // TODO: support resistance details in race definitions
+        // https://github.com/WowFinder/model/issues/212: support resistance details in race definitions
         resistances: fillResistances({}),
         features: classMods.features,
         feats: {},
@@ -70,9 +70,9 @@ function profileAsBonus(profile: CreatureBaseProfile): SimpleBonus {
         hp: profile.vitals.hp.max,
         stats: profile.stats,
         skills: profile.skills,
-        // TODO: add saves bonuses
+        // https://github.com/WowFinder/model/issues/211: include saves bonuses
         resistances: profile.resistances,
-        // TODO: handle vitals
+        // https://github.com/WowFinder/model/issues/210: handle vitals
         feats: Object.keys(profile.feats).reduce((acc, f) => {
             const feat = f as Feat;
             const count = profile.feats[feat] as number;
@@ -100,7 +100,7 @@ function bonusAsProfile(bonus: SimpleBonus): CreatureBaseProfile {
             sanity: mkCounter({ max: 0 }),
         },
         skills: fillSkills(bonus.skills),
-        // TODO: support saves bonuses
+        // https://github.com/WowFinder/model/issues/211
         saves: undefined as any,
         resistances: fillResistances(bonus.resistances),
         features: {},
@@ -115,7 +115,7 @@ function bonusAsProfile(bonus: SimpleBonus): CreatureBaseProfile {
     };
 }
 
-// TODO: rewrite addition logic
+// https://github.com/WowFinder/model/issues/213: rewrite addition logic
 function totalize(
     base: CreatureBaseProfile,
     bonuses: MultiBonus,
