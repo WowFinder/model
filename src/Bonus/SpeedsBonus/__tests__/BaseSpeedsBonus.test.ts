@@ -4,6 +4,7 @@ import {
     defaultBaseSpeedsBonusBuilder,
     fullBaseSpeedsBonusBuilder,
 } from '../../../__mocks__';
+import { FlyManeuverability } from '@wowfinder/ts-enums';
 
 describe('BaseSpeedsBonus', () => {
     let emptyBaseSpeedsBonus: BaseSpeedsBonus;
@@ -63,6 +64,7 @@ describe('BaseSpeedsBonus', () => {
         expect(maxBonus.climb).toBe(45);
         expect(maxBonus.swim).toBe(50);
         expect(maxBonus.fly).toBe(55);
+        expect(maxBonus.maneuverability).toBe(FlyManeuverability.perfect);
     });
 
     it('should export the bonus', () => {

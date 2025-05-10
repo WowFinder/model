@@ -1,6 +1,7 @@
 import { RawSpeeds } from '@wowfinder/asset-schemas';
 import { FlyManeuverability } from '@wowfinder/ts-enums';
 import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
+import { maxFlyManeuverability } from '../../Creature/Speeds';
 
 type BaseSpeedsBonusBuilder = Partial<RawSpeeds>;
 
@@ -97,31 +98,31 @@ class BaseSpeedsBonus
             base: Math.max(
                 ...args
                     .filter(x => typeof x.#base !== 'undefined')
-                    .map(x => x.#base ?? 0),
+                    .map(x => x.#base as number),
             ),
             burrow: Math.max(
                 ...args
                     .filter(x => typeof x.#burrow !== 'undefined')
-                    .map(x => x.#burrow ?? 0),
+                    .map(x => x.#burrow as number),
             ),
             climb: Math.max(
                 ...args
                     .filter(x => typeof x.#climb !== 'undefined')
-                    .map(x => x.#climb ?? 0),
+                    .map(x => x.#climb as number),
             ),
             swim: Math.max(
                 ...args
                     .filter(x => typeof x.#swim !== 'undefined')
-                    .map(x => x.#swim ?? 0),
+                    .map(x => x.#swim as number),
             ),
             fly: Math.max(
                 ...args
                     .filter(x => typeof x.#fly !== 'undefined')
-                    .map(x => x.#fly ?? 0),
+                    .map(x => x.#fly as number),
             ),
-            // https://github.com/WowFinder/model/issues/208
-            maneuverability: args.find(x => x.#maneuverability)
-                ?.maneuverability,
+            maneuverability: maxFlyManeuverability(
+                ...args.map(x => x.#maneuverability),
+            ),
         } as BaseSpeedsBonusBuilder;
         Object.keys(builder)
             .filter(
