@@ -1,5 +1,10 @@
 import { FlyManeuverability } from '@wowfinder/ts-enums';
-import { Speeds, defaultSpeedUnit, flyManeuverabilityBonus } from '../Speeds';
+import {
+    Speeds,
+    defaultSpeedUnit,
+    flyManeuverabilityBonus,
+    flyManeuverabilityCompare,
+} from '../Speeds';
 import {
     mockedSpeedCustomRawAsset,
     mockedSpeedNegativeRawAsset,
@@ -94,5 +99,32 @@ describe('flyManeuverabilityBonus', () => {
         expect(() =>
             flyManeuverabilityBonus('invalid' as FlyManeuverability),
         ).toThrow();
+    });
+});
+
+describe('flyManeuverabilityCompare', () => {
+    it('should return negative for clumsy vs poor', () => {
+        expect(
+            flyManeuverabilityCompare(
+                FlyManeuverability.clumsy,
+                FlyManeuverability.poor,
+            ),
+        ).toBeLessThanOrEqual(-1);
+    });
+    it('should return 0 for average vs average', () => {
+        expect(
+            flyManeuverabilityCompare(
+                FlyManeuverability.average,
+                FlyManeuverability.average,
+            ),
+        ).toBe(0);
+    });
+    it('should return 1 for good vs average', () => {
+        expect(
+            flyManeuverabilityCompare(
+                FlyManeuverability.good,
+                FlyManeuverability.average,
+            ),
+        ).toBeGreaterThanOrEqual(1);
     });
 });

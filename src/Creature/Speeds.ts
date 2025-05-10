@@ -2,7 +2,9 @@ import { FlyManeuverability, LengthUnit, TimeUnit } from '@wowfinder/ts-enums';
 import { Speed, SpeedUnit } from '../Scalar';
 import { Debugger } from '@wowfinder/ts-utils';
 
-function flyManeuverabilityBonus(maneuverability: FlyManeuverability): number {
+type FM = FlyManeuverability;
+
+function flyManeuverabilityBonus(maneuverability: FM): number {
     switch (maneuverability) {
         case FlyManeuverability.clumsy:
             return -8;
@@ -19,11 +21,44 @@ function flyManeuverabilityBonus(maneuverability: FlyManeuverability): number {
     }
 }
 
+type MaybeManeuverability = FlyManeuverability | string | undefined;
+function flyManeuverabilityCompare(
+    a: MaybeManeuverability,
+    b: MaybeManeuverability,
+): number {
+    const knownKeys = Object.keys(FlyManeuverability);
+    if (!knownKeys.includes(a as string)) {
+        a = undefined;
+    }
+    if (!knownKeys.includes(b as string)) {
+        b = undefined;
+    }
+    if (a === b) {
+        return 0;
+    }
+    if (a === undefined) {
+        return -1;
+    }
+    if (b === undefined) {
+        return 1;
+    }
+    return flyManeuverabilityBonus(a as FM) - flyManeuverabilityBonus(b as FM);
+}
+
 const ManeuverabilitySortedValues = Object.keys(FlyManeuverability).sort(
-    (a, b) =>
-        flyManeuverabilityBonus(a as FlyManeuverability) -
-        flyManeuverabilityBonus(b as FlyManeuverability),
+    flyManeuverabilityCompare,
 );
+
+function maxFlyManeuverability(
+    ...values: MaybeManeuverability[]
+): MaybeManeuverability {
+    return values.reduce((max, value) => {
+        if (flyManeuverabilityCompare(value, max) > 0) {
+            return value;
+        }
+        return max;
+    }, undefined);
+}
 
 type SpeedValue = number | Speed; // number taken as feet/turn
 
@@ -145,6 +180,9 @@ export {
     Speeds,
     ManeuverabilitySortedValues,
     flyManeuverabilityBonus,
+    flyManeuverabilityCompare,
+    maxFlyManeuverability,
     defaultSpeedUnit,
+    type MaybeManeuverability,
 };
 export type { SpeedBuilder };
