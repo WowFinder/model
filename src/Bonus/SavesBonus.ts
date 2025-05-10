@@ -1,12 +1,14 @@
-import { RawSaves } from '@wowfinder/asset-schemas';
-import { sum } from '@wowfinder/ts-utils';
+import { type RawSaves } from '@wowfinder/asset-schemas';
+import { type JsonExportable, sum } from '@wowfinder/ts-utils';
 
-class SavesBonus implements RawSaves {
+type SavesBonusBuilder = Partial<RawSaves>;
+
+class SavesBonus implements RawSaves, JsonExportable<SavesBonusBuilder> {
     readonly #fortitude: number;
     readonly #reflexes: number;
     readonly #will: number;
 
-    constructor(raw?: Partial<RawSaves>) {
+    constructor(raw?: SavesBonusBuilder) {
         this.#fortitude = raw?.fortitude ?? 0;
         this.#reflexes = raw?.reflexes ?? 0;
         this.#will = raw?.will ?? 0;
@@ -22,6 +24,20 @@ class SavesBonus implements RawSaves {
 
     get will(): number {
         return this.#will;
+    }
+
+    get isZero(): boolean {
+        return (
+            this.#fortitude === 0 && this.#reflexes === 0 && this.#will === 0
+        );
+    }
+
+    export(): SavesBonusBuilder {
+        return {
+            fortitude: this.#fortitude,
+            reflexes: this.#reflexes,
+            will: this.#will,
+        };
     }
 
     static get zero(): SavesBonus {
@@ -45,4 +61,4 @@ class SavesBonus implements RawSaves {
     }
 }
 
-export { SavesBonus };
+export { SavesBonus, type SavesBonusBuilder };

@@ -9,6 +9,7 @@ import { VitalNeedsBonus } from './VitalNeedsBonus';
 import { SpellPowerBonus } from './SpellPowerBonus';
 import { FeatsBonus } from './FeatsBonus';
 import { BaseSpeedsBonus, SpeedsModifiersBonus } from './SpeedsBonus';
+import { SavesBonus } from './SavesBonus';
 
 function sumBonus(...args: SimpleBonus[]): SimpleBonusBuilder {
     return {
@@ -16,6 +17,7 @@ function sumBonus(...args: SimpleBonus[]): SimpleBonusBuilder {
         armorClass: sum(...args.map(s => s.armorClass)),
         stats: StatsBonus.sum(...args.map(s => s.stats)),
         skills: SkillsBonus.sum(...args.map(s => s.skills)),
+        saves: SavesBonus.sum(...args.map(s => s.saves)),
         resistances: ResistancesBonus.sum(...args.map(s => s.resistances)),
         vitalNeeds: VitalNeedsBonus.max(...args.map(s => s.vitalNeeds)),
         senses: SensesBonus.max(...args.map(s => s.senses)),
@@ -38,6 +40,7 @@ function maxBonus(...args: SimpleBonus[]): SimpleBonusBuilder {
         armorClass: Math.max(...args.map(s => s.armorClass)),
         stats: StatsBonus.max(...args.map(s => s.stats)).export(),
         skills: SkillsBonus.max(...args.map(s => s.skills)).export(),
+        saves: SavesBonus.max(...args.map(s => s.saves)).export(),
         resistances: ResistancesBonus.max(
             ...args.map(s => s.resistances),
         ).export(),
@@ -83,6 +86,7 @@ function exportBonus(bonus: SimpleBonus): JsonCompatible<SimpleBonusBuilder> {
         armorClass: bonus.armorClass,
         stats: bonus.stats.export(),
         skills: bonus.skills.export(),
+        saves: bonus.saves.export(),
         resistances: bonus.resistances.export(),
         vitalNeeds: bonus.vitalNeeds.export(),
         senses: bonus.senses.export(),
