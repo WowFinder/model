@@ -42,7 +42,6 @@ type CreatureProfile = CreatureBaseProfile & {
     spellPower: SpellPowerProfile;
 };
 
-// TODO: Migrate to @wowfinder/ts-utils
 type CreatureBaseProfileOverride = Transform<CreatureBaseProfile>;
 
 export {
