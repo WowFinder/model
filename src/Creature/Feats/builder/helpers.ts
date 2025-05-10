@@ -62,10 +62,6 @@ const req = {
     },
     stat: (stat: Stat, min: number): Req =>
         characterStatsRequirement(new MinStatsRequirement({ [stat]: min })),
-    /* TODO: Reimplement (avoid circular dependency)
-    feats: (...feats: Feat[]): Reqs =>
-        feats.map(f => new CharacterFeatRequirement(f)),
-    */
     feats: (...feats: Feat[]): PendingFeatReqs => feats,
     features: (...features: ClassFeature[]): Reqs =>
         features.map(f => new ClassFeatureRequirement(f)),
@@ -113,9 +109,7 @@ function applyPendingReqs(allFeats: { [key in Feat]: FeatSpec }): void {
                 key,
                 allOf(
                     featSpec.requirements,
-                    ...pending.map(
-                        f => new CharacterFeatRequirement(allFeats[f]),
-                    ),
+                    ...pending.map(f => new CharacterFeatRequirement(f)),
                 ),
                 featSpec.flags,
             );

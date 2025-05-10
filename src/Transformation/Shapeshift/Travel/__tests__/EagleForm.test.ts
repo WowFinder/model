@@ -1,12 +1,6 @@
 import { FlyManeuverability } from '@wowfinder/ts-enums';
 import { EagleForm } from '..';
-import { mockDruidCreatureProfile } from '../../../../__mocks__';
-import { type CharacterRequirementsPlaceholder } from '../../../../Old.Character/Requirements/base';
-
-const mockedDruid: CharacterRequirementsPlaceholder = {
-    baseProfile: mockDruidCreatureProfile,
-    key: 'mocked-druid-profile',
-};
+import { mockedDruidCharacter } from '../../../../__mocks__';
 
 describe('EagleForm', () => {
     it('should be defined', () => {
@@ -18,7 +12,7 @@ describe('EagleForm', () => {
         expect(eagle).toBeInstanceOf(EagleForm);
     });
     it('should include relevant modifiers', () => {
-        const eagle2 = eagle.compute(mockedDruid, 2);
+        const eagle2 = eagle.compute(mockedDruidCharacter, 2);
         expect(eagle2).toBeDefined();
         expect(eagle2.speeds?.base).toBe(30);
         expect(eagle2.speeds?.fly).toBeCloseTo(105);

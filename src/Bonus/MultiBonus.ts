@@ -103,6 +103,10 @@ class MultiBonus implements FullMultiBonus, JsonExportable<MultiBonusBuilder> {
         });
         return new MultiBonus(builder);
     }
+
+    static get zero(): MultiBonus {
+        return new MultiBonus();
+    }
 }
 
 export type { MultiBonusBuilder };

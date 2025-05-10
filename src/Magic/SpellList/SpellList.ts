@@ -11,7 +11,7 @@ type SpellListLevel = SpellListEntry[];
 
 type SpellListLevels = { [key: number]: SpellListLevel };
 
-type SpellListConstructorArgs = RawSpellListAsset & {
+type SpellListBuilder = RawSpellListAsset & {
     resolver: ForcedKeyResolver<Spell>;
 };
 
@@ -20,12 +20,7 @@ class SpellList {
     readonly #core: boolean;
     readonly #spells: SpellListLevels;
 
-    constructor({
-        key,
-        spells,
-        core = false,
-        resolver,
-    }: SpellListConstructorArgs) {
+    constructor({ key, spells, core = false, resolver }: SpellListBuilder) {
         this.#key = key;
         this.#core = core;
         this.#spells = {};
@@ -59,4 +54,10 @@ class SpellList {
     }
 }
 
-export { SpellList };
+export {
+    SpellList,
+    type SpellListEntry,
+    type SpellListLevel,
+    type SpellListLevels,
+    type SpellListBuilder,
+};

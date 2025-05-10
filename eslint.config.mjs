@@ -107,6 +107,15 @@ export default [
             '@typescript-eslint/no-explicit-any': 'off',
             '@typescript-eslint/prefer-enum-initializers': 'warn',
 
+            '@typescript-eslint/consistent-type-imports': [
+                'warn',
+                {
+                    fixStyle: 'inline-type-imports',
+                    prefer: 'type-imports',
+                    disallowTypeAnnotations: true,
+                },
+            ],
+
             complexity: ['error', 15],
             '@typescript-eslint/no-non-null-assertion': 'off',
             // https://iliubinskii.github.io/eslint-plugin-misc/#rules

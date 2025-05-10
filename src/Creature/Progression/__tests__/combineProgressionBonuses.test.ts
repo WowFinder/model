@@ -1,4 +1,4 @@
-import { RawSaves } from '@wowfinder/asset-schemas';
+import { type RawSaves } from '@wowfinder/asset-schemas';
 import { Class, type ClassEntry } from '../../Class';
 import {
     combineClassBonuses,
@@ -12,7 +12,7 @@ import {
     mockDivineClassRawAsset,
     mockStealthClassRawAsset,
 } from '../../../__mocks__';
-import { ProgressionEntry } from '../Progression';
+import { type ProgressionEntry } from '../Progression';
 
 describe('combineProgressionBonuses', () => {
     const classes = {

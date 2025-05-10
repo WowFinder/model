@@ -1,9 +1,9 @@
 import type { RawSpeeds } from '@wowfinder/asset-schemas';
 
-// TODO: move to @wowfinder/ts-enums
+// https://github.com/WowFinder/model/issues/209
 type SpeedKeys = keyof Omit<RawSpeeds, 'maneuverability'>;
 
-// TODO: move somewhere?
+// https://github.com/WowFinder/model/issues/209
 type SpeedsModifiers = Record<SpeedKeys, number>;
 
 export type { SpeedsModifiers, SpeedKeys };

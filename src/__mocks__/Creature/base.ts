@@ -1,6 +1,6 @@
 import { RawCreatureAsset } from '@wowfinder/asset-schemas/Creature/base';
 import { Alignment, Skill } from '@wowfinder/ts-enums';
-import { baseDefault } from '../../Creature/Stats';
+import { baseDefault } from '../../Creature/Stats/helpers';
 
 const rawBaseCreatureMinimal: RawCreatureAsset = {
     key: 'base-creature-mock-minimal',

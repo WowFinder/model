@@ -1,11 +1,5 @@
 import { CatForm } from '..';
-import { mockDruidCreatureProfile } from '../../../../__mocks__';
-import { type CharacterRequirementsPlaceholder } from '../../../../Old.Character/Requirements/base';
-
-const mockedDruid: CharacterRequirementsPlaceholder = {
-    baseProfile: mockDruidCreatureProfile,
-    key: 'mocked-druid-profile',
-};
+import { mockedDruidCharacter } from '../../../../__mocks__';
 
 describe('CatForm', () => {
     it('should be defined', () => {
@@ -17,7 +11,7 @@ describe('CatForm', () => {
         expect(catForm).toBeInstanceOf(CatForm);
     });
     it('should include relevant modifiers', () => {
-        const cat2 = catForm.compute(mockedDruid, 2);
+        const cat2 = catForm.compute(mockedDruidCharacter, 2);
         expect(cat2).toBeDefined();
         // 10 base, +6 at rank 2:
         expect(cat2.baseStats?.dexterity).toBe(16);

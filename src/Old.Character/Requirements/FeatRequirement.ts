@@ -1,31 +1,30 @@
-import { FeatSpec } from '../../Creature/Feats/FeatSpec';
-import {
-    type CharacterRequirements,
-    type CharacterRequirementsPlaceholder,
-    type Requirement,
-} from './base';
+import { type CharacterBaseInterface } from '../../Character';
+import { Feat } from '../../Creature/Feats/Feat';
+import { type CharacterRequirements, type Requirement } from './base';
 
-class FeatRequirement implements Requirement<Iterable<FeatSpec>> {
-    readonly #feat: FeatSpec;
-    constructor(feat: FeatSpec) {
+class FeatRequirement implements Requirement<Iterable<Feat>> {
+    readonly #feat: Feat;
+    constructor(feat: Feat) {
         this.#feat = feat;
     }
 
-    test(value: Iterable<FeatSpec>): boolean {
+    test(value: Iterable<Feat>): boolean {
         return [...value].some(f => f === this.#feat);
     }
 }
 
 class CharacterFeatRequirement implements CharacterRequirements {
-    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-    readonly #feat: FeatSpec;
-    constructor(feat: FeatSpec) {
+    readonly #feat: Feat;
+    readonly #count: number;
+    constructor(feat: Feat, count: number = 1) {
         this.#feat = feat;
+        this.#count = count;
     }
 
-    /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-    test(value: CharacterRequirementsPlaceholder): boolean {
-        // TODO: Reimplement (avoid circular dependencies!)
+    test(value: CharacterBaseInterface): boolean {
+        Object.entries(value.baseProfile.feats).some(
+            ([key, count]) => key === this.#feat && count >= this.#count,
+        );
         return false;
     }
 }

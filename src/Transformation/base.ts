@@ -1,9 +1,7 @@
-import { type CharacterRequirementsPlaceholder } from '../Old.Character/Requirements/base';
+import { type CharacterBaseInterface } from '../Character';
 
 type Transformation = {
-    apply(
-        base: CharacterRequirementsPlaceholder,
-    ): CharacterRequirementsPlaceholder;
+    apply(base: CharacterBaseInterface): CharacterBaseInterface;
 };
 
 export type { Transformation };

@@ -1,6 +1,6 @@
 import { Aura, Skill } from '@wowfinder/ts-enums';
 import { ProgressionFeature } from '../Features';
-import { Progression, type ProgressionConstructorArgs } from '../Progression';
+import { Progression, type ProgressionBuilder } from '../Progression';
 
 class ProgressionImplementationDefaults extends Progression {
     constructor(key: string) {
@@ -11,7 +11,7 @@ class ProgressionImplementationDefaults extends Progression {
 }
 
 class ProgressionImplementationFull extends Progression {
-    constructor(args: ProgressionConstructorArgs) {
+    constructor(args: ProgressionBuilder) {
         super(args);
     }
 }
@@ -38,7 +38,7 @@ describe('Progression', () => {
         expect(progression.skills).toEqual(new Set());
     });
     it('should create an instance with custom values', () => {
-        const args: ProgressionConstructorArgs = {
+        const args: ProgressionBuilder = {
             key: 'custom-key',
             hitDie: 8,
             baseAttackProgression: 0.75,

@@ -1,9 +1,9 @@
 import { FeatFlag } from '@wowfinder/ts-enums';
 import {
     type CharacterRequirements,
-    type CharacterRequirementsPlaceholder,
     getCharacterEmptyRequirement,
 } from '../../Old.Character/Requirements/base';
+import { type CharacterBaseInterface } from '../../Character';
 
 type FeatBuilder = {
     label: string;
@@ -33,7 +33,7 @@ class FeatSpec {
         return this.#flags;
     }
 
-    testRequirements(char: CharacterRequirementsPlaceholder): boolean {
+    testRequirements(char: CharacterBaseInterface): boolean {
         return this.#requirements.test(char);
     }
 
