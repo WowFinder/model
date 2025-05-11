@@ -2,12 +2,14 @@ import { mkCounter } from '@wowfinder/ts-utils';
 import {
     addStatSets,
     combineClassBonuses,
+    fillSaves,
     statMod,
     type CreatureBase,
 } from '../../Creature';
 import {
     defaultBreathProfile,
     defaultSleepProfile,
+    type FeatsProfile,
     SpeedsProfile,
     type CreatureBaseProfile,
 } from '../../Profile';
@@ -61,7 +63,14 @@ function getBaseProfile(creature: CreatureBase): CreatureBaseProfile {
         // https://github.com/WowFinder/model/issues/212: support resistance details in race definitions
         resistances: fillResistances({}),
         features: classMods.features,
-        feats: {},
+        feats: creature.feats.reduce(
+            (acc, f) => {
+                const feat = f as Feat;
+                acc[feat] = (acc[feat] ?? 0) + 1;
+                return acc;
+            },
+            {} as FeatsProfile,
+        ),
     };
 }
 
@@ -100,8 +109,7 @@ function bonusAsProfile(bonus: SimpleBonus): CreatureBaseProfile {
             sanity: mkCounter({ max: 0 }),
         },
         skills: fillSkills(bonus.skills),
-        // https://github.com/WowFinder/model/issues/211
-        saves: undefined as any,
+        saves: fillSaves(bonus.saves.export()),
         resistances: fillResistances(bonus.resistances),
         features: {},
         feats: bonus.feats.export().reduce(

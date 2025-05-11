@@ -1,12 +1,12 @@
-import type {
-    RawResistances,
-    RawSaves,
-    RawSkills,
-    RawStats,
+import {
+    type RawResistances,
+    type RawSaves,
+    type RawSkills,
+    type RawStats,
 } from '@wowfinder/asset-schemas';
-import { ClassFeature } from '@wowfinder/ts-enums';
-import type { Feat } from '../Creature/Feats/Feat';
-import { FullComputedSpellPower } from '../Magic/SpellPower';
+import { type ClassFeature } from '@wowfinder/ts-enums';
+import { type Feat } from '../Creature/Feats/Feat';
+import { type FullComputedSpellPower } from '../Magic/SpellPower';
 
 type ClassFeaturesProfile = Partial<Record<ClassFeature, number>>;
 
@@ -22,12 +22,12 @@ type SpellPowerProfile = FullComputedSpellPower;
 
 type StatsProfile = RawStats;
 
-export type {
-    ClassFeaturesProfile,
-    FeatsProfile,
-    ResistancesProfile,
-    SavesProfile,
-    SkillsProfile,
-    SpellPowerProfile,
-    StatsProfile,
+export {
+    type ClassFeaturesProfile,
+    type FeatsProfile,
+    type ResistancesProfile,
+    type SavesProfile,
+    type SkillsProfile,
+    type SpellPowerProfile,
+    type StatsProfile,
 };

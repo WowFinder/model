@@ -27,13 +27,7 @@ describe('profileHelpers', () => {
         it('should return a profile with the correct values', async () => {
             const creature = await mkExpandedCreature();
             const fullMultiBonus = new MultiBonus(fullMultiBonusBuilder);
-            // TODO: support including feats from RawCreatureAsset
-            const profile = {
-                ...getBaseProfile(creature),
-                feats: {
-                    [Feat.acrobaticSteps]: 1,
-                },
-            };
+            const profile = getBaseProfile(creature);
             const total = totalize(profile, fullMultiBonus);
             expect(total.stats).toEqual({
                 ...baseDefault,

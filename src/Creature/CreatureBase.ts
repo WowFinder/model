@@ -1,12 +1,14 @@
 import {
     RawClassEntries,
     RawCreatureAsset,
+    type RawFeatSelections,
     RawStats,
 } from '@wowfinder/asset-schemas';
 import type { ClassEntry, ClassEntries } from './Class';
 import type { Race } from './Race';
 import { importPersonalDetails, PersonalDetails } from './Personal';
 import { AsyncAssetResolver } from '../Assets';
+import { type Feat } from './Feats/Feat';
 
 type CreatureBaseBuilder = {
     key: string;
@@ -14,7 +16,8 @@ type CreatureBaseBuilder = {
     personal: PersonalDetails;
     notes?: string;
     race: Race;
-    classes: ClassEntries;
+    classes?: ClassEntries;
+    feats?: RawFeatSelections;
 };
 
 abstract class CreatureBase {
@@ -24,6 +27,7 @@ abstract class CreatureBase {
     readonly #notes: string;
     readonly #race: Race;
     readonly #classes: ClassEntries;
+    readonly #feats: RawFeatSelections;
 
     constructor({
         key,
@@ -31,7 +35,8 @@ abstract class CreatureBase {
         personal,
         notes = '',
         race,
-        classes,
+        classes = [],
+        feats = [],
     }: CreatureBaseBuilder) {
         this.#key = key;
         this.#baseStats = baseStats;
@@ -39,6 +44,7 @@ abstract class CreatureBase {
         this.#notes = notes;
         this.#race = race;
         this.#classes = classes;
+        this.#feats = feats;
     }
 
     get key(): string {
@@ -65,6 +71,14 @@ abstract class CreatureBase {
         return [...this.#classes];
     }
 
+    get featSelections(): RawFeatSelections {
+        return [...this.#feats];
+    }
+
+    get feats(): Feat[] {
+        return this.#feats.map(selection => selection.feat as Feat).toSorted();
+    }
+
     static async buildCreatureArgs(
         rawAsset: RawCreatureAsset,
         resolver: AsyncAssetResolver,
@@ -87,6 +101,7 @@ abstract class CreatureBase {
                     };
                 }),
             ),
+            feats: rawAsset.feats,
         };
     }
 }
