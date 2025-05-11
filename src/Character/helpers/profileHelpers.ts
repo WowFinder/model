@@ -63,8 +63,7 @@ function getBaseProfile(creature: CreatureBase): CreatureBaseProfile {
         // https://github.com/WowFinder/model/issues/212: support resistance details in race definitions
         resistances: fillResistances({}),
         features: classMods.features,
-        feats: creature.feats.reduce((acc, f) => {
-            const feat = f as Feat;
+        feats: creature.feats.reduce((acc, feat) => {
             acc[feat] = (acc[feat] ?? 0) + 1;
             return acc;
         }, {} as FeatsProfile),
