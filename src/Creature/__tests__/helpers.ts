@@ -8,7 +8,7 @@ import {
 } from '../../__mocks__';
 
 class CreatureBaseImpl extends CreatureBase {
-    private constructor(args: ConstructorParameters<typeof CreatureBase>[0]) {
+    constructor(args: ConstructorParameters<typeof CreatureBase>[0]) {
         super(args);
     }
 
@@ -22,7 +22,12 @@ class CreatureBaseImpl extends CreatureBase {
 }
 
 async function mkMinimalCreature(): Promise<CreatureBase> {
-    return CreatureBaseImpl.build(rawBaseCreatureMinimal, mockAssetResolver);
+    const args = await CreatureBaseImpl.buildCreatureArgs(
+        rawBaseCreatureMinimal,
+        mockAssetResolver,
+    );
+    delete args.classes;
+    return new CreatureBaseImpl(args);
 }
 
 async function mkExpandedCreature(): Promise<CreatureBase> {

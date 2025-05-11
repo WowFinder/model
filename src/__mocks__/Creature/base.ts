@@ -11,6 +11,13 @@ const rawBaseCreatureMinimal: RawCreatureAsset = {
     },
 } as const;
 
+function mkFeats(...feats: string[]): RawCreatureAsset['feats'] {
+    return feats.map((feat, index) => ({
+        feat,
+        level: index + 1,
+    }));
+}
+
 const rawBaseCreatureExpanded: RawCreatureAsset = {
     ...rawBaseCreatureMinimal,
     key: 'base-creature-mock-expanded',
@@ -26,6 +33,7 @@ const rawBaseCreatureExpanded: RawCreatureAsset = {
         { class: 'mocked-divine-class', level: 2 },
         { class: 'mocked-stealth-class', level: 2 },
     ] as const,
+    feats: mkFeats('acrobaticSteps', 'cleave'),
 } as const;
 
 const rawBaseCreatureFull: RawCreatureAsset = {

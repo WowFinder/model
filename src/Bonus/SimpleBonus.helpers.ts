@@ -24,6 +24,7 @@ function sumBonus(...args: SimpleBonus[]): SimpleBonusBuilder {
         spellPower: SpellPowerBonus.sum(
             ...args.map(s => s.spellPower),
         ).export(),
+        // https://github.com/WowFinder/model/issues/219: support multiples of the same feat in bonuses
         feats: FeatsBonus.max(...args.map(s => s.feats)).export(),
         baseSpeeds: BaseSpeedsBonus.max(
             ...args.map(s => s.baseSpeeds),
