@@ -34,5 +34,9 @@ describe('CreatureBase', () => {
         const classes: ClassEntries = instance.classes;
         expect(classes).toHaveLength(4);
         expect(sum(...classes.map(c => c.level))).toBe(16);
+        expect(instance.featSelections).toEqual(rawBaseCreatureExpanded.feats);
+        expect(instance.feats.length).toBe(
+            rawBaseCreatureExpanded.feats?.length,
+        );
     });
 });
