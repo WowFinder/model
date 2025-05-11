@@ -76,7 +76,9 @@ abstract class CreatureBase {
     }
 
     get feats(): Feat[] {
-        return this.#feats.map(selection => selection.feat as Feat).toSorted();
+        return this.#feats
+            .map(selection => selection.feat as Feat)
+            .sort((a, b) => a.localeCompare(b));
     }
 
     static async buildCreatureArgs(
