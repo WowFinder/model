@@ -24,6 +24,27 @@ const timeUnitAliases: { [key: string]: TimeUnit } = {
     '°': TimeUnit.hour,
 };
 
+function minutes(value: number): Time {
+    return new Time({
+        value,
+        unit: TimeUnit.minute,
+    });
+}
+
+function hours(value: number): Time {
+    return new Time({
+        value,
+        unit: TimeUnit.hour,
+    });
+}
+
+function days(value: number): Time {
+    return new Time({
+        value,
+        unit: TimeUnit.day,
+    });
+}
+
 class Time extends Scalar<TimeUnit> {
     get fullYears(): number {
         return Math.floor(convertTime(this, TimeUnit.year).value);
@@ -54,6 +75,41 @@ class Time extends Scalar<TimeUnit> {
         }
         return parsed;
     }
+
+    static get zero(): Time {
+        return new Time({
+            value: 0,
+            unit: TimeUnit.second,
+        });
+    }
+
+    static add(unit: TimeUnit, ...args: Time[]): Time {
+        return new Time({
+            value: args.reduce(
+                (acc, time) => acc + time.convert(unit).value,
+                0,
+            ),
+            unit,
+        });
+    }
+
+    static multiply(time: Time, multiplier: number): Time {
+        return new Time({
+            value: time.value * multiplier,
+            unit: time.unit,
+        });
+    }
+
+    static max(...args: Time[]): Time {
+        if (args.length === 0) {
+            return Time.zero;
+        }
+        const unit = args[0].unit;
+        return new Time({
+            value: Math.max(...args.map(t => t.convert(unit).value)),
+            unit,
+        });
+    }
 }
 
-export { convertTime, Time };
+export { convertTime, minutes, hours, days, Time };

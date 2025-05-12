@@ -26,7 +26,7 @@ describe('SimpleBonus', () => {
             expect(exportedBonus.skills).toBeDefined();
             expect(exportedBonus.saves).toBeDefined();
             expect(exportedBonus.resistances).toBeDefined();
-            expect(exportedBonus.vitalNeeds).toBeDefined();
+            expect(exportedBonus.vitals).toBeDefined();
             expect(exportedBonus.senses).toBeDefined();
             expect(exportedBonus.spellPower).toBeDefined();
             expect(exportedBonus.feats).toBeDefined();
@@ -53,7 +53,7 @@ describe('SimpleBonus', () => {
             expect(bonusSum.skills).toBeDefined();
             expect(bonusSum.saves).toBeDefined();
             expect(bonusSum.resistances).toBeDefined();
-            expect(bonusSum.vitalNeeds).toBeDefined();
+            expect(bonusSum.vitals).toBeDefined();
             expect(bonusSum.senses).toBeDefined();
             expect(bonusSum.spellPower).toBeDefined();
             expect(bonusSum.feats).toBeDefined();
@@ -69,7 +69,7 @@ describe('SimpleBonus', () => {
             expect(bonusSum.skills).toEqual(fullSimpleBonus.skills);
             expect(bonusSum.saves).toEqual(fullSimpleBonus.saves);
             expect(bonusSum.resistances).toEqual(fullSimpleBonus.resistances);
-            expect(bonusSum.vitalNeeds).toEqual(fullSimpleBonus.vitalNeeds);
+            expect(bonusSum.vitals).toEqual(fullSimpleBonus.vitals);
             expect(bonusSum.senses).toEqual(fullSimpleBonus.senses);
             expect(bonusSum.spellPower).toEqual(fullSimpleBonus.spellPower);
             expect(bonusSum.feats).toEqual(fullSimpleBonus.feats);
@@ -92,7 +92,7 @@ describe('SimpleBonus', () => {
             expect(maxBonus.skills).toBeDefined();
             expect(maxBonus.saves).toBeDefined();
             expect(maxBonus.resistances).toBeDefined();
-            expect(maxBonus.vitalNeeds).toBeDefined();
+            expect(maxBonus.vitals).toBeDefined();
             expect(maxBonus.senses).toBeDefined();
             expect(maxBonus.spellPower).toBeDefined();
             expect(maxBonus.feats).toBeDefined();
@@ -116,7 +116,7 @@ describe('SimpleBonus', () => {
             expect(multipliedBonus.skills).toBeDefined();
             expect(multipliedBonus.saves).toBeDefined();
             expect(multipliedBonus.resistances).toBeDefined();
-            expect(multipliedBonus.vitalNeeds).toBeDefined();
+            expect(multipliedBonus.vitals).toBeDefined();
             expect(multipliedBonus.senses).toBeDefined();
             expect(multipliedBonus.spellPower).toBeDefined();
             expect(multipliedBonus.feats).toBeDefined();

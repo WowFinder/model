@@ -21,6 +21,10 @@ class Scalar<T> {
         return this.#unit;
     }
 
+    get isZero(): boolean {
+        return this.#value === 0;
+    }
+
     toString(): string;
 
     toString(t: StringFormatter): string;

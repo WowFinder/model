@@ -5,7 +5,7 @@ import type { SimpleBonus } from './SimpleBonus';
 import { SimpleBonusBuilder } from './SimpleBonus.builder';
 import { SkillsBonus } from './SkillsBonus';
 import { StatsBonus } from './StatsBonus';
-import { VitalNeedsBonus } from './VitalNeedsBonus';
+import { VitalsBonus } from './VitalsBonus';
 import { SpellPowerBonus } from './SpellPowerBonus';
 import { FeatsBonus } from './FeatsBonus';
 import { BaseSpeedsBonus, SpeedsModifiersBonus } from './SpeedsBonus';
@@ -19,7 +19,7 @@ function sumBonus(...args: SimpleBonus[]): SimpleBonusBuilder {
         skills: SkillsBonus.sum(...args.map(s => s.skills)),
         saves: SavesBonus.sum(...args.map(s => s.saves)),
         resistances: ResistancesBonus.sum(...args.map(s => s.resistances)),
-        vitalNeeds: VitalNeedsBonus.max(...args.map(s => s.vitalNeeds)),
+        vitals: VitalsBonus.sum(...args.map(s => s.vitals)).export(),
         senses: SensesBonus.max(...args.map(s => s.senses)),
         spellPower: SpellPowerBonus.sum(
             ...args.map(s => s.spellPower),
@@ -45,9 +45,7 @@ function maxBonus(...args: SimpleBonus[]): SimpleBonusBuilder {
         resistances: ResistancesBonus.max(
             ...args.map(s => s.resistances),
         ).export(),
-        vitalNeeds: VitalNeedsBonus.max(
-            ...args.map(s => s.vitalNeeds),
-        ).export(),
+        vitals: VitalsBonus.max(...args.map(s => s.vitals)).export(),
         senses: SensesBonus.max(...args.map(s => s.senses)).export(),
         spellPower: SpellPowerBonus.max(
             ...args.map(s => s.spellPower),
@@ -69,7 +67,7 @@ function multiplyBonus(bonus: SimpleBonus, factor: number): SimpleBonusBuilder {
         stats: StatsBonus.multiply(bonus.stats, factor),
         skills: SkillsBonus.multiply(bonus.skills, factor),
         resistances: ResistancesBonus.multiply(bonus.resistances, factor),
-        vitalNeeds: bonus.vitalNeeds,
+        vitals: VitalsBonus.multiply(bonus.vitals, factor).export(),
         senses: bonus.senses,
         spellPower: SpellPowerBonus.multiply(bonus.spellPower, factor).export(),
         feats: bonus.feats.export(),
@@ -89,7 +87,7 @@ function exportBonus(bonus: SimpleBonus): JsonCompatible<SimpleBonusBuilder> {
         skills: bonus.skills.export(),
         saves: bonus.saves.export(),
         resistances: bonus.resistances.export(),
-        vitalNeeds: bonus.vitalNeeds.export(),
+        vitals: bonus.vitals.export(),
         senses: bonus.senses.export(),
         spellPower: bonus.spellPower.export(),
         feats: bonus.feats.export(),
