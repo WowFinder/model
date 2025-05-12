@@ -1,6 +1,6 @@
 import { TimeUnit } from '@wowfinder/ts-enums';
 import { sum } from '@wowfinder/ts-utils';
-import { type VitalsBonus, type VitalsBonusBuilder } from './VitalsBonus';
+import type { VitalsBonus, VitalsBonusBuilder } from './VitalsBonus';
 import { Time } from '../../Scalar';
 
 // TODO migrate to asset-schemas
