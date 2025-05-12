@@ -2,7 +2,7 @@ import { SimpleBonusBuilder } from '../../Bonus/SimpleBonus.builder';
 import { mixedBonusStatsMock } from '../Creature/Stats';
 import { skillsBonusFullBuilder } from './SkillsBonusBuilders';
 import { resistancesBonusFullBuilder } from './ResistancesBonusBuilders';
-import { vitalNeedsBonusFullBuilder } from './VitalNeedsBonusBuilders';
+import { vitalsBonusFullBuilder } from './VitalsBonusBuilders';
 import { sensesBonusFullBuilder } from './SensesBonusBuilders';
 import {
     modeFullBuilder,
@@ -26,7 +26,7 @@ const fullSimpleBonusBuilder: SimpleBonusBuilder = {
     stats: mixedBonusStatsMock,
     skills: skillsBonusFullBuilder,
     resistances: resistancesBonusFullBuilder,
-    vitalNeeds: vitalNeedsBonusFullBuilder,
+    vitals: vitalsBonusFullBuilder,
     senses: sensesBonusFullBuilder,
     spellPower: {
         ...modeFullBuilder,

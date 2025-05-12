@@ -8,7 +8,7 @@ import {
     SpeedsModifiersBonus,
     SpellPowerBonus,
     StatsBonus,
-    VitalNeedsBonus,
+    VitalsBonus,
 } from '..';
 
 describe('index', () => {
@@ -22,6 +22,6 @@ describe('index', () => {
         expect(SpeedsModifiersBonus).toBeDefined();
         expect(SpellPowerBonus).toBeDefined();
         expect(StatsBonus).toBeDefined();
-        expect(VitalNeedsBonus).toBeDefined();
+        expect(VitalsBonus).toBeDefined();
     });
 });

@@ -1,6 +1,5 @@
-import type { Counter } from '@wowfinder/ts-utils';
-import { Time } from '../Scalar';
-import { TimeUnit } from '@wowfinder/ts-enums';
+import { type Counter } from '@wowfinder/ts-utils';
+import { days, hours, minutes, Time } from '../Scalar';
 
 type SleepProfile = {
     minimumSleepTime: Time;
@@ -8,23 +7,10 @@ type SleepProfile = {
     sleepCycle: Time;
 };
 
-function hours(value: number): Time {
-    return new Time({
-        value,
-        unit: TimeUnit.hour,
-    });
-}
-function minutes(value: number): Time {
-    return new Time({
-        value,
-        unit: TimeUnit.minute,
-    });
-}
-
 const defaultSleepProfile: SleepProfile = {
     minimumSleepTime: hours(4),
     optimalSleepTime: hours(8),
-    sleepCycle: hours(24),
+    sleepCycle: days(1),
 };
 
 type BreathProfile = {

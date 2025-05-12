@@ -79,4 +79,26 @@ describe('Time', () => {
             expect(sum.unit).toBe(TimeUnit.year);
         });
     });
+    describe('max', () => {
+        it('should return the maximum of two times', () => {
+            const time1 = new Time({ value: 2, unit: TimeUnit.year });
+            const time2 = new Time({ value: 365, unit: TimeUnit.day });
+            const maxTime = Time.max(time1, time2);
+            expect(maxTime.value).toBe(2);
+            expect(maxTime.unit).toBe(TimeUnit.year);
+        });
+        it('should return the maximum of several times', () => {
+            const time1 = new Time({ value: 1, unit: TimeUnit.week });
+            const time2 = new Time({ value: 1, unit: TimeUnit.hour });
+            const time3 = new Time({ value: 1, unit: TimeUnit.second });
+            const maxTime = Time.max(time1, time2, time3);
+            expect(maxTime.value).toBe(1);
+            expect(maxTime.unit).toBe(TimeUnit.week);
+        });
+        it('should return a zero value when no times are provided', () => {
+            const maxTime = Time.max();
+            expect(maxTime.value).toBe(0);
+            expect(maxTime.isZero).toBeTruthy();
+        });
+    });
 });

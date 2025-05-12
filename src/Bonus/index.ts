@@ -8,4 +8,4 @@ export * from './SpeedsBonus';
 export * from './SpellPowerBonus';
 export * from './StatsBonus';
 export * from './TypedSimpleBonus';
-export * from './VitalNeedsBonus';
+export * from './VitalsBonus';

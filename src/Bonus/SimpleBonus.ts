@@ -3,7 +3,7 @@ import { SensesBonus } from './SensesBonus';
 import { SimpleBonusBuilder } from './SimpleBonus.builder';
 import { SkillsBonus } from './SkillsBonus';
 import { StatsBonus } from './StatsBonus';
-import { VitalNeedsBonus } from './VitalNeedsBonus';
+import { VitalsBonus } from './VitalsBonus';
 import {
     exportBonus,
     maxBonus,
@@ -25,7 +25,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
     readonly #skills: SkillsBonus;
     readonly #saves: SavesBonus;
     readonly #resistances: ResistancesBonus;
-    readonly #vitalNeeds: VitalNeedsBonus;
+    readonly #vitals: VitalsBonus;
     readonly #senses: SensesBonus;
     readonly #spellPower: SpellPowerBonus;
     readonly #feats: FeatsBonus;
@@ -39,7 +39,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         skills = {},
         saves = {},
         resistances = {},
-        vitalNeeds = {},
+        vitals = {},
         senses = {},
         spellPower = {},
         feats = [],
@@ -52,7 +52,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         this.#skills = new SkillsBonus(skills);
         this.#saves = new SavesBonus(saves);
         this.#resistances = new ResistancesBonus(resistances);
-        this.#vitalNeeds = new VitalNeedsBonus(vitalNeeds);
+        this.#vitals = VitalsBonus.build(vitals);
         this.#senses = new SensesBonus(senses);
         this.#spellPower = new SpellPowerBonus(spellPower);
         this.#feats = new FeatsBonus(feats);
@@ -84,8 +84,8 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
         return this.#resistances;
     }
 
-    get vitalNeeds(): VitalNeedsBonus {
-        return this.#vitalNeeds;
+    get vitals(): VitalsBonus {
+        return this.#vitals;
     }
 
     get senses(): SensesBonus {
@@ -118,7 +118,7 @@ class SimpleBonus implements JsonExportable<SimpleBonusBuilder> {
             this.#skills,
             this.#saves,
             this.#resistances,
-            this.#vitalNeeds,
+            this.#vitals,
             this.#senses,
             this.#spellPower,
             this.#feats,
