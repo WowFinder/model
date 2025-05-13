@@ -1,6 +1,6 @@
 import { mockedRaceRawAsset } from '../../../__mocks__/Creature/race';
 import { Race } from '../index';
-import { Alignment, Languages, Skill, Stat } from '@wowfinder/ts-enums';
+import { Alignment, Languages, Skill, Stat, TimeUnit } from '@wowfinder/ts-enums';
 import { defaultSpeedUnit } from '../../Speeds';
 
 describe('Race', () => {
@@ -22,10 +22,16 @@ describe('Race', () => {
         expect(instance.commonAlignments).toEqual([Alignment.neutralNeutral]);
         expect(instance.speeds.base.value).toEqual(30);
         expect(instance.speeds.base.unit).toEqual(defaultSpeedUnit);
-        expect(instance.saves.fortitude).toBe(0);
-        expect(instance.saves.reflexes).toBe(0);
+        expect(instance.saves.fortitude).toBe(1);
+        expect(instance.saves.reflexes).toBe(-1);
         expect(instance.saves.will).toBe(0);
         expect(instance.naturalArmor).toBe(0);
+        const { vitals, resistances } = instance;
+        expect(vitals).toBeDefined();
+        expect(vitals.sleepTimeReduction.convert(TimeUnit.hour).value).toBe(2);
+        expect(vitals.breathHoldingTimeBonus.convert(TimeUnit.second).value).toBe(30);
+        expect(resistances).toBeDefined();
+        expect(resistances.cold).toBe(5);
     });
     it('should identify common alignments', () => {
         const instance = new Race(mockedRaceRawAsset);
