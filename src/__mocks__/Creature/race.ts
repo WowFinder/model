@@ -21,13 +21,11 @@ const mockedRaceRawAsset: RawRaceAsset = {
     resistances: {
         cold: 5,
     },
-    traits: [
-        InnateTrait.darkvision60,
-    ],
+    traits: [InnateTrait.darkvision60],
     vitals: {
         sleepTimeReduction: '2h',
         breathHoldingTimeBonus: '30s',
-    }
+    },
 };
 
 export { mockedRaceRawAsset };

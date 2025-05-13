@@ -1,6 +1,12 @@
 import { mockedRaceRawAsset } from '../../../__mocks__/Creature/race';
 import { Race } from '../index';
-import { Alignment, Languages, Skill, Stat, TimeUnit } from '@wowfinder/ts-enums';
+import {
+    Alignment,
+    Languages,
+    Skill,
+    Stat,
+    TimeUnit,
+} from '@wowfinder/ts-enums';
 import { defaultSpeedUnit } from '../../Speeds';
 
 describe('Race', () => {
@@ -29,7 +35,9 @@ describe('Race', () => {
         const { vitals, resistances } = instance;
         expect(vitals).toBeDefined();
         expect(vitals.sleepTimeReduction.convert(TimeUnit.hour).value).toBe(2);
-        expect(vitals.breathHoldingTimeBonus.convert(TimeUnit.second).value).toBe(30);
+        expect(
+            vitals.breathHoldingTimeBonus.convert(TimeUnit.second).value,
+        ).toBe(30);
         expect(resistances).toBeDefined();
         expect(resistances.cold).toBe(5);
     });
