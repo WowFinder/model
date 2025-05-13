@@ -35,6 +35,12 @@ describe('Length', () => {
         const length = new Length({ value: 5, unit: LengthUnit.yard });
         expect(length.fullDisplay).toBe("15' (5m) (3□)");
     });
+    it('should compute the negative length', () => {
+        const length = new Length({ value: 1, unit: LengthUnit.meter });
+        const negativeLength = length.negative;
+        expect(negativeLength.value).toBe(-1);
+        expect(negativeLength.unit).toBe(LengthUnit.meter);
+    });
     describe('tryParseLength', () => {
         it('should parse a valid metric length', () => {
             const length = Length.tryParseLength('5m');

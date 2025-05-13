@@ -17,6 +17,12 @@ describe('Time', () => {
         const time = new Time({ value: 365.25, unit: TimeUnit.day });
         expect(time.fullYears).toBe(1);
     });
+    it('should compute the negative time', () => {
+        const time = new Time({ value: 1, unit: TimeUnit.year });
+        const negativeTime = time.negative;
+        expect(negativeTime.value).toBe(-1);
+        expect(negativeTime.unit).toBe(TimeUnit.year);
+    });
     describe('tryParseTime', () => {
         it('should parse a valid time', () => {
             const time = Time.tryParseTime('5y');

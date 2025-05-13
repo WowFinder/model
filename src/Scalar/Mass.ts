@@ -30,6 +30,13 @@ class Mass extends Scalar<MassUnit> {
         });
     }
 
+    get negative(): Scalar<MassUnit> {
+        return new Mass({
+            value: -this.value,
+            unit: this.unit,
+        });
+    }
+
     static asPounds(w: Weight): Mass {
         return w instanceof Mass
             ? w.convert(MassUnit.pound)

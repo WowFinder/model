@@ -58,6 +58,13 @@ class Time extends Scalar<TimeUnit> {
         });
     }
 
+    get negative(): Time {
+        return new Time({
+            value: -this.value,
+            unit: this.unit,
+        });
+    }
+
     static tryParseTime(input: string): Time | undefined {
         const base = Scalar.tryParse<TimeUnit>(
             input,
