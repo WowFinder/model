@@ -1,5 +1,5 @@
-import { FlyManeuverability, LengthUnit, TimeUnit } from '@wowfinder/ts-enums';
-import { Speed, SpeedUnit } from '../Scalar';
+import { FlyManeuverability } from '@wowfinder/ts-enums';
+import { defaultSpeedUnit, Speed } from '../Scalar';
 import { Debugger } from '@wowfinder/ts-utils';
 
 type FM = FlyManeuverability;
@@ -61,11 +61,6 @@ function maxFlyManeuverability(
 }
 
 type SpeedValue = number | Speed; // number taken as feet/turn
-
-const defaultSpeedUnit = new SpeedUnit({
-    length: LengthUnit.foot,
-    time: TimeUnit.turn,
-});
 
 type SpeedBuilder = {
     base: SpeedValue;
@@ -182,7 +177,6 @@ export {
     flyManeuverabilityBonus,
     flyManeuverabilityCompare,
     maxFlyManeuverability,
-    defaultSpeedUnit,
     type MaybeManeuverability,
 };
 export type { SpeedBuilder };

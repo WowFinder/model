@@ -1,7 +1,6 @@
 import { FlyManeuverability } from '@wowfinder/ts-enums';
 import {
     Speeds,
-    defaultSpeedUnit,
     flyManeuverabilityBonus,
     flyManeuverabilityCompare,
 } from '../Speeds';
@@ -11,6 +10,7 @@ import {
     mockedSpeedSimpleRawAsset,
     mockedSpeedSlowRawAsset,
 } from '../../__mocks__/Creature/speed';
+import { defaultSpeedUnit } from '../../Scalar';
 
 describe('Speeds', () => {
     test('should create a Speeds instance with default values', () => {

@@ -1,5 +1,5 @@
 import { type CharacterBaseInterface } from '../../../Character';
-import { defaultSpeedUnit } from '../../../Creature/Speeds';
+import { defaultSpeedUnit } from '../../../Scalar';
 import { CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 import { Shapeshift, type ShapeshiftBuilder } from '../base';
 

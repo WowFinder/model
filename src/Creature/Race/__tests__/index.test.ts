@@ -8,7 +8,7 @@ import {
     Stat,
     TimeUnit,
 } from '@wowfinder/ts-enums';
-import { defaultSpeedUnit } from '../../Speeds';
+import { defaultSpeedUnit } from '../../../Scalar';
 import { fillStatSet } from '../../Stats';
 
 describe('Race', () => {
