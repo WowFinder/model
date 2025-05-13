@@ -4,7 +4,7 @@ import {
     type RawSkills,
     type RawStats,
 } from '@wowfinder/asset-schemas';
-import { type ClassFeature } from '@wowfinder/ts-enums';
+import { type InnateTrait, type ClassFeature } from '@wowfinder/ts-enums';
 import { type Feat } from '../Creature/Feats/Feat';
 import { type FullComputedSpellPower } from '../Magic/SpellPower';
 
@@ -22,6 +22,8 @@ type SpellPowerProfile = FullComputedSpellPower;
 
 type StatsProfile = RawStats;
 
+type TraitsPropfile = InnateTrait[];
+
 export {
     type ClassFeaturesProfile,
     type FeatsProfile,
@@ -30,4 +32,5 @@ export {
     type SkillsProfile,
     type SpellPowerProfile,
     type StatsProfile,
+    type TraitsPropfile,
 };

@@ -67,6 +67,7 @@ function getBaseProfile(creature: CreatureBase): CreatureBaseProfile {
             acc[feat] = (acc[feat] ?? 0) + 1;
             return acc;
         }, {} as FeatsProfile),
+        traits: [],
     };
 }
 
@@ -116,6 +117,7 @@ function bonusAsProfile(bonus: SimpleBonus): CreatureBaseProfile {
             },
             {} as CreatureBaseProfile['feats'],
         ),
+        traits: [],
     };
 }
 

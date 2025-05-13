@@ -88,6 +88,7 @@ const mockBasicCreatureProfile: CreatureProfile = {
         combatManeuverBonus: 0,
     },
     spellPower: fullComputedSpellPower(fillSpellPowerValues({}, 0)),
+    traits: [],
 };
 
 const mockDruidCreatureProfile: CreatureProfile = {
