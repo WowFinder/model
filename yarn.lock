@@ -1773,14 +1773,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wowfinder/asset-schemas@npm:^0.0.23":
-  version: 0.0.23
-  resolution: "@wowfinder/asset-schemas@npm:0.0.23"
+"@wowfinder/asset-schemas@npm:^0.0.25":
+  version: 0.0.25
+  resolution: "@wowfinder/asset-schemas@npm:0.0.25"
   dependencies:
-    "@wowfinder/ts-enums": "npm:^0.0.28"
+    "@wowfinder/ts-enums": "npm:^0.0.31"
     ajv: "npm:^8.17.1"
     globals: "npm:^16.1.0"
-  checksum: 10c0/3983b6045b15d7658c536dedc5d69ef41b97536d708e7bc19e70642950de45327243f97c404b1fdcd43eee86d2d142129b9ae987a85d88139b72560327e9f2ae
+  checksum: 10c0/52211a25a6120a412d4cf9473531d9f30ce3e40828e0fb5d3b67add4354e948f20da95dd2792269f05a4bfa0f4358ae8e1abb046f4b64bb5ac2b8f97a6b4b507
   languageName: node
   linkType: hard
 
@@ -1796,8 +1796,8 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^8.32.0"
     "@typescript-eslint/parser": "npm:^8.32.0"
     "@typescript-eslint/utils": "npm:^8.32.0"
-    "@wowfinder/asset-schemas": "npm:^0.0.23"
-    "@wowfinder/ts-enums": "npm:^0.0.30"
+    "@wowfinder/asset-schemas": "npm:^0.0.25"
+    "@wowfinder/ts-enums": "npm:^0.0.31"
     "@wowfinder/ts-utils": "npm:^0.1.19"
     eslint: "npm:^9.26.0"
     eslint-config-prettier: "npm:^10.1.5"
@@ -1821,21 +1821,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@wowfinder/ts-enums@npm:^0.0.28":
-  version: 0.0.28
-  resolution: "@wowfinder/ts-enums@npm:0.0.28"
+"@wowfinder/ts-enums@npm:^0.0.31":
+  version: 0.0.31
+  resolution: "@wowfinder/ts-enums@npm:0.0.31"
   dependencies:
     globals: "npm:^16.1.0"
-  checksum: 10c0/15f7cf599f205560271d54840138e28d6b42f5f7fac9480276a4fc878d0eebd528efde61ce59234045e910bfb008e9e54fdbafa7e8067dcbb9c35ca4666227e2
-  languageName: node
-  linkType: hard
-
-"@wowfinder/ts-enums@npm:^0.0.30":
-  version: 0.0.30
-  resolution: "@wowfinder/ts-enums@npm:0.0.30"
-  dependencies:
-    globals: "npm:^16.1.0"
-  checksum: 10c0/33288b5580bba27e00927b3150b753538e7183efc61d18b1d5bff7d49d08d03c6e21c31d8cc2862c2828b5cc1b12e9f6f653eddfa8ebf766bdfa420ea5f03669
+  checksum: 10c0/05f664143bdeb1db1160da10c6eb7e792ead3f7e1aeea97088efa0865dca8504529a4da63fc3762374f3124cb942cb30d6dff9a7760371fd88940cd268b1833a
   languageName: node
   linkType: hard
 

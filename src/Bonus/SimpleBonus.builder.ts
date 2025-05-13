@@ -11,7 +11,7 @@ import {
     type SpeedsModifiersBonusBuilder,
 } from './SpeedsBonus';
 import { type SavesBonusBuilder } from './SavesBonus';
-import { type RawVitals } from './VitalsBonus';
+import { type RawVitals } from '@wowfinder/asset-schemas';
 
 type SimpleBonusBuilder = {
     hp?: number;

@@ -2,16 +2,7 @@ import { TimeUnit } from '@wowfinder/ts-enums';
 import { sum } from '@wowfinder/ts-utils';
 import { type VitalsBonus, type VitalsBonusBuilder } from './VitalsBonus';
 import { Time } from '../../Scalar';
-
-// TODO migrate to asset-schemas
-type RawVitals = {
-    sleepTimeReduction?: string;
-    sleepCycleBonus?: string;
-    breathHoldingTimeBonus?: string;
-    breathRecoveryTimeReduction?: string;
-    maxHpBonus?: number;
-    maxSanityBonus?: number;
-};
+import { type RawVitals } from '@wowfinder/asset-schemas';
 
 function addVitalBonus(...args: VitalsBonus[]): Required<VitalsBonusBuilder> {
     if (args.length === 0) {
@@ -94,7 +85,7 @@ function multiplyVitalsBonus(
     };
 }
 
-function buildVitalsBonusArgs(raw: RawVitals): VitalsBonusBuilder {
+function buildVitalsBonusArgs(raw: Partial<RawVitals>): VitalsBonusBuilder {
     return {
         sleepTimeReduction: Time.parseTime(raw.sleepTimeReduction ?? '0h'),
         sleepCycleBonus: Time.parseTime(raw.sleepCycleBonus ?? '0h'),
@@ -110,7 +101,6 @@ function buildVitalsBonusArgs(raw: RawVitals): VitalsBonusBuilder {
 }
 
 export {
-    type RawVitals,
     addVitalBonus,
     maxVitalsBonus,
     multiplyVitalsBonus,
