@@ -1,6 +1,7 @@
 export * from './FeatsBonus';
 export * from './MultiBonus';
 export * from './ResistancesBonus';
+export * from './SavesBonus';
 export * from './SensesBonus';
 export * from './SimpleBonus';
 export * from './SkillsBonus';

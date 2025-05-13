@@ -1,7 +1,13 @@
 import { Stat, Skill } from '@wowfinder/ts-enums';
-import { addStats, addSkills } from '../helpers';
-import { StatsBonus, SkillsBonus } from '../../Bonus';
+import { addStats, addSkills, addSaves, addResistances } from '../helpers';
+import {
+    StatsBonus,
+    SkillsBonus,
+    SavesBonus,
+    ResistancesBonus,
+} from '../../Bonus';
 import { fillSkills } from '../../Creature/Skill/Skills';
+import { fillResistances } from '../../Creature/Resistances/fill';
 
 describe('addStats', () => {
     it('should add stats bonuses to a StatsProfile', () => {
@@ -55,7 +61,11 @@ describe('addSkills', () => {
             [Skill.history]: 4,
         });
 
-        const newSkillsProfile = addSkills(baseSkills, skillBonus1, skillBonus2);
+        const newSkillsProfile = addSkills(
+            baseSkills,
+            skillBonus1,
+            skillBonus2,
+        );
 
         expect(newSkillsProfile.acrobatics).toBe(7);
         expect(newSkillsProfile.arcane).toBe(12);
@@ -63,5 +73,61 @@ describe('addSkills', () => {
         expect(newSkillsProfile.disguise).toBe(13);
         expect(newSkillsProfile.history).toBe(19);
         expect(newSkillsProfile.sleight).toBe(0);
+    });
+});
+
+describe('addSaves', () => {
+    it('should add saves bonuses to a SavesProfile', () => {
+        const baseSaves = {
+            fortitude: 10,
+            reflexes: 12,
+            will: 14,
+        };
+
+        const saveBonus1 = new SavesBonus({
+            fortitude: 2,
+            reflexes: 3,
+        });
+
+        const saveBonus2 = new SavesBonus({
+            will: 4,
+        });
+
+        const newSavesProfile = addSaves(baseSaves, saveBonus1, saveBonus2);
+
+        expect(newSavesProfile.fortitude).toBe(12);
+        expect(newSavesProfile.reflexes).toBe(15);
+        expect(newSavesProfile.will).toBe(18);
+    });
+});
+
+describe('addResistances', () => {
+    it('should add resistances bonuses to a ResistancesProfile', () => {
+        const baseResistances = fillResistances({
+            nature: 5,
+            cold: 10,
+            fire: 15,
+        });
+
+        const resistanceBonus1 = new ResistancesBonus({
+            nature: 2,
+            cold: 3,
+        });
+
+        const resistanceBonus2 = new ResistancesBonus({
+            fire: 4,
+        });
+
+        const newResistancesProfile = addResistances(
+            baseResistances,
+            resistanceBonus1,
+            resistanceBonus2,
+        );
+
+        expect(newResistancesProfile.nature).toBe(7);
+        expect(newResistancesProfile.cold).toBe(13);
+        expect(newResistancesProfile.fire).toBe(19);
+        expect(newResistancesProfile.holy).toBe(0);
+        expect(newResistancesProfile.psychic).toBe(0);
     });
 });
