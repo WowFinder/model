@@ -1,7 +1,19 @@
-import { Alignment, Languages, Size } from '@wowfinder/ts-enums';
-import { SkillSet } from '../Skill';
+import {
+    type Alignment,
+    type InnateTrait,
+    type Languages,
+    type Size,
+} from '@wowfinder/ts-enums';
+import { type SkillSet } from '../Skill';
 import { Speeds } from '../Speeds';
-import { RawRaceAsset, RawSaves, RawStats } from '@wowfinder/asset-schemas';
+import {
+    type RawRaceAsset,
+    type RawResistances,
+    type RawSaves,
+    type RawStats,
+} from '@wowfinder/asset-schemas';
+import { VitalsBonus } from '../../Bonus';
+import { fillResistances } from '../Resistances/fill';
 
 type Races = { [key: string]: Race };
 
@@ -23,6 +35,9 @@ export default class Race {
     readonly #commonAlignments: Alignment[];
     readonly #speeds: Speeds;
     readonly #saves: RawSaves;
+    readonly #vitals: VitalsBonus;
+    readonly #resistances: RawResistances;
+    readonly #traits: InnateTrait[];
 
     constructor(raw: RawRaceAsset) {
         this.#key = raw.key;
@@ -39,6 +54,9 @@ export default class Race {
             ...defaultSaves,
             ...(raw.saves ?? {}),
         };
+        this.#vitals = VitalsBonus.build(raw.vitals ?? {});
+        this.#resistances = fillResistances(raw.resistances ?? {});
+        this.#traits = [...(raw.traits ?? [])];
     }
 
     get key(): string {
@@ -87,6 +105,18 @@ export default class Race {
 
     get saves(): RawSaves {
         return { ...this.#saves };
+    }
+
+    get vitals(): VitalsBonus {
+        return this.#vitals;
+    }
+
+    get resistances(): RawResistances {
+        return { ...this.#resistances };
+    }
+
+    get traits(): InnateTrait[] {
+        return [...this.#traits];
     }
 
     get naturalArmor(): number {

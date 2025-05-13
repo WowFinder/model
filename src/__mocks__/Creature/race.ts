@@ -1,5 +1,5 @@
 import { RawRaceAsset } from '@wowfinder/asset-schemas';
-import { Alignment, Languages } from '@wowfinder/ts-enums';
+import { Alignment, InnateTrait, Languages } from '@wowfinder/ts-enums';
 import { zeroStatsMock } from './Stats';
 
 const mockedRaceRawAsset: RawRaceAsset = {
@@ -12,6 +12,19 @@ const mockedRaceRawAsset: RawRaceAsset = {
     commonAlignments: [Alignment.neutralNeutral],
     speeds: {
         base: 30,
+    },
+    saves: {
+        fortitude: 1,
+        reflexes: -1,
+        will: 0,
+    },
+    resistances: {
+        cold: 5,
+    },
+    traits: [InnateTrait.darkvision60],
+    vitals: {
+        sleepTimeReduction: '2h',
+        breathHoldingTimeBonus: '30s',
     },
 };
 

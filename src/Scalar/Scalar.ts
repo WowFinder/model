@@ -25,6 +25,13 @@ class Scalar<T> {
         return this.#value === 0;
     }
 
+    get negative(): Scalar<T> {
+        return new Scalar({
+            value: -this.#value,
+            unit: this.#unit,
+        });
+    }
+
     toString(): string;
 
     toString(t: StringFormatter): string;

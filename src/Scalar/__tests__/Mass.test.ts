@@ -15,6 +15,12 @@ describe('Mass', () => {
         const mass = new Mass({ value: 1, unit: MassUnit.kilogram });
         expect(mass.pounds).toBeCloseTo(2.20462);
     });
+    it('should compute the negative mass', () => {
+        const mass = new Mass({ value: 1, unit: MassUnit.kilogram });
+        const negativeMass = mass.negative;
+        expect(negativeMass.value).toBe(-1);
+        expect(negativeMass.unit).toBe(MassUnit.kilogram);
+    });
     describe('asPounds', () => {
         it('should create a Mass object from a pound value', () => {
             const mass = Mass.asPounds(5);

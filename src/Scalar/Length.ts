@@ -72,6 +72,13 @@ class Length extends Scalar<LengthUnit> {
         });
     }
 
+    get negative(): Length {
+        return new Length({
+            value: -this.value,
+            unit: this.unit,
+        });
+    }
+
     static tryParseLength(input: string): Length | undefined {
         const base = Scalar.tryParse(
             input,

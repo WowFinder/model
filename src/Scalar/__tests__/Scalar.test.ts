@@ -22,6 +22,12 @@ describe('Scalar', () => {
             '1 [[arbitrary-unit]]',
         );
     });
+    it('should return a negative value', () => {
+        const scalar = new Scalar({ value: 1, unit: 'arbitrary-unit' });
+        const negativeScalar = scalar.negative;
+        expect(negativeScalar.value).toBe(-1);
+        expect(negativeScalar.unit).toBe('arbitrary-unit');
+    });
     // Intentionally omitted `tryParse`: fully covered by the tests for subclasses
     // Intentionally omitted `makeConverter`: fully covered by the tests for subclasses
     // Intentionally omitted `add`: explicitly covered by subclasses

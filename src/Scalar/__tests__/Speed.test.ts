@@ -43,6 +43,12 @@ describe('Speed', () => {
         expect(speed.as(feetPerMinute)).toBe(expectedConversion);
         expect(speed.as(metricSpeed)).toBeCloseTo(0.254);
     });
+    it('should compute the negative speed', () => {
+        const speed = new Speed({ value: 1, unit: squaresPerTurn });
+        const negativeSpeed = speed.negative;
+        expect(negativeSpeed.value).toBe(-1);
+        expect(negativeSpeed.unit).toBe(squaresPerTurn);
+    });
     describe('add', () => {
         it('should add two speeds (game units)', () => {
             const speed1 = new Speed({ value: 1, unit: squaresPerTurn });

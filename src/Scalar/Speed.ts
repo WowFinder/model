@@ -67,6 +67,13 @@ class Speed extends Scalar<SpeedUnit> {
         });
     }
 
+    get negative(): Speed {
+        return new Speed({
+            value: -this.value,
+            unit: this.unit,
+        });
+    }
+
     as(unit: SpeedUnit): number {
         return this.convert(unit).value;
     }
