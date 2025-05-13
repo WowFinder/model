@@ -1,6 +1,5 @@
 import { MassUnit } from '@wowfinder/ts-enums';
-import { Mass, convertMass } from '../Mass';
-import { add } from '../Scalar';
+import { Mass } from '../Mass';
 
 describe('Mass', () => {
     it('should construct a mass object and convert to different units', () => {
@@ -58,37 +57,43 @@ describe('Mass', () => {
             expect(mass).toBeUndefined();
         });
     });
+    describe('zero', () => {
+        it('should return a zero mass in the default unit', () => {
+            const mass = Mass.zero;
+            expect(mass.value).toBe(0);
+            expect(mass.unit).toBe(MassUnit.pound);
+        });
+    });
     describe('add', () => {
         it('should add two masses (imperial)', () => {
             const mass1 = new Mass({ value: 5, unit: MassUnit.pound });
             const mass2 = new Mass({ value: 16, unit: MassUnit.ounce });
-            const sum = add(MassUnit.pound, convertMass, mass1, mass2);
+            const sum = Mass.add(MassUnit.pound, mass1, mass2);
             expect(sum.value).toBe(6);
             expect(sum.unit).toBe(MassUnit.pound);
         });
         it('should add two masses (metric)', () => {
             const mass1 = new Mass({ value: 5, unit: MassUnit.kilogram });
             const mass2 = new Mass({ value: 500, unit: MassUnit.gram });
-            const sum = add(MassUnit.kilogram, convertMass, mass1, mass2);
+            const sum = Mass.add(MassUnit.kilogram, mass1, mass2);
             expect(sum.value).toBe(5.5);
             expect(sum.unit).toBe(MassUnit.kilogram);
         });
         it('should add two masses (mixed)', () => {
             const mass1 = new Mass({ value: 5, unit: MassUnit.kilogram });
             const mass2 = new Mass({ value: 16, unit: MassUnit.ounce });
-            const sum = add(MassUnit.kilogram, convertMass, mass1, mass2);
+            const sum = Mass.add(MassUnit.kilogram, mass1, mass2);
             expect(sum.value).toBeCloseTo(5.45359);
             expect(sum.unit).toBe(MassUnit.kilogram);
         });
         it('should add zero masses', () => {
-            const sum = add(MassUnit.kilogram, convertMass);
+            const sum = Mass.add(MassUnit.kilogram);
             expect(sum.value).toBe(0);
             expect(sum.unit).toBe(MassUnit.kilogram);
         });
         it('should add several masses', () => {
-            const sum = add(
+            const sum = Mass.add(
                 MassUnit.kilogram,
-                convertMass,
                 new Mass({ value: 1, unit: MassUnit.kilogram }),
                 new Mass({ value: 2, unit: MassUnit.kilogram }),
                 new Mass({ value: 3, unit: MassUnit.kilogram }),
@@ -96,6 +101,37 @@ describe('Mass', () => {
             );
             expect(sum.value).toBe(10);
             expect(sum.unit).toBe(MassUnit.kilogram);
+        });
+    });
+    describe('multiply', () => {
+        it('should multiply a mass by a scalar', () => {
+            const mass = new Mass({ value: 5, unit: MassUnit.kilogram });
+            const result = Mass.multiply(mass, 2);
+            expect(result.value).toBe(10);
+            expect(result.unit).toBe(MassUnit.kilogram);
+        });
+    });
+    describe('max', () => {
+        it('should return the maximum of two masses', () => {
+            const mass1 = new Mass({ value: 5, unit: MassUnit.kilogram });
+            const mass2 = new Mass({ value: 10, unit: MassUnit.pound });
+            const result = Mass.max(mass1, mass2);
+            expect(result.value).toBe(5);
+            expect(result.unit).toBe(MassUnit.kilogram);
+        });
+        it('should return the maximum of multiple masses in different units', () => {
+            const mass1 = new Mass({ value: 5, unit: MassUnit.kilogram });
+            const mass2 = new Mass({ value: 11, unit: MassUnit.pound });
+            const mass3 = new Mass({ value: 177, unit: MassUnit.ounce });
+            const result = Mass.max(mass1, mass2, mass3);
+            expect(result.value).toBeCloseTo(5.0179, 4);
+            expect(result.unit).toBe(MassUnit.kilogram);
+            expect(result.convert(MassUnit.ounce).value).toBeCloseTo(177, 4);
+        });
+        it('should return zero when no masses are provided', () => {
+            const result = Mass.max();
+            expect(result.value).toBe(0);
+            expect(result.unit).toBe(MassUnit.pound);
         });
     });
 });

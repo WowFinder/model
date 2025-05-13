@@ -2,6 +2,7 @@ import { LengthUnit, TimeUnit } from '@wowfinder/ts-enums';
 import { Length, convertLength } from './Length';
 import { Scalar, converter } from './Scalar';
 import { Time, convertTime } from './Time';
+import { sum } from '@wowfinder/ts-utils';
 
 type SpeedUnitBuilder = {
     length: LengthUnit;
@@ -48,6 +49,8 @@ const commonSpeedUnits = {
     }),
 };
 
+const defaultSpeedUnit = commonSpeedUnits.feetTurn;
+
 class Speed extends Scalar<SpeedUnit> {
     convert(to: SpeedUnit): Speed {
         const length = convertLength(
@@ -77,6 +80,45 @@ class Speed extends Scalar<SpeedUnit> {
     as(unit: SpeedUnit): number {
         return this.convert(unit).value;
     }
+
+    static get zero(): Speed {
+        return new Speed({
+            value: 0,
+            unit: commonSpeedUnits.feetTurn,
+        });
+    }
+
+    static add(unit: SpeedUnit, ...values: Speed[]): Speed {
+        return new Speed({
+            value: sum(...values.map(v => v.convert(unit).value)),
+            unit,
+        });
+    }
+
+    static multiply(speed: Speed, factor: number): Speed {
+        return new Speed({
+            value: speed.value * factor,
+            unit: speed.unit,
+        });
+    }
+
+    static max(...speeds: Speed[]): Speed {
+        if (speeds.length === 0) {
+            return Speed.zero;
+        }
+        const unit = speeds[0].unit;
+        return new Speed({
+            value: Math.max(...speeds.map(s => s.convert(unit).value)),
+            unit,
+        });
+    }
+
+    static fromValue(value: number): Speed {
+        return new Speed({
+            value,
+            unit: defaultSpeedUnit,
+        });
+    }
 }
 
 const convertSpeed: converter<SpeedUnit> = (magnitude, to) =>
@@ -99,6 +141,7 @@ export {
     Speed,
     SpeedUnit,
     commonSpeedUnits,
+    defaultSpeedUnit,
     convertSpeed,
     encumbered,
     encumberedRaw,
