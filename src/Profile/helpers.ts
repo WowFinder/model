@@ -1,14 +1,13 @@
+import { Stat } from '@wowfinder/ts-enums';
 import { StatsBonus } from '../Bonus';
 import { StatsProfile } from './raw';
 
 function addStats(base: StatsProfile, ...bonuses: StatsBonus[]): StatsProfile {
     const totalBonuses = StatsBonus.sum(...bonuses);
     const stats = { ...base };
-    Object.entries(totalBonuses).forEach(([key, value]) => {
-        if (!(key in stats)) {
-            throw new Error(`Invalid stat key: ${key}`);
-        }
-        stats[key as keyof StatsProfile] += value;
+    Object.keys(Stat).forEach(key => {
+        const k = key as keyof StatsProfile;
+        stats[k] += totalBonuses[k];
     });
     return stats;
 }

@@ -22,6 +22,14 @@ class SpeedsProfile extends Speeds {
         this.#initiativeBonuses = otherInitiativeModifiers;
     }
 
+    get dexBonus(): number {
+        return this.#dexBonus;
+    }
+
+    get initiativeBonuses(): number[] {
+        return this.#initiativeBonuses;
+    }
+
     get initiative(): number {
         return sum(this.#dexBonus, ...this.#initiativeBonuses);
     }
@@ -41,6 +49,8 @@ function addSpeeds(
 ): SpeedsProfile {
     const totalBonuses = SpeedsModifiersBonus.sum(...bonuses);
     const newSpeeds = {
+        dexBonus: base.dexBonus,
+        otherInitiativeModifiers: base.initiativeBonuses,
         base: Speed.add(base.base.unit, base.base, totalBonuses.baseSpeed),
         swim: Speed.add(base.swim.unit, base.swim, totalBonuses.swimSpeed),
         fly: Speed.add(base.fly.unit, base.fly, totalBonuses.flySpeed),
