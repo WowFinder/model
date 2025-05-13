@@ -2,6 +2,7 @@ import { mockedRaceRawAsset } from '../../../__mocks__/Creature/race';
 import { Race } from '../index';
 import {
     Alignment,
+    InnateTrait,
     Languages,
     Skill,
     Stat,
@@ -32,7 +33,7 @@ describe('Race', () => {
         expect(instance.saves.reflexes).toBe(-1);
         expect(instance.saves.will).toBe(0);
         expect(instance.naturalArmor).toBe(0);
-        const { vitals, resistances } = instance;
+        const { vitals, resistances, traits } = instance;
         expect(vitals).toBeDefined();
         expect(vitals.sleepTimeReduction.convert(TimeUnit.hour).value).toBe(2);
         expect(
@@ -40,6 +41,8 @@ describe('Race', () => {
         ).toBe(30);
         expect(resistances).toBeDefined();
         expect(resistances.cold).toBe(5);
+        expect(traits).toBeDefined();
+        expect(traits).toContain(InnateTrait.darkvision60);
     });
     it('should identify common alignments', () => {
         const instance = new Race(mockedRaceRawAsset);
