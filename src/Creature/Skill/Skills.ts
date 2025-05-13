@@ -1,6 +1,7 @@
 import { Skill, Stat } from '@wowfinder/ts-enums';
 import { SkillSpec } from './SkillSpec';
 import { mkCraft, mkLore, mkPerform, mkProfession, mkSkill } from './makers';
+import { RawSkills } from '@wowfinder/asset-schemas';
 
 const Skills: { [key in Skill]: SkillSpec } = {
     acrobatics: mkSkill(Skill.acrobatics, Stat.dexterity, null, false, -2),
@@ -62,4 +63,19 @@ const Skills: { [key in Skill]: SkillSpec } = {
     stealth: mkSkill(Skill.stealth, Stat.dexterity, null, false, -4),
 };
 
-export { Skills };
+function fillSkills(
+    skills: Partial<RawSkills>,
+    defaultValue: number = 0,
+): RawSkills {
+    const defaults = Object.keys(Skills).reduce((acc, key) => {
+        const k = key as keyof RawSkills;
+        acc[k] = defaultValue;
+        return acc;
+    }, {} as RawSkills);
+    return {
+        ...defaults,
+        ...skills,
+    };
+}
+
+export { Skills, fillSkills };

@@ -1,6 +1,7 @@
-import { Stat } from '@wowfinder/ts-enums';
-import { addStats } from '../helpers';
-import { StatsBonus } from '../../Bonus';
+import { Stat, Skill } from '@wowfinder/ts-enums';
+import { addStats, addSkills } from '../helpers';
+import { StatsBonus, SkillsBonus } from '../../Bonus';
+import { fillSkills } from '../../Creature/Skill/Skills';
 
 describe('addStats', () => {
     it('should add stats bonuses to a StatsProfile', () => {
@@ -31,5 +32,36 @@ describe('addStats', () => {
         expect(newStatsProfile.intelligence).toBe(21);
         expect(newStatsProfile.wisdom).toBe(18);
         expect(newStatsProfile.charisma).toBe(20);
+    });
+});
+
+describe('addSkills', () => {
+    it('should add skills bonuses to a SkillsProfile', () => {
+        const baseSkills = fillSkills({
+            [Skill.acrobatics]: 5,
+            [Skill.arcane]: 9,
+            [Skill.athletics]: 11,
+            [Skill.disguise]: 13,
+            [Skill.history]: 15,
+        });
+
+        const skillBonus1 = new SkillsBonus({
+            [Skill.acrobatics]: 2,
+            [Skill.arcane]: 3,
+        });
+
+        const skillBonus2 = new SkillsBonus({
+            [Skill.athletics]: 5,
+            [Skill.history]: 4,
+        });
+
+        const newSkillsProfile = addSkills(baseSkills, skillBonus1, skillBonus2);
+
+        expect(newSkillsProfile.acrobatics).toBe(7);
+        expect(newSkillsProfile.arcane).toBe(12);
+        expect(newSkillsProfile.athletics).toBe(16);
+        expect(newSkillsProfile.disguise).toBe(13);
+        expect(newSkillsProfile.history).toBe(19);
+        expect(newSkillsProfile.sleight).toBe(0);
     });
 });
