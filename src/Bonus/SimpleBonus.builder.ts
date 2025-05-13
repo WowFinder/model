@@ -2,6 +2,7 @@ import {
     type RawStats,
     type RawSkills,
     type RawResistances,
+    type RawVitals,
 } from '@wowfinder/asset-schemas';
 import { type SensesBonusBuilder } from './SensesBonus';
 import { type SpellPowerBonusBuilder } from './SpellPowerBonus';
@@ -11,7 +12,6 @@ import {
     type SpeedsModifiersBonusBuilder,
 } from './SpeedsBonus';
 import { type SavesBonusBuilder } from './SavesBonus';
-import { type RawVitals } from './VitalsBonus';
 
 type SimpleBonusBuilder = {
     hp?: number;

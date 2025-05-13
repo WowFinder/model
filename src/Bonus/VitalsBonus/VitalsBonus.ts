@@ -5,8 +5,8 @@ import {
     maxVitalsBonus,
     multiplyVitalsBonus,
     buildVitalsBonusArgs,
-    type RawVitals,
 } from './helpers';
+import { type RawVitals } from '@wowfinder/asset-schemas';
 
 type VitalsBonusBuilder = {
     sleepTimeReduction?: Time;
@@ -108,7 +108,7 @@ class VitalsBonus implements VitalsBonusBuilder, JsonExportable<RawVitals> {
         return new VitalsBonus(maxVitalsBonus(...args));
     }
 
-    static build(raw: RawVitals): VitalsBonus {
+    static build(raw: Partial<RawVitals>): VitalsBonus {
         return new VitalsBonus(buildVitalsBonusArgs(raw));
     }
 }

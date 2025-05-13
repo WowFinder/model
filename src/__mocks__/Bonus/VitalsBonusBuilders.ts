@@ -1,8 +1,8 @@
-import { type RawVitals } from '../../Bonus/VitalsBonus';
+import { type RawVitals } from '@wowfinder/asset-schemas';
 
-const vitalsBonusDefaultBuilder: RawVitals = {} as const;
+const vitalsBonusDefaultBuilder: Partial<RawVitals> = {} as const;
 
-const vitalsBonusFullBuilder: Required<RawVitals> = {
+const vitalsBonusFullBuilder: RawVitals = {
     sleepTimeReduction: '2h',
     sleepCycleBonus: '12h',
     breathHoldingTimeBonus: '120s',
