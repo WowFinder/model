@@ -86,7 +86,6 @@ function addProfileBonuses(
     ...bonuses: SimpleBonus[]
 ): CreatureBaseProfile {
     return {
-        ...base,
         stats: addStats(base.stats, ...bonuses.map(b => b.stats)),
         speeds: addSpeeds(base.speeds, ...bonuses.map(b => b.speedsModifiers)),
         vitals: addVitals(base.vitals, ...bonuses.map(b => b.vitals)),
@@ -97,6 +96,10 @@ function addProfileBonuses(
             ...bonuses.map(b => b.resistances),
         ),
         feats: addFeats(base.feats, ...bonuses.map(b => b.feats)),
+        features: {
+            ...base.features,
+        },
+        traits: [...base.traits],
     };
 }
 
