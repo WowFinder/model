@@ -119,7 +119,7 @@ describe('Profile helpers', () => {
             expect(combined.skills).toEqual(combinedSkills);
             expect(combined.saves).toEqual(combinedSaves);
             //expect(combined.resistances).toEqual(combinedResistances);
-            //expect(combined.feats).toEqual(combinedFeats);
+            expect(combined.feats).toEqual(combinedFeats);
             expect(combined.features).toEqual({});
             expect(combined.traits).toEqual([]);
         });

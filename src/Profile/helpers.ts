@@ -75,7 +75,7 @@ function addFeats(base: FeatsProfile, ...bonuses: FeatsBonus[]): FeatsProfile {
         .forEach(key => {
             const k = key as Feat;
             feats[k] ??= 0;
-            feats[k] += totalBonuses.get(k) ? 1 : 0;
+            feats[k]++;
         });
 
     return feats;
@@ -96,10 +96,7 @@ function addProfileBonuses(
             base.resistances,
             ...bonuses.map(b => b.resistances),
         ),
-        feats: {
-            ...base.feats,
-            ...bonuses.map(b => b.feats).reduce,
-        },
+        feats: addFeats(base.feats, ...bonuses.map(b => b.feats)),
     };
 }
 
