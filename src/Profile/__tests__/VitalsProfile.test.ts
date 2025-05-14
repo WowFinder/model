@@ -1,33 +1,12 @@
-import { type Counter, mkCounter } from '@wowfinder/ts-utils';
 import { VitalsBonus } from '../../Bonus';
 import {
-    type VitalsProfile,
     addVitals,
     defaultBreathProfile,
     defaultSleepProfile,
 } from '../VitalsProfile';
 import { days, hours, minutes } from '../../Scalar';
 import { TimeUnit } from '@wowfinder/ts-enums';
-
-function mkHp(): Counter {
-    return mkCounter({ max: 20, current: 10 });
-}
-
-function mkSanity(): Counter {
-    return mkCounter({ max: 10, current: 5 });
-}
-
-function mkVitalsProfile({
-    breath,
-    sleep,
-}: Pick<VitalsProfile, 'breath' | 'sleep'>): VitalsProfile {
-    return {
-        hp: mkHp(),
-        sanity: mkSanity(),
-        breath: breath,
-        sleep: sleep,
-    };
-}
+import { mkVitalsProfile } from './mocks';
 
 describe('VitalsProfile', () => {
     describe('addVitals', () => {

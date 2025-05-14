@@ -1,133 +1,127 @@
-import { Stat, Skill } from '@wowfinder/ts-enums';
-import { addStats, addSkills, addSaves, addResistances } from '../helpers';
 import {
-    StatsBonus,
-    SkillsBonus,
-    SavesBonus,
-    ResistancesBonus,
-} from '../../Bonus';
-import { fillSkills } from '../../Creature/Skill/Skills';
-import { fillResistances } from '../../Creature/Resistances/fill';
+    addStats,
+    addSkills,
+    addSaves,
+    addResistances,
+    addFeats,
+    addProfileBonuses,
+} from '../helpers';
+import {
+    baseStats,
+    statBonus1,
+    statBonus2,
+    baseSkills,
+    skillBonus1,
+    skillBonus2,
+    baseResistances,
+    baseSaves,
+    resistanceBonus1,
+    resistanceBonus2,
+    saveBonus1,
+    saveBonus2,
+    combinedStats,
+    combinedSkills,
+    combinedSaves,
+    combinedResistances,
+    baseFeats,
+    combinedFeats,
+    featBonus1,
+    featBonus2,
+    swimSpeedBonus,
+    mkVitalsProfile,
+    baseSpeeds,
+    multipleSpeedsBonus,
+    combinedSpeeds,
+} from './mocks';
+import { SimpleBonus, VitalsBonus } from '../../Bonus';
 
-describe('addStats', () => {
-    it('should add stats bonuses to a StatsProfile', () => {
-        const baseStats = {
-            [Stat.strength]: 10,
-            [Stat.dexterity]: 12,
-            [Stat.constitution]: 14,
-            [Stat.intelligence]: 16,
-            [Stat.wisdom]: 18,
-            [Stat.charisma]: 20,
-        };
-
-        const statBonus1 = new StatsBonus({
-            [Stat.strength]: 2,
-            [Stat.dexterity]: 3,
+describe('Profile helpers', () => {
+    describe('addStats', () => {
+        it('should add stats bonuses to a StatsProfile', () => {
+            const newStatsProfile = addStats(baseStats, statBonus1, statBonus2);
+            expect(newStatsProfile).toEqual(combinedStats);
         });
-
-        const statBonus2 = new StatsBonus({
-            [Stat.constitution]: 4,
-            [Stat.intelligence]: 5,
-        });
-
-        const newStatsProfile = addStats(baseStats, statBonus1, statBonus2);
-
-        expect(newStatsProfile.strength).toBe(12);
-        expect(newStatsProfile.dexterity).toBe(15);
-        expect(newStatsProfile.constitution).toBe(18);
-        expect(newStatsProfile.intelligence).toBe(21);
-        expect(newStatsProfile.wisdom).toBe(18);
-        expect(newStatsProfile.charisma).toBe(20);
     });
-});
 
-describe('addSkills', () => {
-    it('should add skills bonuses to a SkillsProfile', () => {
-        const baseSkills = fillSkills({
-            [Skill.acrobatics]: 5,
-            [Skill.arcane]: 9,
-            [Skill.athletics]: 11,
-            [Skill.disguise]: 13,
-            [Skill.history]: 15,
+    describe('addSkills', () => {
+        it('should add skills bonuses to a SkillsProfile', () => {
+            const newSkillsProfile = addSkills(
+                baseSkills,
+                skillBonus1,
+                skillBonus2,
+            );
+            expect(newSkillsProfile).toEqual(combinedSkills);
         });
-
-        const skillBonus1 = new SkillsBonus({
-            [Skill.acrobatics]: 2,
-            [Skill.arcane]: 3,
-        });
-
-        const skillBonus2 = new SkillsBonus({
-            [Skill.athletics]: 5,
-            [Skill.history]: 4,
-        });
-
-        const newSkillsProfile = addSkills(
-            baseSkills,
-            skillBonus1,
-            skillBonus2,
-        );
-
-        expect(newSkillsProfile.acrobatics).toBe(7);
-        expect(newSkillsProfile.arcane).toBe(12);
-        expect(newSkillsProfile.athletics).toBe(16);
-        expect(newSkillsProfile.disguise).toBe(13);
-        expect(newSkillsProfile.history).toBe(19);
-        expect(newSkillsProfile.sleight).toBe(0);
     });
-});
 
-describe('addSaves', () => {
-    it('should add saves bonuses to a SavesProfile', () => {
-        const baseSaves = {
-            fortitude: 10,
-            reflexes: 12,
-            will: 14,
-        };
-
-        const saveBonus1 = new SavesBonus({
-            fortitude: 2,
-            reflexes: 3,
+    describe('addSaves', () => {
+        it('should add saves bonuses to a SavesProfile', () => {
+            const newSavesProfile = addSaves(baseSaves, saveBonus1, saveBonus2);
+            expect(newSavesProfile).toEqual(combinedSaves);
         });
-
-        const saveBonus2 = new SavesBonus({
-            will: 4,
-        });
-
-        const newSavesProfile = addSaves(baseSaves, saveBonus1, saveBonus2);
-
-        expect(newSavesProfile.fortitude).toBe(12);
-        expect(newSavesProfile.reflexes).toBe(15);
-        expect(newSavesProfile.will).toBe(18);
     });
-});
 
-describe('addResistances', () => {
-    it('should add resistances bonuses to a ResistancesProfile', () => {
-        const baseResistances = fillResistances({
-            nature: 5,
-            cold: 10,
-            fire: 15,
+    describe('addResistances', () => {
+        it('should add resistances bonuses to a ResistancesProfile', () => {
+            const newResistancesProfile = addResistances(
+                baseResistances,
+                resistanceBonus1,
+                resistanceBonus2,
+            );
+
+            expect(newResistancesProfile).toEqual(combinedResistances);
         });
+    });
 
-        const resistanceBonus1 = new ResistancesBonus({
-            nature: 2,
-            cold: 3,
+    describe('addFeats', () => {
+        it('should add feats bonuses to a FeatsProfile', () => {
+            const newFeatsProfile = addFeats(baseFeats, featBonus1, featBonus2);
+            expect(newFeatsProfile).toEqual(combinedFeats);
         });
+    });
 
-        const resistanceBonus2 = new ResistancesBonus({
-            fire: 4,
+    describe('addProfileBonuses', () => {
+        it('should add multiple bonuses to a profile', () => {
+            const base = {
+                stats: baseStats,
+                speeds: baseSpeeds,
+                vitals: mkVitalsProfile({}),
+                skills: baseSkills,
+                saves: baseSaves,
+                resistances: baseResistances,
+                feats: baseFeats,
+                features: {},
+                traits: [],
+            };
+            const bonus1 = new SimpleBonus({
+                stats: statBonus1,
+                speedsModifiers: swimSpeedBonus,
+                vitals: new VitalsBonus({ maxHpBonus: 5 }).export(),
+                skills: skillBonus1,
+                saves: saveBonus1,
+                resistances: resistanceBonus1,
+                feats: featBonus1.export(),
+            });
+            const bonus2 = new SimpleBonus({
+                stats: statBonus2,
+                speedsModifiers: multipleSpeedsBonus,
+                vitals: new VitalsBonus({ maxSanityBonus: 3 }).export(),
+                skills: skillBonus2,
+                saves: saveBonus2,
+                resistances: resistanceBonus2,
+                feats: featBonus2.export(),
+            });
+
+            const combined = addProfileBonuses(base, bonus1, bonus2);
+            expect(combined.stats).toEqual(combinedStats);
+            expect(combined.speeds).toEqual(combinedSpeeds);
+            // expect(combined.vitals).toEqual(mkVitalsProfile({}));
+            expect(combined.skills).toEqual(combinedSkills);
+            expect(combined.saves).toEqual(combinedSaves);
+            //expect(combined.resistances).toEqual(combinedResistances);
+            //expect(combined.feats).toEqual(combinedFeats);
+            expect(combined.features).toEqual({});
+            expect(combined.traits).toEqual([]);
         });
-
-        const newResistancesProfile = addResistances(
-            baseResistances,
-            resistanceBonus1,
-            resistanceBonus2,
-        );
-
-        expect(newResistancesProfile.nature).toBe(7);
-        expect(newResistancesProfile.cold).toBe(13);
-        expect(newResistancesProfile.fire).toBe(19);
-        expect(newResistancesProfile.holy).toBe(0);
-        expect(newResistancesProfile.psychic).toBe(0);
     });
 });

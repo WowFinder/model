@@ -22,7 +22,7 @@ type SpellPowerProfile = FullComputedSpellPower;
 
 type StatsProfile = RawStats;
 
-type TraitsPropfile = InnateTrait[];
+type TraitsProfile = InnateTrait[];
 
 export {
     type ClassFeaturesProfile,
@@ -32,5 +32,5 @@ export {
     type SkillsProfile,
     type SpellPowerProfile,
     type StatsProfile,
-    type TraitsPropfile,
+    type TraitsProfile,
 };

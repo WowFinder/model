@@ -1,12 +1,23 @@
 import { DamageType, Skill, Stat } from '@wowfinder/ts-enums';
-import { ResistancesBonus, SkillsBonus, StatsBonus } from '../Bonus';
 import {
-    ResistancesProfile,
-    SavesProfile,
-    SkillsProfile,
-    StatsProfile,
+    FeatsBonus,
+    ResistancesBonus,
+    type SimpleBonus,
+    SkillsBonus,
+    StatsBonus,
+} from '../Bonus';
+import {
+    type FeatsProfile,
+    type ResistancesProfile,
+    type SavesProfile,
+    type SkillsProfile,
+    type StatsProfile,
 } from './raw';
 import { SavesBonus } from '../Bonus/SavesBonus';
+import { type CreatureBaseProfile } from './CreatureProfile';
+import { addSpeeds } from './SpeedsProfile';
+import { addVitals } from './VitalsProfile';
+import { Feat } from '../Creature/Feats';
 
 function addStats(base: StatsProfile, ...bonuses: StatsBonus[]): StatsProfile {
     const totalBonuses = StatsBonus.sum(...bonuses);
@@ -55,4 +66,48 @@ function addResistances(
     return resistances;
 }
 
-export { addStats, addSkills, addSaves, addResistances };
+function addFeats(base: FeatsProfile, ...bonuses: FeatsBonus[]): FeatsProfile {
+    const feats = { ...base };
+    const totalBonuses = FeatsBonus.max(...bonuses);
+
+    Object.keys(Feat)
+        .filter(k => totalBonuses.get(k as Feat))
+        .forEach(key => {
+            const k = key as Feat;
+            feats[k] ??= 0;
+            feats[k] += totalBonuses.get(k) ? 1 : 0;
+        });
+
+    return feats;
+}
+
+function addProfileBonuses(
+    base: CreatureBaseProfile,
+    ...bonuses: SimpleBonus[]
+): CreatureBaseProfile {
+    return {
+        ...base,
+        stats: addStats(base.stats, ...bonuses.map(b => b.stats)),
+        speeds: addSpeeds(base.speeds, ...bonuses.map(b => b.speedsModifiers)),
+        vitals: addVitals(base.vitals, ...bonuses.map(b => b.vitals)),
+        skills: addSkills(base.skills, ...bonuses.map(b => b.skills)),
+        saves: addSaves(base.saves, ...bonuses.map(b => b.saves)),
+        resistances: addResistances(
+            base.resistances,
+            ...bonuses.map(b => b.resistances),
+        ),
+        feats: {
+            ...base.feats,
+            ...bonuses.map(b => b.feats).reduce,
+        },
+    };
+}
+
+export {
+    addStats,
+    addSkills,
+    addSaves,
+    addResistances,
+    addFeats,
+    addProfileBonuses,
+};
