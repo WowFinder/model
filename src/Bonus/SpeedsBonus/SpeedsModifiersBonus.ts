@@ -1,5 +1,6 @@
 import { JsonCompatible, JsonExportable, sum } from '@wowfinder/ts-utils';
 import { SpeedsModifiers } from '@wowfinder/asset-schemas';
+import { Speed } from '../../Scalar';
 
 type SpeedsModifiersBonusBuilder = Partial<SpeedsModifiers>;
 
@@ -30,20 +31,40 @@ class SpeedsModifiersBonus
         return this.#base;
     }
 
+    get baseSpeed(): Speed {
+        return Speed.fromValue(this.#base);
+    }
+
     get burrow(): number {
         return this.#burrow;
+    }
+
+    get burrowSpeed(): Speed {
+        return Speed.fromValue(this.#burrow);
     }
 
     get climb(): number {
         return this.#climb;
     }
 
+    get climbSpeed(): Speed {
+        return Speed.fromValue(this.#climb);
+    }
+
     get swim(): number {
         return this.#swim;
     }
 
+    get swimSpeed(): Speed {
+        return Speed.fromValue(this.#swim);
+    }
+
     get fly(): number {
         return this.#fly;
+    }
+
+    get flySpeed(): Speed {
+        return Speed.fromValue(this.#fly);
     }
 
     get isZero(): boolean {

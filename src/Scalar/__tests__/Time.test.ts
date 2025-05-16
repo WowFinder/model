@@ -1,6 +1,5 @@
 import { TimeUnit } from '@wowfinder/ts-enums';
-import { Time, convertTime } from '../Time';
-import { add } from '../Scalar';
+import { Time } from '../Time';
 
 describe('Time', () => {
     it('should construct a Time object and convert to different units', () => {
@@ -58,24 +57,23 @@ describe('Time', () => {
         it('should add two times', () => {
             const time1 = new Time({ value: 1, unit: TimeUnit.year });
             const time2 = new Time({ value: 365, unit: TimeUnit.day });
-            const sum = add(TimeUnit.year, convertTime, time1, time2);
+            const sum = Time.add(TimeUnit.year, time1, time2);
             expect(sum.value).toBe(2);
             expect(sum.unit).toBe(TimeUnit.year);
             const time3 = new Time({ value: 2, unit: TimeUnit.turn });
             const time4 = new Time({ value: 12, unit: TimeUnit.second });
-            const sum2 = add(TimeUnit.turn, convertTime, time3, time4);
+            const sum2 = Time.add(TimeUnit.turn, time3, time4);
             expect(sum2.value).toBe(4);
             expect(sum2.unit).toBe(TimeUnit.turn);
         });
         it('should add zero times', () => {
-            const sum = add(TimeUnit.year, convertTime);
+            const sum = Time.add(TimeUnit.year);
             expect(sum.value).toBe(0);
             expect(sum.unit).toBe(TimeUnit.year);
         });
         it('should add several times', () => {
-            const sum = add(
+            const sum = Time.add(
                 TimeUnit.year,
-                convertTime,
                 new Time({ value: 1, unit: TimeUnit.year }),
                 new Time({ value: 2, unit: TimeUnit.year }),
                 new Time({ value: 3, unit: TimeUnit.year }),

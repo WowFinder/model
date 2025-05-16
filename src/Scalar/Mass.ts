@@ -52,6 +52,41 @@ class Mass extends Scalar<MassUnit> {
         );
         return base ? new Mass(base) : undefined;
     }
+
+    static get zero(): Mass {
+        return new Mass({
+            value: 0,
+            unit: MassUnit.pound,
+        });
+    }
+
+    static add(unit: MassUnit, ...args: Mass[]): Mass {
+        return new Mass({
+            value: args.reduce(
+                (acc, mass) => acc + mass.convert(unit).value,
+                0,
+            ),
+            unit,
+        });
+    }
+
+    static multiply(mass: Mass, factor: number): Mass {
+        return new Mass({
+            value: mass.value * factor,
+            unit: mass.unit,
+        });
+    }
+
+    static max(...args: Mass[]): Mass {
+        if (args.length === 0) {
+            return Mass.zero;
+        }
+        const unit = args[0].unit;
+        return new Mass({
+            value: Math.max(...args.map(m => m.convert(unit).value)),
+            unit: args[0].unit,
+        });
+    }
 }
 
 type Weight = number | Mass;

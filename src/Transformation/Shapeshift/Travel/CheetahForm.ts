@@ -1,7 +1,7 @@
-import { defaultSpeedUnit } from '../../../Creature/Speeds';
 import { Shapeshift, type ShapeshiftBuilder } from '../base';
 import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 import { type CharacterBaseInterface } from '../../../Character';
+import { defaultSpeedUnit } from '../../../Scalar';
 
 class CheetahForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {

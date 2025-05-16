@@ -7,6 +7,7 @@ import { type ProgressionProfile } from './ProgressionProfile';
 import { type SpeedsProfile } from './SpeedsProfile';
 import { type VitalsProfile } from './VitalsProfile';
 import {
+    TraitsProfile,
     type ClassFeaturesProfile,
     type FeatsProfile,
     type ResistancesProfile,
@@ -24,9 +25,9 @@ type CreatureBaseProfile = {
     skills: SkillsProfile;
     saves: SavesProfile;
     resistances: ResistancesProfile;
-    // TODO traits: TraitsProfile
     features: ClassFeaturesProfile;
     feats: FeatsProfile;
+    traits: TraitsProfile;
 };
 
 // TODO: Consider full deprecation

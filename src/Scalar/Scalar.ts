@@ -1,4 +1,4 @@
-import { StringFormatter, sum, TryParser } from '@wowfinder/ts-utils';
+import { StringFormatter, TryParser } from '@wowfinder/ts-utils';
 
 function pluralize<T>(baseParser: TryParser<T>): TryParser<T> {
     return (input: string) =>
@@ -75,15 +75,4 @@ function makeConverter<T extends string>(conversions: {
     };
 }
 
-function add<T>(
-    unit: T,
-    convert: converter<T>,
-    ...magnitudes: Scalar<T>[]
-): Scalar<T> {
-    return new Scalar({
-        value: sum(...magnitudes.map(m => convert(m, unit).value)),
-        unit,
-    });
-}
-
-export { type converter, makeConverter, Scalar, add };
+export { type converter, makeConverter, Scalar };

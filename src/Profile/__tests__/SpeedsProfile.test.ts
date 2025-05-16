@@ -1,4 +1,10 @@
-import { SpeedsProfile } from '../SpeedsProfile';
+import { SpeedsProfile, addSpeeds } from '../SpeedsProfile';
+import {
+    baseSpeeds,
+    combinedSpeeds,
+    multipleSpeedsBonus,
+    swimSpeedBonus,
+} from './mocks';
 
 describe('SpeedsProfile', () => {
     it('should create a SpeedsProfile instance with default values', () => {
@@ -24,5 +30,23 @@ describe('SpeedsProfile', () => {
         expect(exported.otherInitiativeModifiers.length).toBe(2);
         expect(exported.otherInitiativeModifiers).toContain(1);
         expect(exported.otherInitiativeModifiers).toContain(3);
+    });
+
+    describe('addSpeeds', () => {
+        it('should add speed bonuses to a SpeedsProfile', () => {
+            const newSpeedsProfile = addSpeeds(
+                baseSpeeds,
+                swimSpeedBonus,
+                multipleSpeedsBonus,
+            );
+
+            expect(newSpeedsProfile).toBeInstanceOf(SpeedsProfile);
+            expect(newSpeedsProfile.export()).toEqual(combinedSpeeds.export());
+
+            expect(newSpeedsProfile.initiative).toBe(6);
+            expect(newSpeedsProfile.base.value).toBe(40);
+            expect(newSpeedsProfile.swim.value).toBe(30);
+            expect(newSpeedsProfile.fly.value).toBe(20);
+        });
     });
 });

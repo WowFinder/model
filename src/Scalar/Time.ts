@@ -100,9 +100,9 @@ class Time extends Scalar<TimeUnit> {
         });
     }
 
-    static multiply(time: Time, multiplier: number): Time {
+    static multiply(time: Time, factor: number): Time {
         return new Time({
-            value: time.value * multiplier,
+            value: time.value * factor,
             unit: time.unit,
         });
     }

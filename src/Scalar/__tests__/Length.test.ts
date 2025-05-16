@@ -1,6 +1,5 @@
 import { LengthUnit } from '@wowfinder/ts-enums';
-import { Length, convertLength } from '../Length';
-import { add } from '../Scalar';
+import { Length } from '../Length';
 
 describe('Length', () => {
     it('should construct a length and convert to different units', () => {
@@ -67,51 +66,64 @@ describe('Length', () => {
             expect(length).toBeUndefined();
         });
     });
+    describe('zero', () => {
+        it('should return a zero length in the default unit', () => {
+            const length = Length.zero;
+            expect(length.value).toBe(0);
+            expect(length.unit).toBe(LengthUnit.meter);
+        });
+    });
     describe('add', () => {
-        it('should add two lengths (imprerial)', () => {
-            const length1 = new Length({ value: 24, unit: LengthUnit.inch });
-            const length2 = new Length({ value: 1, unit: LengthUnit.yard });
-            const sum = add(LengthUnit.inch, convertLength, length1, length2);
-            expect(sum.value).toBe(60);
-            expect(sum.unit).toBe(LengthUnit.inch);
+        it('should add lengths of the same unit', () => {
+            const length1 = new Length({ value: 5, unit: LengthUnit.meter });
+            const length2 = new Length({ value: 3, unit: LengthUnit.meter });
+            const result = Length.add(LengthUnit.meter, length1, length2);
+            expect(result.value).toBe(8);
+            expect(result.unit).toBe(LengthUnit.meter);
         });
-        it('should add two lengths (metric)', () => {
-            const length1 = new Length({ value: 1, unit: LengthUnit.meter });
-            const length2 = new Length({
-                value: 1,
-                unit: LengthUnit.centiMeter,
-            });
-            const sum = add(LengthUnit.meter, convertLength, length1, length2);
-            expect(sum.value).toBe(1.01);
-            expect(sum.unit).toBe(LengthUnit.meter);
-        });
-        it('should add two lengths (mixed)', () => {
-            const length1 = new Length({ value: 1, unit: LengthUnit.square });
-            const length2 = new Length({ value: 0.5, unit: LengthUnit.meter });
-            const sum = add(
-                LengthUnit.centiMeter,
-                convertLength,
+        it('should add lengths of different units', () => {
+            const length1 = new Length({ value: 5, unit: LengthUnit.meter });
+            const length2 = new Length({ value: 2, unit: LengthUnit.foot });
+            const length3 = new Length({ value: 12, unit: LengthUnit.inch });
+            const result = Length.add(
+                LengthUnit.meter,
                 length1,
                 length2,
+                length3,
             );
-            expect(sum.value).toBeCloseTo(202.4, 1);
+            expect(result.value).toBeCloseTo(5.9144, 4);
+            expect(result.unit).toBe(LengthUnit.meter);
         });
-        it('should add zero lengths', () => {
-            const sum = add(LengthUnit.inch, convertLength);
-            expect(sum.value).toBe(0);
-            expect(sum.unit).toBe(LengthUnit.inch);
+    });
+    describe('multiply', () => {
+        it('should multiply a length by a scalar', () => {
+            const length = new Length({ value: 5, unit: LengthUnit.meter });
+            const result = Length.multiply(length, 2);
+            expect(result.value).toBe(10);
+            expect(result.unit).toBe(LengthUnit.meter);
         });
-        it('should add several lengths', () => {
-            const sum = add(
-                LengthUnit.inch,
-                convertLength,
-                new Length({ value: 1, unit: LengthUnit.inch }),
-                new Length({ value: 2, unit: LengthUnit.inch }),
-                new Length({ value: 3, unit: LengthUnit.inch }),
-                new Length({ value: 4, unit: LengthUnit.inch }),
-            );
-            expect(sum.value).toBe(10);
-            expect(sum.unit).toBe(LengthUnit.inch);
+    });
+    describe('max', () => {
+        it('should return the maximum of two lengths', () => {
+            const length1 = new Length({ value: 5, unit: LengthUnit.meter });
+            const length2 = new Length({ value: 15, unit: LengthUnit.foot });
+            const result = Length.max(length1, length2);
+            expect(result.value).toBe(5);
+            expect(result.unit).toBe(LengthUnit.meter);
+        });
+        it('should return the maximum of multiple lengths in different units', () => {
+            const length1 = new Length({ value: 5, unit: LengthUnit.meter });
+            const length2 = new Length({ value: 15, unit: LengthUnit.foot });
+            const length3 = new Length({ value: 197, unit: LengthUnit.inch });
+            const result = Length.max(length1, length2, length3);
+            expect(result.value).toBeCloseTo(5.0038, 4);
+            expect(result.unit).toBe(LengthUnit.meter);
+            expect(result.convert(LengthUnit.inch).value).toBeCloseTo(197, 4);
+        });
+        it('should return zero when no lengths are provided', () => {
+            const result = Length.max();
+            expect(result.value).toBe(0);
+            expect(result.unit).toBe(LengthUnit.meter);
         });
     });
 });

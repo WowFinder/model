@@ -1,5 +1,7 @@
 import { sum } from '@wowfinder/ts-utils';
 import { Speeds, type SpeedBuilder } from '../Creature/Speeds';
+import { SpeedsModifiersBonus } from '../Bonus';
+import { Speed } from '../Scalar';
 
 type SpeedsProfileBuilder = SpeedBuilder & {
     dexBonus?: number;
@@ -20,6 +22,14 @@ class SpeedsProfile extends Speeds {
         this.#initiativeBonuses = otherInitiativeModifiers;
     }
 
+    get dexBonus(): number {
+        return this.#dexBonus;
+    }
+
+    get initiativeBonuses(): number[] {
+        return this.#initiativeBonuses;
+    }
+
     get initiative(): number {
         return sum(this.#dexBonus, ...this.#initiativeBonuses);
     }
@@ -33,4 +43,25 @@ class SpeedsProfile extends Speeds {
     }
 }
 
-export { SpeedsProfile };
+function addSpeeds(
+    base: SpeedsProfile,
+    ...bonuses: SpeedsModifiersBonus[]
+): SpeedsProfile {
+    const totalBonuses = SpeedsModifiersBonus.sum(...bonuses);
+    const newSpeeds = {
+        dexBonus: base.dexBonus,
+        otherInitiativeModifiers: base.initiativeBonuses,
+        base: Speed.add(base.base.unit, base.base, totalBonuses.baseSpeed),
+        swim: Speed.add(base.swim.unit, base.swim, totalBonuses.swimSpeed),
+        fly: Speed.add(base.fly.unit, base.fly, totalBonuses.flySpeed),
+        climb: Speed.add(base.climb.unit, base.climb, totalBonuses.climbSpeed),
+        burrow: Speed.add(
+            base.burrow.unit,
+            base.burrow,
+            totalBonuses.burrowSpeed,
+        ),
+    };
+    return new SpeedsProfile(newSpeeds);
+}
+
+export { SpeedsProfile, addSpeeds };

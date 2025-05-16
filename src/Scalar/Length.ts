@@ -88,6 +88,41 @@ class Length extends Scalar<LengthUnit> {
         );
         return base ? new Length(base) : undefined;
     }
+
+    static get zero(): Length {
+        return new Length({
+            value: 0,
+            unit: LengthUnit.meter,
+        });
+    }
+
+    static add(unit: LengthUnit, ...args: Length[]): Length {
+        return new Length({
+            value: args.reduce(
+                (acc, length) => acc + length.convert(unit).value,
+                0,
+            ),
+            unit,
+        });
+    }
+
+    static multiply(length: Length, multiplier: number): Length {
+        return new Length({
+            value: length.value * multiplier,
+            unit: length.unit,
+        });
+    }
+
+    static max(...args: Length[]): Length {
+        if (args.length === 0) {
+            return Length.zero;
+        }
+        const unit = args[0].unit;
+        return new Length({
+            value: Math.max(...args.map(l => l.convert(unit).value)),
+            unit,
+        });
+    }
 }
 
 export { convertLength, Length };
