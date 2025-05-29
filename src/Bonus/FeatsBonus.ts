@@ -1,23 +1,26 @@
 import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
-import { Feat } from '../Creature/Feats/Feat';
+import { Feat, feats } from '../Creature/Feats';
 
 type FeatsBonusBuilder = Feat[];
 
-const featKeys = Object.keys(Feat).map(key => key as Feat);
+function clearRedundantFeatDuplicates(list: Feat[]): Feat[] {
+    const uniqueFeats = new Set<Feat>(list.filter(f => !feats[f].multiple));
+    return [...uniqueFeats, ...list.filter(f => feats[f].multiple)];
+}
 
 class FeatsBonus implements JsonExportable<Feat[]> {
-    readonly #feats: Set<Feat>;
+    readonly #feats: Feat[];
 
     constructor(builder: Iterable<Feat> = []) {
-        this.#feats = new Set(builder);
+        this.#feats = clearRedundantFeatDuplicates([...builder]);
     }
 
-    get(feat: Feat): boolean {
-        return this.#feats.has(feat);
+    get(feat: Feat): number {
+        return this.#feats.filter(f => f === feat).length;
     }
 
     get isZero(): boolean {
-        return this.#feats.size === 0;
+        return this.#feats.length === 0;
     }
 
     export(): JsonCompatible<Feat[]> {
@@ -31,11 +34,7 @@ class FeatsBonus implements JsonExportable<Feat[]> {
     }
 
     static max(...bonuses: FeatsBonus[]): FeatsBonus {
-        return new FeatsBonus(
-            featKeys.filter(feat =>
-                bonuses.some(bonus => bonus.#feats.has(feat)),
-            ),
-        );
+        return new FeatsBonus(bonuses.flatMap(bonus => bonus.#feats));
     }
 }
 
