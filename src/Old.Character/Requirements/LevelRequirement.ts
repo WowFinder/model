@@ -1,6 +1,6 @@
 import { sum } from '@wowfinder/ts-utils';
 import { type Requirement } from './base';
-import { combineClassBonuses } from '../../Creature';
+import { combineClassBonuses } from '../../Creature/Progression/combineProgressionBonuses';
 import { type CharacterBaseInterface } from '../../Character';
 
 abstract class LevelRequirementBase

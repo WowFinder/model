@@ -23,18 +23,16 @@ describe('FeatsBonus', () => {
 
     it('should construct a bonus with some martial feats', () => {
         expect(martialFeatsBonus.isZero).toBe(false);
-        expect(martialFeatsBonus.get(Feat.powerAttack)).toBe(true);
-        expect(martialFeatsBonus.get(Feat.cleave)).toBe(true);
+        expect(martialFeatsBonus.get(Feat.powerAttack)).toBe(1);
+        expect(martialFeatsBonus.get(Feat.cleave)).toBe(1);
     });
 
     it('should construct a bonus with some caster feats', () => {
         expect(casterFeatsBonus.isZero).toBe(false);
-        expect(casterFeatsBonus.get(Feat.combatCasting)).toBe(true);
-        expect(casterFeatsBonus.get(Feat.arcaneArmorTraining)).toBe(true);
-        expect(casterFeatsBonus.get(Feat.spellFocusEvocation)).toBe(true);
-        expect(casterFeatsBonus.get(Feat.greaterSpellFocusEvocation)).toBe(
-            true,
-        );
+        expect(casterFeatsBonus.get(Feat.combatCasting)).toBe(1);
+        expect(casterFeatsBonus.get(Feat.arcaneArmorTraining)).toBe(1);
+        expect(casterFeatsBonus.get(Feat.spellFocusEvocation)).toBe(1);
+        expect(casterFeatsBonus.get(Feat.greaterSpellFocusEvocation)).toBe(1);
     });
 
     it('should return a zero bonus', () => {
@@ -47,12 +45,12 @@ describe('FeatsBonus', () => {
             martialFeatsBonus,
             casterFeatsBonus,
         );
-        expect(maxBonus.get(Feat.powerAttack)).toBe(true);
-        expect(maxBonus.get(Feat.cleave)).toBe(true);
-        expect(maxBonus.get(Feat.combatCasting)).toBe(true);
-        expect(maxBonus.get(Feat.arcaneArmorTraining)).toBe(true);
-        expect(maxBonus.get(Feat.spellFocusEvocation)).toBe(true);
-        expect(maxBonus.get(Feat.greaterSpellFocusEvocation)).toBe(true);
-        expect(maxBonus.get(Feat.dodge)).toBe(false);
+        expect(maxBonus.get(Feat.powerAttack)).toBe(1);
+        expect(maxBonus.get(Feat.cleave)).toBe(1);
+        expect(maxBonus.get(Feat.combatCasting)).toBe(1);
+        expect(maxBonus.get(Feat.arcaneArmorTraining)).toBe(1);
+        expect(maxBonus.get(Feat.spellFocusEvocation)).toBe(1);
+        expect(maxBonus.get(Feat.greaterSpellFocusEvocation)).toBe(1);
+        expect(maxBonus.get(Feat.dodge)).toBe(0);
     });
 });
