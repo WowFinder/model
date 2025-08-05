@@ -63,7 +63,9 @@ describe('Choice', () => {
         const choices: FeatChoice[] = [
             {
                 feat: 'endurance',
-                class: await mockAssetResolver.resolveClass('mocked-melee-class'),
+                class: await mockAssetResolver.resolveClass(
+                    'mocked-melee-class',
+                ),
                 level: 1,
             },
             { feat: 'run', class: undefined, level: 2 },
@@ -76,4 +78,3 @@ describe('Choice', () => {
         ]);
     });
 });
-
