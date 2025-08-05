@@ -46,7 +46,6 @@ const mockedBruteCharacter: CharacterBaseInterface = {
 };
 
 export {
-    mockBasicCreatureProfile,
     mockBruteCreatureProfile,
     mockedBruteCharacter,
 };

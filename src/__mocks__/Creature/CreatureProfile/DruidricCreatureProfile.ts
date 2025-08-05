@@ -46,7 +46,6 @@ const mockedDruidCharacter: CharacterBaseInterface = {
 };
 
 export {
-    mockBasicCreatureProfile,
     mockDruidCreatureProfile,
     mockedDruidCharacter,
 };
