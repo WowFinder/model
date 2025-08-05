@@ -1,8 +1,8 @@
 import { RawStats } from '@wowfinder/asset-schemas';
 import { Stat } from '@wowfinder/ts-enums';
-import { zeroDefault } from '../../Creature/Stats';
+import { zeroDefault } from '../Creature/Stats/helpers';
 import { FunctionBasedRequirement, type Requirement } from './base';
-import { type CharacterBaseInterface } from '../../Character';
+import { type CharacterBaseInterface } from '../Character';
 
 class MinStatsRequirement implements RawStats, Requirement<RawStats> {
     readonly #min: RawStats;
@@ -40,6 +40,7 @@ class MinStatsRequirement implements RawStats, Requirement<RawStats> {
             .every(k => (value[k] ?? zeroDefault[k]) >= this.#min[k]);
     }
 }
+
 class MaxStatsRequirement implements RawStats, Requirement<RawStats> {
     readonly #max: RawStats;
     constructor(max: Partial<RawStats>) {

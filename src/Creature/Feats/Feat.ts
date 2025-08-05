@@ -63,8 +63,11 @@ const Feat = {
     ...weaponFeats,
 } as const;
 
+const featKeys = Object.keys(Feat) as Readonly<Array<keyof typeof Feat>>;
+Object.freeze(featKeys);
+
 type WeaponFeat = keyof typeof weaponFeats;
 type Feat = keyof typeof Feat;
 
-export { Feat, weaponFeats };
+export { Feat, featKeys, weaponFeats };
 export type { WeaponFeat, WeaponKey, WeaponFeatKeyPrefix };

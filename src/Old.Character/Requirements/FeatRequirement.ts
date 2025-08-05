@@ -1,6 +1,9 @@
 import { type CharacterBaseInterface } from '../../Character';
 import { Feat } from '../../Creature/Feats/Feat';
-import { type CharacterRequirements, type Requirement } from './base';
+import {
+    type CharacterRequirements,
+    type Requirement,
+} from '../../Requirements/base';
 
 class FeatRequirement implements Requirement<Iterable<Feat>> {
     readonly #feat: Feat;
