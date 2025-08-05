@@ -13,7 +13,9 @@ async function getClass(
     className: string | Class,
     resolver: AsyncAssetResolver,
 ): Promise<Class> {
-    return className instanceof Class ? className : resolver.resolveClass(className);
+    return className instanceof Class
+        ? className
+        : resolver.resolveClass(className);
 }
 
 export { getRace, getClass };

@@ -45,7 +45,4 @@ const mockedBruteCharacter: CharacterBaseInterface = {
     totalProfile: mockBruteCreatureProfile,
 };
 
-export {
-    mockBruteCreatureProfile,
-    mockedBruteCharacter,
-};
+export { mockBruteCreatureProfile, mockedBruteCharacter };

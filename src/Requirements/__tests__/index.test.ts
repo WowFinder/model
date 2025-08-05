@@ -35,5 +35,3 @@ describe('index', () => {
         expect(characterStatsRequirement).toBeDefined();
     });
 });
-
-

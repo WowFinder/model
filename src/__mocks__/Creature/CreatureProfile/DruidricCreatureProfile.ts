@@ -8,7 +8,6 @@ import { Inventory } from '../../../Item/Inventory';
 import { mockedRaceRawAsset } from '../race';
 import { mockBasicCreatureProfile } from './BasicCreatureProfile';
 
-
 const mockDruidCreatureProfile: CreatureProfile = {
     ...mockBasicCreatureProfile,
     stats: {
@@ -45,7 +44,4 @@ const mockedDruidCharacter: CharacterBaseInterface = {
     totalProfile: mockDruidCreatureProfile,
 };
 
-export {
-    mockDruidCreatureProfile,
-    mockedDruidCharacter,
-};
+export { mockDruidCreatureProfile, mockedDruidCharacter };

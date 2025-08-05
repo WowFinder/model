@@ -1,12 +1,12 @@
-import { Size, Skill, DamageType } from "@wowfinder/ts-enums";
-import { mkCounter } from "@wowfinder/ts-utils";
-import { Shapes } from "../../../Item";
-import { fullComputedSpellPower, fillSpellPowerValues } from "../../../Magic";
-import { CreatureProfile, SpeedsProfile } from "../../../Profile";
-import { Time } from "../../../Scalar";
-import { mockMeleeClass } from "../Class";
-import { mapEnum } from "./helpers";
-import { mockPersonalDetails } from "./PersonalDetails";
+import { Size, Skill, DamageType } from '@wowfinder/ts-enums';
+import { mkCounter } from '@wowfinder/ts-utils';
+import { Shapes } from '../../../Item';
+import { fullComputedSpellPower, fillSpellPowerValues } from '../../../Magic';
+import { CreatureProfile, SpeedsProfile } from '../../../Profile';
+import { Time } from '../../../Scalar';
+import { mockMeleeClass } from '../Class';
+import { mapEnum } from './helpers';
+import { mockPersonalDetails } from './PersonalDetails';
 
 const mockBasicCreatureProfile: CreatureProfile = {
     personal: mockPersonalDetails,
