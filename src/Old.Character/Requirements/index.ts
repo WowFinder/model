@@ -4,12 +4,12 @@ export {
     EmptyRequirement,
     or,
     and,
-} from './base';
+} from '../../Requirements/base';
 export {
     MinStatsRequirement,
     MaxStatsRequirement,
     characterStatsRequirement,
-} from './StatsRequirement';
+} from '../../Requirements/StatsRequirement';
 export {
     CharacterLevelRequirement,
     CasterLevelRequirement,

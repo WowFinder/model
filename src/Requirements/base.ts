@@ -1,4 +1,4 @@
-import { type CharacterBaseInterface } from '../../Character';
+import { type CharacterBaseInterface } from '../Character';
 
 abstract class Requirement<T> {
     abstract test(value: T): boolean;

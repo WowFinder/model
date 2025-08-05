@@ -2,7 +2,7 @@ import { FeatFlag } from '@wowfinder/ts-enums';
 import {
     type CharacterRequirements,
     getCharacterEmptyRequirement,
-} from '../../Old.Character/Requirements/base';
+} from '../../Requirements/base';
 import { type CharacterBaseInterface } from '../../Character';
 
 type FeatBuilder = {

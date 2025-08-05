@@ -1,5 +1,5 @@
 import type { ClassFeature } from '@wowfinder/ts-enums';
-import { Requirement } from './base';
+import { Requirement } from '../../Requirements/base';
 import { type CharacterBaseInterface } from '../../Character';
 
 class ClassFeatureRequirement extends Requirement<CharacterBaseInterface> {
