@@ -24,7 +24,7 @@ describe('Shapeshift', () => {
     describe('apply', () => {
         it('should throw a NotImplemented error', () => {
             const shapeshift = new ShapeshiftTest({ rank: 1 });
-            expect(() => shapeshift.apply({})).toThrowError(
+            expect(() => shapeshift.apply({})).toThrow(
                 'Not implemented yet',
             );
         });
