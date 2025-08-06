@@ -1,9 +1,6 @@
-import { type CharacterBaseInterface } from '../../Character';
-import { Feat } from '../../Creature/Feats/Feat';
-import {
-    type CharacterRequirements,
-    type Requirement,
-} from '../../Requirements/base';
+import { type CharacterBaseInterface } from '../Character';
+import { type Feat } from '../Creature/Feats/Feat';
+import { type CharacterRequirements, type Requirement } from './base';
 
 class FeatRequirement implements Requirement<Iterable<Feat>> {
     readonly #feat: Feat;
@@ -25,10 +22,9 @@ class CharacterFeatRequirement implements CharacterRequirements {
     }
 
     test(value: CharacterBaseInterface): boolean {
-        Object.entries(value.baseProfile.feats).some(
+        return Object.entries(value.baseProfile.feats).some(
             ([key, count]) => key === this.#feat && count >= this.#count,
         );
-        return false;
     }
 }
 

@@ -26,6 +26,10 @@ const mockBruteCreatureProfile: CreatureProfile = {
             },
         ],
     },
+    feats: {
+        diehard: 1,
+        toughness: 1,
+    },
 };
 
 const mockedBruteCharacter: CharacterBaseInterface = {
