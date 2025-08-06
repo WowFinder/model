@@ -7,6 +7,11 @@ import { Time } from '../../../Scalar';
 import { mockMeleeClass } from '../Class';
 import { mapEnum } from './helpers';
 import { mockPersonalDetails } from './PersonalDetails';
+import { MultiBonus } from '../../../Bonus';
+import { CharacterBaseInterface } from '../../../Character';
+import { Inventory } from '../../../Item/Inventory';
+import { Race } from '../../../Creature/Race';
+import { mockedRaceRawAsset } from '../race';
 
 const mockBasicCreatureProfile: CreatureProfile = {
     personal: mockPersonalDetails,
@@ -74,4 +79,16 @@ const mockBasicCreatureProfile: CreatureProfile = {
     traits: [],
 };
 
-export { mockBasicCreatureProfile };
+const mockedBasicCharacter: CharacterBaseInterface = {
+    baseProfile: mockBasicCreatureProfile,
+    key: 'mocked-basic-profile',
+    personal: mockPersonalDetails,
+    overrides: [],
+    race: new Race(mockedRaceRawAsset),
+    classProgression: [],
+    inventory: new Inventory({}),
+    totalBonuses: MultiBonus.zero,
+    totalProfile: mockBasicCreatureProfile,
+};
+
+export { mockBasicCreatureProfile, mockedBasicCharacter };
