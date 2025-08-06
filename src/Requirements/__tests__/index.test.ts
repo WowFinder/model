@@ -9,6 +9,9 @@ import {
     characterStatsRequirement,
     CharacterFeatRequirement,
     FeatRequirement,
+    CharacterLevelRequirement,
+    CasterLevelRequirement,
+    AttackBonusRequirement,
 } from '../index';
 
 describe('index', () => {
@@ -41,5 +44,14 @@ describe('index', () => {
     });
     it('should export FeatRequirement', () => {
         expect(FeatRequirement).toBeDefined();
+    });
+    it('should export CharacterLevelRequirement', () => {
+        expect(CharacterLevelRequirement).toBeDefined();
+    });
+    it('should export CasterLevelRequirement', () => {
+        expect(CasterLevelRequirement).toBeDefined();
+    });
+    it('should export AttackBonusRequirement', () => {
+        expect(AttackBonusRequirement).toBeDefined();
     });
 });
