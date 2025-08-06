@@ -7,6 +7,8 @@ import {
     MinStatsRequirement,
     MaxStatsRequirement,
     characterStatsRequirement,
+    CharacterFeatRequirement,
+    FeatRequirement,
 } from '../index';
 
 describe('index', () => {
@@ -33,5 +35,11 @@ describe('index', () => {
     });
     it('should export characterStatsRequirement', () => {
         expect(characterStatsRequirement).toBeDefined();
+    });
+    it('should export CharacterFeatRequirement', () => {
+        expect(CharacterFeatRequirement).toBeDefined();
+    });
+    it('should export FeatRequirement', () => {
+        expect(FeatRequirement).toBeDefined();
     });
 });

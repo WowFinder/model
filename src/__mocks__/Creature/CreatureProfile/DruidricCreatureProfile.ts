@@ -25,6 +25,9 @@ const mockDruidCreatureProfile: CreatureProfile = {
             },
         ],
     },
+    feats: {
+        spellFocusConjuration: 1,
+    },
 };
 
 const mockedDruidCharacter: CharacterBaseInterface = {

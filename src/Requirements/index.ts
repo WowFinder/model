@@ -10,3 +10,4 @@ export {
     MaxStatsRequirement,
     characterStatsRequirement,
 } from './StatsRequirement';
+export { CharacterFeatRequirement, FeatRequirement } from './FeatRequirement';
