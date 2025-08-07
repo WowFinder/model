@@ -6,7 +6,7 @@ type FeatChoiceBuilder = BaseChoiceBuilder & {
     validFeats: FeatSpec[];
 };
 
-class FeatChoice extends Choice {
+class FeatChoice extends Choice<FeatSpec> {
     static #validator(validFeats: FeatSpec[]) {
         return (value: any) => {
             value = feats[value as keyof typeof feats] || value;

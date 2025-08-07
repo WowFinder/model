@@ -31,7 +31,7 @@ type ChoiceSelectionBuilder<T> = {
     value: T;
 };
 class ChoiceSelection<T = any> {
-    readonly #choice: Choice;
+    readonly #choice: Choice<T>;
     readonly #value: T;
 
     constructor({ choice, value }: ChoiceSelectionBuilder<T>) {
