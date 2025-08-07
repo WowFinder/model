@@ -106,16 +106,14 @@ function applyPendingReqs(allFeats: { [key in Feat]: FeatSpec }): void {
     Object.entries(pendingReqs).forEach(([key, pending]) => {
         checkFeatKey(key);
         const featSpec = allFeats[key];
-        if (featSpec) {
-            _feat(
-                key,
-                allOf(
-                    featSpec.requirements,
-                    ...pending.map(f => new CharacterFeatRequirement(f)),
-                ),
-                featSpec.flags,
-            );
-        }
+        _feat(
+            key,
+            allOf(
+                featSpec.requirements,
+                ...pending.map(f => new CharacterFeatRequirement(f)),
+            ),
+            featSpec.flags,
+        );
     });
 }
 
