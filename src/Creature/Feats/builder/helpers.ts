@@ -1,16 +1,14 @@
 import { FeatFlag, Stat, ClassFeature } from '@wowfinder/ts-enums';
 import {
-    AttackBonusRequirement,
-    CasterLevelRequirement,
-    CharacterLevelRequirement,
-    ClassFeatureRequirement,
-} from '../../../Requirements';
-import {
     and as allOf,
     CharacterFeatRequirement,
     characterStatsRequirement,
     MinStatsRequirement,
     or as either,
+    AttackBonusRequirement,
+    CasterLevelRequirement,
+    CharacterLevelRequirement,
+    ClassFeatureRequirement,
 } from '../../../Requirements';
 import { Feat, type WeaponFeat, weaponFeats } from '../Feat';
 import { FeatSpec } from '../FeatSpec';
