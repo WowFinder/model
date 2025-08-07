@@ -206,5 +206,15 @@ describe('Dice', () => {
                 badMod.validate();
             }).toThrow('Dice modifier must be a number');
         });
+        it('should not throw an error for valid dice', () => {
+            const validDice = new Dice({
+                sides: 6,
+                qtty: 1,
+                fixedMod: 0,
+            });
+            expect(() => {
+                validDice.validate();
+            }).not.toThrow();
+        });
     });
 });

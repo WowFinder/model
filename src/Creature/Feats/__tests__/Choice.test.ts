@@ -53,6 +53,7 @@ describe('Choice', () => {
         const rawChoices: FeatChoiceExport[] = [
             { feat: 'endurance', class: 'mocked-melee-class', level: 1 },
             { feat: 'run', level: 2 },
+            { feat: 'unknown-feat', level: 3 }, // This should be ignored
         ];
 
         const choices = await parseFeatChoices(rawChoices, mockAssetResolver);

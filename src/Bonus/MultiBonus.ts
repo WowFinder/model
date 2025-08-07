@@ -83,9 +83,7 @@ class MultiBonus implements FullMultiBonus, JsonExportable<MultiBonusBuilder> {
     export(): JsonCompatible<MultiBonusBuilder> {
         const obj: MultiBonusBuilder = {};
         Object.keys(BonusType).forEach(type => {
-            if (this[type as BonusType]) {
-                obj[type as BonusType] = this[type as BonusType].export();
-            }
+            obj[type as BonusType] = this[type as BonusType].export();
         });
         return obj;
     }

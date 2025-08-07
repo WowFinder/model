@@ -1,16 +1,14 @@
 import { FeatFlag, Stat, ClassFeature } from '@wowfinder/ts-enums';
 import {
-    AttackBonusRequirement,
-    CasterLevelRequirement,
-    CharacterLevelRequirement,
-    ClassFeatureRequirement,
-} from '../../../Requirements';
-import {
     and as allOf,
     CharacterFeatRequirement,
     characterStatsRequirement,
     MinStatsRequirement,
     or as either,
+    AttackBonusRequirement,
+    CasterLevelRequirement,
+    CharacterLevelRequirement,
+    ClassFeatureRequirement,
 } from '../../../Requirements';
 import { Feat, type WeaponFeat, weaponFeats } from '../Feat';
 import { FeatSpec } from '../FeatSpec';
@@ -106,16 +104,14 @@ function applyPendingReqs(allFeats: { [key in Feat]: FeatSpec }): void {
     Object.entries(pendingReqs).forEach(([key, pending]) => {
         checkFeatKey(key);
         const featSpec = allFeats[key];
-        if (featSpec) {
-            _feat(
-                key,
-                allOf(
-                    featSpec.requirements,
-                    ...pending.map(f => new CharacterFeatRequirement(f)),
-                ),
-                featSpec.flags,
-            );
-        }
+        _feat(
+            key,
+            allOf(
+                featSpec.requirements,
+                ...pending.map(f => new CharacterFeatRequirement(f)),
+            ),
+            featSpec.flags,
+        );
     });
 }
 
