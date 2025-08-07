@@ -1,1 +1,0 @@
-export { ClassFeatureRequirement } from './FeatureRequirement';
