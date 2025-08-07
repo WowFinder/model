@@ -3,8 +3,8 @@ import {
     AttackBonusRequirement,
     CasterLevelRequirement,
     CharacterLevelRequirement,
+    ClassFeatureRequirement,
 } from '../../../Requirements';
-import { ClassFeatureRequirement } from '../../../Old.Character/Requirements';
 import {
     and as allOf,
     CharacterFeatRequirement,
