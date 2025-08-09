@@ -11,11 +11,7 @@ const builderByTypeKey: { [key: string]: any /* builder<Item> */ } = {
 
 const builderKeys = Object.keys(builderByTypeKey);
 
-const errors = {
-    badKey: (fqkey: string): Error =>
-        new Error(`Not a valid fqKey for Item: ${fqkey}`),
-    badData: (raw: any): Error => new Error(`Invalid item data: ${raw}`),
-};
+const badData = (raw: any): Error => new Error(`Invalid item data: ${raw}`);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function retrievePreloaded(fqKey: string): Item {
@@ -33,7 +29,7 @@ function buildItem(raw: any): Item {
     if (builderKeys.includes($type)) {
         return builderByTypeKey[$type](raw);
     } else {
-        throw errors.badData(raw);
+        throw badData(raw);
     }
 }
 

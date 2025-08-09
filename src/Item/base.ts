@@ -33,8 +33,10 @@ abstract class Item {
 
     static preBuild(raw: any): ItemBuilder {
         return {
-            label: (raw.label as string) || '',
-            rarity: (raw.rarity as Rarity) || Rarity.common,
+            label: `${(raw.label as string) ?? ''}`,
+            rarity: Object.values(Rarity).includes(raw.rarity)
+                ? (raw.rarity as Rarity)
+                : Rarity.common,
         };
     }
 }
