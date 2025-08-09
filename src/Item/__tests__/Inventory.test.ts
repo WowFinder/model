@@ -61,6 +61,13 @@ describe('Inventory class', () => {
             const copy = Inventory.copy(src);
             expect(copy).toEqual(src);
             expect(copy).not.toBe(src); // Ensure it's a new instance
+            // Ensure nested structures are copied, not shared
+            expect(copy.carried).not.toBe(src.carried);
+            expect(copy.owned).not.toBe(src.owned);
+            expect(copy.gear).not.toBe(src.gear);
+            // Money should also be a distinct instance (same value)
+            expect(copy.money).not.toBe(src.money);
+            expect(copy.money.raw).toBe(src.money.raw);
         });
     });
     describe('default builder', () => {
