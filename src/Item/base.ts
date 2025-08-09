@@ -34,7 +34,9 @@ abstract class Item {
     static preBuild(raw: any): ItemBuilder {
         return {
             label: `${(raw.label as string) || ''}`,
-            rarity: Rarity[raw.rarity as Rarity] || Rarity.common,
+            rarity: Object.values(Rarity).includes(raw.rarity)
+                ? (raw.rarity as Rarity)
+                : Rarity.common,
         };
     }
 }
