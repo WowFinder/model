@@ -53,6 +53,8 @@ class Inventory {
         return new Inventory({
             money: inventory.#money.raw,
             gear: inventory.gear,
+            carried: inventory.carried,
+            owned: inventory.owned,
         });
     }
 
