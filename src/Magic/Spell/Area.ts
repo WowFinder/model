@@ -1,42 +1,42 @@
 import { Debugger, Stringifier } from '@wowfinder/ts-utils';
 import { Length } from '../../Scalar';
 
-type SpellSelf = {
+type SpellAreaSelf = {
     spellAreaType: 'self';
 };
 
-type SpellPoint = {
+type SpellAreaPoint = {
     spellAreaType: 'point';
 };
 
-type SpellCone = {
+type SpellAreaCone = {
     spellAreaType: 'cone';
     radius: Length;
 };
 
-type SpellCube = {
+type SpellAreaCube = {
     spellAreaType: 'cube';
     size: Length;
 };
 
-type SpellLine = {
+type SpellAreaLine = {
     spellAreaType: 'line';
     length: Length;
 };
 
-type SpellSphere = {
+type SpellAreaSphere = {
     spellAreaType: 'sphere';
     radius: Length;
     selfCentered: boolean;
 };
 
 type SpellArea =
-    | SpellSelf
-    | SpellPoint
-    | SpellCone
-    | SpellCube
-    | SpellLine
-    | SpellSphere;
+    | SpellAreaSelf
+    | SpellAreaPoint
+    | SpellAreaCone
+    | SpellAreaCube
+    | SpellAreaLine
+    | SpellAreaSphere;
 
 function stringify(
     value: SpellArea,
@@ -66,16 +66,16 @@ function stringify(
 }
 
 const partialParsers = {
-    cone: (length?: Length): SpellCone | undefined =>
+    cone: (length?: Length): SpellAreaCone | undefined =>
         length ? { spellAreaType: 'cone', radius: length } : undefined,
-    cube: (length?: Length): SpellCube | undefined =>
+    cube: (length?: Length): SpellAreaCube | undefined =>
         length ? { spellAreaType: 'cube', size: length } : undefined,
-    line: (length?: Length): SpellLine | undefined =>
+    line: (length?: Length): SpellAreaLine | undefined =>
         length ? { spellAreaType: 'line', length } : undefined,
     sphere: {
         base:
             (selfCentered: boolean) =>
-            (length?: Length): SpellSphere | undefined =>
+            (length?: Length): SpellAreaSphere | undefined =>
                 length
                     ? {
                           spellAreaType: 'sphere',
@@ -83,15 +83,15 @@ const partialParsers = {
                           selfCentered,
                       }
                     : undefined,
-        point: (length?: Length): SpellSphere | undefined =>
+        point: (length?: Length): SpellAreaSphere | undefined =>
             partialParsers.sphere.base(false)(length),
-        self: (length?: Length): SpellSphere | undefined =>
+        self: (length?: Length): SpellAreaSphere | undefined =>
             partialParsers.sphere.base(true)(length),
     },
 };
 
 function tryParseArea(input: string): SpellArea | undefined {
-    const matches = /^([a-z.]+)\s*(\(.*\))?$/.exec(input.toLowerCase());
+    const matches = /^([a-z.]+)\s*(?:\((.*)\))?$/.exec(input.toLowerCase());
     if (!matches) {
         return undefined;
     }
@@ -126,12 +126,15 @@ function parseArea(
     return tryParseArea(input) ?? defaultValue;
 }
 
-export type {
-    SpellArea,
-    SpellPoint,
-    SpellCone,
-    SpellCube,
-    SpellLine,
-    SpellSphere,
+export {
+    type SpellArea,
+    type SpellAreaSelf,
+    type SpellAreaPoint,
+    type SpellAreaCone,
+    type SpellAreaCube,
+    type SpellAreaLine,
+    type SpellAreaSphere,
+    stringify,
+    tryParseArea,
+    parseArea,
 };
-export { stringify, tryParseArea, parseArea };
