@@ -12,13 +12,7 @@ import {
     type SpellAreaLine,
     type SpellAreaSphere,
 } from '../Area';
-
-function t(key: string, params?: Record<string, Length>): string {
-    if (params && Object.keys(params).length) {
-        return `${key} ${JSON.stringify(params)}`;
-    }
-    return key;
-}
+import { expectDefined, t } from './helpers';
 
 function mkLength(feet: number): Length {
     return new Length({ value: feet, unit: LengthUnit.foot });
@@ -176,7 +170,7 @@ describe('Area', () => {
         });
         it('should provide a default value for invalid strings when none is given', () => {
             const result = parseArea('invalid area');
-            expect(Object.hasOwn(result, 'spellAreaType')).toBe(true);
+            expectDefined(result.spellAreaType);
         });
     });
 });

@@ -48,7 +48,7 @@ class Spell extends SpellBase {
     }: RawSpellAsset) {
         super(rest);
         this.#key = key;
-        this.#ranks = ranks.map(rank => new SpellRank(rank));
+        this.#ranks = ranks.map(rank => new SpellRank({ ...rest, ...rank }));
         this.#descriptors = new Set(parseValidSpellDescriptors(descriptors));
         this.#components = components.map(c =>
             parseIfNeeded(c, parseSpellComponent),
