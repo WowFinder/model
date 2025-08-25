@@ -24,7 +24,11 @@ describe('Flags', () => {
                 'concentration',
             ];
             const result = parseValidFlags(inputs as any);
-            expect(result).toEqual(['dismissable', 'spellResistance', 'concentration']);
+            expect(result).toEqual([
+                'dismissable',
+                'spellResistance',
+                'concentration',
+            ]);
         });
         it('should return an empty array when no valid SpellFlag keys are present', () => {
             const inputs = ['invalid-key1', 'invalid-key2', 456];

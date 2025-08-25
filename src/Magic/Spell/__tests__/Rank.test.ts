@@ -19,4 +19,3 @@ describe('SpellRank', () => {
         expect(result.rank).toBe(0);
     });
 });
-
