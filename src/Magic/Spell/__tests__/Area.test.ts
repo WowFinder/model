@@ -13,7 +13,7 @@ import {
     type SpellAreaSphere,
 } from '../Area';
 
-function t(key: string, params?: {}): string {
+function t(key: string, params?: Length): string {
     if (params && Object.keys(params).length) {
         return `${key} ${JSON.stringify(params)}`;
     }
@@ -100,28 +100,28 @@ describe('Area', () => {
             const result = tryParseArea('cone(15 foot)');
             expect(result).toEqual({
                 spellAreaType: 'cone',
-                radius: { ...mkLength(15) },
+                radius: mkLength(15),
             });
         });
         it('should parse correctly a cube area value', () => {
             const result = tryParseArea('cube(20 foot)');
             expect(result).toEqual({
                 spellAreaType: 'cube',
-                size: { ...mkLength(20) },
+                size: mkLength(20),
             });
         });
         it('should parse correctly a line area value', () => {
             const result = tryParseArea('line(30 foot)');
             expect(result).toEqual({
                 spellAreaType: 'line',
-                length: { ...mkLength(30) },
+                length: mkLength(30),
             });
         });
         it('should parse correctly a sphere area value, self-centered', () => {
             const result = tryParseArea('sphere.self(40 foot)');
             expect(result).toEqual({
                 spellAreaType: 'sphere',
-                radius: { ...mkLength(40) },
+                radius: mkLength(40),
                 selfCentered: true,
             });
         });
@@ -129,7 +129,7 @@ describe('Area', () => {
             const result = tryParseArea('sphere.point(50 foot)');
             expect(result).toEqual({
                 spellAreaType: 'sphere',
-                radius: { ...mkLength(50) },
+                radius: mkLength(50),
                 selfCentered: false,
             });
         });
