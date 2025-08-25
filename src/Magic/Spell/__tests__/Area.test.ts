@@ -13,7 +13,7 @@ import {
     type SpellAreaSphere,
 } from '../Area';
 
-function t(key: string, params?: Length): string {
+function t(key: string, params?: Record<string, Length>): string {
     if (params && Object.keys(params).length) {
         return `${key} ${JSON.stringify(params)}`;
     }
