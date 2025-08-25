@@ -12,13 +12,7 @@ import {
     type SpellAreaLine,
     type SpellAreaSphere,
 } from '../Area';
-
-function t(key: string, params?: Record<string, Length>): string {
-    if (params && Object.keys(params).length) {
-        return `${key} ${JSON.stringify(params)}`;
-    }
-    return key;
-}
+import { t } from './helpers';
 
 function mkLength(feet: number): Length {
     return new Length({ value: feet, unit: LengthUnit.foot });
