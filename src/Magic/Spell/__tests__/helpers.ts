@@ -1,9 +1,6 @@
 import { StringFormatter } from '@wowfinder/ts-utils';
 
-const t: StringFormatter = (
-    key: string,
-    params?: Record<string, any>,
-): string => {
+const t: StringFormatter = (key, params): string => {
     if (params && Object.keys(params).length) {
         return `${key} ${JSON.stringify(params)}`;
     }

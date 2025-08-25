@@ -25,27 +25,36 @@ describe('Spell', () => {
                     (yellowSnowBall.flags ?? []).toSorted(),
                 );
             });
-            for (let rank of yellowSnowBall.ranks) {
-                it(`should have the correct values for rank ${rank.rank}`, () => {
-                    const spellRank = spell.ranks.find(
-                        r => r.rank === rank.rank,
+            describe('ranks', () => {
+                it('should have the correct number of ranks', () => {
+                    expect(spell.ranks.length).toBe(
+                        yellowSnowBall.ranks.length,
                     );
-                    expectDefined(spellRank);
-                    expect(spellRank.rank).toBe(rank.rank);
-                    const area = spellRank.area;
-                    expectDefined(area);
-                    expect(spellRank.castingTime).toBe(
-                        rank.castingTime ?? yellowSnowBall.castingTime ?? null,
-                    );
-                    expect(spellRank.range).toBe(
-                        rank.range ?? yellowSnowBall.range ?? null,
-                    );
-                    expect(spellRank.duration).toBe(
-                        rank.duration ?? yellowSnowBall.duration ?? null,
-                    );
-                    // TODO: save (pending implementations)
                 });
-            }
+                for (const rank of yellowSnowBall.ranks) {
+                    it(`should have the correct values for rank ${rank.rank}`, () => {
+                        const spellRank = spell.ranks.find(
+                            r => r.rank === rank.rank,
+                        );
+                        expectDefined(spellRank);
+                        expect(spellRank.rank).toBe(rank.rank);
+                        const area = spellRank.area;
+                        expectDefined(area);
+                        expect(spellRank.castingTime).toBe(
+                            rank.castingTime ??
+                                yellowSnowBall.castingTime ??
+                                null,
+                        );
+                        expect(spellRank.range).toBe(
+                            rank.range ?? yellowSnowBall.range ?? null,
+                        );
+                        expect(spellRank.duration).toBe(
+                            rank.duration ?? yellowSnowBall.duration ?? null,
+                        );
+                        // TODO: save (pending implementations)
+                    });
+                }
+            });
         });
     });
 });

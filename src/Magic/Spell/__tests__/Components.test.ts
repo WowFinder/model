@@ -7,8 +7,14 @@ jest.mock('../../../Item/builders', () => ({
 }));
 
 describe('Components', () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
     describe('parseSpellComponent', () => {
-        it.each(['verbal', 'somatic', 'material'])(
+        const coreComponentKeys = Object.keys(SpellCoreComponent).map(
+            k => k as SpellCoreComponent,
+        );
+        it.each(coreComponentKeys)(
             'should parse core component keyword %s',
             input => {
                 const result = parseSpellComponent(input);
@@ -21,6 +27,7 @@ describe('Components', () => {
         );
         it('should defer to the base item builder for any other input', () => {
             const result = parseSpellComponent('unknown');
+            expect(buildItem).toHaveBeenCalledTimes(1);
             expect(buildItem).toHaveBeenCalledWith('unknown');
             expect(result).toBeUndefined();
         });
