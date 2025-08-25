@@ -23,6 +23,7 @@ describe('Components', () => {
                         input as keyof typeof SpellCoreComponent
                     ],
                 );
+                expect(buildItem).not.toHaveBeenCalled();
             },
         );
         it('should defer to the base item builder for any other input', () => {
