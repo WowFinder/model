@@ -29,9 +29,13 @@ function stringify(value: SpellDuration, t: StringFormatter): string {
     } else if (value === 'concentration') {
         return t('magic.duration.concentration');
     } else if (value.durationType === 'fixed') {
-        return t('magic.duration.fixed', { duration: value.duration });
+        return t('magic.duration.fixed', {
+            duration: value.duration.toString(t),
+        });
     } else if (value.durationType === 'perLevel') {
-        return t('magic.duration.perLevel', { duration: value.duration });
+        return t('magic.duration.perLevel', {
+            duration: value.duration.toString(t),
+        });
     } else {
         return Debugger.unreachable(value);
     }
