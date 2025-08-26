@@ -50,7 +50,7 @@ describe('RankedSpell', () => {
                     // @ts-expect-error Testing missing school
                     school: undefined,
                 });
-            }).toThrow('Invalid school: ');
+            }).toThrow(/Invalid school/i);
         });
     });
     describe('getFullName', () => {

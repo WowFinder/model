@@ -14,6 +14,7 @@ describe('Range', () => {
                         efl,
                     );
                     expect(result.value).toBe(0);
+                    expectDefined(result.unit);
                 }
             }
         });
@@ -84,7 +85,7 @@ describe('Range', () => {
         it('should return correct values for `long` range', () => {
             const expectedValues = [
                 400, 440, 480, 520, 560, 600, 640, 680, 720, 760, 800, 840, 880,
-                920, 960, 1000, 1040, 1080, 1120, 1160, 1200, 1240,
+                920, 960, 1000, 1040, 1080, 1120, 1160, 1200,
             ];
             for (let size = -4; size <= 4; size++) {
                 for (let efl = 0; efl <= 20; efl++) {
