@@ -82,5 +82,4 @@ class RankedSpell extends SpellBase {
     }
 }
 
-export { RankedSpell };
-export type { RankedSpellBuilder };
+export { RankedSpell, type RankedSpellBuilder };
