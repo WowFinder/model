@@ -45,15 +45,13 @@ describe('Spell', () => {
                         const area = spellRank.area;
                         expectDefined(area);
                         expect(spellRank.castingTime).toBe(
-                            rank.castingTime ??
-                                yellowSnowBall.castingTime ??
-                                null,
+                            rank.castingTime ?? yellowSnowBall.castingTime,
                         );
                         expect(spellRank.range).toBe(
-                            rank.range ?? yellowSnowBall.range ?? null,
+                            rank.range ?? yellowSnowBall.range,
                         );
                         expect(spellRank.duration).toBe(
-                            rank.duration ?? yellowSnowBall.duration ?? null,
+                            rank.duration ?? yellowSnowBall.duration,
                         );
                         // TODO: save (pending implementations)
                     });
@@ -81,8 +79,11 @@ describe('Spell', () => {
             const spell = new Spell(notSoYellow);
             expect(spell).toBeInstanceOf(Spell);
             assertNonNil(spell.descriptors);
+            expect(spell.descriptors.length).toBe(0);
             assertNonNil(spell.components);
+            expect(spell.components.length).toBe(0);
             assertNonNil(spell.flags);
+            expect(spell.flags.length).toBe(0);
         });
         it('should throw if school is invalid / unparseable', () => {
             // @ts-expect-error explicitly testing fallback behaviour
@@ -92,19 +93,17 @@ describe('Spell', () => {
             } as RawSpellAsset;
             expect(() => new Spell(badSchool)).toThrow(/Invalid school/);
         });
-        it('should throw if a rank is missing mandatory properties', () => {
-            const incomplete = {
-                ...yellowSnowBall,
-                ranks: [
-                    {
-                        ...yellowSnowBall.ranks[0],
-                        castingTime: undefined,
-                    },
-                ],
-            } as RawSpellAsset;
-            expect(() => new Spell(incomplete)).toThrow(
-                /Invalid spell definition/,
-            );
-        });
+        it.each(['castingTime', 'range', 'duration'] as const)(
+            'should throw if %s is missing globally and in a rank',
+            prop => {
+                const incomplete = {
+                    ...yellowSnowBall,
+                    [prop]: undefined,
+                } as RawSpellAsset;
+                expect(() => new Spell(incomplete)).toThrow(
+                    /Invalid spell definition/,
+                );
+            },
+        );
     });
 });
