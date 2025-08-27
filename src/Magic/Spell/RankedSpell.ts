@@ -28,7 +28,7 @@ type RankedSpellBuilder = {
     components?: PossiblyString<SpellComponent>[];
     castingTime: PossiblyString<ActionTime>;
     range: PossiblyString<SpellRange>;
-    area?: PossiblyString<SpellArea>;
+    area: PossiblyString<SpellArea>;
     // effect: ???;
     // targets: SpellTarget[];
     duration: PossiblyString<SpellDuration>;

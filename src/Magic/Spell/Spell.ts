@@ -48,6 +48,7 @@ class Spell extends SpellBase {
                     );
                 }
             };
+            rankAssert(!!rank.area, 'Missing area');
             rankAssert(!!rank.castingTime, 'Missing casting time');
             rankAssert(!!rank.range, 'Missing range');
             rankAssert(!!rank.duration, 'Missing duration');
