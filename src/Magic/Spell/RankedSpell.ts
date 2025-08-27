@@ -4,7 +4,12 @@ import type {
     SpellFlag,
     SubSchool,
 } from '@wowfinder/ts-enums';
-import { StringFormatter, assertDefined, toRoman } from '@wowfinder/ts-utils';
+import {
+    PossiblyString,
+    StringFormatter,
+    assertDefined,
+    toRoman,
+} from '@wowfinder/ts-utils';
 import type { ActionTime } from '../../Action/ActionTime';
 import { fullParseSchool } from '../School';
 import type { SpellDuration } from './Duration';
@@ -17,18 +22,18 @@ import { SpellSave } from './SpellSave';
 type RankedSpellBuilder = {
     key: string;
     rank: number;
-    school: School | string;
-    subSchool?: SubSchool | string;
-    descriptors?: (SpellDescriptor | string)[];
-    components?: (SpellComponent | string)[];
-    castingTime: ActionTime | string;
-    range: SpellRange | string;
-    area?: SpellArea | string;
+    school: PossiblyString<School>;
+    subSchool?: PossiblyString<SubSchool>;
+    descriptors?: PossiblyString<SpellDescriptor>[];
+    components?: PossiblyString<SpellComponent>[];
+    castingTime: PossiblyString<ActionTime>;
+    range: PossiblyString<SpellRange>;
+    area?: PossiblyString<SpellArea>;
     // effect: ???;
     // targets: SpellTarget[];
-    duration: SpellDuration | string;
-    save?: SpellSave | string;
-    flags?: (SpellFlag | string)[];
+    duration: PossiblyString<SpellDuration>;
+    save?: PossiblyString<SpellSave>;
+    flags?: PossiblyString<SpellFlag>[];
 };
 
 class RankedSpell extends SpellBase {
