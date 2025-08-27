@@ -27,8 +27,6 @@ type RankedSpellBuilder = {
     // effect: ???;
     // targets: SpellTarget[];
     duration: SpellDuration | string;
-    // effect: ???;
-    // targets: SpellTarget[];
     save?: SpellSave | string;
     flags?: (SpellFlag | string)[];
 };

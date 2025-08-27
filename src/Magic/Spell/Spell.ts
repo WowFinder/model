@@ -117,8 +117,6 @@ class Spell extends SpellBase {
         );
         assertDefined(rankObj.range, `Missing range for ${this.#key}:${rank}`);
         const builder = {
-            // TODO: This may break if / when area and/or components are not really strings
-            //   Ideally, the fix should be made in RankedSpell to accept pre-built args
             key: this.#key,
             rank,
             area: rankObj.area,
