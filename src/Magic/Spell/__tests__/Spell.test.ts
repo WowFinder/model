@@ -99,6 +99,10 @@ describe('Spell', () => {
                 const incomplete = {
                     ...yellowSnowBall,
                     [prop]: undefined,
+                    ranks: yellowSnowBall.ranks.map(r => ({
+                        ...r,
+                        [prop]: undefined,
+                    })),
                 } as RawSpellAsset;
                 expect(() => new Spell(incomplete)).toThrow(
                     /Invalid spell definition/,
