@@ -16,7 +16,7 @@ type SpellBaseBuilder = {
     // effect: ???;
     // targets: SpellTarget[];
     duration?: PossiblyString<SpellDuration>;
-    // savingThrow?: Save || false;
+    // save?: Save || false;
     flags?: PossiblyString<SpellFlag>[];
 };
 
@@ -26,8 +26,13 @@ abstract class SpellBase implements SpellBaseBuilder {
     readonly #area?: SpellArea;
     // #effect, #targets
     readonly #duration?: SpellDuration;
-    // #savingThrow
-    constructor({ castingTime, range, area, duration }: RawSpellBase) {
+    // #save
+    constructor({
+        castingTime,
+        range,
+        area,
+        duration,
+    }: RawSpellBase | SpellBaseBuilder) {
         this.#castingTime = parseIfNeeded(castingTime, ActionTime.tryParse);
         this.#range = parseIfNeeded(range, SpellRange.tryParse);
         this.#area = parseIfNeeded(area, parseArea);

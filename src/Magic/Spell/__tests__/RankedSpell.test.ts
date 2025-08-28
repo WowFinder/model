@@ -7,6 +7,7 @@ import { toRoman } from '@wowfinder/ts-utils';
 const yellowSnowBallRank2Builder = {
     key: 'yellowSnowBall',
     ...yellowSnowBall.ranks[1],
+    area: yellowSnowBall.ranks[1].area ?? 'point',
     range: yellowSnowBall.range ?? 'touch',
     duration: yellowSnowBall.duration ?? 'instantaneous',
     castingTime: yellowSnowBall.castingTime ?? 'standard',

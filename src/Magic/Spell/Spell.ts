@@ -9,24 +9,10 @@ import { SpellBase } from './base';
 import { SpellRank } from './Rank';
 import { RankedSpell, type RankedSpellBuilder } from './RankedSpell';
 import { RawSpellAsset } from '@wowfinder/asset-schemas';
-import { parseIfNeeded } from '@wowfinder/ts-utils';
+import { assertDefined, parseIfNeeded } from '@wowfinder/ts-utils';
 import { SpellComponent, parseSpellComponent } from './Components';
 import { parseValidSpellDescriptors } from './Descriptor';
 import { parseValidFlags } from './Flags';
-
-type Spells = { [key: string]: Spell };
-
-function getFirstDefined<T>(
-    failMessage: string,
-    ...args: (T | undefined)[]
-): T {
-    for (const arg of args) {
-        if (arg !== undefined) {
-            return arg;
-        }
-    }
-    throw new Error(failMessage);
-}
 
 class Spell extends SpellBase {
     readonly #key: string;
@@ -62,12 +48,10 @@ class Spell extends SpellBase {
                     );
                 }
             };
-            rankAssert(
-                !!rank.castingTime || !!this.castingTime,
-                'Missing casting time',
-            );
-            rankAssert(!!rank.range || !!this.range, 'Missing range');
-            rankAssert(!!rank.duration || !!this.duration, 'Missing duration');
+            rankAssert(!!rank.area, 'Missing area');
+            rankAssert(!!rank.castingTime, 'Missing casting time');
+            rankAssert(!!rank.range, 'Missing range');
+            rankAssert(!!rank.duration, 'Missing duration');
         }
         const schoolParsed = fullParseSchool(school ?? '');
         if (!schoolParsed) {
@@ -122,22 +106,26 @@ class Spell extends SpellBase {
         if (!rankObj) {
             throw new Error(`Invalid rank ${rank} for ${this.#key}`);
         }
-        const getProp = <T>(prop: keyof SpellRank & keyof Spell): T => {
-            return getFirstDefined<T>(
-                `Missing ${prop} for ${this.#key}:${rank}`,
-                rankObj[prop] as T,
-                this[prop] as T,
-            );
-        };
+
+        assertDefined(rankObj.area, `Missing area for ${this.#key}:${rank}`);
+        assertDefined(
+            rankObj.castingTime,
+            `Missing casting time for ${this.#key}:${rank}`,
+        );
+        assertDefined(
+            rankObj.duration,
+            `Missing duration for ${this.#key}:${rank}`,
+        );
+        assertDefined(rankObj.range, `Missing range for ${this.#key}:${rank}`);
         const builder = {
             key: this.#key,
             rank,
-            area: (rankObj.area ?? this.area) as any,
-            castingTime: getProp('castingTime'),
-            components: this.#components as any,
+            area: rankObj.area,
+            castingTime: rankObj.castingTime,
+            components: this.#components,
             descriptors: [...this.#descriptors],
-            duration: getProp('duration'),
-            range: getProp('range'),
+            duration: rankObj.duration,
+            range: rankObj.range,
             flags: [...this.#flags],
             school: this.school,
         } satisfies RankedSpellBuilder;
@@ -146,24 +134,6 @@ class Spell extends SpellBase {
 
     get fullRanks(): RankedSpell[] {
         return this.#ranks.map(rank => this.getRank(rank.rank));
-    }
-
-    static build(raw: any): Spell {
-        return new Spell(raw);
-    }
-
-    static load(/* reThrowErrors = false */): Spells {
-        throw new Error('Not implemented');
-    }
-
-    static byKey(key: string): Spell;
-    static byKey(key: string, rank: number): RankedSpell;
-    static byKey(key: string, rank?: number): Spell | RankedSpell {
-        const spell = this.load()[key];
-        if (!spell) {
-            throw new Error(`Invalid spell key: ${key}`);
-        }
-        return rank === undefined ? spell : spell.getRank(rank);
     }
 }
 
