@@ -1,7 +1,7 @@
 import { Stat } from '@wowfinder/ts-enums';
 import { Feat } from '../../Feat';
 import type { FeatSpec } from '../../FeatSpec';
-import { CombatMobilityFeat } from '../../core/combat/mobility';
+import { type CombatMobilityFeat } from '../../core/combat/mobility';
 import { build, req } from '../helpers';
 
 const combatMobilityFeats: { [key in CombatMobilityFeat]: FeatSpec } = {

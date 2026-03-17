@@ -1,4 +1,4 @@
-import { RawCreatureAsset } from '@wowfinder/asset-schemas/Creature/base';
+import { type RawCreatureAsset } from '@wowfinder/asset-schemas/Creature/base';
 import { Alignment, Skill } from '@wowfinder/ts-enums';
 import { baseDefault } from '../../Creature/Stats/helpers';
 

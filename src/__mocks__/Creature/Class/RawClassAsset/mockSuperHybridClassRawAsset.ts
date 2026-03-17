@@ -1,4 +1,4 @@
-import { RawClassAsset } from '@wowfinder/asset-schemas';
+import { type RawClassAsset } from '@wowfinder/asset-schemas';
 import { ClassTier, Skill } from '@wowfinder/ts-enums';
 import { mockMeleeClassRawAsset } from './mockMeleeClassRawAsset';
 import { mockArcaneClassRawAsset } from './mockArcaneClassRawAsset';

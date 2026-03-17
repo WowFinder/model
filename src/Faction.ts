@@ -1,4 +1,4 @@
-import { Reputation } from '@wowfinder/ts-enums';
+import { type Reputation } from '@wowfinder/ts-enums';
 
 const initialHatedScore = -42000;
 

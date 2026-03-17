@@ -1,4 +1,4 @@
-import { Rarity } from '@wowfinder/ts-enums';
+import { type Rarity } from '@wowfinder/ts-enums';
 
 type ByRarity<Values> = Readonly<{ [key in Rarity]: Values }>;
 

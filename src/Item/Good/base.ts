@@ -1,5 +1,5 @@
-import { Money, asMoney } from '../Money';
-import { Item, ItemBuilder } from '../base';
+import { type Money, asMoney } from '../Money';
+import { Item, type ItemBuilder } from '../base';
 import { rarityMultipliers } from '../Rarity';
 import { Rarity } from '@wowfinder/ts-enums';
 

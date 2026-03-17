@@ -2,7 +2,7 @@ import { BonusType } from '@wowfinder/ts-enums';
 import { TypedSimpleBonus, type SimpleBonusBuilder } from '../../../Bonus';
 import { Mass, Time } from '../../../Scalar';
 import { Consumable } from '../base';
-import { CraftableConsumable, CraftableConsumableBuilder } from './base';
+import { CraftableConsumable, type CraftableConsumableBuilder } from './base';
 
 type ElixirBuilder = CraftableConsumableBuilder & {
     duration: string;

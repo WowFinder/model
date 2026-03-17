@@ -3,8 +3,8 @@ import { TypedSimpleBonus, type SimpleBonusBuilder } from '../../../Bonus';
 import { Dice } from '../../../Dice';
 import { Mass, Time } from '../../../Scalar';
 import { Consumable } from '../base';
-import { PotionBuilder, RestoreValues } from './Potion';
-import { CraftableConsumable, CraftableConsumableBuilder } from './base';
+import { type PotionBuilder, type RestoreValues } from './Potion';
+import { CraftableConsumable, type CraftableConsumableBuilder } from './base';
 
 type FoodBuilder = CraftableConsumableBuilder &
     PotionBuilder & {

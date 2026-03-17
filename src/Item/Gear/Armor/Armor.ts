@@ -1,7 +1,7 @@
-import { ArmorFlags, ArmorType } from '@wowfinder/ts-enums';
+import { type ArmorFlags, ArmorType } from '@wowfinder/ts-enums';
 import { MultiBonus } from '../../../Bonus/MultiBonus';
 import { Gear } from '../base';
-import { ArmorBuilder, armorPreBuild } from './builder';
+import { type ArmorBuilder, armorPreBuild } from './builder';
 
 class Armor extends Gear {
     readonly #type: ArmorType;

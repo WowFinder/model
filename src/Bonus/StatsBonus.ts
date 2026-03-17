@@ -1,6 +1,6 @@
-import { RawStats } from '@wowfinder/asset-schemas';
+import { type RawStats } from '@wowfinder/asset-schemas';
 import { addStatSets } from '../Creature/Stats/helpers';
-import { JsonExportable, JsonCompatible } from '@wowfinder/ts-utils';
+import { type JsonExportable, type JsonCompatible } from '@wowfinder/ts-utils';
 import { Stat } from '@wowfinder/ts-enums';
 
 class StatsBonus implements RawStats, JsonExportable<RawStats> {

@@ -1,16 +1,16 @@
 import {
-    School,
-    SpellDescriptor,
-    SpellFlag,
-    SubSchool,
+    type School,
+    type SpellDescriptor,
+    type SpellFlag,
+    type SubSchool,
 } from '@wowfinder/ts-enums';
 import { fullParseSchool } from '../School';
 import { SpellBase } from './base';
 import { SpellRank } from './Rank';
 import { RankedSpell, type RankedSpellBuilder } from './RankedSpell';
-import { RawSpellAsset } from '@wowfinder/asset-schemas';
+import { type RawSpellAsset } from '@wowfinder/asset-schemas';
 import { assertDefined, parseIfNeeded } from '@wowfinder/ts-utils';
-import { SpellComponent, parseSpellComponent } from './Components';
+import { type SpellComponent, parseSpellComponent } from './Components';
 import { parseValidSpellDescriptors } from './Descriptor';
 import { parseValidFlags } from './Flags';
 

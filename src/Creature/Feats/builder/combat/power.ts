@@ -1,5 +1,5 @@
 import { Stat } from '@wowfinder/ts-enums';
-import { CombatPowerFeat } from '../../core/combat/power';
+import { type CombatPowerFeat } from '../../core/combat/power';
 import { Feat } from '../../Feat';
 import type { FeatSpec } from '../../FeatSpec';
 import { build, req } from '../helpers';

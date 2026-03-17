@@ -1,4 +1,4 @@
-import { Skill, Stat } from '@wowfinder/ts-enums';
+import { type Skill, Stat } from '@wowfinder/ts-enums';
 import { SkillSpec } from './SkillSpec';
 
 function mkSkill(

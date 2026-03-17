@@ -1,4 +1,4 @@
-import { RawPersonalDetails } from '@wowfinder/asset-schemas';
+import { type RawPersonalDetails } from '@wowfinder/asset-schemas';
 import { Alignment, TimeUnit } from '@wowfinder/ts-enums';
 import type { Length, Mass, Time } from '../../Scalar';
 import * as builders from './builders';

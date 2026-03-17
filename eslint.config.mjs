@@ -1,26 +1,15 @@
 import prettier from 'eslint-plugin-prettier';
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import misc from 'eslint-plugin-misc';
-import istanbul from 'eslint-plugin-istanbul';
-import stylisticJs from '@stylistic/eslint-plugin-js';
-import deprecationPlugin from 'eslint-plugin-deprecation';
+import stylisticJs from '@stylistic/eslint-plugin';
 import globals from 'globals';
-import tsParser from '@typescript-eslint/parser';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import js from '@eslint/js';
-import { fixupPluginRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all,
-});
+import { defineConfig } from 'eslint/config';
+import ts from 'typescript-eslint';
 
 export default [
+    ...defineConfig(
+        js.configs.recommended,
+        ts.configs.recommended,
+    ),
     {
         ignores: [
             '*/.js',
@@ -36,15 +25,10 @@ export default [
             '**/.yarn',
         ],
     },
-    ...compat.extends(),
     {
         plugins: {
             prettier,
-            '@typescript-eslint': typescriptEslint,
-            ['deprecation']: fixupPluginRules(deprecationPlugin),
             '@stylistic/js': stylisticJs,
-            misc,
-            istanbul,
         },
 
         languageOptions: {
@@ -54,7 +38,6 @@ export default [
                 ...globals.jest,
             },
 
-            parser: tsParser,
             ecmaVersion: 12,
             sourceType: 'module',
 
@@ -76,9 +59,6 @@ export default [
                     skipComments: true,
                 },
             ],
-            'istanbul/no-ignore-file': 'error',
-            'istanbul/prefer-ignore-reason': 'error',
-            'deprecation/deprecation': 'warn',
             quotes: [
                 'error',
                 'single',
@@ -118,10 +98,6 @@ export default [
 
             complexity: ['error', 15],
             '@typescript-eslint/no-non-null-assertion': 'off',
-            // https://iliubinskii.github.io/eslint-plugin-misc/#rules
-            'misc/class-match-filename': 'warn',
-            'misc/no-shadow': 'warn',
-            'misc/typescript/no-unsafe-object-assignment': 'error',
         },
     },
     {
@@ -129,7 +105,6 @@ export default [
 
         rules: {
             '@typescript-eslint/no-empty-function': 'off',
-            'deprecation/deprecation': 'off',
             'max-lines': [
                 'error',
                 {
@@ -138,8 +113,6 @@ export default [
                     skipComments: true,
                 },
             ],
-            'misc/typescript/no-unsafe-object-assignment': 'off',
-            'misc/class-match-filename': 'off',
         },
     },
 ];

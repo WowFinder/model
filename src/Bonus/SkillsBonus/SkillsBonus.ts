@@ -1,14 +1,16 @@
-import { RawSkills } from '@wowfinder/asset-schemas';
+import { type RawSkills } from '@wowfinder/asset-schemas';
 import { Skill } from '@wowfinder/ts-enums';
-import { JsonCompatible, JsonExportable, sum } from '@wowfinder/ts-utils';
+import {
+    type JsonCompatible,
+    type JsonExportable,
+    sum,
+} from '@wowfinder/ts-utils';
 import { SkillsBonusMapped } from './SkillsBonusMapped';
 
 class SkillsBonus
     extends SkillsBonusMapped
     implements JsonExportable<RawSkills>
 {
-    // eslint can't detect the access level change in this override
-    /* eslint-disable-next-line  no-useless-constructor */
     constructor(raw: Partial<RawSkills>) {
         super(raw);
     }

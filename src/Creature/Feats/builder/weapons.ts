@@ -5,7 +5,7 @@ import {
     SimpleWeaponProficiency,
 } from '@wowfinder/ts-enums';
 import { capitalizeFirstLetter } from '@wowfinder/ts-utils';
-import { WeaponFeat, WeaponKey } from '../Feat';
+import { type WeaponFeat, type WeaponKey } from '../Feat';
 import type { FeatSpec } from '../FeatSpec';
 import { allOf, checkWeaponFeatKey, feat, req } from './helpers';
 

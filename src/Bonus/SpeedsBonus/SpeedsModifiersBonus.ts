@@ -1,5 +1,9 @@
-import { JsonCompatible, JsonExportable, sum } from '@wowfinder/ts-utils';
-import { SpeedsModifiers } from '@wowfinder/asset-schemas';
+import {
+    type JsonCompatible,
+    type JsonExportable,
+    sum,
+} from '@wowfinder/ts-utils';
+import { type SpeedsModifiers } from '@wowfinder/asset-schemas';
 import { Speed } from '../../Scalar';
 
 type SpeedsModifiersBonusBuilder = Partial<SpeedsModifiers>;

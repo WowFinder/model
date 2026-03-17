@@ -1,8 +1,8 @@
-import { Stat } from '@wowfinder/ts-enums';
+import { type Stat } from '@wowfinder/ts-enums';
 import { Dice } from '../Dice';
-import { DamageModifier, computeModifier } from './DamageModifier';
-import { DamageRollArguments } from './DamageRollArguments';
-import { DamageComponentBaseBuilder, DamageComponentBase } from './base';
+import { type DamageModifier, computeModifier } from './DamageModifier';
+import { type DamageRollArguments } from './DamageRollArguments';
+import { type DamageComponentBaseBuilder, DamageComponentBase } from './base';
 
 type DamageComponentValueBuilder = DamageComponentBaseBuilder & {
     total: number;

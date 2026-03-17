@@ -1,4 +1,9 @@
-import { Stat, StatGroup, MentalStat, PhysicalStat } from '@wowfinder/ts-enums';
+import {
+    type Stat,
+    StatGroup,
+    MentalStat,
+    PhysicalStat,
+} from '@wowfinder/ts-enums';
 
 const statGroups = {
     [StatGroup.physical]: Object.keys(PhysicalStat),

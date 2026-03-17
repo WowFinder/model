@@ -1,4 +1,4 @@
-import { RawSkills } from '@wowfinder/asset-schemas';
+import { type RawSkills } from '@wowfinder/asset-schemas';
 
 const skillsBonusDefaultBuilder: Partial<RawSkills> = {} as const;
 

@@ -1,5 +1,5 @@
 import type { SkillSpec } from './SkillSpec';
-import { SkillTotalBuilder } from './builders';
+import { type SkillTotalBuilder } from './builders';
 import { statMod, baseDefault } from '../Stats';
 
 const classTrainedBonus = 3;

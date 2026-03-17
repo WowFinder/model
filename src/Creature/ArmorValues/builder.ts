@@ -1,5 +1,5 @@
-import { Size } from '@wowfinder/ts-enums';
-import { PartialStatBlock } from '../Stats';
+import { type Size } from '@wowfinder/ts-enums';
+import { type PartialStatBlock } from '../Stats';
 
 type ArmorValuesBuilder = {
     gear?: number;

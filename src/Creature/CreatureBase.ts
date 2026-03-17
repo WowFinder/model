@@ -1,13 +1,13 @@
 import {
-    RawClassEntries,
-    RawCreatureAsset,
+    type RawClassEntries,
+    type RawCreatureAsset,
     type RawFeatSelections,
-    RawStats,
+    type RawStats,
 } from '@wowfinder/asset-schemas';
 import type { ClassEntry, ClassEntries } from './Class';
 import type { Race } from './Race';
-import { importPersonalDetails, PersonalDetails } from './Personal';
-import { AsyncAssetResolver } from '../Assets';
+import { importPersonalDetails, type PersonalDetails } from './Personal';
+import { type AsyncAssetResolver } from '../Assets';
 import { type Feat } from './Feats/Feat';
 
 type CreatureBaseBuilder = {

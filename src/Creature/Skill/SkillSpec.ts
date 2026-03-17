@@ -1,5 +1,5 @@
-import { Skill, Stat } from '@wowfinder/ts-enums';
-import { SkillSpecBuilder, SkillTotalBuilder } from './builders';
+import { type Skill, Stat } from '@wowfinder/ts-enums';
+import { type SkillSpecBuilder, type SkillTotalBuilder } from './builders';
 import { computeSkillTotal } from './helpers';
 
 /** @immutable */

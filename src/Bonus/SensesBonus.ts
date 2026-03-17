@@ -1,4 +1,4 @@
-import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
+import { type JsonCompatible, type JsonExportable } from '@wowfinder/ts-utils';
 
 type SensesBonusBuilder = {
     darkVision?: number;

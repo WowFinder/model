@@ -7,7 +7,7 @@ import { type ProgressionProfile } from './ProgressionProfile';
 import { type SpeedsProfile } from './SpeedsProfile';
 import { type VitalsProfile } from './VitalsProfile';
 import {
-    TraitsProfile,
+    type TraitsProfile,
     type ClassFeaturesProfile,
     type FeatsProfile,
     type ResistancesProfile,

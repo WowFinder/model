@@ -1,7 +1,7 @@
 import { sum } from '@wowfinder/ts-utils';
 import { Mass } from '../../Scalar';
 import { MassUnit } from '@wowfinder/ts-enums';
-import { RawStats } from '@wowfinder/asset-schemas';
+import { type RawStats } from '@wowfinder/asset-schemas';
 
 function statMod(stat: number): number {
     return Math.floor(stat / 2 - 5);

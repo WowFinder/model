@@ -1,13 +1,15 @@
-import { JsonCompatible, JsonExportable, sum } from '@wowfinder/ts-utils';
+import {
+    type JsonCompatible,
+    type JsonExportable,
+    sum,
+} from '@wowfinder/ts-utils';
 type ModeSpellPowerBonusBuilder = {
     arcane?: number;
     divine?: number;
     spontaneous?: number;
 };
 
-class ModeSpellPowerBonus
-    implements JsonExportable<ModeSpellPowerBonusBuilder>
-{
+class ModeSpellPowerBonus implements JsonExportable<ModeSpellPowerBonusBuilder> {
     readonly #arcane: number;
     readonly #divine: number;
     readonly #spontaneous: number;

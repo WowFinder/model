@@ -3,7 +3,7 @@ import {
     EnergyType,
     SpellDescriptor,
 } from '@wowfinder/ts-enums';
-import { Stringifier } from '@wowfinder/ts-utils';
+import { type Stringifier } from '@wowfinder/ts-utils';
 
 function tryParseSpellDescriptor(input: string): SpellDescriptor | undefined {
     return SpellDescriptor[input as keyof typeof SpellDescriptor];

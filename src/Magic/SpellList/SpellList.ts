@@ -1,6 +1,6 @@
-import { RawSpellListAsset } from '@wowfinder/asset-schemas';
-import { ForcedKeyResolver } from '@wowfinder/ts-utils';
-import { Spell } from '../Spell/Spell';
+import { type RawSpellListAsset } from '@wowfinder/asset-schemas';
+import { type ForcedKeyResolver } from '@wowfinder/ts-utils';
+import { type Spell } from '../Spell/Spell';
 
 type SpellListEntry = {
     spell: Spell;

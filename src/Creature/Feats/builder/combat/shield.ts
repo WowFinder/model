@@ -1,6 +1,6 @@
 import { Feat } from '../../Feat';
 import type { FeatSpec } from '../../FeatSpec';
-import { CombatShieldFeat } from '../../core/combat/shield';
+import { type CombatShieldFeat } from '../../core/combat/shield';
 import { build, req } from '../helpers';
 
 const combatShieldFeats: { [key in CombatShieldFeat]: FeatSpec } = {

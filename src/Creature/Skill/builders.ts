@@ -1,5 +1,5 @@
-import { RawStats } from '@wowfinder/asset-schemas';
-import { Skill, Stat } from '@wowfinder/ts-enums';
+import { type RawStats } from '@wowfinder/asset-schemas';
+import { type Skill, type Stat } from '@wowfinder/ts-enums';
 
 type SkillSpecBuilder = {
     key: Skill;

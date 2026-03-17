@@ -1,4 +1,4 @@
-import { JsonExportable } from '@wowfinder/ts-utils';
+import { type JsonExportable } from '@wowfinder/ts-utils';
 import { Time } from '../../Scalar';
 import {
     addVitalBonus,

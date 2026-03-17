@@ -1,8 +1,8 @@
-import { JsonCompatible, sum } from '@wowfinder/ts-utils';
+import { type JsonCompatible, sum } from '@wowfinder/ts-utils';
 import { ResistancesBonus } from './ResistancesBonus';
 import { SensesBonus } from './SensesBonus';
 import type { SimpleBonus } from './SimpleBonus';
-import { SimpleBonusBuilder } from './SimpleBonus.builder';
+import { type SimpleBonusBuilder } from './SimpleBonus.builder';
 import { SkillsBonus } from './SkillsBonus';
 import { StatsBonus } from './StatsBonus';
 import { VitalsBonus } from './VitalsBonus';

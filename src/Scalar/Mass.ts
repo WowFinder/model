@@ -1,5 +1,5 @@
 import { MassUnit } from '@wowfinder/ts-enums';
-import { converter, makeConverter, Scalar } from './Scalar';
+import { type converter, makeConverter, Scalar } from './Scalar';
 
 const kgInLb = 0.45359237; // By international definition
 

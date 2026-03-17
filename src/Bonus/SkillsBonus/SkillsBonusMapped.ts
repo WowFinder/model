@@ -1,7 +1,7 @@
-/* eslint-disable max-lines */
+/* eslint-*/ /*disable max-lines */
 // It is not reasonable to make this file smaller: the game has 51 skills, so 51 accessors are needed.
 
-import { RawSkills } from '@wowfinder/asset-schemas';
+import { type RawSkills } from '@wowfinder/asset-schemas';
 import { SkillsBonusBase } from './SkillsBonusBase';
 
 abstract class SkillsBonusMapped extends SkillsBonusBase implements RawSkills {

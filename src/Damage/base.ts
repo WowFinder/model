@@ -1,6 +1,6 @@
 import {
-    DamageTypes,
-    FullDamageTypes,
+    type DamageTypes,
+    type FullDamageTypes,
     buildFullDamageTypes,
 } from './DamageType';
 

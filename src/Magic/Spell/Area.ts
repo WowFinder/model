@@ -1,4 +1,4 @@
-import { Debugger, Stringifier } from '@wowfinder/ts-utils';
+import { Debugger, type Stringifier } from '@wowfinder/ts-utils';
 import { Length } from '../../Scalar';
 
 type SpellAreaSelf = {

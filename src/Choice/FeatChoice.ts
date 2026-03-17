@@ -1,6 +1,6 @@
 import { FeatFlag } from '@wowfinder/ts-enums';
 import { feats, FeatSpec } from '../Creature/Feats';
-import { BaseChoiceBuilder, Choice } from './Choice';
+import { type BaseChoiceBuilder, Choice } from './Choice';
 
 type FeatChoiceBuilder = BaseChoiceBuilder & {
     validFeats: FeatSpec[];

@@ -1,12 +1,12 @@
 import {
-    EffectiveCasterLevels,
+    type EffectiveCasterLevels,
     zeroCasterLevel,
 } from './EffectiveCasterLevels';
 import type { Expanded } from '@wowfinder/ts-utils';
 import { StatsBlock, zeroDefault } from '../Creature/Stats';
 import {
-    CastingModeValues,
-    CastingModeValuesPartial,
+    type CastingModeValues,
+    type CastingModeValuesPartial,
     castingStats,
     fillCastingModeValues,
 } from './CastingMode';
@@ -15,13 +15,13 @@ import {
     allSubSchoolsByParent,
     fillSchoolValues,
     fillSubSchoolValues,
-    SchoolValues,
-    SchoolValuesPartial,
-    SubSchoolValues,
-    SubSchoolValuesPartial,
+    type SchoolValues,
+    type SchoolValuesPartial,
+    type SubSchoolValues,
+    type SubSchoolValuesPartial,
 } from './School';
-import { CastingMode, School, SubSchool } from '@wowfinder/ts-enums';
-import { RawStats } from '@wowfinder/asset-schemas';
+import { CastingMode, School, type SubSchool } from '@wowfinder/ts-enums';
+import { type RawStats } from '@wowfinder/asset-schemas';
 
 type SpellPowerKeys = CastingMode | School | SubSchool;
 

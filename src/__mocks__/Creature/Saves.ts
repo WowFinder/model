@@ -1,5 +1,5 @@
-import { RawSaves } from '@wowfinder/asset-schemas';
-import { SaveBreakdown, SaveBreakdowns } from '../../Creature';
+import { type RawSaves } from '@wowfinder/asset-schemas';
+import { SaveBreakdown, type SaveBreakdowns } from '../../Creature';
 
 const mockZero = (): SaveBreakdown =>
     new SaveBreakdown({

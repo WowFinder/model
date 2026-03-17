@@ -1,5 +1,5 @@
 import { FeatFlag } from '@wowfinder/ts-enums';
-import { Feat } from '../../Feat';
+import { type Feat } from '../../Feat';
 import type { FeatSpec } from '../../FeatSpec';
 import { allOf, feat, type PendingFeatReqs, req, type Reqs } from '../helpers';
 

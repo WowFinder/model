@@ -1,6 +1,6 @@
 import { Mass } from '../../Scalar';
 import { Money } from '../Money';
-import { Item, ItemBuilder } from '../base';
+import { Item, type ItemBuilder } from '../base';
 
 type CommonGoodBuilder = ItemBuilder & {
     weight: Mass | number;

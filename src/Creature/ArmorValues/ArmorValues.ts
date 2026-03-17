@@ -1,4 +1,4 @@
-import { ArmorValuesBuilder } from './builder';
+import { type ArmorValuesBuilder } from './builder';
 
 class ArmorValues {
     readonly #gear: number;

@@ -1,9 +1,9 @@
-import { BonusType, Size } from '@wowfinder/ts-enums';
+import { BonusType, type Size } from '@wowfinder/ts-enums';
 import { TypedSimpleBonus, MultiBonus } from '../../Bonus';
-import { Mass, Weight } from '../../Scalar';
+import { Mass, type Weight } from '../../Scalar';
 import { Money } from '../Money';
-import { Item, ItemBuilder } from '../base';
-import { Shape, buildShape, explodeShape } from './Slot';
+import { Item, type ItemBuilder } from '../base';
+import { type Shape, buildShape, explodeShape } from './Slot';
 
 type GearBuilder = ItemBuilder & {
     shape: string[];

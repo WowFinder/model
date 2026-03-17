@@ -1,4 +1,4 @@
-import { MultiBonusBuilder } from '../../Bonus/MultiBonus';
+import { type MultiBonusBuilder } from '../../Bonus/MultiBonus';
 import { fullSimpleBonusBuilder } from './SimpleBonusBuilders';
 
 const defaultMultiBonusBuilder: MultiBonusBuilder = {};

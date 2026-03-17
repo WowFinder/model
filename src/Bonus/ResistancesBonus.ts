@@ -1,6 +1,10 @@
-import { RawResistances } from '@wowfinder/asset-schemas';
+import { type RawResistances } from '@wowfinder/asset-schemas';
 import { DamageType } from '@wowfinder/ts-enums';
-import { JsonCompatible, JsonExportable, sum } from '@wowfinder/ts-utils';
+import {
+    type JsonCompatible,
+    type JsonExportable,
+    sum,
+} from '@wowfinder/ts-utils';
 
 const rawZeroResistances: RawResistances = Object.keys(DamageType).reduce(
     (acc, key) => {

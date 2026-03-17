@@ -1,7 +1,10 @@
 import { StatsBlock } from '../Stats';
 import { sizeCombatMod } from '../Size';
 import { ArmorValues } from './ArmorValues';
-import { FullArmorValuesBuilder, FullFromBaseBuilder } from './builder';
+import {
+    type FullArmorValuesBuilder,
+    type FullFromBaseBuilder,
+} from './builder';
 
 class FullArmorValues extends ArmorValues {
     readonly #strength: number;

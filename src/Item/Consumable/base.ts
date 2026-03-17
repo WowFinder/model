@@ -1,6 +1,6 @@
-import { ActionTime } from '../../Action/ActionTime';
+import { type ActionTime } from '../../Action/ActionTime';
 import type { Money } from '../Money';
-import { Item, ItemBuilder } from '../base';
+import { Item, type ItemBuilder } from '../base';
 
 type ConsumableRawBuilder = ItemBuilder & {
     key?: string;

@@ -1,4 +1,4 @@
-import { Debugger, StringFormatter } from '@wowfinder/ts-utils';
+import { Debugger, type StringFormatter } from '@wowfinder/ts-utils';
 import { Time } from '../../Scalar';
 
 type FixedSpellDuration = {

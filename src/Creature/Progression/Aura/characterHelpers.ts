@@ -1,4 +1,4 @@
-import { Aura, BonusType } from '@wowfinder/ts-enums';
+import { type Aura, BonusType } from '@wowfinder/ts-enums';
 import { SimpleBonus, TypedSimpleBonus } from '../../../Bonus';
 import type { ClassEntries } from '../../Class/Class';
 import { auraBonuses } from '.';

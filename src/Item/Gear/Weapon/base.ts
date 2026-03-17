@@ -1,13 +1,13 @@
 import {
-    WeaponFlags,
-    WeaponGroup,
-    WeaponProficiency,
-    WeaponRank,
+    type WeaponFlags,
+    type WeaponGroup,
+    type WeaponProficiency,
+    type WeaponRank,
 } from '@wowfinder/ts-enums';
-import { DamageSpec } from '../../../Damage';
-import { Length } from '../../../Scalar';
+import { type DamageSpec } from '../../../Damage';
+import { type Length } from '../../../Scalar';
 import { Gear } from '../base';
-import { WeaponBuilder, buildWeaponDamage } from './builder';
+import { type WeaponBuilder, buildWeaponDamage } from './builder';
 import { asFeet } from './helpers';
 
 abstract class WeaponBase extends Gear {
