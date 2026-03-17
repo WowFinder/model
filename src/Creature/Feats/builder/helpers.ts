@@ -1,4 +1,4 @@
-import { FeatFlag, Stat, ClassFeature } from '@wowfinder/ts-enums';
+import { FeatFlag, type Stat, type ClassFeature } from '@wowfinder/ts-enums';
 import {
     and as allOf,
     CharacterFeatRequirement,

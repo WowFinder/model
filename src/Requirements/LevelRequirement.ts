@@ -3,9 +3,7 @@ import { type Requirement } from './base';
 import { combineClassBonuses } from '../Creature/Progression/combineProgressionBonuses';
 import { type CharacterBaseInterface } from '../Character';
 
-abstract class LevelRequirementBase
-    implements Requirement<CharacterBaseInterface>
-{
+abstract class LevelRequirementBase implements Requirement<CharacterBaseInterface> {
     readonly #level: number;
     constructor(level: number) {
         this.#level = level;

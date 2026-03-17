@@ -1,6 +1,6 @@
 import { Feat } from '../../Feat';
 import type { FeatSpec } from '../../FeatSpec';
-import { MagicCraftingFeat } from '../../core/magic/magicCraft';
+import { type MagicCraftingFeat } from '../../core/magic/magicCraft';
 import { build } from './helpers';
 
 const magicCraftingFeats: { [key in MagicCraftingFeat]: FeatSpec } = {

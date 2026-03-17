@@ -1,6 +1,6 @@
 import { DamageType } from '@wowfinder/ts-enums';
 import { CraftableConsumable } from '../base';
-import { TypedWeaponStoneBuilder, WeaponStone } from './base';
+import { type TypedWeaponStoneBuilder, WeaponStone } from './base';
 
 class WeightStone extends WeaponStone {
     constructor(data: TypedWeaponStoneBuilder) {

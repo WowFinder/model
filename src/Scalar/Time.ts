@@ -1,5 +1,5 @@
 import { TimeUnit } from '@wowfinder/ts-enums';
-import { converter, makeConverter, Scalar } from './Scalar';
+import { type converter, makeConverter, Scalar } from './Scalar';
 
 const convertTime: converter<TimeUnit> = makeConverter({
     [TimeUnit.second]: 1, // Reference unit
@@ -23,27 +23,6 @@ const timeUnitAliases: { [key: string]: TimeUnit } = {
     "'": TimeUnit.minute,
     '°': TimeUnit.hour,
 };
-
-function minutes(value: number): Time {
-    return new Time({
-        value,
-        unit: TimeUnit.minute,
-    });
-}
-
-function hours(value: number): Time {
-    return new Time({
-        value,
-        unit: TimeUnit.hour,
-    });
-}
-
-function days(value: number): Time {
-    return new Time({
-        value,
-        unit: TimeUnit.day,
-    });
-}
 
 class Time extends Scalar<TimeUnit> {
     get fullYears(): number {
@@ -117,6 +96,27 @@ class Time extends Scalar<TimeUnit> {
             unit,
         });
     }
+}
+
+function minutes(value: number): Time {
+    return new Time({
+        value,
+        unit: TimeUnit.minute,
+    });
+}
+
+function hours(value: number): Time {
+    return new Time({
+        value,
+        unit: TimeUnit.hour,
+    });
+}
+
+function days(value: number): Time {
+    return new Time({
+        value,
+        unit: TimeUnit.day,
+    });
 }
 
 export { convertTime, minutes, hours, days, Time };

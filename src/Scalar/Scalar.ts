@@ -1,4 +1,4 @@
-import { StringFormatter, TryParser } from '@wowfinder/ts-utils';
+import { type StringFormatter, type TryParser } from '@wowfinder/ts-utils';
 
 function pluralize<T>(baseParser: TryParser<T>): TryParser<T> {
     return (input: string) =>

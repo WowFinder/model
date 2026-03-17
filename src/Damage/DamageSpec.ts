@@ -1,8 +1,8 @@
 import {
     DamageComponentSpec,
-    DamageComponentSpecBuilder,
+    type DamageComponentSpecBuilder,
 } from './DamageComponent';
-import { DamageRollArguments } from './DamageRollArguments';
+import { type DamageRollArguments } from './DamageRollArguments';
 import { DamageValue } from './DamageValue';
 
 type DamageSpecBuilder = {

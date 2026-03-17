@@ -21,16 +21,6 @@ type PartialMoneyBreakdown = Partial<MoneyBreakdown>;
 
 type MoneyValue = Money | PartialMoneyBreakdown | number;
 
-function asRaw(value: MoneyValue): number {
-    if (value instanceof Money) {
-        return value.raw;
-    } else if (typeof value === 'number') {
-        return value;
-    } else {
-        return Money.condense(value);
-    }
-}
-
 class Money {
     readonly #raw: number;
     static explode(raw: number): MoneyBreakdown {
@@ -57,6 +47,16 @@ class Money {
         return _ + c * ratios.c + s * ratios.s + g * ratios.g;
     }
 
+    static #asRaw(value: MoneyValue): number {
+        if (value instanceof Money) {
+            return value.raw;
+        } else if (typeof value === 'number') {
+            return value;
+        } else {
+            return Money.condense(value);
+        }
+    }
+
     private constructor(raw: number) {
         this.#raw = raw;
     }
@@ -78,11 +78,11 @@ class Money {
     }
 
     add(value: MoneyValue): Money {
-        return new Money(this.#raw + asRaw(value));
+        return new Money(this.#raw + Money.#asRaw(value));
     }
 
     subtract(value: MoneyValue): Money {
-        return new Money(this.#raw - asRaw(value));
+        return new Money(this.#raw - Money.#asRaw(value));
     }
 
     get raw(): number {

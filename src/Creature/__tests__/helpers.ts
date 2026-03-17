@@ -1,5 +1,5 @@
-import { RawCreatureAsset } from '@wowfinder/asset-schemas';
-import { AsyncAssetResolver } from '../../Assets';
+import { type RawCreatureAsset } from '@wowfinder/asset-schemas';
+import { type AsyncAssetResolver } from '../../Assets';
 import { CreatureBase } from '../CreatureBase';
 import {
     mockAssetResolver,

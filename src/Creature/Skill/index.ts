@@ -1,4 +1,4 @@
-import { Skill } from '@wowfinder/ts-enums';
+import { type Skill } from '@wowfinder/ts-enums';
 
 type FullSkillSetGeneric<T> = { [key in Skill]: T };
 type SkillSetGeneric<T> = Partial<FullSkillSetGeneric<T>>;

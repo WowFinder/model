@@ -1,5 +1,5 @@
-import { Skill } from '@wowfinder/ts-enums';
-import { Quantified, assertDefined } from '@wowfinder/ts-utils';
+import { type Skill } from '@wowfinder/ts-enums';
+import { type Quantified, assertDefined } from '@wowfinder/ts-utils';
 import { Time } from '../../Scalar';
 import type { Item } from '../base';
 import { ItemCollection } from './ItemCollection';

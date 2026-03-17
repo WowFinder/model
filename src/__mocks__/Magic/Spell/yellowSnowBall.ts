@@ -1,4 +1,4 @@
-import { RawSpellAsset } from '@wowfinder/asset-schemas';
+import { type RawSpellAsset } from '@wowfinder/asset-schemas';
 
 const yellowSnowBall = {
     key: 'yellowSnowBall',

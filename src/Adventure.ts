@@ -1,6 +1,6 @@
-import { JsonExportable, safeJsonClone } from '@wowfinder/ts-utils';
+import { type JsonExportable, safeJsonClone } from '@wowfinder/ts-utils';
 import type { RewardsByCharacter } from './Rewards';
-import { RawAdventureAsset } from '@wowfinder/asset-schemas';
+import { type RawAdventureAsset } from '@wowfinder/asset-schemas';
 
 function combineRewards(rewards: RewardsByCharacter[]): RewardsByCharacter {
     const result: RewardsByCharacter = {};

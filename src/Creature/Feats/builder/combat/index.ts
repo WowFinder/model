@@ -1,4 +1,4 @@
-import { CombatFeat } from '../../core/combat';
+import { type CombatFeat } from '../../core/combat';
 import type { FeatSpec } from '../../FeatSpec';
 import { combatBaseFeats } from './base';
 import { combatDualWieldFeats } from './dual';

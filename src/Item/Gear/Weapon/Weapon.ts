@@ -1,7 +1,7 @@
 import { LengthUnit, WeaponFlags } from '@wowfinder/ts-enums';
 import { Length } from '../../../Scalar';
 import { WeaponBase } from './base';
-import { WeaponBuilder, preBuildWeapon } from './builder';
+import { type WeaponBuilder, preBuildWeapon } from './builder';
 
 class Weapon extends WeaponBase {
     get #meleeRange(): Length {

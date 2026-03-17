@@ -1,6 +1,6 @@
 import { ResistancesBonus } from './ResistancesBonus';
 import { SensesBonus } from './SensesBonus';
-import { SimpleBonusBuilder } from './SimpleBonus.builder';
+import { type SimpleBonusBuilder } from './SimpleBonus.builder';
 import { SkillsBonus } from './SkillsBonus';
 import { StatsBonus } from './StatsBonus';
 import { VitalsBonus } from './VitalsBonus';
@@ -10,7 +10,7 @@ import {
     multiplyBonus,
     sumBonus,
 } from './SimpleBonus.helpers';
-import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
+import { type JsonCompatible, type JsonExportable } from '@wowfinder/ts-utils';
 import { SpellPowerBonus } from './SpellPowerBonus';
 import { FeatsBonus } from './FeatsBonus';
 import { BaseSpeedsBonus, SpeedsModifiersBonus } from './SpeedsBonus';

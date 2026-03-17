@@ -1,4 +1,4 @@
-import { StringFormatter } from '@wowfinder/ts-utils';
+import { type StringFormatter } from '@wowfinder/ts-utils';
 
 const t: StringFormatter = (key, params): string => {
     if (params && Object.keys(params).length) {

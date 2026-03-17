@@ -1,5 +1,5 @@
-import { Aura } from '@wowfinder/ts-enums';
-import { AuraBonus } from './base';
+import { type Aura } from '@wowfinder/ts-enums';
+import { type AuraBonus } from './base';
 
 type AuraEntry = {
     level: number;

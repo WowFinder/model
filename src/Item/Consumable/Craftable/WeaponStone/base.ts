@@ -1,6 +1,6 @@
 import type { DamageTypes } from '../../../../Damage/DamageType';
 import { Mass, Time } from '../../../../Scalar';
-import { CraftableConsumable, CraftableConsumableBuilder } from '../base';
+import { CraftableConsumable, type CraftableConsumableBuilder } from '../base';
 
 type WeaponStoneBuilder = CraftableConsumableBuilder & {
     bonus: number;

@@ -1,4 +1,4 @@
-import { RawSkills } from '@wowfinder/asset-schemas';
+import { type RawSkills } from '@wowfinder/asset-schemas';
 import { Skill } from '@wowfinder/ts-enums';
 
 const rawZeroSkills: RawSkills = Object.keys(Skill).reduce((acc, key) => {

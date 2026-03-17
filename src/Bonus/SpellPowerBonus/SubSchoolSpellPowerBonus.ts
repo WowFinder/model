@@ -1,5 +1,9 @@
 import { SubSchool } from '@wowfinder/ts-enums';
-import { JsonCompatible, JsonExportable, sum } from '@wowfinder/ts-utils';
+import {
+    type JsonCompatible,
+    type JsonExportable,
+    sum,
+} from '@wowfinder/ts-utils';
 
 type SubSchoolSpellPowerBonusBuilder = Partial<Record<SubSchool, number>>;
 

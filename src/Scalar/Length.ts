@@ -1,5 +1,5 @@
 import { LengthUnit } from '@wowfinder/ts-enums';
-import { converter, makeConverter, Scalar } from './Scalar';
+import { type converter, makeConverter, Scalar } from './Scalar';
 
 const metersInYard = 0.9144; // By international definition
 

@@ -1,6 +1,6 @@
 import { Stat } from '@wowfinder/ts-enums';
 import { statMod } from '../Creature/Stats';
-import { DamageRollArguments } from './DamageRollArguments';
+import { type DamageRollArguments } from './DamageRollArguments';
 
 enum SpecialDamageModifier {
     SpellPower = 'SpellPower',

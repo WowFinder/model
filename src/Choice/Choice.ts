@@ -1,4 +1,4 @@
-import { Validator } from '@wowfinder/ts-utils';
+import { type Validator } from '@wowfinder/ts-utils';
 
 type BaseChoiceBuilder = {
     label: string;

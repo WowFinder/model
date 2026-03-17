@@ -11,7 +11,7 @@ import {
     type CreatureBaseProfileOverride,
 } from '../Profile';
 import { type CharacterBaseInterface } from './CharacterBaseInterface';
-import { AsyncAssetResolver } from '../Assets';
+import { type AsyncAssetResolver } from '../Assets';
 
 type CharacterCoreBuilder = CreatureBaseBuilder & {
     active?: boolean;

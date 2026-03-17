@@ -1,4 +1,4 @@
-import { RawResistances } from '@wowfinder/asset-schemas';
+import { type RawResistances } from '@wowfinder/asset-schemas';
 import { BonusType, DamageType } from '@wowfinder/ts-enums';
 
 type FullResistances = {

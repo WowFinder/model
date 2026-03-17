@@ -1,5 +1,5 @@
-import { AssetType } from '@wowfinder/ts-enums';
-import { ForcedKeyResolver } from '@wowfinder/ts-utils';
+import { type AssetType } from '@wowfinder/ts-enums';
+import { type ForcedKeyResolver } from '@wowfinder/ts-utils';
 import type { Adventure } from '../Adventure';
 import type { Class } from '../Creature/Class';
 import type { Race } from '../Creature/Race';

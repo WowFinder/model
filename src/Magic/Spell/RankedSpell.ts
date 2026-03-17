@@ -5,8 +5,8 @@ import type {
     SubSchool,
 } from '@wowfinder/ts-enums';
 import {
-    PossiblyString,
-    StringFormatter,
+    type PossiblyString,
+    type StringFormatter,
     assertDefined,
     toRoman,
 } from '@wowfinder/ts-utils';
@@ -15,9 +15,9 @@ import { fullParseSchool } from '../School';
 import type { SpellDuration } from './Duration';
 import type { SpellRange } from './Range';
 import { SpellBase } from './base';
-import { SpellComponent } from './Components';
-import { SpellArea } from './Area';
-import { SpellSave } from './SpellSave';
+import { type SpellComponent } from './Components';
+import { type SpellArea } from './Area';
+import { type SpellSave } from './SpellSave';
 
 type RankedSpellBuilder = {
     key: string;

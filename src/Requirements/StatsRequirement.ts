@@ -1,4 +1,4 @@
-import { RawStats } from '@wowfinder/asset-schemas';
+import { type RawStats } from '@wowfinder/asset-schemas';
 import { Stat } from '@wowfinder/ts-enums';
 import { zeroDefault } from '../Creature/Stats/helpers';
 import { FunctionBasedRequirement, type Requirement } from './base';

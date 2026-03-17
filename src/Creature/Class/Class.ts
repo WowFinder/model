@@ -1,4 +1,4 @@
-import { ClassTier } from '@wowfinder/ts-enums';
+import { type ClassTier } from '@wowfinder/ts-enums';
 import { Money } from '../../Item/Money';
 import { type ProgressionBonuses } from '../Progression/ProgressionBonuses';
 import { applyClassDefaults } from './builder';

@@ -1,5 +1,5 @@
-import { RawStats } from '@wowfinder/asset-schemas';
-import { PartialStatBlock } from '../../Creature';
+import { type RawStats } from '@wowfinder/asset-schemas';
+import { type PartialStatBlock } from '../../Creature';
 
 const zeroStatsMock: RawStats = {
     strength: 0,

@@ -1,5 +1,5 @@
-import { RawSpellRank } from '@wowfinder/asset-schemas';
-import { SpellBase, SpellBaseBuilder } from './base';
+import { type RawSpellRank } from '@wowfinder/asset-schemas';
+import { SpellBase, type SpellBaseBuilder } from './base';
 
 type SpellRankBuilder = SpellBaseBuilder & {
     rank?: number;

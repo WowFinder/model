@@ -1,4 +1,4 @@
-import { RawRaceAsset } from '@wowfinder/asset-schemas';
+import { type RawRaceAsset } from '@wowfinder/asset-schemas';
 import { Alignment, InnateTrait, Languages } from '@wowfinder/ts-enums';
 import { zeroStatsMock } from './Stats';
 

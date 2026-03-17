@@ -1,4 +1,4 @@
-import { BonusType } from '@wowfinder/ts-enums';
+import { type BonusType } from '@wowfinder/ts-enums';
 import { SimpleBonus, type SimpleBonusBuilder } from './SimpleBonus';
 import { type JsonCompatible, type JsonExportable } from '@wowfinder/ts-utils';
 

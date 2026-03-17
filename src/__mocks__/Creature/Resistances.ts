@@ -1,6 +1,6 @@
-import { RawResistances } from '@wowfinder/asset-schemas';
+import { type RawResistances } from '@wowfinder/asset-schemas';
 import { DamageType } from '@wowfinder/ts-enums';
-import { FullResistances } from '../../Creature';
+import { type FullResistances } from '../../Creature';
 
 const mockZeroResistances: RawResistances = {
     bludgeoning: 0,

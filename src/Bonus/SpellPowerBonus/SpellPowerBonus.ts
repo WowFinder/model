@@ -1,15 +1,15 @@
-import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
+import { type JsonCompatible, type JsonExportable } from '@wowfinder/ts-utils';
 import { CastingMode, School, SubSchool } from '@wowfinder/ts-enums';
 import {
-    ModeSpellPowerBonusBuilder,
+    type ModeSpellPowerBonusBuilder,
     ModeSpellPowerBonus,
 } from './ModeSpellPowerBonus';
 import {
-    SchoolSpellPowerBonusBuilder,
+    type SchoolSpellPowerBonusBuilder,
     SchoolSpellPowerBonus,
 } from './SchoolSpellPowerBonus';
 import {
-    SubSchoolSpellPowerBonusBuilder,
+    type SubSchoolSpellPowerBonusBuilder,
     SubSchoolSpellPowerBonus,
 } from './SubSchoolSpellPowerBonus';
 

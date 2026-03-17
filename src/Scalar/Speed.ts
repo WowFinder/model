@@ -1,6 +1,6 @@
 import { LengthUnit, TimeUnit } from '@wowfinder/ts-enums';
 import { Length, convertLength } from './Length';
-import { Scalar, converter } from './Scalar';
+import { Scalar, type converter } from './Scalar';
 import { Time, convertTime } from './Time';
 import { sum } from '@wowfinder/ts-utils';
 

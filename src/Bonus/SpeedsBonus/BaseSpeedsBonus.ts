@@ -1,6 +1,6 @@
-import { RawSpeeds } from '@wowfinder/asset-schemas';
-import { FlyManeuverability } from '@wowfinder/ts-enums';
-import { JsonCompatible, JsonExportable } from '@wowfinder/ts-utils';
+import { type RawSpeeds } from '@wowfinder/asset-schemas';
+import { type FlyManeuverability } from '@wowfinder/ts-enums';
+import { type JsonCompatible, type JsonExportable } from '@wowfinder/ts-utils';
 import { maxFlyManeuverability } from '../../Creature/Speeds';
 
 type BaseSpeedsBonusBuilder = Partial<RawSpeeds>;

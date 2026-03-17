@@ -1,4 +1,4 @@
-import { RawClassAsset } from '@wowfinder/asset-schemas';
+import { type RawClassAsset } from '@wowfinder/asset-schemas';
 import { ClassTier, Skill } from '@wowfinder/ts-enums';
 
 const mockStealthClassRawAsset: RawClassAsset = {

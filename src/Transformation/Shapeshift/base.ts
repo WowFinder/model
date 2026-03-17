@@ -1,6 +1,6 @@
 import { sum } from '@wowfinder/ts-utils';
 import { type Transformation } from '../base';
-import { CharacterOverridePlaceholder } from '../CharacterOverridePlaceholder';
+import { type CharacterOverridePlaceholder } from '../CharacterOverridePlaceholder';
 import { type CharacterBaseInterface } from '../../Character';
 
 const druidClasses = ['drd', 'mocked-druidric-class'];
@@ -24,6 +24,7 @@ abstract class Shapeshift implements Transformation {
         rank: number,
     ): CharacterOverridePlaceholder;
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     apply(base: any): any {
         // TODO: Reimplement
         throw new Error('Not implemented yet');

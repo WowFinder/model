@@ -4,8 +4,8 @@ import { AsyncAssetResolver } from '../../Assets/AsyncAssetResolver';
 import { Class } from '../../Creature/Class';
 import { Race } from '../../Creature/Race';
 import { Faction } from '../../Faction';
-import { Item } from '../../Item';
-import { Spell, SpellList } from '../../Magic';
+import { type Item } from '../../Item';
+import { type Spell, type SpellList } from '../../Magic';
 import {
     mockArcaneClassRawAsset,
     mockDivineClassRawAsset,

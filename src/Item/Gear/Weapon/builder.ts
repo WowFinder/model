@@ -1,14 +1,14 @@
 import {
-    DamageType,
-    Stat,
-    WeaponFlags,
-    WeaponGroup,
+    type DamageType,
+    type Stat,
+    type WeaponFlags,
+    type WeaponGroup,
     WeaponProficiency,
     WeaponRank,
 } from '@wowfinder/ts-enums';
 import { DamageSpec, makeFullDamageTypes } from '../../../Damage';
-import { Gear, GearBuilder } from '../base';
-import { Range } from './helpers';
+import { Gear, type GearBuilder } from '../base';
+import { type Range } from './helpers';
 
 type WeaponDamageBuilder = {
     types: DamageType[];

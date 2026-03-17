@@ -1,6 +1,6 @@
 import { type CharacterBaseInterface } from '../../../Character';
 import { defaultSpeedUnit } from '../../../Scalar';
-import { CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
+import { type CharacterOverridePlaceholder } from '../../CharacterOverridePlaceholder';
 import { Shapeshift, type ShapeshiftBuilder } from '../base';
 
 class StagForm extends Shapeshift {

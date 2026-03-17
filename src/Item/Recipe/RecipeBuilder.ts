@@ -1,5 +1,5 @@
-import { Skill } from '@wowfinder/ts-enums';
-import { ItemCollectionBuilder } from './ItemCollection';
+import { type Skill } from '@wowfinder/ts-enums';
+import { type ItemCollectionBuilder } from './ItemCollection';
 
 type RecipeBuilder = {
     skill: Skill;

@@ -1,4 +1,4 @@
-import { Aura, ClassFeature, Skill } from '@wowfinder/ts-enums';
+import { type Aura, type ClassFeature, type Skill } from '@wowfinder/ts-enums';
 import { type SavesProgression, type CastingProgression } from './helpers';
 import { type FeaturesList } from './Features';
 import { type AurasList } from './Aura';

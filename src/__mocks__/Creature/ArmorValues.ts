@@ -1,6 +1,6 @@
 import {
-    ArmorValuesBuilder,
-    FullArmorValuesBuilder,
+    type ArmorValuesBuilder,
+    type FullArmorValuesBuilder,
 } from '../../Creature/ArmorValues/builder';
 
 const mockArmorValuesBuilder: ArmorValuesBuilder = {

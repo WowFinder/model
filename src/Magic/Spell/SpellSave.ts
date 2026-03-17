@@ -1,4 +1,4 @@
-import { Save, SpellSaveEffect } from '@wowfinder/ts-enums';
+import { type Save, type SpellSaveEffect } from '@wowfinder/ts-enums';
 
 type SpellSaveBuilder = {
     effect: SpellSaveEffect;

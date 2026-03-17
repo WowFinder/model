@@ -1,4 +1,4 @@
-import { RawClassAsset } from '@wowfinder/asset-schemas';
+import { type RawClassAsset } from '@wowfinder/asset-schemas';
 import { Aura, ClassTier, Skill } from '@wowfinder/ts-enums';
 
 const mockDivineClassRawAsset: RawClassAsset = {

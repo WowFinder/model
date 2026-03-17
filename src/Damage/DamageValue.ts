@@ -1,6 +1,6 @@
 import {
     DamageComponentValue,
-    DamageComponentValueBuilder,
+    type DamageComponentValueBuilder,
 } from './DamageComponent';
 
 type DamageValueBuilder = {
