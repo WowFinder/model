@@ -14,12 +14,14 @@ const threshholds: { [key in Reputation]: number } = {
 };
 Object.freeze(threshholds);
 
-const sortedDownTiers = ([...Object.keys(threshholds)] as Reputation[]).sort(
+const sortedDownTiers = (Object.keys(threshholds) as Reputation[]).sort(
     (a: Reputation, b: Reputation): number => threshholds[b] - threshholds[a],
 );
-const lastRep = sortedDownTiers[sortedDownTiers.length - 1];
+const lastRep = sortedDownTiers.at(-1)!;
 
-const sortedUpScores = [...Object.values(threshholds)].sort((a, b) => a - b);
+const sortedUpScores = (Object.values(threshholds) as number[]).sort(
+    (a, b) => a - b,
+);
 
 function reputationByScoreNullable(score: number): Reputation | null {
     for (const k of sortedDownTiers) {
@@ -39,7 +41,7 @@ function nextScore(current: number): number {
             return score;
         }
     }
-    return NaN;
+    return Number.NaN;
 }
 
 type Factions = {
