@@ -23,7 +23,7 @@ function buildGear(raw: any): Gear {
             data = data[chunk];
         }
         if (data instanceof Gear) {
-            return data as Gear;
+            return data;
         } else {
             throw new TypeError(`Not a valid fqKey for Gear: ${raw}`);
         }
