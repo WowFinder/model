@@ -16,7 +16,7 @@ function buildGear(raw: any): Gear {
     if (typeof raw === 'string') {
         let data: any = Gear.load();
         for (const chunk of raw.split('.')) {
-            if (!(data ?? {})[chunk]) {
+            if (data == null || !(chunk in data)) {
                 throw new Error(`Not a valid fqKey for Gear: ${raw}`);
             }
             data = data[chunk];
