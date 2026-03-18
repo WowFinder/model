@@ -1,10 +1,8 @@
-// import { builder, ByKeyRecursive, ByKeyRecursiveEntry } from '@wowfinder/ts-utils';
-// import { Item } from '../base';
 import { Armor } from './Armor';
 import { Weapon } from './Weapon';
 import { Gear } from './base';
 
-const gearBuilderByTypeKey: { [key: string]: any /* builder<Item> */ } = {
+const gearBuilderByTypeKey: { [key: string]: any } = {
     Gear: Gear.build,
     Accessory: Gear.build, // TODO #429: Review: specific class & builder needed?
     Weapon: Weapon.build,
@@ -16,11 +14,10 @@ function buildGear(raw: any): Gear {
         return raw;
     }
     if (typeof raw === 'string') {
-        // let data: ByKeyRecursiveEntry<Gear> = Gear.load(buildGear);
         let data: any = Gear.load();
         for (const chunk of raw.split('.')) {
             if (Object.keys(data).includes(chunk)) {
-                data = (data as any) /* ByKeyRecursive<Gear> */[chunk];
+                data = (data as any)[chunk];
             } else {
                 throw new Error(`Not a valid fqKey for Gear: ${raw}`);
             }
