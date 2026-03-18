@@ -5,7 +5,7 @@ import type { ClassEntries } from '../../Class/Class';
 // TODO: Refactor for testability or eliminate.
 /* istanbul ignore next: untestable due to requiring circular imports */
 function getClassFeatures(classes: ClassEntries): ClassFeature[] {
-    return classes.map(c => c.class.featuresAtLevel(c.level)).flat();
+    return classes.flatMap(c => c.class.featuresAtLevel(c.level));
 }
 
 // TODO: Refactor for testability or eliminate.
