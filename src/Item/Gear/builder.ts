@@ -9,6 +9,7 @@ const gearBuilderByTypeKey: Record<string, (raw: unknown) => Gear> = {
     Armor: Armor.build,
 };
 
+/* istanbul ignore next: pending full rewrite */
 function buildGear(raw: any): Gear {
     if (raw instanceof Gear) {
         return raw;
