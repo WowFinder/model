@@ -42,9 +42,9 @@ class CondensedProgressionFeatures {
 }
 
 export {
-    ProgressionFeature,
     CondensedProgressionFeatures,
     type ProgressionFeatureEntry,
     type FeaturesList,
     type ProgressionFeaturesCondensed,
 };
+export { ClassFeature as ProgressionFeature } from '@wowfinder/ts-enums';

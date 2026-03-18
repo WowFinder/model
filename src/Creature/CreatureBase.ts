@@ -108,9 +108,5 @@ abstract class CreatureBase {
     }
 }
 
-export {
-    CreatureBase,
-    type ClassEntries,
-    type CreatureBaseBuilder,
-};
+export { CreatureBase, type ClassEntries, type CreatureBaseBuilder };
 export { type ClassEntry } from './Class';
