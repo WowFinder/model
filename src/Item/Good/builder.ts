@@ -1,3 +1,4 @@
+import { type Good } from './base';
 import { Cloth } from './Cloth';
 import { CommonGood } from './CommonGood';
 import { EnchantingReagent } from './Enchanting';
@@ -7,7 +8,10 @@ import { Leather } from './Leather';
 import { Ore, MetalBar, Stone } from './Mining';
 import { Pigment } from './Pigment';
 
-const goodBuilderByTypeKey: { [key: string]: any } = {
+const goodBuilderByTypeKey: Record<
+    string,
+    (raw: unknown) => Good | CommonGood
+> = {
     Ore: Ore.build,
     Metal: MetalBar.build,
     Stone: Stone.build,

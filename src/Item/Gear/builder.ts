@@ -2,7 +2,7 @@ import { Armor } from './Armor';
 import { Weapon } from './Weapon';
 import { Gear } from './base';
 
-const gearBuilderByTypeKey: { [key: string]: any } = {
+const gearBuilderByTypeKey: Record<string, (raw: unknown) => Gear> = {
     Gear: Gear.build,
     Accessory: Gear.build, // TODO #429: Review: specific class & builder needed?
     Weapon: Weapon.build,
@@ -16,11 +16,10 @@ function buildGear(raw: any): Gear {
     if (typeof raw === 'string') {
         let data: any = Gear.load();
         for (const chunk of raw.split('.')) {
-            if (Object.keys(data).includes(chunk)) {
-                data = (data as any)[chunk];
-            } else {
+            if (!(data ?? {})[chunk]) {
                 throw new Error(`Not a valid fqKey for Gear: ${raw}`);
             }
+            data = data[chunk];
         }
         if (data instanceof Gear) {
             return data as Gear;
