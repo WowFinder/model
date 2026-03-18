@@ -68,7 +68,7 @@ function compareClassEntriesByLevelDescending(
 ): number {
     const keyCompare = a.class.key.localeCompare(b.class.key);
     const levelCompare = b.level - a.level;
-    return levelCompare !== 0 ? levelCompare : keyCompare;
+    return levelCompare || keyCompare;
 }
 
 function mergeDuplicateEntries(entries: ClassEntries): ClassEntries {
