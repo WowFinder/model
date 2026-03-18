@@ -61,13 +61,13 @@ class Dice {
 
     validate(): void {
         if (this.#sides < 1) {
-            throw new Error('Dice sides must be greater than 0');
+            throw new TypeError('Dice sides must be greater than 0');
         }
         if (this.#qtty < 1) {
-            throw new Error('Dice quantity must be greater than 0');
+            throw new TypeError('Dice quantity must be greater than 0');
         }
         if (Number.isNaN(this.#mod)) {
-            throw new Error('Dice modifier must be a number');
+            throw new TypeError('Dice modifier must be a number');
         }
     }
 

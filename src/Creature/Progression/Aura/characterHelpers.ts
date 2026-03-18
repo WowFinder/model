@@ -6,7 +6,7 @@ import { auraBonuses } from '.';
 type ClassAurasCondensed = { aura: Aura; count: number }[];
 
 function getClassAuras(classes: ClassEntries): Aura[] {
-    return classes.map(c => c.class.aurasAtLevel(c.level)).flat();
+    return classes.flatMap(c => c.class.aurasAtLevel(c.level));
 }
 
 function condenseClassAuras(auras: Aura[]): ClassAurasCondensed {

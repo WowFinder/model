@@ -1,4 +1,4 @@
-import { ClassFeature as ProgressionFeature } from '@wowfinder/ts-enums';
+import { type ClassFeature as ProgressionFeature } from '@wowfinder/ts-enums';
 
 type ProgressionFeatureEntry = {
     level: number;
@@ -42,9 +42,9 @@ class CondensedProgressionFeatures {
 }
 
 export {
-    ProgressionFeature,
     CondensedProgressionFeatures,
     type ProgressionFeatureEntry,
     type FeaturesList,
     type ProgressionFeaturesCondensed,
 };
+export { ClassFeature as ProgressionFeature } from '@wowfinder/ts-enums';

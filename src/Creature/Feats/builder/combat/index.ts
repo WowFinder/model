@@ -8,29 +8,15 @@ import { combatShieldFeats } from './shield';
 import { combatVitalStrikeFeats } from './vitalStrike';
 
 const combatFeats: { [key in CombatFeat]: FeatSpec } = {
+    // TODO: Implement missing feats (inherited from https://www.github.com/edurne85/wowfinder/issues/443)
     ...combatBaseFeats,
-    ...{
-        // Combat expertise feats
-        // TODO #443
-    },
-    ...{
-        // Critical feats
-        // TODO #443
-    },
+    // Combat expertise feats
+    // Critical feats
     ...combatMobilityFeats,
-    ...{
-        // Unarmed combat feats
-        // TODO #443
-    },
-    ...{
-        // Shooting feats
-        // TODO #443
-    },
+    // Unarmed combat feats
+    // Shooting feats
     ...combatPowerFeats,
-    ...{
-        // Mounted combat feats
-        // TODO #443
-    },
+    // Mounted combat feats
     ...combatShieldFeats,
     ...combatDualWieldFeats,
     ...combatVitalStrikeFeats,

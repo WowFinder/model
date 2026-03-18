@@ -4,8 +4,8 @@ import {
     type RawFeatSelections,
     type RawStats,
 } from '@wowfinder/asset-schemas';
-import type { ClassEntry, ClassEntries } from './Class';
-import type { Race } from './Race';
+import { type ClassEntries } from './Class';
+import { type Race } from './Race';
 import { importPersonalDetails, type PersonalDetails } from './Personal';
 import { type AsyncAssetResolver } from '../Assets';
 import { type Feat } from './Feats/Feat';
@@ -108,9 +108,5 @@ abstract class CreatureBase {
     }
 }
 
-export {
-    CreatureBase,
-    type ClassEntry,
-    type ClassEntries,
-    type CreatureBaseBuilder,
-};
+export { CreatureBase, type ClassEntries, type CreatureBaseBuilder };
+export { type ClassEntry } from './Class';

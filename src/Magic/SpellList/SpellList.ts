@@ -26,8 +26,8 @@ class SpellList {
         this.#spells = {};
         for (const [level, entries] of Object.entries(spells)) {
             const l = Number(level);
-            if (isNaN(l)) {
-                throw new Error(`Invalid spell list level: ${level}`);
+            if (Number.isNaN(l)) {
+                throw new TypeError(`Invalid spell list level: ${level}`);
             }
             this.#spells[l] = entries.map(entry => ({
                 spell: resolver(entry.spell),

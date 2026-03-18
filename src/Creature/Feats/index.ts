@@ -6,8 +6,8 @@ import {
     weaponFeats,
 } from './builder';
 import { applyPendingReqs } from './builder/helpers';
-import { Feat } from './Feat';
-import { FeatSpec } from './FeatSpec';
+import { type Feat } from './Feat';
+import { type FeatSpec } from './FeatSpec';
 
 const feats: { [key in Feat]: FeatSpec } = {
     ...baseFeats,
@@ -22,4 +22,7 @@ applyPendingReqs(feats);
 Object.freeze(feats);
 
 const frozenFeats = feats as Readonly<typeof feats>;
-export { Feat, FeatSpec, frozenFeats as feats };
+
+export { frozenFeats as feats };
+export { Feat } from './Feat';
+export { FeatSpec } from './FeatSpec';

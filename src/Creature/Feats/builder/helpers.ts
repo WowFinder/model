@@ -4,7 +4,6 @@ import {
     CharacterFeatRequirement,
     characterStatsRequirement,
     MinStatsRequirement,
-    or as either,
     AttackBonusRequirement,
     CasterLevelRequirement,
     CharacterLevelRequirement,
@@ -121,7 +120,6 @@ export {
     build,
     feat,
     allOf,
-    either,
     checkFeatKey,
     checkWeaponFeatKey,
     checkNoDuplicate,
@@ -131,3 +129,4 @@ export {
     type Flags,
     type PendingFeatReqs,
 };
+export { or as either } from '../../../Requirements';

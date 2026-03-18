@@ -76,11 +76,11 @@ function fullComputedSpellPower(
         res[m] = {};
         for (const school of Object.keys(School)) {
             const s = school as School;
-            res[m]![s] = {
+            res[m][s] = {
                 '': computedSpellPower(data, m, s, stats, efl),
             };
             for (const ss of allSubSchoolsByParent[s]) {
-                res[m]![s]![ss] = computedSpellPower(data, m, ss, stats, efl);
+                res[m][s][ss] = computedSpellPower(data, m, ss, stats, efl);
             }
         }
     }
