@@ -1,4 +1,4 @@
-import { ClassFeature as ProgressionFeature } from '@wowfinder/ts-enums';
+import { type ClassFeature as ProgressionFeature } from '@wowfinder/ts-enums';
 
 type ProgressionFeatureEntry = {
     level: number;
