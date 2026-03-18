@@ -18,14 +18,14 @@ function buildGear(raw: any): Gear {
         let data: any = Gear.load();
         for (const chunk of raw.split('.')) {
             if (data == null || !(chunk in data)) {
-                throw new Error(`Not a valid fqKey for Gear: ${raw}`);
+                throw new TypeError(`Not a valid fqKey for Gear: ${raw}`);
             }
             data = data[chunk];
         }
         if (data instanceof Gear) {
             return data as Gear;
         } else {
-            throw new Error(`Not a valid fqKey for Gear: ${raw}`);
+            throw new TypeError(`Not a valid fqKey for Gear: ${raw}`);
         }
     }
     switch ((raw.$type as string) || '') {
