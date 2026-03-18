@@ -1,5 +1,4 @@
 import { type ActionTime } from '../../Action/ActionTime';
-import type { Money } from '../Money';
 import { Item, type ItemBuilder } from '../base';
 
 type ConsumableRawBuilder = ItemBuilder & {
@@ -8,8 +7,6 @@ type ConsumableRawBuilder = ItemBuilder & {
 
 abstract class Consumable extends Item {
     abstract get useTime(): ActionTime;
-
-    abstract get value(): Money; // TODO: #553 Move up to Item
 
     static preBuild(raw: any): ItemBuilder {
         return {
