@@ -88,7 +88,7 @@ class Faction {
     /* istanbul ignore next: deprecation (effort should be placed in removing this, rather than covering) */
     /** @deprecated */
     static load(): Factions {
-        throw new Error('Reimplementation in modular strucutre required!');
+        throw new Error('Reimplementation in modular structure required!');
     }
 }
 
