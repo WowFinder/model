@@ -7,7 +7,7 @@ function slotsByLevelPrep(casterLevel: number, spellLevel: number): number {
     if (spellLevel <= 0) {
         return casterLevel > 1 ? 4 : 3;
     }
-    return Math.floor((1.0 + Math.sqrt(1 + 8 * diff)) / 2.0);
+    return Math.floor((1 + Math.sqrt(1 + 8 * diff)) / 2);
 }
 
 const espSlotsCap = 6;
@@ -42,7 +42,7 @@ function slotsByLevel(
 function slotsByStat(stat: number, level: number): number {
     return level <= 0
         ? 0
-        : Math.max(0, Math.ceil((statMod(stat) + 1 - level) / 4.0));
+        : Math.max(0, Math.ceil((statMod(stat) + 1 - level) / 4));
 }
 
 export { slotsByLevel, slotsByLevelPrep, slotsByStat };

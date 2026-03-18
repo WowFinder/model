@@ -4,8 +4,8 @@ import { hdFirst, hdAverage } from './helpers';
 import { type ProgressionEntries } from './Progression';
 import { type ClassEntries } from '../Class';
 
-const goodSave = 1.0 / 2.0;
-const poorSave = 1.0 / 3.0;
+const goodSave = 1 / 2;
+const poorSave = 1 / 3;
 const saveMult = (good: boolean): number => (good ? goodSave : poorSave);
 
 function combineProgressionBonuses(
