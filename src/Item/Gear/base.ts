@@ -13,10 +13,10 @@ type GearBuilder = ItemBuilder & {
 };
 
 class Gear extends Item {
-    #shape: Shape;
-    #size: Size;
-    #bonuses: TypedSimpleBonus;
-    #weight: Mass;
+    readonly #shape: Shape;
+    readonly #size: Size;
+    readonly #bonuses: TypedSimpleBonus;
+    readonly #weight: Mass;
 
     constructor({
         shape,
