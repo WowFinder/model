@@ -68,22 +68,22 @@ class BaseSpeedsBonus
 
     export(): JsonCompatible<BaseSpeedsBonusBuilder> {
         const result = {} as BaseSpeedsBonusBuilder;
-        if (typeof this.#base !== 'undefined') {
+        if (this.#base !== undefined) {
             result.base = this.#base;
         }
-        if (typeof this.#burrow !== 'undefined') {
+        if (this.#burrow !== undefined) {
             result.burrow = this.#burrow;
         }
-        if (typeof this.#climb !== 'undefined') {
+        if (this.#climb !== undefined) {
             result.climb = this.#climb;
         }
-        if (typeof this.#swim !== 'undefined') {
+        if (this.#swim !== undefined) {
             result.swim = this.#swim;
         }
-        if (typeof this.#fly !== 'undefined') {
+        if (this.#fly !== undefined) {
             result.fly = this.#fly;
         }
-        if (typeof this.#maneuverability !== 'undefined') {
+        if (this.#maneuverability !== undefined) {
             result.maneuverability = this.#maneuverability;
         }
         return result;
@@ -97,27 +97,27 @@ class BaseSpeedsBonus
         const builder = {
             base: Math.max(
                 ...args
-                    .filter(x => typeof x.#base !== 'undefined')
+                    .filter(x => x.#base !== undefined)
                     .map(x => x.#base as number),
             ),
             burrow: Math.max(
                 ...args
-                    .filter(x => typeof x.#burrow !== 'undefined')
+                    .filter(x => x.#burrow !== undefined)
                     .map(x => x.#burrow as number),
             ),
             climb: Math.max(
                 ...args
-                    .filter(x => typeof x.#climb !== 'undefined')
+                    .filter(x => x.#climb !== undefined)
                     .map(x => x.#climb as number),
             ),
             swim: Math.max(
                 ...args
-                    .filter(x => typeof x.#swim !== 'undefined')
+                    .filter(x => x.#swim !== undefined)
                     .map(x => x.#swim as number),
             ),
             fly: Math.max(
                 ...args
-                    .filter(x => typeof x.#fly !== 'undefined')
+                    .filter(x => x.#fly !== undefined)
                     .map(x => x.#fly as number),
             ),
             maneuverability: maxFlyManeuverability(
@@ -127,7 +127,7 @@ class BaseSpeedsBonus
         Object.keys(builder)
             .filter(
                 k =>
-                    typeof builder[k as keyof RawSpeeds] === 'undefined' ||
+                    builder[k as keyof RawSpeeds] === undefined ||
                     builder[k as keyof RawSpeeds] === Number.NEGATIVE_INFINITY,
             )
             .forEach(k => delete builder[k as keyof RawSpeeds]);
