@@ -3,7 +3,7 @@ import { type Transformation } from '../base';
 import { type CharacterOverridePlaceholder } from '../CharacterOverridePlaceholder';
 import { type CharacterBaseInterface } from '../../Character';
 
-const druidClasses = ['drd', 'mocked-druidric-class'];
+const druidClasses = new Set(['drd', 'mocked-druidric-class']);
 
 type ShapeshiftBuilder = {
     rank: number;
@@ -37,7 +37,7 @@ abstract class Shapeshift implements Transformation {
     static effectiveDruidLevel(base: CharacterBaseInterface): number {
         return sum(
             ...base.classProgression
-                .filter(c => druidClasses.includes(c.class.key))
+                .filter(c => druidClasses.has(c.class.key))
                 .map(c => c.level),
         );
     }
