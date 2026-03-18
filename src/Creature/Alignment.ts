@@ -3,9 +3,9 @@ import { AlignmentDescriptor, Alignment } from '@wowfinder/ts-enums';
 function combineAlignmentDescriptors(
     ...descriptors: AlignmentDescriptor[]
 ): Alignment {
-    const uniques = [...new Set(descriptors)];
-    const isGood = uniques.includes(AlignmentDescriptor.good);
-    const isEvil = uniques.includes(AlignmentDescriptor.evil);
+    const uniques = new Set(descriptors);
+    const isGood = uniques.has(AlignmentDescriptor.good);
+    const isEvil = uniques.has(AlignmentDescriptor.evil);
     let morals: 'Good' | 'Neutral' | 'Evil' = 'Neutral';
     if (isGood && !isEvil) {
         morals = 'Good';
@@ -13,8 +13,8 @@ function combineAlignmentDescriptors(
     if (isEvil && !isGood) {
         morals = 'Evil';
     }
-    const isLawful = uniques.includes(AlignmentDescriptor.lawful);
-    const isChaotic = uniques.includes(AlignmentDescriptor.chaotic);
+    const isLawful = uniques.has(AlignmentDescriptor.lawful);
+    const isChaotic = uniques.has(AlignmentDescriptor.chaotic);
     let ethics: 'lawful' | 'neutral' | 'chaotic' = 'neutral';
     if (isLawful && !isChaotic) {
         ethics = 'lawful';
