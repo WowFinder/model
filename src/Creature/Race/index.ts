@@ -43,7 +43,7 @@ export default class Race {
         this.#key = raw.key;
         this.#size = raw.size;
         this.#statMods = { ...raw.statMods };
-        this.#skillMods = { ...(raw.skillMods ?? {}) };
+        this.#skillMods = { ...raw.skillMods };
         this.#bonusSkillRanks = raw.bonusSkillRanks ?? 0;
         this.#bonusStartingFeats = raw.bonusStartingFeats ?? 0;
         this.#initialLanguages = [...raw.initialLanguages];
@@ -52,7 +52,7 @@ export default class Race {
         this.#speeds = new Speeds(raw.speeds);
         this.#saves = {
             ...defaultSaves,
-            ...(raw.saves ?? {}),
+            ...raw.saves,
         };
         this.#vitals = VitalsBonus.build(raw.vitals ?? {});
         this.#resistances = fillResistances(raw.resistances ?? {});

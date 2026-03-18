@@ -9,7 +9,7 @@ const zeroSave = {
 function fillSaves(saves?: Partial<RawSaves>): RawSaves {
     return {
         ...zeroSave,
-        ...(saves ?? {}),
+        ...saves,
     };
 }
 

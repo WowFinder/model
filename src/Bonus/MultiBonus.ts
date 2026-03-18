@@ -21,7 +21,7 @@ function makeTsb(
     type: BonusType,
 ): TypedSimpleBonus {
     return new TypedSimpleBonus({
-        ...(builder[type] ?? {}),
+        ...builder[type],
         type,
     });
 }
