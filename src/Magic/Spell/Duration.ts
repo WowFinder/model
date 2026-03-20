@@ -19,7 +19,10 @@ type SpellDuration =
     | FixedSpellDuration
     | PerLevelSpellDuration;
 
-function stringify(value: SpellDuration, t: StringFormatter): string {
+function spellDurationStringify(
+    value: SpellDuration,
+    t: StringFormatter,
+): string {
     if (value === 'special') {
         return t('magic.duration.special');
     } else if (value === 'instantaneous') {
@@ -63,4 +66,4 @@ function tryParseSpellDuration(input: string): SpellDuration | undefined {
     return undefined;
 }
 
-export { type SpellDuration, stringify, tryParseSpellDuration };
+export { type SpellDuration, spellDurationStringify, tryParseSpellDuration };

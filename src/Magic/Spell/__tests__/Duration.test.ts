@@ -2,7 +2,7 @@ import { TimeUnit } from '@wowfinder/ts-enums';
 import { Time } from '../../../Scalar';
 import {
     type SpellDuration,
-    stringify,
+    spellDurationStringify,
     tryParseSpellDuration,
 } from '../Duration';
 import { expectDefined, t } from './helpers';
@@ -18,19 +18,19 @@ function mkTimeTurns(value: number): Time {
 describe('Duration', () => {
     describe('stringify', () => {
         it('should stringify "special"', () => {
-            const result = stringify('special', t);
+            const result = spellDurationStringify('special', t);
             expect(result).toBe('magic.duration.special');
         });
         it('should stringify "instantaneous"', () => {
-            const result = stringify('instantaneous', t);
+            const result = spellDurationStringify('instantaneous', t);
             expect(result).toBe('magic.duration.instantaneous');
         });
         it('should stringify "permanent"', () => {
-            const result = stringify('permanent', t);
+            const result = spellDurationStringify('permanent', t);
             expect(result).toBe('magic.duration.permanent');
         });
         it('should stringify "concentration"', () => {
-            const result = stringify('concentration', t);
+            const result = spellDurationStringify('concentration', t);
             expect(result).toBe('magic.duration.concentration');
         });
         it('should stringify a fixed duration', () => {
@@ -38,7 +38,7 @@ describe('Duration', () => {
                 durationType: 'fixed',
                 duration: mkTimeMinutes(10),
             };
-            const result = stringify(duration, t);
+            const result = spellDurationStringify(duration, t);
             expect(result).toBe(
                 'magic.duration.fixed {"duration":"10 units.minute"}',
             );
@@ -48,7 +48,7 @@ describe('Duration', () => {
                 durationType: 'perLevel',
                 duration: mkTimeTurns(1),
             };
-            const result = stringify(duration, t);
+            const result = spellDurationStringify(duration, t);
             expect(result).toBe(
                 'magic.duration.perLevel {"duration":"1 units.turn"}',
             );
@@ -56,7 +56,7 @@ describe('Duration', () => {
         it('should throw an error if an invalid value is provided', () => {
             expect(() =>
                 // @ts-expect-error Testing invalid value
-                stringify({ invalid: 'value' }, t),
+                spellDurationStringify({ invalid: 'value' }, t),
             ).toThrow();
         });
     });

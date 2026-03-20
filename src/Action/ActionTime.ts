@@ -1,10 +1,6 @@
 import { ActionLength } from '@wowfinder/ts-enums';
+import { type Stringifier } from '@wowfinder/ts-utils';
 import { Time } from '../Scalar';
-
-type Stringifier<T> = (
-    value: T,
-    t: (key: string, ...params: any[]) => string,
-) => string;
 
 type ActionTime = ActionLength | Time | 'special';
 type Parseable = Exclude<ActionTime, 'special'> | string;

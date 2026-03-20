@@ -15,7 +15,7 @@ function parseValidSpellDescriptors(inputs: any[]): SpellDescriptor[] {
         .filter(Boolean) as SpellDescriptor[];
 }
 
-const stringify: Stringifier<SpellDescriptor> = (value, t) => {
+const spellDescriptorStringify: Stringifier<SpellDescriptor> = (value, t) => {
     if (AlignmentDescriptor[value as AlignmentDescriptor]) {
         return t(`alignment.${value}`);
     }
@@ -25,4 +25,8 @@ const stringify: Stringifier<SpellDescriptor> = (value, t) => {
     return t(`magic.descriptor.${value}`);
 };
 
-export { stringify, tryParseSpellDescriptor, parseValidSpellDescriptors };
+export {
+    spellDescriptorStringify,
+    tryParseSpellDescriptor,
+    parseValidSpellDescriptors,
+};
