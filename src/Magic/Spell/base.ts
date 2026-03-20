@@ -2,7 +2,7 @@ import type { RawSpellBase } from '@wowfinder/asset-schemas';
 import type { SpellDescriptor, SpellFlag } from '@wowfinder/ts-enums';
 import { type PossiblyString, parseIfNeeded } from '@wowfinder/ts-utils';
 import { ActionTime } from '../../Action/ActionTime';
-import { type SpellArea, parseArea } from './Area';
+import { type SpellArea, parseSpellArea } from './Area';
 import type { SpellComponent } from './Components';
 import { type SpellDuration, tryParseSpellDuration } from './Duration';
 import { SpellRange } from './Range';
@@ -35,7 +35,7 @@ abstract class SpellBase implements SpellBaseBuilder {
     }: RawSpellBase | SpellBaseBuilder) {
         this.#castingTime = parseIfNeeded(castingTime, ActionTime.tryParse);
         this.#range = parseIfNeeded(range, SpellRange.tryParse);
-        this.#area = parseIfNeeded(area, parseArea);
+        this.#area = parseIfNeeded(area, parseSpellArea);
         // #effect, #targets
         this.#duration = parseIfNeeded(duration, tryParseSpellDuration);
         // #duration, #savingThrow

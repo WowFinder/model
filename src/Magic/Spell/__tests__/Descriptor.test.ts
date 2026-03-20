@@ -1,5 +1,5 @@
 import {
-    stringify,
+    spellDescriptorStringify,
     tryParseSpellDescriptor,
     parseValidSpellDescriptors,
 } from '../Descriptor';
@@ -13,7 +13,7 @@ describe('Descriptor', () => {
         it.each(SpellDescriptorKeys)(
             'should stringify a value of SpellDescriptor.%s',
             key => {
-                const result = stringify(key, t);
+                const result = spellDescriptorStringify(key, t);
                 expect(result).toBeDefined();
                 expect(result).toContain(key);
             },

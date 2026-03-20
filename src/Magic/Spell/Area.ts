@@ -38,7 +38,7 @@ type SpellArea =
     | SpellAreaLine
     | SpellAreaSphere;
 
-function stringify(
+function spellAreaStringify(
     value: SpellArea,
     t: Parameters<Stringifier<SpellArea>>[1],
 ): string {
@@ -90,7 +90,7 @@ const partialParsers = {
     },
 };
 
-function tryParseArea(input: string): SpellArea | undefined {
+function tryParseSpellArea(input: string): SpellArea | undefined {
     const matches = /^([a-z.]+)\s*(?:\((.*)\))?$/.exec(input.toLowerCase());
     if (!matches) {
         return undefined;
@@ -119,11 +119,11 @@ function tryParseArea(input: string): SpellArea | undefined {
 
 const defaultArea = { spellAreaType: 'point' } as const;
 
-function parseArea(
+function parseSpellArea(
     input: string,
     defaultValue: SpellArea = defaultArea,
 ): SpellArea {
-    return tryParseArea(input) ?? defaultValue;
+    return tryParseSpellArea(input) ?? defaultValue;
 }
 
 export {
@@ -134,7 +134,7 @@ export {
     type SpellAreaCube,
     type SpellAreaLine,
     type SpellAreaSphere,
-    stringify,
-    tryParseArea,
-    parseArea,
+    spellAreaStringify,
+    tryParseSpellArea,
+    parseSpellArea,
 };
