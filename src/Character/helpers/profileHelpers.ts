@@ -128,7 +128,7 @@ function totalize(base: CreatureProfile, bonuses: MultiBonus): CreatureProfile {
         ...bonusProfile,
         vitals: {
             ...base.vitals,
-            ...(bonusProfile.vitals ?? {}),
+            ...bonusProfile.vitals,
         },
     };
 }
