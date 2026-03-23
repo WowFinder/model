@@ -6,10 +6,7 @@ import {
     type CreatureBaseBuilder,
 } from '../Creature';
 import { type Inventory } from '../Item/Inventory';
-import {
-    type CreatureBaseProfile,
-    type CreatureBaseProfileOverride,
-} from '../Profile';
+import { type CreatureProfile, type CreatureProfileOverride } from '../Profile';
 import { type CharacterBaseInterface } from './CharacterBaseInterface';
 import { type AsyncAssetResolver } from '../Assets';
 
@@ -32,16 +29,16 @@ abstract class CharacterCore
         return this.#active;
     }
 
-    abstract get baseProfile(): CreatureBaseProfile;
-    abstract get overrides(): CreatureBaseProfileOverride[];
-    abstract set overrides(overrides: CreatureBaseProfileOverride[]);
+    abstract get baseProfile(): CreatureProfile;
+    abstract get overrides(): CreatureProfileOverride[];
+    abstract set overrides(overrides: CreatureProfileOverride[]);
     abstract get inventory(): Inventory;
     abstract set inventory(inventory: Inventory);
     get classProgression(): ClassEntries {
         return this.classes;
     }
     abstract get totalBonuses(): MultiBonus;
-    abstract get totalProfile(): CreatureBaseProfile;
+    abstract get totalProfile(): CreatureProfile;
 
     static async buildCharacterArgs(
         raw: RawCharacterAsset,

@@ -6,4 +6,12 @@ type BaseAttackProfile = {
     combatManeuverBonus: number;
 };
 
-export type { BaseAttackProfile };
+const defaultBaseAttackProfile: BaseAttackProfile = {
+    meleeAttackBonus: 0,
+    rangedAttackBonus: 0,
+    touchAttackBonus: 0,
+    rayAttackBonus: 0,
+    combatManeuverBonus: 0,
+};
+
+export { type BaseAttackProfile, defaultBaseAttackProfile };

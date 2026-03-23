@@ -34,6 +34,10 @@ import {
     combinedSpeeds,
 } from './mocks';
 import { SimpleBonus, VitalsBonus } from '../../Bonus';
+import {
+    type CreatureProfile,
+    defaultCreatureProfile,
+} from '../CreatureProfile';
 
 describe('Profile helpers', () => {
     describe('addStats', () => {
@@ -82,7 +86,9 @@ describe('Profile helpers', () => {
 
     describe('addProfileBonuses', () => {
         it('should add multiple bonuses to a profile', () => {
-            const base = {
+            const base: CreatureProfile = {
+                ...defaultCreatureProfile,
+                personal: {} as any,
                 stats: baseStats,
                 speeds: baseSpeeds,
                 vitals: mkVitalsProfile({}),
@@ -90,8 +96,6 @@ describe('Profile helpers', () => {
                 saves: baseSaves,
                 resistances: baseResistances,
                 feats: baseFeats,
-                features: {},
-                traits: [],
             };
             const bonus1 = new SimpleBonus({
                 stats: statBonus1,

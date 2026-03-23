@@ -35,10 +35,15 @@ class ProgressionProfileImpl implements ProgressionProfile {
     }
 }
 
+const emptyBuilder: ProgressionProfileBuilder = {
+    xp: 0,
+    classes: [],
+};
+
 function buildProgressionProfile(
-    data: ProgressionProfileBuilder,
+    data?: ProgressionProfileBuilder,
 ): ProgressionProfile {
-    return new ProgressionProfileImpl(data);
+    return new ProgressionProfileImpl(data ?? emptyBuilder);
 }
 
 export type { ProgressionProfile, ProgressionProfileBuilder };

@@ -1,11 +1,21 @@
-import { type Size } from '@wowfinder/ts-enums';
+import { Size } from '@wowfinder/ts-enums';
 import { type PersonalDetails } from '../Creature/Personal/builders';
-import { type Shape } from '../Item';
-import { type ArmorProfile } from './ArmorProfile';
-import { type BaseAttackProfile } from './BaseAttackProfile';
-import { type ProgressionProfile } from './ProgressionProfile';
-import { type SpeedsProfile } from './SpeedsProfile';
-import { type VitalsProfile } from './VitalsProfile';
+import { Shapes, type Shape } from '../Item';
+import { defaultArmorProfile, type ArmorProfile } from './ArmorProfile';
+import {
+    defaultBaseAttackProfile,
+    type BaseAttackProfile,
+} from './BaseAttackProfile';
+import {
+    buildProgressionProfile,
+    type ProgressionProfile,
+} from './ProgressionProfile';
+import { SpeedsProfile } from './SpeedsProfile';
+import {
+    defaultBreathProfile,
+    defaultSleepProfile,
+    type VitalsProfile,
+} from './VitalsProfile';
 import {
     type TraitsProfile,
     type ClassFeaturesProfile,
@@ -15,38 +25,63 @@ import {
     type SkillsProfile,
     type SpellPowerProfile,
     type StatsProfile,
+    defaultClassFeaturesProfile,
+    defaultFeatsProfile,
+    defaultResistancesProfile,
+    defaultSavesProfile,
+    defaultSkillsProfile,
+    defaultSpellPowerProfile,
+    defaultStatsProfile,
 } from './raw';
-import { type Transform } from '@wowfinder/ts-utils';
+import { mkCounter, type Transform } from '@wowfinder/ts-utils';
 
-type CreatureBaseProfile = {
+type CreatureProfile = {
+    personal: PersonalDetails;
+    shape: Shape;
+    size: Size;
     stats: StatsProfile;
     speeds: SpeedsProfile;
     vitals: VitalsProfile;
+    progression: ProgressionProfile;
     skills: SkillsProfile;
     saves: SavesProfile;
     resistances: ResistancesProfile;
     features: ClassFeaturesProfile;
     feats: FeatsProfile;
     traits: TraitsProfile;
-};
-
-// TODO: Consider full deprecation
-type CreatureProfile = CreatureBaseProfile & {
-    personal: PersonalDetails;
-    shape: Shape;
-    size: Size;
-    // TODO: @deprecate and remove: Used under Old.Character types and CharacterRequirementsPlaceholder */
-    progression: ProgressionProfile;
     // TODO: @deprecate and remove (should be computed)
     armor: ArmorProfile;
     attack: BaseAttackProfile;
     spellPower: SpellPowerProfile;
 };
 
-type CreatureBaseProfileOverride = Transform<CreatureBaseProfile>;
+const defaultCreatureProfile: Omit<CreatureProfile, 'personal'> = {
+    shape: Shapes.Humanoid,
+    size: Size.medium,
+    stats: defaultStatsProfile,
+    speeds: new SpeedsProfile({ base: 0 }),
+    vitals: {
+        hp: mkCounter({ max: 0 }),
+        sanity: mkCounter({ max: 0 }),
+        sleep: defaultSleepProfile,
+        breath: defaultBreathProfile,
+    },
+    skills: defaultSkillsProfile,
+    saves: defaultSavesProfile,
+    resistances: defaultResistancesProfile,
+    features: defaultClassFeaturesProfile,
+    feats: defaultFeatsProfile,
+    traits: [],
+    armor: defaultArmorProfile,
+    attack: defaultBaseAttackProfile,
+    progression: buildProgressionProfile(),
+    spellPower: defaultSpellPowerProfile,
+};
+
+type CreatureProfileOverride = Transform<CreatureProfile>;
 
 export {
-    type CreatureBaseProfile,
     type CreatureProfile,
-    type CreatureBaseProfileOverride,
+    type CreatureProfileOverride,
+    defaultCreatureProfile,
 };
