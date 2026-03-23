@@ -46,7 +46,7 @@ function getBaseProfile(creature: CreatureBase): CreatureProfile {
         personal: creature.personal,
         // TODO: support shape details in race definitions
         size: creature.race.size,
-        stats: addStatSets(creature.baseStats, creature.race.statMods),
+        stats,
         speeds: new SpeedsProfile({
             ...creature.race.speeds.export(),
             dexBonus: statMod(stats.dexterity),
@@ -92,7 +92,6 @@ function profileAsBonus(profile: CreatureProfile): SimpleBonus {
 function bonusAsProfile(bonus: SimpleBonus): Partial<CreatureProfile> {
     const stats = bonus.stats;
     return {
-        ...defaultCreatureProfile,
         stats: stats.export(),
         speeds: new SpeedsProfile({
             base: 0,
@@ -123,7 +122,15 @@ function bonusAsProfile(bonus: SimpleBonus): Partial<CreatureProfile> {
 function totalize(base: CreatureProfile, bonuses: MultiBonus): CreatureProfile {
     const asBonus = profileAsBonus(base);
     const combined = SimpleBonus.sum(asBonus, bonuses.total);
-    return { ...base, ...bonusAsProfile(combined) };
+    const bonusProfile = bonusAsProfile(combined);
+    return {
+        ...base,
+        ...bonusProfile,
+        vitals: {
+            ...base.vitals,
+            ...(bonusProfile.vitals ?? {}),
+        },
+    };
 }
 
 export { getBaseProfile, totalize };

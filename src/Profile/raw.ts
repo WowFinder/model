@@ -10,7 +10,7 @@ import {
     fullComputedSpellPower,
     type FullComputedSpellPower,
 } from '../Magic/SpellPower';
-import { Skills } from '../Creature';
+import { fillSkills } from '../Creature/Skill/Skills';
 
 type ClassFeaturesProfile = Partial<Record<ClassFeature, number>>;
 const defaultClassFeaturesProfile: ClassFeaturesProfile = {};
@@ -40,14 +40,7 @@ const defaultSavesProfile: SavesProfile = {
 };
 
 type SkillsProfile = RawSkills;
-const defaultSkillsProfile: SkillsProfile = Object.keys(Skills).reduce(
-    (acc, skill) => {
-        const sk = skill as keyof RawSkills;
-        acc[sk] = 0;
-        return acc;
-    },
-    {} as RawSkills,
-);
+const defaultSkillsProfile: SkillsProfile = fillSkills({});
 
 type SpellPowerProfile = FullComputedSpellPower;
 const defaultSpellPowerProfile: SpellPowerProfile = fullComputedSpellPower();
