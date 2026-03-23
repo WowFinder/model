@@ -20,7 +20,7 @@ type CreatureBaseBuilder = {
     feats?: RawFeatSelections;
 };
 
-abstract class CreatureBase {
+class CreatureBase {
     readonly #key: string;
     readonly #baseStats: RawStats;
     readonly #personal: PersonalDetails;

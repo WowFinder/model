@@ -20,17 +20,17 @@ function flyManeuverabilityBonus(maneuverability: FM): number {
             return Debugger.unreachable(maneuverability);
     }
 }
+const knownManeuverabilityKeys = Object.keys(FlyManeuverability);
 
 type MaybeManeuverability = FlyManeuverability | string | undefined;
 function flyManeuverabilityCompare(
     a: MaybeManeuverability,
     b: MaybeManeuverability,
 ): number {
-    const knownKeys = Object.keys(FlyManeuverability);
-    if (!knownKeys.includes(a as string)) {
+    if (!knownManeuverabilityKeys.includes(a as string)) {
         a = undefined;
     }
-    if (!knownKeys.includes(b as string)) {
+    if (!knownManeuverabilityKeys.includes(b as string)) {
         b = undefined;
     }
     if (a === b) {

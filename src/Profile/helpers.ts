@@ -14,7 +14,7 @@ import {
     type StatsProfile,
 } from './raw';
 import { SavesBonus } from '../Bonus/SavesBonus';
-import { type CreatureBaseProfile } from './CreatureProfile';
+import { type CreatureProfile } from './CreatureProfile';
 import { addSpeeds } from './SpeedsProfile';
 import { addVitals } from './VitalsProfile';
 import { Feat } from '../Creature/Feats';
@@ -82,10 +82,11 @@ function addFeats(base: FeatsProfile, ...bonuses: FeatsBonus[]): FeatsProfile {
 }
 
 function addProfileBonuses(
-    base: CreatureBaseProfile,
+    base: CreatureProfile,
     ...bonuses: SimpleBonus[]
-): CreatureBaseProfile {
+): CreatureProfile {
     return {
+        ...base,
         stats: addStats(base.stats, ...bonuses.map(b => b.stats)),
         speeds: addSpeeds(base.speeds, ...bonuses.map(b => b.speedsModifiers)),
         vitals: addVitals(base.vitals, ...bonuses.map(b => b.vitals)),

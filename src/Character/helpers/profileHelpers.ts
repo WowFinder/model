@@ -7,11 +7,10 @@ import {
     type CreatureBase,
 } from '../../Creature';
 import {
-    defaultBreathProfile,
-    defaultSleepProfile,
     type FeatsProfile,
     SpeedsProfile,
-    type CreatureBaseProfile,
+    type CreatureProfile,
+    defaultCreatureProfile,
 } from '../../Profile';
 import { type RawResistances, type RawSkills } from '@wowfinder/asset-schemas';
 import { DamageType, Skill } from '@wowfinder/ts-enums';
@@ -34,7 +33,7 @@ function fillResistances(resistances: Partial<RawResistances>): RawResistances {
     }, {} as RawResistances);
 }
 
-function getBaseProfile(creature: CreatureBase): CreatureBaseProfile {
+function getBaseProfile(creature: CreatureBase): CreatureProfile {
     const stats = addStatSets(creature.baseStats, creature.race.statMods);
     const totalLevel = creature.classes.reduce(
         (acc, cls) => acc + cls.level,
@@ -43,35 +42,35 @@ function getBaseProfile(creature: CreatureBase): CreatureBaseProfile {
     const classMods = combineClassBonuses(creature.classes);
     const hp = classMods.hp + totalLevel * statMod(stats.constitution);
     return {
+        ...defaultCreatureProfile,
+        personal: creature.personal,
+        // TODO: support shape details in race definitions
+        size: creature.race.size,
         stats: addStatSets(creature.baseStats, creature.race.statMods),
         speeds: new SpeedsProfile({
             ...creature.race.speeds.export(),
             dexBonus: statMod(stats.dexterity),
         }),
         vitals: {
+            ...defaultCreatureProfile.vitals,
             hp: mkCounter({
                 max: hp,
             }),
-            sanity: mkCounter({ max: 0 }),
             // https://github.com/WowFinder/model/issues/210: support sleep details in race definitions
-            sleep: defaultSleepProfile,
             // https://github.com/WowFinder/model/issues/210: support breath details in race definitions
-            breath: defaultBreathProfile,
         },
         skills: fillSkills(creature.race.skillMods),
         saves: { ...creature.race.saves },
         // https://github.com/WowFinder/model/issues/212: support resistance details in race definitions
-        resistances: fillResistances({}),
         features: classMods.features,
         feats: creature.feats.reduce((acc, feat) => {
             acc[feat] = (acc[feat] ?? 0) + 1;
             return acc;
         }, {} as FeatsProfile),
-        traits: [],
     };
 }
 
-function profileAsBonus(profile: CreatureBaseProfile): SimpleBonus {
+function profileAsBonus(profile: CreatureProfile): SimpleBonus {
     return new SimpleBonus({
         hp: profile.vitals.hp.max,
         stats: profile.stats,
@@ -90,10 +89,11 @@ function profileAsBonus(profile: CreatureBaseProfile): SimpleBonus {
     });
 }
 
-function bonusAsProfile(bonus: SimpleBonus): CreatureBaseProfile {
+function bonusAsProfile(bonus: SimpleBonus): Partial<CreatureProfile> {
     const stats = bonus.stats;
     return {
-        stats: bonus.stats.export(),
+        ...defaultCreatureProfile,
+        stats: stats.export(),
         speeds: new SpeedsProfile({
             base: 0,
             ...bonus.baseSpeeds.export(),
@@ -108,27 +108,22 @@ function bonusAsProfile(bonus: SimpleBonus): CreatureBaseProfile {
         skills: fillSkills(bonus.skills),
         saves: fillSaves(bonus.saves.export()),
         resistances: fillResistances(bonus.resistances),
-        features: {},
         feats: bonus.feats.export().reduce(
             (acc, f) => {
                 const feat = f;
                 acc[feat] = (acc[feat] ?? 0) + 1;
                 return acc;
             },
-            {} as CreatureBaseProfile['feats'],
+            {} as CreatureProfile['feats'],
         ),
-        traits: [],
     };
 }
 
 // https://github.com/WowFinder/model/issues/213: rewrite addition logic
-function totalize(
-    base: CreatureBaseProfile,
-    bonuses: MultiBonus,
-): CreatureBaseProfile {
+function totalize(base: CreatureProfile, bonuses: MultiBonus): CreatureProfile {
     const asBonus = profileAsBonus(base);
     const combined = SimpleBonus.sum(asBonus, bonuses.total);
-    return bonusAsProfile(combined);
+    return { ...base, ...bonusAsProfile(combined) };
 }
 
 export { getBaseProfile, totalize };

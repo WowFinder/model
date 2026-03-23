@@ -66,10 +66,11 @@ function computedSpellPower(
 }
 
 function fullComputedSpellPower(
-    data: SpellPowerValues<number>,
+    data?: SpellPowerValues<number>,
     stats?: RawStats,
     efl: EffectiveCasterLevels = zeroCasterLevel,
 ): FullComputedSpellPower {
+    data ??= fillSpellPowerValues({}, 0);
     const res: PartialComputedSpellPower = {};
     for (const mode of Object.keys(CastingMode)) {
         const m = mode as CastingMode;
