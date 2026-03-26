@@ -1,6 +1,7 @@
 export * from './Action';
 export * from './Adventure';
 export * from './Assets';
+export * from './Character';
 export * from './Choice';
 export * from './Creature';
 export * from './Damage';
