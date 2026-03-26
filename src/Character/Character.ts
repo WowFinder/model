@@ -59,7 +59,7 @@ class Character extends CharacterCore {
     }
 
     set overrides(overrides: CreatureProfileOverride[]) {
-        this.#overrides = overrides;
+        this.#overrides = [...overrides];
     }
 
     get inventory(): Inventory {
