@@ -46,7 +46,7 @@ class Character extends CharacterCore {
             }),
             skills: fillSkills(args.skillRanks ?? {}), // skills: TODO #307
             // resistances:  TODO #308
-            traits: defaultCreatureProfile.traits, // traits: TODO #309
+            // traits: TODO #309
         };
     }
 
