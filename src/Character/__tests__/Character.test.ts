@@ -5,6 +5,7 @@ import {
 } from '../../__mocks__';
 import { Character } from '../Character';
 import { Inventory } from '../../Item/Inventory';
+import { MultiBonus } from '../../Bonus';
 import { Size } from '@wowfinder/ts-enums';
 
 describe('Character', () => {
@@ -88,5 +89,13 @@ describe('Character', () => {
             resolver: mockAssetResolver,
         });
         expect(character.classProgression).toEqual(character.classes);
+    });
+
+    it('totalBonuses should return MultiBonus.zero (placeholder)', async () => {
+        const character = await Character.fromRaw({
+            raw: rawCharacterMinimal,
+            resolver: mockAssetResolver,
+        });
+        expect(character.totalBonuses).toEqual(MultiBonus.zero);
     });
 });

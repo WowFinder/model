@@ -44,7 +44,7 @@ class Character extends CharacterCore {
     }
 
     get totalBonuses(): MultiBonus {
-        // TODO: Compute from class features, feats, racial bonuses, items, etc.
+        // TODO #301: Compute from class features, feats, racial bonuses, items, etc.
         return MultiBonus.zero;
     }
 
@@ -63,9 +63,9 @@ class Character extends CharacterCore {
         resolver: AsyncAssetResolver;
     }): Promise<Character> {
         const args = await CharacterCore.buildCharacterArgs(raw, resolver);
-        // TODO: raw.templates - template entries not yet used
-        // TODO: raw.skillRanks - skill ranks not yet used
-        // TODO: raw.inventory - inventory data not yet used
+        // TODO #302: raw.templates - template entries not yet used
+        // TODO #303: raw.skillRanks - skill ranks not yet used
+        // TODO #304: raw.inventory - inventory data not yet used
         return new Character(args);
     }
 }
