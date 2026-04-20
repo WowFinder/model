@@ -1,47 +1,45 @@
-import { GearSlot } from '@wowfinder/ts-enums';
-
-type Shape = { slot: GearSlot; qtty: number }[];
+import { GearSlot, type Shape } from '@wowfinder/ts-enums';
 
 function compactShape(shape: Shape): Shape {
     const result: Shape = [];
     for (const slot of Object.keys(GearSlot) as GearSlot[]) {
-        const qtty = shape
+        const quantity = shape
             .filter(entry => entry.slot === slot)
-            .map(entry => entry.qtty)
+            .map(entry => entry.quantity)
             .reduce((a, b) => a + b, 0);
-        if (qtty > 0) {
-            result.push({ slot, qtty });
+        if (quantity > 0) {
+            result.push({ slot, quantity });
         }
     }
     return result;
 }
 
 const upperLimbs = (pairs = 1, fingersPerHand = 5): Shape => [
-    { slot: GearSlot.shoulders, qtty: pairs },
-    { slot: GearSlot.hands, qtty: pairs },
-    { slot: GearSlot.wrists, qtty: pairs },
-    { slot: GearSlot.mainHand, qtty: pairs },
-    { slot: GearSlot.offHand, qtty: pairs },
-    { slot: GearSlot.ring, qtty: 2 * pairs * fingersPerHand },
+    { slot: GearSlot.shoulders, quantity: pairs },
+    { slot: GearSlot.hands, quantity: pairs },
+    { slot: GearSlot.wrists, quantity: pairs },
+    { slot: GearSlot.mainHand, quantity: pairs },
+    { slot: GearSlot.offHand, quantity: pairs },
+    { slot: GearSlot.ring, quantity: 2 * pairs * fingersPerHand },
 ];
 
 const lowerLimbs = (pairs = 1): Shape => [
-    { slot: GearSlot.legs, qtty: pairs },
-    { slot: GearSlot.feet, qtty: pairs },
+    { slot: GearSlot.legs, quantity: pairs },
+    { slot: GearSlot.feet, quantity: pairs },
 ];
 
 const heads = (count = 1, earsPerHead = 2): Shape => [
-    { slot: GearSlot.head, qtty: count },
-    { slot: GearSlot.ear, qtty: count * earsPerHead },
+    { slot: GearSlot.head, quantity: count },
+    { slot: GearSlot.ear, quantity: count * earsPerHead },
 ];
 
 const Shapes = {
     Humanoid: compactShape([
         ...heads(),
-        { slot: GearSlot.neck, qtty: 1 },
-        { slot: GearSlot.torso, qtty: 1 },
-        { slot: GearSlot.back, qtty: 1 },
-        { slot: GearSlot.waist, qtty: 1 },
+        { slot: GearSlot.neck, quantity: 1 },
+        { slot: GearSlot.torso, quantity: 1 },
+        { slot: GearSlot.back, quantity: 1 },
+        { slot: GearSlot.waist, quantity: 1 },
         ...upperLimbs(),
         ...lowerLimbs(),
     ]),
@@ -58,18 +56,18 @@ function buildShape(slots: string[]): Shape {
     }
     return Object.keys(slotCounts).map(s => ({
         slot: s as GearSlot,
-        qtty: slotCounts[s],
+        quantity: slotCounts[s],
     }));
 }
 
-function gt0(qtty: number): boolean {
-    return Math.floor(qtty) > 0;
+function gt0(quantity: number): boolean {
+    return Math.floor(quantity) > 0;
 }
 
 function explodeShape(shape: Shape): string[] {
     const res: string[] = [];
-    for (const elem of shape.filter(s => gt0(s.qtty))) {
-        res.push(...Array(elem.qtty).fill(elem.slot));
+    for (const elem of shape.filter(s => gt0(s.quantity))) {
+        res.push(...Array(elem.quantity).fill(elem.slot));
     }
     return res;
 }

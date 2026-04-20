@@ -23,8 +23,10 @@ const mockedRaceRawAsset: RawRaceAsset = {
     },
     traits: [InnateTrait.darkvision60],
     vitals: {
-        sleepTimeReduction: '2h',
-        breathHoldingTimeBonus: '30s',
+        minimumSleepTime: '6h',
+        optimalSleepTime: '8h',
+        breathHoldingTime: '1m',
+        breathRecoveryTime: '1m',
     },
 };
 

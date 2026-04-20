@@ -54,7 +54,7 @@ export default class Race {
             ...defaultSaves,
             ...raw.saves,
         };
-        this.#vitals = VitalsBonus.build(raw.vitals ?? {});
+        this.#vitals = VitalsBonus.build(raw.vitals ?? ({} as any));
         this.#resistances = fillResistances(raw.resistances ?? {});
         this.#traits = [...(raw.traits ?? [])];
     }
