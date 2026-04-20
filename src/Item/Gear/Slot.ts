@@ -61,13 +61,16 @@ function buildShape(slots: string[]): Shape {
 }
 
 function entryGt0(entry: Shape[number]): boolean {
-    return Math.floor(entry.quantity) > 0;
+    const floored = Math.floor(entry.quantity);
+    return (
+        floored > 0 && Number.isFinite(floored) && floored === entry.quantity
+    );
 }
 
 function explodeShape(shape: Shape): string[] {
     const res: string[] = [];
     for (const elem of shape.filter(entryGt0)) {
-        res.push(...Array(elem.quantity).fill(elem.slot));
+        res.push(...new Array(elem.quantity).fill(elem.slot));
     }
     return res;
 }
