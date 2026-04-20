@@ -48,7 +48,7 @@ const Shapes = {
 function buildShape(slots: string[]): Shape {
     const slotCounts: { [s: string]: number } = {};
     for (const s of slots) {
-        if (s in GearSlot) {
+        if (Object.hasOwn(GearSlot, s)) {
             slotCounts[s] = (slotCounts[s] || 0) + 1;
         } else {
             throw new Error(`Unknown gear slot ${s}`);
@@ -60,7 +60,7 @@ function buildShape(slots: string[]): Shape {
     }));
 }
 
-function entryGt0(entry : Shape[number]) : boolean {
+function entryGt0(entry: Shape[number]): boolean {
     return Math.floor(entry.quantity) > 0;
 }
 

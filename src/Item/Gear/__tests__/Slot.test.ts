@@ -1,5 +1,11 @@
 import { GearSlot } from '@wowfinder/ts-enums';
-import { type Shape, Shapes, buildShape, compactShape, explodeShape } from '../Slot';
+import {
+    type Shape,
+    Shapes,
+    buildShape,
+    compactShape,
+    explodeShape,
+} from '../Slot';
 
 describe('Slot methods', () => {
     describe('Shapes constants', () => {
@@ -31,14 +37,7 @@ describe('Slot methods', () => {
     });
     describe('buildShape', () => {
         it('should build a shape from a list of slot names', () => {
-            const input = [
-                'head',
-                'head',
-                'mainHand',
-                'ring',
-                'ring',
-                'ring',
-            ];
+            const input = ['head', 'head', 'mainHand', 'ring', 'ring', 'ring'];
             const expected: Shape = [
                 { slot: GearSlot.head, quantity: 2 },
                 { slot: GearSlot.mainHand, quantity: 1 },
@@ -53,7 +52,9 @@ describe('Slot methods', () => {
             expect(built.length).toBe(expected.length);
         });
         it('should throw an error for unknown slots', () => {
-            expect(() => buildShape(['unknown'])).toThrow('Unknown gear slot unknown');
+            expect(() => buildShape(['unknown'])).toThrow(
+                'Unknown gear slot unknown',
+            );
         });
     });
     describe('compactShape', () => {
@@ -105,13 +106,7 @@ describe('Slot methods', () => {
                 { slot: GearSlot.mainHand, quantity: 0 },
                 { slot: GearSlot.ring, quantity: 3 },
             ];
-            const expected = [
-                'head',
-                'head',
-                'ring',
-                'ring',
-                'ring',
-            ];
+            const expected = ['head', 'head', 'ring', 'ring', 'ring'];
             const exploded = explodeShape(input);
             expect(exploded).toEqual(expected);
         });
