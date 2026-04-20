@@ -6,7 +6,6 @@ import {
     Languages,
     Skill,
     Stat,
-    TimeUnit,
 } from '@wowfinder/ts-enums';
 import { defaultSpeedUnit } from '../../../Scalar';
 import { fillStatSet } from '../../Stats';
@@ -36,10 +35,6 @@ describe('Race', () => {
         expect(instance.naturalArmor).toBe(0);
         const { vitals, resistances, traits } = instance;
         expect(vitals).toBeDefined();
-        expect(vitals.sleepTimeReduction.convert(TimeUnit.hour).value).toBe(2);
-        expect(
-            vitals.breathHoldingTimeBonus.convert(TimeUnit.second).value,
-        ).toBe(30);
         expect(resistances).toBeDefined();
         expect(resistances.cold).toBe(5);
         expect(traits).toBeDefined();

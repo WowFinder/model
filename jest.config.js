@@ -45,10 +45,10 @@ module.exports = {
     // An object that configures minimum threshold enforcement for coverage results
     coverageThreshold: {
         global: {
-            branches: 60,
-            functions: 75,
-            lines: 80,
-            statements: 80,
+            branches: 80,
+            functions: 85,
+            lines: 90,
+            statements: 90,
         },
     },
 
@@ -99,7 +99,7 @@ module.exports = {
     // notifyMode: "failure-change",
 
     // A preset that is used as a base for Jest's configuration
-    preset: 'ts-jest',
+    // preset: 'ts-jest',
 
     // Run tests from one or more projects
     // projects: undefined,
@@ -176,7 +176,14 @@ module.exports = {
 
     // A map from regular expressions to paths to transformers
     // transform: undefined,
-
+    transform: {
+        '^.+\\.tsx?$': [
+            'ts-jest',
+            // required due to custom location of tsconfig.json configuration file
+            // https://kulshekhar.github.io/ts-jest/docs/getting-started/options/tsconfig
+            {tsconfig: './tsconfig.tests.json'},
+        ],
+    },
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [
     //   "/node_modules/"
