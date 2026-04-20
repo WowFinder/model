@@ -60,16 +60,16 @@ function buildShape(slots: string[]): Shape {
     }));
 }
 
-function gt0(quantity: number): boolean {
-    return Math.floor(quantity) > 0;
+function entryGt0(entry : Shape[number]) : boolean {
+    return Math.floor(entry.quantity) > 0;
 }
 
 function explodeShape(shape: Shape): string[] {
     const res: string[] = [];
-    for (const elem of shape.filter(s => gt0(s.quantity))) {
+    for (const elem of shape.filter(entryGt0)) {
         res.push(...Array(elem.quantity).fill(elem.slot));
     }
     return res;
 }
 
-export { type Shape, Shapes, buildShape, explodeShape };
+export { type Shape, Shapes, buildShape, compactShape, explodeShape };
