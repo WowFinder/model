@@ -176,7 +176,14 @@ module.exports = {
 
     // A map from regular expressions to paths to transformers
     // transform: undefined,
-
+    transform: {
+        '^.+\\.tsx?$': [
+            'ts-jest',
+            // required due to custom location of tsconfig.json configuration file
+            // https://kulshekhar.github.io/ts-jest/docs/getting-started/options/tsconfig
+            {tsconfig: './tsconfig.tests.json'},
+        ],
+    },
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [
     //   "/node_modules/"
